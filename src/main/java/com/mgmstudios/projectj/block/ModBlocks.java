@@ -33,11 +33,20 @@ public class ModBlocks {
             BlockBehaviour.Properties.of().mapColor(MapColor.CLAY).instrument(NoteBlockInstrument.FLUTE).strength(0.6F).sound(SoundType.GRAVEL)
     );
 
+    public static final DeferredBlock<Block> ADOBE_BRICKS = registerBlock("adobe_bricks",
+             BlockBehaviour.Properties.of()
+            .mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
+            .instrument(NoteBlockInstrument.BASEDRUM)
+            //.requiresCorrectToolForDrops()
+            .strength(1.5F, 3.0F)
+            .sound(SoundType.MUD_BRICKS)
+    );
+
     public static final DeferredBlock<Block> ADOBE_FURNACE = registerFurnaceBlock("adobe_furnace",
             BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .instrument(NoteBlockInstrument.BASEDRUM)
-            .requiresCorrectToolForDrops()
+            //.requiresCorrectToolForDrops()
             .strength(3.5F)
     );
 

@@ -2,13 +2,16 @@ package com.mgmstudios.projectj.datagen;
 
 import com.mgmstudios.projectj.ProjectJ;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 import java.util.List;
@@ -16,9 +19,9 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 @EventBusSubscriber (modid = ProjectJ.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
-public class ModLootTableProvider  extends LootTableProvider {
+public class DataGenProvider extends LootTableProvider {
 
-    public ModLootTableProvider(PackOutput output, Set<ResourceKey<LootTable>> requiredTables, List<SubProviderEntry> subProviders, CompletableFuture<HolderLookup.Provider> registries) {
+    public DataGenProvider(PackOutput output, Set<ResourceKey<LootTable>> requiredTables, List<SubProviderEntry> subProviders, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, requiredTables, subProviders, registries);
     }
 
@@ -32,6 +35,9 @@ public class ModLootTableProvider  extends LootTableProvider {
                 ),
             lookupProvider
         ));
+
+        event.createProvider(ModRecipeProvider.Runner::new);
     }
+
 
 }

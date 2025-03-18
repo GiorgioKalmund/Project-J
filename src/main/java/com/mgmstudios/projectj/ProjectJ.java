@@ -62,6 +62,7 @@ public class ProjectJ
             event.accept(ModItems.JADE);
             event.accept(ModItems.RAW_JADE);
             event.accept(ModBlocks.RAW_ADOBE);
+            event.accept(ModBlocks.ADOBE_BRICKS);
         }
     }
 

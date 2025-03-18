@@ -30,6 +30,7 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         this.dropSelf(ModBlocks.RAW_ADOBE.get());
+        this.dropSelf(ModBlocks.ADOBE_BRICKS.get());
         this.dropSelf(ModBlocks.ADOBE_FURNACE.get());
     }
 }

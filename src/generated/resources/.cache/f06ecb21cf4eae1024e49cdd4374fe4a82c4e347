@@ -1,0 +1,5 @@
+// 1.21.4	2025-03-18T20:34:37.529401	ModRecipeProvider
+6452fecec3921d0f3482c70b92d2b933f016e37a data/minecraft/advancement/recipes/building_blocks/adobe_bricks_smelting.json
+8be6b9dff9c6e615ed63496136f4a4247bf3ca06 data/minecraft/recipe/adobe_bricks_smelting.json
+71e6de0a5332a330b33cbb888417e71c48071a63 data/projectj/advancement/recipes/building_blocks/raw_adobe.json
+9c5b6c49b97de3fbff59205597685c53b6aeae1a data/projectj/recipe/raw_adobe.json
