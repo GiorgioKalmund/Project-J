@@ -7,6 +7,7 @@ import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.client.data.models.model.ModelTemplates;
+import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.data.PackOutput;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -24,6 +25,7 @@ public class ModModelProvider extends ModelProvider {
         // Generate models and associated files here
 
         blockModels.createTrivialCube(ModBlocks.RAW_ADOBE.get());
+        blockModels.createFurnace(ModBlocks.ADOBE_FURNACE.get(), TexturedModel.ORIENTABLE_ONLY_TOP);
 
         itemModels.generateFlatItem(ModItems.RAW_JADE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.JADE.get(), ModelTemplates.FLAT_ITEM);
