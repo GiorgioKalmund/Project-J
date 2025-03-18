@@ -61,7 +61,7 @@ public class ProjectJ
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.JADE);
             event.accept(ModItems.RAW_JADE);
-            event.accept(ModBlocks.ADOBE_BLOCK);
+            event.accept(ModBlocks.RAW_ADOBE);
         }
     }
 

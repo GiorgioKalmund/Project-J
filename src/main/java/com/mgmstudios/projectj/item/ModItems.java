@@ -1,6 +1,7 @@
 package com.mgmstudios.projectj.item;
 
 import com.mgmstudios.projectj.ProjectJ;
+import com.mgmstudios.projectj.block.ModBlocks;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
