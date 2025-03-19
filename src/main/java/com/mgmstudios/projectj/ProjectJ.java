@@ -2,6 +2,7 @@ package com.mgmstudios.projectj;
 
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.block.entity.ModBlockEntities;
+import com.mgmstudios.projectj.item.ModCreativeModeTabs;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.screen.ModMenuTypes;
 import com.mgmstudios.projectj.screen.custom.AdobeFurnaceScreen;
@@ -49,6 +50,7 @@ public class ProjectJ
         NeoForge.EVENT_BUS.register(this);
 
         ModItems.register(modEventBus);
+        ModCreativeModeTabs.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
@@ -66,13 +68,6 @@ public class ProjectJ
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.JADE);
-            event.accept(ModItems.RAW_JADE);
-            event.accept(ModBlocks.RAW_ADOBE);
-            event.accept(ModBlocks.ADOBE_BRICKS);
-            event.accept(ModBlocks.ADOBE_FURNACE);
-        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
