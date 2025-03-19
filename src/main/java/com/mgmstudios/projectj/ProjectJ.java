@@ -7,6 +7,7 @@ import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.screen.ModMenuTypes;
 import com.mgmstudios.projectj.screen.custom.AdobeFurnaceScreen;
 
+import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;

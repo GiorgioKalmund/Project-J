@@ -37,7 +37,7 @@ public class ModBlocks {
              BlockBehaviour.Properties.of()
             .mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
             .instrument(NoteBlockInstrument.BASEDRUM)
-            //.requiresCorrectToolForDrops()
+            .requiresCorrectToolForDrops()
             .strength(1.5F, 3.0F)
             .sound(SoundType.MUD_BRICKS)
     );
@@ -46,7 +46,7 @@ public class ModBlocks {
             BlockBehaviour.Properties.of()
                 .mapColor(MapColor.STONE)
                 .instrument(NoteBlockInstrument.BASEDRUM)
-                //.requiresCorrectToolForDrops()
+                .requiresCorrectToolForDrops()
                 .strength(3.5F)
                     .lightLevel(litBlockEmission(7))
     );
