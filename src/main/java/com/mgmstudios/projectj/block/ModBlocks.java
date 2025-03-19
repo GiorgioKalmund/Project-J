@@ -42,7 +42,7 @@ public class ModBlocks {
             .sound(SoundType.MUD_BRICKS)
     );
 
-    public static final DeferredBlock<Block> ADOBE_FURNACE = registerBlock("adobe_furnace",
+    public static final DeferredBlock<Block> ADOBE_FURNACE = registerFurnaceBlock("adobe_furnace",
             BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .instrument(NoteBlockInstrument.BASEDRUM)
