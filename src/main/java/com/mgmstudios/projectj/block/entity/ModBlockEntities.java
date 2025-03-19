@@ -15,7 +15,7 @@ public class ModBlockEntities {
         DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, ProjectJ.MOD_ID);
     
     public static final Supplier<BlockEntityType<AdobeFurnaceBlockEntity>> ADOBE_FURNACE_BE=
-        BLOCK_ENTITIES.register("adobe_furnace_be",() -> new BlockEntityType<>(AdobeFurnaceBlockEntity::new,ModBlocks.ADOBE_FURNACE.get()));
+        BLOCK_ENTITIES.register("adobe_furnace",() -> new BlockEntityType<>(AdobeFurnaceBlockEntity::new,ModBlocks.ADOBE_FURNACE.get()));
         
 
     public static void register(IEventBus eventBus){

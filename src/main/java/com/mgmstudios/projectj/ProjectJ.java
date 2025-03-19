@@ -6,6 +6,8 @@ import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.screen.ModMenuTypes;
 import com.mgmstudios.projectj.screen.custom.AdobeFurnaceScreen;
 
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import org.slf4j.Logger;
 
@@ -80,9 +82,8 @@ public class ProjectJ
 
     }
 
-    
     public void registerScreens(RegisterMenuScreensEvent event){
-        event.register(ModMenuTypes.ADOBE_FURNACE_MENU.get(),AdobeFurnaceScreen::new);
+
     }
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

@@ -7,6 +7,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.concurrent.CompletableFuture;
@@ -20,13 +21,26 @@ public class ModRecipeProvider extends RecipeProvider {
     @Override
     protected void buildRecipes() {
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_ADOBE, 4)
-                .pattern("SB ")
-                .pattern("CW ")
+                .pattern("SB")
+                .pattern("CW")
                 .define('B', Items.WATER_BUCKET)
                 .define('C', Items.CLAY_BALL)
                 .define('W', Items.WHEAT)
                 .define('S', Blocks.SAND)
-                .unlockedBy("has_iron_ingot", this.has(Items.IRON_INGOT))
+                .unlockedBy("has_water_bucket", this.has(Items.WATER_BUCKET))
+                .unlockedBy("has_wheat", this.has(Items.WHEAT))
+                .unlockedBy("has_clay", this.has(Items.CLAY_BALL))
+                .unlockedBy("has_sand", this.has(Blocks.SAND))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.ADOBE_FURNACE.get())
+                .pattern("C#C")
+                .pattern("#F#")
+                .pattern("C#C")
+                .define('#', ModBlocks.ADOBE_BRICKS.get())
+                .define('F', Items.FURNACE)
+                .define('C', Items.CLAY_BALL)
+                .unlockedBy("has_furnace", this.has(Items.FURNACE))
                 .unlockedBy("has_clay", this.has(Items.CLAY_BALL))
                 .unlockedBy("has_sand", this.has(Blocks.SAND))
                 .save(this.output);

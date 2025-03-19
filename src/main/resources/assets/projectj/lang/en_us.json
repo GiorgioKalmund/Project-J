@@ -3,5 +3,6 @@
   "item.projectj.jade": "Jade",
   "block.projectj.raw_adobe": "Block of Raw Adobe",
   "block.projectj.adobe_bricks": "Adobe Bricks",
-  "block.projectj.adobe_furnace": "Adobe Furnace"
+  "block.projectj.adobe_furnace": "Adobe Furnace",
+  "container.projectj.adobe_furnace": "Adobe Furnace"
 }

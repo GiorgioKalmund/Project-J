@@ -11,6 +11,16 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_furnace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:furnace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_sand": {
       "conditions": {
         "items": [
@@ -23,43 +33,22 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "projectj:raw_adobe"
+        "recipe": "projectj:adobe_furnace"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "has_water_bucket": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:water_bucket"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_wheat": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:wheat"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_water_bucket",
-      "has_wheat",
+      "has_furnace",
       "has_clay",
       "has_sand"
     ]
   ],
   "rewards": {
     "recipes": [
-      "projectj:raw_adobe"
+      "projectj:adobe_furnace"
     ]
   }
 }

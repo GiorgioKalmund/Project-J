@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "projectj:adobe_bricks",
+    "C": "minecraft:clay_ball",
+    "F": "minecraft:furnace"
+  },
+  "pattern": [
+    "C#C",
+    "#F#",
+    "C#C"
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectj:adobe_furnace"
+  }
+}

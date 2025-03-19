@@ -8,8 +8,8 @@
     "W": "minecraft:wheat"
   },
   "pattern": [
-    "SB ",
-    "CW "
+    "SB",
+    "CW"
   ],
   "result": {
     "count": 4,

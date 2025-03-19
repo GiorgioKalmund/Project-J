@@ -66,12 +66,6 @@ public class ModBlocks {
         return toBeRegistered;
     }
 
-    private static DeferredBlock<Block> registerRotatedPillarBlock(String name, BlockBehaviour.Properties properties) {
-        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new RotatedPillarBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
-        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered);
-        return toBeRegistered;
-    }
-
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
     }
