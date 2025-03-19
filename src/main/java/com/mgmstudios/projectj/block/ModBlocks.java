@@ -44,10 +44,11 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> ADOBE_FURNACE = registerFurnaceBlock("adobe_furnace",
             BlockBehaviour.Properties.of()
-            .mapColor(MapColor.STONE)
-            .instrument(NoteBlockInstrument.BASEDRUM)
-            //.requiresCorrectToolForDrops()
-            .strength(3.5F)
+                .mapColor(MapColor.STONE)
+                .instrument(NoteBlockInstrument.BASEDRUM)
+                //.requiresCorrectToolForDrops()
+                .strength(3.5F)
+                    .lightLevel(litBlockEmission(7))
     );
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
