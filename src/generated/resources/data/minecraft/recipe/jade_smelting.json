@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredient": "projectj:raw_jade",
+  "result": {
+    "count": 1,
+    "id": "projectj:jade"
+  }
+}

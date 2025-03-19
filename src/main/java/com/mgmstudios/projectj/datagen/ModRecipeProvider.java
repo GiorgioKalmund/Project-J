@@ -1,13 +1,13 @@
 package com.mgmstudios.projectj.datagen;
 
 import com.mgmstudios.projectj.block.ModBlocks;
+import com.mgmstudios.projectj.item.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.concurrent.CompletableFuture;
@@ -45,6 +45,16 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_sand", this.has(Blocks.SAND))
                 .save(this.output);
 
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHIMNEY.get())
+                .pattern("#")
+                .pattern("#")
+                .pattern("C")
+                .define('#', ModBlocks.ADOBE_BRICKS.get())
+                .define('C', Items.CLAY_BALL)
+                .unlockedBy("has_clay", this.has(Items.CLAY_BALL))
+                .unlockedBy("has_sand", this.has(Blocks.SAND))
+                .save(this.output);
+
         SimpleCookingRecipeBuilder.smelting(
                         Ingredient.of(ModBlocks.RAW_ADOBE.get()),
                         RecipeCategory.BUILDING_BLOCKS,
@@ -52,8 +62,28 @@ public class ModRecipeProvider extends RecipeProvider {
                         0.1f,
                         200
                 )
-                .unlockedBy("has_raw_adobe", this.has(ModBlocks.RAW_ADOBE.get()))
+                .unlockedBy("has_raw_adobe", this.has(ModBlocks.RAW_ADOBE.asItem()))
                 .save(this.output, "adobe_bricks_smelting");
+
+        SimpleCookingRecipeBuilder.smelting(
+                        Ingredient.of(ModItems.RAW_JADE.get()),
+                        RecipeCategory.COMBAT,
+                        ModItems.JADE.get(),
+                        1f,
+                        200
+                )
+                .unlockedBy("has_raw_jade", this.has(ModItems.JADE.get()))
+                .save(this.output, "jade_smelting");
+
+        SimpleCookingRecipeBuilder.smelting(
+                        Ingredient.of(ModBlocks.JADE_ORE.get()),
+                        RecipeCategory.COMBAT,
+                        ModItems.JADE.get(),
+                        1f,
+                        200
+                )
+                .unlockedBy("has_jade_ore", this.has(ModBlocks.JADE_ORE.asItem()))
+                .save(this.output, "jade_smelting_from_ore");
     }
 
     // The runner to add to the data generator

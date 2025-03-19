@@ -1,3 +1,4 @@
-// 1.21.4	2025-03-19T19:17:49.0263326	Tags for minecraft:block mod id projectj
-72312026ad2027a3b0d77e647bfa57d2a8c5c7e6 data/minecraft/tags/block/mineable/pickaxe.json
+// 1.21.4	2025-03-19T23:47:23.9371412	Tags for minecraft:block mod id projectj
+e72706e905e25578fdfa86e9cc83b9665311ba64 data/minecraft/tags/block/mineable/pickaxe.json
+e8941dfbf14b2af84f066b3772749addc8570f24 data/minecraft/tags/block/needs_iron_tool.json
 902145160e64fcf7a7d9e22f95dcf71ca8887a38 data/projectj/tags/block/adobe_furnace_smeltable_block.json

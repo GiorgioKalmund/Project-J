@@ -38,6 +38,8 @@ public class DataGenProvider extends LootTableProvider {
             lookupProvider
         ));
 
+        event.createProvider(ModRecipeProvider.Runner::new);
+
         event.createBlockAndItemTags(ModBlockTagsProvider::new, ModItemTagsProvider::new);
 
     }

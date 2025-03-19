@@ -1,15 +1,21 @@
-// 1.21.4	2025-03-19T17:23:25.6601153	Model Definitions - projectj
+// 1.21.4	2025-03-19T23:27:37.3206526	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 0a39f7e66db321b74ebd1d2aaad639e010add325 assets/projectj/blockstates/adobe_furnace.json
+309790fd770e0a99af56c7e38a82bd6f18f80fda assets/projectj/blockstates/chimney.json
+dfdd72869320254b3ae6795b1e4d9a0a0c36ce64 assets/projectj/blockstates/jade_ore.json
 7f20e13f193fb8b581058bc81219c3ffe0bc6090 assets/projectj/blockstates/raw_adobe.json
 d706b874c3d232886834e6416b0fa9d9853232b1 assets/projectj/items/adobe_bricks.json
 13e17e699a8d9c78c3b62bc09a6d557d48707f73 assets/projectj/items/adobe_furnace.json
+4c516558ea1e299d150365077530145726a6315e assets/projectj/items/chimney.json
 20e974e68377b3d13568f54b52c8c52e9ccf5e66 assets/projectj/items/jade.json
+6c67bf56da03612616be77ed4bd0cc89a742b31b assets/projectj/items/jade_ore.json
 492f9f434f6bb99befe23a82340ec8394427218e assets/projectj/items/raw_adobe.json
 5e4f7fcf393f89cf7bd262bb1481ac02750dcf26 assets/projectj/items/raw_jade.json
 43a4a30bf747df0266fb42396721117d33cf3e08 assets/projectj/models/block/adobe_bricks.json
 f9b242d34949f79e409b68b64062a94ab39a13a9 assets/projectj/models/block/adobe_furnace.json
 6be9ef5091aa15e0717da95cabb3a12cd5ec0c45 assets/projectj/models/block/adobe_furnace_on.json
+2eedb16f6707ddd45f627d02b8f1d0598724002d assets/projectj/models/block/chimney.json
+a9dc860cc3b5276471695806148d26ece7d10d62 assets/projectj/models/block/jade_ore.json
 f0f8ab52c70a6167c4049a815151a54b6c9fa597 assets/projectj/models/block/raw_adobe.json
 9cc0c435272b7a37105bfd68afa6dd08bf45ef1e assets/projectj/models/item/jade.json
 ba637adad06995f9e8f952ca598514c60ce4cfbb assets/projectj/models/item/raw_jade.json

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "projectj:adobe_bricks",
+    "C": "minecraft:clay_ball"
+  },
+  "pattern": [
+    "#",
+    "#",
+    "C"
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectj:chimney"
+  }
+}

@@ -1,16 +1,12 @@
 package com.mgmstudios.projectj.block;
 
 import com.mgmstudios.projectj.ProjectJ;
+import com.mgmstudios.projectj.block.custom.AdobeChimneyBlock;
 import com.mgmstudios.projectj.block.custom.AdobeFurnaceBlock;
 import com.mgmstudios.projectj.item.ModItems;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
+import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -21,8 +17,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.util.function.Function;
-import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
 public class ModBlocks {
@@ -42,6 +36,15 @@ public class ModBlocks {
             .sound(SoundType.MUD_BRICKS)
     );
 
+
+    public static final DeferredBlock<Block> JADE_ORE = registerBlock("jade_ore",
+            BlockBehaviour.Properties.of().
+                    mapColor(MapColor.STONE).
+                    instrument(NoteBlockInstrument.BASEDRUM).
+                    requiresCorrectToolForDrops().
+                    strength(3.0F, 3.0F)
+    );
+
     public static final DeferredBlock<Block> ADOBE_FURNACE = registerFurnaceBlock("adobe_furnace",
             BlockBehaviour.Properties.of()
                 .mapColor(MapColor.STONE)
@@ -49,6 +52,11 @@ public class ModBlocks {
                 .requiresCorrectToolForDrops()
                 .strength(3.5F)
                     .lightLevel(litBlockEmission(7))
+    );
+
+    public static final DeferredBlock<Block> CHIMNEY = registerChimneyBlock("chimney",
+            BlockBehaviour.Properties.of()
+                    .noOcclusion()
     );
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
@@ -61,8 +69,23 @@ public class ModBlocks {
         return toBeRegistered;
     }
 
+    private static DeferredBlock<Block> registerDropExperienceBlock(String name, BlockBehaviour.Properties properties) {
+        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new DropExperienceBlock(
+                ConstantInt.of(2),
+                properties.setId(ResourceKey.create(Registries.BLOCK, registryName)))
+        );
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered);
+        return toBeRegistered;
+    }
+
     private static DeferredBlock<Block> registerFurnaceBlock(String name, BlockBehaviour.Properties properties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new AdobeFurnaceBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered);
+        return toBeRegistered;
+    }
+
+    private static DeferredBlock<Block> registerChimneyBlock(String name, BlockBehaviour.Properties properties) {
+        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new AdobeChimneyBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
         ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered);
         return toBeRegistered;
     }

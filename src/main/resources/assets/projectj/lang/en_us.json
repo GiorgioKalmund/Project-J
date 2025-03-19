@@ -4,6 +4,10 @@
   "block.projectj.raw_adobe": "Block of Raw Adobe",
   "block.projectj.adobe_bricks": "Adobe Bricks",
   "block.projectj.adobe_furnace": "Adobe Furnace",
+  "block.projectj.jade_ore": "Jade Ore",
+  "block.projectj.chimney": "Adobe Chimney",
   "container.projectj.adobe_furnace": "Adobe Furnace",
-  "itemGroup.projectj.projectj_tab": "Project J"
+  "itemGroup.projectj.projectj_tab": "Project J",
+  "tooltip.projectj.adobe_furnace.tooltip": "A powerful new furnace!\n§9§l[LShift] to learn more§r",
+  "tooltip.projectj.adobe_furnace.tooltip.shift_down": "A powerful new furnace!\nWith the help of a chimney, can burn for §lEVEN§r longer"
 }
