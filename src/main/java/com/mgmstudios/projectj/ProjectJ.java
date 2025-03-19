@@ -1,7 +1,11 @@
 package com.mgmstudios.projectj;
 
 import com.mgmstudios.projectj.block.ModBlocks;
+import com.mgmstudios.projectj.block.entity.ModBlockEntities;
 import com.mgmstudios.projectj.item.ModItems;
+import com.mgmstudios.projectj.screen.ModMenuTypes;
+import com.mgmstudios.projectj.screen.custom.AdobeFurnaceScreen;
+
 import net.minecraft.world.item.CreativeModeTabs;
 import org.slf4j.Logger;
 
@@ -16,6 +20,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
@@ -43,7 +48,8 @@ public class ProjectJ
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
-
+        ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
@@ -63,6 +69,7 @@ public class ProjectJ
             event.accept(ModItems.RAW_JADE);
             event.accept(ModBlocks.RAW_ADOBE);
             event.accept(ModBlocks.ADOBE_BRICKS);
+            event.accept(ModBlocks.ADOBE_FURNACE);
         }
     }
 
@@ -73,6 +80,10 @@ public class ProjectJ
 
     }
 
+    
+    public void registerScreens(RegisterMenuScreensEvent event){
+        event.register(ModMenuTypes.ADOBE_FURNACE_MENU.get(),AdobeFurnaceScreen::new);
+    }
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents

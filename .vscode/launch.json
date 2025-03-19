@@ -1,0 +1,93 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "Client",
+      "presentation": {
+        "group": "Mod Development - Project-J",
+        "order": 0
+      },
+      "projectName": "Project-J",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@F:\\Minecraft Mods\\Project-J\\build\\moddev\\clientRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@F:\\Minecraft Mods\\Project-J\\build\\moddev\\clientRunVmArgs.txt",
+        "-Dfml.modFolders\u003dprojectj%%F:\\Minecraft Mods\\Project-J\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\run",
+      "env": {},
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    },
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "ClientData",
+      "presentation": {
+        "group": "Mod Development - Project-J",
+        "order": 1
+      },
+      "projectName": "Project-J",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@F:\\Minecraft Mods\\Project-J\\build\\moddev\\clientDataRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@F:\\Minecraft Mods\\Project-J\\build\\moddev\\clientDataRunVmArgs.txt",
+        "-Dfml.modFolders\u003dprojectj%%F:\\Minecraft Mods\\Project-J\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\run",
+      "env": {},
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    },
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "GameTestServer",
+      "presentation": {
+        "group": "Mod Development - Project-J",
+        "order": 2
+      },
+      "projectName": "Project-J",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@F:\\Minecraft Mods\\Project-J\\build\\moddev\\gameTestServerRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@F:\\Minecraft Mods\\Project-J\\build\\moddev\\gameTestServerRunVmArgs.txt",
+        "-Dfml.modFolders\u003dprojectj%%F:\\Minecraft Mods\\Project-J\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\run",
+      "env": {},
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    },
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "Server",
+      "presentation": {
+        "group": "Mod Development - Project-J",
+        "order": 3
+      },
+      "projectName": "Project-J",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@F:\\Minecraft Mods\\Project-J\\build\\moddev\\serverRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@F:\\Minecraft Mods\\Project-J\\build\\moddev\\serverRunVmArgs.txt",
+        "-Dfml.modFolders\u003dprojectj%%F:\\Minecraft Mods\\Project-J\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\run",
+      "env": {},
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    }
+  ]
+}
