@@ -21,12 +21,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.ADOBE_FURNACE.get())
                 .add(ModBlocks.ADOBE_BRICKS.get())
-                .add(ModBlocks.JADE_ORE.get());
+                .add(ModBlocks.JADE_ORE.get())
+                .add(ModBlocks.DEEPSLATE_JADE_ORE.get());
 
         tag(BlockTags.NEEDS_IRON_TOOL)
-                .add(ModBlocks.JADE_ORE.get());
+                .add(ModBlocks.JADE_ORE.get())
+                .add(ModBlocks.DEEPSLATE_JADE_ORE.get());
 
-        tag(ModTags.Blocks.ADOBE_FURNACE_SMELTABLE)
-                .add(ModBlocks.RAW_ADOBE.get());
     }
 }

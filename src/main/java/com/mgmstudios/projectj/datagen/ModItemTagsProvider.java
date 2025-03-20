@@ -6,6 +6,7 @@ import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
 
 import java.util.concurrent.CompletableFuture;
@@ -17,9 +18,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        copy(ModTags.Blocks.ADOBE_FURNACE_SMELTABLE, ModTags.Items.ADOBE_FURNACE_SMELTABLE);
 
+        tag(ModTags.Items.JADE_ORES)
+                .add(ModBlocks.JADE_ORE.asItem())
+                .add(ModBlocks.DEEPSLATE_JADE_ORE.asItem());
         tag(ModTags.Items.ADOBE_FURNACE_SMELTABLE)
-               .add(ModItems.RAW_JADE.get());
+               .add(ModItems.RAW_JADE.get())
+               .add(ModBlocks.RAW_ADOBE.asItem());
     }
 }

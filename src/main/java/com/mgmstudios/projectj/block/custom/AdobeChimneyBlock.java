@@ -55,18 +55,25 @@ public class AdobeChimneyBlock extends Block {
         BlockState belowBlockState = levelReader.getBlockState(belowPos);
 
         if (levelReader instanceof ServerLevel level && belowBlockState.is(ModBlocks.ADOBE_FURNACE.get())){
+            // Event 2009 is the event that normally spawns particles when a wet sponge is converted to a regular sponge in the nether
+            level.levelEvent(2009, belowPos, 0);
             level.playSound(null, belowPos, SoundEvents.DECORATED_POT_PLACE, SoundSource.BLOCKS, 1f, 1f);
         }
 
         super.onPlace(state, levelReader , pos, oldState, movedByPiston);
     }
 
-    @Override
-    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        if (level.getBlockState(pos).getValue(SMOKING)){
-            makeParticles(level, pos, false, true);
-        }
-        super.animateTick(state, level, pos, random);
+    public static void makeSpawnParticles(Level level, BlockPos pos) {
+        RandomSource randomsource = level.getRandom();
+        level.addParticle(
+                ParticleTypes.WHITE_SMOKE,
+                (double)pos.getX() + 0.5 + randomsource.nextDouble() / 3.0 * (double)(randomsource.nextBoolean() ? 1 : -1),
+                (double)pos.getY() + randomsource.nextDouble() + randomsource.nextDouble() + 0.5,
+                (double)pos.getZ() + 0.5 + randomsource.nextDouble() / 3.0 * (double)(randomsource.nextBoolean() ? 1 : -1),
+                0.0,
+                0.07,
+                0.0
+        );
     }
 
     public static void makeParticles(Level level, BlockPos pos, boolean isSignalFire, boolean spawnExtraSmoke) {
@@ -76,7 +83,7 @@ public class AdobeChimneyBlock extends Block {
                 simpleparticletype,
                 true,
                 (double)pos.getX() + 0.5 + randomsource.nextDouble() / 3.0 * (double)(randomsource.nextBoolean() ? 1 : -1),
-                (double)pos.getY() + randomsource.nextDouble() + randomsource.nextDouble(),
+                (double)pos.getY() + randomsource.nextDouble() + randomsource.nextDouble() + 0.5,
                 (double)pos.getZ() + 0.5 + randomsource.nextDouble() / 3.0 * (double)(randomsource.nextBoolean() ? 1 : -1),
                 0.0,
                 0.07,

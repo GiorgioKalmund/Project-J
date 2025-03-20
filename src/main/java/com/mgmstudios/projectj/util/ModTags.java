@@ -15,7 +15,6 @@ public class ModTags {
 
     public static class Blocks {
 
-        public static final TagKey<Block> ADOBE_FURNACE_SMELTABLE = createTag("adobe_furnace_smeltable_block");
 
         private static TagKey<Block> createTag(String name){
             return BlockTags.create(ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, name));
@@ -24,7 +23,8 @@ public class ModTags {
 
 
     public static class Items {
-        public static final TagKey<Item> ADOBE_FURNACE_SMELTABLE = createTag("adobe_furnace_smeltable_item");
+        public static final TagKey<Item> ADOBE_FURNACE_SMELTABLE = createTag("adobe_furnace_smeltable");
+        public static final TagKey<Item> JADE_ORES = createTag("jade_ores");
 
         private static TagKey<Item> createTag(String name){
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, name));

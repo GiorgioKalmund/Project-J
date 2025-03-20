@@ -26,6 +26,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.ADOBE_FURNACE.get());
                 output.accept(ModBlocks.CHIMNEY.get());
                 output.accept(ModBlocks.JADE_ORE.get());
+                output.accept(ModBlocks.DEEPSLATE_JADE_ORE.get());
 
 
                 output.accept(ModItems.JADE.get());

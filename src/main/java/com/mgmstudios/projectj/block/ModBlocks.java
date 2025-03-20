@@ -37,12 +37,21 @@ public class ModBlocks {
     );
 
 
-    public static final DeferredBlock<Block> JADE_ORE = registerBlock("jade_ore",
+    public static final DeferredBlock<Block> JADE_ORE = registerDropExperienceBlock("jade_ore",
             BlockBehaviour.Properties.of().
                     mapColor(MapColor.STONE).
                     instrument(NoteBlockInstrument.BASEDRUM).
                     requiresCorrectToolForDrops().
                     strength(3.0F, 3.0F)
+    );
+
+    public static final DeferredBlock<Block> DEEPSLATE_JADE_ORE = registerDropExperienceBlock("deepslate_jade_ore",
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.DEEPSLATE)
+                    .instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops()
+                    .strength(3.0F, 6.0F)
+                    .sound(SoundType.DEEPSLATE)
     );
 
     public static final DeferredBlock<Block> ADOBE_FURNACE = registerFurnaceBlock("adobe_furnace",

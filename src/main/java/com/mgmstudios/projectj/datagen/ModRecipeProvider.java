@@ -84,6 +84,17 @@ public class ModRecipeProvider extends RecipeProvider {
                 )
                 .unlockedBy("has_jade_ore", this.has(ModBlocks.JADE_ORE.asItem()))
                 .save(this.output, "jade_smelting_from_ore");
+
+
+        SimpleCookingRecipeBuilder.smelting(
+                        Ingredient.of(ModBlocks.DEEPSLATE_JADE_ORE.get()),
+                        RecipeCategory.COMBAT,
+                        ModItems.JADE.get(),
+                        1f,
+                        200
+                )
+                .unlockedBy("has_deepslate_jade_ore", this.has(ModBlocks.DEEPSLATE_JADE_ORE.asItem()))
+                .save(this.output, "jade_smelting_from_deepslate_ore");
     }
 
     // The runner to add to the data generator
