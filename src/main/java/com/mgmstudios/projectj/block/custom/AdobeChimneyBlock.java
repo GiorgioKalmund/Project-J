@@ -11,10 +11,12 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -44,17 +46,18 @@ public class AdobeChimneyBlock extends Block {
         builder.add(SMOKING);
     }
 
-    // TODO: Somehow still plays sound every time furnace starts / stops
     @Override
     protected void onPlace(BlockState state, Level levelReader, BlockPos pos, BlockState oldState, boolean movedByPiston) {
+        if (!oldState.is(Blocks.AIR))
+            return;
+
         BlockPos belowPos = pos.below();
         BlockState belowBlockState = levelReader.getBlockState(belowPos);
+
         if (levelReader instanceof ServerLevel level && belowBlockState.is(ModBlocks.ADOBE_FURNACE.get())){
             level.playSound(null, belowPos, SoundEvents.DECORATED_POT_PLACE, SoundSource.BLOCKS, 1f, 1f);
-            System.out.println("Placed on furnace!");
-        } else if (levelReader instanceof ServerLevel level){
-            System.out.println("Did not place on furnace: " + belowBlockState);
         }
+
         super.onPlace(state, levelReader , pos, oldState, movedByPiston);
     }
 
