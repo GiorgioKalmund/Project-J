@@ -58,12 +58,9 @@ public class AdobeFurnaceBlock extends AbstractFurnaceBlock  {
         if (level instanceof ServerLevel serverLevel){
             BlockPos abovePos = pos.above();
             BlockState aboveBlock = level.getBlockState(abovePos);
-
             BlockState newBlock = level.getBlockState(pos.above());
-            if (newState.getValue(LIT) && newBlock.is(ModBlocks.CHIMNEY.get())){
-                serverLevel.setBlock(abovePos, aboveBlock.setValue(SMOKING, true), 3);
-            } else if (newBlock.is(ModBlocks.CHIMNEY.get())){
-                serverLevel.setBlock(abovePos, aboveBlock.setValue(SMOKING, false), 3);
+            if (newBlock.is(ModBlocks.CHIMNEY.get())) {
+                serverLevel.setBlock(abovePos, aboveBlock.setValue(SMOKING, newState.getValue(LIT)), 3);
             }
         }
         super.onBlockStateChange(level, pos, oldState, newState);

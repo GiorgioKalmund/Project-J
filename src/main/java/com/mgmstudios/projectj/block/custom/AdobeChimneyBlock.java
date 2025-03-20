@@ -50,7 +50,7 @@ public class AdobeChimneyBlock extends Block {
         BlockPos belowPos = pos.below();
         BlockState belowBlockState = levelReader.getBlockState(belowPos);
         if (levelReader instanceof ServerLevel level && belowBlockState.is(ModBlocks.ADOBE_FURNACE.get())){
-            level.playSound(null, belowPos, SoundEvents.MUD_HIT, SoundSource.BLOCKS, 1f, 1f);
+            level.playSound(null, belowPos, SoundEvents.DECORATED_POT_PLACE, SoundSource.BLOCKS, 1f, 1f);
             System.out.println("Placed on furnace!");
         } else if (levelReader instanceof ServerLevel level){
             System.out.println("Did not place on furnace: " + belowBlockState);
