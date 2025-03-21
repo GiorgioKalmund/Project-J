@@ -76,14 +76,11 @@ public class AdobeChimneyBlock extends Block {
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-        System.out.println("Chimney clicked");
         BlockPos belowPos = pos.below();
         BlockState belowBlockState = level.getBlockState(belowPos);
 
         if (belowBlockState.is(ModBlocks.ADOBE_FURNACE.get()) && !level.isClientSide){
-            System.out.println("Below is furnace");
             if (belowBlockState.getValue(TIER1) && belowBlockState.getBlock() instanceof AdobeFurnaceBlock furnaceBlock){
-                System.out.println("Opening Container");
                 furnaceBlock.openContainer(level, belowPos, player);
             } else {
                 System.err.println("Adobe furnace" + belowBlockState + " at position " + belowPos +"has a chimney on top, but is not TIER1!");
@@ -94,11 +91,9 @@ public class AdobeChimneyBlock extends Block {
 
     @Override
     public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
-        System.out.println("onDestroyedByPlayer");
         BlockPos belowPos = pos.below();
         BlockState belowBlockState = level.getBlockState(belowPos);
         if (belowBlockState.is(ModBlocks.ADOBE_FURNACE.get())){
-            System.out.println("Removed Chimney, reset furnace state");
             level.setBlock(belowPos, belowBlockState.setValue(TIER1, false), 3);
         }
 
