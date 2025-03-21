@@ -1,6 +1,7 @@
 {
   "values": [
     "projectj:jade_ore",
-    "projectj:deepslate_jade_ore"
+    "projectj:deepslate_jade_ore",
+    "projectj:jade_block"
   ]
 }

@@ -20,6 +20,8 @@ public class ModRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildRecipes() {
+        // CRAFTING
+
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_ADOBE, 4)
                 .pattern("SB")
                 .pattern("CW")
@@ -52,8 +54,23 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('#', ModBlocks.ADOBE_BRICKS.get())
                 .define('C', Items.CLAY_BALL)
                 .unlockedBy("has_clay", this.has(Items.CLAY_BALL))
-                .unlockedBy("has_sand", this.has(Blocks.SAND))
+                .unlockedBy("has_adobe_bricks", this.has(ModBlocks.ADOBE_BRICKS.get()))
                 .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.JADE_BLOCK.get())
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .define('#', ModItems.JADE.get())
+                .unlockedBy("has_jade", this.has(ModItems.JADE.get()))
+                .save(this.output);
+
+        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.JADE.get(), 9)
+                .requires(ModBlocks.JADE_BLOCK.asItem())
+                .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK.get()))
+                .save(this.output);
+
+        // SMELTING
 
         SimpleCookingRecipeBuilder.smelting(
                         Ingredient.of(ModBlocks.RAW_ADOBE.get()),

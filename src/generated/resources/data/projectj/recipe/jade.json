@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "projectj:jade_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "projectj:jade"
+  }
+}

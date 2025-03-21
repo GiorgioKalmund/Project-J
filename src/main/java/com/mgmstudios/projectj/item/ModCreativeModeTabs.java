@@ -29,8 +29,9 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.DEEPSLATE_JADE_ORE.get());
 
 
-                output.accept(ModItems.JADE.get());
                 output.accept(ModItems.RAW_JADE.get());
+                output.accept(ModItems.JADE.get());
+                output.accept(ModBlocks.JADE_BLOCK.get());
             })
             .build()
     );

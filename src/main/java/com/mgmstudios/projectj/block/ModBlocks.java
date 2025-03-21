@@ -7,6 +7,8 @@ import com.mgmstudios.projectj.item.ModItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -45,6 +47,16 @@ public class ModBlocks {
                     strength(3.0F, 3.0F)
     );
 
+    public static final DeferredBlock<Block> JADE_BLOCK = registerBlock("jade_block",
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
+                    .requiresCorrectToolForDrops()
+                    .strength(5.0F, 6.0F)
+                    .sound(SoundType.METAL),
+            new Item.Properties().rarity(Rarity.RARE)
+    );
+
     public static final DeferredBlock<Block> DEEPSLATE_JADE_ORE = registerDropExperienceBlock("deepslate_jade_ore",
             BlockBehaviour.Properties.of()
                     .mapColor(MapColor.DEEPSLATE)
@@ -73,10 +85,14 @@ public class ModBlocks {
         return p_50763_ -> p_50763_.getValue(BlockStateProperties.LIT) ? lightValue : 0;
     }
 
-    private static DeferredBlock<Block> registerBlock(String name, BlockBehaviour.Properties properties) {
+    private static DeferredBlock<Block> registerBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new Block(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
-        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered);
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
         return toBeRegistered;
+    }
+
+    private static DeferredBlock<Block> registerBlock(String name, BlockBehaviour.Properties properties) {
+        return registerBlock(name, properties, new Item.Properties());
     }
 
     private static DeferredBlock<Block> registerDropExperienceBlock(String name, BlockBehaviour.Properties properties) {

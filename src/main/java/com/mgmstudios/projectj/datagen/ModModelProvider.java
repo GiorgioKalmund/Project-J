@@ -29,6 +29,8 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.CHIMNEY.get());
         blockModels.createTrivialCube(ModBlocks.JADE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.DEEPSLATE_JADE_ORE.get());
+        blockModels.createTrivialCube(ModBlocks.JADE_BLOCK.get());
+
         blockModels.createFurnace(ModBlocks.ADOBE_FURNACE.get(), TexturedModel.ORIENTABLE);
 
         itemModels.generateFlatItem(ModItems.RAW_JADE.get(), ModelTemplates.FLAT_ITEM);

@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-20T19:07:18.6651969	ModRecipeProvider
+// 1.21.4	2025-03-21T20:27:32.703582	ModRecipeProvider
 6452fecec3921d0f3482c70b92d2b933f016e37a data/minecraft/advancement/recipes/building_blocks/adobe_bricks_smelting.json
 3338e11ad74a76cc008ab5654848b989b2896722 data/minecraft/advancement/recipes/combat/jade_smelting.json
 c4eec9c9494a1c5dc683bb82a863cb3f0997dd61 data/minecraft/advancement/recipes/combat/jade_smelting_from_deepslate_ore.json
@@ -8,8 +8,12 @@ eebe688b6585dc548586ae8768efc4dbd205f4dd data/minecraft/recipe/jade_smelting.jso
 11c37a2843c13a2a7f8e7a3f9f927cf3adee9bc2 data/minecraft/recipe/jade_smelting_from_deepslate_ore.json
 c6ec620e37462f5bf9b0b925654bf90385cad1bd data/minecraft/recipe/jade_smelting_from_ore.json
 f43a7f6667c2aeb69871975ed2b275fe7ed101a3 data/projectj/advancement/recipes/building_blocks/adobe_furnace.json
-d8966b766bf90e25750eb6143fd561ae1636530c data/projectj/advancement/recipes/building_blocks/chimney.json
+d3713f4d3cbdf692276e89f0c5dd1cded1105056 data/projectj/advancement/recipes/building_blocks/chimney.json
+72f4047e28935534623d54213fea1f66e48515b4 data/projectj/advancement/recipes/building_blocks/jade.json
+66278d14437215747db04a029a18bc888f29e300 data/projectj/advancement/recipes/building_blocks/jade_block.json
 b06deb276950915b0177a375e5574ab7ea32b509 data/projectj/advancement/recipes/building_blocks/raw_adobe.json
 a1e10a2b0c495ece4ae4c6d3835f9f698187f7e0 data/projectj/recipe/adobe_furnace.json
 005129fc58f531abcba634ec9f28ce751e628ad2 data/projectj/recipe/chimney.json
+753c166d3e245dc0486cd7a374cf6abdafae29ad data/projectj/recipe/jade.json
+243affb187dfb1c8cb41efeb295947a49394b877 data/projectj/recipe/jade_block.json
 4f4c8b320a685be033f916d31696a305e280425f data/projectj/recipe/raw_adobe.json

@@ -22,11 +22,13 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.ADOBE_FURNACE.get())
                 .add(ModBlocks.ADOBE_BRICKS.get())
                 .add(ModBlocks.JADE_ORE.get())
-                .add(ModBlocks.DEEPSLATE_JADE_ORE.get());
+                .add(ModBlocks.DEEPSLATE_JADE_ORE.get())
+                .add(ModBlocks.JADE_BLOCK.get());
 
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.JADE_ORE.get())
-                .add(ModBlocks.DEEPSLATE_JADE_ORE.get());
+                .add(ModBlocks.DEEPSLATE_JADE_ORE.get())
+                .add(ModBlocks.JADE_BLOCK.get());
 
     }
 }
