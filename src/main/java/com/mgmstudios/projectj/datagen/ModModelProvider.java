@@ -33,6 +33,8 @@ public class ModModelProvider extends ModelProvider {
 
         blockModels.createFurnace(ModBlocks.ADOBE_FURNACE.get(), TexturedModel.ORIENTABLE);
 
+        blockModels.createHorizontallyRotatedBlock(ModBlocks.BASIC_OLMEC_HEAD.get(), TexturedModel.ORIENTABLE_ONLY_TOP);
+
         itemModels.generateFlatItem(ModItems.RAW_JADE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.JADE.get(), ModelTemplates.FLAT_ITEM);
     }

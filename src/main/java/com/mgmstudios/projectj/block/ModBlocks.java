@@ -3,6 +3,7 @@ package com.mgmstudios.projectj.block;
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.custom.AdobeChimneyBlock;
 import com.mgmstudios.projectj.block.custom.AdobeFurnaceBlock;
+import com.mgmstudios.projectj.block.custom.OlmecHeadBlock;
 import com.mgmstudios.projectj.item.ModItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -81,6 +82,17 @@ public class ModBlocks {
                     .noOcclusion()
     );
 
+
+    public static final DeferredBlock<Block> BASIC_OLMEC_HEAD = registerOlmecHeadBlock("basic_olmec_head",
+            BlockBehaviour.Properties.of().
+                    mapColor(MapColor.STONE).
+                    instrument(NoteBlockInstrument.BASEDRUM).
+                    requiresCorrectToolForDrops().
+                    strength(3.0F, 3.0F),
+            new Item.Properties().rarity(Rarity.EPIC)
+    );
+
+
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return p_50763_ -> p_50763_.getValue(BlockStateProperties.LIT) ? lightValue : 0;
     }
@@ -91,8 +103,21 @@ public class ModBlocks {
         return toBeRegistered;
     }
 
+
     private static DeferredBlock<Block> registerBlock(String name, BlockBehaviour.Properties properties) {
         return registerBlock(name, properties, new Item.Properties());
+    }
+
+    private static DeferredBlock<Block> registerOlmecHeadBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
+        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new OlmecHeadBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
+        return toBeRegistered;
+    }
+
+    private static DeferredBlock<Block> registerOlmecHeadBlock(String name, BlockBehaviour.Properties properties) {
+        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new OlmecHeadBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, new Item.Properties());
+        return toBeRegistered;
     }
 
     private static DeferredBlock<Block> registerDropExperienceBlock(String name, BlockBehaviour.Properties properties) {

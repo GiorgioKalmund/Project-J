@@ -8,6 +8,7 @@
   "block.projectj.jade_block": "Block of Jade",
   "block.projectj.deepslate_jade_ore": "Deepslate Jade Ore",
   "block.projectj.chimney": "Adobe Chimney",
+  "block.projectj.basic_olmec_head": "Basic Olmec Head",
   "container.projectj.adobe_furnace": "Adobe Furnace",
   "itemGroup.projectj.projectj_tab": "Project J",
   "tooltip.projectj.adobe_furnace.tooltip": "A powerful new furnace!\n§9§l[LShift] to learn more§r",

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "projectj:block/basic_olmec_head",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "projectj:block/basic_olmec_head"
+    },
+    "facing=south": {
+      "model": "projectj:block/basic_olmec_head",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "projectj:block/basic_olmec_head",
+      "y": 270
+    }
+  }
+}

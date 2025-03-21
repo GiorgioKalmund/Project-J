@@ -27,6 +27,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.CHIMNEY.get());
                 output.accept(ModBlocks.JADE_ORE.get());
                 output.accept(ModBlocks.DEEPSLATE_JADE_ORE.get());
+                output.accept(ModBlocks.BASIC_OLMEC_HEAD.get());
 
 
                 output.accept(ModItems.RAW_JADE.get());
