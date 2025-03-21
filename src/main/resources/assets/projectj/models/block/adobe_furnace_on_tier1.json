@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "projectj:block/adobe_furnace_side",
-		"1": "projectj:block/adobe_furnace_front",
+		"1": "projectj:block/adobe_furnace_front_on",
 		"2": "projectj:block/adobe_furnace_top",
 		"3": "projectj:block/adobe_bricks",
 		"4": "projectj:block/adobe_furnace_bottom",

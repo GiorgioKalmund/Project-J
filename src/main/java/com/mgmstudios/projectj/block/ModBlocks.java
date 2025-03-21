@@ -61,6 +61,7 @@ public class ModBlocks {
                 .requiresCorrectToolForDrops()
                 .strength(3.5F)
                     .lightLevel(litBlockEmission(7))
+                    .noOcclusion()
     );
 
     public static final DeferredBlock<Block> CHIMNEY = registerChimneyBlock("chimney",

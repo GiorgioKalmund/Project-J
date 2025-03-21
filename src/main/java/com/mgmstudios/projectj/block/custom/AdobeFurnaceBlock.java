@@ -7,6 +7,7 @@ import com.mojang.serialization.MapCodec;
 
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -19,6 +20,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
@@ -26,6 +28,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,9 +38,16 @@ import java.util.List;
 import static com.mgmstudios.projectj.block.custom.AdobeChimneyBlock.SMOKING;
 
 public class AdobeFurnaceBlock extends AbstractFurnaceBlock  {
+    public static BooleanProperty TIER1 = BooleanProperty.create("tier1");
+    public AdobeFurnaceBlock(Properties properties) {
+        super(properties);
+        this.registerDefaultState(this.defaultBlockState().setValue(TIER1, false));
+    }
 
-    public AdobeFurnaceBlock(Properties p_48687_) {
-        super(p_48687_);
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder);
+        builder.add(TIER1);
     }
 
     @Override
@@ -56,10 +67,11 @@ public class AdobeFurnaceBlock extends AbstractFurnaceBlock  {
     @Override
     public void onBlockStateChange(LevelReader level, BlockPos pos, BlockState oldState, BlockState newState) {
         if (level instanceof ServerLevel serverLevel){
+            System.out.println(newState);
             BlockPos abovePos = pos.above();
             BlockState aboveBlock = level.getBlockState(abovePos);
-            BlockState newBlock = level.getBlockState(pos.above());
-            if (newBlock.is(ModBlocks.CHIMNEY.get())) {
+
+            if (aboveBlock.is(ModBlocks.CHIMNEY.get())) {
                 serverLevel.setBlock(abovePos, aboveBlock.setValue(SMOKING, newState.getValue(LIT)), 3);
             }
         }
