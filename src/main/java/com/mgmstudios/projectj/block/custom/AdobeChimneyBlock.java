@@ -79,11 +79,12 @@ public class AdobeChimneyBlock extends Block {
         if (belowBlockState.is(ModBlocks.ADOBE_FURNACE.get()) && !level.isClientSide){
             if (belowBlockState.getValue(TIER1) && belowBlockState.getBlock() instanceof AdobeFurnaceBlock furnaceBlock){
                 furnaceBlock.openContainer(level, belowPos, player);
+                return InteractionResult.SUCCESS_SERVER;
             } else {
                 System.err.println("Adobe furnace" + belowBlockState + " at position " + belowPos +"has a chimney on top, but is not TIER1!");
             }
         }
-        return InteractionResult.SUCCESS;
+        return super.useWithoutItem(state, level, pos, player,hitResult);
     }
 
     @Override
