@@ -1,10 +1,10 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "projectj:block/basic_olmec_head_front",
 		"1": "projectj:block/basic_olmec_head_side",
 		"2": "projectj:block/basic_olmec_head_top",
-		"particle": "projectj:block/basic_olmec_head_front"
+		"3": "projectj:block/basic_olmec_head_front_on",
+		"particle": "projectj:block/basic_olmec_head_front_on"
 	},
 	"elements": [
 		{
@@ -12,7 +12,7 @@
 			"to": [15, 15, 15],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 7.5, 8]},
 			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"north": {"uv": [0, 0, 16, 16], "texture": "#3"},
 				"east": {"uv": [0, 0, 16, 16], "texture": "#1"},
 				"south": {"uv": [0, 0, 16, 16], "texture": "#1"},
 				"west": {"uv": [0, 0, 16, 16], "texture": "#1"},

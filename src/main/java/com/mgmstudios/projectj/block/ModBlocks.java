@@ -8,6 +8,7 @@ import com.mgmstudios.projectj.item.ModItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.*;
@@ -82,14 +83,15 @@ public class ModBlocks {
                     .noOcclusion()
     );
 
-
     public static final DeferredBlock<Block> BASIC_OLMEC_HEAD = registerOlmecHeadBlock("basic_olmec_head",
             BlockBehaviour.Properties.of().
                     mapColor(MapColor.STONE).
                     instrument(NoteBlockInstrument.BASEDRUM).
                     requiresCorrectToolForDrops().
-                    strength(3.0F, 3.0F),
-            new Item.Properties().rarity(Rarity.EPIC)
+                    strength(3.0F, 3.0F).
+                    sound(SoundType.GILDED_BLACKSTONE)
+                    .lightLevel(litBlockEmission(15)),
+            new Item.Properties().rarity(Rarity.EPIC).equippableUnswappable(EquipmentSlot.HEAD)
     );
 
 

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_jade": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:jade"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "projectj:basic_olmec_head"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_jade"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "projectj:basic_olmec_head"
+    ]
+  }
+}

@@ -70,6 +70,15 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK.get()))
                 .save(this.output);
 
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.BASIC_OLMEC_HEAD.get())
+                .pattern(" # ")
+                .pattern("#J#")
+                .pattern("###")
+                .define('J', ModBlocks.JADE_BLOCK.asItem())
+                .define('#', Items.BRICKS)
+                .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK.asItem()))
+                .save(this.output);
+
         // SMELTING
 
         SimpleCookingRecipeBuilder.smelting(

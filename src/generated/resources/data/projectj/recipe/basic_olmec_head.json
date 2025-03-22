@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "minecraft:bricks",
+    "J": "projectj:jade"
+  },
+  "pattern": [
+    " # ",
+    "#J#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectj:basic_olmec_head"
+  }
+}

@@ -31,8 +31,8 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.DEEPSLATE_JADE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.JADE_BLOCK.get());
 
+        // These files are modified inside the 'generated' folder as the basic generation is not enough (skill issue)
         blockModels.createFurnace(ModBlocks.ADOBE_FURNACE.get(), TexturedModel.ORIENTABLE);
-
         blockModels.createHorizontallyRotatedBlock(ModBlocks.BASIC_OLMEC_HEAD.get(), TexturedModel.ORIENTABLE_ONLY_TOP);
 
         itemModels.generateFlatItem(ModItems.RAW_JADE.get(), ModelTemplates.FLAT_ITEM);
