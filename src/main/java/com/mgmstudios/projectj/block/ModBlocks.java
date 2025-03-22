@@ -5,9 +5,14 @@ import com.mgmstudios.projectj.block.custom.AdobeChimneyBlock;
 import com.mgmstudios.projectj.block.custom.AdobeFurnaceBlock;
 import com.mgmstudios.projectj.block.custom.OlmecHeadBlock;
 import com.mgmstudios.projectj.item.ModItems;
+import net.minecraft.core.Holder;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -91,7 +96,9 @@ public class ModBlocks {
                     strength(3.0F, 3.0F).
                     sound(SoundType.GILDED_BLACKSTONE)
                     .lightLevel(litBlockEmission(15)),
-            new Item.Properties().rarity(Rarity.EPIC).equippableUnswappable(EquipmentSlot.HEAD)
+            new Item.Properties().rarity(Rarity.EPIC).equippableUnswappable(EquipmentSlot.HEAD),
+            ParticleTypes.HAPPY_VILLAGER,
+            MobEffects.MOVEMENT_SPEED
     );
 
 
@@ -110,16 +117,19 @@ public class ModBlocks {
         return registerBlock(name, properties, new Item.Properties());
     }
 
-    private static DeferredBlock<Block> registerOlmecHeadBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
-        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new OlmecHeadBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+    private static DeferredBlock<Block> registerOlmecHeadBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties, ParticleOptions particleOptions, Holder<MobEffect> effect) {
+        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName ->
+                new OlmecHeadBlock(
+                        properties.setId(ResourceKey.create(Registries.BLOCK, registryName)),
+                        particleOptions,
+                        effect
+                ));
         ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
         return toBeRegistered;
     }
 
-    private static DeferredBlock<Block> registerOlmecHeadBlock(String name, BlockBehaviour.Properties properties) {
-        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new OlmecHeadBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
-        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, new Item.Properties());
-        return toBeRegistered;
+    private static DeferredBlock<Block> registerOlmecHeadBlock(String name, BlockBehaviour.Properties properties, ParticleOptions particleOptions, Holder<MobEffect> effect) {
+        return registerOlmecHeadBlock(name, properties, new Item.Properties(), particleOptions, effect);
     }
 
     private static DeferredBlock<Block> registerDropExperienceBlock(String name, BlockBehaviour.Properties properties) {

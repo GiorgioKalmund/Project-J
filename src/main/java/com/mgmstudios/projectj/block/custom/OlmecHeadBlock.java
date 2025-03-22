@@ -2,13 +2,16 @@ package com.mgmstudios.projectj.block.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
@@ -33,8 +36,12 @@ public class OlmecHeadBlock extends RedstoneLampBlock {
 
     public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
     private static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 15, 15);
-    public OlmecHeadBlock(Properties properties) {
+    public final ParticleOptions effectParticle;
+    public final Holder<MobEffect> effect;
+    public OlmecHeadBlock(Properties properties, ParticleOptions effectParticle, Holder<MobEffect> effect) {
         super(properties);
+        this.effect = effect;
+        this.effectParticle = effectParticle;
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH));
     }
 
@@ -46,8 +53,9 @@ public class OlmecHeadBlock extends RedstoneLampBlock {
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if (state.getValue(LIT) && level instanceof ServerLevel serverLevel){
-            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 10 * 20));
+            player.addEffect(new MobEffectInstance(effect, 10 * 20));
             serverLevel.playSound(null, pos, SoundEvents.WANDERING_TRADER_DRINK_POTION, SoundSource.BLOCKS, 1f, 1f);
+            this.spawnActivationParticles(serverLevel, pos);
             return InteractionResult.SUCCESS_SERVER;
         }
         return super.useWithoutItem(state, level, pos, player, hitResult);
@@ -77,7 +85,7 @@ public class OlmecHeadBlock extends RedstoneLampBlock {
 
             ParticleOptions particle = i % 3 == 0
                     ? ParticleTypes.CAMPFIRE_COSY_SMOKE
-                    : ParticleTypes.HAPPY_VILLAGER;
+                    : effectParticle;
 
             serverLevel.sendParticles(particle, x, y, z, 1, 0, 0, 0, 0.05);
         }
