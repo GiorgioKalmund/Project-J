@@ -1,6 +1,6 @@
-// 1.21.4	2025-03-23T14:00:03.527031	Model Definitions - projectj
+// 1.21.4	2025-03-23T16:03:02.071838	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
-d33b53fd9363ae10aaef48b85c558708ca7b26d5 assets/projectj/blockstates/adobe_furnace.json
+68534f251c3c82fa6c7db8f259874b2acb9e8fec assets/projectj/blockstates/adobe_furnace.json
 99554bb900621c7ab7018caf8a553fe318443825 assets/projectj/blockstates/basic_olmec_head.json
 309790fd770e0a99af56c7e38a82bd6f18f80fda assets/projectj/blockstates/chimney.json
 7ede5fc8477af56fefd275aa88bd0ef32052d47b assets/projectj/blockstates/deepslate_jade_ore.json
@@ -22,7 +22,6 @@ d706b874c3d232886834e6416b0fa9d9853232b1 assets/projectj/items/adobe_bricks.json
 43a4a30bf747df0266fb42396721117d33cf3e08 assets/projectj/models/block/adobe_bricks.json
 f9b242d34949f79e409b68b64062a94ab39a13a9 assets/projectj/models/block/adobe_furnace.json
 6be9ef5091aa15e0717da95cabb3a12cd5ec0c45 assets/projectj/models/block/adobe_furnace_on.json
-f9b242d34949f79e409b68b64062a94ab39a13a9 assets/projectj/models/block/adobe_furnace_tier1.json
 534bc754e5caeacadd8e4b1fb2e4edbf28e902d8 assets/projectj/models/block/deepslate_jade_ore.json
 51a148e2c077ccec8b3af8781ca3db505af160bb assets/projectj/models/block/jade_block.json
 a9dc860cc3b5276471695806148d26ece7d10d62 assets/projectj/models/block/jade_ore.json

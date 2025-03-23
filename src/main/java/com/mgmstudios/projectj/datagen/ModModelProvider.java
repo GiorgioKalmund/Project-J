@@ -7,9 +7,11 @@ import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
+import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.blockstates.Variant;
 import net.minecraft.client.data.models.blockstates.VariantProperties;
 import net.minecraft.client.data.models.model.*;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -56,23 +58,49 @@ public class ModModelProvider extends ModelProvider {
 
     // TODO - Properly manage block states
     public void createFurnaceUntilTier1(BlockModelGenerators blockModels, Block block){
+
         ResourceLocation resourcelocation = TexturedModel.ORIENTABLE.create(block, blockModels.modelOutput);
         ResourceLocation resourcelocation1 = TextureMapping.getBlockTexture(block, "_front_on");
-
         ResourceLocation resourcelocation2 = TexturedModel.ORIENTABLE.get(block)
-                .updateTextures(properties -> properties.put(TextureSlot.FRONT, resourcelocation1))
+                .updateTextures(p_388889_ -> p_388889_.put(TextureSlot.FRONT, resourcelocation1))
                 .createWithSuffix(block, "_on", blockModels.modelOutput);
 
-        ResourceLocation resourcelocation3 = TexturedModel.ORIENTABLE.get(block)
-                .createWithSuffix(block, "_tier1", blockModels.modelOutput);
-        blockModels.blockStateOutput
-                .accept(
-                        MultiVariantGenerator.multiVariant(block)
-                                .with(createBooleanModelDispatch(BlockStateProperties.LIT, resourcelocation2, resourcelocation))
-                                //.with(createBooleanModelDispatch(TIER1, resourcelocation3, resourcelocation))
-                                .with(createHorizontalFacingDispatch())
-                );
+        blockModels.blockStateOutput.accept(
+                MultiVariantGenerator.multiVariant(block)
+                        .with(createHorizontalFacingDispatch())
+                        .with(
+                                PropertyDispatch.properties(BlockStateProperties.LIT, TIER1)
+                                        .select(
+                                                false, false,
+                                                Variant.variant().with(VariantProperties.MODEL, getModelLocation(ModBlocks.ADOBE_FURNACE.get()))
+                                        )
+                                        .select(
+                                                true, false,
+                                                Variant.variant().with(VariantProperties.MODEL, getModelLocation(ModBlocks.ADOBE_FURNACE.get(), "_on"))
+                                        )
+                                        .select(
+                                                false, true,
+                                                Variant.variant().with(VariantProperties.MODEL, getModelLocation(ModBlocks.ADOBE_FURNACE.get(), "_tier1"))
+                                        )
+                                        .select(
+                                                true, true,
+                                                Variant.variant().with(VariantProperties.MODEL, getModelLocation(ModBlocks.ADOBE_FURNACE.get(), "_on_tier1"))
+                                        )
+                        )
+        );
 
+
+
+    }
+
+    public static ResourceLocation getModelLocation(Block block, String suffix) {
+        ResourceLocation resourcelocation = BuiltInRegistries.BLOCK.getKey(block);
+        return resourcelocation.withPath(p_388420_ -> "block/" + p_388420_ + suffix);
+    }
+
+    public static ResourceLocation getModelLocation(Block block) {
+        ResourceLocation resourcelocation = BuiltInRegistries.BLOCK.getKey(block);
+        return resourcelocation.withPrefix("block/");
     }
 
     public void createOlmecHead(BlockModelGenerators blockModels, Block block) {

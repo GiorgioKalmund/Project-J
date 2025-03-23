@@ -112,7 +112,7 @@ public class ModBlocks {
                     .lightLevel(litBlockEmission(15)),
             new Item.Properties().rarity(Rarity.EPIC).equippableUnswappable(EquipmentSlot.HEAD),
             ParticleTypes.ELECTRIC_SPARK,
-            MobEffects.DAMAGE_RESISTANCE,
+            MobEffects.DAMAGE_BOOST,
             10
     );
 

@@ -4,55 +4,56 @@
       "model": "projectj:block/adobe_furnace",
       "y": 90
     },
-    "facing=east,lit=true,tier1=false": {
-      "model": "projectj:block/adobe_furnace_on",
+    "facing=east,lit=false,tier1=true": {
+      "model": "projectj:block/adobe_furnace_tier1",
       "y": 90
     },
-    "facing=north,lit=false,tier1=false": {
-      "model": "projectj:block/adobe_furnace"
-    },
-    "facing=north,lit=true,tier1=false": {
-      "model": "projectj:block/adobe_furnace_on"
-    },
-    "facing=south,lit=false,tier1=false": {
-      "model": "projectj:block/adobe_furnace",
-      "y": 180
-    },
-    "facing=south,lit=true,tier1=false": {
+    "facing=east,lit=true,tier1=false": {
       "model": "projectj:block/adobe_furnace_on",
-      "y": 180
-    },
-    "facing=west,lit=false,tier1=false": {
-      "model": "projectj:block/adobe_furnace",
-      "y": 270
-    },
-    "facing=west,lit=true,tier1=false": {
-      "model": "projectj:block/adobe_furnace_on",
-      "y": 270
-    },"facing=east,lit=false,tier1=true": {
-      "model": "projectj:block/adobe_furnace_tier1",
       "y": 90
     },
     "facing=east,lit=true,tier1=true": {
       "model": "projectj:block/adobe_furnace_on_tier1",
       "y": 90
     },
+    "facing=north,lit=false,tier1=false": {
+      "model": "projectj:block/adobe_furnace"
+    },
     "facing=north,lit=false,tier1=true": {
       "model": "projectj:block/adobe_furnace_tier1"
+    },
+    "facing=north,lit=true,tier1=false": {
+      "model": "projectj:block/adobe_furnace_on"
     },
     "facing=north,lit=true,tier1=true": {
       "model": "projectj:block/adobe_furnace_on_tier1"
     },
+    "facing=south,lit=false,tier1=false": {
+      "model": "projectj:block/adobe_furnace",
+      "y": 180
+    },
     "facing=south,lit=false,tier1=true": {
       "model": "projectj:block/adobe_furnace_tier1",
+      "y": 180
+    },
+    "facing=south,lit=true,tier1=false": {
+      "model": "projectj:block/adobe_furnace_on",
       "y": 180
     },
     "facing=south,lit=true,tier1=true": {
       "model": "projectj:block/adobe_furnace_on_tier1",
       "y": 180
     },
+    "facing=west,lit=false,tier1=false": {
+      "model": "projectj:block/adobe_furnace",
+      "y": 270
+    },
     "facing=west,lit=false,tier1=true": {
       "model": "projectj:block/adobe_furnace_tier1",
+      "y": 270
+    },
+    "facing=west,lit=true,tier1=false": {
+      "model": "projectj:block/adobe_furnace_on",
       "y": 270
     },
     "facing=west,lit=true,tier1=true": {
