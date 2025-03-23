@@ -75,8 +75,9 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("#J#")
                 .pattern("###")
                 .define('J', ModBlocks.JADE_BLOCK.asItem())
-                .define('#', Items.BRICKS)
+                .define('#', Items.STONE_BRICKS)
                 .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK.asItem()))
+                .unlockedBy("has_stone_bricks", this.has(Items.STONE_BRICKS))
                 .save(this.output);
 
         // SMELTING
