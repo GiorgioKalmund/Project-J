@@ -6,6 +6,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -38,9 +39,11 @@ public class OlmecHeadBlock extends RedstoneLampBlock {
     private static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 15, 15);
     public final ParticleOptions effectParticle;
     public final Holder<MobEffect> effect;
-    public OlmecHeadBlock(Properties properties, ParticleOptions effectParticle, Holder<MobEffect> effect) {
+    public final int effectTime;
+    public OlmecHeadBlock(Properties properties, ParticleOptions effectParticle, Holder<MobEffect> effect, int effectTime) {
         super(properties);
         this.effect = effect;
+        this.effectTime = effectTime;
         this.effectParticle = effectParticle;
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH));
     }
@@ -53,9 +56,9 @@ public class OlmecHeadBlock extends RedstoneLampBlock {
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if (state.getValue(LIT) && level instanceof ServerLevel serverLevel){
-            player.addEffect(new MobEffectInstance(effect, 10 * 20));
+            player.addEffect(new MobEffectInstance(effect, effectTime * 20, 1, true, false,true));
             serverLevel.playSound(null, pos, SoundEvents.WANDERING_TRADER_DRINK_POTION, SoundSource.BLOCKS, 1f, 1f);
-            this.spawnActivationParticles(serverLevel, pos);
+            this.spawnActivationParticles(serverLevel, pos, false);
             return InteractionResult.SUCCESS_SERVER;
         }
         return super.useWithoutItem(state, level, pos, player, hitResult);
@@ -68,7 +71,7 @@ public class OlmecHeadBlock extends RedstoneLampBlock {
 
         if (newState.getValue(LIT) && levelReader instanceof ServerLevel serverLevel) {
             serverLevel.playSound(null, pos, SoundEvents.RESPAWN_ANCHOR_CHARGE, SoundSource.BLOCKS);
-            spawnActivationParticles(serverLevel, pos);
+            spawnActivationParticles(serverLevel, pos, true);
         } else if (!newState.getValue(LIT) && levelReader instanceof ServerLevel serverLevel){
             serverLevel.playSound(null, pos, SoundEvents.REDSTONE_TORCH_BURNOUT, SoundSource.BLOCKS);
         }
@@ -76,18 +79,18 @@ public class OlmecHeadBlock extends RedstoneLampBlock {
         super.onBlockStateChange(levelReader, pos, oldState, newState);
     }
 
-    private void spawnActivationParticles(ServerLevel serverLevel, BlockPos pos) {
+    private void spawnActivationParticles(ServerLevel serverLevel, BlockPos pos, boolean smoke) {
         RandomSource random = serverLevel.getRandom();
-        for (int i = 0; i < 12; i++) {
-            double x = pos.getX() + random.nextDouble();
-            double y = pos.getY() + 1.0;
-            double z = pos.getZ() + random.nextDouble();
+        for (int i = 0; i < 25; i++) {
+            double x = pos.getX() + random.nextDouble() + 0.1;
+            double y = pos.getY() + random.nextDouble();
+            double z = pos.getZ() + random.nextDouble() + 0.1;
 
-            ParticleOptions particle = i % 3 == 0
+            ParticleOptions particle = i % 3 == 0 && smoke
                     ? ParticleTypes.CAMPFIRE_COSY_SMOKE
                     : effectParticle;
 
-            serverLevel.sendParticles(particle, x, y, z, 1, 0, 0, 0, 0.05);
+            serverLevel.sendParticles(particle,true,true,  x, y, z, 1, 0, 0, 0, 0.05);
         }
     }
 

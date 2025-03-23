@@ -1,6 +1,7 @@
 {
   "item.projectj.raw_jade": "Raw Jade",
   "item.projectj.jade": "Jade",
+
   "block.projectj.raw_adobe": "Block of Raw Adobe",
   "block.projectj.adobe_bricks": "Adobe Bricks",
   "block.projectj.adobe_furnace": "Adobe Furnace",
@@ -8,9 +9,14 @@
   "block.projectj.jade_block": "Block of Jade",
   "block.projectj.deepslate_jade_ore": "Deepslate Jade Ore",
   "block.projectj.chimney": "Adobe Chimney",
+
   "block.projectj.basic_olmec_head": "Basic Olmec Head",
+  "block.projectj.resistant_olmec_head": "Resitant Olmec Head",
+
   "container.projectj.adobe_furnace": "Adobe Furnace",
+
   "itemGroup.projectj.projectj_tab": "Project J",
+
   "tooltip.projectj.adobe_furnace.tooltip": "A powerful new furnace!\n§9§l[LShift] to learn more§r",
   "tooltip.projectj.adobe_furnace.tooltip.shift_down": "A powerful new furnace!\nWith the help of a chimney, can burn for §lEVEN§r longer"
 }

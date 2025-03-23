@@ -1,6 +1,16 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
+    "has_honey_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:honey_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_jade_block": {
       "conditions": {
         "items": [
@@ -21,6 +31,16 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_sugar": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:sugar"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_the_recipe": {
       "conditions": {
         "recipe": "projectj:basic_olmec_head"
@@ -31,6 +51,8 @@
   "requirements": [
     [
       "has_the_recipe",
+      "has_sugar",
+      "has_honey_bottle",
       "has_jade_block",
       "has_stone_bricks"
     ]

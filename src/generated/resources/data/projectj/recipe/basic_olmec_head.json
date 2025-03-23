@@ -3,10 +3,12 @@
   "category": "building",
   "key": {
     "#": "minecraft:stone_bricks",
-    "J": "projectj:jade_block"
+    "H": "minecraft:honey_bottle",
+    "J": "projectj:jade_block",
+    "S": "minecraft:sugar"
   },
   "pattern": [
-    " # ",
+    "S#H",
     "#J#",
     "###"
   ],

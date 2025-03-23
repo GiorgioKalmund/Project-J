@@ -98,12 +98,27 @@ public class ModBlocks {
                     .lightLevel(litBlockEmission(15)),
             new Item.Properties().rarity(Rarity.EPIC).equippableUnswappable(EquipmentSlot.HEAD),
             ParticleTypes.HAPPY_VILLAGER,
-            MobEffects.MOVEMENT_SPEED
+            MobEffects.MOVEMENT_SPEED,
+            10
+    );
+
+    public static final DeferredBlock<Block> RESISTANT_OLMEC_HEAD = registerOlmecHeadBlock("resistant_olmec_head",
+            BlockBehaviour.Properties.of().
+                    mapColor(MapColor.STONE).
+                    instrument(NoteBlockInstrument.BASEDRUM).
+                    requiresCorrectToolForDrops().
+                    strength(3.0F, 3.0F).
+                    sound(SoundType.GILDED_BLACKSTONE)
+                    .lightLevel(litBlockEmission(15)),
+            new Item.Properties().rarity(Rarity.EPIC).equippableUnswappable(EquipmentSlot.HEAD),
+            ParticleTypes.ELECTRIC_SPARK,
+            MobEffects.DAMAGE_RESISTANCE,
+            10
     );
 
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
-        return p_50763_ -> p_50763_.getValue(BlockStateProperties.LIT) ? lightValue : 0;
+        return properties -> properties.getValue(BlockStateProperties.LIT) ? lightValue : 0;
     }
 
     private static DeferredBlock<Block> registerBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
@@ -117,19 +132,20 @@ public class ModBlocks {
         return registerBlock(name, properties, new Item.Properties());
     }
 
-    private static DeferredBlock<Block> registerOlmecHeadBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties, ParticleOptions particleOptions, Holder<MobEffect> effect) {
+    private static DeferredBlock<Block> registerOlmecHeadBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties, ParticleOptions particleOptions, Holder<MobEffect> effect, int effectTime) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName ->
                 new OlmecHeadBlock(
                         properties.setId(ResourceKey.create(Registries.BLOCK, registryName)),
                         particleOptions,
-                        effect
+                        effect,
+                        effectTime
                 ));
         ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
         return toBeRegistered;
     }
 
-    private static DeferredBlock<Block> registerOlmecHeadBlock(String name, BlockBehaviour.Properties properties, ParticleOptions particleOptions, Holder<MobEffect> effect) {
-        return registerOlmecHeadBlock(name, properties, new Item.Properties(), particleOptions, effect);
+    private static DeferredBlock<Block> registerOlmecHeadBlock(String name, BlockBehaviour.Properties properties, ParticleOptions particleOptions, Holder<MobEffect> effect, int effectTime) {
+        return registerOlmecHeadBlock(name, properties, new Item.Properties(), particleOptions, effect, effectTime);
     }
 
     private static DeferredBlock<Block> registerDropExperienceBlock(String name, BlockBehaviour.Properties properties) {

@@ -71,11 +71,29 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.BASIC_OLMEC_HEAD.get())
-                .pattern(" # ")
+                .pattern("S#H")
                 .pattern("#J#")
                 .pattern("###")
+                .define('S', Items.SUGAR)
+                .define('H', Items.HONEY_BOTTLE)
                 .define('J', ModBlocks.JADE_BLOCK.asItem())
                 .define('#', Items.STONE_BRICKS)
+                .unlockedBy("has_sugar", this.has(Items.SUGAR))
+                .unlockedBy("has_honey_bottle", this.has(Items.HONEY_BOTTLE))
+                .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK.asItem()))
+                .unlockedBy("has_stone_bricks", this.has(Items.STONE_BRICKS))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.RESISTANT_OLMEC_HEAD.get())
+                .pattern("T#O")
+                .pattern("#J#")
+                .pattern("###")
+                .define('T', Items.TURTLE_HELMET)
+                .define('O', Items.OBSIDIAN)
+                .define('J', ModBlocks.JADE_BLOCK.asItem())
+                .define('#', Items.STONE_BRICKS)
+                .unlockedBy("has_turtle_helmet", this.has(Items.TURTLE_HELMET))
+                .unlockedBy("has_obsidian", this.has(Items.OBSIDIAN))
                 .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK.asItem()))
                 .unlockedBy("has_stone_bricks", this.has(Items.STONE_BRICKS))
                 .save(this.output);
