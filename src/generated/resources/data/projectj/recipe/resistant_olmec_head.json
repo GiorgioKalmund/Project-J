@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "minecraft:stone_bricks",
+    "J": "projectj:jade_block",
+    "O": "minecraft:obsidian",
+    "T": "minecraft:turtle_helmet"
+  },
+  "pattern": [
+    "T#O",
+    "#J#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectj:resistant_olmec_head"
+  }
+}
