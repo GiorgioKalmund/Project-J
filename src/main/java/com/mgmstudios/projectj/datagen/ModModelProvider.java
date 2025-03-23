@@ -13,12 +13,12 @@ import net.minecraft.client.data.models.model.*;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
+import static com.mgmstudios.projectj.block.custom.AdobeFurnaceBlock.TIER1;
 import static net.minecraft.client.data.models.BlockModelGenerators.*;
 
 @EventBusSubscriber (modid = ProjectJ.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
@@ -34,19 +34,44 @@ public class ModModelProvider extends ModelProvider {
 
         blockModels.createTrivialCube(ModBlocks.RAW_ADOBE.get());
         blockModels.createTrivialCube(ModBlocks.ADOBE_BRICKS.get());
-        blockModels.createTrivialCube(ModBlocks.CHIMNEY.get());
         blockModels.createTrivialCube(ModBlocks.JADE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.DEEPSLATE_JADE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.JADE_BLOCK.get());
 
-        // These files are modified inside the 'generated' folder as the basic generation is not enough (skill issue)
-        blockModels.createFurnace(ModBlocks.ADOBE_FURNACE.get(), TexturedModel.ORIENTABLE);
-
         itemModels.generateFlatItem(ModItems.RAW_JADE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.JADE.get(), ModelTemplates.FLAT_ITEM);
 
+        createFurnaceUntilTier1(blockModels, ModBlocks.ADOBE_FURNACE.get());
+
         createOlmecHead(blockModels, ModBlocks.RESISTANT_OLMEC_HEAD.get());
         createOlmecHead(blockModels, ModBlocks.BASIC_OLMEC_HEAD.get());
+
+        createSimpleBlockWithCustomModel(blockModels, ModBlocks.CHIMNEY.get());
+    }
+
+    public void createSimpleBlockWithCustomModel(BlockModelGenerators blockModels, Block block){
+        ResourceLocation resourcelocation = ModelLocationUtils.getModelLocation(block);
+        blockModels.blockStateOutput.accept( MultiVariantGenerator.multiVariant(block, Variant.variant().with(VariantProperties.MODEL, resourcelocation)));
+    }
+
+    // TODO - Properly manage block states
+    public void createFurnaceUntilTier1(BlockModelGenerators blockModels, Block block){
+        ResourceLocation resourcelocation = TexturedModel.ORIENTABLE.create(block, blockModels.modelOutput);
+        ResourceLocation resourcelocation1 = TextureMapping.getBlockTexture(block, "_front_on");
+
+        ResourceLocation resourcelocation2 = TexturedModel.ORIENTABLE.get(block)
+                .updateTextures(properties -> properties.put(TextureSlot.FRONT, resourcelocation1))
+                .createWithSuffix(block, "_on", blockModels.modelOutput);
+
+        ResourceLocation resourcelocation3 = TexturedModel.ORIENTABLE.get(block)
+                .createWithSuffix(block, "_tier1", blockModels.modelOutput);
+        blockModels.blockStateOutput
+                .accept(
+                        MultiVariantGenerator.multiVariant(block)
+                                .with(createBooleanModelDispatch(BlockStateProperties.LIT, resourcelocation2, resourcelocation))
+                                //.with(createBooleanModelDispatch(TIER1, resourcelocation3, resourcelocation))
+                                .with(createHorizontalFacingDispatch())
+                );
 
     }
 
