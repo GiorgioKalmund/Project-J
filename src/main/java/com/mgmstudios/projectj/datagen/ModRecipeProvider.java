@@ -98,6 +98,20 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_stone_bricks", this.has(Items.STONE_BRICKS))
                 .save(this.output);
 
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.CONDUIT_OLMEC_HEAD.get())
+                .pattern("H#S")
+                .pattern("#J#")
+                .pattern("###")
+                .define('H', Items.HEART_OF_THE_SEA)
+                .define('S', Items.SPONGE)
+                .define('J', ModBlocks.JADE_BLOCK.asItem())
+                .define('#', Items.STONE_BRICKS)
+                .unlockedBy("has_heart_of_the_sea", this.has(Items.HEART_OF_THE_SEA))
+                .unlockedBy("has_sponge", this.has(Items.SPONGE))
+                .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK.asItem()))
+                .unlockedBy("has_stone_bricks", this.has(Items.STONE_BRICKS))
+                .save(this.output);
+
         // SMELTING
 
         SimpleCookingRecipeBuilder.smelting(

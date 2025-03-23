@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "minecraft:stone_bricks",
+    "H": "minecraft:heart_of_the_sea",
+    "J": "projectj:jade_block",
+    "S": "minecraft:sponge"
+  },
+  "pattern": [
+    "H#S",
+    "#J#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectj:conduit_olmec_head"
+  }
+}

@@ -116,6 +116,20 @@ public class ModBlocks {
             10
     );
 
+    public static final DeferredBlock<Block> CONDUIT_OLMEC_HEAD = registerOlmecHeadBlock("conduit_olmec_head",
+            BlockBehaviour.Properties.of().
+                    mapColor(MapColor.STONE).
+                    instrument(NoteBlockInstrument.BASEDRUM).
+                    requiresCorrectToolForDrops().
+                    strength(3.0F, 3.0F).
+                    sound(SoundType.GILDED_BLACKSTONE)
+                    .lightLevel(litBlockEmission(15)),
+            new Item.Properties().rarity(Rarity.EPIC).equippableUnswappable(EquipmentSlot.HEAD),
+            ParticleTypes.BUBBLE,
+            MobEffects.CONDUIT_POWER,
+            10
+    );
+
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return properties -> properties.getValue(BlockStateProperties.LIT) ? lightValue : 0;

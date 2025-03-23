@@ -60,15 +60,28 @@ public class AdobeFurnaceBlock extends AbstractFurnaceBlock  {
     @Override
     public void onBlockStateChange(LevelReader level, BlockPos pos, BlockState oldState, BlockState newState) {
         if (level instanceof ServerLevel serverLevel){
-            System.out.println(newState);
-            BlockPos abovePos = pos.above();
-            BlockState aboveBlock = level.getBlockState(abovePos);
-
-            if (aboveBlock.is(ModBlocks.CHIMNEY.get())) {
-                serverLevel.setBlock(abovePos, aboveBlock.setValue(SMOKING, newState.getValue(LIT)), 3);
-            }
+            checkIfTier1(serverLevel, pos, newState);
         }
         super.onBlockStateChange(level, pos, oldState, newState);
+    }
+
+    @Override
+    public void onNeighborChange(BlockState state, LevelReader level, BlockPos pos, BlockPos neighbor) {
+        if (level instanceof ServerLevel serverLevel){
+            checkIfTier1(serverLevel, pos, state);
+        }
+        super.onNeighborChange(state, level, pos, neighbor);
+    }
+
+    private void checkIfTier1(ServerLevel level, BlockPos pos, BlockState newState){
+        BlockPos abovePos = pos.above();
+        BlockState aboveBlock = level.getBlockState(abovePos);
+
+        if (aboveBlock.is(ModBlocks.CHIMNEY.get())) {
+            level.setBlock(abovePos, aboveBlock.setValue(SMOKING, newState.getValue(LIT)), 3);
+        } else if (level.getBlockState(pos).getValue(TIER1)){
+            level.setBlock(pos, level.getBlockState(pos).setValue(TIER1, false), 3);
+        }
     }
 
     @Nullable
