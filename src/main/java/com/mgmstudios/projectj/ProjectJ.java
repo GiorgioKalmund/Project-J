@@ -4,9 +4,10 @@ import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.block.entity.ModBlockEntities;
 import com.mgmstudios.projectj.item.ModCreativeModeTabs;
 import com.mgmstudios.projectj.item.ModItems;
+import com.mgmstudios.projectj.recipe.ModRecipeTypes;
 import com.mgmstudios.projectj.screen.ModMenuTypes;
-import com.mgmstudios.projectj.screen.custom.AdobeFurnaceMenu;
 import com.mgmstudios.projectj.screen.custom.AdobeFurnaceScreen;
+import com.mgmstudios.projectj.recipe.ModRecipeBookCategories;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -47,6 +48,8 @@ public class ProjectJ
         NeoForge.EVENT_BUS.register(this);
 
         ModMenuTypes.register(modEventBus);
+        ModRecipeBookCategories.register(modEventBus);
+        ModRecipeTypes.register(modEventBus);
         ModItems.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
         ModBlocks.register(modEventBus);

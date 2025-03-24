@@ -2,8 +2,8 @@
   "type": "minecraft:smelting",
   "category": "misc",
   "cookingtime": 200,
-  "experience": 1.0,
-  "ingredient": "projectj:raw_jade",
+  "experience": 0.15,
+  "ingredient": "#projectj:smelts_to_jade",
   "result": {
     "count": 1,
     "id": "projectj:jade"

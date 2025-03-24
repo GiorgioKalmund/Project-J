@@ -2,6 +2,7 @@ package com.mgmstudios.projectj.screen.custom;
 
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.block.entity.AdobeFurnaceBlockEntity;
+import com.mgmstudios.projectj.recipe.ModRecipeTypes;
 import com.mgmstudios.projectj.screen.ModMenuTypes;
 
 import net.minecraft.network.FriendlyByteBuf;
@@ -23,10 +24,10 @@ public class AdobeFurnaceMenu extends AbstractFurnaceMenu {
 
 
     public AdobeFurnaceMenu(int containerId, Inventory playerInventory) {
-        super(ModMenuTypes.ADOBE_FURNACE_MENU.get(), RecipeType.SMELTING, RecipePropertySet.FURNACE_INPUT, RecipeBookType.FURNACE, containerId, playerInventory);
+        super(ModMenuTypes.ADOBE_FURNACE_MENU.get(), ModRecipeTypes.ADOBE_FURNACE_TYPE.get(), RecipePropertySet.FURNACE_INPUT, RecipeBookType.FURNACE, containerId, playerInventory);
     }
 
     public AdobeFurnaceMenu(int containerId, Inventory playerInventory, Container adobeFurnaceContainer, ContainerData adobeFurnaceData) {
-        super(ModMenuTypes.ADOBE_FURNACE_MENU.get(), RecipeType.SMELTING, RecipePropertySet.FURNACE_INPUT, RecipeBookType.FURNACE, containerId, playerInventory, adobeFurnaceContainer, adobeFurnaceData);
+        super(ModMenuTypes.ADOBE_FURNACE_MENU.get(), ModRecipeTypes.ADOBE_FURNACE_TYPE.get(), RecipePropertySet.FURNACE_INPUT, RecipeBookType.FURNACE, containerId, playerInventory, adobeFurnaceContainer, adobeFurnaceData);
     }
 }

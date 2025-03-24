@@ -2,10 +2,12 @@ package com.mgmstudios.projectj.datagen;
 
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.item.ModItems;
+import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
@@ -125,35 +127,13 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(this.output, "adobe_bricks_smelting");
 
         SimpleCookingRecipeBuilder.smelting(
-                        Ingredient.of(ModItems.RAW_JADE.get()),
-                        RecipeCategory.COMBAT,
-                        ModItems.JADE.get(),
-                        1f,
-                        200
-                )
-                .unlockedBy("has_raw_jade", this.has(ModItems.JADE.get()))
+                this.tag(ModTags.Items.SMELTS_TO_JADE),
+                RecipeCategory.MISC,
+                ModItems.JADE.get(),
+                0.15F,
+                200)
+                .unlockedBy("has_jade_ore", this.has(ModTags.Items.SMELTS_TO_JADE))
                 .save(this.output, "jade_smelting");
-
-        SimpleCookingRecipeBuilder.smelting(
-                        Ingredient.of(ModBlocks.JADE_ORE.get()),
-                        RecipeCategory.COMBAT,
-                        ModItems.JADE.get(),
-                        1f,
-                        200
-                )
-                .unlockedBy("has_jade_ore", this.has(ModBlocks.JADE_ORE.asItem()))
-                .save(this.output, "jade_smelting_from_ore");
-
-
-        SimpleCookingRecipeBuilder.smelting(
-                        Ingredient.of(ModBlocks.DEEPSLATE_JADE_ORE.get()),
-                        RecipeCategory.COMBAT,
-                        ModItems.JADE.get(),
-                        1f,
-                        200
-                )
-                .unlockedBy("has_deepslate_jade_ore", this.has(ModBlocks.DEEPSLATE_JADE_ORE.asItem()))
-                .save(this.output, "jade_smelting_from_deepslate_ore");
     }
 
     // The runner to add to the data generator

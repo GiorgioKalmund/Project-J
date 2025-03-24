@@ -5,10 +5,10 @@ import com.mgmstudios.projectj.block.entity.AdobeFurnaceBlockEntity;
 import com.mgmstudios.projectj.block.entity.ModBlockEntities;
 import com.mojang.serialization.MapCodec;
 
+import net.minecraft.client.User;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
@@ -24,6 +24,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -60,27 +61,32 @@ public class AdobeFurnaceBlock extends AbstractFurnaceBlock  {
     @Override
     public void onBlockStateChange(LevelReader level, BlockPos pos, BlockState oldState, BlockState newState) {
         if (level instanceof ServerLevel serverLevel){
-            checkIfTier1(serverLevel, pos, newState);
+            toggleChimney(serverLevel, pos, newState.getValue(LIT));
         }
-        super.onBlockStateChange(level, pos, oldState, newState);
     }
 
     @Override
-    public void onNeighborChange(BlockState state, LevelReader level, BlockPos pos, BlockPos neighbor) {
+    protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
         if (level instanceof ServerLevel serverLevel){
-            checkIfTier1(serverLevel, pos, state);
+            checkIfTier1(serverLevel, pos);
         }
-        super.onNeighborChange(state, level, pos, neighbor);
+        super.onPlace(state, level, pos, oldState, movedByPiston);
     }
 
-    private void checkIfTier1(ServerLevel level, BlockPos pos, BlockState newState){
+    private void checkIfTier1(Level level, BlockPos pos){
         BlockPos abovePos = pos.above();
         BlockState aboveBlock = level.getBlockState(abovePos);
+        boolean chimneyAbove = aboveBlock.is(ModBlocks.CHIMNEY.get());
+        BlockState furnaceState = level.getBlockState(pos);
+        level.setBlock(pos, furnaceState.setValue(TIER1, chimneyAbove), 3);
+    }
 
-        if (aboveBlock.is(ModBlocks.CHIMNEY.get())) {
-            level.setBlock(abovePos, aboveBlock.setValue(SMOKING, newState.getValue(LIT)), 3);
-        } else if (level.getBlockState(pos).getValue(TIER1)){
-            level.setBlock(pos, level.getBlockState(pos).setValue(TIER1, false), 3);
+    private void toggleChimney(ServerLevel level, BlockPos pos, boolean activate){
+        BlockPos abovePos = pos.above();
+        BlockState aboveBlock = level.getBlockState(abovePos);
+        if (aboveBlock.is(ModBlocks.CHIMNEY.get())){
+            System.out.println("Toggling chimney: " + activate);
+            level.setBlock(abovePos, aboveBlock.setValue(SMOKING, activate), 3);
         }
     }
 
