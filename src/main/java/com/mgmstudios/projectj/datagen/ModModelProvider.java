@@ -47,6 +47,7 @@ public class ModModelProvider extends ModelProvider {
 
         createOlmecHead(blockModels, ModBlocks.RESISTANT_OLMEC_HEAD.get());
         createOlmecHead(blockModels, ModBlocks.BASIC_OLMEC_HEAD.get());
+        createOlmecHead(blockModels, ModBlocks.CONDUIT_OLMEC_HEAD.get());
 
         createSimpleBlockWithCustomModel(blockModels, ModBlocks.CHIMNEY.get());
     }
@@ -59,10 +60,10 @@ public class ModModelProvider extends ModelProvider {
     // TODO - Properly manage block states
     public void createFurnaceUntilTier1(BlockModelGenerators blockModels, Block block){
 
-        ResourceLocation resourcelocation = TexturedModel.ORIENTABLE.create(block, blockModels.modelOutput);
-        ResourceLocation resourcelocation1 = TextureMapping.getBlockTexture(block, "_front_on");
-        ResourceLocation resourcelocation2 = TexturedModel.ORIENTABLE.get(block)
-                .updateTextures(p_388889_ -> p_388889_.put(TextureSlot.FRONT, resourcelocation1))
+         TexturedModel.ORIENTABLE.create(block, blockModels.modelOutput);
+        ResourceLocation resourcelocation = TextureMapping.getBlockTexture(block, "_front_on");
+        TexturedModel.ORIENTABLE.get(block)
+                .updateTextures(p_388889_ -> p_388889_.put(TextureSlot.FRONT, resourcelocation))
                 .createWithSuffix(block, "_on", blockModels.modelOutput);
 
         blockModels.blockStateOutput.accept(

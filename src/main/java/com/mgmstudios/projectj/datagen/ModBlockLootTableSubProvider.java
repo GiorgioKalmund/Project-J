@@ -45,8 +45,10 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.ADOBE_FURNACE.get());
         this.dropSelf(ModBlocks.CHIMNEY.get());
         this.dropSelf(ModBlocks.JADE_BLOCK.get());
+
         this.dropSelf(ModBlocks.BASIC_OLMEC_HEAD.get());
         this.dropSelf(ModBlocks.RESISTANT_OLMEC_HEAD.get());
+        this.dropSelf(ModBlocks.CONDUIT_OLMEC_HEAD.get());
 
         add(ModBlocks.JADE_ORE.get(), block ->
                 createMultipleOreDrops(ModBlocks.JADE_ORE.get(), ModItems.RAW_JADE.get(), 2, 5));
