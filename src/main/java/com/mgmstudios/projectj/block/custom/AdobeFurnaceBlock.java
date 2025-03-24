@@ -78,7 +78,7 @@ public class AdobeFurnaceBlock extends AbstractFurnaceBlock  {
             BlockPos abovePos = pos.below();
             BlockState abovePosState = level.getBlockState(abovePos);
             if (abovePosState.is(ModBlocks.CHIMNEY.get())){
-                serverLevel.setBlock(abovePos, abovePosState.setValue(SMOKING, false), 3);
+                serverLevel.setBlockAndUpdate(abovePos, abovePosState.setValue(SMOKING, false));
             }
         }
         super.onRemove(state, level, pos, newState, movedByPiston);
@@ -89,14 +89,14 @@ public class AdobeFurnaceBlock extends AbstractFurnaceBlock  {
         BlockState aboveBlock = level.getBlockState(abovePos);
         boolean chimneyAbove = aboveBlock.is(ModBlocks.CHIMNEY.get());
         BlockState furnaceState = level.getBlockState(pos);
-        level.setBlock(pos, furnaceState.setValue(TIER1, chimneyAbove), 3);
+        level.setBlockAndUpdate(pos, furnaceState.setValue(TIER1, chimneyAbove));
     }
 
     private void toggleChimney(ServerLevel level, BlockPos pos, boolean activate){
         BlockPos abovePos = pos.above();
         BlockState aboveBlock = level.getBlockState(abovePos);
         if (aboveBlock.is(ModBlocks.CHIMNEY.get())){
-            level.setBlock(abovePos, aboveBlock.setValue(SMOKING, activate), 3);
+            level.setBlockAndUpdate(abovePos, aboveBlock.setValue(SMOKING, activate));
         }
     }
 

@@ -1,7 +1,6 @@
 package com.mgmstudios.projectj.block.custom;
 
 import com.mgmstudios.projectj.block.ModBlocks;
-import com.mgmstudios.projectj.util.ModTags;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -12,12 +11,9 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -25,7 +21,6 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.apache.http.cookie.SM;
 
 import static com.mgmstudios.projectj.block.custom.AdobeFurnaceBlock.TIER1;
 
@@ -69,7 +64,7 @@ public class AdobeChimneyBlock extends Block {
             BlockPos belowPos = pos.below();
             BlockState belowBlockState = level.getBlockState(belowPos);
             if (belowBlockState.is(ModBlocks.ADOBE_FURNACE.get())){
-                serverLevel.setBlock(belowPos, belowBlockState.setValue(TIER1, false), 3);
+                serverLevel.setBlockAndUpdate(belowPos, belowBlockState.setValue(TIER1, false));
             }
         }
         super.onRemove(state, level, pos, newState, movedByPiston);
@@ -84,10 +79,10 @@ public class AdobeChimneyBlock extends Block {
             // Event 2009 is the event that normally spawns particles when a wet sponge is converted to a regular sponge in the nether
             level.levelEvent(2009, belowPos, 0);
             level.playSound(null, belowPos, SoundEvents.DECORATED_POT_PLACE, SoundSource.BLOCKS, 1f, 1f);
-            level.setBlock(belowPos, belowBlockState.setValue(TIER1, true), 3);
+            level.setBlockAndUpdate(belowPos, belowBlockState.setValue(TIER1, true));
 
             if(belowBlockState.getValue(AdobeFurnaceBlock.LIT)){
-                level.setBlock(pos, state.setValue(SMOKING, true), 3);
+                level.setBlockAndUpdate(pos, state.setValue(SMOKING, true));
                 System.out.println("Below furnace is LIT");
             }
         }
@@ -114,7 +109,7 @@ public class AdobeChimneyBlock extends Block {
         BlockPos belowPos = pos.below();
         BlockState belowBlockState = level.getBlockState(belowPos);
         if (belowBlockState.is(ModBlocks.ADOBE_FURNACE.get())){
-            level.setBlock(belowPos, belowBlockState.setValue(TIER1, false), 3);
+            level.setBlockAndUpdate(belowPos, belowBlockState.setValue(TIER1, false));
         }
 
         return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);
