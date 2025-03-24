@@ -89,42 +89,18 @@ public class ModBlocks {
     );
 
     public static final DeferredBlock<Block> BASIC_OLMEC_HEAD = registerOlmecHeadBlock("basic_olmec_head",
-            BlockBehaviour.Properties.of().
-                    mapColor(MapColor.STONE).
-                    instrument(NoteBlockInstrument.BASEDRUM).
-                    requiresCorrectToolForDrops().
-                    strength(3.0F, 3.0F).
-                    sound(SoundType.GILDED_BLACKSTONE)
-                    .lightLevel(litBlockEmission(15)),
-            new Item.Properties().rarity(Rarity.EPIC).equippableUnswappable(EquipmentSlot.HEAD),
             ParticleTypes.HAPPY_VILLAGER,
             MobEffects.MOVEMENT_SPEED,
             10
     );
 
     public static final DeferredBlock<Block> RESISTANT_OLMEC_HEAD = registerOlmecHeadBlock("resistant_olmec_head",
-            BlockBehaviour.Properties.of().
-                    mapColor(MapColor.STONE).
-                    instrument(NoteBlockInstrument.BASEDRUM).
-                    requiresCorrectToolForDrops().
-                    strength(3.0F, 3.0F).
-                    sound(SoundType.GILDED_BLACKSTONE)
-                    .lightLevel(litBlockEmission(15)),
-            new Item.Properties().rarity(Rarity.EPIC).equippableUnswappable(EquipmentSlot.HEAD),
             ParticleTypes.ELECTRIC_SPARK,
             MobEffects.DAMAGE_BOOST,
             10
     );
 
     public static final DeferredBlock<Block> CONDUIT_OLMEC_HEAD = registerOlmecHeadBlock("conduit_olmec_head",
-            BlockBehaviour.Properties.of().
-                    mapColor(MapColor.STONE).
-                    instrument(NoteBlockInstrument.BASEDRUM).
-                    requiresCorrectToolForDrops().
-                    strength(3.0F, 3.0F).
-                    sound(SoundType.GILDED_BLACKSTONE)
-                    .lightLevel(litBlockEmission(15)),
-            new Item.Properties().rarity(Rarity.EPIC).equippableUnswappable(EquipmentSlot.HEAD),
             ParticleTypes.BUBBLE,
             MobEffects.CONDUIT_POWER,
             10
@@ -156,6 +132,13 @@ public class ModBlocks {
                 ));
         ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
         return toBeRegistered;
+    }
+
+    private static DeferredBlock<Block> registerOlmecHeadBlock(String name, ParticleOptions particleOptions, Holder<MobEffect> effect, int effectTime) {
+        BlockBehaviour.Properties properties =
+                BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 3.0F).sound(SoundType.GILDED_BLACKSTONE).lightLevel(litBlockEmission(15)).noOcclusion();
+        Item.Properties itemProperties = new Item.Properties().rarity(Rarity.EPIC).equippableUnswappable(EquipmentSlot.HEAD);
+        return registerOlmecHeadBlock(name, properties, itemProperties, particleOptions, effect, effectTime);
     }
 
     private static DeferredBlock<Block> registerOlmecHeadBlock(String name, BlockBehaviour.Properties properties, ParticleOptions particleOptions, Holder<MobEffect> effect, int effectTime) {
