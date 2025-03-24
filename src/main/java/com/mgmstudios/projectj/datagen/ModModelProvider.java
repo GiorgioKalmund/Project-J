@@ -11,14 +11,20 @@ import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.blockstates.Variant;
 import net.minecraft.client.data.models.blockstates.VariantProperties;
 import net.minecraft.client.data.models.model.*;
+import net.minecraft.client.renderer.item.ItemModel;
+import net.minecraft.client.renderer.item.properties.select.DisplayContext;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+
+import java.util.List;
 
 import static com.mgmstudios.projectj.block.custom.AdobeFurnaceBlock.TIER1;
 import static net.minecraft.client.data.models.BlockModelGenerators.*;
@@ -119,8 +125,21 @@ public class ModModelProvider extends ModelProvider {
                                 .with(createHorizontalFacingDispatch())
                 );
 
-        blockModels.itemModelOutput.accept(block.asItem(), ItemModelUtils.plainModel(getModelLocation(block, "_item")));
+        Item blockItem = block.asItem();
+        ItemModel.Unbaked unbaked = ItemModelUtils.plainModel(itemModels.createFlatItemModel(blockItem, ModelTemplates.FLAT_ITEM));
+        ItemModel.Unbaked blockModel = ItemModelUtils.plainModel(ModelLocationUtils.getModelLocation(block));
+        ItemModel.Unbaked unbaked1 = ItemModelUtils.plainModel(ModelLocationUtils.getModelLocation(block, "_item"));
+        itemModels.itemModelOutput.accept(blockItem, createFlatModelDispatch(unbaked1, unbaked, blockModel));
 
+    }
+
+    public static ItemModel.Unbaked createFlatModelDispatch(ItemModel.Unbaked itemModel, ItemModel.Unbaked holdingModel, ItemModel.Unbaked blockModel) {
+        return ItemModelUtils.select(
+                new DisplayContext(),
+                holdingModel,
+                ItemModelUtils.when(List.of(ItemDisplayContext.GUI, ItemDisplayContext.GROUND, ItemDisplayContext.FIXED), itemModel),
+                ItemModelUtils.when(List.of(ItemDisplayContext.HEAD), blockModel)
+        );
     }
 
     @SubscribeEvent

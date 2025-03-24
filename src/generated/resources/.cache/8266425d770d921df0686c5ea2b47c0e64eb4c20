@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-24T10:49:29.954807	Model Definitions - projectj
+// 1.21.4	2025-03-24T12:57:35.789863	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 68534f251c3c82fa6c7db8f259874b2acb9e8fec assets/projectj/blockstates/adobe_furnace.json
 99554bb900621c7ab7018caf8a553fe318443825 assets/projectj/blockstates/basic_olmec_head.json
@@ -11,16 +11,16 @@ dfdd72869320254b3ae6795b1e4d9a0a0c36ce64 assets/projectj/blockstates/jade_ore.js
 5a6b84cb6b8bdc01ca0c302f5fc7b3d6090e7e72 assets/projectj/blockstates/resistant_olmec_head.json
 d706b874c3d232886834e6416b0fa9d9853232b1 assets/projectj/items/adobe_bricks.json
 13e17e699a8d9c78c3b62bc09a6d557d48707f73 assets/projectj/items/adobe_furnace.json
-5aa5b47ffb774a07eb387784cf8a6058cc545621 assets/projectj/items/basic_olmec_head.json
+012ccca9ce747b8a07fe8f6a3544980b2a95e691 assets/projectj/items/basic_olmec_head.json
 4c516558ea1e299d150365077530145726a6315e assets/projectj/items/chimney.json
-ae9df72d59aeaa4b7dfe9cf4dd00bb4bffc035c2 assets/projectj/items/conduit_olmec_head.json
+cec21b8fdddfbafe0003d3863416b3c135a07ea5 assets/projectj/items/conduit_olmec_head.json
 3cf17f2ffd36039a8af7d7d54f2b7dd5f05212a1 assets/projectj/items/deepslate_jade_ore.json
 20e974e68377b3d13568f54b52c8c52e9ccf5e66 assets/projectj/items/jade.json
 9c8cb0c378da07b61725adb0d0a48b374dae6f8d assets/projectj/items/jade_block.json
 6c67bf56da03612616be77ed4bd0cc89a742b31b assets/projectj/items/jade_ore.json
 492f9f434f6bb99befe23a82340ec8394427218e assets/projectj/items/raw_adobe.json
 5e4f7fcf393f89cf7bd262bb1481ac02750dcf26 assets/projectj/items/raw_jade.json
-08eeb24bd53218e48e483e53eeaa293034964b22 assets/projectj/items/resistant_olmec_head.json
+0be69f4017401da735d84e728a74ceed72a35392 assets/projectj/items/resistant_olmec_head.json
 43a4a30bf747df0266fb42396721117d33cf3e08 assets/projectj/models/block/adobe_bricks.json
 f9b242d34949f79e409b68b64062a94ab39a13a9 assets/projectj/models/block/adobe_furnace.json
 6be9ef5091aa15e0717da95cabb3a12cd5ec0c45 assets/projectj/models/block/adobe_furnace_on.json
@@ -28,5 +28,8 @@ f9b242d34949f79e409b68b64062a94ab39a13a9 assets/projectj/models/block/adobe_furn
 51a148e2c077ccec8b3af8781ca3db505af160bb assets/projectj/models/block/jade_block.json
 a9dc860cc3b5276471695806148d26ece7d10d62 assets/projectj/models/block/jade_ore.json
 f0f8ab52c70a6167c4049a815151a54b6c9fa597 assets/projectj/models/block/raw_adobe.json
+ddf184430e79b886577db134bb2d245cf6de6d89 assets/projectj/models/item/basic_olmec_head.json
+0b29563d2aa6ce45f0c72203faca3ded6b6709be assets/projectj/models/item/conduit_olmec_head.json
 9cc0c435272b7a37105bfd68afa6dd08bf45ef1e assets/projectj/models/item/jade.json
 ba637adad06995f9e8f952ca598514c60ce4cfbb assets/projectj/models/item/raw_jade.json
+197d21f51de9c5248b22115a48ab4bc6d9603547 assets/projectj/models/item/resistant_olmec_head.json

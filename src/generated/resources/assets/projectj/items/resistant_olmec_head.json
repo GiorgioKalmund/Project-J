@@ -1,6 +1,30 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "projectj:block/resistant_olmec_head_item"
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "projectj:block/resistant_olmec_head_item"
+        },
+        "when": [
+          "gui",
+          "ground",
+          "fixed"
+        ]
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "projectj:block/resistant_olmec_head"
+        },
+        "when": "head"
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "projectj:item/resistant_olmec_head"
+    },
+    "property": "minecraft:display_context"
   }
 }
