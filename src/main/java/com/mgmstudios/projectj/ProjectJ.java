@@ -5,12 +5,8 @@ import com.mgmstudios.projectj.block.entity.ModBlockEntities;
 import com.mgmstudios.projectj.item.ModCreativeModeTabs;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.screen.ModMenuTypes;
+import com.mgmstudios.projectj.screen.custom.AdobeFurnaceMenu;
 import com.mgmstudios.projectj.screen.custom.AdobeFurnaceScreen;
-
-import com.mgmstudios.projectj.util.ModTags;
-import net.minecraft.client.renderer.entity.EntityRenderer;
-import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.world.item.CreativeModeTabs;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -50,15 +46,18 @@ public class ProjectJ
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
+        ModMenuTypes.register(modEventBus);
         ModItems.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
-        ModMenuTypes.register(modEventBus);
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
+        modEventBus.addListener(this::registerScreens);
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -79,8 +78,10 @@ public class ProjectJ
     }
 
     public void registerScreens(RegisterMenuScreensEvent event){
-
+        event.register(ModMenuTypes.ADOBE_FURNACE_MENU.get(), AdobeFurnaceScreen::new);
+        System.out.println("Registered SCREEN!");
     }
+
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents

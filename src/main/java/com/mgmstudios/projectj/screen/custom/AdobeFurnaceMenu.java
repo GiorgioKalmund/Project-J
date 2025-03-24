@@ -23,10 +23,10 @@ public class AdobeFurnaceMenu extends AbstractFurnaceMenu {
 
 
     public AdobeFurnaceMenu(int containerId, Inventory playerInventory) {
-        super(MenuType.FURNACE, RecipeType.SMELTING, RecipePropertySet.FURNACE_INPUT, RecipeBookType.FURNACE, containerId, playerInventory);
+        super(ModMenuTypes.ADOBE_FURNACE_MENU.get(), RecipeType.SMELTING, RecipePropertySet.FURNACE_INPUT, RecipeBookType.FURNACE, containerId, playerInventory);
     }
 
     public AdobeFurnaceMenu(int containerId, Inventory playerInventory, Container adobeFurnaceContainer, ContainerData adobeFurnaceData) {
-        super(MenuType.FURNACE, RecipeType.SMELTING, RecipePropertySet.FURNACE_INPUT, RecipeBookType.FURNACE, containerId, playerInventory, adobeFurnaceContainer, adobeFurnaceData);
+        super(ModMenuTypes.ADOBE_FURNACE_MENU.get(), RecipeType.SMELTING, RecipePropertySet.FURNACE_INPUT, RecipeBookType.FURNACE, containerId, playerInventory, adobeFurnaceContainer, adobeFurnaceData);
     }
 }

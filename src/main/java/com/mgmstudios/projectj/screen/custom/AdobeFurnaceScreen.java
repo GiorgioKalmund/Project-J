@@ -1,5 +1,6 @@
 package com.mgmstudios.projectj.screen.custom;
 
+import com.mgmstudios.projectj.ProjectJ;
 import net.minecraft.client.gui.screens.inventory.AbstractFurnaceScreen;
 import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
 import net.minecraft.client.gui.screens.recipebook.SearchRecipeBookCategory;
@@ -15,7 +16,7 @@ public class AdobeFurnaceScreen extends AbstractFurnaceScreen<AdobeFurnaceMenu> 
 
     private static final ResourceLocation LIT_PROGRESS_SPRITE = ResourceLocation.withDefaultNamespace("container/smoker/lit_progress");
     private static final ResourceLocation BURN_PROGRESS_SPRITE = ResourceLocation.withDefaultNamespace("container/smoker/burn_progress");
-    private static final ResourceLocation TEXTURE = ResourceLocation.withDefaultNamespace("textures/gui/container/smoker.png");
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID,"textures/gui/adobe_furnace/adobe_furnace.png");
     private static final Component FILTER_NAME = Component.translatable("gui.recipebook.toggleRecipes.smokable");
     private static final List<RecipeBookComponent.TabInfo> TABS = List.of(
             new RecipeBookComponent.TabInfo(SearchRecipeBookCategory.SMOKER), new RecipeBookComponent.TabInfo(Items.PORKCHOP, RecipeBookCategories.SMOKER_FOOD)
