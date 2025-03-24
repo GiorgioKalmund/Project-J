@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "projectj:block/resistant_olmec_head"
+    "model": "projectj:block/resistant_olmec_head_item"
   }
 }

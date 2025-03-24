@@ -45,9 +45,9 @@ public class ModModelProvider extends ModelProvider {
 
         createFurnaceUntilTier1(blockModels, ModBlocks.ADOBE_FURNACE.get());
 
-        createOlmecHead(blockModels, ModBlocks.RESISTANT_OLMEC_HEAD.get());
-        createOlmecHead(blockModels, ModBlocks.BASIC_OLMEC_HEAD.get());
-        createOlmecHead(blockModels, ModBlocks.CONDUIT_OLMEC_HEAD.get());
+        createOlmecHead(blockModels, itemModels, ModBlocks.RESISTANT_OLMEC_HEAD.get());
+        createOlmecHead(blockModels, itemModels, ModBlocks.BASIC_OLMEC_HEAD.get());
+        createOlmecHead(blockModels, itemModels, ModBlocks.CONDUIT_OLMEC_HEAD.get());
 
         createSimpleBlockWithCustomModel(blockModels, ModBlocks.CHIMNEY.get());
     }
@@ -104,7 +104,7 @@ public class ModModelProvider extends ModelProvider {
         return resourcelocation.withPrefix("block/");
     }
 
-    public void createOlmecHead(BlockModelGenerators blockModels, Block block) {
+    public void createOlmecHead(BlockModelGenerators blockModels, ItemModelGenerators itemModels, Block block) {
         ResourceLocation resourcelocation = ModelLocationUtils.getModelLocation(block);
         ResourceLocation resourcelocation1 = ModelLocationUtils.getModelLocation(block, "_on");
 
@@ -118,6 +118,9 @@ public class ModModelProvider extends ModelProvider {
                                 .with(createBooleanModelDispatch(BlockStateProperties.LIT, resourcelocation1, resourcelocation))
                                 .with(createHorizontalFacingDispatch())
                 );
+
+        blockModels.itemModelOutput.accept(block.asItem(), ItemModelUtils.plainModel(getModelLocation(block, "_item")));
+
     }
 
     @SubscribeEvent

@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "projectj:block/conduit_olmec_head"
+    "model": "projectj:block/conduit_olmec_head_item"
   }
 }
