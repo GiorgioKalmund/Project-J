@@ -73,6 +73,17 @@ public class AdobeFurnaceBlock extends AbstractFurnaceBlock  {
         super.onPlace(state, level, pos, oldState, movedByPiston);
     }
 
+    protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
+        if (level instanceof ServerLevel serverLevel){
+            BlockPos abovePos = pos.below();
+            BlockState abovePosState = level.getBlockState(abovePos);
+            if (abovePosState.is(ModBlocks.CHIMNEY.get())){
+                serverLevel.setBlock(abovePos, abovePosState.setValue(SMOKING, false), 3);
+            }
+        }
+        super.onRemove(state, level, pos, newState, movedByPiston);
+    }
+
     private void checkIfTier1(Level level, BlockPos pos){
         BlockPos abovePos = pos.above();
         BlockState aboveBlock = level.getBlockState(abovePos);
@@ -85,7 +96,6 @@ public class AdobeFurnaceBlock extends AbstractFurnaceBlock  {
         BlockPos abovePos = pos.above();
         BlockState aboveBlock = level.getBlockState(abovePos);
         if (aboveBlock.is(ModBlocks.CHIMNEY.get())){
-            System.out.println("Toggling chimney: " + activate);
             level.setBlock(abovePos, aboveBlock.setValue(SMOKING, activate), 3);
         }
     }

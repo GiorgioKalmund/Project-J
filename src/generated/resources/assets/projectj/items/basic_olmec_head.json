@@ -18,12 +18,18 @@
           "type": "minecraft:model",
           "model": "projectj:block/basic_olmec_head"
         },
-        "when": "head"
+        "when": [
+          "head",
+          "firstperson_lefthand",
+          "firstperson_righthand",
+          "thirdperson_lefthand",
+          "thirdperson_righthand"
+        ]
       }
     ],
     "fallback": {
       "type": "minecraft:model",
-      "model": "projectj:item/basic_olmec_head"
+      "model": "projectj:block/basic_olmec_head_item"
     },
     "property": "minecraft:display_context"
   }

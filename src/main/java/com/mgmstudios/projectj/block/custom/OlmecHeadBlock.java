@@ -1,10 +1,12 @@
 package com.mgmstudios.projectj.block.custom;
 
+import com.mgmstudios.projectj.block.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -52,7 +54,7 @@ public class OlmecHeadBlock extends RedstoneLampBlock {
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-        if (state.getValue(LIT) && level instanceof ServerLevel serverLevel){
+        if (state.getValue(LIT) && level instanceof ServerLevel serverLevel && player.getMainHandItem().isEmpty()){
             player.addEffect(new MobEffectInstance(effect, effectTime * 20, 1, true, false,true));
             serverLevel.playSound(null, pos, SoundEvents.WANDERING_TRADER_DRINK_POTION, SoundSource.BLOCKS, 1f, 1f);
             this.spawnActivationParticles(serverLevel, pos, false);
@@ -63,7 +65,7 @@ public class OlmecHeadBlock extends RedstoneLampBlock {
 
     @Override
     public void onBlockStateChange(LevelReader levelReader, BlockPos pos, BlockState oldState, BlockState newState) {
-        if (oldState.is(Blocks.AIR) && !newState.getValue(LIT))
+        if (!(oldState.getBlock() instanceof OlmecHeadBlock) && !newState.getValue(LIT))
             return;
 
         if (newState.getValue(LIT) && levelReader instanceof ServerLevel serverLevel) {

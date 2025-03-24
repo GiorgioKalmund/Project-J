@@ -54,7 +54,7 @@ public class AdobeChimneyBlock extends Block {
 
     @Override
     protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
-        if (!oldState.is(Blocks.AIR))
+        if (!(oldState.getBlock() instanceof AdobeChimneyBlock))
             return;
 
         if (level instanceof ServerLevel serverLevel){

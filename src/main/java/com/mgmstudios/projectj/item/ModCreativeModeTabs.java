@@ -18,7 +18,7 @@ public class ModCreativeModeTabs {
     public static final Supplier<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("projectj_tab", () -> CreativeModeTab.builder()
             //Set the title of the tab. Don't forget to add a translation!
             .title(Component.translatable("itemGroup." + ProjectJ.MOD_ID + ".projectj_tab"))
-            .icon(() -> new ItemStack(ModBlocks.ADOBE_FURNACE.get()))
+            .icon(() -> new ItemStack(ModItems.JADE.get()))
             //Add your items to the tab.
             .displayItems((params, output) -> {
                 output.accept(ModBlocks.RAW_ADOBE.get());

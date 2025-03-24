@@ -63,7 +63,6 @@ public class ModModelProvider extends ModelProvider {
         blockModels.blockStateOutput.accept( MultiVariantGenerator.multiVariant(block, Variant.variant().with(VariantProperties.MODEL, resourcelocation)));
     }
 
-    // TODO - Properly manage block states
     public void createFurnaceUntilTier1(BlockModelGenerators blockModels, Block block){
 
          TexturedModel.ORIENTABLE.create(block, blockModels.modelOutput);
@@ -126,19 +125,18 @@ public class ModModelProvider extends ModelProvider {
                 );
 
         Item blockItem = block.asItem();
-        ItemModel.Unbaked unbaked = ItemModelUtils.plainModel(itemModels.createFlatItemModel(blockItem, ModelTemplates.FLAT_ITEM));
         ItemModel.Unbaked blockModel = ItemModelUtils.plainModel(ModelLocationUtils.getModelLocation(block));
-        ItemModel.Unbaked unbaked1 = ItemModelUtils.plainModel(ModelLocationUtils.getModelLocation(block, "_item"));
-        itemModels.itemModelOutput.accept(blockItem, createFlatModelDispatch(unbaked1, unbaked, blockModel));
+        ItemModel.Unbaked itemModel = ItemModelUtils.plainModel(ModelLocationUtils.getModelLocation(block, "_item"));
+        itemModels.itemModelOutput.accept(blockItem, createMultiStateDispatch(itemModel, blockModel));
 
     }
 
-    public static ItemModel.Unbaked createFlatModelDispatch(ItemModel.Unbaked itemModel, ItemModel.Unbaked holdingModel, ItemModel.Unbaked blockModel) {
+    public static ItemModel.Unbaked createMultiStateDispatch(ItemModel.Unbaked itemModel, ItemModel.Unbaked blockModel) {
         return ItemModelUtils.select(
                 new DisplayContext(),
-                holdingModel,
+                itemModel,
                 ItemModelUtils.when(List.of(ItemDisplayContext.GUI, ItemDisplayContext.GROUND, ItemDisplayContext.FIXED), itemModel),
-                ItemModelUtils.when(List.of(ItemDisplayContext.HEAD), blockModel)
+                ItemModelUtils.when(List.of(ItemDisplayContext.HEAD, ItemDisplayContext.FIRST_PERSON_LEFT_HAND, ItemDisplayContext.FIRST_PERSON_RIGHT_HAND, ItemDisplayContext.THIRD_PERSON_LEFT_HAND, ItemDisplayContext.THIRD_PERSON_RIGHT_HAND), blockModel)
         );
     }
 
