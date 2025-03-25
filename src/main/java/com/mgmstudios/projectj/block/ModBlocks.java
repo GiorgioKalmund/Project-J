@@ -106,6 +106,14 @@ public class ModBlocks {
             10
     );
 
+    public static final DeferredBlock<Block> SERPENTINITE_BRICKS = registerBlock("serpentinite_bricks",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS)
+    );
+
+    public static final DeferredBlock<Block> SERPENTINITE_ROCK = registerBlock("serpentinite_rock",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS)
+    );
+
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return properties -> properties.getValue(BlockStateProperties.LIT) ? lightValue : 0;

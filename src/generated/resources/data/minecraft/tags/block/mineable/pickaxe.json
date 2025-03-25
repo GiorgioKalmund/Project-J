@@ -5,6 +5,10 @@
     "projectj:jade_ore",
     "projectj:deepslate_jade_ore",
     "projectj:jade_block",
-    "projectj:basic_olmec_head"
+    "projectj:basic_olmec_head",
+    "projectj:resistant_olmec_head",
+    "projectj:conduit_olmec_head",
+    "projectj:serpentinite_rock",
+    "projectj:serpentinite_bricks"
   ]
 }

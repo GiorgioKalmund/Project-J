@@ -7,7 +7,6 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
@@ -71,6 +70,27 @@ public class ModRecipeProvider extends RecipeProvider {
                 .requires(ModBlocks.JADE_BLOCK.asItem())
                 .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK.get()))
                 .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.SERPENTINITE_ROCK.get(), 1)
+                .pattern("###")
+                .pattern("#J#")
+                .pattern("###")
+                .define('#', Items.COBBLESTONE)
+                .define('J', ModItems.JADE.get())
+                .unlockedBy("has_jade", this.has(ModItems.JADE.get()))
+                .unlockedBy("has_cobblestone", this.has(Items.COBBLESTONE))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.SERPENTINITE_BRICKS.get(), 4)
+                .pattern("##")
+                .pattern("##")
+                .define('#', ModBlocks.SERPENTINITE_ROCK.get())
+                .unlockedBy("has_serpentinite_rock", this.has(ModBlocks.SERPENTINITE_ROCK.get()))
+                .save(this.output);
+
+
+
+
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.BASIC_OLMEC_HEAD.get())
                 .pattern("S#H")

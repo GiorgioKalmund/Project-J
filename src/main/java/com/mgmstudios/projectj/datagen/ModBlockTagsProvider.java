@@ -24,7 +24,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.JADE_ORE.get())
                 .add(ModBlocks.DEEPSLATE_JADE_ORE.get())
                 .add(ModBlocks.JADE_BLOCK.get())
-                .add(ModBlocks.BASIC_OLMEC_HEAD.get());
+                .add(ModBlocks.BASIC_OLMEC_HEAD.get())
+                .add(ModBlocks.RESISTANT_OLMEC_HEAD.get())
+                .add(ModBlocks.CONDUIT_OLMEC_HEAD.get())
+                .add(ModBlocks.SERPENTINITE_ROCK.get())
+                .add(ModBlocks.SERPENTINITE_BRICKS.get());
 
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.JADE_ORE.get())
