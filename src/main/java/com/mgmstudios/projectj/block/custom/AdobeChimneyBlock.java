@@ -13,6 +13,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -47,32 +48,25 @@ public class AdobeChimneyBlock extends Block {
         builder.add(SMOKING);
     }
 
+
     @Override
-    protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
-        if (!(oldState.getBlock() instanceof AdobeChimneyBlock))
+    public void onBlockStateChange(LevelReader level, BlockPos pos, BlockState oldState, BlockState newState) {
+        System.out.println("onBlockStateChange: " + oldState + " -> " + newState);
+        if (oldState.is(ModBlocks.CHIMNEY)){
             return;
+        }
 
         if (level instanceof ServerLevel serverLevel){
-            prepareSpawnCondition(state, serverLevel, pos);
+            prepareSpawnCondition(newState, serverLevel, pos);
         }
-        super.onPlace(state, level, pos, oldState, movedByPiston);
-    }
-
-    @Override
-    protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
-        if (level instanceof ServerLevel serverLevel){
-            BlockPos belowPos = pos.below();
-            BlockState belowBlockState = level.getBlockState(belowPos);
-            if (belowBlockState.is(ModBlocks.ADOBE_FURNACE.get())){
-                serverLevel.setBlockAndUpdate(belowPos, belowBlockState.setValue(TIER1, false));
-            }
-        }
-        super.onRemove(state, level, pos, newState, movedByPiston);
+        super.onBlockStateChange(level, pos, oldState, newState);
     }
 
     public void prepareSpawnCondition(BlockState state, ServerLevel level, BlockPos pos){
         BlockPos belowPos = pos.below();
         BlockState belowBlockState = level.getBlockState(belowPos);
+        System.out.println("Preparing Spawn Condition");
+
 
         if (belowBlockState.is(ModBlocks.ADOBE_FURNACE.get())){
             System.out.println("Below is furnace");
@@ -87,6 +81,19 @@ public class AdobeChimneyBlock extends Block {
             }
         }
     }
+
+    @Override
+    protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
+        if (level instanceof ServerLevel serverLevel){
+            BlockPos belowPos = pos.below();
+            BlockState belowBlockState = level.getBlockState(belowPos);
+            if (belowBlockState.is(ModBlocks.ADOBE_FURNACE.get())){
+                serverLevel.setBlockAndUpdate(belowPos, belowBlockState.setValue(TIER1, false));
+            }
+        }
+        super.onRemove(state, level, pos, newState, movedByPiston);
+    }
+
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {

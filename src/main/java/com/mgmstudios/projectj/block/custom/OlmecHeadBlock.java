@@ -34,7 +34,7 @@ import org.jetbrains.annotations.Nullable;
 public class OlmecHeadBlock extends RedstoneLampBlock {
 
     public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-    private static final VoxelShape SHAPE = Block.box(1, 0, 0, 16, 15, 16);
+    private static final VoxelShape SHAPE = Block.box(0, 0, 1, 16, 15, 15);
     public final ParticleOptions effectParticle;
     public final Holder<MobEffect> effect;
     public final int effectTime;
