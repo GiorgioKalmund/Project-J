@@ -4,6 +4,7 @@ import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.custom.AdobeChimneyBlock;
 import com.mgmstudios.projectj.block.custom.AdobeFurnaceBlock;
 import com.mgmstudios.projectj.block.custom.OlmecHeadBlock;
+import com.mgmstudios.projectj.block.custom.RotateableHorizontalPillarBlock;
 import com.mgmstudios.projectj.item.ModItems;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -115,9 +116,7 @@ public class ModBlocks {
             BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS)
     );
 
-    public static final DeferredBlock<Block> SERPENTINITE_ROCK_STAIRS = registerStairBlock("serpentinite_rock_stairs",
-            BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_STAIRS)
-    );
+    public static final DeferredBlock<Block> SERPENTINITE_PILLAR = registerRotatedPillarBlock("serpentinite_pillar", BlockBehaviour.Properties.ofFullCopy(Blocks.QUARTZ_PILLAR), new Item.Properties());
 
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
@@ -187,6 +186,12 @@ public class ModBlocks {
     private static DeferredBlock<Block> registerChimneyBlock(String name, BlockBehaviour.Properties properties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new AdobeChimneyBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
         ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered);
+        return toBeRegistered;
+    }
+
+    private static DeferredBlock<Block> registerRotatedPillarBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
+        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new RotateableHorizontalPillarBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
         return toBeRegistered;
     }
 

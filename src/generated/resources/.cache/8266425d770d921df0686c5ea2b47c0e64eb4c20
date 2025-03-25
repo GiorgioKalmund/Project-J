@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-25T18:09:52.5869006	Model Definitions - projectj
+// 1.21.4	2025-03-25T23:18:23.3382194	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 68534f251c3c82fa6c7db8f259874b2acb9e8fec assets/projectj/blockstates/adobe_furnace.json
 99554bb900621c7ab7018caf8a553fe318443825 assets/projectj/blockstates/basic_olmec_head.json
@@ -10,6 +10,7 @@ dfdd72869320254b3ae6795b1e4d9a0a0c36ce64 assets/projectj/blockstates/jade_ore.js
 7f20e13f193fb8b581058bc81219c3ffe0bc6090 assets/projectj/blockstates/raw_adobe.json
 5a6b84cb6b8bdc01ca0c302f5fc7b3d6090e7e72 assets/projectj/blockstates/resistant_olmec_head.json
 925b3e2a4fb38a1f9c29afbf6ba8acf079f31ea4 assets/projectj/blockstates/serpentinite_bricks.json
+46d7163bcaeda9af3ea96f18d0ac9cc5174ff4b5 assets/projectj/blockstates/serpentinite_pillar.json
 4f7f3fca836fe862d7f09079dcc5cfb8ac8c6367 assets/projectj/blockstates/serpentinite_rock.json
 d706b874c3d232886834e6416b0fa9d9853232b1 assets/projectj/items/adobe_bricks.json
 13e17e699a8d9c78c3b62bc09a6d557d48707f73 assets/projectj/items/adobe_furnace.json
@@ -24,6 +25,7 @@ d706b874c3d232886834e6416b0fa9d9853232b1 assets/projectj/items/adobe_bricks.json
 5e4f7fcf393f89cf7bd262bb1481ac02750dcf26 assets/projectj/items/raw_jade.json
 20e7e68da680c45787b4e50294ded1baf3b678ba assets/projectj/items/resistant_olmec_head.json
 d0e47589c5ca23fb5a6230befd68c8baabde7549 assets/projectj/items/serpentinite_bricks.json
+0dc0e63bc195163e1a915a47c5a33cfa2680a517 assets/projectj/items/serpentinite_pillar.json
 7d43e5a7ac3121b138959f06bc970b61746beb6d assets/projectj/items/serpentinite_rock.json
 43a4a30bf747df0266fb42396721117d33cf3e08 assets/projectj/models/block/adobe_bricks.json
 f9b242d34949f79e409b68b64062a94ab39a13a9 assets/projectj/models/block/adobe_furnace.json
@@ -33,6 +35,8 @@ f9b242d34949f79e409b68b64062a94ab39a13a9 assets/projectj/models/block/adobe_furn
 a9dc860cc3b5276471695806148d26ece7d10d62 assets/projectj/models/block/jade_ore.json
 f0f8ab52c70a6167c4049a815151a54b6c9fa597 assets/projectj/models/block/raw_adobe.json
 1661a360d676a59501b9c597f3fd827415751fa9 assets/projectj/models/block/serpentinite_bricks.json
+44ecd52d7346d149fa51af92b15e5781d2976211 assets/projectj/models/block/serpentinite_pillar.json
+8cdf16edc8846b4baf81e98b34357379b283b924 assets/projectj/models/block/serpentinite_pillar_horizontal.json
 2b88232ac6ce30df733c8d5e86b763e0eeab0737 assets/projectj/models/block/serpentinite_rock.json
 9cc0c435272b7a37105bfd68afa6dd08bf45ef1e assets/projectj/models/item/jade.json
 ba637adad06995f9e8f952ca598514c60ce4cfbb assets/projectj/models/item/raw_jade.json

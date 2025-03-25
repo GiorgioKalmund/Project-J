@@ -13,6 +13,7 @@ import net.minecraft.client.data.models.blockstates.VariantProperties;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.properties.select.DisplayContext;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -47,6 +48,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.JADE_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.SERPENTINITE_ROCK.get());
         blockModels.createTrivialCube(ModBlocks.SERPENTINITE_BRICKS.get());
+        createSerpentinitePillar(blockModels, itemModels, ModBlocks.SERPENTINITE_PILLAR.get());
 
         itemModels.generateFlatItem(ModItems.RAW_JADE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.JADE.get(), ModelTemplates.FLAT_ITEM);
@@ -140,6 +142,30 @@ public class ModModelProvider extends ModelProvider {
                 ItemModelUtils.when(List.of(ItemDisplayContext.GUI, ItemDisplayContext.GROUND, ItemDisplayContext.FIXED), itemModel),
                 ItemModelUtils.when(List.of(ItemDisplayContext.HEAD, ItemDisplayContext.FIRST_PERSON_LEFT_HAND, ItemDisplayContext.FIRST_PERSON_RIGHT_HAND, ItemDisplayContext.THIRD_PERSON_LEFT_HAND, ItemDisplayContext.THIRD_PERSON_RIGHT_HAND), blockModel)
         );
+    }
+
+    public void createSerpentinitePillar(BlockModelGenerators blockModels, ItemModelGenerators itemModels, Block block) {
+        ResourceLocation resourcelocation = TexturedModel.COLUMN_ALT.create(block, blockModels.modelOutput);
+        ResourceLocation resourcelocation1 = TexturedModel.COLUMN_HORIZONTAL_ALT.create(block, blockModels.modelOutput);
+        blockModels.blockStateOutput
+                .accept(
+                        MultiVariantGenerator.multiVariant(block)
+                                .with(createHorizontalFacingDispatch())
+                                .with(PropertyDispatch.property(BlockStateProperties.AXIS)
+                                        .select(Direction.Axis.Y, Variant.variant().with(VariantProperties.MODEL, resourcelocation))
+                                        .select(
+                                                Direction.Axis.Z,
+                                                Variant.variant().with(VariantProperties.MODEL, resourcelocation1).with(VariantProperties.X_ROT, VariantProperties.Rotation.R90)
+                                        )
+                                        .select(
+                                                Direction.Axis.X,
+                                                Variant.variant()
+                                                        .with(VariantProperties.MODEL, resourcelocation1)
+                                                        .with(VariantProperties.X_ROT, VariantProperties.Rotation.R90)
+                                                        .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)
+                                        )
+                                )
+                );
     }
 
     @SubscribeEvent
