@@ -114,6 +114,10 @@ public class ModBlocks {
             BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS)
     );
 
+    public static final DeferredBlock<Block> SERPENTINITE_ROCK_STAIRS = registerStairBlock("serpentinite_rock_stairs",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_STAIRS)
+    );
+
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return properties -> properties.getValue(BlockStateProperties.LIT) ? lightValue : 0;
@@ -129,6 +133,17 @@ public class ModBlocks {
     private static DeferredBlock<Block> registerBlock(String name, BlockBehaviour.Properties properties) {
         return registerBlock(name, properties, new Item.Properties());
     }
+
+    private static DeferredBlock<Block> registerStairBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
+        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new StairBlock(ModBlocks.SERPENTINITE_ROCK.get().defaultBlockState(), properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
+        return toBeRegistered;
+    }
+
+    private static DeferredBlock<Block> registerStairBlock(String name, BlockBehaviour.Properties properties) {
+        return registerStairBlock(name, properties, new Item.Properties());
+    }
+
 
     private static DeferredBlock<Block> registerOlmecHeadBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties, ParticleOptions particleOptions, Holder<MobEffect> effect, int effectTime) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName ->
