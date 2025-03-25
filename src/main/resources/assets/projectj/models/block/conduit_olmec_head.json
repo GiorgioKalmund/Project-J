@@ -2,6 +2,7 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "projectj:block/conduit_olmec_stone",
+		"1": "projectj:block/conduit_olmec_face",
 		"2": "projectj:block/conduit_dark_olmec_stone",
 		"particle": "projectj:block/conduit_olmec_stone"
 	},
