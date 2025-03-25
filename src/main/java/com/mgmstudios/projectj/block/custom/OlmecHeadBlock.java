@@ -55,7 +55,7 @@ public class OlmecHeadBlock extends RedstoneLampBlock {
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if (state.getValue(LIT) && level instanceof ServerLevel serverLevel && player.getMainHandItem().isEmpty()){
             player.addEffect(new MobEffectInstance(effect, effectTime * 20, 1, true, false,true));
-            serverLevel.playSound(null, pos, SoundEvents.WANDERING_TRADER_DRINK_POTION, SoundSource.BLOCKS, 1f, 1f);
+            serverLevel.playSound(null, pos, SoundEvents.RESPAWN_ANCHOR_CHARGE, SoundSource.BLOCKS, 1f, 1f);
             this.spawnActivationParticles(serverLevel, pos, false);
             return InteractionResult.SUCCESS_SERVER;
         }
@@ -68,7 +68,7 @@ public class OlmecHeadBlock extends RedstoneLampBlock {
             return;
 
         if (newState.getValue(LIT) && levelReader instanceof ServerLevel serverLevel) {
-            serverLevel.playSound(null, pos, SoundEvents.RESPAWN_ANCHOR_CHARGE, SoundSource.BLOCKS);
+            serverLevel.playSound(null, pos, SoundEvents.BEACON_ACTIVATE, SoundSource.BLOCKS);
             spawnActivationParticles(serverLevel, pos, true);
         } else if (!newState.getValue(LIT) && levelReader instanceof ServerLevel serverLevel){
             serverLevel.playSound(null, pos, SoundEvents.REDSTONE_TORCH_BURNOUT, SoundSource.BLOCKS);
