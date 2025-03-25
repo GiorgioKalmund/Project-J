@@ -92,20 +92,20 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> BASIC_OLMEC_HEAD = registerOlmecHeadBlock("basic_olmec_head",
             ParticleTypes.HAPPY_VILLAGER,
-            MobEffects.MOVEMENT_SPEED,
-            10
+            MobEffects.REGENERATION,
+            20
     );
 
     public static final DeferredBlock<Block> RESISTANT_OLMEC_HEAD = registerOlmecHeadBlock("resistant_olmec_head",
             DustParticleOptions.REDSTONE,
             MobEffects.DAMAGE_BOOST,
-            10
+            20
     );
 
     public static final DeferredBlock<Block> CONDUIT_OLMEC_HEAD = registerOlmecHeadBlock("conduit_olmec_head",
             ParticleTypes.BUBBLE,
             MobEffects.CONDUIT_POWER,
-            10
+            20
     );
 
     public static final DeferredBlock<Block> SERPENTINITE_BRICKS = registerBlock("serpentinite_bricks",

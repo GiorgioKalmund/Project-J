@@ -54,7 +54,7 @@ public class OlmecHeadBlock extends RedstoneLampBlock {
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if (state.getValue(LIT) && level instanceof ServerLevel serverLevel && player.getMainHandItem().isEmpty()){
-            player.addEffect(new MobEffectInstance(effect, effectTime * 20, 1, true, false,true));
+            player.addEffect(new MobEffectInstance(effect, effectTime * 20, 2, true, false,true));
             serverLevel.playSound(null, pos, SoundEvents.RESPAWN_ANCHOR_CHARGE, SoundSource.BLOCKS, 1f, 1f);
             this.spawnActivationParticles(serverLevel, pos, false);
             return InteractionResult.SUCCESS_SERVER;
