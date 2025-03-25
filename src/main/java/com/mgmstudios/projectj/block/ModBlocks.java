@@ -6,6 +6,7 @@ import com.mgmstudios.projectj.block.custom.AdobeFurnaceBlock;
 import com.mgmstudios.projectj.block.custom.OlmecHeadBlock;
 import com.mgmstudios.projectj.item.ModItems;
 import net.minecraft.core.Holder;
+import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
@@ -95,7 +96,7 @@ public class ModBlocks {
     );
 
     public static final DeferredBlock<Block> RESISTANT_OLMEC_HEAD = registerOlmecHeadBlock("resistant_olmec_head",
-            ParticleTypes.ELECTRIC_SPARK,
+            DustParticleOptions.REDSTONE,
             MobEffects.DAMAGE_BOOST,
             10
     );
