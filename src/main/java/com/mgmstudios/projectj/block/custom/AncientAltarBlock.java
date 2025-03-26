@@ -8,6 +8,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.PatchedDataComponentMap;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -20,6 +21,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -78,7 +82,6 @@ public class AncientAltarBlock extends HorizontalDirectionalBlock {
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
         if (entity instanceof ItemEntity itemEntity && !state.getValue(CRAFTING)){
             boolean validItem = (itemEntity.getItem().is(ModTags.Items.ALTAR_CRAFTABLE));
-            System.out.println("Valid: " + validItem + " -> " + itemEntity);
             if (validItem){
                 BlockPos north2apart = pos.north().north();
                 BlockPos south2apart = pos.south().south();
@@ -104,11 +107,6 @@ public class AncientAltarBlock extends HorizontalDirectionalBlock {
             return;
 
         level.levelEvent(2009, pos, 0);
-        BlockPos north2apart = pos.north().north();
-        BlockPos south2apart = pos.south().south();
-        BlockPos east2apart = pos.east().east();
-        BlockPos west2apart = pos.west().west();
-
         ItemEntity itemEntity = null;
         try {
             BlockPos abovePos = pos.above();
@@ -119,8 +117,8 @@ public class AncientAltarBlock extends HorizontalDirectionalBlock {
         }
 
         if (itemEntity != null){
-            convertItem(itemEntity.getItem(), Items.NETHERITE_PICKAXE, ModItems.PAXEL.get(), level, itemEntity, pos, SoundEvents.EXPERIENCE_ORB_PICKUP, north2apart, south2apart, east2apart, west2apart);
-            convertItemWithMultiplier(itemEntity.getItem(), ModItems.RAW_JADE.get(), ModItems.JADE.get(), 2, level, itemEntity, pos, SoundEvents.EXPERIENCE_ORB_PICKUP, north2apart, south2apart, east2apart, west2apart);
+            convertItem(itemEntity.getItem(), Items.NETHERITE_PICKAXE, ModItems.PAXEL.get(), level, itemEntity, pos, SoundEvents.EXPERIENCE_ORB_PICKUP);
+            convertItemWithMultiplier(itemEntity.getItem(), ModItems.RAW_JADE.get(), ModItems.JADE.get(), 2, level, itemEntity, pos, SoundEvents.EXPERIENCE_ORB_PICKUP);
         } else {
             System.out.println("No entity above block. AbovePos: " + pos.above());
         }
@@ -131,8 +129,8 @@ public class AncientAltarBlock extends HorizontalDirectionalBlock {
 
     }
 
-    private void convertItem(ItemStack stack, Item fromItem, Item toItem, Level level, ItemEntity itemEntity, BlockPos pos, SoundEvent soundEvent, BlockPos ... headPositions){
-        convertItemWithModulo(stack, fromItem, toItem, 1, level, itemEntity, pos, soundEvent, headPositions);
+    private void convertItem(ItemStack stack, Item fromItem, Item toItem, Level level, ItemEntity itemEntity, BlockPos pos, SoundEvent soundEvent){
+        convertItemWithModulo(stack, fromItem, toItem, 1, level, itemEntity, pos, soundEvent);
     }
 
     private boolean validAltar(ServerLevel level, BlockPos altarPos, List<Block> list, BlockPos northPos, BlockPos southPos, BlockPos eastPos, BlockPos westPos){
@@ -149,30 +147,16 @@ public class AncientAltarBlock extends HorizontalDirectionalBlock {
         return list.isEmpty();
     }
 
-    private void convertItemWithModulo(ItemStack stack, Item fromItem, Item toItem, int modulo, Level level, ItemEntity itemEntity, BlockPos pos, SoundEvent soundEvent, BlockPos ... headPositions) {
+    private void convertItemWithModulo(ItemStack stack, Item fromItem, Item toItem, int modulo, Level level, ItemEntity itemEntity, BlockPos pos, SoundEvent soundEvent) {
         if (stack.getItem() == fromItem && stack.getCount() >= modulo) {
             int fullConversions = stack.getCount() / modulo;
             int remainder = stack.getCount() % modulo;
 
-            itemEntity.setItem(new ItemStack(toItem, fullConversions));
-
-            if (remainder > 0) {
-                ItemEntity remainderEntity = new ItemEntity(
-                        level,
-                        itemEntity.getX(),
-                        itemEntity.getY(),
-                        itemEntity.getZ(),
-                        new ItemStack(fromItem, remainder)
-                );
-                level.addFreshEntity(remainderEntity);
-
-            }
-
-            level.playSound(itemEntity, pos, soundEvent, SoundSource.BLOCKS, 1f, 1f);
+            convert(stack, toItem, fullConversions, remainder, level, itemEntity, pos, soundEvent);
         }
     }
 
-    private void convertItemWithMultiplier(ItemStack stack, Item fromItem, Item toItem, int multiplier, Level level, ItemEntity itemEntity, BlockPos pos, SoundEvent soundEvent, BlockPos ... headPositions) {
+    private void convertItemWithMultiplier(ItemStack stack, Item fromItem, Item toItem, int multiplier, Level level, ItemEntity itemEntity, BlockPos pos, SoundEvent soundEvent) {
         if (stack.getItem() == fromItem) {
             int stackCount = stack.getCount() * multiplier;
             int remainder = 0;
@@ -181,21 +165,35 @@ public class AncientAltarBlock extends HorizontalDirectionalBlock {
                 stackCount = 64;
             }
 
-            itemEntity.setItem(new ItemStack(toItem, stackCount));
-
-            if (remainder > 0) {
-                ItemEntity remainderEntity = new ItemEntity(
-                        level,
-                        itemEntity.getX(),
-                        itemEntity.getY(),
-                        itemEntity.getZ(),
-                        new ItemStack(toItem, remainder)
-                );
-                level.addFreshEntity(remainderEntity);
-            }
-
-            level.playSound(itemEntity, pos, soundEvent, SoundSource.BLOCKS, 1f, 1f);
+            convert(stack, toItem, stackCount, remainder, level, itemEntity, pos, soundEvent);
         }
+    }
+
+    private static void convert(ItemStack stack, Item toItem, int fullConversions, int remainder, Level level, ItemEntity itemEntity, BlockPos pos, SoundEvent soundEvent){
+        ItemStack fullConversionStack = new ItemStack(toItem, fullConversions);
+        ItemStack remainderStack = new ItemStack(toItem, remainder);
+
+        itemEntity.setItem(fullConversionStack);
+
+        if (stack.isEnchanted()) {
+            ItemEnchantments enchantments = EnchantmentHelper.getEnchantmentsForCrafting(stack);
+            EnchantmentHelper.setEnchantments(fullConversionStack, enchantments);
+            EnchantmentHelper.setEnchantments(remainderStack, enchantments);
+        }
+
+        if (remainder > 0) {
+            ItemEntity remainderEntity = new ItemEntity(
+                    level,
+                    itemEntity.getX(),
+                    itemEntity.getY(),
+                    itemEntity.getZ(),
+                    remainderStack
+            );
+            level.addFreshEntity(remainderEntity);
+
+        }
+
+        level.playSound(itemEntity, pos, soundEvent, SoundSource.BLOCKS, 1f, 1f);
     }
 
     private static void showEnchantingParticles(Level level, BlockPos pos){
