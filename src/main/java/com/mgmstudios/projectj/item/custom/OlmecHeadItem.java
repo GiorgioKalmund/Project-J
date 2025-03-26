@@ -11,7 +11,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -35,7 +34,6 @@ public class OlmecHeadItem extends BlockItem {
             player.addEffect(new MobEffectInstance(effect, 2 * 20, 2, true, false,true));
         }
     }
-
 
     public static Item.Properties humanoidProperties(ArmorMaterial material, Item.Properties properties, ArmorType armorType) {
         return properties.durability(armorType.getDurability(material.durability())).attributes(createAttributes(material, armorType)).enchantable(material.enchantmentValue()).component(DataComponents.EQUIPPABLE, Equippable.builder(armorType.getSlot()).setEquipSound(material.equipSound()).build());
