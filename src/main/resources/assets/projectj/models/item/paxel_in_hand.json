@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"2": "projectj:block/serpentinite_rock",
-		"3": "projectj:block/regeneration_olmec_stone",
+		"2": "projectj:block/jade_block",
+		"3": "projectj:block/serpentinite_rock",
 		"4": "projectj:block/dark_olmec_stone",
 		"particle": "projectj:block/dark_olmec_stone"
 	},
@@ -15,7 +15,7 @@
 				"north": {"uv": [0, 0, 1, 12], "texture": "#3"},
 				"east": {"uv": [0, 0, 1, 12], "texture": "#3"},
 				"south": {"uv": [0, 0, 1, 12], "texture": "#3"},
-				"west": {"uv": [0, 0, 1, 12], "texture": "#3"},
+				"west": {"uv": [7, 2, 8, 14], "texture": "#3"},
 				"up": {"uv": [0, 0, 1, 1], "texture": "#3"},
 				"down": {"uv": [0, 0, 1, 1], "texture": "#3"}
 			}
@@ -129,7 +129,7 @@
 			"to": [10, 17, 6],
 			"rotation": {"angle": 0, "axis": "y", "origin": [7, 14, 4]},
 			"faces": {
-				"north": {"uv": [0, 0, 4, 4], "texture": "#2"},
+				"north": {"uv": [4, 0, 8, 4], "texture": "#2"},
 				"east": {"uv": [0, 0, 2, 4], "texture": "#2"},
 				"south": {"uv": [0, 0, 4, 4], "texture": "#2"},
 				"west": {"uv": [0, 0, 2, 4], "texture": "#2"},
