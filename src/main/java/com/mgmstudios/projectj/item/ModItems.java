@@ -53,6 +53,6 @@ public class ModItems {
     }
 
     public static DeferredItem<Item> registerPaxelItem(String name, Item.Properties properties){
-        return ITEMS.register(name, key -> new PaxelItem(ModToolMaterials.PAXEL_MATERIAL, 7F, 3F, properties.setId(ResourceKey.create(Registries.ITEM, key))));
+        return ITEMS.register(name, key -> new PaxelItem(3F, -2.4F, properties.setId(ResourceKey.create(Registries.ITEM, key))));
     }
 }

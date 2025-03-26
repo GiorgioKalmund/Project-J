@@ -1,5 +1,7 @@
 package com.mgmstudios.projectj.item.custom;
 
+import com.mgmstudios.projectj.block.ModBlocks;
+import com.mgmstudios.projectj.item.ModToolMaterials;
 import com.mgmstudios.projectj.util.ModTags;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.BlockPos;
@@ -25,8 +27,8 @@ import java.util.function.Predicate;
 
 public class PaxelItem extends DiggerItem {
 
-    public PaxelItem(ToolMaterial material, float attackDamage, float attackSpeed, Properties properties) {
-        super(material, ModTags.Blocks.MINEABLE_WITH_PAXEL, attackDamage, attackSpeed, properties);
+    public PaxelItem(float attackDamage, float attackSpeed, Properties properties) {
+        super(ModToolMaterials.PAXEL_MATERIAL, ModTags.Blocks.MINEABLE_WITH_PAXEL, attackDamage, attackSpeed, properties);
     }
 
     @Override
