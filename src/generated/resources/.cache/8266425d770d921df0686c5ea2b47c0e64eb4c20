@@ -1,7 +1,7 @@
-// 1.21.4	2025-03-26T17:01:40.680688	Model Definitions - projectj
+// 1.21.4	2025-03-26T22:34:35.0855561	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 68534f251c3c82fa6c7db8f259874b2acb9e8fec assets/projectj/blockstates/adobe_furnace.json
-8cac886c19381e869f3fa5267d98afba9fd08bcf assets/projectj/blockstates/ancient_altar.json
+359a386fc9ef069876d3364959b8a351bc839cbb assets/projectj/blockstates/ancient_altar.json
 309790fd770e0a99af56c7e38a82bd6f18f80fda assets/projectj/blockstates/chimney.json
 a8692211143e490f13a28b448600de3bdaf544a4 assets/projectj/blockstates/conduit_olmec_head.json
 e631c7188802b1c576f60a6935f58c5e177154ac assets/projectj/blockstates/damage_olmec_head.json
@@ -35,7 +35,6 @@ d0e47589c5ca23fb5a6230befd68c8baabde7549 assets/projectj/items/serpentinite_bric
 43a4a30bf747df0266fb42396721117d33cf3e08 assets/projectj/models/block/adobe_bricks.json
 f9b242d34949f79e409b68b64062a94ab39a13a9 assets/projectj/models/block/adobe_furnace.json
 6be9ef5091aa15e0717da95cabb3a12cd5ec0c45 assets/projectj/models/block/adobe_furnace_on.json
-732bb3e7ad2783d277eaeaf6c46abbdc5bf10979 assets/projectj/models/block/ancient_altar.json
 534bc754e5caeacadd8e4b1fb2e4edbf28e902d8 assets/projectj/models/block/deepslate_jade_ore.json
 51a148e2c077ccec8b3af8781ca3db505af160bb assets/projectj/models/block/jade_block.json
 a9dc860cc3b5276471695806148d26ece7d10d62 assets/projectj/models/block/jade_ore.json

@@ -34,6 +34,7 @@ public class ModItems {
     public static final DeferredItem<Item> PAXEL = registerPaxelItem("paxel",
           new Item.Properties()
                   .fireResistant()
+                  .rarity(Rarity.EPIC)
     );
 
     public static void register(IEventBus eventBus) {

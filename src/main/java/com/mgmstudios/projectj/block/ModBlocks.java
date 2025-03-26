@@ -120,7 +120,7 @@ public class ModBlocks {
     );
 
     public static final DeferredBlock<Block> ANCIENT_ALTAR = registerAncientAltarBlock("ancient_altar",
-            BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS).noOcclusion(),
             new Item.Properties().rarity(Rarity.EPIC)
     );
 

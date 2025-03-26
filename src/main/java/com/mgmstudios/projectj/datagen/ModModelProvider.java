@@ -48,7 +48,6 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.JADE_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.SERPENTINITE_ROCK.get());
         blockModels.createTrivialCube(ModBlocks.SERPENTINITE_BRICKS.get());
-        blockModels.createTrivialCube(ModBlocks.ANCIENT_ALTAR.get());
         createSerpentinitePillar(blockModels, itemModels, ModBlocks.SERPENTINITE_PILLAR.get());
 
         itemModels.generateFlatItem(ModItems.RAW_JADE.get(), ModelTemplates.FLAT_ITEM);
@@ -63,6 +62,7 @@ public class ModModelProvider extends ModelProvider {
         createOlmecHead(blockModels, itemModels, ModBlocks.RESISTANT_OLMEC_HEAD.get());
 
         createSimpleBlockWithCustomModel(blockModels, ModBlocks.CHIMNEY.get());
+        createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.ANCIENT_ALTAR.get());
 
     }
 
@@ -74,7 +74,7 @@ public class ModModelProvider extends ModelProvider {
         );
     }
 
-    public void createHorizontallyRotatedBlockWithCustomModel(BlockModelGenerators blockModels, Block block){
+    public void createHorizontalDirectionalBlockWithCustomModel(BlockModelGenerators blockModels, Block block){
         ResourceLocation resourcelocation = ModelLocationUtils.getModelLocation(block);
         blockModels.blockStateOutput.accept(
                 MultiVariantGenerator.multiVariant(block, Variant.variant()

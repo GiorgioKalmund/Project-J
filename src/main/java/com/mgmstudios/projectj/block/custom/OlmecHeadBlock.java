@@ -106,7 +106,6 @@ public class OlmecHeadBlock extends RedstoneLampBlock {
     public void spawnBeaconBeam(ServerLevel serverLevel, BlockPos headPosition, BlockPos targetPosition, int particleCount) {
         Vec3 headVec = headPosition.getCenter();
         Vec3 targetVec = targetPosition.getCenter();
-        targetVec = targetVec.add(new Vec3(0, 0.5, 0));
 
         Vec3 directionVec = targetVec.subtract(headVec);
 

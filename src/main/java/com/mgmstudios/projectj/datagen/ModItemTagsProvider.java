@@ -47,6 +47,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.PAXEL.get());
 
         tag(ModTags.Items.ALTAR_CRAFTABLE)
-                .add(Items.NETHERITE_PICKAXE);
+                .add(Items.NETHERITE_PICKAXE)
+                .add(ModItems.RAW_JADE.get());
     }
 }
