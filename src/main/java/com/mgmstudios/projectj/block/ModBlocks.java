@@ -116,7 +116,12 @@ public class ModBlocks {
     );
 
     public static final DeferredBlock<Block> SERPENTINITE_ROCK = registerBlock("serpentinite_rock",
-            BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS)
+            BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)
+    );
+
+    public static final DeferredBlock<Block> ANCIENT_ALTAR = registerAncientAltarBlock("ancient_altar",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS),
+            new Item.Properties().rarity(Rarity.EPIC)
     );
 
     public static final DeferredBlock<Block> SERPENTINITE_PILLAR = registerRotatedPillarBlock("serpentinite_pillar", BlockBehaviour.Properties.ofFullCopy(Blocks.QUARTZ_PILLAR), new Item.Properties());
@@ -124,6 +129,12 @@ public class ModBlocks {
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return properties -> properties.getValue(BlockStateProperties.LIT) ? lightValue : 0;
+    }
+
+    private static DeferredBlock<Block> registerAncientAltarBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
+        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new AncientAltarBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
+        return toBeRegistered;
     }
 
     private static DeferredBlock<Block> registerBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {

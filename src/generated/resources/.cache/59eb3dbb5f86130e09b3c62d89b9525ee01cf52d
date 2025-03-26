@@ -1,6 +1,7 @@
-// 1.21.4	2025-03-26T13:33:19.7545411	Loot Tables
+// 1.21.4	2025-03-26T17:01:40.6816879	Loot Tables
 645e23f8676b8f0e4d797aeab743aa1e3606c703 data/projectj/loot_table/blocks/adobe_bricks.json
 c1935a254394f32f5c532b04dae7c39bc47610aa data/projectj/loot_table/blocks/adobe_furnace.json
+8d0db64bfc99e962b58dbc58ba33d90f039a131f data/projectj/loot_table/blocks/ancient_altar.json
 a83c817d872b29e383079bd07d3cc0a59907eda0 data/projectj/loot_table/blocks/chimney.json
 adb3a695cc9a89314193c4b19386e1f00a9298b3 data/projectj/loot_table/blocks/conduit_olmec_head.json
 b4fa58f65ed77099a543870e6ad939cecff08e34 data/projectj/loot_table/blocks/damage_olmec_head.json

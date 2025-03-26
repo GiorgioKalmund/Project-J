@@ -48,6 +48,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.JADE_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.SERPENTINITE_ROCK.get());
         blockModels.createTrivialCube(ModBlocks.SERPENTINITE_BRICKS.get());
+        blockModels.createTrivialCube(ModBlocks.ANCIENT_ALTAR.get());
         createSerpentinitePillar(blockModels, itemModels, ModBlocks.SERPENTINITE_PILLAR.get());
 
         itemModels.generateFlatItem(ModItems.RAW_JADE.get(), ModelTemplates.FLAT_ITEM);

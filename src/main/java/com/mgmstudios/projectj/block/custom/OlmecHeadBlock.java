@@ -14,22 +14,29 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.RedstoneLampBlock;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BeaconBlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.gameevent.GameEventListener;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Set;
 
 public class OlmecHeadBlock extends RedstoneLampBlock {
 
@@ -72,7 +79,7 @@ public class OlmecHeadBlock extends RedstoneLampBlock {
             return;
 
         if (newState.getValue(LIT) && levelReader instanceof ServerLevel serverLevel) {
-            serverLevel.playSound(null, pos, SoundEvents.BEACON_ACTIVATE, SoundSource.BLOCKS);
+            serverLevel.playSound(null, pos, SoundEvents.RESPAWN_ANCHOR_CHARGE, SoundSource.BLOCKS);
             spawnActivationParticles(serverLevel, pos, true);
         } else if (!newState.getValue(LIT) && levelReader instanceof ServerLevel serverLevel){
             serverLevel.playSound(null, pos, SoundEvents.REDSTONE_TORCH_BURNOUT, SoundSource.BLOCKS);
@@ -81,7 +88,7 @@ public class OlmecHeadBlock extends RedstoneLampBlock {
         super.onBlockStateChange(levelReader, pos, oldState, newState);
     }
 
-    private void spawnActivationParticles(ServerLevel serverLevel, BlockPos pos, boolean smoke) {
+    public void spawnActivationParticles(ServerLevel serverLevel, BlockPos pos, boolean smoke) {
         RandomSource random = serverLevel.getRandom();
         for (int i = 0; i < 25; i++) {
             double x = pos.getX() + random.nextDouble() + 0.1;
@@ -96,6 +103,21 @@ public class OlmecHeadBlock extends RedstoneLampBlock {
         }
     }
 
+    public void spawnBeaconBeam(ServerLevel serverLevel, BlockPos headPosition, BlockPos targetPosition, int particleCount) {
+        Vec3 headVec = headPosition.getCenter();
+        Vec3 targetVec = targetPosition.getCenter();
+        targetVec = targetVec.add(new Vec3(0, 0.5, 0));
+
+        Vec3 directionVec = targetVec.subtract(headVec);
+
+        var dist = directionVec.length();
+        var stepSize = dist / (particleCount - 1) / 2;
+
+        for (int i = 0; i < particleCount ; i ++){
+            var position = headVec.add(directionVec.scale(stepSize * i));
+            serverLevel.sendParticles(effectParticle,true,true,  position.x, position.y, position.z, 1, 0, 0, 0, 0.05);
+        }
+    }
 
     @Override
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
@@ -107,4 +129,6 @@ public class OlmecHeadBlock extends RedstoneLampBlock {
         super.createBlockStateDefinition(builder);
         builder.add(FACING);
     }
+
+
 }
