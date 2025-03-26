@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-26T13:33:19.7535416	Model Definitions - projectj
+// 1.21.4	2025-03-26T13:56:12.117825	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 68534f251c3c82fa6c7db8f259874b2acb9e8fec assets/projectj/blockstates/adobe_furnace.json
 309790fd770e0a99af56c7e38a82bd6f18f80fda assets/projectj/blockstates/chimney.json
@@ -22,6 +22,7 @@ d706b874c3d232886834e6416b0fa9d9853232b1 assets/projectj/items/adobe_bricks.json
 20e974e68377b3d13568f54b52c8c52e9ccf5e66 assets/projectj/items/jade.json
 9c8cb0c378da07b61725adb0d0a48b374dae6f8d assets/projectj/items/jade_block.json
 6c67bf56da03612616be77ed4bd0cc89a742b31b assets/projectj/items/jade_ore.json
+f67f62cb3167e8bb749209ace68afbaea4ca2ab0 assets/projectj/items/paxel.json
 492f9f434f6bb99befe23a82340ec8394427218e assets/projectj/items/raw_adobe.json
 5e4f7fcf393f89cf7bd262bb1481ac02750dcf26 assets/projectj/items/raw_jade.json
 b1ef94aa64918217023c7e7dd8747433a3cd1827 assets/projectj/items/regeneration_olmec_head.json
@@ -41,4 +42,5 @@ f0f8ab52c70a6167c4049a815151a54b6c9fa597 assets/projectj/models/block/raw_adobe.
 8cdf16edc8846b4baf81e98b34357379b283b924 assets/projectj/models/block/serpentinite_pillar_horizontal.json
 2b88232ac6ce30df733c8d5e86b763e0eeab0737 assets/projectj/models/block/serpentinite_rock.json
 9cc0c435272b7a37105bfd68afa6dd08bf45ef1e assets/projectj/models/item/jade.json
+c934a3286904ac94112062ce334f599e180695c4 assets/projectj/models/item/paxel.json
 ba637adad06995f9e8f952ca598514c60ce4cfbb assets/projectj/models/item/raw_jade.json

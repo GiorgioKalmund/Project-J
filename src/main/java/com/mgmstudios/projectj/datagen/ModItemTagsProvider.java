@@ -8,6 +8,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.Tags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -35,5 +36,13 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ModTags.Items.JADE)
                 .add(ModItems.JADE.get());
 
+        tag(ItemTags.MINING_ENCHANTABLE)
+                .add(ModItems.PAXEL.get());
+
+        tag(ItemTags.DURABILITY_ENCHANTABLE)
+                .add(ModItems.PAXEL.get());
+
+        tag(ItemTags.MINING_LOOT_ENCHANTABLE)
+                .add(ModItems.PAXEL.get());
     }
 }

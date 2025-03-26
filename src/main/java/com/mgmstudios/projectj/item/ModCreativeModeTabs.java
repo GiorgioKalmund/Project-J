@@ -39,6 +39,7 @@ public class ModCreativeModeTabs {
 
                 output.accept(ModItems.RAW_JADE.get());
                 output.accept(ModItems.JADE.get());
+                output.accept(ModItems.PAXEL.get());
                 output.accept(ModBlocks.JADE_BLOCK.get());
             })
             .build()

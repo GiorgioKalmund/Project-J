@@ -3,6 +3,7 @@ package com.mgmstudios.projectj.item;
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.item.custom.OlmecHeadItem;
+import com.mgmstudios.projectj.item.custom.PaxelItem;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -10,6 +11,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -29,6 +31,11 @@ public class ModItems {
     public static final DeferredItem<Item> JADE = ITEMS.registerItem("jade",
             Item::new, new Item.Properties().rarity(Rarity.RARE));
 
+    public static final DeferredItem<Item> PAXEL = registerPaxelItem("paxel",
+          new Item.Properties()
+                  .fireResistant()
+    );
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
@@ -43,6 +50,9 @@ public class ModItems {
                         properties.setId(ResourceKey.create(Registries.ITEM, key)),
                         effect)
         );
+    }
 
+    public static DeferredItem<Item> registerPaxelItem(String name, Item.Properties properties){
+        return ITEMS.register(name, key -> new PaxelItem(ModToolMaterials.PAXEL_MATERIAL, 7F, 3F, properties.setId(ResourceKey.create(Registries.ITEM, key))));
     }
 }

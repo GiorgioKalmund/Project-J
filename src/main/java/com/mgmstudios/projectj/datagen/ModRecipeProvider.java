@@ -88,10 +88,6 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_serpentinite_rock", this.has(ModBlocks.SERPENTINITE_ROCK.get()))
                 .save(this.output);
 
-
-
-
-
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.REGENERATION_OLMEC_HEAD.get())
                 .pattern("S#A")
                 .pattern("#J#")
@@ -146,6 +142,16 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_sponge", this.has(Items.SPONGE))
                 .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK.asItem()))
                 .unlockedBy("has_stone_bricks", this.has(Items.STONE_BRICKS))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.COMBAT, ModItems.PAXEL.get())
+                .pattern("JJJ")
+                .pattern(" S ")
+                .pattern(" S ")
+                .define('S', ModBlocks.SERPENTINITE_ROCK.asItem())
+                .define('J', ModItems.JADE.asItem())
+                .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK.asItem()))
+                .unlockedBy("has_serpentinite_block", this.has(ModBlocks.SERPENTINITE_ROCK.asItem()))
                 .save(this.output);
 
         // SMELTING

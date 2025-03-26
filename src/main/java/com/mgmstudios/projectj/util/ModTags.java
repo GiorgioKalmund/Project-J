@@ -16,6 +16,8 @@ public class ModTags {
     public static class Blocks {
 
 
+        public static final TagKey<Block> MINEABLE_WITH_PAXEL = createTag("mineable/paxel");
+
         private static TagKey<Block> createTag(String name){
             return BlockTags.create(ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, name));
         }
@@ -28,6 +30,8 @@ public class ModTags {
 
         public static final TagKey<Item> JADE = createTag("jade");
         public static final TagKey<Item> SMELTS_TO_JADE = createTag("smelts_to_jade");
+
+
 
         private static TagKey<Item> createTag(String name){
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, name));

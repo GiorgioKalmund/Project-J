@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "J": "projectj:jade",
+    "S": "projectj:serpentinite_rock"
+  },
+  "pattern": [
+    "JJJ",
+    " S ",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectj:paxel"
+  }
+}
