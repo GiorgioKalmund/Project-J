@@ -58,6 +58,7 @@ public class ModModelProvider extends ModelProvider {
         createOlmecHead(blockModels, itemModels, ModBlocks.RESISTANT_OLMEC_HEAD.get());
         createOlmecHead(blockModels, itemModels, ModBlocks.BASIC_OLMEC_HEAD.get());
         createOlmecHead(blockModels, itemModels, ModBlocks.CONDUIT_OLMEC_HEAD.get());
+        createOlmecHead(blockModels, itemModels, ModBlocks.POWER_OLMEC_HEAD.get());
 
         createSimpleBlockWithCustomModel(blockModels, ModBlocks.CHIMNEY.get());
     }

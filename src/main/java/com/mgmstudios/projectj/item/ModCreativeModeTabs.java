@@ -35,6 +35,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.BASIC_OLMEC_HEAD.get());
                 output.accept(ModBlocks.RESISTANT_OLMEC_HEAD.get());
                 output.accept(ModBlocks.CONDUIT_OLMEC_HEAD.get());
+                output.accept(ModBlocks.POWER_OLMEC_HEAD.get());
 
 
                 output.accept(ModItems.RAW_JADE.get());

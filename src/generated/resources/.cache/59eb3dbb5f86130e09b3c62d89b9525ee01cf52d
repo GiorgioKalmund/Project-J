@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-25T22:46:44.9099496	Loot Tables
+// 1.21.4	2025-03-26T11:43:05.847544	Loot Tables
 645e23f8676b8f0e4d797aeab743aa1e3606c703 data/projectj/loot_table/blocks/adobe_bricks.json
 c1935a254394f32f5c532b04dae7c39bc47610aa data/projectj/loot_table/blocks/adobe_furnace.json
 6da84303d4855d649345b0bfb8b6918e830500d8 data/projectj/loot_table/blocks/basic_olmec_head.json
@@ -7,6 +7,7 @@ adb3a695cc9a89314193c4b19386e1f00a9298b3 data/projectj/loot_table/blocks/conduit
 e236002db4b8a69bcaa8a7e7484db5d3319458a7 data/projectj/loot_table/blocks/deepslate_jade_ore.json
 250c4f38d51efd53420b2a8b06eced5ffe896263 data/projectj/loot_table/blocks/jade_block.json
 9ad80c3265b1b2ec4949f718f7f0bd9358890e7b data/projectj/loot_table/blocks/jade_ore.json
+82c6f8612a81c49622422967ef696cbd7deb6933 data/projectj/loot_table/blocks/power_olmec_head.json
 6c0b1079347a3cf6144330d7a346108354b52a2e data/projectj/loot_table/blocks/raw_adobe.json
 6c5ed4ae0a4f939414539ec6bedaea9e0b4cc700 data/projectj/loot_table/blocks/resistant_olmec_head.json
 0ffab86f784fafab337ec04f462fc6b1347c97cf data/projectj/loot_table/blocks/serpentinite_bricks.json

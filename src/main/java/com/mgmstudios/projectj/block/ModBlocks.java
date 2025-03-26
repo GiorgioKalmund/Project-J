@@ -121,6 +121,12 @@ public class ModBlocks {
             20
     );
 
+    public static final DeferredBlock<Block> POWER_OLMEC_HEAD = registerOlmecHeadBlock("power_olmec_head",
+            ParticleTypes.ELECTRIC_SPARK,
+            MobEffects.DAMAGE_RESISTANCE,
+            20
+    );
+
     public static final DeferredBlock<Block> SERPENTINITE_BRICKS = registerBlock("serpentinite_bricks",
             BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS)
     );
