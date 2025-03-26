@@ -28,9 +28,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                .add(ModBlocks.RAW_ADOBE.asItem());
 
         tag(ModTags.Items.SMELTS_TO_JADE)
-                .add(ModItems.RAW_JADE.get())
                 .add(ModBlocks.JADE_ORE.asItem())
-                .add(ModBlocks.DEEPSLATE_JADE_ORE.asItem());
+                .add(ModBlocks.DEEPSLATE_JADE_ORE.asItem())
+                .add(ModItems.RAW_JADE.get());
+
+        tag(ModTags.Items.JADE)
+                .add(ModItems.JADE.get());
 
     }
 }

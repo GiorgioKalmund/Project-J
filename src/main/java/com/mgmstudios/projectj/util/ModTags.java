@@ -25,6 +25,8 @@ public class ModTags {
     public static class Items {
         public static final TagKey<Item> ADOBE_FURNACE_SMELTABLE = createTag("adobe_furnace_smeltable");
         public static final TagKey<Item> JADE_ORES = createTag("jade_ores");
+
+        public static final TagKey<Item> JADE = createTag("jade");
         public static final TagKey<Item> SMELTS_TO_JADE = createTag("smelts_to_jade");
 
         private static TagKey<Item> createTag(String name){

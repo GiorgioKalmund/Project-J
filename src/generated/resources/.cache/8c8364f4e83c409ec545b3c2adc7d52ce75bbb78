@@ -1,4 +1,5 @@
-// 1.21.4	2025-03-24T22:04:58.6884537	Tags for minecraft:item mod id vanilla
+// 1.21.4	2025-03-26T10:39:37.76457	Tags for minecraft:item mod id vanilla
 fb8fa6cba9dd66d4d5a872f2009487725716357a data/projectj/tags/item/adobe_furnace_smeltable.json
+a49dbe94ce86b9ca5b714d568d9f6ad6e884c4be data/projectj/tags/item/jade.json
 d46e436ac7b0310f99e2171a645a158eee0fe30e data/projectj/tags/item/jade_ores.json
-a3794539281c230924c2d8a7fc860c53808d8705 data/projectj/tags/item/smelts_to_jade.json
+ef009a87c52aaa14dfb5c66731fe936ec1686e03 data/projectj/tags/item/smelts_to_jade.json
