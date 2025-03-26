@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "projectj:power_olmec_head"
+          "name": "projectj:damage_olmec_head"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "projectj:blocks/power_olmec_head"
+  "random_sequence": "projectj:blocks/damage_olmec_head"
 }

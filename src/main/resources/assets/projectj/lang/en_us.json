@@ -14,14 +14,14 @@
   "block.projectj.serpentinite_pillar": "Serpentinite Pillar",
 
 
-  "block.projectj.basic_olmec_head": "Basic Olmec Head",
-  "item.projectj.basic_olmec_head": "Basic Olmec Head",
-  "block.projectj.resistant_olmec_head": "Resistant Olmec Head",
-  "item.projectj.resistant_olmec_head": "Resistant Olmec Head",
+  "block.projectj.regeneration_olmec_head": "Regeneration Olmec Head",
+  "item.projectj.regeneration_olmec_head": "Regeneration Olmec Head",
+  "block.projectj.damage_olmec_head": "Damage Olmec Head",
+  "item.projectj.damage_olmec_head": "Damage Olmec Head",
   "block.projectj.conduit_olmec_head": "Conduit Olmec Head",
   "item.projectj.conduit_olmec_head": "Conduit Olmec Head",
-  "block.projectj.power_olmec_head": "Power Olmec Head",
-  "item.projectj.power_olmec_head": "Power Olmec Head",
+  "block.projectj.resistant_olmec_head": "Resistant Olmec Head",
+  "item.projectj.resistant_olmec_head": "Resistant Olmec Head",
 
   "container.projectj.adobe_furnace": "Adobe Furnace",
 

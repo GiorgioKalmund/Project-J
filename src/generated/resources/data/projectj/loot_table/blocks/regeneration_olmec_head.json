@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "projectj:basic_olmec_head"
+          "name": "projectj:regeneration_olmec_head"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "projectj:blocks/basic_olmec_head"
+  "random_sequence": "projectj:blocks/regeneration_olmec_head"
 }

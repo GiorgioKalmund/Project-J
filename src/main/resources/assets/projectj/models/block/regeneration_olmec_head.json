@@ -1,10 +1,10 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "projectj:block/basic_olmec_face",
-		"1": "projectj:block/basic_olmec_stone",
+		"0": "projectj:block/regeneration_olmec_face",
+		"1": "projectj:block/regeneration_olmec_stone",
 		"2": "projectj:block/dark_olmec_stone",
-		"particle": "projectj:block/basic_olmec_face"
+		"particle": "projectj:block/regeneration_olmec_face"
 	},
 	"elements": [
 		{

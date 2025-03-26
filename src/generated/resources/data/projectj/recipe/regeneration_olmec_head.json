@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "minecraft:stone_bricks",
+    "A": "minecraft:golden_apple",
+    "J": "projectj:jade_block",
+    "S": "minecraft:sugar"
+  },
+  "pattern": [
+    "S#A",
+    "#J#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectj:regeneration_olmec_head"
+  }
+}

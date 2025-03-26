@@ -55,10 +55,10 @@ public class ModModelProvider extends ModelProvider {
 
         createFurnaceUntilTier1(blockModels, ModBlocks.ADOBE_FURNACE.get());
 
-        createOlmecHead(blockModels, itemModels, ModBlocks.RESISTANT_OLMEC_HEAD.get());
-        createOlmecHead(blockModels, itemModels, ModBlocks.BASIC_OLMEC_HEAD.get());
+        createOlmecHead(blockModels, itemModels, ModBlocks.DAMAGE_OLMEC_HEAD.get());
+        createOlmecHead(blockModels, itemModels, ModBlocks.REGENERATION_OLMEC_HEAD.get());
         createOlmecHead(blockModels, itemModels, ModBlocks.CONDUIT_OLMEC_HEAD.get());
-        createOlmecHead(blockModels, itemModels, ModBlocks.POWER_OLMEC_HEAD.get());
+        createOlmecHead(blockModels, itemModels, ModBlocks.RESISTANT_OLMEC_HEAD.get());
 
         createSimpleBlockWithCustomModel(blockModels, ModBlocks.CHIMNEY.get());
     }

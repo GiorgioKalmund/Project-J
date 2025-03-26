@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"parent": "minecraft:item/handheld",
 	"textures": {
-		"layer0": "projectj:item/basic_olmec_head"
+		"layer0": "projectj:item/regeneration_olmec_head"
 	},
 	"display": {
 		"thirdperson_righthand": {

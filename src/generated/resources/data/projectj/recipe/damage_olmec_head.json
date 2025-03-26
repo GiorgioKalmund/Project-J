@@ -3,17 +3,17 @@
   "category": "building",
   "key": {
     "#": "minecraft:stone_bricks",
-    "H": "minecraft:honey_bottle",
+    "F": "minecraft:rotten_flesh",
     "J": "projectj:jade_block",
-    "S": "minecraft:sugar"
+    "S": "minecraft:iron_sword"
   },
   "pattern": [
-    "S#H",
+    "F#S",
     "#J#",
     "###"
   ],
   "result": {
     "count": 1,
-    "id": "projectj:basic_olmec_head"
+    "id": "projectj:damage_olmec_head"
   }
 }

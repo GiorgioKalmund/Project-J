@@ -92,16 +92,30 @@ public class ModRecipeProvider extends RecipeProvider {
 
 
 
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.BASIC_OLMEC_HEAD.get())
-                .pattern("S#H")
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.REGENERATION_OLMEC_HEAD.get())
+                .pattern("S#A")
                 .pattern("#J#")
                 .pattern("###")
                 .define('S', Items.SUGAR)
-                .define('H', Items.HONEY_BOTTLE)
+                .define('A', Items.GOLDEN_APPLE)
                 .define('J', ModBlocks.JADE_BLOCK.asItem())
                 .define('#', Items.STONE_BRICKS)
                 .unlockedBy("has_sugar", this.has(Items.SUGAR))
-                .unlockedBy("has_honey_bottle", this.has(Items.HONEY_BOTTLE))
+                .unlockedBy("has_golden_apple", this.has(Items.GOLDEN_APPLE))
+                .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK.asItem()))
+                .unlockedBy("has_stone_bricks", this.has(Items.STONE_BRICKS))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.DAMAGE_OLMEC_HEAD.get())
+                .pattern("F#S")
+                .pattern("#J#")
+                .pattern("###")
+                .define('F', Items.ROTTEN_FLESH)
+                .define('S', Items.IRON_SWORD)
+                .define('J', ModBlocks.JADE_BLOCK.asItem())
+                .define('#', Items.STONE_BRICKS)
+                .unlockedBy("has_rotten_flesh", this.has(Items.ROTTEN_FLESH))
+                .unlockedBy("has_iron_sword", this.has(Items.IRON_SWORD))
                 .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK.asItem()))
                 .unlockedBy("has_stone_bricks", this.has(Items.STONE_BRICKS))
                 .save(this.output);

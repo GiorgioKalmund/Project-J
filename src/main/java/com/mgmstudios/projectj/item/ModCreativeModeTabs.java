@@ -32,10 +32,10 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.SERPENTINITE_BRICKS.get());
                 output.accept(ModBlocks.SERPENTINITE_PILLAR.get());
 
-                output.accept(ModBlocks.BASIC_OLMEC_HEAD.get());
-                output.accept(ModBlocks.RESISTANT_OLMEC_HEAD.get());
+                output.accept(ModBlocks.REGENERATION_OLMEC_HEAD.get());
+                output.accept(ModBlocks.DAMAGE_OLMEC_HEAD.get());
                 output.accept(ModBlocks.CONDUIT_OLMEC_HEAD.get());
-                output.accept(ModBlocks.POWER_OLMEC_HEAD.get());
+                output.accept(ModBlocks.RESISTANT_OLMEC_HEAD.get());
 
 
                 output.accept(ModItems.RAW_JADE.get());

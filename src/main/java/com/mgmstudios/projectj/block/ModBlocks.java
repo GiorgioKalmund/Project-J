@@ -7,29 +7,17 @@ import com.mgmstudios.projectj.block.custom.OlmecHeadBlock;
 import com.mgmstudios.projectj.block.custom.RotateableHorizontalPillarBlock;
 import com.mgmstudios.projectj.item.ModItems;
 import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
-import net.minecraft.world.item.equipment.ArmorMaterial;
-import net.minecraft.world.item.equipment.ArmorMaterials;
-import net.minecraft.world.item.equipment.ArmorType;
-import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -40,7 +28,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
 public class ModBlocks {
@@ -103,13 +90,13 @@ public class ModBlocks {
                     .noOcclusion()
     );
 
-    public static final DeferredBlock<Block> BASIC_OLMEC_HEAD = registerOlmecHeadBlock("basic_olmec_head",
+    public static final DeferredBlock<Block> REGENERATION_OLMEC_HEAD = registerOlmecHeadBlock("regeneration_olmec_head",
             ParticleTypes.HAPPY_VILLAGER,
             MobEffects.REGENERATION,
             20
     );
 
-    public static final DeferredBlock<Block> RESISTANT_OLMEC_HEAD = registerOlmecHeadBlock("resistant_olmec_head",
+    public static final DeferredBlock<Block> DAMAGE_OLMEC_HEAD = registerOlmecHeadBlock("damage_olmec_head",
             DustParticleOptions.REDSTONE,
             MobEffects.DAMAGE_BOOST,
             20
@@ -121,7 +108,7 @@ public class ModBlocks {
             20
     );
 
-    public static final DeferredBlock<Block> POWER_OLMEC_HEAD = registerOlmecHeadBlock("power_olmec_head",
+    public static final DeferredBlock<Block> RESISTANT_OLMEC_HEAD = registerOlmecHeadBlock("resistant_olmec_head",
             ParticleTypes.ELECTRIC_SPARK,
             MobEffects.DAMAGE_RESISTANCE,
             20

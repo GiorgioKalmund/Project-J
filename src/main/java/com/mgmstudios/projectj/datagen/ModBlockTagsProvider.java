@@ -2,7 +2,6 @@ package com.mgmstudios.projectj.datagen;
 
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlocks;
-import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -24,10 +23,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.JADE_ORE.get())
                 .add(ModBlocks.DEEPSLATE_JADE_ORE.get())
                 .add(ModBlocks.JADE_BLOCK.get())
-                .add(ModBlocks.BASIC_OLMEC_HEAD.get())
-                .add(ModBlocks.RESISTANT_OLMEC_HEAD.get())
+                .add(ModBlocks.REGENERATION_OLMEC_HEAD.get())
+                .add(ModBlocks.DAMAGE_OLMEC_HEAD.get())
                 .add(ModBlocks.CONDUIT_OLMEC_HEAD.get())
-                .add(ModBlocks.POWER_OLMEC_HEAD.get())
+                .add(ModBlocks.RESISTANT_OLMEC_HEAD.get())
                 .add(ModBlocks.SERPENTINITE_ROCK.get())
                 .add(ModBlocks.SERPENTINITE_BRICKS.get());
 

@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_honey_bottle": {
+    "has_golden_apple": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:honey_bottle"
+            "items": "minecraft:golden_apple"
           }
         ]
       },
@@ -43,7 +43,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "projectj:basic_olmec_head"
+        "recipe": "projectj:regeneration_olmec_head"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -52,14 +52,14 @@
     [
       "has_the_recipe",
       "has_sugar",
-      "has_honey_bottle",
+      "has_golden_apple",
       "has_jade_block",
       "has_stone_bricks"
     ]
   ],
   "rewards": {
     "recipes": [
-      "projectj:basic_olmec_head"
+      "projectj:regeneration_olmec_head"
     ]
   }
 }

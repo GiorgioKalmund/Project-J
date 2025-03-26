@@ -5,7 +5,7 @@
       {
         "model": {
           "type": "minecraft:model",
-          "model": "projectj:block/basic_olmec_head_item"
+          "model": "projectj:block/regeneration_olmec_head_item"
         },
         "when": [
           "gui",
@@ -16,7 +16,7 @@
       {
         "model": {
           "type": "minecraft:model",
-          "model": "projectj:block/basic_olmec_head"
+          "model": "projectj:block/regeneration_olmec_head"
         },
         "when": [
           "head",
@@ -29,7 +29,7 @@
     ],
     "fallback": {
       "type": "minecraft:model",
-      "model": "projectj:block/basic_olmec_head_item"
+      "model": "projectj:block/regeneration_olmec_head_item"
     },
     "property": "minecraft:display_context"
   }
