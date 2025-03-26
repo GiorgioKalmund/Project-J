@@ -1,10 +1,7 @@
 package com.mgmstudios.projectj.block;
 
 import com.mgmstudios.projectj.ProjectJ;
-import com.mgmstudios.projectj.block.custom.AdobeChimneyBlock;
-import com.mgmstudios.projectj.block.custom.AdobeFurnaceBlock;
-import com.mgmstudios.projectj.block.custom.OlmecHeadBlock;
-import com.mgmstudios.projectj.block.custom.RotateableHorizontalPillarBlock;
+import com.mgmstudios.projectj.block.custom.*;
 import com.mgmstudios.projectj.item.ModItems;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -140,16 +137,15 @@ public class ModBlocks {
         return registerBlock(name, properties, new Item.Properties());
     }
 
-    private static DeferredBlock<Block> registerStairBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
-        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new StairBlock(ModBlocks.SERPENTINITE_ROCK.get().defaultBlockState(), properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+    private static DeferredBlock<Block> registerBigOlmecHeadBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
+        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new BigOlmecHeadBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
         ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
         return toBeRegistered;
     }
 
-    private static DeferredBlock<Block> registerStairBlock(String name, BlockBehaviour.Properties properties) {
-        return registerStairBlock(name, properties, new Item.Properties());
+    private static DeferredBlock<Block> registerBigOlmecHeadBlock(String name, BlockBehaviour.Properties properties) {
+        return registerBigOlmecHeadBlock(name, properties, new Item.Properties());
     }
-
 
     private static DeferredBlock<Block> registerOlmecHeadBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties, ParticleOptions particleOptions, Holder<MobEffect> effect, int effectTime) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName ->
@@ -170,10 +166,6 @@ public class ModBlocks {
                 BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 3.0F).sound(SoundType.GILDED_BLACKSTONE).lightLevel(litBlockEmission(15)).noOcclusion();
         Item.Properties itemProperties = new Item.Properties().rarity(Rarity.EPIC).equippableUnswappable(EquipmentSlot.HEAD);
         return registerOlmecHeadBlock(name, properties, itemProperties, particleOptions, effect, effectTime);
-    }
-
-    private static DeferredBlock<Block> registerOlmecHeadBlock(String name, BlockBehaviour.Properties properties, ParticleOptions particleOptions, Holder<MobEffect> effect, int effectTime) {
-        return registerOlmecHeadBlock(name, properties, new Item.Properties(), particleOptions, effect, effectTime);
     }
 
     private static DeferredBlock<Block> registerDropExperienceBlock(String name, BlockBehaviour.Properties properties) {

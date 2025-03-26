@@ -61,16 +61,29 @@ public class ModModelProvider extends ModelProvider {
         createOlmecHead(blockModels, itemModels, ModBlocks.RESISTANT_OLMEC_HEAD.get());
 
         createSimpleBlockWithCustomModel(blockModels, ModBlocks.CHIMNEY.get());
+
     }
 
     public void createSimpleBlockWithCustomModel(BlockModelGenerators blockModels, Block block){
         ResourceLocation resourcelocation = ModelLocationUtils.getModelLocation(block);
-        blockModels.blockStateOutput.accept( MultiVariantGenerator.multiVariant(block, Variant.variant().with(VariantProperties.MODEL, resourcelocation)));
+        blockModels.blockStateOutput.accept(
+                MultiVariantGenerator.multiVariant(block, Variant.variant()
+                        .with(VariantProperties.MODEL, resourcelocation))
+        );
+    }
+
+    public void createHorizontallyRotatedBlockWithCustomModel(BlockModelGenerators blockModels, Block block){
+        ResourceLocation resourcelocation = ModelLocationUtils.getModelLocation(block);
+        blockModels.blockStateOutput.accept(
+                MultiVariantGenerator.multiVariant(block, Variant.variant()
+                        .with(VariantProperties.MODEL, resourcelocation))
+                        .with(createHorizontalFacingDispatch())
+        );
     }
 
     public void createFurnaceUntilTier1(BlockModelGenerators blockModels, Block block){
 
-         TexturedModel.ORIENTABLE.create(block, blockModels.modelOutput);
+        TexturedModel.ORIENTABLE.create(block, blockModels.modelOutput);
         ResourceLocation resourcelocation = TextureMapping.getBlockTexture(block, "_front_on");
         TexturedModel.ORIENTABLE.get(block)
                 .updateTextures(p_388889_ -> p_388889_.put(TextureSlot.FRONT, resourcelocation))

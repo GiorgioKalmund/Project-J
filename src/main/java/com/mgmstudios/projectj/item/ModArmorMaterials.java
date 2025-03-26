@@ -59,6 +59,6 @@ public class ModArmorMaterials {
             ModTags.Items.JADE,
             // The resource key of the EquipmentClientInfo JSON discussed below
             // Points to assets/examplemod/equipment/copper.json
-            ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "copper"))
+            ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "olmec_head"))
     );
 }

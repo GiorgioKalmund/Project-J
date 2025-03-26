@@ -32,7 +32,7 @@ public class OlmecHeadItem extends BlockItem {
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
         if(entity instanceof ServerPlayer player && !level.isClientSide() && selfIsInHelmetSlot(player)) {
-            player.addEffect(new MobEffectInstance(effect, 2 * 20, 2, true, false,true));
+            player.addEffect(new MobEffectInstance(effect, 2 * 20, 0, true, false,true));
         }
     }
 
