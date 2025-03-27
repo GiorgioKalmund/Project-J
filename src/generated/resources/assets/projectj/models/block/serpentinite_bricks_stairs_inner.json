@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "projectj:block/serpentinite_bricks",
+    "side": "projectj:block/serpentinite_bricks",
+    "top": "projectj:block/serpentinite_bricks"
+  }
+}

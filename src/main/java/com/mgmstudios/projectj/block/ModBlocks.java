@@ -115,8 +115,38 @@ public class ModBlocks {
             BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS)
     );
 
+    public static final DeferredBlock<Block> SERPENTINITE_BRICKS_STAIRS = registerStairBlock("serpentinite_bricks_stairs",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_STAIRS),
+            new Item.Properties()
+    );
+
+    public static final DeferredBlock<Block> SERPENTINITE_BRICKS_SLAB = registerSlabBlock("serpentinite_bricks_slab",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_SLAB),
+            new Item.Properties()
+    );
+
+    public static final DeferredBlock<Block> SERPENTINITE_BRICKS_WALL = registerWallBlock("serpentinite_bricks_wall",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICK_WALL),
+            new Item.Properties()
+    );
+
     public static final DeferredBlock<Block> SERPENTINITE_ROCK = registerBlock("serpentinite_rock",
             BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)
+    );
+
+   public static final DeferredBlock<Block> SERPENTINITE_ROCK_STAIRS = registerStairBlock("serpentinite_rock_stairs",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_STAIRS),
+            new Item.Properties()
+   );
+
+    public static final DeferredBlock<Block> SERPENTINITE_ROCK_SLAB = registerSlabBlock("serpentinite_rock_slab",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_SLAB),
+            new Item.Properties()
+    );
+
+    public static final DeferredBlock<Block> SERPENTINITE_ROCK_WALL = registerWallBlock("serpentinite_rock_wall",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICK_WALL),
+            new Item.Properties()
     );
 
     public static final DeferredBlock<Block> ANCIENT_ALTAR = registerAncientAltarBlock("ancient_altar",
@@ -147,6 +177,23 @@ public class ModBlocks {
         return toBeRegistered;
     }
 
+    private static DeferredBlock<Block> registerStairBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
+        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new StairBlock(Blocks.COBBLESTONE.defaultBlockState(), properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
+        return toBeRegistered;
+    }
+
+    private static DeferredBlock<Block> registerSlabBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
+        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new SlabBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
+        return toBeRegistered;
+    }
+
+    private static DeferredBlock<Block> registerWallBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
+        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new WallBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
+        return toBeRegistered;
+    }
 
     private static DeferredBlock<Block> registerBlock(String name, BlockBehaviour.Properties properties) {
         return registerBlock(name, properties, new Item.Properties());

@@ -32,10 +32,19 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.JADE_BLOCK.get());
 
                 output.accept(ModBlocks.COBBLED_SERPENTINITE.get());
-                output.accept(ModBlocks.SERPENTINITE_ROCK.get());
-                output.accept(ModBlocks.SERPENTINITE_BRICKS.get());
                 output.accept(ModBlocks.SERPENTINITE_PILLAR.get());
                 output.accept(ModItems.SERPENTINITE_ROD.get());
+
+                output.accept(ModBlocks.SERPENTINITE_ROCK.get());
+                output.accept(ModBlocks.SERPENTINITE_ROCK_STAIRS.get());
+                output.accept(ModBlocks.SERPENTINITE_ROCK_SLAB.get());
+                output.accept(ModBlocks.SERPENTINITE_ROCK_WALL.get());
+
+                output.accept(ModBlocks.SERPENTINITE_BRICKS.get());
+                output.accept(ModBlocks.SERPENTINITE_BRICKS_STAIRS.get());
+                output.accept(ModBlocks.SERPENTINITE_BRICKS_SLAB.get());
+                output.accept(ModBlocks.SERPENTINITE_BRICKS_WALL.get());
+
 
 
                 output.accept(ModBlocks.REGENERATION_OLMEC_HEAD.get());

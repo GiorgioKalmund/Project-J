@@ -1,6 +1,7 @@
 package com.mgmstudios.projectj.datagen;
 
 import com.mgmstudios.projectj.ProjectJ;
+import com.mgmstudios.projectj.block.ModBlockFamilies;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.item.ModItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
@@ -15,6 +16,8 @@ import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.properties.select.DisplayContext;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.data.BlockFamilies;
+import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -47,8 +50,6 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.JADE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.DEEPSLATE_JADE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.JADE_BLOCK.get());
-        blockModels.createTrivialCube(ModBlocks.SERPENTINITE_ROCK.get());
-        blockModels.createTrivialCube(ModBlocks.SERPENTINITE_BRICKS.get());
         blockModels.createTrivialCube(ModBlocks.COBBLED_SERPENTINITE.get());
         createSerpentinitePillar(blockModels, itemModels, ModBlocks.SERPENTINITE_PILLAR.get());
 
@@ -68,6 +69,16 @@ public class ModModelProvider extends ModelProvider {
         createSimpleBlockWithCustomModel(blockModels, ModBlocks.CHIMNEY.get());
         createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.ANCIENT_ALTAR.get());
 
+
+        ModBlockFamilies.getAllFamilies()
+                .filter(BlockFamily::shouldGenerateModel)
+                .forEach(family -> this.family(blockModels, family.getBaseBlock()).generateFor(family));
+
+    }
+
+    public BlockModelGenerators.BlockFamilyProvider family(BlockModelGenerators blockModels, Block block) {
+        TexturedModel texturedmodel = blockModels.texturedModels.getOrDefault(block, TexturedModel.CUBE.get(block));
+        return blockModels.new BlockFamilyProvider(texturedmodel.getMapping()).fullBlock(block, texturedmodel.getTemplate());
     }
 
     public void createSimpleBlockWithCustomModel(BlockModelGenerators blockModels, Block block){

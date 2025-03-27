@@ -28,10 +28,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DAMAGE_OLMEC_HEAD.get())
                 .add(ModBlocks.CONDUIT_OLMEC_HEAD.get())
                 .add(ModBlocks.RESISTANT_OLMEC_HEAD.get())
-                .add(ModBlocks.SERPENTINITE_ROCK.get())
-                .add(ModBlocks.SERPENTINITE_BRICKS.get())
-                .add(ModBlocks.SERPENTINITE_PILLAR.get())
-                .add(ModBlocks.COBBLED_SERPENTINITE.get());
+                .addTag(ModTags.Blocks.SERPENTINITE);
+
 
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.JADE_ORE.get())
@@ -43,6 +41,30 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .addTag(BlockTags.MINEABLE_WITH_AXE)
                 .addTag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .addTag(BlockTags.MINEABLE_WITH_HOE);
+
+        tag(BlockTags.SLABS)
+                .add(ModBlocks.SERPENTINITE_ROCK_SLAB.get())
+                .add(ModBlocks.SERPENTINITE_BRICKS_SLAB.get());
+
+        tag(BlockTags.STAIRS)
+                .add(ModBlocks.SERPENTINITE_ROCK_STAIRS.get())
+                .add(ModBlocks.SERPENTINITE_BRICKS_STAIRS.get());
+
+        tag(BlockTags.WALLS)
+                .add(ModBlocks.SERPENTINITE_ROCK_WALL.get())
+                .add(ModBlocks.SERPENTINITE_BRICKS_WALL.get());
+
+        tag(ModTags.Blocks.SERPENTINITE)
+                .add(ModBlocks.SERPENTINITE_PILLAR.get())
+                .add(ModBlocks.COBBLED_SERPENTINITE.get())
+                .add(ModBlocks.SERPENTINITE_ROCK.get())
+                .add(ModBlocks.SERPENTINITE_ROCK_STAIRS.get())
+                .add(ModBlocks.SERPENTINITE_ROCK_SLAB.get())
+                .add(ModBlocks.SERPENTINITE_ROCK_WALL.get())
+                .add(ModBlocks.SERPENTINITE_BRICKS.get())
+                .add(ModBlocks.SERPENTINITE_BRICKS_STAIRS.get())
+                .add(ModBlocks.SERPENTINITE_BRICKS_SLAB.get())
+                .add(ModBlocks.SERPENTINITE_BRICKS_WALL.get());
 
     }
 }

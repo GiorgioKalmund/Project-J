@@ -51,9 +51,18 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.ADOBE_FURNACE.get());
         this.dropSelf(ModBlocks.CHIMNEY.get());
         this.dropSelf(ModBlocks.JADE_BLOCK.get());
-        this.dropSelf(ModBlocks.SERPENTINITE_BRICKS.get());
+
         this.dropSelf(ModBlocks.SERPENTINITE_PILLAR.get());
         this.dropSelf(ModBlocks.COBBLED_SERPENTINITE.get());
+
+        this.dropSelf(ModBlocks.SERPENTINITE_BRICKS.get());
+        this.dropSelf(ModBlocks.SERPENTINITE_BRICKS_STAIRS.get());
+        this.dropSelf(ModBlocks.SERPENTINITE_BRICKS_SLAB.get());
+        this.dropSelf(ModBlocks.SERPENTINITE_BRICKS_WALL.get());
+
+        this.dropSelf(ModBlocks.SERPENTINITE_ROCK_STAIRS.get());
+        this.dropSelf(ModBlocks.SERPENTINITE_ROCK_SLAB.get());
+        this.dropSelf(ModBlocks.SERPENTINITE_ROCK_WALL.get());
 
         createdByproductDropWithSilkTouch(ModBlocks.SERPENTINITE_ROCK.get(), ModBlocks.SERPENTINITE_ROCK.asItem(),
                 ModItems.OBSIDIAN_TOOTH.get(), 1,2, 0.025F, ModBlocks.COBBLED_SERPENTINITE.asItem());

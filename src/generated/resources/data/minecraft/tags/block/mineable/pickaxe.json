@@ -9,9 +9,6 @@
     "projectj:damage_olmec_head",
     "projectj:conduit_olmec_head",
     "projectj:resistant_olmec_head",
-    "projectj:serpentinite_rock",
-    "projectj:serpentinite_bricks",
-    "projectj:serpentinite_pillar",
-    "projectj:cobbled_serpentinite"
+    "#projectj:serpentinite"
   ]
 }

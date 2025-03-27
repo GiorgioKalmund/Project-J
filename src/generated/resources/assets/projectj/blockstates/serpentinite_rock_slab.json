@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "projectj:block/serpentinite_rock_slab"
+    },
+    "type=double": {
+      "model": "projectj:block/serpentinite_rock"
+    },
+    "type=top": {
+      "model": "projectj:block/serpentinite_rock_slab_top"
+    }
+  }
+}
