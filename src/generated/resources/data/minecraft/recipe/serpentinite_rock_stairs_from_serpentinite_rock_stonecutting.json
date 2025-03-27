@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "projectj:serpentinite_rock",
+  "result": {
+    "count": 1,
+    "id": "projectj:serpentinite_rock_stairs"
+  }
+}

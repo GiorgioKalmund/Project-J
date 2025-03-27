@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "projectj:serpentinite_bricks",
+  "result": {
+    "count": 2,
+    "id": "projectj:serpentinite_bricks_slab"
+  }
+}

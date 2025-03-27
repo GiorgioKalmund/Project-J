@@ -1,13 +1,18 @@
 package com.mgmstudios.projectj.datagen;
 
+import com.mgmstudios.projectj.block.ModBlockFamilies;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.BlockFamilies;
+import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.flag.FeatureFlagSet;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
@@ -22,8 +27,9 @@ public class ModRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildRecipes() {
-        // CRAFTING
+        generateForEnabledBlockFamilies(FeatureFlagSet.of(FeatureFlags.VANILLA));
 
+        // CRAFTING
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_ADOBE, 4)
                 .pattern("SB")
                 .pattern("CW")
@@ -194,12 +200,20 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(this.output, "jade_smelting");
 
         // STONECUTTING
+        stonecutterResultFromBase(RecipeCategory.MISC,  ModItems.OBSIDIAN_TOOTH.get(), Blocks.OBSIDIAN,8);
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_ROCK_SLAB.asItem(), ModBlocks.SERPENTINITE_ROCK.get(), 2);
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_ROCK_STAIRS.asItem(), ModBlocks.SERPENTINITE_ROCK.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_ROCK_WALL.asItem(), ModBlocks.SERPENTINITE_ROCK.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS.asItem(), ModBlocks.SERPENTINITE_ROCK.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS_SLAB.asItem(), ModBlocks.SERPENTINITE_BRICKS.get(), 2);
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS_STAIRS.asItem(), ModBlocks.SERPENTINITE_BRICKS.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS_WALL.asItem(), ModBlocks.SERPENTINITE_BRICKS.get());
 
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.OBSIDIAN), RecipeCategory.MISC, ModItems.OBSIDIAN_TOOTH.get(), 8)
-                .unlockedBy("has_obsidian", this.has(Items.OBSIDIAN))
-                .save(this.output, "obsidian_tooth_from_stonecutting");
 
+    }
 
+    protected void generateForEnabledBlockFamilies(FeatureFlagSet enabledFeatures) {
+        ModBlockFamilies.getAllFamilies().filter(BlockFamily::shouldGenerateRecipe).forEach(p_359455_ -> this.generateRecipes(p_359455_, enabledFeatures));
     }
 
     // The runner to add to the data generator

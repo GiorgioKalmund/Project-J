@@ -42,6 +42,8 @@ public class DataGenProvider extends LootTableProvider {
 
         event.createBlockAndItemTags(ModBlockTagsProvider::new, ModItemTagsProvider::new);
 
+        event.createProvider(ModLanguageProvider::new);
+
     }
 
 
