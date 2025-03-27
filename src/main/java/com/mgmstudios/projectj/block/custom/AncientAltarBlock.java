@@ -128,16 +128,16 @@ public class AncientAltarBlock extends HorizontalDirectionalBlock {
 
     private boolean validAltar(ServerLevel level, BlockPos altarPos, List<Block> list, BlockPos northPos, BlockPos southPos, BlockPos eastPos, BlockPos westPos){
         Map<BlockPos, Direction> positionDirectionsMap = Map.of(northPos, Direction.SOUTH, southPos, Direction.NORTH, eastPos, Direction.WEST, westPos, Direction.EAST);
+        List<Block> copyList = new ArrayList<>(List.copyOf(list));
 
         for (BlockPos pos : positionDirectionsMap.keySet()){
             BlockState blockState = level.getBlockState(pos);
             if (blockState.getBlock() instanceof OlmecHeadBlock olmecHeadBlock && blockState.getValue(OlmecHeadBlock.LIT) && blockState.getValue(FACING) == positionDirectionsMap.get(pos)){
                 olmecHeadBlock.spawnBeaconBeam(level, pos, altarPos, 10);
-                list.remove(level.getBlockState(pos).getBlock());
+                copyList.remove(level.getBlockState(pos).getBlock());
             }
         }
-
-        return list.isEmpty();
+        return copyList.isEmpty();
     }
 
     private void convertItemWithModulo(ItemStack stack, Item fromItem, Item toItem, int modulo, Level level, ItemEntity itemEntity, BlockPos pos, SoundEvent soundEvent) {
