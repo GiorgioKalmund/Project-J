@@ -1,8 +1,12 @@
-// 1.21.4	2025-03-27T16:19:27.1994148	ModRecipeProvider
+// 1.21.4	2025-03-27T18:06:38.7659205	ModRecipeProvider
 6452fecec3921d0f3482c70b92d2b933f016e37a data/minecraft/advancement/recipes/building_blocks/adobe_bricks_smelting.json
+2ad5ba8a982b9bbdbf73f012b05a8e91ea044622 data/minecraft/advancement/recipes/building_blocks/obsidian.json
 84077d4efc675d4efc77534435aee178896cac41 data/minecraft/advancement/recipes/misc/jade_smelting.json
+7f2be538bbbbaf3a0a8047433f50b3a99b9b55e1 data/minecraft/advancement/recipes/misc/obsidian_tooth_from_stonecutting.json
 8be6b9dff9c6e615ed63496136f4a4247bf3ca06 data/minecraft/recipe/adobe_bricks_smelting.json
 0a87147cd4faf4a2fef118933917abceaf1fc6bc data/minecraft/recipe/jade_smelting.json
+747a6c70f6a9c8b689beaeb41cca05d328ea17cb data/minecraft/recipe/obsidian.json
+346366b1009253eba84e7574b88e324e1ad99ad3 data/minecraft/recipe/obsidian_tooth_from_stonecutting.json
 f43a7f6667c2aeb69871975ed2b275fe7ed101a3 data/projectj/advancement/recipes/building_blocks/adobe_furnace.json
 d3713f4d3cbdf692276e89f0c5dd1cded1105056 data/projectj/advancement/recipes/building_blocks/chimney.json
 ea6dd0222d99a7333dabc42829a514b10237c800 data/projectj/advancement/recipes/building_blocks/conduit_olmec_head.json
@@ -21,7 +25,7 @@ a1e10a2b0c495ece4ae4c6d3835f9f698187f7e0 data/projectj/recipe/adobe_furnace.json
 61fa9820af1cbdde547e6bf99dfe55ebb7fb181a data/projectj/recipe/conduit_olmec_head.json
 457f8eb7eefe683b4d8770b779e219ae64bd9c5d data/projectj/recipe/damage_olmec_head.json
 753c166d3e245dc0486cd7a374cf6abdafae29ad data/projectj/recipe/jade.json
-243affb187dfb1c8cb41efeb295947a49394b877 data/projectj/recipe/jade_block.json
+1e21023716643e2d570ccba5371dd2cc293e343e data/projectj/recipe/jade_block.json
 bf4e43d6498fe6e6fad452bd4c7dd52695ec8542 data/projectj/recipe/macuahuitl.json
 4f4c8b320a685be033f916d31696a305e280425f data/projectj/recipe/raw_adobe.json
 769810dd21717629befaabae6c25bd6510d0d6c2 data/projectj/recipe/regeneration_olmec_head.json

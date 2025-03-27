@@ -23,6 +23,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.RenderTooltipEvent;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 import java.util.List;
@@ -163,27 +164,8 @@ public class ModModelProvider extends ModelProvider {
     }
 
     public void createSerpentinitePillar(BlockModelGenerators blockModels, ItemModelGenerators itemModels, Block block) {
-        ResourceLocation resourcelocation = TexturedModel.COLUMN_ALT.create(block, blockModels.modelOutput);
-        ResourceLocation resourcelocation1 = TexturedModel.COLUMN_HORIZONTAL_ALT.create(block, blockModels.modelOutput);
-        blockModels.blockStateOutput
-                .accept(
-                        MultiVariantGenerator.multiVariant(block)
-                                .with(createHorizontalFacingDispatch())
-                                .with(PropertyDispatch.property(BlockStateProperties.AXIS)
-                                        .select(Direction.Axis.Y, Variant.variant().with(VariantProperties.MODEL, resourcelocation))
-                                        .select(
-                                                Direction.Axis.Z,
-                                                Variant.variant().with(VariantProperties.MODEL, resourcelocation1).with(VariantProperties.X_ROT, VariantProperties.Rotation.R90)
-                                        )
-                                        .select(
-                                                Direction.Axis.X,
-                                                Variant.variant()
-                                                        .with(VariantProperties.MODEL, resourcelocation1)
-                                                        .with(VariantProperties.X_ROT, VariantProperties.Rotation.R90)
-                                                        .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)
-                                        )
-                                )
-                );
+        TexturedModel.COLUMN_ALT.create(block, blockModels.modelOutput);
+        blockModels.createRotatableColumn(block);
     }
 
     @SubscribeEvent

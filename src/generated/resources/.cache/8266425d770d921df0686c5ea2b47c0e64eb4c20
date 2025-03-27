@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-27T16:19:27.1974165	Model Definitions - projectj
+// 1.21.4	2025-03-27T18:16:32.5642515	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 68534f251c3c82fa6c7db8f259874b2acb9e8fec assets/projectj/blockstates/adobe_furnace.json
 359a386fc9ef069876d3364959b8a351bc839cbb assets/projectj/blockstates/ancient_altar.json
@@ -12,7 +12,7 @@ dfdd72869320254b3ae6795b1e4d9a0a0c36ce64 assets/projectj/blockstates/jade_ore.js
 9e4e5c196db19a94fd48967ed0a051336db3c512 assets/projectj/blockstates/regeneration_olmec_head.json
 5a6b84cb6b8bdc01ca0c302f5fc7b3d6090e7e72 assets/projectj/blockstates/resistant_olmec_head.json
 925b3e2a4fb38a1f9c29afbf6ba8acf079f31ea4 assets/projectj/blockstates/serpentinite_bricks.json
-46d7163bcaeda9af3ea96f18d0ac9cc5174ff4b5 assets/projectj/blockstates/serpentinite_pillar.json
+99b7b1686701f8b73ea8fd9f9bc6a9a1b32c5a68 assets/projectj/blockstates/serpentinite_pillar.json
 4f7f3fca836fe862d7f09079dcc5cfb8ac8c6367 assets/projectj/blockstates/serpentinite_rock.json
 d706b874c3d232886834e6416b0fa9d9853232b1 assets/projectj/items/adobe_bricks.json
 13e17e699a8d9c78c3b62bc09a6d557d48707f73 assets/projectj/items/adobe_furnace.json
@@ -43,7 +43,6 @@ a9dc860cc3b5276471695806148d26ece7d10d62 assets/projectj/models/block/jade_ore.j
 f0f8ab52c70a6167c4049a815151a54b6c9fa597 assets/projectj/models/block/raw_adobe.json
 1661a360d676a59501b9c597f3fd827415751fa9 assets/projectj/models/block/serpentinite_bricks.json
 44ecd52d7346d149fa51af92b15e5781d2976211 assets/projectj/models/block/serpentinite_pillar.json
-8cdf16edc8846b4baf81e98b34357379b283b924 assets/projectj/models/block/serpentinite_pillar_horizontal.json
 2b88232ac6ce30df733c8d5e86b763e0eeab0737 assets/projectj/models/block/serpentinite_rock.json
 9cc0c435272b7a37105bfd68afa6dd08bf45ef1e assets/projectj/models/item/jade.json
 23eed9a4ee89e3825630c941d8381fbf4fdc7e01 assets/projectj/models/item/macuahuitl.json

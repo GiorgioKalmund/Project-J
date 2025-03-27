@@ -12,10 +12,14 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import java.util.Set;
@@ -46,9 +50,10 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.ADOBE_FURNACE.get());
         this.dropSelf(ModBlocks.CHIMNEY.get());
         this.dropSelf(ModBlocks.JADE_BLOCK.get());
-        this.dropSelf(ModBlocks.SERPENTINITE_ROCK.get());
         this.dropSelf(ModBlocks.SERPENTINITE_BRICKS.get());
         this.dropSelf(ModBlocks.SERPENTINITE_PILLAR.get());
+        createdByproductDrop(ModBlocks.SERPENTINITE_ROCK.get(), ModBlocks.SERPENTINITE_ROCK.asItem(),
+                ModItems.OBSIDIAN_TOOTH.get(), 1,2, 1F);
 
         this.dropSelf(ModBlocks.REGENERATION_OLMEC_HEAD.get());
         this.dropSelf(ModBlocks.DAMAGE_OLMEC_HEAD.get());
@@ -69,5 +74,22 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
                 this.applyExplosionDecay(pBlock, LootItem.lootTableItem(item)
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(minDrops, maxDrops)))
                         .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))));
+    }
+
+    protected void createdByproductDrop(Block block, Item mainItem, Item byproduct, int minDrops, int maxDrops, float probability){
+        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+        LootPoolEntryContainer.Builder<?> mainItemDrop = this.applyExplosionCondition(byproduct, LootItem.lootTableItem(mainItem));
+        LootPoolEntryContainer.Builder<?> byproductDrop = this.applyExplosionCondition(byproduct, LootItem.lootTableItem(byproduct)
+                .apply(SetItemCountFunction.setCount(UniformGenerator.between(minDrops, maxDrops)))
+                .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))
+                .when(LootItemRandomChanceCondition.randomChance(probability)));
+
+
+        LootPool.Builder byProductPool= LootPool.lootPool()
+                .setBonusRolls(ConstantValue.exactly(1))
+                .add(mainItemDrop)
+                .add(byproductDrop);
+
+        this.add(block, LootTable.lootTable().withPool(byProductPool));
     }
 }

@@ -201,7 +201,7 @@ public class ModBlocks {
     }
 
     private static DeferredBlock<Block> registerRotatedPillarBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
-        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new RotateableHorizontalPillarBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new MultiAxisDirectionalBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
         ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
         return toBeRegistered;
     }

@@ -7,6 +7,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
@@ -58,11 +59,8 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_adobe_bricks", this.has(ModBlocks.ADOBE_BRICKS.get()))
                 .save(this.output);
 
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.JADE_BLOCK.get())
-                .pattern("###")
-                .pattern("###")
-                .pattern("###")
-                .define('#', ModItems.JADE.get())
+        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.JADE_BLOCK.get())
+                .requires(ModItems.JADE, 9)
                 .unlockedBy("has_jade", this.has(ModItems.JADE.get()))
                 .save(this.output);
 
@@ -164,6 +162,16 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_serpentinite_rod", this.has(ModItems.SERPENTINITE_ROD))
                 .save(this.output);
 
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, Items.OBSIDIAN)
+                .pattern("###")
+                .pattern("#D#")
+                .pattern("###")
+                .define('#', ModItems.OBSIDIAN_TOOTH.get())
+                .define('D', Items.DIRT)
+                .unlockedBy("has_obsidian_tooth", this.has(ModItems.OBSIDIAN_TOOTH.get()))
+                .save(this.output);
+
         // SMELTING
 
         SimpleCookingRecipeBuilder.smelting(
@@ -184,6 +192,14 @@ public class ModRecipeProvider extends RecipeProvider {
                 200)
                 .unlockedBy("has_jade_ore", this.has(ModTags.Items.SMELTS_TO_JADE))
                 .save(this.output, "jade_smelting");
+
+        // STONECUTTING
+
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.OBSIDIAN), RecipeCategory.MISC, ModItems.OBSIDIAN_TOOTH.get(), 8)
+                .unlockedBy("has_obsidian", this.has(Items.OBSIDIAN))
+                .save(this.output, "obsidian_tooth_from_stonecutting");
+
+
     }
 
     // The runner to add to the data generator
