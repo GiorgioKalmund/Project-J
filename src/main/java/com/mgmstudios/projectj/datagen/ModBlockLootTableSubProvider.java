@@ -53,7 +53,7 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.SERPENTINITE_BRICKS.get());
         this.dropSelf(ModBlocks.SERPENTINITE_PILLAR.get());
         createdByproductDrop(ModBlocks.SERPENTINITE_ROCK.get(), ModBlocks.SERPENTINITE_ROCK.asItem(),
-                ModItems.OBSIDIAN_TOOTH.get(), 1,2, 1F);
+                ModItems.OBSIDIAN_TOOTH.get(), 1,2, 0.025F);
 
         this.dropSelf(ModBlocks.REGENERATION_OLMEC_HEAD.get());
         this.dropSelf(ModBlocks.DAMAGE_OLMEC_HEAD.get());

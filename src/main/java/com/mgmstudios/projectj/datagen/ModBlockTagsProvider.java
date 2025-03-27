@@ -29,7 +29,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.CONDUIT_OLMEC_HEAD.get())
                 .add(ModBlocks.RESISTANT_OLMEC_HEAD.get())
                 .add(ModBlocks.SERPENTINITE_ROCK.get())
-                .add(ModBlocks.SERPENTINITE_BRICKS.get());
+                .add(ModBlocks.SERPENTINITE_BRICKS.get())
+                .add(ModBlocks.SERPENTINITE_PILLAR.get());
 
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.JADE_ORE.get())
