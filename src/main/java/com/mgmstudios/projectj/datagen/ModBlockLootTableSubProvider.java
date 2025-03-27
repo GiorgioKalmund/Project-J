@@ -10,6 +10,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -52,13 +53,16 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.JADE_BLOCK.get());
         this.dropSelf(ModBlocks.SERPENTINITE_BRICKS.get());
         this.dropSelf(ModBlocks.SERPENTINITE_PILLAR.get());
-        createdByproductDrop(ModBlocks.SERPENTINITE_ROCK.get(), ModBlocks.SERPENTINITE_ROCK.asItem(),
-                ModItems.OBSIDIAN_TOOTH.get(), 1,2, 0.025F);
+        this.dropSelf(ModBlocks.COBBLED_SERPENTINITE.get());
+
+        createdByproductDropWithSilkTouch(ModBlocks.SERPENTINITE_ROCK.get(), ModBlocks.SERPENTINITE_ROCK.asItem(),
+                ModItems.OBSIDIAN_TOOTH.get(), 1,2, 0.025F, ModBlocks.COBBLED_SERPENTINITE.asItem());
 
         this.dropSelf(ModBlocks.REGENERATION_OLMEC_HEAD.get());
         this.dropSelf(ModBlocks.DAMAGE_OLMEC_HEAD.get());
         this.dropSelf(ModBlocks.CONDUIT_OLMEC_HEAD.get());
         this.dropSelf(ModBlocks.RESISTANT_OLMEC_HEAD.get());
+
 
         this.dropSelf(ModBlocks.ANCIENT_ALTAR.get());
 
@@ -91,5 +95,22 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
                 .add(byproductDrop);
 
         this.add(block, LootTable.lootTable().withPool(byProductPool));
+    }
+
+    protected void createdByproductDropWithSilkTouch(Block block, Item mainItem, Item byproduct, int minDrops, int maxDrops, float probability, ItemLike nonSilkTouchDrop){
+        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+        var mainItemDrop = createSilkTouchDispatchTable(block, this.applyExplosionCondition(mainItem, LootItem.lootTableItem(nonSilkTouchDrop)));
+
+        LootPoolEntryContainer.Builder<?> byproductDrop = this.applyExplosionCondition(byproduct, LootItem.lootTableItem(byproduct)
+                .apply(SetItemCountFunction.setCount(UniformGenerator.between(minDrops, maxDrops)))
+                .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))
+                .when(LootItemRandomChanceCondition.randomChance(probability)));
+
+
+        LootPool.Builder byProductPool= LootPool.lootPool()
+                .setBonusRolls(ConstantValue.exactly(1))
+                .add(byproductDrop);
+
+        this.add(block, mainItemDrop.withPool(byProductPool));
     }
 }

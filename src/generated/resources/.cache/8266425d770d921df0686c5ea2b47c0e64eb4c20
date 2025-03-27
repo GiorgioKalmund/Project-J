@@ -1,8 +1,9 @@
-// 1.21.4	2025-03-27T18:16:32.5642515	Model Definitions - projectj
+// 1.21.4	2025-03-27T19:24:57.2908498	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 68534f251c3c82fa6c7db8f259874b2acb9e8fec assets/projectj/blockstates/adobe_furnace.json
 359a386fc9ef069876d3364959b8a351bc839cbb assets/projectj/blockstates/ancient_altar.json
 309790fd770e0a99af56c7e38a82bd6f18f80fda assets/projectj/blockstates/chimney.json
+231593025ca503c9848576d43d124808adc10da9 assets/projectj/blockstates/cobbled_serpentinite.json
 a8692211143e490f13a28b448600de3bdaf544a4 assets/projectj/blockstates/conduit_olmec_head.json
 e631c7188802b1c576f60a6935f58c5e177154ac assets/projectj/blockstates/damage_olmec_head.json
 7ede5fc8477af56fefd275aa88bd0ef32052d47b assets/projectj/blockstates/deepslate_jade_ore.json
@@ -18,6 +19,7 @@ d706b874c3d232886834e6416b0fa9d9853232b1 assets/projectj/items/adobe_bricks.json
 13e17e699a8d9c78c3b62bc09a6d557d48707f73 assets/projectj/items/adobe_furnace.json
 6537b813398b59163efdaad636378d998c37ae1f assets/projectj/items/ancient_altar.json
 4c516558ea1e299d150365077530145726a6315e assets/projectj/items/chimney.json
+0d2de578d854c0b97a6e839c3adcf8369b1444ba assets/projectj/items/cobbled_serpentinite.json
 4dbf6f15ed7ce4392a2beabb70250ee1491fca6d assets/projectj/items/conduit_olmec_head.json
 0670feef3cbcdc99659e1d6b8f164ec00b2b1298 assets/projectj/items/damage_olmec_head.json
 3cf17f2ffd36039a8af7d7d54f2b7dd5f05212a1 assets/projectj/items/deepslate_jade_ore.json
@@ -37,6 +39,7 @@ ad69156c496a24a50949baacd6de04ad6092b9a1 assets/projectj/items/serpentinite_rod.
 43a4a30bf747df0266fb42396721117d33cf3e08 assets/projectj/models/block/adobe_bricks.json
 f9b242d34949f79e409b68b64062a94ab39a13a9 assets/projectj/models/block/adobe_furnace.json
 6be9ef5091aa15e0717da95cabb3a12cd5ec0c45 assets/projectj/models/block/adobe_furnace_on.json
+e64defcff8f789c5e186580f19ef747f746beecb assets/projectj/models/block/cobbled_serpentinite.json
 534bc754e5caeacadd8e4b1fb2e4edbf28e902d8 assets/projectj/models/block/deepslate_jade_ore.json
 51a148e2c077ccec8b3af8781ca3db505af160bb assets/projectj/models/block/jade_block.json
 a9dc860cc3b5276471695806148d26ece7d10d62 assets/projectj/models/block/jade_ore.json

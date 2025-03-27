@@ -124,7 +124,11 @@ public class ModBlocks {
             new Item.Properties().rarity(Rarity.EPIC)
     );
 
-    public static final DeferredBlock<Block> SERPENTINITE_PILLAR = registerRotatedPillarBlock("serpentinite_pillar", BlockBehaviour.Properties.ofFullCopy(Blocks.QUARTZ_PILLAR), new Item.Properties());
+    public static final DeferredBlock<Block> SERPENTINITE_PILLAR = registerRotatedPillarBlock("serpentinite_pillar",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.QUARTZ_PILLAR), new Item.Properties());
+
+    public static final DeferredBlock<Block> COBBLED_SERPENTINITE = registerBlock("cobbled_serpentinite",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.COBBLESTONE), new Item.Properties());
 
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
