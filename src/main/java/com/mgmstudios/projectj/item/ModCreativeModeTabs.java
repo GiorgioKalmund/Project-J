@@ -27,10 +27,15 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.CHIMNEY.get());
                 output.accept(ModBlocks.JADE_ORE.get());
                 output.accept(ModBlocks.DEEPSLATE_JADE_ORE.get());
+                output.accept(ModItems.RAW_JADE.get());
+                output.accept(ModItems.JADE.get());
+                output.accept(ModBlocks.JADE_BLOCK.get());
 
                 output.accept(ModBlocks.SERPENTINITE_ROCK.get());
                 output.accept(ModBlocks.SERPENTINITE_BRICKS.get());
                 output.accept(ModBlocks.SERPENTINITE_PILLAR.get());
+                output.accept(ModItems.SERPENTINITE_ROD.get());
+
 
                 output.accept(ModBlocks.REGENERATION_OLMEC_HEAD.get());
                 output.accept(ModBlocks.DAMAGE_OLMEC_HEAD.get());
@@ -38,11 +43,8 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.RESISTANT_OLMEC_HEAD.get());
 
                 output.accept(ModBlocks.ANCIENT_ALTAR.get());
-
-                output.accept(ModItems.RAW_JADE.get());
-                output.accept(ModItems.JADE.get());
-                output.accept(ModItems.PAXEL.get());
-                output.accept(ModBlocks.JADE_BLOCK.get());
+                output.accept(ModItems.MACUAHUITL.get());
+                output.accept(ModItems.OBSIDIAN_TOOTH.get());
             })
             .build()
     );

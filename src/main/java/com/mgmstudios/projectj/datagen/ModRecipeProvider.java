@@ -144,14 +144,24 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_stone_bricks", this.has(Items.STONE_BRICKS))
                 .save(this.output);
 
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.COMBAT, ModItems.PAXEL.get())
-                .pattern("JJJ")
-                .pattern(" S ")
-                .pattern(" S ")
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.COMBAT, ModItems.SERPENTINITE_ROD.get(), 4)
+                .pattern("S")
+                .pattern("S")
                 .define('S', ModBlocks.SERPENTINITE_ROCK.asItem())
-                .define('J', ModItems.JADE.asItem())
-                .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK.asItem()))
                 .unlockedBy("has_serpentinite_block", this.has(ModBlocks.SERPENTINITE_ROCK.asItem()))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.COMBAT, ModItems.MACUAHUITL.get())
+                .pattern("OJO")
+                .pattern("OTO")
+                .pattern(" S ")
+                .define('S', ModItems.SERPENTINITE_ROD)
+                .define('J', ModItems.JADE)
+                .define('O', ModItems.OBSIDIAN_TOOTH)
+                .define('T', Items.STICK)
+                .unlockedBy("has_jade", this.has(ModItems.JADE))
+                .unlockedBy("has_obsidian_tooth", this.has(ModItems.OBSIDIAN_TOOTH))
+                .unlockedBy("has_serpentinite_rod", this.has(ModItems.SERPENTINITE_ROD))
                 .save(this.output);
 
         // SMELTING

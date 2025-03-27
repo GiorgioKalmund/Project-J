@@ -2,13 +2,10 @@ package com.mgmstudios.projectj.block.custom;
 
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.item.ModItems;
-import com.mgmstudios.projectj.item.ModToolMaterials;
 import com.mgmstudios.projectj.util.ModTags;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.component.PatchedDataComponentMap;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -21,12 +18,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -39,8 +34,6 @@ import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
-
-import static com.mgmstudios.projectj.block.custom.OlmecHeadBlock.FACING;
 
 public class AncientAltarBlock extends HorizontalDirectionalBlock {
 
@@ -117,7 +110,7 @@ public class AncientAltarBlock extends HorizontalDirectionalBlock {
         }
 
         if (itemEntity != null){
-            convertItem(itemEntity.getItem(), Items.NETHERITE_PICKAXE, ModItems.PAXEL.get(), level, itemEntity, pos, SoundEvents.EXPERIENCE_ORB_PICKUP);
+            convertItem(itemEntity.getItem(), Items.NETHERITE_PICKAXE, ModItems.MACUAHUITL.get(), level, itemEntity, pos, SoundEvents.EXPERIENCE_ORB_PICKUP);
             convertItemWithMultiplier(itemEntity.getItem(), ModItems.RAW_JADE.get(), ModItems.JADE.get(), 2, level, itemEntity, pos, SoundEvents.EXPERIENCE_ORB_PICKUP);
         } else {
             System.out.println("No entity above block. AbovePos: " + pos.above());

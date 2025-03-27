@@ -3,15 +3,17 @@
   "category": "equipment",
   "key": {
     "J": "projectj:jade",
-    "S": "projectj:serpentinite_rock"
+    "O": "projectj:obsidian_tooth",
+    "S": "projectj:serpentinite_rod",
+    "T": "minecraft:stick"
   },
   "pattern": [
-    "JJJ",
-    " S ",
+    "OJO",
+    "OTO",
     " S "
   ],
   "result": {
     "count": 1,
-    "id": "projectj:paxel"
+    "id": "projectj:macuahuitl"
   }
 }

@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-26T13:56:12.1188252	ModRecipeProvider
+// 1.21.4	2025-03-27T16:19:27.1994148	ModRecipeProvider
 6452fecec3921d0f3482c70b92d2b933f016e37a data/minecraft/advancement/recipes/building_blocks/adobe_bricks_smelting.json
 84077d4efc675d4efc77534435aee178896cac41 data/minecraft/advancement/recipes/misc/jade_smelting.json
 8be6b9dff9c6e615ed63496136f4a4247bf3ca06 data/minecraft/recipe/adobe_bricks_smelting.json
@@ -14,16 +14,18 @@ e5f231a725bd1d17285d561a02c73324b18676d3 data/projectj/advancement/recipes/build
 83eb63643f933f1143635eb4e0b1e8af3d3916b6 data/projectj/advancement/recipes/building_blocks/resistant_olmec_head.json
 a014a4401f9f20c76ea82d34bb6d324fe31d8515 data/projectj/advancement/recipes/building_blocks/serpentinite_bricks.json
 5187f2ebac3a13bda5709df6dd284c36a27a24f4 data/projectj/advancement/recipes/building_blocks/serpentinite_rock.json
-135ecb18a4a25507098871e8cf93e647d236398c data/projectj/advancement/recipes/combat/paxel.json
+3d99954820607651b6cc68e3e345f19f395869f3 data/projectj/advancement/recipes/combat/macuahuitl.json
+d6499f6734d1d845e3d09217122c1fe18aa4268e data/projectj/advancement/recipes/combat/serpentinite_rod.json
 a1e10a2b0c495ece4ae4c6d3835f9f698187f7e0 data/projectj/recipe/adobe_furnace.json
 005129fc58f531abcba634ec9f28ce751e628ad2 data/projectj/recipe/chimney.json
 61fa9820af1cbdde547e6bf99dfe55ebb7fb181a data/projectj/recipe/conduit_olmec_head.json
 457f8eb7eefe683b4d8770b779e219ae64bd9c5d data/projectj/recipe/damage_olmec_head.json
 753c166d3e245dc0486cd7a374cf6abdafae29ad data/projectj/recipe/jade.json
 243affb187dfb1c8cb41efeb295947a49394b877 data/projectj/recipe/jade_block.json
-521e31bf0c4b27f47751cbaf234e3e50486cd552 data/projectj/recipe/paxel.json
+bf4e43d6498fe6e6fad452bd4c7dd52695ec8542 data/projectj/recipe/macuahuitl.json
 4f4c8b320a685be033f916d31696a305e280425f data/projectj/recipe/raw_adobe.json
 769810dd21717629befaabae6c25bd6510d0d6c2 data/projectj/recipe/regeneration_olmec_head.json
 a4e05396ae98b853bb9f24935c11cecb797a9c3f data/projectj/recipe/resistant_olmec_head.json
 54baef0a501b052b2294a6d91183b9e13f95ad10 data/projectj/recipe/serpentinite_bricks.json
 6214a3a7280184a90d39a897d61807537603ce6f data/projectj/recipe/serpentinite_rock.json
+87b8cf550d70c8a3ad81b7a26bc12476a2ad9d9d data/projectj/recipe/serpentinite_rod.json

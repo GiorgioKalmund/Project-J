@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "projectj:item/paxel"
+    "layer0": "projectj:item/obsidian_tooth"
   }
 }

@@ -9,7 +9,6 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.common.Tags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -38,13 +37,13 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.JADE.get());
 
         tag(ItemTags.MINING_ENCHANTABLE)
-                .add(ModItems.PAXEL.get());
+                .add(ModItems.MACUAHUITL.get());
 
         tag(ItemTags.DURABILITY_ENCHANTABLE)
-                .add(ModItems.PAXEL.get());
+                .add(ModItems.MACUAHUITL.get());
 
         tag(ItemTags.MINING_LOOT_ENCHANTABLE)
-                .add(ModItems.PAXEL.get());
+                .add(ModItems.MACUAHUITL.get());
 
         tag(ModTags.Items.ALTAR_CRAFTABLE)
                 .add(Items.NETHERITE_PICKAXE)

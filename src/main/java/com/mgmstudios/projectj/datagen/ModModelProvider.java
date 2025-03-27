@@ -52,7 +52,9 @@ public class ModModelProvider extends ModelProvider {
 
         itemModels.generateFlatItem(ModItems.RAW_JADE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.JADE.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateSpyglass(ModItems.PAXEL.get());
+        itemModels.generateFlatItem(ModItems.OBSIDIAN_TOOTH.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.SERPENTINITE_ROD.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
+        itemModels.generateSpyglass(ModItems.MACUAHUITL.get());
 
         createFurnaceUntilTier1(blockModels, ModBlocks.ADOBE_FURNACE.get());
 

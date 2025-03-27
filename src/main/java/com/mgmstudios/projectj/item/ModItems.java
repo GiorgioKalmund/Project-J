@@ -1,17 +1,14 @@
 package com.mgmstudios.projectj.item;
 
 import com.mgmstudios.projectj.ProjectJ;
-import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.item.custom.OlmecHeadItem;
 import com.mgmstudios.projectj.item.custom.PaxelItem;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -19,8 +16,6 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.Objects;
-import java.util.function.Function;
-import java.util.function.Supplier;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ProjectJ.MOD_ID);
@@ -31,11 +26,14 @@ public class ModItems {
     public static final DeferredItem<Item> JADE = ITEMS.registerItem("jade",
             Item::new, new Item.Properties().rarity(Rarity.RARE));
 
-    public static final DeferredItem<Item> PAXEL = registerPaxelItem("paxel",
+    public static final DeferredItem<Item> MACUAHUITL = registerPaxelItem("macuahuitl",
           new Item.Properties()
                   .fireResistant()
                   .rarity(Rarity.EPIC)
     );
+
+    public static final DeferredItem<Item> SERPENTINITE_ROD = ITEMS.registerItem("serpentinite_rod", Item::new);
+    public static final DeferredItem<Item> OBSIDIAN_TOOTH = ITEMS.registerItem("obsidian_tooth", Item::new);
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
