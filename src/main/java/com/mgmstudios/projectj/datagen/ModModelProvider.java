@@ -25,6 +25,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.model.generators.template.ExtendedModelTemplateBuilder;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 import java.util.List;
@@ -48,7 +49,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.DEEPSLATE_JADE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.JADE_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.MESQUITE_LEAVES.get());
-        blockModels.createPlantWithDefaultItem(ModBlocks.MESQUITE_SAPLING.get(), ModBlocks.POTTED_MESQUITE_SAPLING.get(), PlantType.NOT_TINTED);
+        createCutoutPlantWithDefaultItem(blockModels, ModBlocks.MESQUITE_SAPLING.get(), ModBlocks.POTTED_MESQUITE_SAPLING.get(), PlantType.NOT_TINTED);
 
         createSerpentinitePillar(blockModels, itemModels, ModBlocks.SERPENTINITE_PILLAR.get());
 
@@ -94,6 +95,29 @@ public class ModModelProvider extends ModelProvider {
         );
     }
 
+    public void createCutoutPlantWithDefaultItem(BlockModelGenerators blockModelGenerators, Block block, Block pottedBlock, PlantType plantType){
+        blockModelGenerators.registerSimpleItemModel(block.asItem(), plantType.createItemModel(blockModelGenerators, block));
+        createCutoutPlant(blockModelGenerators, block, pottedBlock, plantType);
+    }
+
+    public void createCutoutPlant(BlockModelGenerators blockModelGenerators, Block block, Block pottedBlock, PlantType plantType){
+        createCutoutCrossBlock(blockModelGenerators, block, plantType);
+        TextureMapping texturemapping = plantType.getPlantTextureMapping(block);
+        var modelBuilder = ExtendedModelTemplateBuilder.of(plantType.getCrossPot());
+        modelBuilder.renderType("minecraft:cutout");
+        ResourceLocation resourcelocation = modelBuilder.build().create(pottedBlock, texturemapping, blockModelGenerators.modelOutput);
+        blockModelGenerators.blockStateOutput.accept(createSimpleBlock(pottedBlock, resourcelocation));
+    }
+
+    public void createCutoutCrossBlock(BlockModelGenerators blockModelGenerators, Block block, BlockModelGenerators.PlantType plantType) {
+        TextureMapping texturemapping = plantType.getTextureMapping(block);
+        createCutoutCrossBlock(blockModelGenerators, block, plantType, texturemapping);
+    }
+
+    public void createCutoutCrossBlock(BlockModelGenerators blockModelGenerators, Block block, BlockModelGenerators.PlantType plantType, TextureMapping textureMapping) {
+        ResourceLocation resourcelocation = plantType.getCross().extend().renderType("minecraft:cutout").build().create(block, textureMapping, blockModelGenerators.modelOutput);
+        blockModelGenerators.blockStateOutput.accept(createSimpleBlock(block, resourcelocation));
+    }
 
     public void createHorizontalDirectionalBlockWithCustomModel(BlockModelGenerators blockModels, Block block){
         ResourceLocation resourcelocation = ModelLocationUtils.getModelLocation(block);
