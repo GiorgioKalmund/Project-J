@@ -31,6 +31,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.RAW_JADE.get());
                 output.accept(ModItems.JADE.get());
                 output.accept(ModBlocks.JADE_BLOCK.get());
+                output.accept(ModBlocks.TALL_STATUE.get());
 
                 output.accept(ModBlocks.SERPENTINITE_PILLAR.get());
                 output.accept(ModItems.SERPENTINITE_ROD.get());

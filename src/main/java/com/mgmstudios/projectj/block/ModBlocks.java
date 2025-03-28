@@ -186,7 +186,10 @@ public class ModBlocks {
             new Item.Properties()
     );
 
-
+    public static final DeferredBlock<Block> TALL_STATUE = registerTallBlock("tall_statue",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS).noOcclusion(),
+            new Item.Properties()
+    );
 
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
@@ -195,6 +198,12 @@ public class ModBlocks {
 
     private static DeferredBlock<Block> registerAncientAltarBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new AncientAltarBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
+        return toBeRegistered;
+    }
+
+    private static DeferredBlock<Block> registerTallBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
+        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new TallBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
         ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
         return toBeRegistered;
     }

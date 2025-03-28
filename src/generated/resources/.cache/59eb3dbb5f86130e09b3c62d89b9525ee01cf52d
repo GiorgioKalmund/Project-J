@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-28T12:24:38.8843728	Loot Tables
+// 1.21.4	2025-03-28T13:36:51.8403672	Loot Tables
 645e23f8676b8f0e4d797aeab743aa1e3606c703 data/projectj/loot_table/blocks/adobe_bricks.json
 c52a58507f4c8bc3dcdd97ef286a063d396844cc data/projectj/loot_table/blocks/adobe_bricks_slab.json
 c80294a187a6c6c06ea794e6c6d418870c792578 data/projectj/loot_table/blocks/adobe_bricks_stairs.json
@@ -27,3 +27,4 @@ c424b63a2434644d4dab31a5172de7a22129753a data/projectj/loot_table/blocks/serpent
 f3df38a191f5643e37f1bca0251610233153eac7 data/projectj/loot_table/blocks/serpentinite_rock_slab.json
 f4a311fb12a5014d812148a5fa327ffc20808787 data/projectj/loot_table/blocks/serpentinite_rock_stairs.json
 43aaad145676fa2049b83ab84c08d51a7db1b915 data/projectj/loot_table/blocks/serpentinite_rock_wall.json
+500ec980ed89b150e3d0f8e4bb6f27a7c81852f6 data/projectj/loot_table/blocks/tall_statue.json
