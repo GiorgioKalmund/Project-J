@@ -3,11 +3,13 @@ package com.mgmstudios.projectj.datagen;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.block.custom.TallBlock;
 import com.mgmstudios.projectj.item.ModItems;
+import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
@@ -17,15 +19,23 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
+import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
+import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
+import java.util.List;
 import java.util.Set;
 
 public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
+
+    private static final float[] NORMAL_LEAVES_STICK_CHANCES = new float[]{0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F};
+    protected static final float[] NORMAL_LEAVES_SAPLING_CHANCES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
 
     protected ModBlockLootTableSubProvider(HolderLookup.Provider lookupProvider) {
         super(Set.of(), FeatureFlags.DEFAULT_FLAGS, lookupProvider);
@@ -88,8 +98,9 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.MESQUITE_FENCE_GATE.get());
         this.dropSelf(ModBlocks.MESQUITE_BRAZIER.get());
 
-        // TODO: Make proper drop when we have a sapling
-        add(ModBlocks.MESQUITE_LEAVES.get(), block -> this.createLeavesDrops(ModBlocks.MESQUITE_LEAVES.get(), ModBlocks.JADE_BLOCK.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        // TODO: Make OakLeavesDrop when we have a sapling
+
+        add(ModBlocks.MESQUITE_LEAVES.get(), block -> super.createLeavesDrops(ModBlocks.MESQUITE_LEAVES.get(), ModBlocks.MESQUITE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         add(ModBlocks.SNAKE_STATUE.get(), this::createTallBlockTable);
         this.dropSelf(ModBlocks.ANCIENT_ALTAR.get());
 
