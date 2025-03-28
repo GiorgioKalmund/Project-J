@@ -1,6 +1,5 @@
 package com.mgmstudios.projectj.block;
 
-import com.google.common.collect.ImmutableMap;
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.custom.*;
 import com.mgmstudios.projectj.item.ModItems;
@@ -23,11 +22,11 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.util.Map;
 import java.util.function.ToIntFunction;
 
 public class ModBlocks {
@@ -205,10 +204,12 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> MESQUITE_FENCE_GATE = registerFenceGateBlock("mesquite_fence_gate", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE), new Item.Properties());
 
+    public static final DeferredBlock<Block> MESQUITE_LEAVES = registerLeavesBlock("mesquite_leaves", leavesProperties(SoundType.AZALEA_LEAVES), new Item.Properties());
 
-    public static final DeferredBlock<Block> TALL_STATUE = registerTallBlock("tall_statue",
+
+    public static final DeferredBlock<Block> SNAKE_STATUE = registerTallBlock("snake_statue",
             BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS).noOcclusion(),
-            new Item.Properties()
+            new Item.Properties().rarity(Rarity.RARE)
     );
 
 
@@ -223,7 +224,7 @@ public class ModBlocks {
     }
 
     private static DeferredBlock<Block> registerTallBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
-        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new TallBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new TallStatueBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
         ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
         return toBeRegistered;
     }
@@ -338,8 +339,26 @@ public class ModBlocks {
         return toBeRegistered;
     }
 
+    private static DeferredBlock<Block> registerLeavesBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
+        DeferredBlock<Block> toBeRegistered = BLOCKS.register(name, registryName -> new LeavesBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
+        return toBeRegistered;
+    }
+
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
 
+    }
+
+    private static BlockBehaviour.Properties leavesProperties(SoundType sound) {
+        return BlockBehaviour.Properties.of()
+                .mapColor(MapColor.PLANT)
+                .strength(0.2F)
+                .randomTicks()
+                .sound(sound)
+                .noOcclusion()
+                .isValidSpawn(Blocks::ocelotOrParrot)
+                .ignitedByLava()
+                .pushReaction(PushReaction.DESTROY);
     }
 }

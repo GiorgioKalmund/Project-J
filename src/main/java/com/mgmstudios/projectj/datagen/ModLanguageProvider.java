@@ -29,7 +29,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.DEEPSLATE_JADE_ORE, "Deepslate Jade Ore");
         addBlock(ModBlocks.JADE_BLOCK, "Block of Jade");
         addBlock(ModBlocks.CHIMNEY, "Adobe Chimney");
-        addBlock(ModBlocks.TALL_STATUE, "Tall Statue");
+        addBlock(ModBlocks.SNAKE_STATUE, "Snake Statue");
 
         addBlock(ModBlocks.ADOBE_FURNACE, "Adobe Furnace");
         addBlock(ModBlocks.ADOBE_BRICKS_SLAB, "Adobe Bricks Slab");
@@ -70,6 +70,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.MESQUITE_SLAB, "Mesquite Slab");
         addBlock(ModBlocks.MESQUITE_STAIRS, "Mesquite Stairs");
         addBlock(ModBlocks.MESQUITE_FENCE_GATE, "Mesquite Fence Gate");
+        addBlock(ModBlocks.MESQUITE_LEAVES, "Mesquite Leaves");
 
         add("container.projectj.adobe_furnace", "Adobe Furnace");
         add("itemGroup.projectj.projectj_tab", "Project J");

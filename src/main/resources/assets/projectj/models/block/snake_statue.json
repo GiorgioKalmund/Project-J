@@ -2,11 +2,11 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "C:\\Users\\maxim\\Desktop\\Project-J\\src\\main\\resources\\assets\\projectj\\textures\\block/tall_statue",
+		"0": "projectj:block/tall_statue",
 		"2": "projectj:block/serpentinite_rock",
 		"3": "projectj:block/dark_olmec_stone",
 		"4": "projectj:block/paxel_dark_stone",
-		"particle": "C:\\Users\\maxim\\Desktop\\Project-J\\src\\main\\resources\\assets\\projectj\\textures\\block/tall_statue"
+		"particle": "projectj:block/tall_statue"
 	},
 	"elements": [
 		{
@@ -487,6 +487,40 @@
 			}
 		}
 	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 1.25, 0],
+			"scale": [0.35, 0.35, 0.35]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 1.25, 0],
+			"scale": [0.35, 0.35, 0.35]
+		},
+		"firstperson_righthand": {
+			"translation": [0, 1.25, 0],
+			"scale": [0.35, 0.35, 0.35]
+		},
+		"firstperson_lefthand": {
+			"translation": [0, 1.25, 0],
+			"scale": [0.35, 0.35, 0.35]
+		},
+		"ground": {
+			"translation": [0, 1.25, 0],
+			"scale": [0.44, 0.44, 0.44]
+		},
+		"gui": {
+			"rotation": [20, -135, 0],
+			"translation": [0, -2.75, 0],
+			"scale": [0.45, 0.45, 0.45]
+		},
+		"head": {
+			"translation": [0, 8, 0]
+		},
+		"fixed": {
+			"translation": [0, -2.5, -2.75],
+			"scale": [0.5, 0.5, 0.5]
+		}
+	},
 	"groups": [
 		0,
 		1,

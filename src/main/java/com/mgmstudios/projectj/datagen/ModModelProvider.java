@@ -14,9 +14,7 @@ import net.minecraft.client.data.models.blockstates.VariantProperties;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.properties.select.DisplayContext;
-import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.BlockFamilies;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -24,9 +22,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.client.event.RenderTooltipEvent;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 import java.util.List;
@@ -49,10 +47,14 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.JADE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.DEEPSLATE_JADE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.JADE_BLOCK.get());
+        blockModels.createTrivialCube(ModBlocks.MESQUITE_LEAVES.get());
+
         createSerpentinitePillar(blockModels, itemModels, ModBlocks.SERPENTINITE_PILLAR.get());
 
         blockModels.createAxisAlignedPillarBlock(ModBlocks.MESQUITE_LOG.get(), TexturedModel.COLUMN_ALT);
         blockModels.createAxisAlignedPillarBlock(ModBlocks.STRIPPED_MESQUITE_LOG.get(), TexturedModel.COLUMN_ALT);
+
+        createHorizontallyFacingDoubleBlock(blockModels, ModBlocks.SNAKE_STATUE.get());
 
         itemModels.generateFlatItem(ModItems.RAW_JADE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.JADE.get(), ModelTemplates.FLAT_ITEM);
@@ -68,7 +70,6 @@ public class ModModelProvider extends ModelProvider {
         createOlmecHead(blockModels, itemModels, ModBlocks.RESISTANT_OLMEC_HEAD.get());
 
         createSimpleBlockWithCustomModel(blockModels, ModBlocks.CHIMNEY.get());
-        createSimpleBlockWithCustomModel(blockModels, ModBlocks.TALL_STATUE.get());
         createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.ANCIENT_ALTAR.get());
 
 
@@ -91,6 +92,7 @@ public class ModModelProvider extends ModelProvider {
         );
     }
 
+
     public void createHorizontalDirectionalBlockWithCustomModel(BlockModelGenerators blockModels, Block block){
         ResourceLocation resourcelocation = ModelLocationUtils.getModelLocation(block);
         blockModels.blockStateOutput.accept(
@@ -98,6 +100,35 @@ public class ModModelProvider extends ModelProvider {
                         .with(VariantProperties.MODEL, resourcelocation))
                         .with(createHorizontalFacingDispatch())
         );
+    }
+
+    public void createDoubleBlock(BlockModelGenerators blockModels, Block block){
+        ResourceLocation top = ModelLocationUtils.getModelLocation(block, "_top");
+        ResourceLocation bottom = ModelLocationUtils.getModelLocation(block, "_bottom");
+        blockModels.blockStateOutput
+                .accept(
+                        MultiVariantGenerator.multiVariant(block)
+                                .with(
+                                        PropertyDispatch.property(BlockStateProperties.DOUBLE_BLOCK_HALF)
+                                                .select(DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.MODEL, bottom))
+                                                .select(DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.MODEL, top))
+                                )
+                );
+    }
+
+    public void createHorizontallyFacingDoubleBlock(BlockModelGenerators blockModels, Block block){
+        ResourceLocation top = ModelLocationUtils.getModelLocation(block, "_top");
+        ResourceLocation bottom = ModelLocationUtils.getModelLocation(block, "_bottom");
+        blockModels.blockStateOutput
+                .accept(
+                        MultiVariantGenerator.multiVariant(block)
+                                .with(
+                                        PropertyDispatch.property(BlockStateProperties.DOUBLE_BLOCK_HALF)
+                                                .select(DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.MODEL, bottom))
+                                                .select(DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.MODEL, top))
+                                )
+                                .with(createHorizontalFacingDispatch())
+                );
     }
 
     public void createFurnaceUntilTier1(BlockModelGenerators blockModels, Block block){

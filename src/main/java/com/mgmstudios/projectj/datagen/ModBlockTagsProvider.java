@@ -26,7 +26,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DAMAGE_OLMEC_HEAD.get())
                 .add(ModBlocks.CONDUIT_OLMEC_HEAD.get())
                 .add(ModBlocks.RESISTANT_OLMEC_HEAD.get())
-                .add(ModBlocks.TALL_STATUE.get());
+                .add(ModBlocks.SNAKE_STATUE.get());
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .addTag(ModTags.Blocks.ADOBE)
@@ -60,6 +60,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SERPENTINITE_BRICKS_WALL.get())
                 .add(ModBlocks.COBBLED_SERPENTINITE_WALL.get())
                 .add(ModBlocks.ADOBE_BRICKS_WALL.get());
+
+        tag(BlockTags.LEAVES)
+                .add(ModBlocks.MESQUITE_LEAVES.get());
 
         tag(ModTags.Blocks.ADOBE)
                 .add(ModBlocks.ADOBE_FURNACE.get())

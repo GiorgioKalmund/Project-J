@@ -1,18 +1,18 @@
 package com.mgmstudios.projectj.datagen;
 
 import com.mgmstudios.projectj.block.ModBlocks;
+import com.mgmstudios.projectj.block.custom.TallBlock;
 import com.mgmstudios.projectj.item.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -55,7 +55,6 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.ADOBE_BRICKS_STAIRS.get());
         this.dropSelf(ModBlocks.ADOBE_BRICKS_SLAB.get());
         this.dropSelf(ModBlocks.ADOBE_BRICKS_WALL.get());
-        this.dropSelf(ModBlocks.TALL_STATUE.get());
 
         this.dropSelf(ModBlocks.SERPENTINITE_PILLAR.get());
 
@@ -88,7 +87,10 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.MESQUITE_FENCE.get());
         this.dropSelf(ModBlocks.MESQUITE_FENCE_GATE.get());
 
+        // TODO: Make OakLeavesDrop when we have a sapling
 
+        add(ModBlocks.MESQUITE_LEAVES.get(), block -> this.createLeavesDrops(ModBlocks.MESQUITE_LEAVES.get(), ModBlocks.JADE_BLOCK.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        add(ModBlocks.SNAKE_STATUE.get(), this::createTallBlockTable);
         this.dropSelf(ModBlocks.ANCIENT_ALTAR.get());
 
         add(ModBlocks.JADE_ORE.get(), block ->
@@ -137,5 +139,9 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
                 .add(byproductDrop);
 
         this.add(block, mainItemDrop.withPool(byProductPool));
+    }
+
+    protected LootTable.Builder createTallBlockTable(Block doorBlock) {
+        return this.createSinglePropConditionTable(doorBlock, TallBlock.HALF, DoubleBlockHalf.LOWER);
     }
 }

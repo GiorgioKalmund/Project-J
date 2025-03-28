@@ -12,8 +12,8 @@ import static com.mgmstudios.projectj.block.ModBlockFamilies.STRIPPABLES;
 
 public class StrippableModLogBlock extends RotatedPillarBlock {
 
-    public StrippableModLogBlock(Properties p_55926_) {
-        super(p_55926_);
+    public StrippableModLogBlock(Properties properties) {
+        super(properties);
     }
 
     @Override

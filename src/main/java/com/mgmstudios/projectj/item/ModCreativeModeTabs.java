@@ -5,7 +5,6 @@ import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlockFamilies;
 import com.mgmstudios.projectj.block.ModBlocks;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.BlockFamily;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -31,7 +30,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.RAW_JADE.get());
                 output.accept(ModItems.JADE.get());
                 output.accept(ModBlocks.JADE_BLOCK.get());
-                output.accept(ModBlocks.TALL_STATUE.get());
+                output.accept(ModBlocks.SNAKE_STATUE.get());
 
                 output.accept(ModBlocks.SERPENTINITE_PILLAR.get());
                 output.accept(ModItems.SERPENTINITE_ROD.get());
@@ -47,6 +46,7 @@ public class ModCreativeModeTabs {
 
                 output.accept(ModBlocks.MESQUITE_LOG.get());
                 output.accept(ModBlocks.STRIPPED_MESQUITE_LOG.get());
+                output.accept(ModBlocks.MESQUITE_LEAVES.get());
 
                 ModBlockFamilies.getAllFamilies()
                         .forEach(family -> {
