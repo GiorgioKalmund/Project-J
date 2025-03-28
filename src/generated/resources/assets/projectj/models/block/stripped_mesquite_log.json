@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "projectj:block/stripped_mesquite_log_top",
+    "side": "projectj:block/stripped_mesquite_log"
+  }
+}

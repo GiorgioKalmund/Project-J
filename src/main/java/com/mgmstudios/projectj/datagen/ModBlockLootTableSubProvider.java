@@ -81,6 +81,7 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.RESISTANT_OLMEC_HEAD.get());
 
         this.dropSelf(ModBlocks.MESQUITE_LOG.get());
+        this.dropSelf(ModBlocks.STRIPPED_MESQUITE_LOG.get());
         this.dropSelf(ModBlocks.MESQUITE_PLANKS.get());
         this.dropSelf(ModBlocks.MESQUITE_STAIRS.get());
         this.dropSelf(ModBlocks.MESQUITE_SLAB.get());

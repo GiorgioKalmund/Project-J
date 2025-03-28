@@ -65,6 +65,7 @@ public class ModLanguageProvider extends LanguageProvider {
 
         addBlock(ModBlocks.MESQUITE_PLANKS, "Mesquite Planks");
         addBlock(ModBlocks.MESQUITE_LOG, "Mesquite Log");
+        addBlock(ModBlocks.STRIPPED_MESQUITE_LOG, "Stripped Mesquite Log");
         addBlock(ModBlocks.MESQUITE_FENCE, "Mesquite Fence");
         addBlock(ModBlocks.MESQUITE_SLAB, "Mesquite Slab");
         addBlock(ModBlocks.MESQUITE_STAIRS, "Mesquite Stairs");

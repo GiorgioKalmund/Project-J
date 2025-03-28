@@ -1,5 +1,6 @@
 package com.mgmstudios.projectj.block;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.mgmstudios.projectj.ProjectJ;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -21,6 +22,8 @@ public class ModBlockFamilies {
     public static BlockFamily COBBLED_SERPENTINITE;
     public static BlockFamily ADOBE_BRICKS;
     public static BlockFamily MESQUITE_PLANKS;
+
+    public static Map<Block, Block> STRIPPABLES;
 
     private static final Map<Block, BlockFamily> MAP = Maps.newHashMap();
 
@@ -72,6 +75,10 @@ public class ModBlockFamilies {
                     .fence(ModBlocks.MESQUITE_FENCE.get())
                     .fenceGate(ModBlocks.MESQUITE_FENCE_GATE.get())
                     .getFamily();
+        } else if (event.getRegistryKey().equals(Registries.BLOCK_TYPE)){
+            STRIPPABLES = new ImmutableMap.Builder<Block, Block>()
+                    .put(ModBlocks.MESQUITE_LOG.get(), ModBlocks.STRIPPED_MESQUITE_LOG.get())
+                    .build();
         }
     }
 }

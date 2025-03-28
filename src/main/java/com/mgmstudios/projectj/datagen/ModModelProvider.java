@@ -52,6 +52,7 @@ public class ModModelProvider extends ModelProvider {
         createSerpentinitePillar(blockModels, itemModels, ModBlocks.SERPENTINITE_PILLAR.get());
 
         blockModels.createAxisAlignedPillarBlock(ModBlocks.MESQUITE_LOG.get(), TexturedModel.COLUMN_ALT);
+        blockModels.createAxisAlignedPillarBlock(ModBlocks.STRIPPED_MESQUITE_LOG.get(), TexturedModel.COLUMN_ALT);
 
         itemModels.generateFlatItem(ModItems.RAW_JADE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.JADE.get(), ModelTemplates.FLAT_ITEM);

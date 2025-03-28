@@ -1,5 +1,6 @@
 package com.mgmstudios.projectj.block;
 
+import com.google.common.collect.ImmutableMap;
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.custom.*;
 import com.mgmstudios.projectj.item.ModItems;
@@ -26,11 +27,14 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.Map;
 import java.util.function.ToIntFunction;
 
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(ProjectJ.MOD_ID);
+
+
 
     public static final DeferredBlock<Block> RAW_ADOBE = registerBlock("raw_adobe",
             BlockBehaviour.Properties.of().mapColor(MapColor.CLAY).instrument(NoteBlockInstrument.FLUTE).strength(0.6F).sound(SoundType.GRAVEL)
@@ -187,7 +191,9 @@ public class ModBlocks {
             new Item.Properties()
     );
 
-    public static final DeferredBlock<Block> MESQUITE_LOG = registerRotatedPillarBlock("mesquite_log", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG), new Item.Properties());
+    public static final DeferredBlock<Block> STRIPPED_MESQUITE_LOG = registerRotatedPillarBlock("stripped_mesquite_log", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG), new Item.Properties());
+
+    public static final DeferredBlock<Block> MESQUITE_LOG = registerStrippableModLogBlock("mesquite_log", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG), new Item.Properties());
 
     public static final DeferredBlock<Block> MESQUITE_PLANKS = registerBlock("mesquite_planks", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS));
 
@@ -326,7 +332,14 @@ public class ModBlocks {
         return toBeRegistered;
     }
 
+    private static DeferredBlock<Block> registerStrippableModLogBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
+        DeferredBlock<Block> toBeRegistered = BLOCKS.register(name, registryName -> new StrippableModLogBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
+        return toBeRegistered;
+    }
+
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
+
     }
 }
