@@ -3,6 +3,7 @@ package com.mgmstudios.projectj.block;
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.custom.*;
 import com.mgmstudios.projectj.item.ModItems;
+import com.mgmstudios.projectj.worldgen.tree.ModTreeGrowers;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
@@ -17,6 +18,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -107,6 +109,10 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> MESQUITE_LEAVES = register("mesquite_leaves", LeavesBlock::new, leavesProperties(SoundType.AZALEA_LEAVES), new Item.Properties());
 
+    public static final DeferredBlock<Block> MESQUITE_SAPLING = registerSaplingBlock("mesquite_sapling", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING), new Item.Properties());
+
+    public static final DeferredBlock<Block> POTTED_MESQUITE_SAPLING = registerPottedSaplingBlock("potted_mesquite_sapling", BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_OAK_SAPLING), new Item.Properties());
+
     public static final DeferredBlock<Block> SNAKE_STATUE = register("snake_statue", TallStatueBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS).noOcclusion(), new Item.Properties().rarity(Rarity.RARE));
 
     public static final DeferredBlock<Block> MESQUITE_BRAZIER = register("mesquite_brazier", BrazierBlock::new,  BlockBehaviour.Properties.of().mapColor(MapColor.PODZOL).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).lightLevel(state -> 15).noOcclusion().ignitedByLava());
@@ -165,6 +171,19 @@ public class ModBlocks {
 
     private static DeferredBlock<Block> registerFenceGateBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered = BLOCKS.register(name, registryName -> new FenceGateBlock(WoodType.OAK, properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
+        return toBeRegistered;
+    }
+
+    private static DeferredBlock<Block> registerSaplingBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
+        DeferredBlock<Block> toBeRegistered = BLOCKS.register(name, registryName -> new SaplingBlock(ModTreeGrowers.MESQUITE, properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
+        return toBeRegistered;
+    }
+
+    private static DeferredBlock<Block> registerPottedSaplingBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
+        //@Nullable Supplier<FlowerPotBlock> emptyPot, Supplier<? extends Block> p_53528_, BlockBehaviour.Properties properties
+        DeferredBlock<Block> toBeRegistered = BLOCKS.register(name, registryName -> new FlowerPotBlock(() -> ((FlowerPotBlock)Blocks.FLOWER_POT), MESQUITE_SAPLING, properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
         ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
         return toBeRegistered;
     }

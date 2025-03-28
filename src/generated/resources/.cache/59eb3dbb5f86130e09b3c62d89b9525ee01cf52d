@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-28T21:17:48.2131957	Loot Tables
+// 1.21.4	2025-03-28T22:22:00.0540789	Loot Tables
 645e23f8676b8f0e4d797aeab743aa1e3606c703 data/projectj/loot_table/blocks/adobe_bricks.json
 c52a58507f4c8bc3dcdd97ef286a063d396844cc data/projectj/loot_table/blocks/adobe_bricks_slab.json
 c80294a187a6c6c06ea794e6c6d418870c792578 data/projectj/loot_table/blocks/adobe_bricks_stairs.json
@@ -15,14 +15,15 @@ b4fa58f65ed77099a543870e6ad939cecff08e34 data/projectj/loot_table/blocks/damage_
 e236002db4b8a69bcaa8a7e7484db5d3319458a7 data/projectj/loot_table/blocks/deepslate_jade_ore.json
 250c4f38d51efd53420b2a8b06eced5ffe896263 data/projectj/loot_table/blocks/jade_block.json
 9ad80c3265b1b2ec4949f718f7f0bd9358890e7b data/projectj/loot_table/blocks/jade_ore.json
-3573a77d9fe16eba3197dcc0f05682c55703b37b data/projectj/loot_table/blocks/mesquite_brazier.json
 2f0eba6a20929b29e3d6ed1a6cf19cc54b56e0e2 data/projectj/loot_table/blocks/mesquite_fence.json
 062f69011b7d6da2acaddc15999a4ca42bd8e1d6 data/projectj/loot_table/blocks/mesquite_fence_gate.json
-94aa8a7e6bd557785a6a059b1678e76fd8331761 data/projectj/loot_table/blocks/mesquite_leaves.json
+04f8f691e8b9db10b9e345690d14c5765930ca86 data/projectj/loot_table/blocks/mesquite_leaves.json
 ae52183308347d4c32220a4c5c255831b4dd0ee0 data/projectj/loot_table/blocks/mesquite_log.json
 d8639e8921306256b3e40346a14fa55186df6c45 data/projectj/loot_table/blocks/mesquite_planks.json
+78b1f148e3cbe889f85308575e14a11ac59067ad data/projectj/loot_table/blocks/mesquite_sapling.json
 1d09be1543c5dbd4c9ac9d8b8831a5075879be98 data/projectj/loot_table/blocks/mesquite_slab.json
 e34b8dc24a6e16977b2a4db550311ddd291b736e data/projectj/loot_table/blocks/mesquite_stairs.json
+8fbbaec90f89cf12091783bf474bed8cd70d545c data/projectj/loot_table/blocks/potted_mesquite_sapling.json
 6c0b1079347a3cf6144330d7a346108354b52a2e data/projectj/loot_table/blocks/raw_adobe.json
 5473d6ed5a045f50ed8e12e9bd26fe38704d15e2 data/projectj/loot_table/blocks/regeneration_olmec_head.json
 6c5ed4ae0a4f939414539ec6bedaea9e0b4cc700 data/projectj/loot_table/blocks/resistant_olmec_head.json
