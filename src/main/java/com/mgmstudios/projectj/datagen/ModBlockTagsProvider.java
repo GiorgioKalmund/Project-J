@@ -88,5 +88,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.PLANKS)
                 .add(ModBlocks.MESQUITE_PLANKS.get());
+
+        tag(BlockTags.WOODEN_FENCES)
+                .add(ModBlocks.MESQUITE_FENCE.get());
     }
 }

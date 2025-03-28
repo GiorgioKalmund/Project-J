@@ -66,7 +66,12 @@ public class ModBlockFamilies {
                     .wall(ModBlocks.ADOBE_BRICKS_WALL.get())
                     .getFamily();
 
-            //MESQUITE_PLANKS = familyBuilder(ModBlocks.MESQUITE_PLANKS.get());
+            MESQUITE_PLANKS = familyBuilder(ModBlocks.MESQUITE_PLANKS.get())
+                    .stairs(ModBlocks.MESQUITE_STAIRS.get())
+                    .slab(ModBlocks.MESQUITE_SLAB.get())
+                    .fence(ModBlocks.MESQUITE_FENCE.get())
+                    .fenceGate(ModBlocks.MESQUITE_FENCE_GATE.get())
+                    .getFamily();
         }
     }
 }
