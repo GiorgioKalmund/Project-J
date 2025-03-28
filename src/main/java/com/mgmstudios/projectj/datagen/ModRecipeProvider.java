@@ -214,6 +214,7 @@ public class ModRecipeProvider extends RecipeProvider {
         stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_ROCK_STAIRS.asItem(), ModBlocks.SERPENTINITE_ROCK.get());
         stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_ROCK_WALL.asItem(), ModBlocks.SERPENTINITE_ROCK.get());
         stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS.asItem(), ModBlocks.SERPENTINITE_ROCK.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_PILLAR.asItem(), ModBlocks.SERPENTINITE_ROCK.get());
         stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS_SLAB.asItem(), ModBlocks.SERPENTINITE_BRICKS.get(), 2);
         stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS_STAIRS.asItem(), ModBlocks.SERPENTINITE_BRICKS.get());
         stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS_WALL.asItem(), ModBlocks.SERPENTINITE_BRICKS.get());
