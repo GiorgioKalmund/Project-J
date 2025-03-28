@@ -25,11 +25,15 @@ public class ModLanguageProvider extends LanguageProvider {
         // Blocks
         addBlock(ModBlocks.RAW_ADOBE, "Raw Adobe");
         addBlock(ModBlocks.ADOBE_BRICKS, "Adobe Bricks");
-        addBlock(ModBlocks.ADOBE_FURNACE, "Adobe Furnace");
         addBlock(ModBlocks.JADE_ORE, "Jade Ore");
         addBlock(ModBlocks.DEEPSLATE_JADE_ORE, "Deepslate Jade Ore");
         addBlock(ModBlocks.JADE_BLOCK, "Block of Jade");
         addBlock(ModBlocks.CHIMNEY, "Adobe Chimney");
+
+        addBlock(ModBlocks.ADOBE_FURNACE, "Adobe Furnace");
+        addBlock(ModBlocks.ADOBE_BRICKS_SLAB, "Adobe Bricks Slab");
+        addBlock(ModBlocks.ADOBE_BRICKS_STAIRS, "Adobe Bricks Stairs");
+        addBlock(ModBlocks.ADOBE_BRICKS_WALL, "Adobe Bricks Wall");
 
         addBlock(ModBlocks.SERPENTINITE_ROCK, "Serpentinite Rock");
         addBlock(ModBlocks.SERPENTINITE_ROCK_SLAB, "Serpentinite Rock Slab");
@@ -41,8 +45,12 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.SERPENTINITE_BRICKS_STAIRS, "Serpentinite Bricks Stairs");
         addBlock(ModBlocks.SERPENTINITE_BRICKS_WALL, "Serpentinite Bricks Wall");
 
-        addBlock(ModBlocks.SERPENTINITE_PILLAR, "Serpentinite Pillar");
         addBlock(ModBlocks.COBBLED_SERPENTINITE, "Cobbled Serpentinite");
+        addBlock(ModBlocks.COBBLED_SERPENTINITE_SLAB, "Cobbled Serpentinite Slab");
+        addBlock(ModBlocks.COBBLED_SERPENTINITE_STAIRS, "Cobbled Serpentinite Stairs");
+        addBlock(ModBlocks.COBBLED_SERPENTINITE_WALL, "Cobbled Serpentinite Wall");
+
+        addBlock(ModBlocks.SERPENTINITE_PILLAR, "Serpentinite Pillar");
         addBlock(ModBlocks.ANCIENT_ALTAR, "Ancient Altar");
 
         addBlock(ModBlocks.RESISTANT_OLMEC_HEAD, "Resistant Olmec Head");

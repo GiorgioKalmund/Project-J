@@ -1,8 +1,9 @@
-// 1.21.4	2025-03-27T23:51:43.276761	Tags for minecraft:block mod id projectj
-4e4b0013a0bbb85b4dfe63f2b11c3da792563658 data/minecraft/tags/block/mineable/pickaxe.json
+// 1.21.4	2025-03-28T12:33:52.2367027	Tags for minecraft:block mod id projectj
+1c0530610974dc52e0f2c185f4eb9bfdfc66eedb data/minecraft/tags/block/mineable/pickaxe.json
 6bd45ca4a2926b2e214bd097d11be7521f985079 data/minecraft/tags/block/needs_iron_tool.json
-46e0de1c54f6663f087399fd7b7eb1425a7e0bc7 data/minecraft/tags/block/slabs.json
-b43ba619ab9b028feb476e51063d40a1dd8ec8dd data/minecraft/tags/block/stairs.json
-ba793942bcaa18d75df4f64a35ad3610527c887b data/minecraft/tags/block/walls.json
+32a1721642cc396636cc040b0ae989e8eb25615e data/minecraft/tags/block/slabs.json
+b2e0ac21eae7ad9ce71a7dc9009ad5ba509bb563 data/minecraft/tags/block/stairs.json
+7c31609503187578f9a3dd4e93a6e196b93c0c9a data/minecraft/tags/block/walls.json
+e9f38ba202c948a7d606fa864cf21124211fc7bd data/projectj/tags/block/adobe.json
 984a835f12c583514b244703d6bad1afa79b3402 data/projectj/tags/block/mineable/paxel.json
-a155f20a56d4a15995ec6bf47e93e10faf2941ad data/projectj/tags/block/serpentinite.json
+5a56a9560049180e2d925f769e39836ce714883d data/projectj/tags/block/serpentinite.json

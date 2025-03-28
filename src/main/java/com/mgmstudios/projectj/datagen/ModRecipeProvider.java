@@ -199,6 +199,15 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_jade_ore", this.has(ModTags.Items.SMELTS_TO_JADE))
                 .save(this.output, "jade_smelting");
 
+        SimpleCookingRecipeBuilder.smelting(
+                    Ingredient.of(ModBlocks.COBBLED_SERPENTINITE.get()),
+                        RecipeCategory.MISC,
+                        ModBlocks.SERPENTINITE_ROCK.asItem(),
+                        0.15F,
+                        200)
+                .unlockedBy("has_cobbled_serpentinite", this.has(ModBlocks.COBBLED_SERPENTINITE.asItem()))
+                .save(this.output, "cobbled_serpentinite_smelting");
+
         // STONECUTTING
         stonecutterResultFromBase(RecipeCategory.MISC,  ModItems.OBSIDIAN_TOOTH.get(), Blocks.OBSIDIAN,8);
         stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_ROCK_SLAB.asItem(), ModBlocks.SERPENTINITE_ROCK.get(), 2);
@@ -208,6 +217,12 @@ public class ModRecipeProvider extends RecipeProvider {
         stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS_SLAB.asItem(), ModBlocks.SERPENTINITE_BRICKS.get(), 2);
         stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS_STAIRS.asItem(), ModBlocks.SERPENTINITE_BRICKS.get());
         stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS_WALL.asItem(), ModBlocks.SERPENTINITE_BRICKS.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.COBBLED_SERPENTINITE_SLAB.asItem(), ModBlocks.COBBLED_SERPENTINITE.get(), 2);
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.COBBLED_SERPENTINITE_STAIRS.asItem(), ModBlocks.COBBLED_SERPENTINITE.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.COBBLED_SERPENTINITE_WALL.asItem(), ModBlocks.COBBLED_SERPENTINITE.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.ADOBE_BRICKS_SLAB.asItem(), ModBlocks.ADOBE_BRICKS.get(), 2);
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.ADOBE_BRICKS_STAIRS.asItem(), ModBlocks.ADOBE_BRICKS.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.ADOBE_BRICKS_WALL.asItem(), ModBlocks.ADOBE_BRICKS.get());
 
 
     }

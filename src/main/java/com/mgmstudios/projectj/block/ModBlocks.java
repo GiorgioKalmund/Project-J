@@ -36,12 +36,23 @@ public class ModBlocks {
     );
 
     public static final DeferredBlock<Block> ADOBE_BRICKS = registerBlock("adobe_bricks",
-             BlockBehaviour.Properties.of()
-            .mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
-            .instrument(NoteBlockInstrument.BASEDRUM)
-            .requiresCorrectToolForDrops()
-            .strength(1.5F, 3.0F)
-            .sound(SoundType.MUD_BRICKS)
+             BlockBehaviour.Properties.ofFullCopy(Blocks.MUD_BRICKS)
+    );
+
+
+    public static final DeferredBlock<Block> ADOBE_BRICKS_STAIRS = registerStairBlock("adobe_bricks_stairs",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.MUD_BRICK_STAIRS),
+            new Item.Properties()
+    );
+
+    public static final DeferredBlock<Block> ADOBE_BRICKS_SLAB = registerSlabBlock("adobe_bricks_slab",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.MUD_BRICK_SLAB),
+            new Item.Properties()
+    );
+
+    public static final DeferredBlock<Block> ADOBE_BRICKS_WALL = registerWallBlock("adobe_bricks_wall",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.MUD_BRICK_WALL),
+            new Item.Properties()
     );
 
 
@@ -159,6 +170,23 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> COBBLED_SERPENTINITE = registerBlock("cobbled_serpentinite",
             BlockBehaviour.Properties.ofFullCopy(Blocks.COBBLESTONE), new Item.Properties());
+
+    public static final DeferredBlock<Block> COBBLED_SERPENTINITE_STAIRS = registerStairBlock("cobbled_serpentinite_stairs",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_STAIRS),
+            new Item.Properties()
+    );
+
+    public static final DeferredBlock<Block> COBBLED_SERPENTINITE_SLAB = registerSlabBlock("cobbled_serpentinite_slab",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_SLAB),
+            new Item.Properties()
+    );
+
+    public static final DeferredBlock<Block> COBBLED_SERPENTINITE_WALL = registerWallBlock("cobbled_serpentinite_wall",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICK_WALL),
+            new Item.Properties()
+    );
+
+
 
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {

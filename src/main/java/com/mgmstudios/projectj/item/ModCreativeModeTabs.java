@@ -2,8 +2,10 @@ package com.mgmstudios.projectj.item;
 
 
 import com.mgmstudios.projectj.ProjectJ;
+import com.mgmstudios.projectj.block.ModBlockFamilies;
 import com.mgmstudios.projectj.block.ModBlocks;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.data.BlockFamily;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -22,7 +24,6 @@ public class ModCreativeModeTabs {
             //Add your items to the tab.
             .displayItems((params, output) -> {
                 output.accept(ModBlocks.RAW_ADOBE.get());
-                output.accept(ModBlocks.ADOBE_BRICKS.get());
                 output.accept(ModBlocks.ADOBE_FURNACE.get());
                 output.accept(ModBlocks.CHIMNEY.get());
                 output.accept(ModBlocks.JADE_ORE.get());
@@ -31,21 +32,8 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.JADE.get());
                 output.accept(ModBlocks.JADE_BLOCK.get());
 
-                output.accept(ModBlocks.COBBLED_SERPENTINITE.get());
                 output.accept(ModBlocks.SERPENTINITE_PILLAR.get());
                 output.accept(ModItems.SERPENTINITE_ROD.get());
-
-                output.accept(ModBlocks.SERPENTINITE_ROCK.get());
-                output.accept(ModBlocks.SERPENTINITE_ROCK_STAIRS.get());
-                output.accept(ModBlocks.SERPENTINITE_ROCK_SLAB.get());
-                output.accept(ModBlocks.SERPENTINITE_ROCK_WALL.get());
-
-                output.accept(ModBlocks.SERPENTINITE_BRICKS.get());
-                output.accept(ModBlocks.SERPENTINITE_BRICKS_STAIRS.get());
-                output.accept(ModBlocks.SERPENTINITE_BRICKS_SLAB.get());
-                output.accept(ModBlocks.SERPENTINITE_BRICKS_WALL.get());
-
-
 
                 output.accept(ModBlocks.REGENERATION_OLMEC_HEAD.get());
                 output.accept(ModBlocks.DAMAGE_OLMEC_HEAD.get());
@@ -55,6 +43,16 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.ANCIENT_ALTAR.get());
                 output.accept(ModItems.MACUAHUITL.get());
                 output.accept(ModItems.OBSIDIAN_TOOTH.get());
+
+                ModBlockFamilies.getAllFamilies()
+                        .forEach(family -> {
+
+                            output.accept(family.getBaseBlock());
+
+                            family.getVariants().values().stream()
+                                    .map(block -> new ItemStack(block.asItem()))
+                                    .forEach(output::accept);
+                        });
             })
             .build()
     );

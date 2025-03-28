@@ -9,6 +9,10 @@
     "projectj:serpentinite_bricks",
     "projectj:serpentinite_bricks_stairs",
     "projectj:serpentinite_bricks_slab",
-    "projectj:serpentinite_bricks_wall"
+    "projectj:serpentinite_bricks_wall",
+    "projectj:cobbled_serpentinite",
+    "projectj:cobbled_serpentinite_stairs",
+    "projectj:cobbled_serpentinite_slab",
+    "projectj:cobbled_serpentinite_wall"
   ]
 }

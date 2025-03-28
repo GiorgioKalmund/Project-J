@@ -1,6 +1,8 @@
 {
   "values": [
     "projectj:serpentinite_rock_slab",
-    "projectj:serpentinite_bricks_slab"
+    "projectj:serpentinite_bricks_slab",
+    "projectj:cobbled_serpentinite_slab",
+    "projectj:adobe_bricks_slab"
   ]
 }

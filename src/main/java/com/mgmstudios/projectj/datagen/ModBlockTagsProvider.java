@@ -19,8 +19,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     protected void addTags(HolderLookup.Provider provider) {
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(ModBlocks.ADOBE_FURNACE.get())
-                .add(ModBlocks.ADOBE_BRICKS.get())
                 .add(ModBlocks.JADE_ORE.get())
                 .add(ModBlocks.DEEPSLATE_JADE_ORE.get())
                 .add(ModBlocks.JADE_BLOCK.get())
@@ -28,6 +26,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DAMAGE_OLMEC_HEAD.get())
                 .add(ModBlocks.CONDUIT_OLMEC_HEAD.get())
                 .add(ModBlocks.RESISTANT_OLMEC_HEAD.get())
+                .addTag(ModTags.Blocks.ADOBE)
                 .addTag(ModTags.Blocks.SERPENTINITE);
 
 
@@ -44,15 +43,29 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.SLABS)
                 .add(ModBlocks.SERPENTINITE_ROCK_SLAB.get())
-                .add(ModBlocks.SERPENTINITE_BRICKS_SLAB.get());
+                .add(ModBlocks.SERPENTINITE_BRICKS_SLAB.get())
+                .add(ModBlocks.COBBLED_SERPENTINITE_SLAB.get())
+                .add(ModBlocks.ADOBE_BRICKS_SLAB.get());
 
         tag(BlockTags.STAIRS)
                 .add(ModBlocks.SERPENTINITE_ROCK_STAIRS.get())
-                .add(ModBlocks.SERPENTINITE_BRICKS_STAIRS.get());
+                .add(ModBlocks.SERPENTINITE_BRICKS_STAIRS.get())
+                .add(ModBlocks.COBBLED_SERPENTINITE_STAIRS.get())
+                .add(ModBlocks.ADOBE_BRICKS_STAIRS.get());
 
         tag(BlockTags.WALLS)
                 .add(ModBlocks.SERPENTINITE_ROCK_WALL.get())
-                .add(ModBlocks.SERPENTINITE_BRICKS_WALL.get());
+                .add(ModBlocks.SERPENTINITE_BRICKS_WALL.get())
+                .add(ModBlocks.COBBLED_SERPENTINITE_WALL.get())
+                .add(ModBlocks.ADOBE_BRICKS_WALL.get());
+
+        tag(ModTags.Blocks.ADOBE)
+                .add(ModBlocks.ADOBE_FURNACE.get())
+                .add(ModBlocks.CHIMNEY.get())
+                .add(ModBlocks.ADOBE_BRICKS.get())
+                .add(ModBlocks.ADOBE_BRICKS_STAIRS.get())
+                .add(ModBlocks.ADOBE_BRICKS_SLAB.get())
+                .add(ModBlocks.ADOBE_BRICKS_WALL.get());
 
         tag(ModTags.Blocks.SERPENTINITE)
                 .add(ModBlocks.SERPENTINITE_PILLAR.get())
@@ -64,7 +77,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SERPENTINITE_BRICKS.get())
                 .add(ModBlocks.SERPENTINITE_BRICKS_STAIRS.get())
                 .add(ModBlocks.SERPENTINITE_BRICKS_SLAB.get())
-                .add(ModBlocks.SERPENTINITE_BRICKS_WALL.get());
+                .add(ModBlocks.SERPENTINITE_BRICKS_WALL.get())
+                .add(ModBlocks.COBBLED_SERPENTINITE.get())
+                .add(ModBlocks.COBBLED_SERPENTINITE_STAIRS.get())
+                .add(ModBlocks.COBBLED_SERPENTINITE_SLAB.get())
+                .add(ModBlocks.COBBLED_SERPENTINITE_WALL.get());
 
     }
 }
