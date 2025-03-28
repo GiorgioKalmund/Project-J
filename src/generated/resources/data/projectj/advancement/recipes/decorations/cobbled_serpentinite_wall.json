@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cobbled_serpentinite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:cobbled_serpentinite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "projectj:cobbled_serpentinite_wall"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cobbled_serpentinite"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "projectj:cobbled_serpentinite_wall"
+    ]
+  }
+}

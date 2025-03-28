@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "projectj:block/cobbled_serpentinite_slab"
+    },
+    "type=double": {
+      "model": "projectj:block/cobbled_serpentinite"
+    },
+    "type=top": {
+      "model": "projectj:block/cobbled_serpentinite_slab_top"
+    }
+  }
+}

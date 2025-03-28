@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "projectj:adobe_bricks",
+  "result": {
+    "count": 1,
+    "id": "projectj:adobe_bricks_stairs"
+  }
+}

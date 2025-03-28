@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "projectj:block/adobe_bricks",
+    "side": "projectj:block/adobe_bricks",
+    "top": "projectj:block/adobe_bricks"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "projectj:block/cobbled_serpentinite",
+    "side": "projectj:block/cobbled_serpentinite",
+    "top": "projectj:block/cobbled_serpentinite"
+  }
+}

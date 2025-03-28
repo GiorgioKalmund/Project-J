@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cobbled_serpentinite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:cobbled_serpentinite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:cobbled_serpentinite_wall_from_cobbled_serpentinite_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cobbled_serpentinite"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:cobbled_serpentinite_wall_from_cobbled_serpentinite_stonecutting"
+    ]
+  }
+}
