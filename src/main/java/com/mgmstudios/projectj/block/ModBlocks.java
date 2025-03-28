@@ -51,9 +51,9 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> DEEPSLATE_JADE_ORE = registerDropExperienceBlock("deepslate_jade_ore", BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE));
 
-    public static final DeferredBlock<Block> ADOBE_FURNACE = registerFurnaceBlock("adobe_furnace", BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).noOcclusion());
+    public static final DeferredBlock<Block> ADOBE_FURNACE = register("adobe_furnace", AdobeFurnaceBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).noOcclusion());
 
-    public static final DeferredBlock<Block> CHIMNEY = registerChimneyBlock("chimney", BlockBehaviour.Properties.of().noOcclusion());
+    public static final DeferredBlock<Block> CHIMNEY = register("chimney", AdobeChimneyBlock::new, BlockBehaviour.Properties.of().noOcclusion());
 
     public static final DeferredBlock<Block> REGENERATION_OLMEC_HEAD = registerOlmecHeadBlock("regeneration_olmec_head", ParticleTypes.HAPPY_VILLAGER, MobEffects.REGENERATION, 20);
 
@@ -105,9 +105,11 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> MESQUITE_FENCE_GATE = registerFenceGateBlock("mesquite_fence_gate", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE), new Item.Properties());
 
-    public static final DeferredBlock<Block> MESQUITE_LEAVES = registerLeavesBlock("mesquite_leaves", leavesProperties(SoundType.AZALEA_LEAVES), new Item.Properties());
+    public static final DeferredBlock<Block> MESQUITE_LEAVES = register("mesquite_leaves", LeavesBlock::new, leavesProperties(SoundType.AZALEA_LEAVES), new Item.Properties());
 
     public static final DeferredBlock<Block> SNAKE_STATUE = register("snake_statue", TallStatueBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS).noOcclusion(), new Item.Properties().rarity(Rarity.RARE));
+
+    public static final DeferredBlock<Block> MESQUITE_BRAZIER = register("mesquite_brazier", BrazierBlock::new,  BlockBehaviour.Properties.of().mapColor(MapColor.PODZOL).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).lightLevel(state -> 15).noOcclusion().ignitedByLava());
 
     private static DeferredBlock<Block> register(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> factory.apply(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
@@ -161,26 +163,8 @@ public class ModBlocks {
         return toBeRegistered;
     }
 
-    private static DeferredBlock<Block> registerFurnaceBlock(String name, BlockBehaviour.Properties properties) {
-        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new AdobeFurnaceBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
-        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered);
-        return toBeRegistered;
-    }
-
-    private static DeferredBlock<Block> registerChimneyBlock(String name, BlockBehaviour.Properties properties) {
-        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new AdobeChimneyBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
-        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered);
-        return toBeRegistered;
-    }
-
     private static DeferredBlock<Block> registerFenceGateBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered = BLOCKS.register(name, registryName -> new FenceGateBlock(WoodType.OAK, properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
-        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
-        return toBeRegistered;
-    }
-
-    private static DeferredBlock<Block> registerLeavesBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
-        DeferredBlock<Block> toBeRegistered = BLOCKS.register(name, registryName -> new LeavesBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
         ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
         return toBeRegistered;
     }

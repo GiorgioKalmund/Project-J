@@ -86,9 +86,9 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.MESQUITE_SLAB.get());
         this.dropSelf(ModBlocks.MESQUITE_FENCE.get());
         this.dropSelf(ModBlocks.MESQUITE_FENCE_GATE.get());
+        this.dropSelf(ModBlocks.MESQUITE_BRAZIER.get());
 
-        // TODO: Make OakLeavesDrop when we have a sapling
-
+        // TODO: Make proper drop when we have a sapling
         add(ModBlocks.MESQUITE_LEAVES.get(), block -> this.createLeavesDrops(ModBlocks.MESQUITE_LEAVES.get(), ModBlocks.JADE_BLOCK.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         add(ModBlocks.SNAKE_STATUE.get(), this::createTallBlockTable);
         this.dropSelf(ModBlocks.ANCIENT_ALTAR.get());

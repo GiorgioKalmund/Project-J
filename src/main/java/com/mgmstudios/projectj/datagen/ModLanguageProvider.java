@@ -71,6 +71,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.MESQUITE_STAIRS, "Mesquite Stairs");
         addBlock(ModBlocks.MESQUITE_FENCE_GATE, "Mesquite Fence Gate");
         addBlock(ModBlocks.MESQUITE_LEAVES, "Mesquite Leaves");
+        addBlock(ModBlocks.MESQUITE_BRAZIER, "Mesquite Brazier");
 
         add("container.projectj.adobe_furnace", "Adobe Furnace");
         add("itemGroup.projectj.projectj_tab", "Project J");
