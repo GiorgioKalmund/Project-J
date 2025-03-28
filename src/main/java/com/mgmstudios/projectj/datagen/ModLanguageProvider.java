@@ -17,7 +17,7 @@ public class ModLanguageProvider extends LanguageProvider {
 
         // Items
         addItem(ModItems.JADE, "Jade");
-        addItem(ModItems.RAW_JADE, "Jade");
+        addItem(ModItems.RAW_JADE, "Raw Jade");
         addItem(ModItems.MACUAHUITL, "Macuahuitl");
         addItem(ModItems.OBSIDIAN_TOOTH, "Obsidian Tooth");
         addItem(ModItems.SERPENTINITE_ROD, "Serpentinite Rod");
