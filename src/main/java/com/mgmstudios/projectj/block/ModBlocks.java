@@ -186,6 +186,11 @@ public class ModBlocks {
             new Item.Properties()
     );
 
+    public static final DeferredBlock<Block> MESQUITE_LOG = registerRotatedPillarBlock("mesquite_log", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG), new Item.Properties());
+
+    public static final DeferredBlock<Block> MESQUITE_PLANKS = registerBlock("mesquite_planks", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS));
+
+
     public static final DeferredBlock<Block> TALL_STATUE = registerTallBlock("tall_statue",
             BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS).noOcclusion(),
             new Item.Properties()

@@ -85,5 +85,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.COBBLED_SERPENTINITE_SLAB.get())
                 .add(ModBlocks.COBBLED_SERPENTINITE_WALL.get());
 
+
+        tag(BlockTags.PLANKS)
+                .add(ModBlocks.MESQUITE_PLANKS.get());
     }
 }

@@ -1,7 +1,8 @@
-// 1.21.4	2025-03-27T18:06:38.7639249	Tags for minecraft:item mod id vanilla
+// 1.21.4	2025-03-28T14:03:32.4345855	Tags for minecraft:item mod id vanilla
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/enchantable/durability.json
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/enchantable/mining.json
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/enchantable/mining_loot.json
+7356e7560bec3f85f86e264f83881226dfd87f93 data/minecraft/tags/item/planks.json
 fb8fa6cba9dd66d4d5a872f2009487725716357a data/projectj/tags/item/adobe_furnace_smeltable.json
 5fc3a63ccc39ecd04cc579d057139421acd08bb3 data/projectj/tags/item/altar_craftable.json
 a49dbe94ce86b9ca5b714d568d9f6ad6e884c4be data/projectj/tags/item/jade.json
