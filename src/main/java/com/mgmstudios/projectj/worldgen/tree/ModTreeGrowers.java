@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public class ModTreeGrowers {
     public static final TreeGrower MESQUITE = new TreeGrower(ProjectJ.MOD_ID + ":mesquite",
-            Optional.empty(), Optional.of(ModConfiguredFeatures.MESQUITE_KEY), Optional.empty());
+            Optional.of(ModConfiguredFeatures.MESQUITE_KEY), Optional.of(ModConfiguredFeatures.MESQUITE_KEY), Optional.empty());
 }

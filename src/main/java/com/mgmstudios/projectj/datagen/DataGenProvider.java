@@ -44,6 +44,8 @@ public class DataGenProvider extends LootTableProvider {
 
         event.createProvider(ModLanguageProvider::new);
 
+        event.createProvider(ModDataPackProvider::new);
+
     }
 
 
