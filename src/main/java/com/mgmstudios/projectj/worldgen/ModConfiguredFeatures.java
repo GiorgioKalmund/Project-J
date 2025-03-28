@@ -13,6 +13,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.CherryFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
@@ -28,7 +29,7 @@ public class ModConfiguredFeatures {
                 new ForkingTrunkPlacer(4,4,3),
 
                 BlockStateProvider.simple(ModBlocks.MESQUITE_LEAVES.get()),
-                new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(3)),
+                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(3), 3),
 
                 new TwoLayersFeatureSize(1,0,2)).build()
         );

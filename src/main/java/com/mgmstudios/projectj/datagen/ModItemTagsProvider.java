@@ -51,5 +51,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(ItemTags.PLANKS)
                 .add(ModBlocks.MESQUITE_PLANKS.asItem());
+
+        tag(ModTags.Items.MESQUITE_LOGS)
+                .add(ModBlocks.MESQUITE_LOG.asItem())
+                .add(ModBlocks.STRIPPED_MESQUITE_LOG.asItem());
     }
 }

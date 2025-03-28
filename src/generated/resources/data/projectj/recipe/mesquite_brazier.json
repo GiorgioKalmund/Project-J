@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "C": "#minecraft:coals",
+    "L": "#projectj:mesquite_logs",
+    "N": "minecraft:iron_nugget",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "NSN",
+    "SCS",
+    "LLL"
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectj:mesquite_brazier"
+  }
+}
