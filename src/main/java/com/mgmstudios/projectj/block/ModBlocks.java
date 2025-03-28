@@ -165,7 +165,7 @@ public class ModBlocks {
             new Item.Properties().rarity(Rarity.EPIC)
     );
 
-    public static final DeferredBlock<Block> SERPENTINITE_PILLAR = registerRotatedPillarBlock("serpentinite_pillar",
+    public static final DeferredBlock<Block> SERPENTINITE_PILLAR = registerMultiAxisDirectionalBlock("serpentinite_pillar",
             BlockBehaviour.Properties.ofFullCopy(Blocks.QUARTZ_PILLAR), new Item.Properties());
 
     public static final DeferredBlock<Block> COBBLED_SERPENTINITE = registerBlock("cobbled_serpentinite",
@@ -294,6 +294,12 @@ public class ModBlocks {
     }
 
     private static DeferredBlock<Block> registerRotatedPillarBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
+        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new RotatedPillarBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
+        return toBeRegistered;
+    }
+
+    private static DeferredBlock<Block> registerMultiAxisDirectionalBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new MultiAxisDirectionalBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
         ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
         return toBeRegistered;
