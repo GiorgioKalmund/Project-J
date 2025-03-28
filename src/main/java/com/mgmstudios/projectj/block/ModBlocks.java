@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -165,7 +166,7 @@ public class ModBlocks {
             new Item.Properties().rarity(Rarity.EPIC)
     );
 
-    public static final DeferredBlock<Block> SERPENTINITE_PILLAR = registerRotatedPillarBlock("serpentinite_pillar",
+    public static final DeferredBlock<Block> SERPENTINITE_PILLAR = registerMultiAxisDirectionalBlock("serpentinite_pillar",
             BlockBehaviour.Properties.ofFullCopy(Blocks.QUARTZ_PILLAR), new Item.Properties());
 
     public static final DeferredBlock<Block> COBBLED_SERPENTINITE = registerBlock("cobbled_serpentinite",
@@ -185,6 +186,19 @@ public class ModBlocks {
             BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICK_WALL),
             new Item.Properties()
     );
+
+    public static final DeferredBlock<Block> MESQUITE_LOG = registerRotatedPillarBlock("mesquite_log", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG), new Item.Properties());
+
+    public static final DeferredBlock<Block> MESQUITE_PLANKS = registerBlock("mesquite_planks", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS));
+
+    public static final DeferredBlock<Block> MESQUITE_STAIRS = registerStairBlock("mesquite_stairs", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS), new Item.Properties());
+
+    public static final DeferredBlock<Block> MESQUITE_SLAB = registerSlabBlock("mesquite_slab", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SLAB), new Item.Properties());
+
+    public static final DeferredBlock<Block> MESQUITE_FENCE = registerFenceBlock("mesquite_fence", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE), new Item.Properties());
+
+    public static final DeferredBlock<Block> MESQUITE_FENCE_GATE = registerFenceGateBlock("mesquite_fence_gate", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE), new Item.Properties());
+
 
     public static final DeferredBlock<Block> TALL_STATUE = registerTallBlock("tall_statue",
             BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS).noOcclusion(),
@@ -289,7 +303,25 @@ public class ModBlocks {
     }
 
     private static DeferredBlock<Block> registerRotatedPillarBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
+        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new RotatedPillarBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
+        return toBeRegistered;
+    }
+
+    private static DeferredBlock<Block> registerMultiAxisDirectionalBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new MultiAxisDirectionalBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
+        return toBeRegistered;
+    }
+
+    private static DeferredBlock<Block> registerFenceBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
+        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new FenceBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
+        return toBeRegistered;
+    }
+
+    private static DeferredBlock<Block> registerFenceGateBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
+        DeferredBlock<Block> toBeRegistered = BLOCKS.register(name, registryName -> new FenceGateBlock(WoodType.OAK, properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
         ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
         return toBeRegistered;
     }

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "projectj:block/mesquite_planks",
+    "side": "projectj:block/mesquite_planks",
+    "top": "projectj:block/mesquite_planks"
+  }
+}

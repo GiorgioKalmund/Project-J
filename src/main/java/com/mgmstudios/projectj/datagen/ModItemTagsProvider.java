@@ -48,5 +48,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ModTags.Items.ALTAR_CRAFTABLE)
                 .add(Items.NETHERITE_PICKAXE)
                 .add(ModItems.RAW_JADE.get());
+
+        tag(ItemTags.PLANKS)
+                .add(ModBlocks.MESQUITE_PLANKS.asItem());
     }
 }

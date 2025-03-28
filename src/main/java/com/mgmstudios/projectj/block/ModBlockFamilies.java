@@ -20,6 +20,7 @@ public class ModBlockFamilies {
     public static BlockFamily SERPENTINITE_BRICKS;
     public static BlockFamily COBBLED_SERPENTINITE;
     public static BlockFamily ADOBE_BRICKS;
+    public static BlockFamily MESQUITE_PLANKS;
 
     private static final Map<Block, BlockFamily> MAP = Maps.newHashMap();
 
@@ -63,6 +64,13 @@ public class ModBlockFamilies {
                     .stairs(ModBlocks.ADOBE_BRICKS_STAIRS.get())
                     .slab(ModBlocks.ADOBE_BRICKS_SLAB.get())
                     .wall(ModBlocks.ADOBE_BRICKS_WALL.get())
+                    .getFamily();
+
+            MESQUITE_PLANKS = familyBuilder(ModBlocks.MESQUITE_PLANKS.get())
+                    .stairs(ModBlocks.MESQUITE_STAIRS.get())
+                    .slab(ModBlocks.MESQUITE_SLAB.get())
+                    .fence(ModBlocks.MESQUITE_FENCE.get())
+                    .fenceGate(ModBlocks.MESQUITE_FENCE_GATE.get())
                     .getFamily();
         }
     }

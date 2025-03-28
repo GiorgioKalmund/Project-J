@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "projectj:block/mesquite_slab"
+    },
+    "type=double": {
+      "model": "projectj:block/mesquite_planks"
+    },
+    "type=top": {
+      "model": "projectj:block/mesquite_slab_top"
+    }
+  }
+}

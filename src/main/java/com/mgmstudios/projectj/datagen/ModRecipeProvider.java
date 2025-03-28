@@ -178,6 +178,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_obsidian_tooth", this.has(ModItems.OBSIDIAN_TOOTH.get()))
                 .save(this.output);
 
+        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.MESQUITE_PLANKS, 4)
+                .requires(ModBlocks.MESQUITE_LOG.get())
+                .unlockedBy("has_mesquite_log", this.has(ModBlocks.MESQUITE_LOG.get()))
+                .save(this.output);
+
         // SMELTING
 
         SimpleCookingRecipeBuilder.smelting(
