@@ -183,6 +183,20 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_mesquite_log", this.has(ModBlocks.MESQUITE_LOG.get()))
                 .save(this.output);
 
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.MESQUITE_BRAZIER.asItem())
+                .pattern("NSN")
+                .pattern("SCS")
+                .pattern("LLL")
+                .define('L', ModTags.Items.MESQUITE_LOGS)
+                .define('S', Items.STICK)
+                .define('C', ItemTags.COALS)
+                .define('N', Items.IRON_NUGGET)
+                .unlockedBy("has_stick", this.has(Items.STICK))
+                .unlockedBy("has_coal", this.has(ItemTags.COALS))
+                .unlockedBy("has_iron_nugget", this.has(Items.IRON_NUGGET))
+                .save(this.output);
+
+
         // SMELTING
 
         SimpleCookingRecipeBuilder.smelting(

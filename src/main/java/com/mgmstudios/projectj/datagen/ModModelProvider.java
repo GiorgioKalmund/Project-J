@@ -48,8 +48,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.DEEPSLATE_JADE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.JADE_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.MESQUITE_LEAVES.get());
-        blockModels.createPlant(ModBlocks.MESQUITE_SAPLING.get(), ModBlocks.POTTED_MESQUITE_SAPLING.get(), PlantType.NOT_TINTED);
-
+        blockModels.createPlantWithDefaultItem(ModBlocks.MESQUITE_SAPLING.get(), ModBlocks.POTTED_MESQUITE_SAPLING.get(), PlantType.NOT_TINTED);
 
         createSerpentinitePillar(blockModels, itemModels, ModBlocks.SERPENTINITE_PILLAR.get());
 

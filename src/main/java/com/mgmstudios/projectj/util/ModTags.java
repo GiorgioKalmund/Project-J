@@ -33,8 +33,10 @@ public class ModTags {
         public static final TagKey<Item> JADE = createTag("jade");
         public static final TagKey<Item> SMELTS_TO_JADE = createTag("smelts_to_jade");
 
-
         public static final TagKey<Item> ALTAR_CRAFTABLE = createTag("altar_craftable");
+
+        public static final TagKey<Item> MESQUITE = createTag("mesquite");
+        public static final TagKey<Item> MESQUITE_LOGS = createTag("mesquite_logs");
 
         private static TagKey<Item> createTag(String name){
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, name));
