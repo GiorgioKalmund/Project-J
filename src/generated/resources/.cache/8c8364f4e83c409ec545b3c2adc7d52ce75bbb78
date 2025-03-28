@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-28T23:16:30.4605772	Tags for minecraft:item mod id vanilla
+// 1.21.4	2025-03-28T23:49:43.6780981	Tags for minecraft:item mod id vanilla
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/enchantable/durability.json
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/enchantable/mining.json
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/enchantable/mining_loot.json
@@ -7,5 +7,6 @@ fb8fa6cba9dd66d4d5a872f2009487725716357a data/projectj/tags/item/adobe_furnace_s
 5fc3a63ccc39ecd04cc579d057139421acd08bb3 data/projectj/tags/item/altar_craftable.json
 a49dbe94ce86b9ca5b714d568d9f6ad6e884c4be data/projectj/tags/item/jade.json
 d46e436ac7b0310f99e2171a645a158eee0fe30e data/projectj/tags/item/jade_ores.json
+0706b0c9aee48aebc3d8d7ac1a40783495fc7cdb data/projectj/tags/item/mesquite.json
 a2ab4b99dd0600778e686422f0f655c590ab96d7 data/projectj/tags/item/mesquite_logs.json
 ef009a87c52aaa14dfb5c66731fe936ec1686e03 data/projectj/tags/item/smelts_to_jade.json

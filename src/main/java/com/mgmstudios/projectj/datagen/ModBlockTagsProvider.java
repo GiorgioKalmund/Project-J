@@ -6,6 +6,7 @@ import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 
 import java.util.concurrent.CompletableFuture;
@@ -88,11 +89,24 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.COBBLED_SERPENTINITE_SLAB.get())
                 .add(ModBlocks.COBBLED_SERPENTINITE_WALL.get());
 
-
         tag(BlockTags.PLANKS)
                 .add(ModBlocks.MESQUITE_PLANKS.get());
 
         tag(BlockTags.WOODEN_FENCES)
                 .add(ModBlocks.MESQUITE_FENCE.get());
+
+        tag(BlockTags.SAPLINGS)
+                .add(ModBlocks.MESQUITE_SAPLING.get());
+
+        tag(BlockTags.DIRT)
+                .add(ModBlocks.RAW_ADOBE.get());
+
+        tag(BlockTags.LOGS_THAT_BURN)
+                .addTag(ModTags.Blocks.MESQUITE_LOGS);
+
+        tag(ModTags.Blocks.MESQUITE_LOGS)
+                .add(ModBlocks.MESQUITE_LOG.get())
+                .add(ModBlocks.STRIPPED_MESQUITE_LOG.get());
+
     }
 }

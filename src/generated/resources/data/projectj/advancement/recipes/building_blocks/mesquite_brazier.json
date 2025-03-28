@@ -1,16 +1,6 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_coal": {
-      "conditions": {
-        "items": [
-          {
-            "items": "#minecraft:coals"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_iron_nugget": {
       "conditions": {
         "items": [
@@ -21,11 +11,11 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_stick": {
+    "has_mesquite_logs": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:stick"
+            "items": "#projectj:mesquite_logs"
           }
         ]
       },
@@ -41,9 +31,8 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_stick",
-      "has_coal",
-      "has_iron_nugget"
+      "has_iron_nugget",
+      "has_mesquite_logs"
     ]
   ],
   "rewards": {

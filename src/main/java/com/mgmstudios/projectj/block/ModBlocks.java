@@ -111,7 +111,7 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> MESQUITE_SAPLING = registerSaplingBlock("mesquite_sapling", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING), new Item.Properties());
 
-    public static final DeferredBlock<Block> POTTED_MESQUITE_SAPLING = registerPottedSaplingBlock("potted_mesquite_sapling", BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_OAK_SAPLING), new Item.Properties());
+    public static final DeferredBlock<Block> POTTED_MESQUITE_SAPLING = registerPottedSaplingBlock("potted_mesquite_sapling", flowerPotProperties(), new Item.Properties());
 
     public static final DeferredBlock<Block> SNAKE_STATUE = register("snake_statue", TallStatueBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS).noOcclusion(), new Item.Properties().rarity(Rarity.RARE));
 
@@ -182,8 +182,7 @@ public class ModBlocks {
     }
 
     private static DeferredBlock<Block> registerPottedSaplingBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
-        //@Nullable Supplier<FlowerPotBlock> emptyPot, Supplier<? extends Block> p_53528_, BlockBehaviour.Properties properties
-        DeferredBlock<Block> toBeRegistered = BLOCKS.register(name, registryName -> new FlowerPotBlock(() -> ((FlowerPotBlock)Blocks.FLOWER_POT), MESQUITE_SAPLING, properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        DeferredBlock<Block> toBeRegistered = BLOCKS.register(name, registryName -> new FlowerPotBlock(ModBlocks.MESQUITE_SAPLING.get(), properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
         ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
         return toBeRegistered;
     }
@@ -207,5 +206,9 @@ public class ModBlocks {
                 .isValidSpawn(Blocks::ocelotOrParrot)
                 .ignitedByLava()
                 .pushReaction(PushReaction.DESTROY);
+    }
+
+    private static BlockBehaviour.Properties flowerPotProperties() {
+        return BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY);
     }
 }

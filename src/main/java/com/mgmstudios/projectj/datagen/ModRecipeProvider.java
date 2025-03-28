@@ -191,11 +191,9 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('S', Items.STICK)
                 .define('C', ItemTags.COALS)
                 .define('N', Items.IRON_NUGGET)
-                .unlockedBy("has_stick", this.has(Items.STICK))
-                .unlockedBy("has_coal", this.has(ItemTags.COALS))
                 .unlockedBy("has_iron_nugget", this.has(Items.IRON_NUGGET))
+                .unlockedBy("has_mesquite_logs", this.has(ModTags.Items.MESQUITE_LOGS))
                 .save(this.output);
-
 
         // SMELTING
 

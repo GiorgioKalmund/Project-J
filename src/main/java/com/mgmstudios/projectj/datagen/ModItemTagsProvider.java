@@ -6,9 +6,11 @@ import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -52,8 +54,18 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.PLANKS)
                 .add(ModBlocks.MESQUITE_PLANKS.asItem());
 
-        tag(ModTags.Items.MESQUITE_LOGS)
-                .add(ModBlocks.MESQUITE_LOG.asItem())
-                .add(ModBlocks.STRIPPED_MESQUITE_LOG.asItem());
+        copy(ModTags.Blocks.MESQUITE_LOGS, ModTags.Items.MESQUITE_LOGS);
+
+        tag(ModTags.Items.MESQUITE).add(
+                        ModBlocks.MESQUITE_SAPLING.asItem(),
+                        ModBlocks.MESQUITE_BRAZIER.asItem(),
+                        ModBlocks.MESQUITE_LEAVES.asItem(),
+                        ModBlocks.MESQUITE_PLANKS.asItem(),
+                        ModBlocks.MESQUITE_STAIRS.asItem(),
+                        ModBlocks.MESQUITE_SLAB.asItem(),
+                        ModBlocks.MESQUITE_FENCE.asItem(),
+                        ModBlocks.MESQUITE_FENCE_GATE.asItem())
+                        .addTag(ModTags.Items.MESQUITE_LOGS);
+
     }
 }

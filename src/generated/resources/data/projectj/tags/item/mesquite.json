@@ -1,0 +1,13 @@
+{
+  "values": [
+    "projectj:mesquite_sapling",
+    "projectj:mesquite_brazier",
+    "projectj:mesquite_leaves",
+    "projectj:mesquite_planks",
+    "projectj:mesquite_stairs",
+    "projectj:mesquite_slab",
+    "projectj:mesquite_fence",
+    "projectj:mesquite_fence_gate",
+    "#projectj:mesquite_logs"
+  ]
+}
