@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_obsidian_tooth": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:obsidian_tooth"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_quartz": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:quartz"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_serpentinite_rod": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:serpentinite_rod"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "projectj:sacrificial_dagger"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_serpentinite_rod",
+      "has_obsidian_tooth",
+      "has_quartz"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "projectj:sacrificial_dagger"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "O": "projectj:obsidian_tooth",
+    "Q": "minecraft:quartz",
+    "S": "projectj:serpentinite_rod"
+  },
+  "pattern": [
+    "  Q",
+    " O ",
+    "S  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectj:sacrificial_dagger"
+  }
+}

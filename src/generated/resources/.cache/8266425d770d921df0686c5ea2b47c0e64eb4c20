@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-29T14:12:36.9257985	Model Definitions - projectj
+// 1.21.4	2025-03-29T14:41:37.7979292	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -72,6 +72,7 @@ d33cdaaaaf0cd0ee49f8738e18078fcebad32356 assets/projectj/items/potted_mesquite_s
 5e4f7fcf393f89cf7bd262bb1481ac02750dcf26 assets/projectj/items/raw_jade.json
 b1ef94aa64918217023c7e7dd8747433a3cd1827 assets/projectj/items/regeneration_olmec_head.json
 20e7e68da680c45787b4e50294ded1baf3b678ba assets/projectj/items/resistant_olmec_head.json
+c8bc8ca7b8d75aa6d72cbfa60aefcdf7613ba7ec assets/projectj/items/sacrificial_dagger.json
 d0e47589c5ca23fb5a6230befd68c8baabde7549 assets/projectj/items/serpentinite_bricks.json
 f0c212cdf6fba3eb39f2a5bec3f6bb3bc516a6df assets/projectj/items/serpentinite_bricks_slab.json
 26485c20765ae135ba583a375e3a16db14323e2c assets/projectj/items/serpentinite_bricks_stairs.json
@@ -155,5 +156,6 @@ ddeac4ed21273bc5a76ac2cf19c585974c7d2afb assets/projectj/models/block/serpentini
 0ed8110b95f96e3c9081e1ec3b05018acb71b9bd assets/projectj/models/item/mesquite_sapling.json
 09cab150482989c21b2d2de107eb18eedfbac95b assets/projectj/models/item/obsidian_tooth.json
 ba637adad06995f9e8f952ca598514c60ce4cfbb assets/projectj/models/item/raw_jade.json
+caa4448fff1934cc38f77c2a2f2dd6853ae4515d assets/projectj/models/item/sacrificial_dagger.json
 5b67a9f9fadc07b35191c8a244b0bfc16303c30f assets/projectj/models/item/serpentinite_rod.json
 c85e270be39290e186d49c4771f2e7d7316c0708 assets/projectj/models/item/sun_crown.json

@@ -195,6 +195,18 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_mesquite_logs", this.has(ModTags.Items.MESQUITE_LOGS))
                 .save(this.output);
 
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.SACRIFICIAL_DAGGER)
+                .pattern("  Q")
+                .pattern(" O ")
+                .pattern("S  ")
+                .define('Q', Items.QUARTZ)
+                .define('S', ModItems.SERPENTINITE_ROD.get())
+                .define('O', ModItems.OBSIDIAN_TOOTH.get())
+                .unlockedBy("has_serpentinite_rod", this.has(ModItems.SERPENTINITE_ROD.get()))
+                .unlockedBy("has_obsidian_tooth", this.has(ModItems.OBSIDIAN_TOOTH.get()))
+                .unlockedBy("has_quartz", this.has(Items.QUARTZ))
+                .save(this.output);
+
         // SMELTING
 
         SimpleCookingRecipeBuilder.smelting(

@@ -7,9 +7,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.block.Block;
@@ -19,13 +17,15 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.Objects;
+import java.util.function.Function;
 
 import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidProperties;
+import static net.minecraft.world.item.Item.getPlayerPOVHitResult;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ProjectJ.MOD_ID);
 
-    public static final DeferredItem<Item> RAW_JADE = ITEMS.registerItem("raw_jade",
+    public static final DeferredItem<Item> RAW_JADE = register("raw_jade",
             Item::new, new Item.Properties().rarity(Rarity.UNCOMMON));
 
     public static final DeferredItem<Item> JADE = ITEMS.registerItem("jade",
@@ -38,7 +38,12 @@ public class ModItems {
     );
 
     public static final DeferredItem<Item> SERPENTINITE_ROD = ITEMS.registerItem("serpentinite_rod", Item::new);
+
     public static final DeferredItem<Item> OBSIDIAN_TOOTH = ITEMS.registerItem("obsidian_tooth", Item::new);
+
+    public static final DeferredItem<Item> SACRIFICIAL_DAGGER = registerSwordItem("sacrificial_dagger", ModToolMaterials.SACRIFICIAL_DAGGER_MATERIAL,
+            9F, -3.6F, new Item.Properties().rarity(Rarity.UNCOMMON));
+
     public static final DeferredItem<Item> SUN_ARMOR_HELMET = registerCustomArmorItem("sun_crown", ModArmorMaterials.SUN_ARMOR_MATERIAL, ArmorType.HELMET, new Item.Properties());
 
     public static void register(IEventBus eventBus) {
@@ -63,5 +68,13 @@ public class ModItems {
 
     public static DeferredItem<Item> registerCustomArmorItem(String name, ArmorMaterial material, ArmorType armorType, Item.Properties properties){
         return ITEMS.register(name, key -> new Item(humanoidProperties(material, properties.setId(ResourceKey.create(Registries.ITEM, key)), armorType)));
+    }
+
+    public static DeferredItem<Item> registerSwordItem(String name, ToolMaterial material, float attackDamage, float attackSpeed, Item.Properties properties){
+        return ITEMS.register(name, key -> new SwordItem(material, attackDamage, attackSpeed, properties.setId(ResourceKey.create(Registries.ITEM, key))));
+    }
+
+    public static DeferredItem<Item> register(String name, Function<Item.Properties, Item> function, Item.Properties properties){
+        return ITEMS.register(name, key -> function.apply(properties.setId(ResourceKey.create(Registries.ITEM, key))));
     }
 }

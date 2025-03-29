@@ -1,6 +1,6 @@
-// 1.21.4	2025-03-29T13:41:17.8978712	Tags for minecraft:item mod id vanilla
+// 1.21.4	2025-03-29T14:32:56.7676011	Tags for minecraft:item mod id vanilla
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/axes.json
-c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/enchantable/durability.json
+f25baee9fbcbe442a15f591b15d2ed5af5345e2d data/minecraft/tags/item/enchantable/durability.json
 c184a3b0a55998ca058c5d8180e7595b3fc08396 data/minecraft/tags/item/head_armor.json
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/hoes.json
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/pickaxes.json

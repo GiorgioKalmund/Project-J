@@ -52,7 +52,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.MACUAHUITL.get());
 
         tag(ItemTags.DURABILITY_ENCHANTABLE)
-                .add(ModItems.MACUAHUITL.get());
+                .add(ModItems.SACRIFICIAL_DAGGER.get());
 
         tag(ItemTags.HEAD_ARMOR)
                 .add(ModItems.SUN_ARMOR_HELMET.get());
