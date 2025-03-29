@@ -1,11 +1,10 @@
 package com.mgmstudios.projectj.block.custom;
 
 import com.mgmstudios.projectj.block.ModBlocks;
-import com.mgmstudios.projectj.block.entity.AdobeFurnaceBlockEntity;
+import com.mgmstudios.projectj.block.entity.custom.AdobeFurnaceBlockEntity;
 import com.mgmstudios.projectj.block.entity.ModBlockEntities;
 import com.mojang.serialization.MapCodec;
 
-import net.minecraft.client.User;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -24,7 +23,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;

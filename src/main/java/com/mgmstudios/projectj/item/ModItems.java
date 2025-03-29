@@ -42,7 +42,7 @@ public class ModItems {
     public static final DeferredItem<Item> OBSIDIAN_TOOTH = ITEMS.registerItem("obsidian_tooth", Item::new);
 
     public static final DeferredItem<Item> SACRIFICIAL_DAGGER = registerSwordItem("sacrificial_dagger", ModToolMaterials.SACRIFICIAL_DAGGER_MATERIAL,
-            9F, -3.6F, new Item.Properties().rarity(Rarity.UNCOMMON));
+            30F, -3.6F, new Item.Properties().rarity(Rarity.UNCOMMON));
 
     public static final DeferredItem<Item> SUN_ARMOR_HELMET = registerCustomArmorItem("sun_crown", ModArmorMaterials.SUN_ARMOR_MATERIAL, ArmorType.HELMET, new Item.Properties());
 

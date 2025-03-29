@@ -54,6 +54,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.COBBLED_SERPENTINITE_WALL, "Cobbled Serpentinite Wall");
 
         addBlock(ModBlocks.SERPENTINITE_PILLAR, "Serpentinite Pillar");
+        addBlock(ModBlocks.SERPENTINITE_BENCH, "Serpentinite Bench");
         addBlock(ModBlocks.ANCIENT_ALTAR, "Ancient Altar");
 
         addBlock(ModBlocks.RESISTANT_OLMEC_HEAD, "Resistant Olmec Head");

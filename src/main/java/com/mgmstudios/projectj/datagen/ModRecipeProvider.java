@@ -207,6 +207,17 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_quartz", this.has(Items.QUARTZ))
                 .save(this.output);
 
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.SERPENTINITE_BENCH, 2)
+                .pattern("SPS")
+                .pattern("s s")
+                .define('S', ModBlocks.SERPENTINITE_ROCK.asItem())
+                .define('P', ModBlocks.SERPENTINITE_PILLAR.asItem())
+                .define('s', ModBlocks.SERPENTINITE_ROCK_SLAB.asItem())
+                .unlockedBy("has_serpentinite_rock", this.has(ModBlocks.SERPENTINITE_ROCK.asItem()))
+                .unlockedBy("has_serpentinite_pillar", this.has(ModBlocks.SERPENTINITE_PILLAR.asItem()))
+                .unlockedBy("has_serpentinite_rock_slab", this.has(ModBlocks.SERPENTINITE_ROCK_SLAB.asItem()))
+                .save(this.output);
+
         // SMELTING
 
         SimpleCookingRecipeBuilder.smelting(

@@ -1,6 +1,7 @@
-package com.mgmstudios.projectj.block.entity;
+package com.mgmstudios.projectj.block.entity.custom;
 
 import com.mgmstudios.projectj.block.ModBlocks;
+import com.mgmstudios.projectj.block.entity.ModBlockEntities;
 import com.mgmstudios.projectj.screen.custom.AdobeFurnaceMenu;
 
 import net.minecraft.core.BlockPos;

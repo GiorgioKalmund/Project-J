@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "projectj:block/serpentinite_bench",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "projectj:block/serpentinite_bench"
+    },
+    "facing=south": {
+      "model": "projectj:block/serpentinite_bench",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "projectj:block/serpentinite_bench",
+      "y": 270
+    }
+  }
+}

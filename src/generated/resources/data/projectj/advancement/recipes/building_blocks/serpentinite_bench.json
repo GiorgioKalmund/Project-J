@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_serpentinite_pillar": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:serpentinite_pillar"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_serpentinite_rock": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:serpentinite_rock"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_serpentinite_rock_slab": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:serpentinite_rock_slab"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "projectj:serpentinite_bench"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_serpentinite_rock",
+      "has_serpentinite_pillar",
+      "has_serpentinite_rock_slab"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "projectj:serpentinite_bench"
+    ]
+  }
+}

@@ -63,6 +63,7 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.ADOBE_BRICKS_STAIRS.get());
         this.dropSelf(ModBlocks.ADOBE_BRICKS_SLAB.get());
         this.dropSelf(ModBlocks.ADOBE_BRICKS_WALL.get());
+        this.dropSelf(ModBlocks.SERPENTINITE_BENCH.get());
 
         this.dropSelf(ModBlocks.SERPENTINITE_PILLAR.get());
 

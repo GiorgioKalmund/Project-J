@@ -1,12 +1,17 @@
-// 1.21.4	2025-03-29T14:32:56.7676011	Tags for minecraft:item mod id vanilla
+// 1.21.4	2025-03-29T17:59:34.7960852	Tags for minecraft:item mod id vanilla
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/axes.json
 f25baee9fbcbe442a15f591b15d2ed5af5345e2d data/minecraft/tags/item/enchantable/durability.json
+177d72f6b3e93c23cbac2c6995c3e57d46b4e250 data/minecraft/tags/item/fence_gates.json
 c184a3b0a55998ca058c5d8180e7595b3fc08396 data/minecraft/tags/item/head_armor.json
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/hoes.json
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/pickaxes.json
 7356e7560bec3f85f86e264f83881226dfd87f93 data/minecraft/tags/item/planks.json
 9a31bb6910450a85ef42006429c525e95e642fca data/minecraft/tags/item/saplings.json
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/shovels.json
+15b1affce63c25a9e434441dcce373f2e1eb9dcf data/minecraft/tags/item/slabs.json
+05c1f38eb1356da9ac9e42e9a50ceee010d4273b data/minecraft/tags/item/stairs.json
+997d1ac77e12ce5d410de532438561823ce42b07 data/minecraft/tags/item/walls.json
+e8fbcca79baecae4d93218a4c7cb501a279b5cd9 data/minecraft/tags/item/wooden_fences.json
 fb8fa6cba9dd66d4d5a872f2009487725716357a data/projectj/tags/item/adobe_furnace_smeltable.json
 5fc3a63ccc39ecd04cc579d057139421acd08bb3 data/projectj/tags/item/altar_craftable.json
 a49dbe94ce86b9ca5b714d568d9f6ad6e884c4be data/projectj/tags/item/jade.json

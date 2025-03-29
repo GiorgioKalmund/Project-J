@@ -80,5 +80,28 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                         ModBlocks.MESQUITE_FENCE_GATE.asItem())
                         .addTag(ModTags.Items.MESQUITE_LOGS);
 
+        tag(ItemTags.SLABS)
+                .add(ModBlocks.SERPENTINITE_BRICKS_SLAB.asItem())
+                .add(ModBlocks.SERPENTINITE_ROCK_SLAB.asItem())
+                .add(ModBlocks.ADOBE_BRICKS_SLAB.asItem())
+                .add(ModBlocks.MESQUITE_SLAB.asItem());
+
+        tag(ItemTags.STAIRS)
+                .add(ModBlocks.SERPENTINITE_BRICKS_STAIRS.asItem())
+                .add(ModBlocks.SERPENTINITE_ROCK_STAIRS.asItem())
+                .add(ModBlocks.ADOBE_BRICKS_STAIRS.asItem())
+                .add(ModBlocks.MESQUITE_STAIRS.asItem());
+
+        tag(ItemTags.WALLS)
+                .add(ModBlocks.SERPENTINITE_BRICKS_WALL.asItem())
+                .add(ModBlocks.SERPENTINITE_ROCK_WALL.asItem())
+                .add(ModBlocks.ADOBE_BRICKS_WALL.asItem());
+
+
+        tag(ItemTags.WOODEN_FENCES)
+                .add(ModBlocks.MESQUITE_FENCE.asItem());
+
+        tag(ItemTags.FENCE_GATES)
+                .add(ModBlocks.MESQUITE_FENCE_GATE.asItem());
     }
 }

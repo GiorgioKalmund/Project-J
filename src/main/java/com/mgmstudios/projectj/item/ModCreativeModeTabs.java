@@ -33,6 +33,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.SNAKE_STATUE.get());
 
                 output.accept(ModBlocks.SERPENTINITE_PILLAR.get());
+                output.accept(ModBlocks.SERPENTINITE_BENCH.get());
                 output.accept(ModItems.SERPENTINITE_ROD.get());
 
                 output.accept(ModBlocks.REGENERATION_OLMEC_HEAD.get());

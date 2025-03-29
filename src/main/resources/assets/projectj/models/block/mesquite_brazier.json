@@ -6,7 +6,7 @@
 		"1": "projectj:block/mesquite_log",
 		"2": "projectj:block/mesquite_log_top",
 		"3": "projectj:block/brazier_side",
-		"particle": "projectj:block/campfire_fire"
+		"particle": "projectj:block/brazier_side"
 	},
 	"elements": [
 		{

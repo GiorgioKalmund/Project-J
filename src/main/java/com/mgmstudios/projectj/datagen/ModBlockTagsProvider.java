@@ -75,6 +75,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(ModTags.Blocks.SERPENTINITE)
                 .add(ModBlocks.SERPENTINITE_PILLAR.get())
+                .add(ModBlocks.SERPENTINITE_BENCH.get())
                 .add(ModBlocks.COBBLED_SERPENTINITE.get())
                 .add(ModBlocks.SERPENTINITE_ROCK.get())
                 .add(ModBlocks.SERPENTINITE_ROCK_STAIRS.get())
@@ -89,14 +90,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.COBBLED_SERPENTINITE_SLAB.get())
                 .add(ModBlocks.COBBLED_SERPENTINITE_WALL.get());
 
-        tag(BlockTags.PLANKS)
-                .add(ModBlocks.MESQUITE_PLANKS.get());
-
-        tag(BlockTags.WOODEN_FENCES)
-                .add(ModBlocks.MESQUITE_FENCE.get());
-
-        tag(BlockTags.SAPLINGS)
-                .add(ModBlocks.MESQUITE_SAPLING.get());
 
         tag(BlockTags.DIRT)
                 .add(ModBlocks.RAW_ADOBE.get());
