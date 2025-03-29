@@ -46,6 +46,8 @@ public class DataGenProvider extends LootTableProvider {
 
         event.createProvider(ModDataPackProvider::new);
 
+        event.createProvider(ModEquipmentInfoProvider::new);
+
     }
 
 

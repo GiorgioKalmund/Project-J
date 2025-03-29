@@ -8,6 +8,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -35,17 +36,26 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModBlocks.DEEPSLATE_JADE_ORE.asItem())
                 .add(ModItems.RAW_JADE.get());
 
+        tag(ModTags.Items.SUN_ARMOR)
+                .add(ModItems.SUN_ARMOR_HELMET.get());
+
         tag(ModTags.Items.JADE)
                 .add(ModItems.JADE.get());
 
-        tag(ItemTags.MINING_ENCHANTABLE)
+        tag(ItemTags.PICKAXES)
+                .add(ModItems.MACUAHUITL.get());
+        tag(ItemTags.AXES)
+                .add(ModItems.MACUAHUITL.get());
+        tag(ItemTags.SHOVELS)
+                .add(ModItems.MACUAHUITL.get());
+        tag(ItemTags.HOES)
                 .add(ModItems.MACUAHUITL.get());
 
         tag(ItemTags.DURABILITY_ENCHANTABLE)
                 .add(ModItems.MACUAHUITL.get());
 
-        tag(ItemTags.MINING_LOOT_ENCHANTABLE)
-                .add(ModItems.MACUAHUITL.get());
+        tag(ItemTags.HEAD_ARMOR)
+                .add(ModItems.SUN_ARMOR_HELMET.get());
 
         tag(ModTags.Items.ALTAR_CRAFTABLE)
                 .add(Items.NETHERITE_PICKAXE)

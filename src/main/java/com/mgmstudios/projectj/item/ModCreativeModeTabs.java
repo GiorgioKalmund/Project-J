@@ -44,6 +44,8 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.MACUAHUITL.get());
                 output.accept(ModItems.OBSIDIAN_TOOTH.get());
 
+                output.accept(ModItems.SUN_ARMOR_HELMET.get());
+
                 output.accept(ModBlocks.MESQUITE_LOG.get());
                 output.accept(ModBlocks.STRIPPED_MESQUITE_LOG.get());
                 output.accept(ModBlocks.MESQUITE_LEAVES.get());

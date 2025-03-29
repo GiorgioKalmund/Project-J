@@ -40,6 +40,8 @@ public class ModTags {
         public static final TagKey<Item> MESQUITE = createTag("mesquite");
         public static final TagKey<Item> MESQUITE_LOGS = createTag("mesquite_logs");
 
+        public static final TagKey<Item> SUN_ARMOR = createTag("sun_armor");
+
         private static TagKey<Item> createTag(String name){
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, name));
         }

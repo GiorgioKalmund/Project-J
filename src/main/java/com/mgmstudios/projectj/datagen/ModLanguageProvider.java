@@ -21,6 +21,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.MACUAHUITL, "Macuahuitl");
         addItem(ModItems.OBSIDIAN_TOOTH, "Obsidian Tooth");
         addItem(ModItems.SERPENTINITE_ROD, "Serpentinite Rod");
+        addItem(ModItems.SUN_ARMOR_HELMET, "Sun Crown");
 
         // Blocks
         addBlock(ModBlocks.RAW_ADOBE, "Raw Adobe");

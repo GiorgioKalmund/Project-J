@@ -64,6 +64,8 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.SERPENTINITE_ROD.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
         itemModels.generateSpyglass(ModItems.MACUAHUITL.get());
 
+        createSimpleItemWithCustomModel(itemModels, ModItems.SUN_ARMOR_HELMET.get());
+
         createFurnaceUntilTier1(blockModels, ModBlocks.ADOBE_FURNACE.get());
 
         createOlmecHead(blockModels, itemModels, ModBlocks.DAMAGE_OLMEC_HEAD.get());
@@ -80,6 +82,12 @@ public class ModModelProvider extends ModelProvider {
                 .filter(BlockFamily::shouldGenerateModel)
                 .forEach(family -> this.family(blockModels, family.getBaseBlock()).generateFor(family));
 
+    }
+
+    public void createSimpleItemWithCustomModel(ItemModelGenerators itemModelGenerators, Item item){
+        ResourceLocation resourceLocation = ModelLocationUtils.getModelLocation(item);
+        ItemModel.Unbaked itemModel = ItemModelUtils.plainModel(resourceLocation);
+        itemModelGenerators.itemModelOutput.accept(item, itemModel);
     }
 
     public BlockModelGenerators.BlockFamilyProvider family(BlockModelGenerators blockModels, Block block) {
