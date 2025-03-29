@@ -56,6 +56,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         copy(ModTags.Blocks.MESQUITE_LOGS, ModTags.Items.MESQUITE_LOGS);
 
+        tag(ItemTags.SAPLINGS)
+                .add(ModBlocks.MESQUITE_SAPLING.asItem());
+
         tag(ModTags.Items.MESQUITE).add(
                         ModBlocks.MESQUITE_SAPLING.asItem(),
                         ModBlocks.MESQUITE_BRAZIER.asItem(),
