@@ -3,7 +3,7 @@
 	"render_type": "cutout",
 	"texture_size": [32, 32],
 	"textures": {
-		"1": "projectj:item/sun_crown",
+		"1": "projectj:item/sun_crown_texture",
 		"2": "projectj:block/jade_block"
 	},
 	"elements": [

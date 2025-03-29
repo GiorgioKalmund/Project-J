@@ -64,7 +64,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.SERPENTINITE_ROD.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
         itemModels.generateSpyglass(ModItems.MACUAHUITL.get());
 
-        createSimpleItemWithCustomModel(itemModels, ModItems.SUN_ARMOR_HELMET.get());
+        itemModels.generateSpyglass(ModItems.SUN_ARMOR_HELMET.get());
 
         createFurnaceUntilTier1(blockModels, ModBlocks.ADOBE_FURNACE.get());
 
