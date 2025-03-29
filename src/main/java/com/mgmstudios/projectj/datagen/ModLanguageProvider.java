@@ -23,6 +23,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.SERPENTINITE_ROD, "Serpentinite Rod");
         addItem(ModItems.SUN_ARMOR_HELMET, "Sun Crown");
         addItem(ModItems.SACRIFICIAL_DAGGER, "Sacrificial Dagger");
+        addItem(ModItems.TROWEL, "Trowel");
 
         // Blocks
         addBlock(ModBlocks.RAW_ADOBE, "Raw Adobe");

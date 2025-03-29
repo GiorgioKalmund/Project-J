@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-29T17:13:58.8237781	Model Definitions - projectj
+// 1.21.4	2025-03-29T22:13:17.152083	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -88,6 +88,7 @@ ad69156c496a24a50949baacd6de04ad6092b9a1 assets/projectj/items/serpentinite_rod.
 79f78d865371b5671b74b76c43077cfb50febac2 assets/projectj/items/snake_statue.json
 86d3f4affc0795e800e8734aaf5b4ab53efa37ff assets/projectj/items/stripped_mesquite_log.json
 36c786f0d41230bab1dc764657d4962a7c1e95c8 assets/projectj/items/sun_crown.json
+0d07cd1207b3b870c10d6f978b1871f1354d7463 assets/projectj/items/trowel.json
 43a4a30bf747df0266fb42396721117d33cf3e08 assets/projectj/models/block/adobe_bricks.json
 f895cfd78c398b8432120af12614de924d3f283e assets/projectj/models/block/adobe_bricks_slab.json
 b8c9026970e53138d82cb3980552ded513418081 assets/projectj/models/block/adobe_bricks_slab_top.json
@@ -161,3 +162,4 @@ ba637adad06995f9e8f952ca598514c60ce4cfbb assets/projectj/models/item/raw_jade.js
 caa4448fff1934cc38f77c2a2f2dd6853ae4515d assets/projectj/models/item/sacrificial_dagger.json
 5b67a9f9fadc07b35191c8a244b0bfc16303c30f assets/projectj/models/item/serpentinite_rod.json
 c85e270be39290e186d49c4771f2e7d7316c0708 assets/projectj/models/item/sun_crown.json
+382fad977e9d13a5cf6d7ab400e1084e79d63200 assets/projectj/models/item/trowel.json

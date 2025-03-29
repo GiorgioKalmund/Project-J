@@ -1,8 +1,10 @@
 package com.mgmstudios.projectj.item;
 
 import com.mgmstudios.projectj.ProjectJ;
+import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.item.custom.OlmecHeadItem;
 import com.mgmstudios.projectj.item.custom.PaxelItem;
+import com.mgmstudios.projectj.item.custom.TrowelItem;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -20,7 +22,6 @@ import java.util.Objects;
 import java.util.function.Function;
 
 import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidProperties;
-import static net.minecraft.world.item.Item.getPlayerPOVHitResult;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ProjectJ.MOD_ID);
@@ -43,6 +44,8 @@ public class ModItems {
 
     public static final DeferredItem<Item> SACRIFICIAL_DAGGER = registerSwordItem("sacrificial_dagger", ModToolMaterials.SACRIFICIAL_DAGGER_MATERIAL,
             30F, -3.6F, new Item.Properties().rarity(Rarity.UNCOMMON));
+
+    public static final DeferredItem<Item> TROWEL = ITEMS.registerItem("trowel", TrowelItem::new);
 
     public static final DeferredItem<Item> SUN_ARMOR_HELMET = registerCustomArmorItem("sun_crown", ModArmorMaterials.SUN_ARMOR_MATERIAL, ArmorType.HELMET, new Item.Properties());
 

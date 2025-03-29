@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-29T17:38:06.1966793	ModRecipeProvider
+// 1.21.4	2025-03-29T23:01:50.404935	ModRecipeProvider
 6452fecec3921d0f3482c70b92d2b933f016e37a data/minecraft/advancement/recipes/building_blocks/adobe_bricks_smelting.json
 2ad5ba8a982b9bbdbf73f012b05a8e91ea044622 data/minecraft/advancement/recipes/building_blocks/obsidian.json
 56a091b247e6fbd83e8bdc5f91a6d5bc25ea7458 data/minecraft/advancement/recipes/misc/adobe_bricks_slab_from_adobe_bricks_stonecutting.json
@@ -62,6 +62,7 @@ a014a4401f9f20c76ea82d34bb6d324fe31d8515 data/projectj/advancement/recipes/build
 5187f2ebac3a13bda5709df6dd284c36a27a24f4 data/projectj/advancement/recipes/building_blocks/serpentinite_rock.json
 e4b97dc474b1f52afcf4d2ff7826f722c084701e data/projectj/advancement/recipes/building_blocks/serpentinite_rock_slab.json
 f47a879c7e5d53c07999efeaa7e6feca4c2f1d67 data/projectj/advancement/recipes/building_blocks/serpentinite_rock_stairs.json
+4f3628ae15d65d13cfb8830aca6043c8f9496877 data/projectj/advancement/recipes/building_blocks/trowel.json
 3d99954820607651b6cc68e3e345f19f395869f3 data/projectj/advancement/recipes/combat/macuahuitl.json
 d6499f6734d1d845e3d09217122c1fe18aa4268e data/projectj/advancement/recipes/combat/serpentinite_rod.json
 a33da2a9f4eaf0f7feab7816463ba38a96601101 data/projectj/advancement/recipes/decorations/adobe_bricks_wall.json
@@ -103,3 +104,4 @@ c1c27472f9e30897e8fa1c2829a1273a59f4cabf data/projectj/recipe/serpentinite_brick
 7d6f379af003b939d54fe0cc25958fb125b9fdbc data/projectj/recipe/serpentinite_rock_stairs.json
 68513615ed3376a94810ab616406fdab38a5b7eb data/projectj/recipe/serpentinite_rock_wall.json
 87b8cf550d70c8a3ad81b7a26bc12476a2ad9d9d data/projectj/recipe/serpentinite_rod.json
+5350fb87d47c810d2a3689d1bf7cc5f5fa4fdd34 data/projectj/recipe/trowel.json

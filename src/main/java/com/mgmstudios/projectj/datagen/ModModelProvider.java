@@ -58,6 +58,7 @@ public class ModModelProvider extends ModelProvider {
 
         createHorizontallyFacingDoubleBlock(blockModels, ModBlocks.SNAKE_STATUE.get());
 
+        itemModels.generateFlatItem(ModItems.TROWEL.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
         itemModels.generateFlatItem(ModItems.SACRIFICIAL_DAGGER.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
         itemModels.generateFlatItem(ModItems.RAW_JADE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.JADE.get(), ModelTemplates.FLAT_ITEM);

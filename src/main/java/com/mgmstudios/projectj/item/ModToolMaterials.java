@@ -16,4 +16,8 @@ public class ModToolMaterials {
             BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 3, 1.0F, 0.0F, 10, Tags.Items.GEMS_QUARTZ
     );
 
+    public static final ToolMaterial TROWEL_MATERIAL =  new ToolMaterial(
+            BlockTags.INCORRECT_FOR_STONE_TOOL, 132, 4.0F, 1.0F, 5, ModTags.Items.SERPENTINITE
+    );
+
 }

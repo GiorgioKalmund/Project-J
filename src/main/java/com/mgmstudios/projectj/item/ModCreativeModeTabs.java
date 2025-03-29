@@ -45,6 +45,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.MACUAHUITL.get());
                 output.accept(ModItems.OBSIDIAN_TOOTH.get());
                 output.accept(ModItems.SACRIFICIAL_DAGGER.get());
+                output.accept(ModItems.TROWEL.get());
 
                 output.accept(ModItems.SUN_ARMOR_HELMET.get());
 

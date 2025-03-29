@@ -52,7 +52,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.MACUAHUITL.get());
 
         tag(ItemTags.DURABILITY_ENCHANTABLE)
-                .add(ModItems.SACRIFICIAL_DAGGER.get());
+                .add(ModItems.SACRIFICIAL_DAGGER.get())
+                .add(ModItems.TROWEL.get());
 
         tag(ItemTags.HEAD_ARMOR)
                 .add(ModItems.SUN_ARMOR_HELMET.get());
@@ -65,6 +66,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModBlocks.MESQUITE_PLANKS.asItem());
 
         copy(ModTags.Blocks.MESQUITE_LOGS, ModTags.Items.MESQUITE_LOGS);
+        copy(ModTags.Blocks.SERPENTINITE, ModTags.Items.SERPENTINITE);
 
         tag(ItemTags.SAPLINGS)
                 .add(ModBlocks.MESQUITE_SAPLING.asItem());
