@@ -78,6 +78,8 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.SERPENTINITE_ROCK_STAIRS.get());
         this.dropSelf(ModBlocks.SERPENTINITE_ROCK_SLAB.get());
         this.dropSelf(ModBlocks.SERPENTINITE_ROCK_WALL.get());
+        this.dropSelf(ModBlocks.SERPENTINITE_ROCK_BUTTON.get());
+        this.dropSelf(ModBlocks.SERPENTINITE_ROCK_PRESSURE_PLATE.get());
 
         this.dropSelf(ModBlocks.SERPENTINITE_BRICKS.get());
         this.dropSelf(ModBlocks.SERPENTINITE_BRICKS_STAIRS.get());
@@ -104,10 +106,9 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.MESQUITE_BENCH_CORNER.get());
         this.dropPottedContents(ModBlocks.POTTED_MESQUITE_SAPLING.get());
 
-        // TODO: Make OakLeavesDrop when we have a sapling
-
         add(ModBlocks.MESQUITE_LEAVES.get(), block -> super.createLeavesDrops(ModBlocks.MESQUITE_LEAVES.get(), ModBlocks.MESQUITE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         add(ModBlocks.SNAKE_STATUE.get(), this::createTallBlockTable);
+
         this.dropSelf(ModBlocks.ANCIENT_ALTAR.get());
 
         add(ModBlocks.JADE_ORE.get(), block ->

@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
@@ -80,6 +81,10 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SERPENTINITE_ROCK_SLAB = register("serpentinite_rock_slab", SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_SLAB), new Item.Properties());
 
     public static final DeferredBlock<Block> SERPENTINITE_ROCK_WALL = register("serpentinite_rock_wall", WallBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICK_WALL), new Item.Properties());
+
+    public static final DeferredBlock<Block> SERPENTINITE_ROCK_BUTTON = registerButtonBlock("serpentinite_rock_button", BlockSetType.STONE, 20, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BUTTON), new Item.Properties());
+
+    public static final DeferredBlock<Block> SERPENTINITE_ROCK_PRESSURE_PLATE = registerPressurePlateBlock("serpentinite_rock_pressure_plate", BlockSetType.STONE, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BUTTON), new Item.Properties());
 
     public static final DeferredBlock<Block> ANCIENT_ALTAR = register("ancient_altar", AncientAltarBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS).noOcclusion(), new Item.Properties().rarity(Rarity.EPIC));
 
@@ -150,6 +155,18 @@ public class ModBlocks {
 
     private static DeferredBlock<Block> registerStairBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new StairBlock(Blocks.COBBLESTONE.defaultBlockState(), properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
+        return toBeRegistered;
+    }
+
+    private static DeferredBlock<Block> registerButtonBlock(String name, BlockSetType type, int tickStayPressed, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
+        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new ButtonBlock(type, tickStayPressed, properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
+        return toBeRegistered;
+    }
+
+    private static DeferredBlock<Block> registerPressurePlateBlock(String name, BlockSetType type, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
+        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new PressurePlateBlock(type, properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
         ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
         return toBeRegistered;
     }

@@ -49,6 +49,8 @@ public class ModBlockFamilies {
                     .stairs(ModBlocks.SERPENTINITE_ROCK_STAIRS.get())
                     .slab(ModBlocks.SERPENTINITE_ROCK_SLAB.get())
                     .wall(ModBlocks.SERPENTINITE_ROCK_WALL.get())
+                    .button(ModBlocks.SERPENTINITE_ROCK_BUTTON.get())
+                    .pressurePlate(ModBlocks.SERPENTINITE_ROCK_PRESSURE_PLATE.get())
                     .getFamily();
 
             SERPENTINITE_BRICKS = familyBuilder(ModBlocks.SERPENTINITE_BRICKS.get())

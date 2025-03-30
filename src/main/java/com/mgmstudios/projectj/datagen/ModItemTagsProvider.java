@@ -106,6 +106,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModBlocks.SERPENTINITE_ROCK_WALL.asItem())
                 .add(ModBlocks.ADOBE_BRICKS_WALL.asItem());
 
+        tag(ItemTags.STONE_BUTTONS)
+                .add(ModBlocks.SERPENTINITE_ROCK_BUTTON.asItem());
 
         tag(ItemTags.WOODEN_FENCES)
                 .add(ModBlocks.MESQUITE_FENCE.asItem());

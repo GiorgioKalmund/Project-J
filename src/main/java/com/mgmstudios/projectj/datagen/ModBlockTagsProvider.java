@@ -44,6 +44,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .addTag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .addTag(BlockTags.MINEABLE_WITH_HOE);
 
+        tag(BlockTags.FENCE_GATES)
+                .add(ModBlocks.MESQUITE_FENCE_GATE.get());
+
+        tag(BlockTags.WOODEN_FENCES)
+                .add(ModBlocks.MESQUITE_FENCE.get());
+
         tag(BlockTags.PLANKS)
                 .add(ModBlocks.MESQUITE_PLANKS.get());
 
@@ -65,6 +71,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.COBBLED_SERPENTINITE_WALL.get())
                 .add(ModBlocks.ADOBE_BRICKS_WALL.get());
 
+        tag(BlockTags.STONE_PRESSURE_PLATES)
+                .add(ModBlocks.SERPENTINITE_ROCK_PRESSURE_PLATE.get());
+
+        tag(BlockTags.STONE_BUTTONS)
+                .add(ModBlocks.SERPENTINITE_ROCK_BUTTON.get());
+
         tag(BlockTags.LEAVES)
                 .add(ModBlocks.MESQUITE_LEAVES.get());
 
@@ -84,6 +96,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SERPENTINITE_ROCK_STAIRS.get())
                 .add(ModBlocks.SERPENTINITE_ROCK_SLAB.get())
                 .add(ModBlocks.SERPENTINITE_ROCK_WALL.get())
+                .add(ModBlocks.SERPENTINITE_ROCK_BUTTON.get())
+                .add(ModBlocks.SERPENTINITE_ROCK_PRESSURE_PLATE.get())
                 .add(ModBlocks.SERPENTINITE_BRICKS.get())
                 .add(ModBlocks.SERPENTINITE_BRICKS_STAIRS.get())
                 .add(ModBlocks.SERPENTINITE_BRICKS_SLAB.get())
