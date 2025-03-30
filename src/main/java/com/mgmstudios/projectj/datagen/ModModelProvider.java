@@ -76,7 +76,7 @@ public class ModModelProvider extends ModelProvider {
         createOlmecHead(blockModels, itemModels, ModBlocks.RESISTANT_OLMEC_HEAD.get());
 
         createSimpleBlockWithCustomModel(blockModels, ModBlocks.CHIMNEY.get());
-        createSimpleBlockWithCustomModel(blockModels, ModBlocks.MESQUITE_BRAZIER.get());
+        createSimpleBlockWithCustomModelAndFlatItem(blockModels, itemModels, ModBlocks.MESQUITE_BRAZIER.get());
         createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.ANCIENT_ALTAR.get());
         createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.SERPENTINITE_BENCH.get());
         createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.SERPENTINITE_BENCH_CORNER.get());
@@ -107,6 +107,17 @@ public class ModModelProvider extends ModelProvider {
                 MultiVariantGenerator.multiVariant(block, Variant.variant()
                         .with(VariantProperties.MODEL, resourcelocation))
         );
+    }
+
+    public void createSimpleBlockWithCustomModelAndFlatItem(BlockModelGenerators blockModels, ItemModelGenerators itemModelGenerators, Block block){
+        ResourceLocation resourcelocation = ModelLocationUtils.getModelLocation(block);
+        blockModels.blockStateOutput.accept(
+                MultiVariantGenerator.multiVariant(block, Variant.variant()
+                        .with(VariantProperties.MODEL, resourcelocation))
+        );
+
+        ItemModel.Unbaked itemmodel$unbaked = ItemModelUtils.plainModel(itemModelGenerators.createFlatItemModel(block.asItem(), ModelTemplates.FLAT_ITEM));
+        itemModelGenerators.itemModelOutput.accept(block.asItem(), itemmodel$unbaked);
     }
 
     public void createCutoutPlantWithDefaultItem(BlockModelGenerators blockModelGenerators, Block block, Block pottedBlock, PlantType plantType){
