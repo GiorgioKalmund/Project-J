@@ -3,10 +3,10 @@ package com.mgmstudios.projectj.datagen;
 import com.mgmstudios.projectj.block.ModBlockFamilies;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.item.ModItems;
+import com.mgmstudios.projectj.item.custom.MagnifyingGlassItem.MagnifyingRecipeBuilder;
 import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.BlockFamilies;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -307,8 +307,11 @@ public class ModRecipeProvider extends RecipeProvider {
         stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.ADOBE_BRICKS_SLAB.asItem(), ModBlocks.ADOBE_BRICKS.get(), 2);
         stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.ADOBE_BRICKS_STAIRS.asItem(), ModBlocks.ADOBE_BRICKS.get());
         stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.ADOBE_BRICKS_WALL.asItem(), ModBlocks.ADOBE_BRICKS.get());
+    }
 
-
+    public static void buildMagnifyingGlassRecipes(){
+        MagnifyingRecipeBuilder.magnify(Blocks.SAND, Blocks.GLASS);
+        MagnifyingRecipeBuilder.magnify(Blocks.RAW_GOLD_BLOCK, Blocks.RAW_IRON_BLOCK);
     }
 
     protected void generateForEnabledBlockFamilies(FeatureFlagSet enabledFeatures) {

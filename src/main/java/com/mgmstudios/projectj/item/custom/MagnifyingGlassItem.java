@@ -1,6 +1,7 @@
 package com.mgmstudios.projectj.item.custom;
 
 import com.mgmstudios.projectj.ProjectJ;
+import com.mgmstudios.projectj.datagen.ModRecipeProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -16,21 +17,19 @@ import net.minecraft.world.item.SpyglassItem;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-
-import com.google.common.collect.ImmutableMap.Builder;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
-import java.util.Map;
+import java.util.HashMap;
 
 @EventBusSubscriber(modid = ProjectJ.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class MagnifyingGlassItem extends SpyglassItem {
 
 
-    protected static Map<BlockState, BlockState> MAGNIFYING_CONVERTABLES;
+    public static HashMap<BlockState, BlockState> MAGNIFYING_CONVERTABLES;
 
     private int conversion;
     private boolean validConversion;
@@ -40,6 +39,7 @@ public class MagnifyingGlassItem extends SpyglassItem {
         super(properties);
         this.conversion = 0;
         this.validConversion = false;
+
     }
 
     @Override
@@ -52,7 +52,6 @@ public class MagnifyingGlassItem extends SpyglassItem {
     @Override
     public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
-
         if (level instanceof ServerLevel serverLevel){
             lastContext = context;
             this.validConversion = isValidConversion(serverLevel, context.getClickedPos(), context.getClickedFace(), 5, true);
@@ -61,9 +60,10 @@ public class MagnifyingGlassItem extends SpyglassItem {
     }
 
     public boolean isValidConversion(ServerLevel serverLevel, BlockPos clickedPos, Direction clickedFace, int minimumLightLevel, boolean needsToBeDay){
-        int skyLightLevel = serverLevel.getBrightness(LightLayer.BLOCK, clickedPos.relative(clickedFace));
+        int skyLightLevel = serverLevel.getBrightness(LightLayer.SKY, clickedPos.relative(clickedFace));
         boolean day = !needsToBeDay || serverLevel.isDay();
-        return skyLightLevel > minimumLightLevel && day && MAGNIFYING_CONVERTABLES.containsKey(serverLevel.getBlockState(lastContext.getClickedPos())) && serverLevel.isDay();
+        boolean contains = MAGNIFYING_CONVERTABLES.containsKey(serverLevel.getBlockState(lastContext.getClickedPos()));
+        return skyLightLevel > minimumLightLevel && day && contains && serverLevel.isDay();
     }
 
     @Override
@@ -114,8 +114,14 @@ public class MagnifyingGlassItem extends SpyglassItem {
 
     @SubscribeEvent
     public static void onRegisterBlocks(RegisterEvent event) {
-         MAGNIFYING_CONVERTABLES = new Builder<BlockState, BlockState>()
-                 .put(Blocks.SAND.defaultBlockState(), Blocks.GLASS.defaultBlockState())
-                 .build();
+         MAGNIFYING_CONVERTABLES = new HashMap<>();
+            ModRecipeProvider.buildMagnifyingGlassRecipes();
     }
+
+    public static class MagnifyingRecipeBuilder {
+        public static void magnify(Block blockToSmelt, Block resultBlock){
+            MAGNIFYING_CONVERTABLES.put(blockToSmelt.defaultBlockState(), resultBlock.defaultBlockState());
+        }
+    }
+
 }
