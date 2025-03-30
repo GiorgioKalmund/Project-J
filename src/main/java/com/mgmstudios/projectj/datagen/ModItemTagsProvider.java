@@ -62,8 +62,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(Items.NETHERITE_PICKAXE)
                 .add(ModItems.RAW_JADE.get());
 
-        tag(ItemTags.PLANKS)
-                .add(ModBlocks.MESQUITE_PLANKS.asItem());
+        tag(ItemTags.LOGS_THAT_BURN)
+                .addTag(ModTags.Items.MESQUITE_LOGS);
 
         copy(ModTags.Blocks.MESQUITE_LOGS, ModTags.Items.MESQUITE_LOGS);
         copy(ModTags.Blocks.SERPENTINITE, ModTags.Items.SERPENTINITE);
@@ -85,6 +85,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                         ModBlocks.MESQUITE_BENCH_CORNER.asItem()
                 )
                 .addTag(ModTags.Items.MESQUITE_LOGS);
+
+        tag(ItemTags.PLANKS)
+                .add(ModBlocks.MESQUITE_PLANKS.asItem());
 
         tag(ItemTags.SLABS)
                 .add(ModBlocks.SERPENTINITE_BRICKS_SLAB.asItem())

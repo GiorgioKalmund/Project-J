@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "projectj:block/mesquite_wood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "projectj:block/mesquite_wood"
+    },
+    "axis=z": {
+      "model": "projectj:block/mesquite_wood",
+      "x": 90
+    }
+  }
+}

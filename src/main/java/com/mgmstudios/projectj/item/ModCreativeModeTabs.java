@@ -52,6 +52,8 @@ public class ModCreativeModeTabs {
 
                 output.accept(ModBlocks.MESQUITE_LOG.get());
                 output.accept(ModBlocks.STRIPPED_MESQUITE_LOG.get());
+                output.accept(ModBlocks.MESQUITE_WOOD.get());
+                output.accept(ModBlocks.STRIPPED_MESQUITE_WOOD.get());
                 output.accept(ModBlocks.MESQUITE_LEAVES.get());
                 output.accept(ModBlocks.MESQUITE_BRAZIER.get());
                 output.accept(ModBlocks.MESQUITE_SAPLING.get());

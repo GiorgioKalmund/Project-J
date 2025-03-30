@@ -178,10 +178,6 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_obsidian_tooth", this.has(ModItems.OBSIDIAN_TOOTH.get()))
                 .save(this.output);
 
-        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.MESQUITE_PLANKS, 4)
-                .requires(ModBlocks.MESQUITE_LOG.get())
-                .unlockedBy("has_mesquite_log", this.has(ModBlocks.MESQUITE_LOG.get()))
-                .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.MESQUITE_BRAZIER.asItem())
                 .pattern("NSN")
@@ -240,6 +236,17 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_mesquite_planks", this.has(ModBlocks.MESQUITE_PLANKS.asItem()))
                 .unlockedBy("has_mesquite_slab", this.has(ModBlocks.MESQUITE_SLAB.asItem()))
                 .save(this.output);
+
+        woodFromLogs(ModBlocks.MESQUITE_WOOD.get(), ModBlocks.MESQUITE_LOG.asItem());
+        woodFromLogs(ModBlocks.STRIPPED_MESQUITE_WOOD.get(), ModBlocks.STRIPPED_MESQUITE_LOG.asItem());
+        planksFromLogs(ModBlocks.MESQUITE_PLANKS, ModTags.Items.MESQUITE_LOGS, 4);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, Items.STICK, 16)
+                .pattern("#")
+                .pattern("#")
+                .define('#', ItemTags.LOGS)
+                .unlockedBy("has_log", this.has(ItemTags.LOGS))
+                .save(this.output, "sticks_from_log");
 
         // SMELTING
 

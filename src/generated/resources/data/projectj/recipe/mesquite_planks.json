@@ -1,8 +1,9 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "building",
+  "group": "planks",
   "ingredients": [
-    "projectj:mesquite_log"
+    "#projectj:mesquite_logs"
   ],
   "result": {
     "count": 4,

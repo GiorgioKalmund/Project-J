@@ -53,8 +53,8 @@ public class ModModelProvider extends ModelProvider {
 
         createSerpentinitePillar(blockModels, itemModels, ModBlocks.SERPENTINITE_PILLAR.get());
 
-        blockModels.createAxisAlignedPillarBlock(ModBlocks.MESQUITE_LOG.get(), TexturedModel.COLUMN_ALT);
-        blockModels.createAxisAlignedPillarBlock(ModBlocks.STRIPPED_MESQUITE_LOG.get(), TexturedModel.COLUMN_ALT);
+        blockModels.woodProvider(ModBlocks.MESQUITE_LOG.get()).logWithHorizontal(ModBlocks.MESQUITE_LOG.get()).wood(ModBlocks.MESQUITE_WOOD.get());
+        blockModels.woodProvider(ModBlocks.STRIPPED_MESQUITE_LOG.get()).logWithHorizontal(ModBlocks.STRIPPED_MESQUITE_LOG.get()).wood(ModBlocks.STRIPPED_MESQUITE_WOOD.get());
 
         createHorizontallyFacingDoubleBlock(blockModels, ModBlocks.SNAKE_STATUE.get());
 

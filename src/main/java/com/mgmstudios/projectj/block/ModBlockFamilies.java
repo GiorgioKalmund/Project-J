@@ -78,6 +78,7 @@ public class ModBlockFamilies {
         } else if (event.getRegistryKey().equals(Registries.BLOCK_TYPE)){
             STRIPPABLES = new ImmutableMap.Builder<Block, Block>()
                     .put(ModBlocks.MESQUITE_LOG.get(), ModBlocks.STRIPPED_MESQUITE_LOG.get())
+                    .put(ModBlocks.MESQUITE_WOOD.get(), ModBlocks.STRIPPED_MESQUITE_WOOD.get())
                     .build();
         }
     }

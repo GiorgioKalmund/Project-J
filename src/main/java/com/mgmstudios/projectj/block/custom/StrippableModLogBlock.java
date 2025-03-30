@@ -21,7 +21,11 @@ public class StrippableModLogBlock extends RotatedPillarBlock {
         if (itemAbility.equals(ItemAbilities.AXE_STRIP)){
             var baseBlock = state.getBlock();
             Block strippedBlock = STRIPPABLES.get(baseBlock);
-            return strippedBlock.defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            if (strippedBlock != null){
+                return strippedBlock.defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            } else if (!context.getLevel().isClientSide()){
+                System.err.println("No STRIPPABLES Map entry found for " + baseBlock + ".\nDid you forget to add it to the Map in ModBlockFamilies?");
+            }
 
         }
         return super.getToolModifiedState(state, context, itemAbility, simulate);

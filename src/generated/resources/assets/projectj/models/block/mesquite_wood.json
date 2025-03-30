@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "projectj:block/mesquite_log",
+    "side": "projectj:block/mesquite_log"
+  }
+}

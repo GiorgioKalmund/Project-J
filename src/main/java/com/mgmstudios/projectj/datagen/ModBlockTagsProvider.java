@@ -44,6 +44,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .addTag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .addTag(BlockTags.MINEABLE_WITH_HOE);
 
+        tag(BlockTags.PLANKS)
+                .add(ModBlocks.MESQUITE_PLANKS.get());
+
         tag(BlockTags.SLABS)
                 .add(ModBlocks.SERPENTINITE_ROCK_SLAB.get())
                 .add(ModBlocks.SERPENTINITE_BRICKS_SLAB.get())
@@ -94,12 +97,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.DIRT)
                 .add(ModBlocks.RAW_ADOBE.get());
 
-        tag(BlockTags.LOGS_THAT_BURN)
-                .addTag(ModTags.Blocks.MESQUITE_LOGS);
-
         tag(ModTags.Blocks.MESQUITE_LOGS)
                 .add(ModBlocks.MESQUITE_LOG.get())
-                .add(ModBlocks.STRIPPED_MESQUITE_LOG.get());
+                .add(ModBlocks.STRIPPED_MESQUITE_LOG.get())
+                .add(ModBlocks.MESQUITE_WOOD.get())
+                .add(ModBlocks.STRIPPED_MESQUITE_WOOD.get());
 
         tag(ModTags.Blocks.BENCHES)
                 .add(ModBlocks.MESQUITE_BENCH.get())

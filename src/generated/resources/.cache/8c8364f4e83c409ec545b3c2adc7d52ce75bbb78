@@ -1,9 +1,10 @@
-// 1.21.4	2025-03-30T12:08:03.2893252	Tags for minecraft:item mod id vanilla
+// 1.21.4	2025-03-30T12:50:53.9388002	Tags for minecraft:item mod id vanilla
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/axes.json
 13774df12a771570323d285bfc3f11b3548cc957 data/minecraft/tags/item/enchantable/durability.json
 177d72f6b3e93c23cbac2c6995c3e57d46b4e250 data/minecraft/tags/item/fence_gates.json
 c184a3b0a55998ca058c5d8180e7595b3fc08396 data/minecraft/tags/item/head_armor.json
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/hoes.json
+8189a72a7e5064d8c3c6b32896484fa360664989 data/minecraft/tags/item/logs_that_burn.json
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/pickaxes.json
 7356e7560bec3f85f86e264f83881226dfd87f93 data/minecraft/tags/item/planks.json
 9a31bb6910450a85ef42006429c525e95e642fca data/minecraft/tags/item/saplings.json
@@ -18,7 +19,7 @@ adcd894c030f8dc0e3a5013de2581d1142959bdd data/projectj/tags/item/benches.json
 a49dbe94ce86b9ca5b714d568d9f6ad6e884c4be data/projectj/tags/item/jade.json
 d46e436ac7b0310f99e2171a645a158eee0fe30e data/projectj/tags/item/jade_ores.json
 35133f2537fb7399fcb4acf25840069bbef4d0af data/projectj/tags/item/mesquite.json
-a2ab4b99dd0600778e686422f0f655c590ab96d7 data/projectj/tags/item/mesquite_logs.json
+48f3d9b77c13037c83111fd768e8fe3be99ca3b5 data/projectj/tags/item/mesquite_logs.json
 1fcbfa922bca0adc51487d8d5c0f66aaaf7c3ea8 data/projectj/tags/item/serpentinite.json
 ef009a87c52aaa14dfb5c66731fe936ec1686e03 data/projectj/tags/item/smelts_to_jade.json
 c184a3b0a55998ca058c5d8180e7595b3fc08396 data/projectj/tags/item/sun_armor.json
