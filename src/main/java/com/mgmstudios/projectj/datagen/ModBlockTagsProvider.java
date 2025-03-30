@@ -118,6 +118,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.DIRT)
                 .add(ModBlocks.RAW_ADOBE.get());
 
+        tag(BlockTags.LOGS_THAT_BURN)
+                .addTag(ModTags.Blocks.MESQUITE_LOGS);
+
         tag(ModTags.Blocks.MESQUITE_LOGS)
                 .add(ModBlocks.MESQUITE_LOG.get())
                 .add(ModBlocks.STRIPPED_MESQUITE_LOG.get())
