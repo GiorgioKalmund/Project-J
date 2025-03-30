@@ -16,6 +16,7 @@ import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.Tags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -247,6 +248,18 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('#', ItemTags.LOGS)
                 .unlockedBy("has_log", this.has(ItemTags.LOGS))
                 .save(this.output, "sticks_from_log");
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.MAGNIFYING_GLASS)
+                .pattern("#")
+                .pattern("s")
+                .pattern("S")
+                .define('#', Tags.Items.GLASS_BLOCKS)
+                .define('S', Items.STICK)
+                .define('s', Items.STRING)
+                .unlockedBy("has_log", this.has(ItemTags.LOGS))
+                .unlockedBy("has_glass_block", this.has(Tags.Items.GLASS_BLOCKS))
+                .unlockedBy("has_string", this.has(Items.STRING))
+                .save(this.output);
 
         // SMELTING
 

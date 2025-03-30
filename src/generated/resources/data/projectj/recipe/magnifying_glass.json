@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "#c:glass_blocks",
+    "S": "minecraft:stick",
+    "s": "minecraft:string"
+  },
+  "pattern": [
+    "#",
+    "s",
+    "S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectj:magnifying_glass"
+  }
+}

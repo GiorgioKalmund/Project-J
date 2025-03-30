@@ -2,6 +2,7 @@ package com.mgmstudios.projectj.item.custom;
 
 import com.mgmstudios.projectj.ProjectJ;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -14,6 +15,7 @@ import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.SpyglassItem;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -28,7 +30,7 @@ import java.util.Map;
 public class MagnifyingGlassItem extends SpyglassItem {
 
 
-    protected static Map<BlockState, BlockState> CONVERTABLES;
+    protected static Map<BlockState, BlockState> MAGNIFYING_CONVERTABLES;
 
     private int conversion;
     private boolean validConversion;
@@ -53,9 +55,15 @@ public class MagnifyingGlassItem extends SpyglassItem {
 
         if (level instanceof ServerLevel serverLevel){
             lastContext = context;
-            validConversion = CONVERTABLES.containsKey(serverLevel.getBlockState(lastContext.getClickedPos())) && level.isDay();
+            this.validConversion = isValidConversion(serverLevel, context.getClickedPos(), context.getClickedFace(), 5, true);
         }
         return super.useOn(context);
+    }
+
+    public boolean isValidConversion(ServerLevel serverLevel, BlockPos clickedPos, Direction clickedFace, int minimumLightLevel, boolean needsToBeDay){
+        int skyLightLevel = serverLevel.getBrightness(LightLayer.BLOCK, clickedPos.relative(clickedFace));
+        boolean day = !needsToBeDay || serverLevel.isDay();
+        return skyLightLevel > minimumLightLevel && day && MAGNIFYING_CONVERTABLES.containsKey(serverLevel.getBlockState(lastContext.getClickedPos())) && serverLevel.isDay();
     }
 
     @Override
@@ -70,7 +78,7 @@ public class MagnifyingGlassItem extends SpyglassItem {
             if (conversion >= CONVERSION_DURATION){
                 BlockPos clickedPos = lastContext.getClickedPos();
                 BlockState clickedBlockState = serverLevel.getBlockState(clickedPos);
-                serverLevel.setBlockAndUpdate(clickedPos, CONVERTABLES.get(clickedBlockState));
+                serverLevel.setBlockAndUpdate(clickedPos, MAGNIFYING_CONVERTABLES.get(clickedBlockState));
                 level.playSound(null, clickedPos, SoundEvents.GENERIC_BURN, SoundSource.BLOCKS);
                 reset();
             }
@@ -106,7 +114,7 @@ public class MagnifyingGlassItem extends SpyglassItem {
 
     @SubscribeEvent
     public static void onRegisterBlocks(RegisterEvent event) {
-         CONVERTABLES = new Builder<BlockState, BlockState>()
+         MAGNIFYING_CONVERTABLES = new Builder<BlockState, BlockState>()
                  .put(Blocks.SAND.defaultBlockState(), Blocks.GLASS.defaultBlockState())
                  .build();
     }
