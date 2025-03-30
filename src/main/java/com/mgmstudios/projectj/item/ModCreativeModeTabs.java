@@ -34,6 +34,7 @@ public class ModCreativeModeTabs {
 
                 output.accept(ModBlocks.SERPENTINITE_PILLAR.get());
                 output.accept(ModBlocks.SERPENTINITE_BENCH.get());
+                output.accept(ModBlocks.SERPENTINITE_BENCH_CORNER.get());
                 output.accept(ModItems.SERPENTINITE_ROD.get());
 
                 output.accept(ModBlocks.REGENERATION_OLMEC_HEAD.get());
@@ -55,6 +56,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.MESQUITE_BRAZIER.get());
                 output.accept(ModBlocks.MESQUITE_SAPLING.get());
                 output.accept(ModBlocks.MESQUITE_BENCH.get());
+                output.accept(ModBlocks.MESQUITE_BENCH_CORNER.get());
 
                 ModBlockFamilies.getAllFamilies()
                         .forEach(family -> {

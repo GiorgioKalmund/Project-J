@@ -119,7 +119,12 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> SERPENTINITE_BENCH = register("serpentinite_bench", SittableBlock::new,  BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_SLAB).noOcclusion());
 
+    public static final DeferredBlock<Block> SERPENTINITE_BENCH_CORNER = register("serpentinite_bench_corner", BenchCornerBlock::new,  BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_SLAB).noOcclusion());
+
     public static final DeferredBlock<Block> MESQUITE_BENCH = register("mesquite_bench", SittableBlock::new,  BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_SLAB).noOcclusion());
+
+    public static final DeferredBlock<Block> MESQUITE_BENCH_CORNER = register("mesquite_bench_corner", BenchCornerBlock::new,  BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_SLAB).noOcclusion());
+
 
     private static DeferredBlock<Block> register(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> factory.apply(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));

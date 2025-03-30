@@ -31,8 +31,8 @@ public class SittableBlock extends HorizontalDirectionalBlock {
         super(properties);
     }
 
-    public static final VoxelShape SHAPE_NORTH_SOUTH = Block.box(0,0,4, 16, 6, 12);
-    public static final VoxelShape SHAPE_EAST_WEST = Block.box(4,0,0, 12, 6, 16);
+    public static final VoxelShape SHAPE_NORTH_SOUTH = Block.box(0,3,4, 16, 6, 12);
+    public static final VoxelShape SHAPE_EAST_WEST = Block.box(4,3,0, 12, 6, 16);
 
     public static final MapCodec<SittableBlock> CODEC = simpleCodec(SittableBlock::new);
 

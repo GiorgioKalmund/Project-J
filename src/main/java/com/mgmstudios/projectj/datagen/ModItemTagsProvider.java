@@ -81,8 +81,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                         ModBlocks.MESQUITE_SLAB.asItem(),
                         ModBlocks.MESQUITE_FENCE.asItem(),
                         ModBlocks.MESQUITE_FENCE_GATE.asItem(),
-                        ModBlocks.MESQUITE_BENCH.asItem())
-                        .addTag(ModTags.Items.MESQUITE_LOGS);
+                        ModBlocks.MESQUITE_BENCH.asItem(),
+                        ModBlocks.MESQUITE_BENCH_CORNER.asItem()
+                )
+                .addTag(ModTags.Items.MESQUITE_LOGS);
 
         tag(ItemTags.SLABS)
                 .add(ModBlocks.SERPENTINITE_BRICKS_SLAB.asItem())

@@ -1,6 +1,8 @@
 {
   "values": [
     "projectj:mesquite_bench",
-    "projectj:serpentinite_bench"
+    "projectj:mesquite_bench_corner",
+    "projectj:serpentinite_bench",
+    "projectj:serpentinite_bench_corner"
   ]
 }

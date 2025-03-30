@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "projectj:block/mesquite_bench_corner",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "projectj:block/mesquite_bench_corner"
+    },
+    "facing=south": {
+      "model": "projectj:block/mesquite_bench_corner",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "projectj:block/mesquite_bench_corner",
+      "y": 270
+    }
+  }
+}

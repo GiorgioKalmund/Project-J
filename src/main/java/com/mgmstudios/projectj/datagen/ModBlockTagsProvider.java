@@ -103,7 +103,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(ModTags.Blocks.BENCHES)
                 .add(ModBlocks.MESQUITE_BENCH.get())
-                .add(ModBlocks.SERPENTINITE_BENCH.get());
+                .add(ModBlocks.MESQUITE_BENCH_CORNER.get())
+                .add(ModBlocks.SERPENTINITE_BENCH.get())
+                .add(ModBlocks.SERPENTINITE_BENCH_CORNER.get());
 
     }
 }

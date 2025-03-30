@@ -56,6 +56,7 @@ public class ModLanguageProvider extends LanguageProvider {
 
         addBlock(ModBlocks.SERPENTINITE_PILLAR, "Serpentinite Pillar");
         addBlock(ModBlocks.SERPENTINITE_BENCH, "Serpentinite Bench");
+        addBlock(ModBlocks.SERPENTINITE_BENCH_CORNER, "Serpentinite Bench Corner");
         addBlock(ModBlocks.ANCIENT_ALTAR, "Ancient Altar");
 
         addBlock(ModBlocks.RESISTANT_OLMEC_HEAD, "Resistant Olmec Head");
@@ -78,6 +79,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.MESQUITE_BRAZIER, "Mesquite Brazier");
         addBlock(ModBlocks.MESQUITE_SAPLING, "Mesquite Sapling");
         addBlock(ModBlocks.MESQUITE_BENCH, "Mesquite Bench");
+        addBlock(ModBlocks.MESQUITE_BENCH_CORNER, "Mesquite Bench Corner");
 
         add("container.projectj.adobe_furnace", "Adobe Furnace");
         add("itemGroup.projectj.projectj_tab", "Project J");

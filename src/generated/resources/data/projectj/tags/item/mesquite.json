@@ -9,6 +9,7 @@
     "projectj:mesquite_fence",
     "projectj:mesquite_fence_gate",
     "projectj:mesquite_bench",
+    "projectj:mesquite_bench_corner",
     "#projectj:mesquite_logs"
   ]
 }

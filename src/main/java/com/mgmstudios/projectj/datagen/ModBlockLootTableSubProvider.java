@@ -63,8 +63,9 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.ADOBE_BRICKS_STAIRS.get());
         this.dropSelf(ModBlocks.ADOBE_BRICKS_SLAB.get());
         this.dropSelf(ModBlocks.ADOBE_BRICKS_WALL.get());
-        this.dropSelf(ModBlocks.SERPENTINITE_BENCH.get());
 
+        this.dropSelf(ModBlocks.SERPENTINITE_BENCH.get());
+        this.dropSelf(ModBlocks.SERPENTINITE_BENCH_CORNER.get());
         this.dropSelf(ModBlocks.SERPENTINITE_PILLAR.get());
 
         this.dropSelf(ModBlocks.COBBLED_SERPENTINITE.get());
@@ -98,6 +99,7 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.MESQUITE_BRAZIER.get());
         this.dropSelf(ModBlocks.MESQUITE_SAPLING.get());
         this.dropSelf(ModBlocks.MESQUITE_BENCH.get());
+        this.dropSelf(ModBlocks.MESQUITE_BENCH_CORNER.get());
         this.dropPottedContents(ModBlocks.POTTED_MESQUITE_SAPLING.get());
 
         // TODO: Make OakLeavesDrop when we have a sapling
