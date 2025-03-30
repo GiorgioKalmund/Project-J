@@ -2,6 +2,7 @@ package com.mgmstudios.projectj.item;
 
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlocks;
+import com.mgmstudios.projectj.item.custom.MagnifyingGlassItem;
 import com.mgmstudios.projectj.item.custom.OlmecHeadItem;
 import com.mgmstudios.projectj.item.custom.PaxelItem;
 import com.mgmstudios.projectj.item.custom.TrowelItem;
@@ -49,6 +50,8 @@ public class ModItems {
 
     public static final DeferredItem<Item> SUN_ARMOR_HELMET = registerCustomArmorItem("sun_crown", ModArmorMaterials.SUN_ARMOR_MATERIAL, ArmorType.HELMET, new Item.Properties());
 
+    public static final DeferredItem<Item> MAGNIFYING_GLASS = register("magnifying_glass", MagnifyingGlassItem::new, new Item.Properties().stacksTo(1));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
@@ -79,5 +82,9 @@ public class ModItems {
 
     public static DeferredItem<Item> register(String name, Function<Item.Properties, Item> function, Item.Properties properties){
         return ITEMS.register(name, key -> function.apply(properties.setId(ResourceKey.create(Registries.ITEM, key))));
+    }
+
+    public static DeferredItem<Item> register(String name, Function<Item.Properties, Item> function){
+        return register(name, function, new Item.Properties());
     }
 }

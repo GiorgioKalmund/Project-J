@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-30T14:54:10.7855097	Model Definitions - projectj
+// 1.21.4	2025-03-30T15:41:13.1527894	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -67,6 +67,7 @@ c4f3775626f4c829574376d0a454e0940c3ca14a assets/projectj/items/cobbled_serpentin
 9c8cb0c378da07b61725adb0d0a48b374dae6f8d assets/projectj/items/jade_block.json
 6c67bf56da03612616be77ed4bd0cc89a742b31b assets/projectj/items/jade_ore.json
 7d3e39c0634b0b68205702ce95c37259502e7dba assets/projectj/items/macuahuitl.json
+1bef45e9095250f5a2735b22bd5069b73f7bcd6d assets/projectj/items/magnifying_glass.json
 2568c53a7768a0baccb6ef1a5a598a02110a509a assets/projectj/items/mesquite_bench.json
 6604243a04a98aff470d63922519f1d629c7d9d2 assets/projectj/items/mesquite_bench_corner.json
 041e128c550b0716ca80e4f18e393978ccc713c9 assets/projectj/items/mesquite_brazier.json
@@ -188,6 +189,7 @@ cd0bb0cfd6624b5ec55a8f6e866341dbdfca5bd6 assets/projectj/models/block/stripped_m
 daf2d4c74604a08bc41aa0c622f86514fc9729ec assets/projectj/models/block/stripped_mesquite_wood.json
 9cc0c435272b7a37105bfd68afa6dd08bf45ef1e assets/projectj/models/item/jade.json
 23eed9a4ee89e3825630c941d8381fbf4fdc7e01 assets/projectj/models/item/macuahuitl.json
+4881cfc270830d6bbc741d607f76266b5b5ed4a9 assets/projectj/models/item/magnifying_glass.json
 9114e82cc7b26786a659af8ac521ac62f7f920af assets/projectj/models/item/mesquite_brazier.json
 0ed8110b95f96e3c9081e1ec3b05018acb71b9bd assets/projectj/models/item/mesquite_sapling.json
 09cab150482989c21b2d2de107eb18eedfbac95b assets/projectj/models/item/obsidian_tooth.json
