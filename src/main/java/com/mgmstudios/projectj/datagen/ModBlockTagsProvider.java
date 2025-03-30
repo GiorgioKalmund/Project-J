@@ -101,5 +101,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.MESQUITE_LOG.get())
                 .add(ModBlocks.STRIPPED_MESQUITE_LOG.get());
 
+        tag(ModTags.Blocks.BENCHES)
+                .add(ModBlocks.MESQUITE_BENCH.get())
+                .add(ModBlocks.SERPENTINITE_BENCH.get());
+
     }
 }

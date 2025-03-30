@@ -79,6 +79,7 @@ public class ModModelProvider extends ModelProvider {
         createSimpleBlockWithCustomModel(blockModels, ModBlocks.MESQUITE_BRAZIER.get());
         createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.ANCIENT_ALTAR.get());
         createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.SERPENTINITE_BENCH.get());
+        createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.MESQUITE_BENCH.get());
 
 
         ModBlockFamilies.getAllFamilies()

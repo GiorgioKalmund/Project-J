@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-29T17:55:08.542154	Tags for minecraft:block mod id projectj
+// 1.21.4	2025-03-30T11:36:19.56688	Tags for minecraft:block mod id projectj
 902145160e64fcf7a7d9e22f95dcf71ca8887a38 data/minecraft/tags/block/dirt.json
 a5e9f8e7f64233b035dbc5207bc470c671fd9cba data/minecraft/tags/block/leaves.json
 8189a72a7e5064d8c3c6b32896484fa360664989 data/minecraft/tags/block/logs_that_burn.json
@@ -8,6 +8,7 @@ a5e9f8e7f64233b035dbc5207bc470c671fd9cba data/minecraft/tags/block/leaves.json
 b2e0ac21eae7ad9ce71a7dc9009ad5ba509bb563 data/minecraft/tags/block/stairs.json
 7c31609503187578f9a3dd4e93a6e196b93c0c9a data/minecraft/tags/block/walls.json
 e9f38ba202c948a7d606fa864cf21124211fc7bd data/projectj/tags/block/adobe.json
+08af60e88a38feb8a9deb2361e0cc3f34e557fba data/projectj/tags/block/benches.json
 a2ab4b99dd0600778e686422f0f655c590ab96d7 data/projectj/tags/block/mesquite_logs.json
 984a835f12c583514b244703d6bad1afa79b3402 data/projectj/tags/block/mineable/paxel.json
 1fcbfa922bca0adc51487d8d5c0f66aaaf7c3ea8 data/projectj/tags/block/serpentinite.json

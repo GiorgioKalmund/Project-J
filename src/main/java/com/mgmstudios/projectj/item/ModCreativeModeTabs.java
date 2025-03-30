@@ -54,6 +54,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.MESQUITE_LEAVES.get());
                 output.accept(ModBlocks.MESQUITE_BRAZIER.get());
                 output.accept(ModBlocks.MESQUITE_SAPLING.get());
+                output.accept(ModBlocks.MESQUITE_BENCH.get());
 
                 ModBlockFamilies.getAllFamilies()
                         .forEach(family -> {

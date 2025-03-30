@@ -8,6 +8,7 @@
     "projectj:mesquite_slab",
     "projectj:mesquite_fence",
     "projectj:mesquite_fence_gate",
+    "projectj:mesquite_bench",
     "#projectj:mesquite_logs"
   ]
 }

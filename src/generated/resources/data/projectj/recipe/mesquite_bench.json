@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "L": "#projectj:mesquite_logs",
+    "P": "projectj:mesquite_planks",
+    "s": "projectj:mesquite_slab"
+  },
+  "pattern": [
+    "PLP",
+    "s s"
+  ],
+  "result": {
+    "count": 2,
+    "id": "projectj:mesquite_bench"
+  }
+}

@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-29T23:01:50.404935	ModRecipeProvider
+// 1.21.4	2025-03-30T11:32:35.7703446	ModRecipeProvider
 6452fecec3921d0f3482c70b92d2b933f016e37a data/minecraft/advancement/recipes/building_blocks/adobe_bricks_smelting.json
 2ad5ba8a982b9bbdbf73f012b05a8e91ea044622 data/minecraft/advancement/recipes/building_blocks/obsidian.json
 56a091b247e6fbd83e8bdc5f91a6d5bc25ea7458 data/minecraft/advancement/recipes/misc/adobe_bricks_slab_from_adobe_bricks_stonecutting.json
@@ -47,6 +47,7 @@ ea6dd0222d99a7333dabc42829a514b10237c800 data/projectj/advancement/recipes/build
 853b6b759373cc63d822522a68ba82fe417d8e15 data/projectj/advancement/recipes/building_blocks/damage_olmec_head.json
 72f4047e28935534623d54213fea1f66e48515b4 data/projectj/advancement/recipes/building_blocks/jade.json
 66278d14437215747db04a029a18bc888f29e300 data/projectj/advancement/recipes/building_blocks/jade_block.json
+6a86eddce530f626e8299b01a93cc1eaef14fd36 data/projectj/advancement/recipes/building_blocks/mesquite_bench.json
 43a1c2db1fe6855200ee96c7ff110a4666b64619 data/projectj/advancement/recipes/building_blocks/mesquite_brazier.json
 1246a66c6d61014520b99b369b882c8917486c3a data/projectj/advancement/recipes/building_blocks/mesquite_planks.json
 76eb3e36ee837246764bee7eb0016ab10130d235 data/projectj/advancement/recipes/building_blocks/mesquite_slab.json
@@ -84,6 +85,7 @@ f426b3c0bc47c2cef16d13bc63e2e829f496a762 data/projectj/recipe/cobbled_serpentini
 753c166d3e245dc0486cd7a374cf6abdafae29ad data/projectj/recipe/jade.json
 1e21023716643e2d570ccba5371dd2cc293e343e data/projectj/recipe/jade_block.json
 bf4e43d6498fe6e6fad452bd4c7dd52695ec8542 data/projectj/recipe/macuahuitl.json
+f5cde97918845e5293886992881afae87b01bc37 data/projectj/recipe/mesquite_bench.json
 4324854f9b366f6f63ee48a5b8710404016848a9 data/projectj/recipe/mesquite_brazier.json
 4987f7e2d2ee036abe6666b894a6ff9e777820ea data/projectj/recipe/mesquite_fence.json
 49ad58f40cf95d4a4a6e40627ad5e0e12facf992 data/projectj/recipe/mesquite_fence_gate.json

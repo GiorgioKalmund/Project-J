@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-29T22:13:17.152083	Model Definitions - projectj
+// 1.21.4	2025-03-30T11:28:01.812753	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -15,6 +15,7 @@ e631c7188802b1c576f60a6935f58c5e177154ac assets/projectj/blockstates/damage_olme
 7ede5fc8477af56fefd275aa88bd0ef32052d47b assets/projectj/blockstates/deepslate_jade_ore.json
 129f51236b5a037a8804262c7bd8d01d2a437567 assets/projectj/blockstates/jade_block.json
 dfdd72869320254b3ae6795b1e4d9a0a0c36ce64 assets/projectj/blockstates/jade_ore.json
+bf115fb9b83dd686f0304a8e409af9fdf6021be4 assets/projectj/blockstates/mesquite_bench.json
 65f3787d4c4c4af854c1207b3913d7b4cb439af7 assets/projectj/blockstates/mesquite_brazier.json
 b61f88988c4440545fc70455f6aca740e88b007a assets/projectj/blockstates/mesquite_fence.json
 e45d5999cce34b54dec470717ab4f047a313dd97 assets/projectj/blockstates/mesquite_fence_gate.json
@@ -58,6 +59,7 @@ c4f3775626f4c829574376d0a454e0940c3ca14a assets/projectj/items/cobbled_serpentin
 9c8cb0c378da07b61725adb0d0a48b374dae6f8d assets/projectj/items/jade_block.json
 6c67bf56da03612616be77ed4bd0cc89a742b31b assets/projectj/items/jade_ore.json
 7d3e39c0634b0b68205702ce95c37259502e7dba assets/projectj/items/macuahuitl.json
+2568c53a7768a0baccb6ef1a5a598a02110a509a assets/projectj/items/mesquite_bench.json
 22e8301fc2e58974a50251c45eb1b6bba9def388 assets/projectj/items/mesquite_brazier.json
 69d221e483238e57a174c6c067223bab666648af assets/projectj/items/mesquite_fence.json
 4800c6d03dea4186b78ba46a07ca3945ef7f12bc assets/projectj/items/mesquite_fence_gate.json

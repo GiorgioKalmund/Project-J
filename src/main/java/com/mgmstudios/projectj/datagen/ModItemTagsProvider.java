@@ -67,6 +67,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         copy(ModTags.Blocks.MESQUITE_LOGS, ModTags.Items.MESQUITE_LOGS);
         copy(ModTags.Blocks.SERPENTINITE, ModTags.Items.SERPENTINITE);
+        copy(ModTags.Blocks.BENCHES, ModTags.Items.BENCHES);
 
         tag(ItemTags.SAPLINGS)
                 .add(ModBlocks.MESQUITE_SAPLING.asItem());
@@ -79,7 +80,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                         ModBlocks.MESQUITE_STAIRS.asItem(),
                         ModBlocks.MESQUITE_SLAB.asItem(),
                         ModBlocks.MESQUITE_FENCE.asItem(),
-                        ModBlocks.MESQUITE_FENCE_GATE.asItem())
+                        ModBlocks.MESQUITE_FENCE_GATE.asItem(),
+                        ModBlocks.MESQUITE_BENCH.asItem())
                         .addTag(ModTags.Items.MESQUITE_LOGS);
 
         tag(ItemTags.SLABS)

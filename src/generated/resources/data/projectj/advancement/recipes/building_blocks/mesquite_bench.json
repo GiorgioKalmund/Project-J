@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mesquite_logs": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#projectj:mesquite_logs"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_mesquite_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:mesquite_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_mesquite_slab": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:mesquite_slab"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "projectj:mesquite_bench"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_mesquite_logs",
+      "has_mesquite_planks",
+      "has_mesquite_slab"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "projectj:mesquite_bench"
+    ]
+  }
+}

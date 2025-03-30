@@ -230,6 +230,17 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_serpentinite_rock_slab", this.has(ModBlocks.SERPENTINITE_ROCK_SLAB.asItem()))
                 .save(this.output);
 
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.MESQUITE_BENCH, 2)
+                .pattern("PLP")
+                .pattern("s s")
+                .define('L', ModTags.Items.MESQUITE_LOGS)
+                .define('P', ModBlocks.MESQUITE_PLANKS.asItem())
+                .define('s', ModBlocks.MESQUITE_SLAB.asItem())
+                .unlockedBy("has_mesquite_logs", this.has(ModTags.Items.MESQUITE_LOGS))
+                .unlockedBy("has_mesquite_planks", this.has(ModBlocks.MESQUITE_PLANKS.asItem()))
+                .unlockedBy("has_mesquite_slab", this.has(ModBlocks.MESQUITE_SLAB.asItem()))
+                .save(this.output);
+
         // SMELTING
 
         SimpleCookingRecipeBuilder.smelting(

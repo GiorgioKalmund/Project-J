@@ -73,7 +73,7 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.COBBLED_SERPENTINITE_WALL.get());
 
         createdByproductDropWithSilkTouch(ModBlocks.SERPENTINITE_ROCK.get(), ModBlocks.SERPENTINITE_ROCK.asItem(),
-                ModItems.OBSIDIAN_TOOTH.get(), 1,2, 0.025F, ModBlocks.COBBLED_SERPENTINITE.asItem());
+                ModItems.OBSIDIAN_TOOTH.get(), 1,2, 0.01F, ModBlocks.COBBLED_SERPENTINITE.asItem());
         this.dropSelf(ModBlocks.SERPENTINITE_ROCK_STAIRS.get());
         this.dropSelf(ModBlocks.SERPENTINITE_ROCK_SLAB.get());
         this.dropSelf(ModBlocks.SERPENTINITE_ROCK_WALL.get());
@@ -97,6 +97,7 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.MESQUITE_FENCE_GATE.get());
         this.dropSelf(ModBlocks.MESQUITE_BRAZIER.get());
         this.dropSelf(ModBlocks.MESQUITE_SAPLING.get());
+        this.dropSelf(ModBlocks.MESQUITE_BENCH.get());
         this.dropPottedContents(ModBlocks.POTTED_MESQUITE_SAPLING.get());
 
         // TODO: Make OakLeavesDrop when we have a sapling
