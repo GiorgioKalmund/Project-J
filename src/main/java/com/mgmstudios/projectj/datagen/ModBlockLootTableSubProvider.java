@@ -100,6 +100,8 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.MESQUITE_SLAB.get());
         this.dropSelf(ModBlocks.MESQUITE_FENCE.get());
         this.dropSelf(ModBlocks.MESQUITE_FENCE_GATE.get());
+        this.dropSelf(ModBlocks.MESQUITE_BUTTON.get());
+        this.dropSelf(ModBlocks.MESQUITE_PRESSURE_PLATE.get());
         this.dropSelf(ModBlocks.MESQUITE_BRAZIER.get());
         this.dropSelf(ModBlocks.MESQUITE_SAPLING.get());
         this.dropSelf(ModBlocks.MESQUITE_BENCH.get());

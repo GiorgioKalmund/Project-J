@@ -81,6 +81,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                         ModBlocks.MESQUITE_SLAB.asItem(),
                         ModBlocks.MESQUITE_FENCE.asItem(),
                         ModBlocks.MESQUITE_FENCE_GATE.asItem(),
+                        ModBlocks.MESQUITE_BUTTON.asItem(),
+                        ModBlocks.MESQUITE_PRESSURE_PLATE.asItem(),
                         ModBlocks.MESQUITE_BENCH.asItem(),
                         ModBlocks.MESQUITE_BENCH_CORNER.asItem()
                 )
@@ -106,13 +108,19 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModBlocks.SERPENTINITE_ROCK_WALL.asItem())
                 .add(ModBlocks.ADOBE_BRICKS_WALL.asItem());
 
-        tag(ItemTags.STONE_BUTTONS)
-                .add(ModBlocks.SERPENTINITE_ROCK_BUTTON.asItem());
+        tag(ItemTags.FENCE_GATES)
+                .add(ModBlocks.MESQUITE_FENCE_GATE.asItem());
 
         tag(ItemTags.WOODEN_FENCES)
                 .add(ModBlocks.MESQUITE_FENCE.asItem());
 
-        tag(ItemTags.FENCE_GATES)
-                .add(ModBlocks.MESQUITE_FENCE_GATE.asItem());
+        tag(ItemTags.STONE_BUTTONS)
+                .add(ModBlocks.SERPENTINITE_ROCK_BUTTON.asItem());
+
+        tag(ItemTags.WOODEN_BUTTONS)
+                .add(ModBlocks.MESQUITE_BUTTON.asItem());
+
+        tag(ItemTags.WOODEN_PRESSURE_PLATES)
+                .add(ModBlocks.MESQUITE_PRESSURE_PLATE.asItem());
     }
 }

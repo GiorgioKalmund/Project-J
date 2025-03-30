@@ -76,7 +76,10 @@ public class ModBlockFamilies {
                     .slab(ModBlocks.MESQUITE_SLAB.get())
                     .fence(ModBlocks.MESQUITE_FENCE.get())
                     .fenceGate(ModBlocks.MESQUITE_FENCE_GATE.get())
+                    .button(ModBlocks.MESQUITE_BUTTON.get())
+                    .pressurePlate(ModBlocks.MESQUITE_PRESSURE_PLATE.get())
                     .getFamily();
+
         } else if (event.getRegistryKey().equals(Registries.BLOCK_TYPE)){
             STRIPPABLES = new ImmutableMap.Builder<Block, Block>()
                     .put(ModBlocks.MESQUITE_LOG.get(), ModBlocks.STRIPPED_MESQUITE_LOG.get())

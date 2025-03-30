@@ -7,6 +7,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 
 import java.util.concurrent.CompletableFuture;
@@ -73,6 +74,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.STONE_PRESSURE_PLATES)
                 .add(ModBlocks.SERPENTINITE_ROCK_PRESSURE_PLATE.get());
+
+        tag(BlockTags.WOODEN_PRESSURE_PLATES)
+                .add(ModBlocks.MESQUITE_PRESSURE_PLATE.get());
+
+        tag(BlockTags.WOODEN_BUTTONS)
+                .add(ModBlocks.MESQUITE_BUTTON.get());
 
         tag(BlockTags.STONE_BUTTONS)
                 .add(ModBlocks.SERPENTINITE_ROCK_BUTTON.get());

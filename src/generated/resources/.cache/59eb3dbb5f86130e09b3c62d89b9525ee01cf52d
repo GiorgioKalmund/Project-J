@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-30T13:43:51.2972145	Loot Tables
+// 1.21.4	2025-03-30T14:54:10.7895111	Loot Tables
 645e23f8676b8f0e4d797aeab743aa1e3606c703 data/projectj/loot_table/blocks/adobe_bricks.json
 c52a58507f4c8bc3dcdd97ef286a063d396844cc data/projectj/loot_table/blocks/adobe_bricks_slab.json
 c80294a187a6c6c06ea794e6c6d418870c792578 data/projectj/loot_table/blocks/adobe_bricks_stairs.json
@@ -18,11 +18,13 @@ e236002db4b8a69bcaa8a7e7484db5d3319458a7 data/projectj/loot_table/blocks/deepsla
 5a6df041a821e108fd66d795b6fb670ea5d0064f data/projectj/loot_table/blocks/mesquite_bench.json
 0ae061b1db60958cfccec134106c7dd97b903d62 data/projectj/loot_table/blocks/mesquite_bench_corner.json
 3573a77d9fe16eba3197dcc0f05682c55703b37b data/projectj/loot_table/blocks/mesquite_brazier.json
+5b3045bdf3af1c0ddeca48745b30ce10bf81df6f data/projectj/loot_table/blocks/mesquite_button.json
 2f0eba6a20929b29e3d6ed1a6cf19cc54b56e0e2 data/projectj/loot_table/blocks/mesquite_fence.json
 062f69011b7d6da2acaddc15999a4ca42bd8e1d6 data/projectj/loot_table/blocks/mesquite_fence_gate.json
 04f8f691e8b9db10b9e345690d14c5765930ca86 data/projectj/loot_table/blocks/mesquite_leaves.json
 ae52183308347d4c32220a4c5c255831b4dd0ee0 data/projectj/loot_table/blocks/mesquite_log.json
 d8639e8921306256b3e40346a14fa55186df6c45 data/projectj/loot_table/blocks/mesquite_planks.json
+0a0e9a9895e95910b3446c160e6725ad5e4c91e5 data/projectj/loot_table/blocks/mesquite_pressure_plate.json
 78b1f148e3cbe889f85308575e14a11ac59067ad data/projectj/loot_table/blocks/mesquite_sapling.json
 1d09be1543c5dbd4c9ac9d8b8831a5075879be98 data/projectj/loot_table/blocks/mesquite_slab.json
 e34b8dc24a6e16977b2a4db550311ddd291b736e data/projectj/loot_table/blocks/mesquite_stairs.json

@@ -70,7 +70,7 @@ public class ModItems {
     }
 
     public static DeferredItem<Item> registerCustomArmorItem(String name, ArmorMaterial material, ArmorType armorType, Item.Properties properties){
-        return ITEMS.register(name, key -> new Item(humanoidProperties(material, properties.setId(ResourceKey.create(Registries.ITEM, key)), armorType)));
+        return ITEMS.register(name, key -> new ArmorItem(material, armorType, properties.setId(ResourceKey.create(Registries.ITEM, key))));
     }
 
     public static DeferredItem<Item> registerSwordItem(String name, ToolMaterial material, float attackDamage, float attackSpeed, Item.Properties properties){

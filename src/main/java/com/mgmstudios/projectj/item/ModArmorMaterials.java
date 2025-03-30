@@ -36,7 +36,7 @@ public class ModArmorMaterials {
             SoundEvents.ARMOR_EQUIP_GOLD,
             3.0F,
             0.2F,
-            ItemTags.REPAIRS_GOLD_ARMOR,
+            ModTags.Items.JADE,
             ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "sun_armor"))
     );
 

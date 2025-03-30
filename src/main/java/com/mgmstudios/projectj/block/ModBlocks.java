@@ -116,6 +116,10 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> MESQUITE_FENCE_GATE = registerFenceGateBlock("mesquite_fence_gate", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE), new Item.Properties());
 
+    public static final DeferredBlock<Block> MESQUITE_BUTTON = registerButtonBlock("mesquite_button", BlockSetType.OAK, 30, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE), new Item.Properties());
+
+    public static final DeferredBlock<Block> MESQUITE_PRESSURE_PLATE = registerPressurePlateBlock("mesquite_pressure_plate", BlockSetType.OAK,  BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE), new Item.Properties());
+
     public static final DeferredBlock<Block> MESQUITE_LEAVES = register("mesquite_leaves", LeavesBlock::new, leavesProperties(SoundType.AZALEA_LEAVES), new Item.Properties());
 
     public static final DeferredBlock<Block> MESQUITE_SAPLING = registerSaplingBlock("mesquite_sapling", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING), new Item.Properties());
