@@ -48,7 +48,6 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.PYRITE_BLOCK, "Pyrite Block");
         addBlock(ModBlocks.RAW_PYRITE_BLOCK, "Raw Pyrite Block");
         addBlock(ModBlocks.PYRITE_ORE, "Pyrite Ore");
-        addBlock(ModBlocks.DEEPSLATE_PYRITE_ORE, "Deepslate Pyrite Ore");
         addBlock(ModBlocks.LIQUID_PYRITE, "Liquid Pyrite");
 
         addBlock(ModBlocks.ADOBE_FURNACE, "Adobe Furnace");

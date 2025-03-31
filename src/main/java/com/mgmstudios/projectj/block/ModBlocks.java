@@ -146,11 +146,8 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> RAW_PYRITE_BLOCK = register("raw_pyrite_block", BlockBehaviour.Properties.ofFullCopy(Blocks.RAW_GOLD_BLOCK));
 
-    public static final DeferredBlock<Block> PYRITE_ORE = register("pyrite_ore", BlockBehaviour.Properties.ofFullCopy(Blocks.GOLD_ORE));
+    public static final DeferredBlock<Block> PYRITE_ORE = register("pyrite_ore", BlockBehaviour.Properties.ofFullCopy(Blocks.SANDSTONE));
 
-    public static final DeferredBlock<Block> DEEPSLATE_PYRITE_ORE = register("deepslate_pyrite_ore", BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_GOLD_ORE));
-
-    //public static final DeferredBlock<LiquidBlock> LIQUID_PYRITE = registerLiquidBlock("pyrite", ModFluids.PYRITE.get(), BlockBehaviour.Properties.ofFullCopy(Blocks.LAVA));
     public static final DeferredBlock<LiquidBlock> LIQUID_PYRITE  = registerWithoutItem("liquid_pyrite", (properties) -> new LiquidBlock(ModFluids.PYRITE.get(), properties), () -> Block.Properties.ofFullCopy(Blocks.LAVA));
 
     private static DeferredBlock<Block> register(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
