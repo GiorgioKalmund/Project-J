@@ -150,6 +150,8 @@ public class ModBlocks {
 
     public static final DeferredBlock<LiquidBlock> LIQUID_PYRITE  = registerWithoutItem("liquid_pyrite", (properties) -> new LiquidBlock(ModFluids.PYRITE.get(), properties), () -> Block.Properties.ofFullCopy(Blocks.LAVA));
 
+    public static final DeferredBlock<Block> MAGNIFYING_GLASS_STAND = register("magnifying_glass_stand", MagnifyingGlassStandBlock::new, BlockBehaviour.Properties.of().sound(SoundType.WOOD).noOcclusion().randomTicks());
+
     private static DeferredBlock<Block> register(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> factory.apply(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
         ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);

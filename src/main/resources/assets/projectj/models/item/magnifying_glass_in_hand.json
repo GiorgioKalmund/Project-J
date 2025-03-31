@@ -1,17 +1,15 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "projectj:item/magnifying_glass_texture",
 		"1": "projectj:block/stripped_mesquite_log",
 		"2": "projectj:item/magnifying_glass",
-		"3": "projectj:block/adobe_bricks",
-		"particle": "projectj:item/magnifying_glass_texture"
+		"3": "projectj:block/adobe_bricks"
 	},
 	"elements": [
 		{
-			"from": [7, 6, 7.5],
-			"to": [9, 11, 8.5],
-			"rotation": {"angle": 0, "axis": "z", "origin": [8, 8.5, 8]},
+			"from": [7, 7, 7.5],
+			"to": [9, 12, 8.5],
+			"rotation": {"angle": 0, "axis": "z", "origin": [8, 9.5, 8]},
 			"faces": {
 				"north": {"uv": [5, 0, 7, 5], "texture": "#1"},
 				"east": {"uv": [7, 0, 8, 5], "texture": "#1"},
@@ -26,11 +24,11 @@
 			"rotation": {"angle": 0, "axis": "z", "origin": [8.5, 3.5, 7.375]},
 			"faces": {
 				"north": {"uv": [7, 3, 12, 8], "texture": "#2"},
-				"east": {"uv": [8, 0, 9, 5], "texture": "#0"},
+				"east": {"uv": [8, 0, 9, 5], "texture": "#missing"},
 				"south": {"uv": [7, 3, 12, 8], "rotation": 270, "texture": "#2"},
-				"west": {"uv": [8, 5, 9, 10], "texture": "#0"},
-				"up": {"uv": [14, 1, 9, 0], "texture": "#0"},
-				"down": {"uv": [14, 1, 9, 2], "texture": "#0"}
+				"west": {"uv": [8, 5, 9, 10], "texture": "#missing"},
+				"up": {"uv": [14, 1, 9, 0], "texture": "#missing"},
+				"down": {"uv": [14, 1, 9, 2], "texture": "#missing"}
 			}
 		},
 		{

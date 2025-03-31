@@ -101,7 +101,7 @@ public class MagnifyingGlassItem extends SpyglassItem {
         this.lastContext = null;
     }
 
-    private static void showBurningParticles(Level level, BlockPos pos){
+    public static void showBurningParticles(Level level, BlockPos pos){
         RandomSource randomsource = level.getRandom();
         for (int k1 = 0; k1 < 2; k1++) {
             level

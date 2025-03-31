@@ -44,6 +44,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.JADE_BLOCK, "Block of Jade");
         addBlock(ModBlocks.CHIMNEY, "Adobe Chimney");
         addBlock(ModBlocks.SNAKE_STATUE, "Snake Statue");
+        addBlock(ModBlocks.MAGNIFYING_GLASS_STAND, "Magnifying Glass Stand");
 
         addBlock(ModBlocks.PYRITE_BLOCK, "Pyrite Block");
         addBlock(ModBlocks.RAW_PYRITE_BLOCK, "Raw Pyrite Block");

@@ -1,0 +1,61 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "projectj:block/brazier_side",
+		"particle": "projectj:block/brazier_side"
+	},
+	"elements": [
+		{
+			"from": [3, 0, 3],
+			"to": [5, 1, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [3, 0, 3]},
+			"faces": {
+				"north": {"uv": [0, 0, 2, 1], "texture": "#0"},
+				"east": {"uv": [0, 0, 10, 1], "texture": "#0"},
+				"south": {"uv": [0, 0, 2, 1], "texture": "#0"},
+				"west": {"uv": [0, 0, 10, 1], "texture": "#0"},
+				"up": {"uv": [0, 0, 2, 10], "texture": "#0"},
+				"down": {"uv": [0, 0, 2, 10], "texture": "#0"}
+			}
+		},
+		{
+			"from": [4, 1, 4],
+			"to": [12, 2, 6],
+			"rotation": {"angle": 0, "axis": "y", "origin": [3, 1, 6]},
+			"faces": {
+				"north": {"uv": [0, 0, 8, 1], "texture": "#0"},
+				"east": {"uv": [0, 0, 2, 1], "texture": "#0"},
+				"south": {"uv": [0, 0, 8, 1], "texture": "#0"},
+				"west": {"uv": [0, 0, 2, 1], "texture": "#0"},
+				"up": {"uv": [0, 0, 2, 8], "rotation": 270, "texture": "#0"},
+				"down": {"uv": [0, 0, 2, 8], "rotation": 90, "texture": "#0"}
+			}
+		},
+		{
+			"from": [11, 0, 3],
+			"to": [13, 1, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [13, 0, 3]},
+			"faces": {
+				"north": {"uv": [2, 0, 0, 1], "texture": "#0"},
+				"east": {"uv": [10, 0, 0, 1], "texture": "#0"},
+				"south": {"uv": [2, 0, 0, 1], "texture": "#0"},
+				"west": {"uv": [10, 0, 0, 1], "texture": "#0"},
+				"up": {"uv": [2, 0, 0, 10], "texture": "#0"},
+				"down": {"uv": [2, 0, 0, 10], "texture": "#0"}
+			}
+		},
+		{
+			"from": [4, 1, 10],
+			"to": [12, 2, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [13, 1, 12]},
+			"faces": {
+				"north": {"uv": [6, 0, 14, 1], "texture": "#0"},
+				"east": {"uv": [2, 0, 4, 1], "texture": "#0"},
+				"south": {"uv": [6, 0, 14, 1], "texture": "#0"},
+				"west": {"uv": [2, 0, 4, 1], "texture": "#0"},
+				"up": {"uv": [0, 6, 2, 14], "rotation": 270, "texture": "#0"},
+				"down": {"uv": [0, 6, 2, 14], "rotation": 90, "texture": "#0"}
+			}
+		}
+	]
+}

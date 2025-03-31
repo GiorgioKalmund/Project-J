@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,magnifying_block_active=false": {
+      "model": "projectj:block/magnifying_glass_stand",
+      "y": 90
+    },
+    "facing=east,magnifying_block_active=true": {
+      "model": "projectj:block/magnifying_glass_stand_inserted",
+      "y": 90
+    },
+    "facing=north,magnifying_block_active=false": {
+      "model": "projectj:block/magnifying_glass_stand"
+    },
+    "facing=north,magnifying_block_active=true": {
+      "model": "projectj:block/magnifying_glass_stand_inserted"
+    },
+    "facing=south,magnifying_block_active=false": {
+      "model": "projectj:block/magnifying_glass_stand",
+      "y": 180
+    },
+    "facing=south,magnifying_block_active=true": {
+      "model": "projectj:block/magnifying_glass_stand_inserted",
+      "y": 180
+    },
+    "facing=west,magnifying_block_active=false": {
+      "model": "projectj:block/magnifying_glass_stand",
+      "y": 270
+    },
+    "facing=west,magnifying_block_active=true": {
+      "model": "projectj:block/magnifying_glass_stand_inserted",
+      "y": 270
+    }
+  }
+}

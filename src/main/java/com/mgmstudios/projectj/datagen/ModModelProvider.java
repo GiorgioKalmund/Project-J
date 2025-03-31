@@ -3,6 +3,7 @@ package com.mgmstudios.projectj.datagen;
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlockFamilies;
 import com.mgmstudios.projectj.block.ModBlocks;
+import com.mgmstudios.projectj.block.custom.MagnifyingGlassStandBlock;
 import com.mgmstudios.projectj.item.ModItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
@@ -92,7 +93,7 @@ public class ModModelProvider extends ModelProvider {
         createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.SERPENTINITE_BENCH_CORNER.get());
         createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.MESQUITE_BENCH.get());
         createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.MESQUITE_BENCH_CORNER.get());
-
+        createMagnifyingGlassBlock(blockModels, itemModels, ModBlocks.MAGNIFYING_GLASS_STAND.get());
 
         ModBlockFamilies.getAllFamilies()
                 .filter(BlockFamily::shouldGenerateModel)
@@ -257,6 +258,22 @@ public class ModModelProvider extends ModelProvider {
         ItemModel.Unbaked blockModel = ItemModelUtils.plainModel(ModelLocationUtils.getModelLocation(block));
         ItemModel.Unbaked itemModel = ItemModelUtils.plainModel(ModelLocationUtils.getModelLocation(block, "_item"));
         itemModels.itemModelOutput.accept(blockItem, createMultiStateDispatch(itemModel, blockModel));
+
+    }
+
+    public void createMagnifyingGlassBlock(BlockModelGenerators blockModels, ItemModelGenerators itemModels, Block block) {
+        ResourceLocation resourcelocation = ModelLocationUtils.getModelLocation(block);
+        ResourceLocation resourcelocation1 = ModelLocationUtils.getModelLocation(block, "_inserted");
+
+        blockModels.blockStateOutput
+                .accept(
+                        MultiVariantGenerator.multiVariant(block)
+                                .with(createBooleanModelDispatch(MagnifyingGlassStandBlock.MAGNIFYNG_GLASS_INSIDE, resourcelocation1, resourcelocation))
+                                .with(createHorizontalFacingDispatch())
+                );
+
+        ItemModel.Unbaked itemmodel$unbaked = ItemModelUtils.plainModel(itemModels.createFlatItemModel(block.asItem(), ModelTemplates.FLAT_ITEM));
+        itemModels.itemModelOutput.accept(block.asItem(), itemmodel$unbaked);
 
     }
 
