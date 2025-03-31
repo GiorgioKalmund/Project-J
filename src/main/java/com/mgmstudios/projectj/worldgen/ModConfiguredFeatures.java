@@ -13,22 +13,22 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.util.valueproviders.WeightedListInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.*;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedBlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.BendingTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.CherryTrunkPlacer;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 
 public class ModConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?,?>> MESQUITE_KEY = registerKey("mesquite");
+
+    public static final ResourceKey<ConfiguredFeature<?,?>> ADOBE_PATCH_KEY = registerKey("adobe_patch");
 
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
@@ -54,6 +54,15 @@ public class ModConfiguredFeatures {
 
                 new TwoLayersFeatureSize(1, 0, 2)).build()
         );
+
+        register(context, ADOBE_PATCH_KEY, Feature.DISK, new DiskConfiguration(
+                RuleBasedBlockStateProvider.simple(ModBlocks.RAW_ADOBE.get()),
+                BlockPredicate.matchesBlocks(
+                        Blocks.SAND
+                ),
+                UniformInt.of(2, 6),
+                1
+        ));
 
 
     }

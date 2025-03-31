@@ -1,6 +1,6 @@
 {
   "type": "neoforge:add_features",
-  "biomes": "#minecraft:is_savanna",
+  "biomes": "minecraft:desert",
   "features": "projectj:mesquite_placed",
   "step": "vegetal_decoration"
 }
