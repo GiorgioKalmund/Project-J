@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.15,
+  "group": "pyrite",
+  "ingredient": "projectj:raw_pyrite",
+  "result": {
+    "count": 1,
+    "id": "projectj:pyrite_ingot"
+  }
+}

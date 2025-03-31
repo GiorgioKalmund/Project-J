@@ -25,6 +25,8 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.SACRIFICIAL_DAGGER, "Sacrificial Dagger");
         addItem(ModItems.TROWEL, "Trowel");
         addItem(ModItems.MAGNIFYING_GLASS, "Magnifying Glass");
+        addItem(ModItems.PYRITE_INGOT, "Pyrite Ingot");
+        addItem(ModItems.RAW_PYRITE, "Raw Pyrite");
 
         // Blocks
         addBlock(ModBlocks.RAW_ADOBE, "Raw Adobe");
@@ -34,6 +36,11 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.JADE_BLOCK, "Block of Jade");
         addBlock(ModBlocks.CHIMNEY, "Adobe Chimney");
         addBlock(ModBlocks.SNAKE_STATUE, "Snake Statue");
+
+        addBlock(ModBlocks.PYRITE_BLOCK, "Pyrite Block");
+        addBlock(ModBlocks.RAW_PYRITE_BLOCK, "Raw Pyrite Block");
+        addBlock(ModBlocks.PYRITE_ORE, "Pyrite Ore");
+        addBlock(ModBlocks.DEEPSLATE_PYRITE_ORE, "Deepslate Pyrite Ore");
 
         addBlock(ModBlocks.ADOBE_FURNACE, "Adobe Furnace");
         addBlock(ModBlocks.ADOBE_BRICKS_SLAB, "Adobe Bricks Slab");

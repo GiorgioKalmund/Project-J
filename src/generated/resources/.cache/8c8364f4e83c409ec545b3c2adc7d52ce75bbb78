@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-30T14:57:59.7450655	Tags for minecraft:item mod id vanilla
+// 1.21.4	2025-03-31T14:23:23.1160675	Tags for minecraft:item mod id vanilla
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/axes.json
 13774df12a771570323d285bfc3f11b3548cc957 data/minecraft/tags/item/enchantable/durability.json
 177d72f6b3e93c23cbac2c6995c3e57d46b4e250 data/minecraft/tags/item/fence_gates.json
@@ -23,6 +23,8 @@ a49dbe94ce86b9ca5b714d568d9f6ad6e884c4be data/projectj/tags/item/jade.json
 d46e436ac7b0310f99e2171a645a158eee0fe30e data/projectj/tags/item/jade_ores.json
 e4d763536c9eb4d422cd9bdf3a19a89dacf8fa9c data/projectj/tags/item/mesquite.json
 48f3d9b77c13037c83111fd768e8fe3be99ca3b5 data/projectj/tags/item/mesquite_logs.json
+3e93ff604b606fadab0d1386b09803b785c52f6e data/projectj/tags/item/pyrite.json
+732ac9f151ea18edb9c279d365c9ebf7c59d2d31 data/projectj/tags/item/pyrite_blocks.json
 49b88be6e8b52b8404912448b3e4e34c02152d4f data/projectj/tags/item/serpentinite.json
 ef009a87c52aaa14dfb5c66731fe936ec1686e03 data/projectj/tags/item/smelts_to_jade.json
 c184a3b0a55998ca058c5d8180e7595b3fc08396 data/projectj/tags/item/sun_armor.json

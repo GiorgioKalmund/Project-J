@@ -33,6 +33,12 @@ public class ModItems {
     public static final DeferredItem<Item> JADE = ITEMS.registerItem("jade",
             Item::new, new Item.Properties().rarity(Rarity.RARE));
 
+    public static final DeferredItem<Item> PYRITE_INGOT = register("pyrite_ingot",
+            Item::new);
+
+    public static final DeferredItem<Item> RAW_PYRITE = register("raw_pyrite",
+            Item::new);
+
     public static final DeferredItem<Item> MACUAHUITL = registerPaxelItem("macuahuitl",
           new Item.Properties()
                   .fireResistant()

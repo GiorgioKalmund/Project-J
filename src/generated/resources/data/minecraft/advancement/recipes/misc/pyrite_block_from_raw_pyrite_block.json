@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_smelts_to_jade": {
+    "has_raw_pyrite_block": {
       "conditions": {
         "items": [
           {
-            "items": "#projectj:smelts_to_jade"
+            "items": "projectj:raw_pyrite_block"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:jade_smelting"
+        "recipe": "minecraft:pyrite_block_from_raw_pyrite_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_smelts_to_jade"
+      "has_raw_pyrite_block"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:jade_smelting"
+      "minecraft:pyrite_block_from_raw_pyrite_block"
     ]
   }
 }

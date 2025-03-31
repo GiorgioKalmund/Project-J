@@ -138,6 +138,14 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> MESQUITE_BENCH_CORNER = register("mesquite_bench_corner", BenchCornerBlock::new,  BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_SLAB).noOcclusion());
 
+    public static final DeferredBlock<Block> PYRITE_BLOCK = register("pyrite_block", BlockBehaviour.Properties.ofFullCopy(Blocks.GOLD_BLOCK));
+
+    public static final DeferredBlock<Block> RAW_PYRITE_BLOCK = register("raw_pyrite_block", BlockBehaviour.Properties.ofFullCopy(Blocks.RAW_GOLD_BLOCK));
+
+    public static final DeferredBlock<Block> PYRITE_ORE = register("pyrite_ore", BlockBehaviour.Properties.ofFullCopy(Blocks.GOLD_ORE));
+
+    public static final DeferredBlock<Block> DEEPSLATE_PYRITE_ORE = register("deepslate_pyrite_ore", BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_GOLD_ORE));
+
 
     private static DeferredBlock<Block> register(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> factory.apply(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));

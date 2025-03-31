@@ -58,6 +58,8 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.ADOBE_FURNACE.get());
         this.dropSelf(ModBlocks.CHIMNEY.get());
         this.dropSelf(ModBlocks.JADE_BLOCK.get());
+        this.dropSelf(ModBlocks.RAW_PYRITE_BLOCK.get());
+        this.dropSelf(ModBlocks.PYRITE_BLOCK.get());
 
         this.dropSelf(ModBlocks.ADOBE_BRICKS.get());
         this.dropSelf(ModBlocks.ADOBE_BRICKS_STAIRS.get());
@@ -117,6 +119,8 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
                 createMultipleOreDrops(ModBlocks.JADE_ORE.get(), ModItems.RAW_JADE.get(), 2, 5));
         add(ModBlocks.DEEPSLATE_JADE_ORE.get(), block ->
                 createMultipleOreDrops(ModBlocks.DEEPSLATE_JADE_ORE.get(), ModItems.RAW_JADE.get(), 2, 5));
+        add(ModBlocks.PYRITE_ORE.get(), block -> createOreDrop(ModBlocks.PYRITE_ORE.get(), ModItems.RAW_PYRITE.get()));
+        add(ModBlocks.DEEPSLATE_PYRITE_ORE.get(), block -> createOreDrop(ModBlocks.DEEPSLATE_PYRITE_ORE.get(), ModItems.RAW_PYRITE.get()));
     }
 
     protected LootTable.Builder createMultipleOreDrops(Block pBlock, Item item, float minDrops, float maxDrops) {
@@ -125,6 +129,16 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
                 this.applyExplosionDecay(pBlock, LootItem.lootTableItem(item)
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(minDrops, maxDrops)))
                         .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))));
+    }
+
+    protected LootTable.Builder createOreDrop(Block block, Item item) {
+        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+        return this.createSilkTouchDispatchTable(
+                block,
+                this.applyExplosionDecay(
+                        block, LootItem.lootTableItem(item).apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))
+                )
+        );
     }
 
     protected void createdByproductDrop(Block block, Item mainItem, Item byproduct, int minDrops, int maxDrops, float probability){

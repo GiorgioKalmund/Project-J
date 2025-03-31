@@ -1,5 +1,6 @@
 package com.mgmstudios.projectj.datagen;
 
+import com.google.common.collect.ImmutableList;
 import com.mgmstudios.projectj.block.ModBlockFamilies;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.item.ModItems;
@@ -15,12 +16,15 @@ import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends RecipeProvider {
+
+    public static final ImmutableList<ItemLike> PYRITE_SMELTABLES = ImmutableList.of(ModItems.RAW_PYRITE);
 
     protected ModRecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
         super(registries, output);
@@ -66,10 +70,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_adobe_bricks", this.has(ModBlocks.ADOBE_BRICKS.get()))
                 .save(this.output);
 
-        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.JADE_BLOCK.get())
-                .requires(ModItems.JADE, 9)
-                .unlockedBy("has_jade", this.has(ModItems.JADE.get()))
-                .save(this.output);
+        nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.JADE, RecipeCategory.BUILDING_BLOCKS, ModBlocks.JADE_BLOCK);
 
         ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.JADE.get(), 9)
                 .requires(ModBlocks.JADE_BLOCK.asItem())
@@ -261,6 +262,9 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_string", this.has(Items.STRING))
                 .save(this.output);
 
+        nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.RAW_PYRITE, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_PYRITE_BLOCK);
+        nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.PYRITE_INGOT, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PYRITE_BLOCK);
+
         // SMELTING
 
         SimpleCookingRecipeBuilder.smelting(
@@ -279,15 +283,16 @@ public class ModRecipeProvider extends RecipeProvider {
                 ModItems.JADE.get(),
                 0.15F,
                 200)
-                .unlockedBy("has_jade_ore", this.has(ModTags.Items.SMELTS_TO_JADE))
+                .unlockedBy("has_smelts_to_jade", this.has(ModTags.Items.SMELTS_TO_JADE))
                 .save(this.output, "jade_smelting");
 
-        SimpleCookingRecipeBuilder.smelting(
-                    Ingredient.of(ModBlocks.COBBLED_SERPENTINITE.get()),
-                        RecipeCategory.MISC,
-                        ModBlocks.SERPENTINITE_ROCK.asItem(),
-                        0.15F,
-                        200)
+        oreSmelting(PYRITE_SMELTABLES, RecipeCategory.MISC, ModItems.PYRITE_INGOT, 0.15F, 200, "pyrite");
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.RAW_PYRITE_BLOCK), RecipeCategory.MISC, ModBlocks.PYRITE_BLOCK.asItem(), 0.15F, 200)
+                .unlockedBy("has_raw_pyrite_block", this.has(ModBlocks.RAW_PYRITE_BLOCK.asItem()))
+                .save(this.output, "pyrite_block_from_raw_pyrite_block");
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.COBBLED_SERPENTINITE.get()), RecipeCategory.MISC, ModBlocks.SERPENTINITE_ROCK.asItem(), 0.15F, 200)
                 .unlockedBy("has_cobbled_serpentinite", this.has(ModBlocks.COBBLED_SERPENTINITE.asItem()))
                 .save(this.output, "cobbled_serpentinite_smelting");
 
@@ -311,7 +316,11 @@ public class ModRecipeProvider extends RecipeProvider {
 
     public static void buildMagnifyingGlassRecipes(){
         MagnifyingRecipeBuilder.magnify(Blocks.SAND, Blocks.GLASS);
-        MagnifyingRecipeBuilder.magnify(Blocks.RAW_GOLD_BLOCK, Blocks.RAW_IRON_BLOCK);
+        MagnifyingRecipeBuilder.magnify(Blocks.RAW_IRON_BLOCK, Blocks.IRON_BLOCK);
+        MagnifyingRecipeBuilder.magnify(Blocks.RAW_GOLD_BLOCK, Blocks.GOLD_BLOCK);
+        MagnifyingRecipeBuilder.magnify(Blocks.RAW_COPPER_BLOCK, Blocks.COPPER_BLOCK);
+        MagnifyingRecipeBuilder.magnify(ModBlocks.RAW_PYRITE_BLOCK.get(), ModBlocks.PYRITE_BLOCK.get());
+        MagnifyingRecipeBuilder.magnify(ModBlocks.PYRITE_BLOCK.get(), Blocks.LAVA);
     }
 
     protected void generateForEnabledBlockFamilies(FeatureFlagSet enabledFeatures) {

@@ -25,12 +25,20 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.RAW_ADOBE.get());
                 output.accept(ModBlocks.ADOBE_FURNACE.get());
                 output.accept(ModBlocks.CHIMNEY.get());
+
+                output.accept(ModBlocks.SNAKE_STATUE.get());
+
                 output.accept(ModBlocks.JADE_ORE.get());
                 output.accept(ModBlocks.DEEPSLATE_JADE_ORE.get());
                 output.accept(ModItems.RAW_JADE.get());
                 output.accept(ModItems.JADE.get());
                 output.accept(ModBlocks.JADE_BLOCK.get());
-                output.accept(ModBlocks.SNAKE_STATUE.get());
+                output.accept(ModItems.RAW_PYRITE.get());
+                output.accept(ModItems.PYRITE_INGOT.get());
+                output.accept(ModBlocks.RAW_PYRITE_BLOCK.get());
+                output.accept(ModBlocks.PYRITE_BLOCK.get());
+                output.accept(ModBlocks.PYRITE_ORE.get());
+                output.accept(ModBlocks.DEEPSLATE_PYRITE_ORE.get());
 
                 output.accept(ModBlocks.SERPENTINITE_PILLAR.get());
                 output.accept(ModBlocks.SERPENTINITE_BENCH.get());
