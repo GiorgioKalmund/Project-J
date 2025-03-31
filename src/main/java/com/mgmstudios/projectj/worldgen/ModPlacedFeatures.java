@@ -11,14 +11,14 @@ import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
+import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
 
 public class ModPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> MESQUITE_PLACED_KEY =  registerKey("mesquite_placed");
+    public static final ResourceKey<PlacedFeature> ADOBE_PATCH_KEY =  registerKey("adobe_patch");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -27,6 +27,10 @@ public class ModPlacedFeatures {
                 configuredFeatures.getOrThrow(ModConfiguredFeatures.MESQUITE_KEY),
                 VegetationPlacements.treePlacement(PlacementUtils.countExtra(1,0.1f,1),
                         ModBlocks.MESQUITE_SAPLING.get()));
+
+        register(context, ADOBE_PATCH_KEY,
+                configuredFeatures.getOrThrow(ModConfiguredFeatures.ADOBE_PATCH_KEY),
+                List.of(CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BiomeFilter.biome()));
     }
 
     private static ResourceKey<PlacedFeature> registerKey(String name) {

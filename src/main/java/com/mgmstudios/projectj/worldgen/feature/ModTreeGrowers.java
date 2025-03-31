@@ -1,4 +1,4 @@
-package com.mgmstudios.projectj.worldgen.tree;
+package com.mgmstudios.projectj.worldgen.feature;
 
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.worldgen.ModConfiguredFeatures;
