@@ -91,8 +91,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(ModTags.Blocks.PYRITE_BLOCKS)
                 .add(ModBlocks.RAW_PYRITE_BLOCK.get())
                 .add(ModBlocks.PYRITE_BLOCK.get())
-                .add(ModBlocks.PYRITE_ORE.get())
-                .add(ModBlocks.DEEPSLATE_PYRITE_ORE.get());
+                .add(ModBlocks.PYRITE_ORE.get());
 
         tag(ModTags.Blocks.ADOBE)
                 .add(ModBlocks.ADOBE_FURNACE.get())

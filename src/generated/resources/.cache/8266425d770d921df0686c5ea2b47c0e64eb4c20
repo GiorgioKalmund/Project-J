@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-31T15:54:28.5312953	Model Definitions - projectj
+// 1.21.4	2025-03-31T20:06:01.7822441	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -13,7 +13,6 @@ fcdbaef29d10d3a7b2377f4c348fc410540205cd assets/projectj/blockstates/cobbled_ser
 a8692211143e490f13a28b448600de3bdaf544a4 assets/projectj/blockstates/conduit_olmec_head.json
 e631c7188802b1c576f60a6935f58c5e177154ac assets/projectj/blockstates/damage_olmec_head.json
 7ede5fc8477af56fefd275aa88bd0ef32052d47b assets/projectj/blockstates/deepslate_jade_ore.json
-b76600ddf3c0fac6ef67daae884e25813544f69f assets/projectj/blockstates/deepslate_pyrite_ore.json
 129f51236b5a037a8804262c7bd8d01d2a437567 assets/projectj/blockstates/jade_block.json
 dfdd72869320254b3ae6795b1e4d9a0a0c36ce64 assets/projectj/blockstates/jade_ore.json
 7fe76ecd31a04d044f73f3ca4e274d88eb70cecd assets/projectj/blockstates/liquid_pyrite.json
@@ -68,7 +67,6 @@ c4f3775626f4c829574376d0a454e0940c3ca14a assets/projectj/items/cobbled_serpentin
 4dbf6f15ed7ce4392a2beabb70250ee1491fca6d assets/projectj/items/conduit_olmec_head.json
 0670feef3cbcdc99659e1d6b8f164ec00b2b1298 assets/projectj/items/damage_olmec_head.json
 3cf17f2ffd36039a8af7d7d54f2b7dd5f05212a1 assets/projectj/items/deepslate_jade_ore.json
-2f76d82c71e85ad69d6164ca1c84893d93504629 assets/projectj/items/deepslate_pyrite_ore.json
 20e974e68377b3d13568f54b52c8c52e9ccf5e66 assets/projectj/items/jade.json
 9c8cb0c378da07b61725adb0d0a48b374dae6f8d assets/projectj/items/jade_block.json
 6c67bf56da03612616be77ed4bd0cc89a742b31b assets/projectj/items/jade_ore.json
@@ -143,7 +141,6 @@ b16300b4478da5d21ba650af585482988a7f8f79 assets/projectj/models/block/cobbled_se
 777c5c4f677963f09573412b3c554a6e077fc5b7 assets/projectj/models/block/cobbled_serpentinite_wall_side.json
 a0c693efb4e8b4e60d2a2616fcbc24897fb75a2b assets/projectj/models/block/cobbled_serpentinite_wall_side_tall.json
 534bc754e5caeacadd8e4b1fb2e4edbf28e902d8 assets/projectj/models/block/deepslate_jade_ore.json
-fbf580e670629947075e5aadbe0ab9171be2cd6b assets/projectj/models/block/deepslate_pyrite_ore.json
 51a148e2c077ccec8b3af8781ca3db505af160bb assets/projectj/models/block/jade_block.json
 a9dc860cc3b5276471695806148d26ece7d10d62 assets/projectj/models/block/jade_ore.json
 37c13024edd4b1b88863c4805efc68bad8226003 assets/projectj/models/block/mesquite_button.json

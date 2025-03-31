@@ -37,7 +37,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.PYRITE_INGOT.get())
                 .add(ModItems.RAW_PYRITE.get())
                 .add(ModBlocks.RAW_PYRITE_BLOCK.asItem())
-                .add(ModBlocks.PYRITE_BLOCK.asItem());
+                .add(ModBlocks.PYRITE_BLOCK.asItem())
+                .add(ModItems.LIQUID_PYRITE_BUCKET.get());
 
         tag(ModTags.Items.SUN_ARMOR)
                 .add(ModItems.SUN_ARMOR_HELMET.get());

@@ -38,7 +38,6 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.RAW_PYRITE_BLOCK.get());
                 output.accept(ModBlocks.PYRITE_BLOCK.get());
                 output.accept(ModBlocks.PYRITE_ORE.get());
-                output.accept(ModBlocks.DEEPSLATE_PYRITE_ORE.get());
                 output.accept(ModItems.LIQUID_PYRITE_BUCKET.get());
 
                 output.accept(ModBlocks.SERPENTINITE_PILLAR.get());
