@@ -21,6 +21,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -48,7 +49,10 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.JADE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.DEEPSLATE_JADE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.JADE_BLOCK.get());
+        blockModels.createTrivialCube(ModBlocks.RAW_PYRITE_BLOCK.get());
+        blockModels.createTrivialCube(ModBlocks.PYRITE_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.MESQUITE_LEAVES.get());
+        blockModels.createTrivialCube(ModBlocks.PYRITE_ORE.get());
         createCutoutPlantWithDefaultItem(blockModels, ModBlocks.MESQUITE_SAPLING.get(), ModBlocks.POTTED_MESQUITE_SAPLING.get(), PlantType.NOT_TINTED);
 
         createSerpentinitePillar(blockModels, itemModels, ModBlocks.SERPENTINITE_PILLAR.get());
@@ -58,15 +62,21 @@ public class ModModelProvider extends ModelProvider {
 
         createHorizontallyFacingDoubleBlock(blockModels, ModBlocks.SNAKE_STATUE.get());
 
+        blockModels.createNonTemplateModelBlock(ModBlocks.LIQUID_PYRITE.get());
+
         itemModels.generateFlatItem(ModItems.TROWEL.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
         itemModels.generateFlatItem(ModItems.SACRIFICIAL_DAGGER.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
         itemModels.generateFlatItem(ModItems.RAW_JADE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.JADE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.RAW_PYRITE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.PYRITE_INGOT.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.LIQUID_PYRITE_BUCKET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.OBSIDIAN_TOOTH.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.SERPENTINITE_ROD.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
         itemModels.generateSpyglass(ModItems.MACUAHUITL.get());
 
         itemModels.generateSpyglass(ModItems.SUN_ARMOR_HELMET.get());
+        itemModels.generateSpyglass(ModItems.MAGNIFYING_GLASS.get());
 
         createFurnaceUntilTier1(blockModels, ModBlocks.ADOBE_FURNACE.get());
 

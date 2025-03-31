@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_jade": {
+    "has_raw_pyrite": {
       "conditions": {
         "items": [
           {
-            "items": "projectj:jade"
+            "items": "projectj:raw_pyrite"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "projectj:jade_block"
+        "recipe": "minecraft:raw_pyrite_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_jade"
+      "has_raw_pyrite"
     ]
   ],
   "rewards": {
     "recipes": [
-      "projectj:jade_block"
+      "minecraft:raw_pyrite_block"
     ]
   }
 }

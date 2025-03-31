@@ -2,6 +2,7 @@ package com.mgmstudios.projectj.block;
 
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.custom.*;
+import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.worldgen.feature.ModTreeGrowers;
 import net.minecraft.core.Holder;
@@ -10,6 +11,7 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
@@ -23,6 +25,7 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
@@ -30,6 +33,7 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
 public class ModBlocks {
@@ -136,6 +140,13 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> MESQUITE_BENCH_CORNER = register("mesquite_bench_corner", BenchCornerBlock::new,  BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_SLAB).noOcclusion());
 
+    public static final DeferredBlock<Block> PYRITE_BLOCK = register("pyrite_block", BlockBehaviour.Properties.ofFullCopy(Blocks.GOLD_BLOCK));
+
+    public static final DeferredBlock<Block> RAW_PYRITE_BLOCK = register("raw_pyrite_block", BlockBehaviour.Properties.ofFullCopy(Blocks.RAW_GOLD_BLOCK));
+
+    public static final DeferredBlock<Block> PYRITE_ORE = register("pyrite_ore", BlockBehaviour.Properties.ofFullCopy(Blocks.SANDSTONE));
+
+    public static final DeferredBlock<LiquidBlock> LIQUID_PYRITE  = registerWithoutItem("liquid_pyrite", (properties) -> new LiquidBlock(ModFluids.PYRITE.get(), properties), () -> Block.Properties.ofFullCopy(Blocks.LAVA));
 
     private static DeferredBlock<Block> register(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> factory.apply(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
@@ -219,9 +230,25 @@ public class ModBlocks {
         return toBeRegistered;
     }
 
+    private static DeferredBlock<LiquidBlock> registerLiquidBlock(String name, FlowingFluid fluid, BlockBehaviour.Properties properties){
+        return BLOCKS.register(name, registryName -> new LiquidBlock(fluid, properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+    }
+
+    private static <T extends Block> DeferredBlock<Block> registerWithoutItem(String name, Supplier<Block.Properties> properties) {
+        return registerWithoutItem(name, Block::new, properties);
+    }
+
+    private static <T extends Block> DeferredBlock<T> registerWithoutItem(String name, Function<Block.Properties, T> builder, Supplier<Block.Properties> properties) {
+        return registerWithoutItem(name, ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, name)), builder, properties);
+    }
+
+    private static <T extends Block> DeferredBlock<T> registerWithoutItem(String name, ResourceKey<Block> key, Function<Block.Properties, T> builder, Supplier<Block.Properties> properties) {
+        return BLOCKS.register(name, () -> builder.apply(properties.get().setId(key)));
+    }
+
+
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
-
     }
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {

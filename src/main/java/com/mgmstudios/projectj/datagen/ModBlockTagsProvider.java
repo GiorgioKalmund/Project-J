@@ -32,7 +32,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .addTag(ModTags.Blocks.ADOBE)
-                .addTag(ModTags.Blocks.SERPENTINITE);
+                .addTag(ModTags.Blocks.SERPENTINITE)
+                .addTag(ModTags.Blocks.PYRITE_BLOCKS);
 
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.JADE_ORE.get())
@@ -87,6 +88,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.LEAVES)
                 .add(ModBlocks.MESQUITE_LEAVES.get());
 
+        tag(ModTags.Blocks.PYRITE_BLOCKS)
+                .add(ModBlocks.RAW_PYRITE_BLOCK.get())
+                .add(ModBlocks.PYRITE_BLOCK.get())
+                .add(ModBlocks.PYRITE_ORE.get());
+
         tag(ModTags.Blocks.ADOBE)
                 .add(ModBlocks.ADOBE_FURNACE.get())
                 .add(ModBlocks.CHIMNEY.get())
@@ -117,6 +123,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.DIRT)
                 .add(ModBlocks.RAW_ADOBE.get());
+
+        tag(BlockTags.LOGS_THAT_BURN)
+                .addTag(ModTags.Blocks.MESQUITE_LOGS);
 
         tag(ModTags.Blocks.MESQUITE_LOGS)
                 .add(ModBlocks.MESQUITE_LOG.get())

@@ -6,12 +6,9 @@ import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -35,6 +32,13 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModBlocks.JADE_ORE.asItem())
                 .add(ModBlocks.DEEPSLATE_JADE_ORE.asItem())
                 .add(ModItems.RAW_JADE.get());
+
+        tag(ModTags.Items.PYRITE)
+                .add(ModItems.PYRITE_INGOT.get())
+                .add(ModItems.RAW_PYRITE.get())
+                .add(ModBlocks.RAW_PYRITE_BLOCK.asItem())
+                .add(ModBlocks.PYRITE_BLOCK.asItem())
+                .add(ModItems.LIQUID_PYRITE_BUCKET.get());
 
         tag(ModTags.Items.SUN_ARMOR)
                 .add(ModItems.SUN_ARMOR_HELMET.get());
@@ -68,6 +72,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(ModTags.Blocks.MESQUITE_LOGS, ModTags.Items.MESQUITE_LOGS);
         copy(ModTags.Blocks.SERPENTINITE, ModTags.Items.SERPENTINITE);
         copy(ModTags.Blocks.BENCHES, ModTags.Items.BENCHES);
+        copy(ModTags.Blocks.PYRITE_BLOCKS, ModTags.Items.PYRITE_BLOCKS);
 
         tag(ItemTags.SAPLINGS)
                 .add(ModBlocks.MESQUITE_SAPLING.asItem());
