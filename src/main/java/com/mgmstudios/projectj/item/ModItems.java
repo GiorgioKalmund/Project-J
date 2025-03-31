@@ -2,6 +2,7 @@ package com.mgmstudios.projectj.item;
 
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlocks;
+import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.item.custom.MagnifyingGlassItem;
 import com.mgmstudios.projectj.item.custom.OlmecHeadItem;
 import com.mgmstudios.projectj.item.custom.PaxelItem;
@@ -14,6 +15,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.FlowingFluid;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -27,17 +29,15 @@ import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidProperti
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ProjectJ.MOD_ID);
 
-    public static final DeferredItem<Item> RAW_JADE = register("raw_jade",
-            Item::new, new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final DeferredItem<Item> RAW_JADE = register("raw_jade", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON));
 
-    public static final DeferredItem<Item> JADE = ITEMS.registerItem("jade",
-            Item::new, new Item.Properties().rarity(Rarity.RARE));
+    public static final DeferredItem<Item> JADE = ITEMS.registerItem("jade", Item::new, new Item.Properties().rarity(Rarity.RARE));
 
-    public static final DeferredItem<Item> PYRITE_INGOT = register("pyrite_ingot",
-            Item::new);
+    public static final DeferredItem<Item> PYRITE_INGOT = register("pyrite_ingot", Item::new);
 
-    public static final DeferredItem<Item> RAW_PYRITE = register("raw_pyrite",
-            Item::new);
+    public static final DeferredItem<Item> RAW_PYRITE = register("raw_pyrite", Item::new);
+
+    public static final DeferredItem<Item> LIQUID_PYRITE_BUCKET = register("liquid_pyrite_bucket", (properties) -> new BucketItem(ModFluids.PYRITE.get(), properties.stacksTo(1).craftRemainder(Items.BUCKET)));
 
     public static final DeferredItem<Item> MACUAHUITL = registerPaxelItem("macuahuitl",
           new Item.Properties()
@@ -84,6 +84,10 @@ public class ModItems {
 
     public static DeferredItem<Item> registerSwordItem(String name, ToolMaterial material, float attackDamage, float attackSpeed, Item.Properties properties){
         return ITEMS.register(name, key -> new SwordItem(material, attackDamage, attackSpeed, properties.setId(ResourceKey.create(Registries.ITEM, key))));
+    }
+
+    public static DeferredItem<Item> registerBucketItem(String name, FlowingFluid fluid){
+        return ITEMS.register(name, key -> new BucketItem(fluid, new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET).setId(ResourceKey.create(Registries.ITEM, key))));
     }
 
     public static DeferredItem<Item> register(String name, Function<Item.Properties, Item> function, Item.Properties properties){

@@ -21,6 +21,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -62,12 +63,15 @@ public class ModModelProvider extends ModelProvider {
 
         createHorizontallyFacingDoubleBlock(blockModels, ModBlocks.SNAKE_STATUE.get());
 
+        blockModels.createNonTemplateModelBlock(ModBlocks.LIQUID_PYRITE.get());
+
         itemModels.generateFlatItem(ModItems.TROWEL.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
         itemModels.generateFlatItem(ModItems.SACRIFICIAL_DAGGER.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
         itemModels.generateFlatItem(ModItems.RAW_JADE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.JADE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.RAW_PYRITE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.PYRITE_INGOT.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.LIQUID_PYRITE_BUCKET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.OBSIDIAN_TOOTH.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.SERPENTINITE_ROD.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
         itemModels.generateSpyglass(ModItems.MACUAHUITL.get());

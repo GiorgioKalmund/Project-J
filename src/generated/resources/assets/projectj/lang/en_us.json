@@ -16,6 +16,7 @@
   "block.projectj.deepslate_pyrite_ore": "Deepslate Pyrite Ore",
   "block.projectj.jade_block": "Block of Jade",
   "block.projectj.jade_ore": "Jade Ore",
+  "block.projectj.liquid_pyrite": "Liquid Pyrite",
   "block.projectj.mesquite_bench": "Mesquite Bench",
   "block.projectj.mesquite_bench_corner": "Mesquite Bench Corner",
   "block.projectj.mesquite_brazier": "Mesquite Brazier",
@@ -56,6 +57,7 @@
   "item.projectj.conduit_olmec_head": "Conduit Olmec Head",
   "item.projectj.damage_olmec_head": "Damage Olmec Head",
   "item.projectj.jade": "Jade",
+  "item.projectj.liquid_pyrite_bucket": "Liquid Pyrite Bucket",
   "item.projectj.macuahuitl": "Macuahuitl",
   "item.projectj.magnifying_glass": "Magnifying Glass",
   "item.projectj.obsidian_tooth": "Obsidian Tooth",
@@ -70,5 +72,7 @@
   "item.projectj.trowel": "Trowel",
   "itemGroup.projectj.projectj_tab": "Project J",
   "tooltip.projectj.adobe_furnace.tooltip": "A powerful new furnace!\n§9§l[LShift] to learn more§r",
-  "tooltip.projectj.adobe_furnace.tooltip.shift_down": "A powerful new furnace!\nWith the help of a chimney, can burn for §lEVEN§r longer"
+  "tooltip.projectj.adobe_furnace.tooltip.shift_down": "A powerful new furnace!\nWith the help of a chimney, can burn for §lEVEN§r longer",
+  "tooltip.projectj.magnifying_glass.tooltip": "Helps you melt things.",
+  "tooltip.projectj.magnifying_glass.tooltip.shift_down": "Helps you melt and magnify things."
 }

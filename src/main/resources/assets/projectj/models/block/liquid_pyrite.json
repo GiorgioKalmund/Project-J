@@ -1,0 +1,6 @@
+﻿{
+  "render_type": "minecraft:translucent",
+  "textures": {
+	"particle": "projectj:fluid/liquid_pyrite_still"
+  }
+}

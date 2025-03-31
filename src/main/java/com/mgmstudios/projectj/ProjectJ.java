@@ -3,7 +3,11 @@ package com.mgmstudios.projectj;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.block.entity.ModBlockEntities;
 import com.mgmstudios.projectj.block.entity.client.SittableEntityRenderer;
+import com.mgmstudios.projectj.client.ProjectJClientExtension;
+import com.mgmstudios.projectj.datagen.ModFluidTagsProvider;
 import com.mgmstudios.projectj.entity.ModEntities;
+import com.mgmstudios.projectj.fluid.ModFluidTypes;
+import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.item.ModCreativeModeTabs;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.recipe.ModRecipeTypes;
@@ -12,6 +16,7 @@ import com.mgmstudios.projectj.screen.custom.AdobeFurnaceScreen;
 import com.mgmstudios.projectj.recipe.ModRecipeBookCategories;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -52,6 +57,8 @@ public class ProjectJ
         NeoForge.EVENT_BUS.register(this);
 
         ModMenuTypes.register(modEventBus);
+        ModFluids.register(modEventBus);
+        ModFluidTypes.register(modEventBus);
         ModRecipeBookCategories.register(modEventBus);
         ModRecipeTypes.register(modEventBus);
         ModItems.register(modEventBus);
@@ -62,6 +69,7 @@ public class ProjectJ
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::registerScreens);
+        modEventBus.addListener(ProjectJClientExtension::registerClientItemExtensions);
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
@@ -85,7 +93,6 @@ public class ProjectJ
 
     public void registerScreens(RegisterMenuScreensEvent event){
         event.register(ModMenuTypes.ADOBE_FURNACE_MENU.get(), AdobeFurnaceScreen::new);
-        System.out.println("Registered SCREEN!");
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent

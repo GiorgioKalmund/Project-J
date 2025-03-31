@@ -1,12 +1,15 @@
 package com.mgmstudios.projectj.util;
 
 import com.mgmstudios.projectj.ProjectJ;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.player.ProfileKeyPair;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Fluid;
 
 public class ModTags {
 
@@ -25,6 +28,14 @@ public class ModTags {
 
         private static TagKey<Block> createTag(String name){
             return BlockTags.create(ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, name));
+        }
+    }
+
+    public static class Fluids {
+        public static final TagKey<Fluid> LIQUID_PYRITE = createTag("liquid_pyrite");
+
+        private static TagKey<Fluid> createTag(String name) {
+            return TagKey.create(Registries.FLUID, ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, name));
         }
     }
 

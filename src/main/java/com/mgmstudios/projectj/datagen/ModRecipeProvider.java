@@ -320,7 +320,7 @@ public class ModRecipeProvider extends RecipeProvider {
         MagnifyingRecipeBuilder.magnify(Blocks.RAW_GOLD_BLOCK, Blocks.GOLD_BLOCK);
         MagnifyingRecipeBuilder.magnify(Blocks.RAW_COPPER_BLOCK, Blocks.COPPER_BLOCK);
         MagnifyingRecipeBuilder.magnify(ModBlocks.RAW_PYRITE_BLOCK.get(), ModBlocks.PYRITE_BLOCK.get());
-        MagnifyingRecipeBuilder.magnify(ModBlocks.PYRITE_BLOCK.get(), Blocks.LAVA);
+        MagnifyingRecipeBuilder.magnify(ModBlocks.PYRITE_BLOCK.get(), ModBlocks.LIQUID_PYRITE.get());
     }
 
     protected void generateForEnabledBlockFamilies(FeatureFlagSet enabledFeatures) {

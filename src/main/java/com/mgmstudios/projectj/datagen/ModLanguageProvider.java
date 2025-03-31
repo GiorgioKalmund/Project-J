@@ -3,8 +3,15 @@ package com.mgmstudios.projectj.datagen;
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.item.ModItems;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.LanguageProvider;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 public class ModLanguageProvider extends LanguageProvider {
 
@@ -27,6 +34,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.MAGNIFYING_GLASS, "Magnifying Glass");
         addItem(ModItems.PYRITE_INGOT, "Pyrite Ingot");
         addItem(ModItems.RAW_PYRITE, "Raw Pyrite");
+        addItem(ModItems.LIQUID_PYRITE_BUCKET, "Liquid Pyrite Bucket");
 
         // Blocks
         addBlock(ModBlocks.RAW_ADOBE, "Raw Adobe");
@@ -41,6 +49,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.RAW_PYRITE_BLOCK, "Raw Pyrite Block");
         addBlock(ModBlocks.PYRITE_ORE, "Pyrite Ore");
         addBlock(ModBlocks.DEEPSLATE_PYRITE_ORE, "Deepslate Pyrite Ore");
+        addBlock(ModBlocks.LIQUID_PYRITE, "Liquid Pyrite");
 
         addBlock(ModBlocks.ADOBE_FURNACE, "Adobe Furnace");
         addBlock(ModBlocks.ADOBE_BRICKS_SLAB, "Adobe Bricks Slab");
@@ -95,10 +104,27 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.MESQUITE_BENCH, "Mesquite Bench");
         addBlock(ModBlocks.MESQUITE_BENCH_CORNER, "Mesquite Bench Corner");
 
+        // Tooltips
+
+        addTooltip(ModItems.MAGNIFYING_GLASS, "Helps you melt things.");
+        addTooltipShift(ModItems.MAGNIFYING_GLASS, "Helps you melt and magnify things.");
+        addTooltip(ModBlocks.ADOBE_FURNACE, "A powerful new furnace!\n§9§l[LShift] to learn more§r");
+        addTooltipShift(ModBlocks.ADOBE_FURNACE, "A powerful new furnace!\nWith the help of a chimney, can burn for §lEVEN§r longer");
+
         add("container.projectj.adobe_furnace", "Adobe Furnace");
         add("itemGroup.projectj.projectj_tab", "Project J");
-        add("tooltip.projectj.adobe_furnace.tooltip", "A powerful new furnace!\n§9§l[LShift] to learn more§r");
-        add("tooltip.projectj.adobe_furnace.tooltip.shift_down", "A powerful new furnace!\nWith the help of a chimney, can burn for §lEVEN§r longer");
 
+    }
+
+    protected void addTooltip(ItemLike itemLike, String value){
+        addSuffixedTooltip(itemLike, value, "");
+    }
+
+    protected void addTooltipShift(ItemLike itemLike, String value){
+        addSuffixedTooltip(itemLike, value, ".shift_down");
+    }
+
+    private void addSuffixedTooltip(ItemLike itemLike, String value, String suffix){
+        add("tooltip." + ProjectJ.MOD_ID + "." + BuiltInRegistries.ITEM.getKey(itemLike.asItem()).getPath() + ".tooltip" + suffix, value);
     }
 }
