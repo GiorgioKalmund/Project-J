@@ -9,6 +9,7 @@ import com.mgmstudios.projectj.entity.ModEntities;
 import com.mgmstudios.projectj.fluid.ModFluidTypes;
 import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.item.ModCreativeModeTabs;
+import com.mgmstudios.projectj.item.ModItemBehaviours;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.recipe.ModRecipeTypes;
 import com.mgmstudios.projectj.screen.ModMenuTypes;
@@ -76,7 +77,7 @@ public class ProjectJ
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-
+        ModItemBehaviours.ModDispenserBehaviours.bootstrap();
     }
 
     // Add the example block item to the building blocks tab

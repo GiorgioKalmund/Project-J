@@ -39,7 +39,7 @@ public class MagnifyingGlassStandBlock extends HorizontalDirectionalBlock {
     public static final BooleanProperty MAGNIFYNG_GLASS_INSIDE = BooleanProperty.create("magnifying_block_active");
 
     private int conversion;
-    private int conversionThreshold;
+    private final int conversionThreshold;
 
     public MagnifyingGlassStandBlock(Properties properties) {
         super(properties);
@@ -47,7 +47,7 @@ public class MagnifyingGlassStandBlock extends HorizontalDirectionalBlock {
         this.conversionThreshold = 5;
         this.registerDefaultState(this.defaultBlockState().setValue(MAGNIFYNG_GLASS_INSIDE, false).setValue(FACING, Direction.NORTH));
     }
-    public MagnifyingGlassStandBlock(Properties properties, int conversionThreshold) {
+    public MagnifyingGlassStandBlock(int conversionThreshold, Properties properties) {
         super(properties);
         this.conversion = 0;
         this.conversionThreshold = conversionThreshold;

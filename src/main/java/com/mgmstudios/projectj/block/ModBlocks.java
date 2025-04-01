@@ -148,7 +148,7 @@ public class ModBlocks {
 
     public static final DeferredBlock<LiquidBlock> LIQUID_PYRITE  = registerWithoutItem("liquid_pyrite", (properties) -> new LiquidBlock(ModFluids.PYRITE.get(), properties), () -> Block.Properties.ofFullCopy(Blocks.LAVA));
 
-    public static final DeferredBlock<Block> MAGNIFYING_GLASS_STAND = register("magnifying_glass_stand", MagnifyingGlassStandBlock::new, BlockBehaviour.Properties.of().sound(SoundType.WOOD).noOcclusion().randomTicks());
+    public static final DeferredBlock<Block> MAGNIFYING_GLASS_STAND = registerMagnifyingGlassStandBlock("magnifying_glass_stand", BlockBehaviour.Properties.of().sound(SoundType.WOOD).noOcclusion().randomTicks(), new Item.Properties(), 3);
 
     private static DeferredBlock<Block> register(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> factory.apply(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
@@ -228,6 +228,12 @@ public class ModBlocks {
 
     private static DeferredBlock<Block> registerPottedSaplingBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered = BLOCKS.register(name, registryName -> new FlowerPotBlock(ModBlocks.MESQUITE_SAPLING.get(), properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
+        return toBeRegistered;
+    }
+
+    private static DeferredBlock<Block> registerMagnifyingGlassStandBlock(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties, int conversionThreshold) {
+        DeferredBlock<Block> toBeRegistered = BLOCKS.register(name, registryName -> new MagnifyingGlassStandBlock(conversionThreshold, properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
         ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
         return toBeRegistered;
     }
