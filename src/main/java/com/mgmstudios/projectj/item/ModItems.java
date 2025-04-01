@@ -40,18 +40,13 @@ public class ModItems {
 
     public static final DeferredItem<Item> LIQUID_PYRITE_BUCKET = register("liquid_pyrite_bucket", (properties) -> new BucketItem(ModFluids.PYRITE.get(), properties.stacksTo(1).craftRemainder(Items.BUCKET)));
 
-    public static final DeferredItem<Item> MACUAHUITL = registerPaxelItem("macuahuitl",
-          new Item.Properties()
-                  .fireResistant()
-                  .rarity(Rarity.EPIC)
-    );
+    public static final DeferredItem<Item> MACUAHUITL = registerPaxelItem("macuahuitl", new Item.Properties().fireResistant().rarity(Rarity.EPIC));
 
     public static final DeferredItem<Item> SERPENTINITE_ROD = ITEMS.registerItem("serpentinite_rod", Item::new);
 
     public static final DeferredItem<Item> OBSIDIAN_TOOTH = ITEMS.registerItem("obsidian_tooth", Item::new);
 
-    public static final DeferredItem<Item> SACRIFICIAL_DAGGER = registerSwordItem("sacrificial_dagger", ModToolMaterials.SACRIFICIAL_DAGGER_MATERIAL,
-            30F, -3.6F, new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final DeferredItem<Item> SACRIFICIAL_DAGGER = registerSwordItem("sacrificial_dagger", ModToolMaterials.SACRIFICIAL_DAGGER_MATERIAL, 30F, -3.6F, new Item.Properties().rarity(Rarity.UNCOMMON));
 
     public static final DeferredItem<Item> TROWEL = ITEMS.registerItem("trowel", TrowelItem::new);
 
