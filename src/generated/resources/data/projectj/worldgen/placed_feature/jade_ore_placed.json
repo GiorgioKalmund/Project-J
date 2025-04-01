@@ -1,9 +1,9 @@
 {
-  "feature": "projectj:pyrite_ore",
+  "feature": "projectj:jade_ore",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 10
+      "count": 80
     },
     {
       "type": "minecraft:in_square"

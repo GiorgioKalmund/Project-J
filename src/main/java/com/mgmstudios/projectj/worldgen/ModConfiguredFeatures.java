@@ -5,6 +5,7 @@ import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -25,8 +26,11 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedBlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.CherryTrunkPlacer;
+import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
+
+import java.util.List;
 
 public class ModConfiguredFeatures {
 
@@ -36,8 +40,22 @@ public class ModConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?,?>> PYRITE_ORE_KEY = registerKey("pyrite_ore");
 
+    public static final ResourceKey<ConfiguredFeature<?,?>> JADE_ORE_KEY = registerKey("jade_ore");
+
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
+        RuleTest ruletest = new TagMatchTest(BlockTags.BASE_STONE_OVERWORLD);
+        RuleTest ruletest1 = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
+        RuleTest ruletest2 = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
+        RuleTest ruletest3 = new BlockMatchTest(Blocks.NETHERRACK);
+        RuleTest ruletest4 = new TagMatchTest(BlockTags.BASE_STONE_NETHER);
+
+        List<OreConfiguration.TargetBlockState> list = List.of(
+                OreConfiguration.target(ruletest1, ModBlocks.JADE_ORE.get().defaultBlockState()),
+                OreConfiguration.target(ruletest2, ModBlocks.DEEPSLATE_JADE_ORE.get().defaultBlockState())
+        );
+
+       register(context, JADE_ORE_KEY, Feature.ORE, new OreConfiguration(list, 4));
 
         RuleTest sandReplaceables = new TagMatchTest(ModTags.Blocks.PYRITE_ORE_REPLACEABLES);
 
@@ -74,8 +92,6 @@ public class ModConfiguredFeatures {
                 UniformInt.of(2, 6),
                 1
         ));
-
-
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {

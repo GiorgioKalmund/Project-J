@@ -23,12 +23,19 @@ public class ModPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> PYRITE_ORE_PLACED_KEY =  registerKey("pyrite_ore_placed");
 
+    public static final ResourceKey<PlacedFeature> JADE_ORE_PLACED_KEY = registerKey("jade_ore_placed");
+
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
+        register(context, JADE_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.JADE_ORE_KEY),
+                ModOrePlacement.commonOrePlacement(80,
+                        HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80))
+                ));
+
         register(context, PYRITE_ORE_PLACED_KEY,
                 configuredFeatures.getOrThrow(ModConfiguredFeatures.PYRITE_ORE_KEY),
-                    ModOrePlacement.commonOrePlacement( 10, HeightRangePlacement.uniform(VerticalAnchor.absolute(32), VerticalAnchor.absolute(256))
+                    ModOrePlacement.commonOrePlacement( 10, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80))
                ));
 
         register(context, MESQUITE_PLACED_KEY,
