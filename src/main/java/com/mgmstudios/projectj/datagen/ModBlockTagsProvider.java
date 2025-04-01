@@ -7,6 +7,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 
@@ -92,6 +93,14 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.RAW_PYRITE_BLOCK.get())
                 .add(ModBlocks.PYRITE_BLOCK.get())
                 .add(ModBlocks.PYRITE_ORE.get());
+
+        tag(ModTags.Blocks.PYRITE_ORE_REPLACEABLES)
+                .add(Blocks.SAND)
+                .add(Blocks.SANDSTONE);
+
+        tag(BlockTags.OVERWORLD_CARVER_REPLACEABLES)
+                .add(ModBlocks.PYRITE_ORE.get())
+                .add(ModBlocks.RAW_PYRITE_BLOCK.get());
 
         tag(ModTags.Blocks.ADOBE)
                 .add(ModBlocks.ADOBE_FURNACE.get())

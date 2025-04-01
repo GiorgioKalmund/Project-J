@@ -1,7 +1,10 @@
-// 1.21.4	2025-03-31T20:19:59.2310938	Registries
+// 1.21.4	2025-04-01T18:07:24.424139	Registries
 f15a648a21d19a717dc9793c3c3b820bcac2baed data/projectj/neoforge/biome_modifier/add_adobe_patch.json
+734b16420071955aee6f1b21748eefc89b75d558 data/projectj/neoforge/biome_modifier/add_pyrite_ore.json
 d8e8b96e4853d7cbad8083c90c2edce84ac06aa2 data/projectj/neoforge/biome_modifier/add_tree_mesquite.json
 41c96b4c80205ab42a4622bef3e3886c279b53fe data/projectj/worldgen/configured_feature/adobe_patch.json
 b54cbbedde3d09412e75853e52361a44a36c5fa8 data/projectj/worldgen/configured_feature/mesquite.json
-737c7548ff20443a0961e8b41a9d8e5754d614e4 data/projectj/worldgen/placed_feature/adobe_patch.json
+a31fb9a0c475758c37c0afbfd2c7e3d3649ac1fa data/projectj/worldgen/configured_feature/pyrite_ore.json
+639382d759564e7ddf72d6a5585f8003fc64554e data/projectj/worldgen/placed_feature/adobe_patch.json
 d201bd0aa874dbc84755a5c2172103daf5a92665 data/projectj/worldgen/placed_feature/mesquite_placed.json
+b560917722a1c15636dc3bb0590c0917f6e1efbe data/projectj/worldgen/placed_feature/pyrite_ore_placed.json

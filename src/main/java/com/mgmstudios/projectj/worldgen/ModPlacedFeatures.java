@@ -5,11 +5,11 @@ import com.mgmstudios.projectj.block.ModBlocks;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 
@@ -18,10 +18,18 @@ import java.util.List;
 public class ModPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> MESQUITE_PLACED_KEY =  registerKey("mesquite_placed");
+
     public static final ResourceKey<PlacedFeature> ADOBE_PATCH_KEY =  registerKey("adobe_patch");
+
+    public static final ResourceKey<PlacedFeature> PYRITE_ORE_PLACED_KEY =  registerKey("pyrite_ore_placed");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
+
+        register(context, PYRITE_ORE_PLACED_KEY,
+                configuredFeatures.getOrThrow(ModConfiguredFeatures.PYRITE_ORE_KEY),
+                    ModOrePlacement.commonOrePlacement( 10, HeightRangePlacement.uniform(VerticalAnchor.absolute(32), VerticalAnchor.absolute(256))
+               ));
 
         register(context, MESQUITE_PLACED_KEY,
                 configuredFeatures.getOrThrow(ModConfiguredFeatures.MESQUITE_KEY),
@@ -30,7 +38,7 @@ public class ModPlacedFeatures {
 
         register(context, ADOBE_PATCH_KEY,
                 configuredFeatures.getOrThrow(ModConfiguredFeatures.ADOBE_PATCH_KEY),
-                List.of(CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BiomeFilter.biome()));
+                List.of(RarityFilter.onAverageOnceEvery(20), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BiomeFilter.biome()));
     }
 
     private static ResourceKey<PlacedFeature> registerKey(String name) {

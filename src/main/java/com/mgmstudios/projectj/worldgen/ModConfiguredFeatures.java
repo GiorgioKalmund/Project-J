@@ -2,10 +2,12 @@ package com.mgmstudios.projectj.worldgen;
 
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlocks;
+import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.IntProvider;
@@ -23,6 +25,8 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedBlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.CherryTrunkPlacer;
+import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
 public class ModConfiguredFeatures {
 
@@ -30,8 +34,15 @@ public class ModConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?,?>> ADOBE_PATCH_KEY = registerKey("adobe_patch");
 
+    public static final ResourceKey<ConfiguredFeature<?,?>> PYRITE_ORE_KEY = registerKey("pyrite_ore");
+
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
+
+        RuleTest sandReplaceables = new TagMatchTest(ModTags.Blocks.PYRITE_ORE_REPLACEABLES);
+
+        register(context, PYRITE_ORE_KEY, Feature.ORE, new OreConfiguration(sandReplaceables, ModBlocks.PYRITE_ORE.get().defaultBlockState(),10));
+
         register(context, MESQUITE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(ModBlocks.MESQUITE_LOG.get()),
                 new CherryTrunkPlacer(

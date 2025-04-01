@@ -30,7 +30,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
-import com.mgmstudios.projectj.item.custom.MagnifyingGlassItem;
 
 public class MagnifyingGlassStandBlock extends HorizontalDirectionalBlock {
 

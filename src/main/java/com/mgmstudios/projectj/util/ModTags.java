@@ -24,6 +24,8 @@ public class ModTags {
         public static final TagKey<Block> MESQUITE_LOGS = createTag("mesquite_logs");
         public static final TagKey<Block> BENCHES = createTag("benches");
 
+        public static final TagKey<Block> PYRITE_ORE_REPLACEABLES = createTag("pyrite_ore_replaceables");
+
         public static final TagKey<Block> PYRITE_BLOCKS = createTag("pyrite_blocks");
 
         private static TagKey<Block> createTag(String name){
