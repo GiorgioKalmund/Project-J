@@ -57,6 +57,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.SACRIFICIAL_DAGGER.get());
                 output.accept(ModItems.TROWEL.get());
                 output.accept(ModItems.SUN_ARMOR_HELMET.get());
+                output.accept(ModItems.JADE_HELMET.get());
                 output.accept(ModItems.MAGNIFYING_GLASS.get());
                 output.accept(ModItems.FIRE_STARTER.get());
                 output.accept(ModItems.CRUDE_SACRIFICE_BOWL.get());

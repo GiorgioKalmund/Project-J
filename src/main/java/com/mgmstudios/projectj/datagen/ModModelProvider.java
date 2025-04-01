@@ -80,6 +80,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateSpyglass(ModItems.MACUAHUITL.get());
 
         itemModels.generateSpyglass(ModItems.SUN_ARMOR_HELMET.get());
+        itemModels.generateSpyglass(ModItems.JADE_HELMET.get());
         itemModels.generateSpyglass(ModItems.MAGNIFYING_GLASS.get());
 
         createFurnaceUntilTier1(blockModels, ModBlocks.ADOBE_FURNACE.get());
