@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_gold_ingot": {
+    "has_pyrite_ingot": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:gold_ingot"
+            "items": "projectj:pyrite_ingot"
           }
         ]
       },
@@ -43,7 +43,7 @@
       "has_the_recipe",
       "has_serpentinite_rod",
       "has_serpentinite_rock",
-      "has_gold_ingot"
+      "has_pyrite_ingot"
     ]
   ],
   "rewards": {

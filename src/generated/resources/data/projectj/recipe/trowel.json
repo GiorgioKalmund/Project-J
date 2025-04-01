@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "G": "minecraft:gold_ingot",
+    "G": "projectj:pyrite_ingot",
     "R": "projectj:serpentinite_rock",
     "S": "projectj:serpentinite_rod"
   },

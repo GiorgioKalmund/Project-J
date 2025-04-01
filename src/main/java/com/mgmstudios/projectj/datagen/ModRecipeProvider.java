@@ -209,12 +209,12 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("  R")
                 .pattern(" G ")
                 .pattern("S  ")
-                .define('G', Items.GOLD_INGOT)
+                .define('G', ModItems.PYRITE_INGOT)
                 .define('S', ModItems.SERPENTINITE_ROD.get())
                 .define('R', ModBlocks.SERPENTINITE_ROCK.asItem())
                 .unlockedBy("has_serpentinite_rod", this.has(ModItems.SERPENTINITE_ROD.get()))
                 .unlockedBy("has_serpentinite_rock", this.has(ModBlocks.SERPENTINITE_ROCK.asItem()))
-                .unlockedBy("has_gold_ingot", this.has(Items.GOLD_INGOT))
+                .unlockedBy("has_pyrite_ingot", this.has(ModItems.PYRITE_INGOT))
                 .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.SERPENTINITE_BENCH, 2)
