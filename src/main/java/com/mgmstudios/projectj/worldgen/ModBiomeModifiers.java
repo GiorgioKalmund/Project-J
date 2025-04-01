@@ -20,10 +20,17 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_TREE_MESQUITE = registerKey("add_tree_mesquite");
     public static final ResourceKey<BiomeModifier> ADD_ADOBE_PATCH = registerKey("add_adobe_patch");
     public static final ResourceKey<BiomeModifier> ADD_PYRITE_ORE = registerKey("add_pyrite_ore");
+    public static final ResourceKey<BiomeModifier> ADD_JADE_ORE = registerKey("add_jade_ore");
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);
+
+        context.register(ADD_JADE_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(Biomes.LUSH_CAVES)),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.JADE_ORE_PLACED_KEY)),
+                GenerationStep.Decoration.UNDERGROUND_ORES
+        ));
 
         context.register(ADD_ADOBE_PATCH, new BiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(Biomes.DESERT)),
