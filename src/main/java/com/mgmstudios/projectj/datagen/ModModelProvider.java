@@ -68,6 +68,8 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.TROWEL.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
         itemModels.generateFlatItem(ModItems.FIRE_STARTER.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
         itemModels.generateFlatItem(ModItems.SACRIFICIAL_DAGGER.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
+        itemModels.generateFlatItem(ModItems.CRUDE_SACRIFICE_BOWL.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.FILLED_CRUDE_SACRIFICE_BOWL.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.RAW_JADE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.JADE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.RAW_PYRITE.get(), ModelTemplates.FLAT_ITEM);

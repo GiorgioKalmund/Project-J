@@ -8,7 +8,9 @@ import net.minecraft.client.renderer.entity.state.FireworkRocketRenderState;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
@@ -21,6 +23,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.Objects;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidProperties;
 
@@ -58,6 +61,10 @@ public class ModItems {
 
     public static final DeferredItem<Item> FIRE_STARTER = register("fire_starter", FireStarterItem::new, new Item.Properties().stacksTo(1).durability(128));
 
+    public static final DeferredItem<Item> CRUDE_SACRIFICE_BOWL = register("crude_sacrifice_bowl", Item::new, new Item.Properties().stacksTo(1));
+
+    public static final DeferredItem<Item> FILLED_CRUDE_SACRIFICE_BOWL = register("filled_crude_sacrifice_bowl", () -> new Item.Properties().stacksTo(1).food(Foods.RABBIT_STEW).usingConvertsTo(ModItems.CRUDE_SACRIFICE_BOWL.get()));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
@@ -94,7 +101,27 @@ public class ModItems {
         return ITEMS.register(name, key -> function.apply(properties.setId(ResourceKey.create(Registries.ITEM, key))));
     }
 
-    public static DeferredItem<Item> register(String name, Function<Item.Properties, Item> function){
-        return register(name, function, new Item.Properties());
+    private static ResourceKey<Item> createKey(String name) {
+        return ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, name));
+    }
+
+    private static <T extends Item> DeferredItem<Item> register(String name) {
+        return register(name, Item::new);
+    }
+
+    private static <T extends Item> DeferredItem<T> register(String name, Function<Item.Properties, T> builder) {
+        return baseRegister(name, createKey(name), builder, Item.Properties::new);
+    }
+
+    private static <T extends Item> DeferredItem<Item> register(String name, Supplier<Item.Properties> properties) {
+        return register(name, Item::new, properties);
+    }
+
+    private static <T extends Item> DeferredItem<T> register(String name, Function<Item.Properties, T> builder, Supplier<Item.Properties> properties) {
+        return baseRegister(name, createKey(name), builder, properties);
+    }
+
+    private static <T extends Item> DeferredItem<T> baseRegister(String name, ResourceKey<Item> key, Function<Item.Properties, T> builder, Supplier<Item.Properties> properties) {
+        return ITEMS.register(name, () -> builder.apply(properties.get().setId(key)));
     }
 }

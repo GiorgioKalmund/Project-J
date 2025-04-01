@@ -36,6 +36,8 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.RAW_PYRITE, "Raw Pyrite");
         addItem(ModItems.LIQUID_PYRITE_BUCKET, "Liquid Pyrite Bucket");
         addItem(ModItems.FIRE_STARTER, "Fire Starter");
+        addItem(ModItems.CRUDE_SACRIFICE_BOWL, "Crude Sacrificial Bowl");
+        addItem(ModItems.FILLED_CRUDE_SACRIFICE_BOWL, "Filled Crude Sacrificial Bowl");
 
         // Blocks
         addBlock(ModBlocks.RAW_ADOBE, "Raw Adobe");

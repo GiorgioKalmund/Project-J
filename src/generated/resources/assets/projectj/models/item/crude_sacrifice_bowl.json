@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "projectj:item/crude_sacrifice_bowl"
+  }
+}
