@@ -35,6 +35,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.PYRITE_INGOT, "Pyrite Ingot");
         addItem(ModItems.RAW_PYRITE, "Raw Pyrite");
         addItem(ModItems.LIQUID_PYRITE_BUCKET, "Liquid Pyrite Bucket");
+        addItem(ModItems.FIRE_STARTER, "Fire Starter");
 
         // Blocks
         addBlock(ModBlocks.RAW_ADOBE, "Raw Adobe");

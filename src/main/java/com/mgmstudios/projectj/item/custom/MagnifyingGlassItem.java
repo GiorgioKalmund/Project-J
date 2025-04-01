@@ -36,15 +36,14 @@ public class MagnifyingGlassItem extends SpyglassItem {
 
     public static HashMap<BlockState, BlockState> MAGNIFYING_CONVERTABLES;
 
-    private int conversion;
-    private boolean validConversion;
-    private UseOnContext lastContext;
+    protected int conversion;
+    protected  boolean validConversion;
+    protected  UseOnContext lastContext;
 
     public MagnifyingGlassItem(Properties properties) {
         super(properties);
         this.conversion = 0;
         this.validConversion = false;
-
     }
 
     @Override
@@ -52,7 +51,7 @@ public class MagnifyingGlassItem extends SpyglassItem {
         return ItemUseAnimation.BOW;
     }
 
-    private final int CONVERSION_DURATION = 100;
+    protected final int CONVERSION_DURATION = 100;
 
     @Override
     public InteractionResult useOn(UseOnContext context) {
@@ -62,6 +61,10 @@ public class MagnifyingGlassItem extends SpyglassItem {
             this.validConversion = isValidConversion(serverLevel, context.getClickedPos(), context.getClickedFace(), 5, true);
         }
         return super.useOn(context);
+    }
+
+    protected int getConversionDuration(){
+        return CONVERSION_DURATION;
     }
 
     public boolean isValidConversion(ServerLevel serverLevel, BlockPos clickedPos, Direction clickedFace, int minimumLightLevel, boolean needsToBeDay){
@@ -80,7 +83,7 @@ public class MagnifyingGlassItem extends SpyglassItem {
         showBurningParticles(level, lastContext.getClickedPos());
         conversion++;
         if (level instanceof ServerLevel serverLevel){
-            if (conversion >= CONVERSION_DURATION){
+            if (conversion >= getConversionDuration()){
                 BlockPos clickedPos = lastContext.getClickedPos();
                 BlockState clickedBlockState = serverLevel.getBlockState(clickedPos);
                 serverLevel.setBlockAndUpdate(clickedPos, MAGNIFYING_CONVERTABLES.get(clickedBlockState));
@@ -96,7 +99,7 @@ public class MagnifyingGlassItem extends SpyglassItem {
         reset();
     }
 
-    private void reset(){
+    void reset(){
         this.conversion = 0;
         this.lastContext = null;
     }

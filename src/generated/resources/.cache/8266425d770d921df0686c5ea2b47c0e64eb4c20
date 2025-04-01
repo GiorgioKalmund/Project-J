@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-31T22:50:45.59851	Model Definitions - projectj
+// 1.21.4	2025-04-01T19:06:54.5041621	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -68,6 +68,7 @@ c4f3775626f4c829574376d0a454e0940c3ca14a assets/projectj/items/cobbled_serpentin
 4dbf6f15ed7ce4392a2beabb70250ee1491fca6d assets/projectj/items/conduit_olmec_head.json
 0670feef3cbcdc99659e1d6b8f164ec00b2b1298 assets/projectj/items/damage_olmec_head.json
 3cf17f2ffd36039a8af7d7d54f2b7dd5f05212a1 assets/projectj/items/deepslate_jade_ore.json
+3b6458d2375f942b3fd027659dd3aa77eacc6baf assets/projectj/items/fire_starter.json
 20e974e68377b3d13568f54b52c8c52e9ccf5e66 assets/projectj/items/jade.json
 9c8cb0c378da07b61725adb0d0a48b374dae6f8d assets/projectj/items/jade_block.json
 6c67bf56da03612616be77ed4bd0cc89a742b31b assets/projectj/items/jade_ore.json
@@ -202,6 +203,7 @@ ddeac4ed21273bc5a76ac2cf19c585974c7d2afb assets/projectj/models/block/serpentini
 4bfc083920aa0082d3489e02ea5863a0ee835e65 assets/projectj/models/block/stripped_mesquite_log.json
 cd0bb0cfd6624b5ec55a8f6e866341dbdfca5bd6 assets/projectj/models/block/stripped_mesquite_log_horizontal.json
 daf2d4c74604a08bc41aa0c622f86514fc9729ec assets/projectj/models/block/stripped_mesquite_wood.json
+30b985172cbbef1e3f927bfadb025bd16adda0a0 assets/projectj/models/item/fire_starter.json
 9cc0c435272b7a37105bfd68afa6dd08bf45ef1e assets/projectj/models/item/jade.json
 5ca45076d9cd376d1879706c9648b75858a44d38 assets/projectj/models/item/liquid_pyrite_bucket.json
 23eed9a4ee89e3825630c941d8381fbf4fdc7e01 assets/projectj/models/item/macuahuitl.json

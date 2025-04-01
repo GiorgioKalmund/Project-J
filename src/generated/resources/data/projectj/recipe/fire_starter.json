@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "minecraft:stick",
+    "minecraft:stick",
+    "projectj:pyrite_ingot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectj:fire_starter"
+  }
+}

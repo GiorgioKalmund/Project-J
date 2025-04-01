@@ -262,6 +262,13 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_string", this.has(Items.STRING))
                 .save(this.output);
 
+        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.FIRE_STARTER)
+                .requires(Items.STICK, 2)
+                .requires(ModItems.PYRITE_INGOT)
+                .unlockedBy("has_stick", this.has(Items.STICK))
+                .unlockedBy("has_pyrite_ingot", this.has(ModItems.PYRITE_INGOT))
+                .save(this.output);
+
         nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.RAW_PYRITE, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_PYRITE_BLOCK);
         nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.PYRITE_INGOT, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PYRITE_BLOCK);
 

@@ -3,10 +3,8 @@ package com.mgmstudios.projectj.item;
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.fluid.ModFluids;
-import com.mgmstudios.projectj.item.custom.MagnifyingGlassItem;
-import com.mgmstudios.projectj.item.custom.OlmecHeadItem;
-import com.mgmstudios.projectj.item.custom.PaxelItem;
-import com.mgmstudios.projectj.item.custom.TrowelItem;
+import com.mgmstudios.projectj.item.custom.*;
+import net.minecraft.client.renderer.entity.state.FireworkRocketRenderState;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -57,6 +55,8 @@ public class ModItems {
     public static final DeferredItem<Item> SUN_ARMOR_HELMET = registerCustomArmorItem("sun_crown", ModArmorMaterials.SUN_ARMOR_MATERIAL, ArmorType.HELMET, new Item.Properties());
 
     public static final DeferredItem<Item> MAGNIFYING_GLASS = register("magnifying_glass", MagnifyingGlassItem::new, new Item.Properties().stacksTo(1));
+
+    public static final DeferredItem<Item> FIRE_STARTER = register("fire_starter", FireStarterItem::new, new Item.Properties().stacksTo(1).durability(128));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

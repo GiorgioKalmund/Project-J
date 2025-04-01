@@ -56,9 +56,9 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.OBSIDIAN_TOOTH.get());
                 output.accept(ModItems.SACRIFICIAL_DAGGER.get());
                 output.accept(ModItems.TROWEL.get());
-
                 output.accept(ModItems.SUN_ARMOR_HELMET.get());
                 output.accept(ModItems.MAGNIFYING_GLASS.get());
+                output.accept(ModItems.FIRE_STARTER.get());
 
                 output.accept(ModBlocks.MESQUITE_LOG.get());
                 output.accept(ModBlocks.STRIPPED_MESQUITE_LOG.get());
