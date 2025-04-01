@@ -150,6 +150,8 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> MAGNIFYING_GLASS_STAND = registerMagnifyingGlassStandBlock("magnifying_glass_stand", BlockBehaviour.Properties.of().sound(SoundType.WOOD).noOcclusion().randomTicks(), new Item.Properties(), 3);
 
+    public static final DeferredBlock<Block> TELEPORTATION_PAD = register("teleportation_pad", TeleportationBlock::new, BlockBehaviour.Properties.of());
+
     private static DeferredBlock<Block> register(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> factory.apply(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
         ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
