@@ -33,6 +33,7 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 import java.util.List;
 
 import static com.mgmstudios.projectj.block.custom.AdobeFurnaceBlock.TIER1;
+import static com.mgmstudios.projectj.block.custom.TeleportationBlock.UNLOCKED;
 import static net.minecraft.client.data.models.BlockModelGenerators.*;
 
 @EventBusSubscriber (modid = ProjectJ.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
@@ -54,7 +55,6 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.PYRITE_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.MESQUITE_LEAVES.get());
         blockModels.createTrivialCube(ModBlocks.PYRITE_ORE.get());
-        blockModels.createTrivialCube(ModBlocks.TELEPORTATION_PAD.get());
         createCutoutPlantWithDefaultItem(blockModels, ModBlocks.MESQUITE_SAPLING.get(), ModBlocks.POTTED_MESQUITE_SAPLING.get(), PlantType.NOT_TINTED);
 
         createSerpentinitePillar(blockModels, itemModels, ModBlocks.SERPENTINITE_PILLAR.get());
@@ -64,10 +64,12 @@ public class ModModelProvider extends ModelProvider {
 
         createHorizontallyFacingDoubleBlock(blockModels, ModBlocks.SNAKE_STATUE.get());
 
+        createTeleportationPad(blockModels, itemModels, ModBlocks.TELEPORTATION_PAD.get());
+
         blockModels.createNonTemplateModelBlock(ModBlocks.LIQUID_PYRITE.get());
 
         itemModels.generateFlatItem(ModItems.TROWEL.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
-        itemModels.generateFlatItem(ModItems.TELEPORTATION_KEY.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
+        itemModels.generateFlatItem(ModItems.TELEPORTATION_KEY.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.FIRE_STARTER.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
         itemModels.generateFlatItem(ModItems.SACRIFICIAL_DAGGER.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
         itemModels.generateFlatItem(ModItems.CRUDE_SACRIFICE_BOWL.get(), ModelTemplates.FLAT_ITEM);
@@ -265,6 +267,37 @@ public class ModModelProvider extends ModelProvider {
         ItemModel.Unbaked itemModel = ItemModelUtils.plainModel(ModelLocationUtils.getModelLocation(block, "_item"));
         itemModels.itemModelOutput.accept(blockItem, createMultiStateDispatch(itemModel, blockModel));
 
+    }
+
+    public void createTeleportationPad(BlockModelGenerators blockModels, ItemModelGenerators itemModels, Block block) {
+        ResourceLocation modelLocation = ModelLocationUtils.getModelLocation(block);
+        ResourceLocation lit = ModelLocationUtils.getModelLocation(block, "_lit");
+        ResourceLocation locked = ModelLocationUtils.getModelLocation(block, "_locked");
+
+        blockModels.blockStateOutput
+                .accept(
+                        MultiVariantGenerator.multiVariant(block)
+                                .with(createHorizontalFacingDispatch())
+                                .with(
+                                        PropertyDispatch.properties(BlockStateProperties.LIT, UNLOCKED)
+                                                .select(
+                                                        false, false,
+                                                        Variant.variant().with(VariantProperties.MODEL, locked)
+                                                )
+                                                .select(
+                                                        true, false,
+                                                        Variant.variant().with(VariantProperties.MODEL, locked)
+                                                )
+                                                .select(
+                                                        false, true,
+                                                        Variant.variant().with(VariantProperties.MODEL, modelLocation)
+                                                )
+                                                .select(
+                                                        true, true,
+                                                        Variant.variant().with(VariantProperties.MODEL, lit)
+                                                )
+                                )
+                );
     }
 
     public void createMagnifyingGlassBlock(BlockModelGenerators blockModels, ItemModelGenerators itemModels, Block block) {

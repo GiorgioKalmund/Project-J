@@ -1,5 +1,6 @@
 package com.mgmstudios.projectj.block.custom;
 
+import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.block.entity.custom.TeleportationBlockEntity;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
@@ -13,7 +14,9 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
@@ -25,12 +28,17 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class TeleportationBlock extends BaseEntityBlock {
 
     public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
+
+    public static final VoxelShape SHAPE = Block.box(0,0,0, 16, 5, 16);
+    public static final MapCodec<TeleportationBlock> CODEC = simpleCodec(TeleportationBlock::new);
     public static final BooleanProperty UNLOCKED = BooleanProperty.create("teleportation_unlocked");
 
     public TeleportationBlock(Properties properties) {
@@ -53,7 +61,12 @@ public class TeleportationBlock extends BaseEntityBlock {
 
     @Override
     protected MapCodec<? extends BaseEntityBlock> codec() {
-        return null;
+        return CODEC;
+    }
+
+    @Override
+    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return SHAPE;
     }
 
     @Override
@@ -62,13 +75,21 @@ public class TeleportationBlock extends BaseEntityBlock {
             if (serverPlayer.isCrouching()) {
                 TeleportationBlockEntity blockEntity = (TeleportationBlockEntity) level.getBlockEntity(pos);
                 if (blockEntity != null && blockEntity.getConnectedPosition() != null) {
-                    if (state.getValue(UNLOCKED)){
+                    if (state.getValue(UNLOCKED) && state.getValue(LIT)){
                         BlockPos connectedPos = blockEntity.getConnectedPosition();
-                        serverPlayer.sendSystemMessage(Component.literal("Teleporting to " + blockEntity.getConnectedPosition()));
+                        if (!level.getBlockState(blockEntity.getConnectedPosition()).is(ModBlocks.TELEPORTATION_PAD)){
+                            serverPlayer.sendSystemMessage(Component.literal("The connecting pad wad destroyed."));
+                            level.setBlockAndUpdate(pos, state.setValue(LIT, false));
+                            blockEntity.setConnectedPosition(null);
+                            return;
+                        }
+                        //serverPlayer.sendSystemMessage(Component.literal("Teleporting to " + blockEntity.getConnectedPosition()));
                         level.setBlockAndUpdate(pos, state.setValue(UNLOCKED, false));
                         serverLevel.scheduleTick(pos, this, 60);
-                        level.setBlockAndUpdate(connectedPos, state.setValue(UNLOCKED, false));
+
+                        level.setBlockAndUpdate(connectedPos, level.getBlockState(blockEntity.getConnectedPosition()).setValue(UNLOCKED, false));
                         serverLevel.scheduleTick(connectedPos, level.getBlockState(connectedPos).getBlock(), 60);
+
                         teleportPlayer(serverPlayer, connectedPos.above());
                         level.playSound(null, connectedPos, SoundEvents.ENDERMAN_TELEPORT, SoundSource.BLOCKS);
                     } else {
@@ -87,6 +108,12 @@ public class TeleportationBlock extends BaseEntityBlock {
         level.setBlockAndUpdate(pos, state.setValue(UNLOCKED, true));
         //level.playSound(null, pos, SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.BLOCKS);
         super.tick(state, level, pos, random);
+    }
+
+    @Override
+    public void onBlockStateChange(LevelReader level, BlockPos pos, BlockState oldState, BlockState newState) {
+        System.out.println(newState);
+        super.onBlockStateChange(level, pos, oldState, newState);
     }
 
     private void teleportPlayer(ServerPlayer player, BlockPos targetPosition) {
