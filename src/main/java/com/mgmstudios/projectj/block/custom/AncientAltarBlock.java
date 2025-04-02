@@ -2,12 +2,21 @@ package com.mgmstudios.projectj.block.custom;
 
 import com.mgmstudios.projectj.block.entity.custom.AncientAltarBlockEntity;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.multiplayer.chat.report.ReportEnvironment;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -54,7 +63,52 @@ public class AncientAltarBlock extends BaseEntityBlock {
 
     @Override
     protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+        if (!(level.getBlockEntity(pos) instanceof AncientAltarBlockEntity altarEntity)) {
+            return InteractionResult.PASS;
+        }
+
+        boolean canInsert = altarEntity.canInsert();
+        boolean itemInHand = !stack.isEmpty();
+
+        if (level instanceof ClientLevel) {
+            return InteractionResult.SUCCESS;
+        }
+
+        if (canInsert && itemInHand) {
+            altarEntity.insertNewItemStack(stack);
+            stack.shrink(1);
+            if (player instanceof ServerPlayer serverPlayer){
+                serverPlayer.playNotifySound(SoundEvents.ITEM_PICKUP,SoundSource.BLOCKS, 1f, 2f);
+            }
+            return InteractionResult.CONSUME;
+        } else if (!itemInHand) {
+            ItemStack extractedStack = altarEntity.extractLatestItem();
+            if (extractedStack.isEmpty()) {
+                player.displayClientMessage(Component.literal("§7Inventory empty§r"), true);
+                if (player instanceof ServerPlayer serverPlayer){
+                    serverPlayer.playNotifySound(SoundEvents.BUNDLE_INSERT_FAIL, SoundSource.BLOCKS, 1f, 2f);
+                }
+                return InteractionResult.PASS;
+            } else {
+                //player.displayClientMessage(Component.literal("Extracted " + extractedStack.getDisplayName().getString()), true);
+                int suitableSlot = player.getInventory().getSlotWithRemainingSpace(extractedStack);
+                if (suitableSlot > 0){
+                    player.getInventory().add(suitableSlot, extractedStack);
+                } else {
+                    player.setItemInHand(hand, extractedStack);
+                }
+                if (player instanceof ServerPlayer serverPlayer){
+                    serverPlayer.playNotifySound(SoundEvents.ITEM_PICKUP,SoundSource.BLOCKS, 1f, 1f);
+                }
+            }
+        } else {
+            if (player instanceof ServerPlayer serverPlayer){
+                serverPlayer.playNotifySound(SoundEvents.BUNDLE_INSERT_FAIL, SoundSource.BLOCKS, 1f, 1f);
+            }
+            player.displayClientMessage(Component.literal("§cInventory full§r"), true);
+            return InteractionResult.FAIL;
+        }
+        return InteractionResult.SUCCESS;
     }
 
     @Override
