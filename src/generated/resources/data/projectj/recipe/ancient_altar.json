@@ -2,18 +2,19 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "C": "minecraft:stone",
+    "#": "projectj:adobe_bricks",
+    "B": "projectj:crude_sacrifice_bowl",
     "J": "projectj:jade_block",
-    "S": "projectj:serpentinite_rock",
+    "R": "projectj:serpentinite_rod",
     "s": "projectj:serpentinite_rock_slab"
   },
   "pattern": [
-    "SsS",
-    "CJC",
-    "CCC"
+    "#B#",
+    " R ",
+    "sJs"
   ],
   "result": {
     "count": 1,
-    "id": "projectj:olmec_altar"
+    "id": "projectj:ancient_altar"
   }
 }

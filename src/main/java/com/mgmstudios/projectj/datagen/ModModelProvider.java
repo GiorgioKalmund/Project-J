@@ -32,6 +32,8 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 import java.util.List;
 
 import static com.mgmstudios.projectj.block.custom.AdobeFurnaceBlock.TIER1;
+import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.CRAFTING;
+import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.PRODUCT_INSIDE;
 import static com.mgmstudios.projectj.block.custom.TeleportationBlock.UNLOCKED;
 import static net.minecraft.client.data.models.BlockModelGenerators.*;
 
@@ -54,8 +56,9 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.PYRITE_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.MESQUITE_LEAVES.get());
         blockModels.createTrivialCube(ModBlocks.PYRITE_ORE.get());
-        blockModels.createHorizontallyRotatedBlock(ModBlocks.ANCIENT_ALTAR.get(), TexturedModel.CUBE);
         createCutoutPlantWithDefaultItem(blockModels, ModBlocks.MESQUITE_SAPLING.get(), ModBlocks.POTTED_MESQUITE_SAPLING.get(), PlantType.NOT_TINTED);
+
+        createAncientAltar(blockModels, itemModels, ModBlocks.ANCIENT_ALTAR.get());
 
         createSerpentinitePillar(blockModels, itemModels, ModBlocks.SERPENTINITE_PILLAR.get());
 
@@ -295,6 +298,37 @@ public class ModModelProvider extends ModelProvider {
                                                 .select(
                                                         true, true,
                                                         Variant.variant().with(VariantProperties.MODEL, lit)
+                                                )
+                                )
+                );
+    }
+
+    public void createAncientAltar(BlockModelGenerators blockModels, ItemModelGenerators itemModels, Block block) {
+        ResourceLocation modelLocation = ModelLocationUtils.getModelLocation(block);
+        ResourceLocation crafting = ModelLocationUtils.getModelLocation(block, "_crafting");
+        ResourceLocation filled = ModelLocationUtils.getModelLocation(block, "_filled");
+        ResourceLocation craftingFilled = ModelLocationUtils.getModelLocation(block, "_crafting_filled");
+
+        blockModels.blockStateOutput
+                .accept(
+                        MultiVariantGenerator.multiVariant(block)
+                                .with(
+                                        PropertyDispatch.properties(CRAFTING, PRODUCT_INSIDE)
+                                                .select(
+                                                        false, false,
+                                                        Variant.variant().with(VariantProperties.MODEL, modelLocation)
+                                                )
+                                                .select(
+                                                        true, false,
+                                                        Variant.variant().with(VariantProperties.MODEL, crafting)
+                                                )
+                                                .select(
+                                                        false, true,
+                                                        Variant.variant().with(VariantProperties.MODEL, filled)
+                                                )
+                                                .select(
+                                                        true, true,
+                                                        Variant.variant().with(VariantProperties.MODEL, craftingFilled)
                                                 )
                                 )
                 );

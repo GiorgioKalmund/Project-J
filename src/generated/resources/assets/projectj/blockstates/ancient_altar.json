@@ -1,19 +1,16 @@
 {
   "variants": {
-    "facing=east": {
-      "model": "projectj:block/ancient_altar",
-      "y": 90
-    },
-    "facing=north": {
+    "altar_crafting=false,altar_product_inside=false": {
       "model": "projectj:block/ancient_altar"
     },
-    "facing=south": {
-      "model": "projectj:block/ancient_altar",
-      "y": 180
+    "altar_crafting=false,altar_product_inside=true": {
+      "model": "projectj:block/ancient_altar_filled"
     },
-    "facing=west": {
-      "model": "projectj:block/ancient_altar",
-      "y": 270
+    "altar_crafting=true,altar_product_inside=false": {
+      "model": "projectj:block/ancient_altar_crafting"
+    },
+    "altar_crafting=true,altar_product_inside=true": {
+      "model": "projectj:block/ancient_altar_crafting_filled"
     }
   }
 }

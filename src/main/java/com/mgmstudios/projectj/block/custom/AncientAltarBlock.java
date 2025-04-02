@@ -1,9 +1,9 @@
 package com.mgmstudios.projectj.block.custom;
 
 import com.mgmstudios.projectj.block.entity.custom.AncientAltarBlockEntity;
+import com.mgmstudios.projectj.item.ModItems;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.multiplayer.chat.report.ReportEnvironment;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -12,37 +12,51 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.RedstoneTorchBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class AncientAltarBlock extends BaseEntityBlock {
 
     public static final MapCodec<AncientAltarBlock> CODEC = simpleCodec(AncientAltarBlock::new);
 
-    public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty CRAFTING = BooleanProperty.create("altar_crafting");
+    public static final BooleanProperty PRODUCT_INSIDE = BooleanProperty.create("altar_product_inside");
+
+
+    public static final VoxelShape SHAPE_BASE = Block.box(2, 0.0, 2.0, 14.0, 2.0, 14.0);
+    public static final VoxelShape SHAPE_POST = Block.box(7, 2.0, 7, 9.0, 14.0, 9.0);
+    public static final VoxelShape SHAPE_TOP = Block.box(1, 10, 1, 15.0, 16.0, 15.0);
+    public static final VoxelShape SHAPE = Shapes.or(SHAPE_BASE, SHAPE_POST, SHAPE_TOP);
 
     public AncientAltarBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(CRAFTING, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(CRAFTING, false).setValue(PRODUCT_INSIDE, false));
+    }
+
+    @Override
+    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return SHAPE;
     }
 
     @Override
@@ -62,9 +76,69 @@ public class AncientAltarBlock extends BaseEntityBlock {
     }
 
     @Override
+    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if (state.getValue(CRAFTING)){
+            if (level.getBlockEntity(pos) instanceof AncientAltarBlockEntity altarEntity) {
+                level.setBlockAndUpdate(pos, state.setValue(PRODUCT_INSIDE, false).setValue(CRAFTING, false));
+                level.playSound(null, pos, SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.BLOCKS, 1f, 1f);
+
+                altarEntity.clearAllContents();
+
+                ItemStack resultStack = new ItemStack(ModItems.JADE.get());
+                System.out.println("Crafted: " + resultStack);
+                Vec3 centerPos = pos.getBottomCenter();
+                level.addFreshEntity(new ItemEntity(level, centerPos.x, centerPos.y + 1.5, centerPos.z, resultStack));
+            }
+        }
+        super.tick(state, level, pos, random);
+    }
+
+    @Override
     protected InteractionResult useItemOn(ItemStack stackToInsert, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (!(level.getBlockEntity(pos) instanceof AncientAltarBlockEntity altarEntity)) {
+        if (!(level.getBlockEntity(pos) instanceof AncientAltarBlockEntity altarEntity) || state.getValue(CRAFTING)) {
             return InteractionResult.PASS;
+        }
+
+        // Initializes crafting procedure
+        if (stackToInsert.is(ModItems.SACRIFICIAL_DAGGER) && !altarEntity.isEmpty()){
+
+            // Check if valid recipe
+
+            level.setBlockAndUpdate(pos, state.setValue(CRAFTING, true));
+            level.playSound(player, pos, SoundEvents.BEACON_ACTIVATE, SoundSource.BLOCKS, 1f, 2f);
+            level.scheduleTick(pos, this, 60);
+            player.displayClientMessage(Component.literal("Crafting procedure started."), true);
+
+            return InteractionResult.SUCCESS;
+        }
+
+        // Sacrificial blood interactions
+        if (stackToInsert.is(ModItems.CRUDE_SACRIFICE_BOWL) || stackToInsert.is(ModItems.FILLED_CRUDE_SACRIFICE_BOWL)){
+            if (state.getValue(PRODUCT_INSIDE) && stackToInsert.is(ModItems.CRUDE_SACRIFICE_BOWL)){
+                if (stackToInsert.getCount() == 1){
+                    player.setItemInHand(hand, new ItemStack(ModItems.FILLED_CRUDE_SACRIFICE_BOWL.get()));
+                } else {
+                    stackToInsert.shrink(1);
+                    player.getInventory().add(new ItemStack(ModItems.FILLED_CRUDE_SACRIFICE_BOWL.get()));
+                }
+                level.playSound(player, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1f, 1f);
+                level.setBlockAndUpdate(pos, state.setValue(PRODUCT_INSIDE, false));
+            } else if (!state.getValue(PRODUCT_INSIDE) && stackToInsert.is(ModItems.FILLED_CRUDE_SACRIFICE_BOWL)){
+                ItemStack bowlStack = new ItemStack(ModItems.CRUDE_SACRIFICE_BOWL.get());
+                int suitableSlot = player.getInventory().getSlotWithRemainingSpace(bowlStack);
+                if (suitableSlot > 0){
+                    stackToInsert.shrink(1);
+                    ItemStack slotStack = player.getInventory().getItem(suitableSlot);
+                    slotStack.grow(1);
+                } else {
+                    player.setItemInHand(hand, bowlStack);
+                }
+                level.setBlockAndUpdate(pos, state.setValue(PRODUCT_INSIDE, true));
+                level.playSound(player, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1f, 1f);
+            } else {
+                return InteractionResult.PASS;
+            }
+            return InteractionResult.SUCCESS;
         }
 
         boolean canInsert = altarEntity.canInsert();
@@ -119,13 +193,13 @@ public class AncientAltarBlock extends BaseEntityBlock {
 
     @Override
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
-        return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection()).setValue(CRAFTING, false);
+        return super.getStateForPlacement(context).setValue(CRAFTING, false).setValue(PRODUCT_INSIDE, false);
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(FACING);
         builder.add(CRAFTING);
+        builder.add(PRODUCT_INSIDE);
     }
 }

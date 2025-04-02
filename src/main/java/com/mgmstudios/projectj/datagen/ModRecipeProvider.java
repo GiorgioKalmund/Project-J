@@ -270,17 +270,27 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.OLMEC_ALTAR)
+                .pattern("SsS")
+                .pattern("CJC")
+                .pattern("CCC")
+                .define('s', ModBlocks.SERPENTINITE_ROCK_SLAB)
+                .define('S', ModBlocks.SERPENTINITE_ROCK)
+                .define('C', Blocks.STONE)
+                .define('J', ModBlocks.JADE_BLOCK)
+                .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK))
+                .unlockedBy("has_serpentinite_rock", this.has(ModBlocks.SERPENTINITE_ROCK))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.ANCIENT_ALTAR)
                 .pattern("#B#")
-                .pattern(" J ")
-                .pattern("sss")
-                .define('#', Items.RED_WOOL)
-                .define('B', Items.BLACKSTONE)
-                .define('J', ModItems.JADE)
-                .define('s', Items.BLACKSTONE_SLAB)
-                .unlockedBy("has_red_wool", this.has(Items.RED_WOOL))
-                .unlockedBy("has_jade", this.has(ModItems.JADE))
-                .unlockedBy("has_blackstone_slab", this.has(Items.BLACKSTONE_SLAB))
-                .unlockedBy("has_blackstone", this.has(Items.BLACKSTONE))
+                .pattern(" R ")
+                .pattern("sJs")
+                .define('#', ModBlocks.ADOBE_BRICKS)
+                .define('B', ModItems.CRUDE_SACRIFICE_BOWL)
+                .define('J', ModBlocks.JADE_BLOCK)
+                .define('s', ModBlocks.SERPENTINITE_ROCK_SLAB)
+                .define('R', ModItems.SERPENTINITE_ROD)
+                .unlockedBy("B", this.has(ModItems.CRUDE_SACRIFICE_BOWL))
                 .save(this.output);
 
         nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.RAW_PYRITE, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_PYRITE_BLOCK);

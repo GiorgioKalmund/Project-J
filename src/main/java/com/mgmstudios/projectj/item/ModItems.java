@@ -56,7 +56,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> FIRE_STARTER = register("fire_starter", FireStarterItem::new, new Item.Properties().stacksTo(1).durability(128));
 
-    public static final DeferredItem<Item> CRUDE_SACRIFICE_BOWL = register("crude_sacrifice_bowl", Item::new, new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> CRUDE_SACRIFICE_BOWL = register("crude_sacrifice_bowl", Item::new, new Item.Properties().stacksTo(16));
 
     public static final DeferredItem<Item> FILLED_CRUDE_SACRIFICE_BOWL = register("filled_crude_sacrifice_bowl", () -> new Item.Properties().stacksTo(1).food(Foods.RABBIT_STEW).usingConvertsTo(ModItems.CRUDE_SACRIFICE_BOWL.get()));
 

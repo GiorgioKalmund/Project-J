@@ -38,7 +38,6 @@ import java.util.*;
 public class OlmecAltarBlock extends HorizontalDirectionalBlock {
 
     public static final BooleanProperty CRAFTING = BooleanProperty.create("altar_crafting");
-    public static final VoxelShape SHAPE = Block.box(1,0,1,15,10, 15);
     private static final Logger log = LogManager.getLogger(OlmecAltarBlock.class);
 
     private static final List<Block> HEADS_ALL_BASIC = new LinkedList<>(Arrays.asList(ModBlocks.CONDUIT_OLMEC_HEAD.get(), ModBlocks.DAMAGE_OLMEC_HEAD.get(), ModBlocks.REGENERATION_OLMEC_HEAD.get(), ModBlocks.RESISTANT_OLMEC_HEAD.get()));
@@ -51,11 +50,6 @@ public class OlmecAltarBlock extends HorizontalDirectionalBlock {
     @Override
     protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
         return CODEC;
-    }
-
-    @Override
-    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return SHAPE;
     }
 
     @Override

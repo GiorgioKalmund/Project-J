@@ -96,10 +96,10 @@ public class TeleportationBlock extends BaseEntityBlock {
                         teleportPlayer(serverPlayer, connectedPos.above());
                         level.playSound(null, connectedPos, SoundEvents.ENDERMAN_TELEPORT, SoundSource.BLOCKS);
                     } else {
-                        serverPlayer.sendSystemMessage(Component.literal("Teleportation Pad is on cooldown!"));
+                        serverPlayer.displayClientMessage(Component.literal("§7§oTeleportation Pad is on cooldown!§r"), true);
                     }
                 } else {
-                    serverPlayer.sendSystemMessage(Component.literal("Teleportation Pad is not bound"));
+                    serverPlayer.displayClientMessage(Component.literal("§7§oTeleportation Pad is not bound.!§r"), true);
                 }
             }
         }

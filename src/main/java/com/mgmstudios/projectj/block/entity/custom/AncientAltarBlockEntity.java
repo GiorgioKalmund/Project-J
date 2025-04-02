@@ -47,6 +47,14 @@ public class AncientAltarBlockEntity extends BlockEntity {
         return itemsInside < inventory.getSlots();
     }
 
+    public void startCrafting(){
+        crafting = true;
+    }
+
+    public void endCrafting(){
+        crafting = false;
+    }
+
     public ItemStack extractLatestItem(){
         if (itemsInside <= 0){
             itemsInside = 0;
@@ -62,15 +70,22 @@ public class AncientAltarBlockEntity extends BlockEntity {
 
     public int itemsInside;
     private float rotation;
+    private boolean crafting;
     public AncientAltarBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntities.ANCIENT_ALTAR_BE.get(), pos, blockState);
         itemsInside = 0;
+        crafting = false;
     }
 
     public void clearAllContents(){
         for (int slot = 0; slot < inventory.getSlots(); slot++){
             inventory.setStackInSlot(slot, ItemStack.EMPTY);
         }
+        itemsInside = 0;
+    }
+
+    public boolean isEmpty(){
+        return itemsInside == 0;
     }
 
     public float getRenderingRotation(){
@@ -94,6 +109,7 @@ public class AncientAltarBlockEntity extends BlockEntity {
         super.saveAdditional(tag, registries);
         tag.put("inventory", inventory.serializeNBT(registries));
         tag.putInt("itemsInside", itemsInside);
+        tag.putBoolean("crafting", crafting);
     }
 
     @Override
@@ -113,5 +129,6 @@ public class AncientAltarBlockEntity extends BlockEntity {
         super.loadAdditional(tag, registries);
         inventory.deserializeNBT(registries, tag.getCompound("inventory"));
         itemsInside = tag.getInt("itemsInside");
+        crafting = tag.getBoolean("crafting");
     }
 }

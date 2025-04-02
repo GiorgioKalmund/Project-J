@@ -13,6 +13,8 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -33,7 +35,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class MagnifyingGlassStandBlock extends HorizontalDirectionalBlock {
 
-    protected static final VoxelShape BOTTOM_AABB = Block.box(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+    protected static final VoxelShape BOTTOM_AABB = Block.box(0.0, 0.0, 3, 16.0, 9.0, 12.0);
     public static final MapCodec<MagnifyingGlassStandBlock> CODEC = simpleCodec(MagnifyingGlassStandBlock::new);
     public static final BooleanProperty MAGNIFYNG_GLASS_INSIDE = BooleanProperty.create("magnifying_block_active");
 
@@ -46,6 +48,7 @@ public class MagnifyingGlassStandBlock extends HorizontalDirectionalBlock {
         this.conversionThreshold = 5;
         this.registerDefaultState(this.defaultBlockState().setValue(MAGNIFYNG_GLASS_INSIDE, false).setValue(FACING, Direction.NORTH));
     }
+
     public MagnifyingGlassStandBlock(int conversionThreshold, Properties properties) {
         super(properties);
         this.conversion = 0;

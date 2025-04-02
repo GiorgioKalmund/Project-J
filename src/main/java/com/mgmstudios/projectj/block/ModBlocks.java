@@ -91,7 +91,7 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> SERPENTINITE_ROCK_PRESSURE_PLATE = registerPressurePlateBlock("serpentinite_rock_pressure_plate", BlockSetType.STONE, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BUTTON), new Item.Properties());
 
-    public static final DeferredBlock<Block> OLMEC_ALTAR = register("olmec_altar", OlmecAltarBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS).noOcclusion(), new Item.Properties().rarity(Rarity.EPIC));
+    public static final DeferredBlock<Block> OLMEC_ALTAR = register("olmec_altar", OlmecAltarBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS).noOcclusion(), new Item.Properties().rarity(Rarity.UNCOMMON));
 
     public static final DeferredBlock<Block> SERPENTINITE_PILLAR = register("serpentinite_pillar", MultiAxisDirectionalBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.QUARTZ_PILLAR), new Item.Properties());
 
@@ -155,7 +155,7 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> TELEPORTATION_PAD = register("teleportation_pad", TeleportationBlock::new, BlockBehaviour.Properties.of().noOcclusion().lightLevel(teleportationPadEmission(10)));
 
-    public static final DeferredBlock<Block> ANCIENT_ALTAR = register("ancient_altar", AncientAltarBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).noOcclusion().lightLevel(state -> 3), new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final DeferredBlock<Block> ANCIENT_ALTAR = register("ancient_altar", AncientAltarBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).noOcclusion().lightLevel(state -> 3), new Item.Properties().rarity(Rarity.RARE));
 
     private static DeferredBlock<Block> register(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> factory.apply(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
