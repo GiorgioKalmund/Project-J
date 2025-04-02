@@ -17,6 +17,7 @@ import com.mgmstudios.projectj.screen.custom.AdobeFurnaceScreen;
 import com.mgmstudios.projectj.recipe.ModRecipeBookCategories;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
