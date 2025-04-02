@@ -1,22 +1,19 @@
 package com.mgmstudios.projectj.block.entity.custom;
 
 import com.mgmstudios.projectj.block.entity.ModBlockEntities;
-import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.Container;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
-
-import java.util.Stack;
+import org.jetbrains.annotations.Nullable;
 
 public class AncientAltarBlockEntity extends BlockEntity {
     public final ItemStackHandler inventory = new ItemStackHandler(3) {
@@ -41,6 +38,10 @@ public class AncientAltarBlockEntity extends BlockEntity {
         itemsInside++;
     }
 
+    public ItemStackHandler getInventory() {
+        return inventory;
+    }
+
     public boolean canInsert(){
         //System.out.println("Items: " + itemsInside + " Inv: " + inventory.getSlots());
         return itemsInside < inventory.getSlots();
@@ -60,6 +61,7 @@ public class AncientAltarBlockEntity extends BlockEntity {
 
 
     public int itemsInside;
+    private float rotation;
     public AncientAltarBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntities.ANCIENT_ALTAR_BE.get(), pos, blockState);
         itemsInside = 0;
@@ -69,6 +71,12 @@ public class AncientAltarBlockEntity extends BlockEntity {
         for (int slot = 0; slot < inventory.getSlots(); slot++){
             inventory.setStackInSlot(slot, ItemStack.EMPTY);
         }
+    }
+
+    public float getRenderingRotation(){
+        rotation += 0.5F;
+        rotation %= 360;
+        return rotation;
     }
 
     public void drops(){
@@ -86,6 +94,18 @@ public class AncientAltarBlockEntity extends BlockEntity {
         super.saveAdditional(tag, registries);
         tag.put("inventory", inventory.serializeNBT(registries));
         tag.putInt("itemsInside", itemsInside);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        CompoundTag tag = new CompoundTag();
+        saveAdditional(tag, registries);
+        return tag;
+    }
+
+    @Override
+    public @Nullable Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
     }
 
     @Override

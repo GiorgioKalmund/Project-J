@@ -62,21 +62,21 @@ public class AncientAltarBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+    protected InteractionResult useItemOn(ItemStack stackToInsert, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (!(level.getBlockEntity(pos) instanceof AncientAltarBlockEntity altarEntity)) {
             return InteractionResult.PASS;
         }
 
         boolean canInsert = altarEntity.canInsert();
-        boolean itemInHand = !stack.isEmpty();
+        boolean itemInHand = !stackToInsert.isEmpty();
 
         if (level instanceof ClientLevel) {
             return InteractionResult.SUCCESS;
         }
 
         if (canInsert && itemInHand) {
-            altarEntity.insertNewItemStack(stack);
-            stack.shrink(1);
+            altarEntity.insertNewItemStack(stackToInsert);
+            stackToInsert.shrink(1);
             if (player instanceof ServerPlayer serverPlayer){
                 serverPlayer.playNotifySound(SoundEvents.ITEM_PICKUP,SoundSource.BLOCKS, 1f, 2f);
             }
@@ -93,7 +93,8 @@ public class AncientAltarBlock extends BaseEntityBlock {
                 //player.displayClientMessage(Component.literal("Extracted " + extractedStack.getDisplayName().getString()), true);
                 int suitableSlot = player.getInventory().getSlotWithRemainingSpace(extractedStack);
                 if (suitableSlot > 0){
-                    player.getInventory().add(suitableSlot, extractedStack);
+                    ItemStack slotStack = player.getInventory().getItem(suitableSlot);
+                    slotStack.grow(1);
                 } else {
                     player.setItemInHand(hand, extractedStack);
                 }

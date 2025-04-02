@@ -1,4 +1,4 @@
-package com.mgmstudios.projectj.block.entity.client;
+package com.mgmstudios.projectj.block.entity.renderer;
 
 import com.mgmstudios.projectj.entity.custom.SittableEntity;
 import net.minecraft.client.renderer.culling.Frustum;
