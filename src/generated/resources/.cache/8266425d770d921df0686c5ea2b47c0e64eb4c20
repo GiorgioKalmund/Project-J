@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-01T22:57:45.731271	Model Definitions - projectj
+// 1.21.4	2025-04-02T01:02:21.6416424	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -54,6 +54,7 @@ a97b1cb9bea73d43d669cc5272c0db5ec705e4c3 assets/projectj/blockstates/serpentinit
 83afcf6c5e26b538c56f07cc5bed8c6a663deabd assets/projectj/blockstates/snake_statue.json
 58024b9d4ffc78feca61ba6d5f5fa840abf82491 assets/projectj/blockstates/stripped_mesquite_log.json
 7ab3f2e72946259187182eebd05d0297f3541a99 assets/projectj/blockstates/stripped_mesquite_wood.json
+d7608b4617fa12ef378e09bebb7d32c437ecd76c assets/projectj/blockstates/teleportation_pad.json
 d706b874c3d232886834e6416b0fa9d9853232b1 assets/projectj/items/adobe_bricks.json
 20f70e5778587054cf4f1a90632e143a7091e609 assets/projectj/items/adobe_bricks_slab.json
 fd02c864f9876ea05243e11486bd82108f4ea668 assets/projectj/items/adobe_bricks_stairs.json
@@ -123,6 +124,8 @@ ad69156c496a24a50949baacd6de04ad6092b9a1 assets/projectj/items/serpentinite_rod.
 86d3f4affc0795e800e8734aaf5b4ab53efa37ff assets/projectj/items/stripped_mesquite_log.json
 b3f78545baad0f40008b21e14c868927e22c6898 assets/projectj/items/stripped_mesquite_wood.json
 36c786f0d41230bab1dc764657d4962a7c1e95c8 assets/projectj/items/sun_crown.json
+959a6d9c67ad5c22a8e6b8a05b7dbeee0189b13d assets/projectj/items/teleportation_key.json
+4b981089a82540f2b5396454b4c8e7ee5bafb98b assets/projectj/items/teleportation_pad.json
 0d07cd1207b3b870c10d6f978b1871f1354d7463 assets/projectj/items/trowel.json
 43a4a30bf747df0266fb42396721117d33cf3e08 assets/projectj/models/block/adobe_bricks.json
 f895cfd78c398b8432120af12614de924d3f283e assets/projectj/models/block/adobe_bricks_slab.json
@@ -206,6 +209,7 @@ ddeac4ed21273bc5a76ac2cf19c585974c7d2afb assets/projectj/models/block/serpentini
 4bfc083920aa0082d3489e02ea5863a0ee835e65 assets/projectj/models/block/stripped_mesquite_log.json
 cd0bb0cfd6624b5ec55a8f6e866341dbdfca5bd6 assets/projectj/models/block/stripped_mesquite_log_horizontal.json
 daf2d4c74604a08bc41aa0c622f86514fc9729ec assets/projectj/models/block/stripped_mesquite_wood.json
+f155a6934a9ea6e7bfbb3087a0e77f24e2f02685 assets/projectj/models/block/teleportation_pad.json
 aac07639f9960cc7e0e85f1d298694c7b6d01e88 assets/projectj/models/item/crude_sacrifice_bowl.json
 5997f340b1c359ea3e3d1d8275bb3a50128bc24f assets/projectj/models/item/filled_crude_sacrifice_bowl.json
 30b985172cbbef1e3f927bfadb025bd16adda0a0 assets/projectj/models/item/fire_starter.json
@@ -224,4 +228,5 @@ dea83879f7224ce8e5006eb343d4d8bf63b2fd25 assets/projectj/models/item/raw_pyrite.
 caa4448fff1934cc38f77c2a2f2dd6853ae4515d assets/projectj/models/item/sacrificial_dagger.json
 5b67a9f9fadc07b35191c8a244b0bfc16303c30f assets/projectj/models/item/serpentinite_rod.json
 c85e270be39290e186d49c4771f2e7d7316c0708 assets/projectj/models/item/sun_crown.json
+aadb1fc8f8e00443f32637677fd4b2ebfaa1c547 assets/projectj/models/item/teleportation_key.json
 382fad977e9d13a5cf6d7ab400e1084e79d63200 assets/projectj/models/item/trowel.json

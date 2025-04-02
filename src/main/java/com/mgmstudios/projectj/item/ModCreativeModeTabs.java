@@ -63,6 +63,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.FIRE_STARTER.get());
                 output.accept(ModItems.CRUDE_SACRIFICE_BOWL.get());
                 output.accept(ModItems.FILLED_CRUDE_SACRIFICE_BOWL.get());
+                output.accept(ModItems.TELEPORTATION_KEY.get());
 
                 output.accept(ModBlocks.MESQUITE_LOG.get());
                 output.accept(ModBlocks.STRIPPED_MESQUITE_LOG.get());

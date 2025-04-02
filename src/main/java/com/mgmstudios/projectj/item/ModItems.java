@@ -62,6 +62,8 @@ public class ModItems {
 
     public static final DeferredItem<Item> JADE_HELMET = registerCustomArmorItem("jade_helmet", ModArmorMaterials.JADE_MATERIAL, ArmorType.HELMET, new Item.Properties());
 
+    public static final DeferredItem<Item> TELEPORTATION_KEY = register("teleportation_key", TeleportationKeyItem::new , new Item.Properties());
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

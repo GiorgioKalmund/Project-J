@@ -49,6 +49,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.SNAKE_STATUE, "Snake Statue");
         addBlock(ModBlocks.MAGNIFYING_GLASS_STAND, "Magnifying Glass Stand");
         addBlock(ModBlocks.TELEPORTATION_PAD, "Teleportation Pad");
+        addItem(ModItems.TELEPORTATION_KEY, "Teleportation Key");
 
         addBlock(ModBlocks.PYRITE_BLOCK, "Pyrite Block");
         addBlock(ModBlocks.RAW_PYRITE_BLOCK, "Raw Pyrite Block");
