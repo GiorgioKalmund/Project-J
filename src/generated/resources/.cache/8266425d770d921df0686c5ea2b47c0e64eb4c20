@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-02T09:43:10.091236	Model Definitions - projectj
+// 1.21.4	2025-04-02T14:50:33.3168099	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -31,6 +31,7 @@ e45d5999cce34b54dec470717ab4f047a313dd97 assets/projectj/blockstates/mesquite_fe
 24d9718376d43f03c545393d7eb1ea33f3b91b9e assets/projectj/blockstates/mesquite_slab.json
 4c85f7bd874ce75ddb45115bc8135b72c7b20f5f assets/projectj/blockstates/mesquite_stairs.json
 b5f70cf8fd7935ea601cd7f726692c13f6cfcb24 assets/projectj/blockstates/mesquite_wood.json
+35039ead1a066fac963698c12723cd22c30e9fe6 assets/projectj/blockstates/olmec_altar.json
 c8f2d86486c6977b50b56f644a44996a2f9fc246 assets/projectj/blockstates/potted_mesquite_sapling.json
 f30c032a99968db3ff7fc48aabff75f606c3a2bb assets/projectj/blockstates/pyrite_block.json
 e0efb73e513ae43b41d9f07476ea87b12d5befd0 assets/projectj/blockstates/pyrite_ore.json
@@ -95,6 +96,7 @@ e42e82dea807fe8704bd425a970f13fc0fabf836 assets/projectj/items/mesquite_pressure
 2c3862d3290c3974d89fb2b0bddf3b2d4ce0e1e9 assets/projectj/items/mesquite_stairs.json
 4af782fa8fea2a3b6f896a2c94bdf73135dbbea7 assets/projectj/items/mesquite_wood.json
 bd8e1284e4e6223cc96888851ecab7d4d770dfaf assets/projectj/items/obsidian_tooth.json
+a6dcba9dc781c521a78cc57cc3363cc82e5e48d8 assets/projectj/items/olmec_altar.json
 d33cdaaaaf0cd0ee49f8738e18078fcebad32356 assets/projectj/items/potted_mesquite_sapling.json
 d0874c2112a868fe14a1e74e40f1a42d0b94cb06 assets/projectj/items/pyrite_block.json
 babf0a0116cd33c470ef8b746cdd8cc591fd07e7 assets/projectj/items/pyrite_ingot.json
@@ -139,6 +141,7 @@ f3d6933a6215bc109c9a6a96b4611513dd9ef5da assets/projectj/models/block/adobe_bric
 e137107b1dab43a68f5242ef6bcdc9c82443d40b assets/projectj/models/block/adobe_bricks_wall_side_tall.json
 f9b242d34949f79e409b68b64062a94ab39a13a9 assets/projectj/models/block/adobe_furnace.json
 6be9ef5091aa15e0717da95cabb3a12cd5ec0c45 assets/projectj/models/block/adobe_furnace_on.json
+732bb3e7ad2783d277eaeaf6c46abbdc5bf10979 assets/projectj/models/block/ancient_altar.json
 e64defcff8f789c5e186580f19ef747f746beecb assets/projectj/models/block/cobbled_serpentinite.json
 5eb32d37e0190e535bf616b198ec56b4ac862a56 assets/projectj/models/block/cobbled_serpentinite_slab.json
 de9c6398491bf252d17db0b69e4c0fa86ae4bd96 assets/projectj/models/block/cobbled_serpentinite_slab_top.json

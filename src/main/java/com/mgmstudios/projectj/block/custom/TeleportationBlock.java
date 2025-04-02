@@ -114,6 +114,7 @@ public class TeleportationBlock extends BaseEntityBlock {
             player.displayClientMessage(Component.literal("Linked to: [" + connectedPos.getX() + "/" + connectedPos.getY() + "/" + connectedPos.getZ() + "]"), true);
         } else if (blockEntity != null){
             player.displayClientMessage(Component.literal("Unlinked"), true);
+            return InteractionResult.PASS;
         }
         return super.useWithoutItem(state, level, pos, player, hitResult);
     }

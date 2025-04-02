@@ -2,6 +2,7 @@ package com.mgmstudios.projectj.block;
 
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.custom.*;
+import com.mgmstudios.projectj.block.entity.custom.AncientAltarBlockEntity;
 import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.worldgen.feature.ModTreeGrowers;
@@ -35,6 +36,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
+
+import static com.mgmstudios.projectj.block.custom.TeleportationBlock.UNLOCKED;
 
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
@@ -88,7 +91,7 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> SERPENTINITE_ROCK_PRESSURE_PLATE = registerPressurePlateBlock("serpentinite_rock_pressure_plate", BlockSetType.STONE, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BUTTON), new Item.Properties());
 
-    public static final DeferredBlock<Block> ANCIENT_ALTAR = register("ancient_altar", AncientAltarBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS).noOcclusion(), new Item.Properties().rarity(Rarity.EPIC));
+    public static final DeferredBlock<Block> OLMEC_ALTAR = register("olmec_altar", OlmecAltarBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS).noOcclusion(), new Item.Properties().rarity(Rarity.EPIC));
 
     public static final DeferredBlock<Block> SERPENTINITE_PILLAR = register("serpentinite_pillar", MultiAxisDirectionalBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.QUARTZ_PILLAR), new Item.Properties());
 
@@ -150,7 +153,9 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> MAGNIFYING_GLASS_STAND = registerMagnifyingGlassStandBlock("magnifying_glass_stand", BlockBehaviour.Properties.of().sound(SoundType.WOOD).noOcclusion().randomTicks(), new Item.Properties(), 3);
 
-    public static final DeferredBlock<Block> TELEPORTATION_PAD = register("teleportation_pad", TeleportationBlock::new, BlockBehaviour.Properties.of().noOcclusion());
+    public static final DeferredBlock<Block> TELEPORTATION_PAD = register("teleportation_pad", TeleportationBlock::new, BlockBehaviour.Properties.of().noOcclusion().lightLevel(teleportationPadEmission(10)));
+
+    public static final DeferredBlock<Block> ANCIENT_ALTAR = register("ancient_altar", AncientAltarBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).noOcclusion().lightLevel(state -> 3), new Item.Properties().rarity(Rarity.UNCOMMON));
 
     private static DeferredBlock<Block> register(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> factory.apply(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
@@ -263,6 +268,19 @@ public class ModBlocks {
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return properties -> properties.getValue(BlockStateProperties.LIT) ? lightValue : 0;
+    }
+
+    private static ToIntFunction<BlockState> teleportationPadEmission(int lightValue) {
+        return properties -> {
+            boolean lit = properties.getValue(BlockStateProperties.LIT);
+            boolean unlocked = properties.getValue(UNLOCKED);
+            if (lit && unlocked)
+                return lightValue;
+            else if (lit){
+               return (int)(lightValue * 0.75F);
+            }
+            return 0;
+        };
     }
 
     private static BlockBehaviour.Properties leavesProperties(SoundType sound) {

@@ -55,6 +55,7 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.PYRITE_BLOCK.get());
         this.dropSelf(ModBlocks.MAGNIFYING_GLASS_STAND.get());
         this.dropSelf(ModBlocks.TELEPORTATION_PAD.get());
+        this.dropSelf(ModBlocks.ANCIENT_ALTAR.get());
 
         this.dropSelf(ModBlocks.ADOBE_BRICKS.get());
         this.dropSelf(ModBlocks.ADOBE_BRICKS_STAIRS.get());
@@ -108,7 +109,7 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         add(ModBlocks.MESQUITE_LEAVES.get(), block -> super.createLeavesDrops(ModBlocks.MESQUITE_LEAVES.get(), ModBlocks.MESQUITE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         add(ModBlocks.SNAKE_STATUE.get(), this::createTallBlockTable);
 
-        this.dropSelf(ModBlocks.ANCIENT_ALTAR.get());
+        this.dropSelf(ModBlocks.OLMEC_ALTAR.get());
 
         add(ModBlocks.JADE_ORE.get(), block ->
                 createMultipleOreDrops(ModBlocks.JADE_ORE.get(), ModItems.RAW_JADE.get(), 2, 5));

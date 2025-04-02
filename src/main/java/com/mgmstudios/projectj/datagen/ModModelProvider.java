@@ -22,7 +22,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -55,6 +54,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.PYRITE_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.MESQUITE_LEAVES.get());
         blockModels.createTrivialCube(ModBlocks.PYRITE_ORE.get());
+        blockModels.createHorizontallyRotatedBlock(ModBlocks.ANCIENT_ALTAR.get(), TexturedModel.CUBE);
         createCutoutPlantWithDefaultItem(blockModels, ModBlocks.MESQUITE_SAPLING.get(), ModBlocks.POTTED_MESQUITE_SAPLING.get(), PlantType.NOT_TINTED);
 
         createSerpentinitePillar(blockModels, itemModels, ModBlocks.SERPENTINITE_PILLAR.get());
@@ -96,7 +96,7 @@ public class ModModelProvider extends ModelProvider {
 
         createSimpleBlockWithCustomModel(blockModels, ModBlocks.CHIMNEY.get());
         createSimpleBlockWithCustomModelAndFlatItem(blockModels, itemModels, ModBlocks.MESQUITE_BRAZIER.get());
-        createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.ANCIENT_ALTAR.get());
+        createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.OLMEC_ALTAR.get());
         createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.SERPENTINITE_BENCH.get());
         createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.SERPENTINITE_BENCH_CORNER.get());
         createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.MESQUITE_BENCH.get());

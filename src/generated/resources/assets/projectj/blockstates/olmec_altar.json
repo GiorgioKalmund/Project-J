@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "projectj:block/olmec_altar",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "projectj:block/olmec_altar"
+    },
+    "facing=south": {
+      "model": "projectj:block/olmec_altar",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "projectj:block/olmec_altar",
+      "y": 270
+    }
+  }
+}

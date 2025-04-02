@@ -4,14 +4,9 @@ import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.item.ModItems;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.LanguageProvider;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 public class ModLanguageProvider extends LanguageProvider {
 
@@ -29,6 +24,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.OBSIDIAN_TOOTH, "Obsidian Tooth");
         addItem(ModItems.SERPENTINITE_ROD, "Serpentinite Rod");
         addItem(ModItems.SUN_ARMOR_HELMET, "Sun Crown");
+        addItem(ModItems.JADE_HELMET, "Jade Helmet");
         addItem(ModItems.SACRIFICIAL_DAGGER, "Sacrificial Dagger");
         addItem(ModItems.TROWEL, "Trowel");
         addItem(ModItems.MAGNIFYING_GLASS, "Magnifying Glass");
@@ -81,6 +77,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.SERPENTINITE_PILLAR, "Serpentinite Pillar");
         addBlock(ModBlocks.SERPENTINITE_BENCH, "Serpentinite Bench");
         addBlock(ModBlocks.SERPENTINITE_BENCH_CORNER, "Serpentinite Bench Corner");
+        addBlock(ModBlocks.OLMEC_ALTAR, "Olmec Altar");
         addBlock(ModBlocks.ANCIENT_ALTAR, "Ancient Altar");
 
         addBlock(ModBlocks.RESISTANT_OLMEC_HEAD, "Resistant Olmec Head");

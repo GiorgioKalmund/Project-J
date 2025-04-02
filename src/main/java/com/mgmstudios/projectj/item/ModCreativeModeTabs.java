@@ -52,6 +52,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.CONDUIT_OLMEC_HEAD.get());
                 output.accept(ModBlocks.RESISTANT_OLMEC_HEAD.get());
 
+                output.accept(ModBlocks.OLMEC_ALTAR.get());
                 output.accept(ModBlocks.ANCIENT_ALTAR.get());
                 output.accept(ModItems.MACUAHUITL.get());
                 output.accept(ModItems.OBSIDIAN_TOOTH.get());

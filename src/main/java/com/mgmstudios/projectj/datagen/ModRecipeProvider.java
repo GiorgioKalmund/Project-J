@@ -257,8 +257,8 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('#', Tags.Items.GLASS_BLOCKS)
                 .define('S', Items.STICK)
                 .define('s', Items.STRING)
-                .unlockedBy("has_log", this.has(ItemTags.LOGS))
                 .unlockedBy("has_glass_block", this.has(Tags.Items.GLASS_BLOCKS))
+                .unlockedBy("has_stick", this.has(Items.STICK))
                 .unlockedBy("has_string", this.has(Items.STRING))
                 .save(this.output);
 
@@ -267,6 +267,20 @@ public class ModRecipeProvider extends RecipeProvider {
                 .requires(ModItems.PYRITE_INGOT)
                 .unlockedBy("has_stick", this.has(Items.STICK))
                 .unlockedBy("has_pyrite_ingot", this.has(ModItems.PYRITE_INGOT))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.OLMEC_ALTAR)
+                .pattern("#B#")
+                .pattern(" J ")
+                .pattern("sss")
+                .define('#', Items.RED_WOOL)
+                .define('B', Items.BLACKSTONE)
+                .define('J', ModItems.JADE)
+                .define('s', Items.BLACKSTONE_SLAB)
+                .unlockedBy("has_red_wool", this.has(Items.RED_WOOL))
+                .unlockedBy("has_jade", this.has(ModItems.JADE))
+                .unlockedBy("has_blackstone_slab", this.has(Items.BLACKSTONE_SLAB))
+                .unlockedBy("has_blackstone", this.has(Items.BLACKSTONE))
                 .save(this.output);
 
         nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.RAW_PYRITE, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_PYRITE_BLOCK);

@@ -1,31 +1,41 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_glass_block": {
+    "has_blackstone": {
       "conditions": {
         "items": [
           {
-            "items": "#c:glass_blocks"
+            "items": "minecraft:blackstone"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_stick": {
+    "has_blackstone_slab": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:stick"
+            "items": "minecraft:blackstone_slab"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_string": {
+    "has_jade": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:string"
+            "items": "projectj:jade"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_red_wool": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:red_wool"
           }
         ]
       },
@@ -33,7 +43,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "projectj:magnifying_glass"
+        "recipe": "projectj:olmec_altar"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -41,14 +51,15 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_glass_block",
-      "has_stick",
-      "has_string"
+      "has_red_wool",
+      "has_jade",
+      "has_blackstone_slab",
+      "has_blackstone"
     ]
   ],
   "rewards": {
     "recipes": [
-      "projectj:magnifying_glass"
+      "projectj:olmec_altar"
     ]
   }
 }

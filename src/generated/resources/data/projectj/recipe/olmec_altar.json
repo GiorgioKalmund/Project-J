@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "minecraft:red_wool",
+    "B": "minecraft:blackstone",
+    "J": "projectj:jade",
+    "s": "minecraft:blackstone_slab"
+  },
+  "pattern": [
+    "#B#",
+    " J ",
+    "sss"
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectj:olmec_altar"
+  }
+}
