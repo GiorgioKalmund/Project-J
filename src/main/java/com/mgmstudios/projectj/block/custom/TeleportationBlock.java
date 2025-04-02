@@ -12,7 +12,9 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -28,6 +30,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
@@ -104,16 +107,22 @@ public class TeleportationBlock extends BaseEntityBlock {
     }
 
     @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        TeleportationBlockEntity blockEntity = (TeleportationBlockEntity) level.getBlockEntity(pos);
+        if (blockEntity != null && blockEntity.getConnectedPosition() != null) {
+            BlockPos connectedPos = blockEntity.getConnectedPosition();
+            player.displayClientMessage(Component.literal("Linked to: [" + connectedPos.getX() + "/" + connectedPos.getY() + "/" + connectedPos.getZ() + "]"), true);
+        } else if (blockEntity != null){
+            player.displayClientMessage(Component.literal("Unlinked"), true);
+        }
+        return super.useWithoutItem(state, level, pos, player, hitResult);
+    }
+
+    @Override
     protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         level.setBlockAndUpdate(pos, state.setValue(UNLOCKED, true));
         //level.playSound(null, pos, SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.BLOCKS);
         super.tick(state, level, pos, random);
-    }
-
-    @Override
-    public void onBlockStateChange(LevelReader level, BlockPos pos, BlockState oldState, BlockState newState) {
-        System.out.println(newState);
-        super.onBlockStateChange(level, pos, oldState, newState);
     }
 
     private void teleportPlayer(ServerPlayer player, BlockPos targetPosition) {

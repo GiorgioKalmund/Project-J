@@ -16,6 +16,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -46,25 +47,24 @@ public class TeleportationKeyItem extends Item {
             if (blockState.is(ModBlocks.TELEPORTATION_PAD.get()) && storedPosition == null) {
                 storedPosition = clickedPos;
                 //serverPlayer.sendSystemMessage(Component.literal("Teleportation block selected: " + clickedPos));
-                serverPlayer.sendSystemMessage(Component.literal("§a§lDestination set. Please select your origin.§r"));
+                serverPlayer.displayClientMessage(Component.literal("§a§lDestination set. Please select your origin.§r"), true);
                 stack.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
 
                 return InteractionResult.SUCCESS_SERVER;
             } else if (blockState.is(ModBlocks.TELEPORTATION_PAD.get())) {
                 if (storedPosition.equals(clickedPos)) {
-                    serverPlayer.sendSystemMessage(Component.literal("Cannot connect teleportation block to itself"));
+                    serverPlayer.sendSystemMessage(Component.literal("§7§oCannot connect teleportation pad to itself.§o"));
                     reset(stack);
                     return InteractionResult.PASS;
                 }
                 if (level.getBlockEntity(clickedPos) instanceof TeleportationBlockEntity teleporterEntity) {
                     teleporterEntity.setConnectedPosition(storedPosition);
                     serverLevel.setBlockAndUpdate(clickedPos, serverLevel.getBlockState(clickedPos).setValue(LIT, true));
-                    //serverPlayer.sendSystemMessage(Component.literal("Teleportation block connected to: " + clickedPos));
-                    serverPlayer.sendSystemMessage(Component.literal("§a§oConnection established!§r"));
+                    serverPlayer.displayClientMessage(Component.literal("§a§oConnection established!§r"), true);
                     stack.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, false);
                     serverLevel.playSound(null, clickedPos, SoundEvents.BEACON_ACTIVATE, SoundSource.PLAYERS);
                 } else {
-                    serverPlayer.sendSystemMessage(Component.literal("No valid teleporter block entity found at the stored position"));
+                    serverPlayer.sendSystemMessage(Component.literal("§c§oNo valid block entity found at the stored position.§r"));
                 }
                 /* Two-way
                 if (level.getBlockEntity(clickedPos) instanceof TeleportationBlockEntity teleporterEntity) {
@@ -76,23 +76,13 @@ public class TeleportationKeyItem extends Item {
 
                 storedPosition = null;
                 return InteractionResult.SUCCESS_SERVER;
-            } else {
-                serverPlayer.sendSystemMessage(Component.literal("Reset key."));
+            } else if (storedPosition != null) {
+                serverPlayer.displayClientMessage(Component.literal("Reset key."), true);
                 reset(stack);
                 return InteractionResult.FAIL;
             }
         }
         return super.useOn(context);
-    }
-
-    @Override
-    public boolean isFoil(ItemStack stack) {
-        return super.isFoil(stack);
-    }
-
-    @Override
-    public InteractionResult use(Level level, Player player, InteractionHand hand) {
-        return super.use(level, player, hand);
     }
 
     private void reset(ItemStack stack){
