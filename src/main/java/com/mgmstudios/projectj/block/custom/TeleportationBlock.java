@@ -78,7 +78,7 @@ public class TeleportationBlock extends BaseEntityBlock {
                     if (state.getValue(UNLOCKED) && state.getValue(LIT)){
                         BlockPos connectedPos = blockEntity.getConnectedPosition();
                         if (!level.getBlockState(blockEntity.getConnectedPosition()).is(ModBlocks.TELEPORTATION_PAD)){
-                            serverPlayer.sendSystemMessage(Component.literal("The connecting pad wad destroyed."));
+                            serverPlayer.sendSystemMessage(Component.literal("§oThe connecting pad was destroyed.§r"));
                             level.setBlockAndUpdate(pos, state.setValue(LIT, false));
                             blockEntity.setConnectedPosition(null);
                             return;
@@ -93,10 +93,10 @@ public class TeleportationBlock extends BaseEntityBlock {
                         teleportPlayer(serverPlayer, connectedPos.above());
                         level.playSound(null, connectedPos, SoundEvents.ENDERMAN_TELEPORT, SoundSource.BLOCKS);
                     } else {
-                        serverPlayer.sendSystemMessage(Component.literal("Teleportation Block is on cooldown!"));
+                        serverPlayer.sendSystemMessage(Component.literal("Teleportation Pad is on cooldown!"));
                     }
                 } else {
-                    serverPlayer.sendSystemMessage(Component.literal("Teleportation Block is not bound"));
+                    serverPlayer.sendSystemMessage(Component.literal("Teleportation Pad is not bound"));
                 }
             }
         }
