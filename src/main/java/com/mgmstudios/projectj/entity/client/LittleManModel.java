@@ -58,12 +58,12 @@ public class LittleManModel extends EntityModel<LittleManRenderState> {
         return LayerDefinition.create(meshdefinition, 32, 32);
     }
 
-    public void setupAnim(LittleManEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        this.root().getAllParts().forEach(ModelPart::resetPose);
-        this.applyHeadRotation(netHeadYaw, headPitch);
+    @Override
+    public void setupAnim(LittleManRenderState renderState) {
+        super.setupAnim(renderState);
 
-        this.animateWalk(LittleManAnimations.WALKING, limbSwing, limbSwingAmount, 2f, 2.5f);
-        this.animate(entity.idleAnimationState, LittleManAnimations.IDLE, ageInTicks, 1f);
+        animate(renderState.idle, LittleManAnimations.IDLE, renderState.ageInTicks);
+        animateWalk(LittleManAnimations.WALKING, renderState.walkAnimationPos * 10, renderState.walkAnimationSpeed, 1, 1);
     }
 
     private void applyHeadRotation(float headYaw, float headPitch) {

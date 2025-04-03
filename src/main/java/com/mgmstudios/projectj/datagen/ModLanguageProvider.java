@@ -2,9 +2,12 @@ package com.mgmstudios.projectj.datagen;
 
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlocks;
+import com.mgmstudios.projectj.entity.ModEntities;
 import com.mgmstudios.projectj.item.ModItems;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
@@ -117,6 +120,9 @@ public class ModLanguageProvider extends LanguageProvider {
         add("container.projectj.adobe_furnace", "Adobe Furnace");
         add("itemGroup.projectj.projectj_tab", "Project J");
 
+        // Entity
+        addEntity(ModEntities.LITTLE_MAN_ENTITY.get(), "Little Man");
+
     }
 
     protected void addTooltip(ItemLike itemLike, String value){
@@ -128,6 +134,15 @@ public class ModLanguageProvider extends LanguageProvider {
     }
 
     private void addSuffixedTooltip(ItemLike itemLike, String value, String suffix){
-        add("tooltip." + ProjectJ.MOD_ID + "." + BuiltInRegistries.ITEM.getKey(itemLike.asItem()).getPath() + ".tooltip" + suffix, value);
+        add("tooltip." + ProjectJ.MOD_ID + "." + getName(itemLike)  + ".tooltip" + suffix, value);
     }
+
+    private void addEntity(EntityType<? extends Entity> entity, String name){
+        add("entity." + ProjectJ.MOD_ID + "." + BuiltInRegistries.ENTITY_TYPE.getKey(entity).getPath(), name);
+    }
+
+    String getName(ItemLike itemLike){
+        return BuiltInRegistries.ITEM.getKey(itemLike.asItem()).getPath();
+    }
+
 }

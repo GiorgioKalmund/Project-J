@@ -27,6 +27,12 @@ public class LittleManRenderer extends MobRenderer<LittleManEntity, LittleManRen
     }
 
     @Override
+    public void extractRenderState(LittleManEntity littleManEntity, LittleManRenderState littleManRenderState, float v) {
+        super.extractRenderState(littleManEntity, littleManRenderState, v);
+        littleManRenderState.idle.copyFrom(littleManEntity.idleAnimationState);
+    }
+
+    @Override
     public ResourceLocation getTextureLocation(LittleManRenderState littleManRenderState) {
         return ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "textures/entity/little_man/awake.png");
     }
