@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-02T19:44:46.5063621	Model Definitions - projectj
+// 1.21.4	2025-04-03T08:55:19.9008655	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -78,6 +78,7 @@ c4f3775626f4c829574376d0a454e0940c3ca14a assets/projectj/items/cobbled_serpentin
 ff3f2d911ddbc9dce854b3666386ba2b3fa3c506 assets/projectj/items/jade_helmet.json
 6c67bf56da03612616be77ed4bd0cc89a742b31b assets/projectj/items/jade_ore.json
 571d265eb581067a257ac763b27592fc39c4b7cb assets/projectj/items/liquid_pyrite_bucket.json
+e5bde01d522c1321681970aa7a5b2a6fb8183454 assets/projectj/items/little_man_spawn_egg.json
 7d3e39c0634b0b68205702ce95c37259502e7dba assets/projectj/items/macuahuitl.json
 f4bb679a69f46a02b1d7c182ec7858960ceebc6d assets/projectj/items/magnifying_glass.json
 fcd3da894b765afaf09b0211ce5b846447d39f9d assets/projectj/items/magnifying_glass_stand.json

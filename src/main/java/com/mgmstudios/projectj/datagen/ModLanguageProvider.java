@@ -34,6 +34,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.FIRE_STARTER, "Fire Starter");
         addItem(ModItems.CRUDE_SACRIFICE_BOWL, "Crude Sacrificial Bowl");
         addItem(ModItems.FILLED_CRUDE_SACRIFICE_BOWL, "Filled Crude Sacrificial Bowl");
+        addItem(ModItems.LITTLE_MAN_SPAWN_EGG, "Little Man Spawn Egg");
 
         // Blocks
         addBlock(ModBlocks.RAW_ADOBE, "Raw Adobe");

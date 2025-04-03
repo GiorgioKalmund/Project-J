@@ -90,6 +90,8 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateSpyglass(ModItems.JADE_HELMET.get());
         itemModels.generateSpyglass(ModItems.MAGNIFYING_GLASS.get());
 
+        itemModels.generateSpawnEgg(ModItems.LITTLE_MAN_SPAWN_EGG.get(), 0x1e2e1d, 0x55bd4d);
+
         createFurnaceUntilTier1(blockModels, ModBlocks.ADOBE_FURNACE.get());
 
         createOlmecHead(blockModels, itemModels, ModBlocks.DAMAGE_OLMEC_HEAD.get());

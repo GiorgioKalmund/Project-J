@@ -76,6 +76,8 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.MESQUITE_BENCH.get());
                 output.accept(ModBlocks.MESQUITE_BENCH_CORNER.get());
 
+                output.accept(ModItems.LITTLE_MAN_SPAWN_EGG.get());
+
                 ModBlockFamilies.getAllFamilies()
                         .forEach(family -> {
 

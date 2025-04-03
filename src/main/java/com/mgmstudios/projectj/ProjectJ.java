@@ -6,6 +6,7 @@ import com.mgmstudios.projectj.block.entity.renderer.AncientAltarEntityRenderer;
 import com.mgmstudios.projectj.block.entity.renderer.SittableEntityRenderer;
 import com.mgmstudios.projectj.client.ProjectJClientExtension;
 import com.mgmstudios.projectj.entity.ModEntities;
+import com.mgmstudios.projectj.entity.client.LittleManRenderer;
 import com.mgmstudios.projectj.fluid.ModFluidTypes;
 import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.item.ModCreativeModeTabs;
@@ -104,6 +105,7 @@ public class ProjectJ
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             EntityRenderers.register(ModEntities.SITTABLE_ENTITY.get(), SittableEntityRenderer::new);
+            EntityRenderers.register(ModEntities.LITTLE_MAN_ENTITY.get(), LittleManRenderer::new);
         }
 
         @SubscribeEvent
