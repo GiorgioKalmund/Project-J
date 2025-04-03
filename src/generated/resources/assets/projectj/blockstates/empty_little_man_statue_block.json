@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "projectj:block/empty_little_man_statue_block",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "projectj:block/empty_little_man_statue_block"
+    },
+    "facing=south": {
+      "model": "projectj:block/empty_little_man_statue_block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "projectj:block/empty_little_man_statue_block",
+      "y": 270
+    }
+  }
+}

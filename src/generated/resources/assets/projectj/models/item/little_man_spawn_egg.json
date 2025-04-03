@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "projectj:item/magnifying_glass_stand"
+    "layer0": "projectj:item/little_man_spawn_egg"
   }
 }
