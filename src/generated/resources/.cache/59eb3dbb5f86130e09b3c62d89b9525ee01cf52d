@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-02T14:50:33.3188093	Loot Tables
+// 1.21.4	2025-04-04T01:22:36.258728	Loot Tables
 645e23f8676b8f0e4d797aeab743aa1e3606c703 data/projectj/loot_table/blocks/adobe_bricks.json
 c52a58507f4c8bc3dcdd97ef286a063d396844cc data/projectj/loot_table/blocks/adobe_bricks_slab.json
 c80294a187a6c6c06ea794e6c6d418870c792578 data/projectj/loot_table/blocks/adobe_bricks_stairs.json
@@ -13,8 +13,10 @@ f65c0aac5811499743921abaf173ea3c0070bdea data/projectj/loot_table/blocks/cobbled
 adb3a695cc9a89314193c4b19386e1f00a9298b3 data/projectj/loot_table/blocks/conduit_olmec_head.json
 b4fa58f65ed77099a543870e6ad939cecff08e34 data/projectj/loot_table/blocks/damage_olmec_head.json
 e236002db4b8a69bcaa8a7e7484db5d3319458a7 data/projectj/loot_table/blocks/deepslate_jade_ore.json
+1e9c8283b8b8383e0820074f55cb204d6cb0f10c data/projectj/loot_table/blocks/empty_little_man_statue_block.json
 250c4f38d51efd53420b2a8b06eced5ffe896263 data/projectj/loot_table/blocks/jade_block.json
 9ad80c3265b1b2ec4949f718f7f0bd9358890e7b data/projectj/loot_table/blocks/jade_ore.json
+240f8c160939a3528ff5fd4e9d2a5a962ddbc178 data/projectj/loot_table/blocks/little_man_statue_block.json
 2092fc1f0509198346208a82a4ce0a97c1115401 data/projectj/loot_table/blocks/magnifying_glass_stand.json
 5a6df041a821e108fd66d795b6fb670ea5d0064f data/projectj/loot_table/blocks/mesquite_bench.json
 0ae061b1db60958cfccec134106c7dd97b903d62 data/projectj/loot_table/blocks/mesquite_bench_corner.json

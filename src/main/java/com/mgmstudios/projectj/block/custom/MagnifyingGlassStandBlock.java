@@ -35,7 +35,8 @@ import org.jetbrains.annotations.Nullable;
 
 public class MagnifyingGlassStandBlock extends HorizontalDirectionalBlock {
 
-    protected static final VoxelShape BOTTOM_AABB = Block.box(0.0, 0.0, 3, 16.0, 9.0, 12.0);
+    protected static final VoxelShape SHAPE_EAST_WEST = Block.box(4, 0.0, 0, 13.0, 9.0, 16.0);
+    protected static final VoxelShape SHAPE_NORTH_SOUTH = Block.box(0, 0.0, 3, 16.0, 9.0, 12.0);
     public static final MapCodec<MagnifyingGlassStandBlock> CODEC = simpleCodec(MagnifyingGlassStandBlock::new);
     public static final BooleanProperty MAGNIFYNG_GLASS_INSIDE = BooleanProperty.create("magnifying_block_active");
 
@@ -58,7 +59,10 @@ public class MagnifyingGlassStandBlock extends HorizontalDirectionalBlock {
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return BOTTOM_AABB;
+        return switch (state.getValue(FACING)) {
+            case NORTH, SOUTH -> SHAPE_NORTH_SOUTH;
+            default -> SHAPE_EAST_WEST;
+        };
     }
 
     @Override

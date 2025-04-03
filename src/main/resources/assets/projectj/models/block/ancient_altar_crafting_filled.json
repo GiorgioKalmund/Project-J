@@ -6,7 +6,7 @@
 		"2": "projectj:block/serpentinite_rock",
 		"3": "projectj:block/pyrite_block",
 		"4": "projectj:block/adobe_furnace_top",
-		"5": "projectj:block/redstone_block",
+		"5": "projectj:block/ancient_altar_blood",
 		"particle": "projectj:block/adobe_bricks"
 	},
 	"elements": [

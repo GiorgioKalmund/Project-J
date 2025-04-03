@@ -31,7 +31,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.RESISTANT_OLMEC_HEAD.get())
                 .add(ModBlocks.SNAKE_STATUE.get())
                 .add(ModBlocks.OLMEC_ALTAR.get())
-                .add(ModBlocks.ANCIENT_ALTAR.get());
+                .add(ModBlocks.ANCIENT_ALTAR.get())
+                .add(ModBlocks.LITTLE_MAN_STATUE_BLOCK.get())
+                .add(ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK.get());
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .addTag(ModTags.Blocks.ADOBE)

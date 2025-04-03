@@ -66,10 +66,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> TELEPORTATION_KEY = register("teleportation_key", TeleportationKeyItem::new , new Item.Properties());
 
-
-    //registerItem("zombie_horse_spawn_egg", p_386402_ -> new SpawnEggItem(EntityType.ZOMBIE_HORSE, p_386402_));
-    public static final DeferredItem<Item> LITTLE_MAN_SPAWN_EGG = register("little_man_spawn_egg",
-            (key) -> new SpawnEggItem(ModEntities.LITTLE_MAN_ENTITY.get(), key));
+    public static final DeferredItem<Item> LITTLE_MAN_SPAWN_EGG = register("little_man_spawn_egg", (properties) -> new SpawnEggItem(ModEntities.LITTLE_MAN_ENTITY.get(), properties));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

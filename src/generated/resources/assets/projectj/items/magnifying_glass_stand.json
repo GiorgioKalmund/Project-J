@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "projectj:item/magnifying_glass_stand"
+    "model": "projectj:block/magnifying_glass_stand"
   }
 }

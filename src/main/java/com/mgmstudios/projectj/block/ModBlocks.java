@@ -2,7 +2,6 @@ package com.mgmstudios.projectj.block;
 
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.custom.*;
-import com.mgmstudios.projectj.block.entity.custom.AncientAltarBlockEntity;
 import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.worldgen.feature.ModTreeGrowers;
@@ -156,6 +155,10 @@ public class ModBlocks {
     public static final DeferredBlock<Block> TELEPORTATION_PAD = register("teleportation_pad", TeleportationBlock::new, BlockBehaviour.Properties.of().noOcclusion().lightLevel(teleportationPadEmission(10)));
 
     public static final DeferredBlock<Block> ANCIENT_ALTAR = register("ancient_altar", AncientAltarBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).noOcclusion().lightLevel(state -> 3), new Item.Properties().rarity(Rarity.RARE));
+
+    public static final DeferredBlock<Block> LITTLE_MAN_STATUE_BLOCK = register("little_man_statue_block", LittleManStatueBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).noOcclusion(), new Item.Properties());
+
+    public static final DeferredBlock<Block> EMPTY_LITTLE_MAN_STATUE_BLOCK = register("empty_little_man_statue_block", EmptyLittleManStatueBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).noOcclusion(), new Item.Properties());
 
     private static DeferredBlock<Block> register(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> factory.apply(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));

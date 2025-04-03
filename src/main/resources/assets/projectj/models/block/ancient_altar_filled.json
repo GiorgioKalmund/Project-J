@@ -6,7 +6,7 @@
 		"2": "projectj:block/serpentinite_rock",
 		"3": "projectj:block/pyrite_block",
 		"4": "projectj:block/adobe_furnace_top",
-		"5": "projectj:block/redstone_block",
+		"5": "projectj:block/ancient_altar_blood",
 		"particle": "projectj:block/adobe_bricks"
 	},
 	"elements": [
@@ -154,15 +154,15 @@
 			}
 		},
 		{
-			"from": [1, 10, 1],
-			"to": [15, 15.75, 15],
-			"rotation": {"angle": 0, "axis": "y", "origin": [7, 10, 7]},
+			"from": [1, 9.25, 1],
+			"to": [15, 15, 15],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 9.25, 7]},
 			"faces": {
 				"north": {"uv": [1, 1, 15, 6], "texture": "#0"},
 				"east": {"uv": [1, 1, 15, 6], "texture": "#0"},
 				"south": {"uv": [1, 1, 15, 6], "texture": "#0"},
 				"west": {"uv": [1, 1, 15, 6], "texture": "#0"},
-				"up": {"uv": [1, 1, 15, 15], "texture": "#5"},
+				"up": {"uv": [1, 1, 15, 15], "texture": "#1"},
 				"down": {"uv": [2, 1, 16, 15], "texture": "#4"}
 			}
 		},

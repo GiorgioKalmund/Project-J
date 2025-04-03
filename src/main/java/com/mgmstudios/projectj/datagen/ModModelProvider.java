@@ -34,6 +34,8 @@ import java.util.List;
 import static com.mgmstudios.projectj.block.custom.AdobeFurnaceBlock.TIER1;
 import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.CRAFTING;
 import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.PRODUCT_INSIDE;
+import static com.mgmstudios.projectj.block.custom.LittleManStatueBlock.ACTIVE;
+import static com.mgmstudios.projectj.block.custom.LittleManStatueBlock.SUMMONING;
 import static com.mgmstudios.projectj.block.custom.TeleportationBlock.UNLOCKED;
 import static net.minecraft.client.data.models.BlockModelGenerators.*;
 
@@ -90,7 +92,8 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateSpyglass(ModItems.JADE_HELMET.get());
         itemModels.generateSpyglass(ModItems.MAGNIFYING_GLASS.get());
 
-        itemModels.generateSpawnEgg(ModItems.LITTLE_MAN_SPAWN_EGG.get(), 0x1e2e1d, 0x55bd4d);
+        //itemModels.generateSpawnEgg(ModItems.LITTLE_MAN_SPAWN_EGG.get(), 0x1e2e1d, 0x55bd4d);
+        itemModels.generateFlatItem(ModItems.LITTLE_MAN_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
 
         createFurnaceUntilTier1(blockModels, ModBlocks.ADOBE_FURNACE.get());
 
@@ -106,6 +109,10 @@ public class ModModelProvider extends ModelProvider {
         createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.SERPENTINITE_BENCH_CORNER.get());
         createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.MESQUITE_BENCH.get());
         createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.MESQUITE_BENCH_CORNER.get());
+        createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK.get());
+
+        createLittleManStatue(blockModels, ModBlocks.LITTLE_MAN_STATUE_BLOCK.get());
+
         createMagnifyingGlassBlock(blockModels, itemModels, ModBlocks.MAGNIFYING_GLASS_STAND.get());
 
         ModBlockFamilies.getAllFamilies()
@@ -175,6 +182,37 @@ public class ModModelProvider extends ModelProvider {
                         .with(VariantProperties.MODEL, resourcelocation))
                         .with(createHorizontalFacingDispatch())
         );
+    }
+
+    public void createLittleManStatue(BlockModelGenerators blockModels, Block block){
+        ResourceLocation regular = ModelLocationUtils.getModelLocation(block );
+        ResourceLocation summoning = ModelLocationUtils.getModelLocation(block, "_summoning");
+        ResourceLocation active = ModelLocationUtils.getModelLocation(block, "_active");
+        ResourceLocation wrong = ModelLocationUtils.getModelLocation(block, "_wrong");
+        blockModels.blockStateOutput
+                .accept(
+                        MultiVariantGenerator.multiVariant(block)
+                                .with(createHorizontalFacingDispatch())
+                                .with(
+                                        PropertyDispatch.properties(SUMMONING, ACTIVE)
+                                                .select(
+                                                        false, false,
+                                                        Variant.variant().with(VariantProperties.MODEL, regular)
+                                                )
+                                                .select(
+                                                        true, false,
+                                                        Variant.variant().with(VariantProperties.MODEL, summoning)
+                                                )
+                                                .select(
+                                                        false, true,
+                                                        Variant.variant().with(VariantProperties.MODEL, active)
+                                                )
+                                                .select(
+                                                        true, true,
+                                                        Variant.variant().with(VariantProperties.MODEL, wrong)
+                                                )
+                                )
+                );
     }
 
     public void createDoubleBlock(BlockModelGenerators blockModels, Block block){
@@ -347,8 +385,9 @@ public class ModModelProvider extends ModelProvider {
                                 .with(createHorizontalFacingDispatch())
                 );
 
-        ItemModel.Unbaked itemmodel$unbaked = ItemModelUtils.plainModel(itemModels.createFlatItemModel(block.asItem(), ModelTemplates.FLAT_ITEM));
-        itemModels.itemModelOutput.accept(block.asItem(), itemmodel$unbaked);
+        // Texture is available but not good, so we use 3d block model
+        //ItemModel.Unbaked itemmodel$unbaked = ItemModelUtils.plainModel(itemModels.createFlatItemModel(block.asItem(), ModelTemplates.FLAT_ITEM));
+        //itemModels.itemModelOutput.accept(block.asItem(), itemmodel$unbaked);
 
     }
 

@@ -38,6 +38,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.CRUDE_SACRIFICE_BOWL, "Crude Sacrificial Bowl");
         addItem(ModItems.FILLED_CRUDE_SACRIFICE_BOWL, "Filled Crude Sacrificial Bowl");
         addItem(ModItems.LITTLE_MAN_SPAWN_EGG, "Little Man Spawn Egg");
+        addItem(ModItems.TELEPORTATION_KEY, "Teleportation Key");
 
         // Blocks
         addBlock(ModBlocks.RAW_ADOBE, "Raw Adobe");
@@ -49,7 +50,8 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.SNAKE_STATUE, "Snake Statue");
         addBlock(ModBlocks.MAGNIFYING_GLASS_STAND, "Magnifying Glass Stand");
         addBlock(ModBlocks.TELEPORTATION_PAD, "Teleportation Pad");
-        addItem(ModItems.TELEPORTATION_KEY, "Teleportation Key");
+        addBlock(ModBlocks.LITTLE_MAN_STATUE_BLOCK, "Little Man Statue");
+        addBlock(ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK, "Empty Little Man Statue");
 
         addBlock(ModBlocks.PYRITE_BLOCK, "Pyrite Block");
         addBlock(ModBlocks.RAW_PYRITE_BLOCK, "Raw Pyrite Block");
