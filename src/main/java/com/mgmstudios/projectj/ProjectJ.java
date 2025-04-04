@@ -7,6 +7,8 @@ import com.mgmstudios.projectj.block.entity.renderer.SittableEntityRenderer;
 import com.mgmstudios.projectj.client.ProjectJClientExtension;
 import com.mgmstudios.projectj.entity.ModEntities;
 import com.mgmstudios.projectj.entity.client.LittleManRenderer;
+import com.mgmstudios.projectj.entity.custom.LittleManEntity;
+import com.mgmstudios.projectj.entity.goals.AvoidBlockGoal;
 import com.mgmstudios.projectj.fluid.ModFluidTypes;
 import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.item.ModCreativeModeTabs;
@@ -17,7 +19,12 @@ import com.mgmstudios.projectj.screen.ModMenuTypes;
 import com.mgmstudios.projectj.screen.custom.AdobeFurnaceScreen;
 import com.mgmstudios.projectj.recipe.ModRecipeBookCategories;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
+import net.minecraft.world.entity.animal.Ocelot;
+import net.minecraft.world.entity.monster.Zombie;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import org.slf4j.Logger;
 
@@ -111,6 +118,18 @@ public class ProjectJ
         @SubscribeEvent
         public static void registerBER(EntityRenderersEvent.RegisterRenderers event){
             event.registerBlockEntityRenderer(ModBlockEntities.ANCIENT_ALTAR_BE.get(), AncientAltarEntityRenderer::new);
+        }
+
+    }
+
+    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+    public static class ForgeEvents{
+
+        @SubscribeEvent
+        public static void modifyZombieBehaviour(EntityJoinLevelEvent event){
+            if (event.getEntity() instanceof Zombie zombie){
+                zombie.goalSelector.addGoal(0, new AvoidBlockGoal(zombie,  2F, 1.2F));
+            }
         }
     }
 }
