@@ -47,7 +47,7 @@ public class LittleManEntity extends AbstractGolem implements VoodooEntity {
         this.goalSelector.addGoal(6, new MoveToBlockGoal(this, 1.15, 30) {
             @Override
             protected boolean isValidTarget(LevelReader levelReader, BlockPos blockPos) {
-                return levelReader.getBlockState(blockPos).is(ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK);
+                return levelReader.getBlockState(blockPos).is(ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK.get());
             }
         });
     }

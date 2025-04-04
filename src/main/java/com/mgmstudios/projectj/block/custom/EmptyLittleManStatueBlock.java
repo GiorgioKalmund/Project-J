@@ -22,6 +22,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -66,6 +67,7 @@ public class EmptyLittleManStatueBlock extends HorizontalDirectionalBlock {
 
     @Override
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
+        System.out.println("Stepped on state: " + state);
         if (entity instanceof LittleManEntity littleMan && littleManWillReset(state)){
             littleMan.remove(Entity.RemovalReason.DISCARDED);
             //level.playSound(null, littleMan.blockPosition(), SoundEvents.BEEHIVE_ENTER, SoundSource.BLOCKS);
@@ -74,6 +76,16 @@ public class EmptyLittleManStatueBlock extends HorizontalDirectionalBlock {
             level.levelEvent(2009, pos, 0);
         }
         super.stepOn(level, pos, state, entity);
+    }
+
+    @Override
+    public void onBlockStateChange(LevelReader levelReader, BlockPos pos, BlockState oldState, BlockState newState) {
+        if (levelReader instanceof ServerLevel serverLevel){
+            System.out.println(oldState + " -> " + newState);
+            // Little man can refreeze as early as 16 seconds after spawning
+            serverLevel.scheduleTick(pos, this, 320);
+        }
+        super.onBlockStateChange(levelReader, pos, oldState, newState);
     }
 
     @Override
@@ -93,6 +105,7 @@ public class EmptyLittleManStatueBlock extends HorizontalDirectionalBlock {
 
     @Override
     protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        System.out.println("TICK" + pos);
         if (!littleManWillReset(state)) {
             setLittleManWillReset(level, state, pos, true);
         }

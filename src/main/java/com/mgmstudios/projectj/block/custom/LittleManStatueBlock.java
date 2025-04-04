@@ -95,24 +95,11 @@ public class LittleManStatueBlock extends HorizontalDirectionalBlock {
 
             level.playSound(null, BlockPos.containing(spawnPos), SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS);
 
-            // Little man can refreeze as early as 16 seconds after spawning
-            level.scheduleTick(pos, ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK.get(), 320);
             level.setBlockAndUpdate(pos, ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK.get().defaultBlockState());
         } else {
-            System.err.println("Received tick but state is: " + state);
+            System.err.println(pos + "Received tick but state is: " + state);
         }
         super.tick(state, level, pos, random);
-    }
-
-    @Override
-    public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
-        if (entity instanceof LittleManEntity littleMan){
-            resetState(level, state, pos);
-            littleMan.remove(Entity.RemovalReason.DISCARDED);
-            level.playSound(null, littleMan.blockPosition(), SoundEvents.SNIFFER_EGG_CRACK, SoundSource.BLOCKS);
-            level.levelEvent(2009, pos, 0);
-        }
-        super.stepOn(level, pos, state, entity);
     }
 
     private boolean summoning(BlockState state){
