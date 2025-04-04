@@ -67,7 +67,6 @@ public class EmptyLittleManStatueBlock extends HorizontalDirectionalBlock {
 
     @Override
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
-        System.out.println("Stepped on state: " + state);
         if (entity instanceof LittleManEntity littleMan && littleManWillReset(state)){
             littleMan.remove(Entity.RemovalReason.DISCARDED);
             //level.playSound(null, littleMan.blockPosition(), SoundEvents.BEEHIVE_ENTER, SoundSource.BLOCKS);
@@ -81,7 +80,6 @@ public class EmptyLittleManStatueBlock extends HorizontalDirectionalBlock {
     @Override
     public void onBlockStateChange(LevelReader levelReader, BlockPos pos, BlockState oldState, BlockState newState) {
         if (levelReader instanceof ServerLevel serverLevel){
-            System.out.println(oldState + " -> " + newState);
             // Little man can refreeze as early as 16 seconds after spawning
             serverLevel.scheduleTick(pos, this, 320);
         }
@@ -105,7 +103,6 @@ public class EmptyLittleManStatueBlock extends HorizontalDirectionalBlock {
 
     @Override
     protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        System.out.println("TICK" + pos);
         if (!littleManWillReset(state)) {
             setLittleManWillReset(level, state, pos, true);
         }
