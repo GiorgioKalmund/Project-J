@@ -3,6 +3,7 @@ package com.mgmstudios.projectj.block.custom;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.entity.ModEntities;
 import com.mgmstudios.projectj.entity.custom.LittleManEntity;
+import com.mgmstudios.projectj.item.ModItems;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.core.BlockPos;
@@ -71,7 +72,7 @@ public class LittleManStatueBlock extends HorizontalDirectionalBlock {
     protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (level.isClientSide) return InteractionResult.SUCCESS;
 
-        if (level instanceof ServerLevel && stack.is(ModBlocks.JADE_BLOCK.asItem()) && !summoning(state) && !active(state)){
+        if (level instanceof ServerLevel && stack.is(ModItems.JADE.get()) && !summoning(state) && !active(state)){
             setSummoning(level, state, pos, true);
             level.scheduleTick(pos, this, 60);
             stack.shrink(1);
@@ -112,8 +113,8 @@ public class LittleManStatueBlock extends HorizontalDirectionalBlock {
         if (entity instanceof LittleManEntity littleMan && state.getValue(LITTLE_MAN_WILL_RESET)){
             resetState(level, state, pos);
             littleMan.remove(Entity.RemovalReason.DISCARDED);
-            level.playSound(null, littleMan.blockPosition(), SoundEvents.BEEHIVE_ENTER, SoundSource.BLOCKS);
-            level.playSound(null, pos, SoundEvents.SNIFFER_EGG_CRACK, SoundSource.BLOCKS);
+            level.playSound(null, littleMan.blockPosition(), SoundEvents.SNIFFER_EGG_CRACK, SoundSource.BLOCKS);
+            level.levelEvent(2009, pos, 0);
         }
         super.stepOn(level, pos, state, entity);
     }

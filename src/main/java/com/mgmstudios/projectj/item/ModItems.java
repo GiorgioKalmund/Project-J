@@ -44,13 +44,13 @@ public class ModItems {
 
     public static final DeferredItem<Item> MACUAHUITL = registerPaxelItem("macuahuitl", new Item.Properties().fireResistant().rarity(Rarity.EPIC));
 
-    public static final DeferredItem<Item> SERPENTINITE_ROD = ITEMS.registerItem("serpentinite_rod", Item::new);
+    public static final DeferredItem<Item> SERPENTINITE_ROD = register("serpentinite_rod");
 
-    public static final DeferredItem<Item> OBSIDIAN_TOOTH = ITEMS.registerItem("obsidian_tooth", Item::new);
+    public static final DeferredItem<Item> OBSIDIAN_TOOTH = register("obsidian_tooth");
 
     public static final DeferredItem<Item> SACRIFICIAL_DAGGER = registerSwordItem("sacrificial_dagger", ModToolMaterials.SACRIFICIAL_DAGGER_MATERIAL, 30F, -3.6F, new Item.Properties().rarity(Rarity.UNCOMMON));
 
-    public static final DeferredItem<Item> TROWEL = ITEMS.registerItem("trowel", TrowelItem::new);
+    public static final DeferredItem<Item> TROWEL = register("trowel", TrowelItem::new);
 
     public static final DeferredItem<Item> SUN_ARMOR_HELMET = registerCustomArmorItem("sun_crown", ModArmorMaterials.SUN_ARMOR_MATERIAL, ArmorType.HELMET, new Item.Properties());
 
@@ -67,6 +67,10 @@ public class ModItems {
     public static final DeferredItem<Item> TELEPORTATION_KEY = register("teleportation_key", TeleportationKeyItem::new , new Item.Properties());
 
     public static final DeferredItem<Item> LITTLE_MAN_SPAWN_EGG = register("little_man_spawn_egg", (properties) -> new SpawnEggItem(ModEntities.LITTLE_MAN_ENTITY.get(), properties));
+
+    public static final DeferredItem<Item> LITTLE_MAN_VOODOO = register("little_man_voodoo", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(16));
+
+    public static final DeferredItem<Item> VOODOO_CATCHER = register("voodoo_catcher", VoodooCatcherItem::new, new Item.Properties().stacksTo(1));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

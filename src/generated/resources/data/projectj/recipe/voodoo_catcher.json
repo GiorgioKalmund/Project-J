@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "J": "projectj:jade",
+    "R": "projectj:serpentinite_rod"
+  },
+  "pattern": [
+    "  J",
+    " R ",
+    "R  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectj:voodoo_catcher"
+  }
+}

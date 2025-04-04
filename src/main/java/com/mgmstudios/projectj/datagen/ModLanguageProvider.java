@@ -37,8 +37,10 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.FIRE_STARTER, "Fire Starter");
         addItem(ModItems.CRUDE_SACRIFICE_BOWL, "Crude Sacrificial Bowl");
         addItem(ModItems.FILLED_CRUDE_SACRIFICE_BOWL, "Filled Crude Sacrificial Bowl");
-        addItem(ModItems.LITTLE_MAN_SPAWN_EGG, "Little Man Spawn Egg");
         addItem(ModItems.TELEPORTATION_KEY, "Teleportation Key");
+        addItem(ModItems.LITTLE_MAN_SPAWN_EGG, "Little Man Spawn Egg");
+        addItem(ModItems.LITTLE_MAN_VOODOO, "Little Man Voodoo");
+        addItem(ModItems.VOODOO_CATCHER, "Voodoo Catcher");
 
         // Blocks
         addBlock(ModBlocks.RAW_ADOBE, "Raw Adobe");

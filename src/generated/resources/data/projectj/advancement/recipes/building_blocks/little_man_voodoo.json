@@ -1,17 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_crude_sacrificial_bowl": {
-      "conditions": {
-        "items": [
-          {
-            "items": "projectj:crude_sacrifice_bowl"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_jade_block": {
+    "has_jade": {
       "conditions": {
         "items": [
           {
@@ -23,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "projectj:ancient_altar"
+        "recipe": "projectj:little_man_voodoo"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -31,13 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_crude_sacrificial_bowl",
-      "has_jade_block"
+      "has_jade"
     ]
   ],
   "rewards": {
     "recipes": [
-      "projectj:ancient_altar"
+      "projectj:little_man_voodoo"
     ]
   }
 }

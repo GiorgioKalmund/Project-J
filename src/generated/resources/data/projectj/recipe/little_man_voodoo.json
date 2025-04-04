@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "J": "projectj:jade_block",
+    "S": "projectj:serpentinite_rock",
+    "W": "projectj:serpentinite_rock_wall",
+    "s": "projectj:serpentinite_rock_stairs"
+  },
+  "pattern": [
+    " J ",
+    "WSW",
+    " s "
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectj:little_man_voodoo"
+  }
+}

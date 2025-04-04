@@ -290,7 +290,29 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('J', ModBlocks.JADE_BLOCK)
                 .define('s', ModBlocks.SERPENTINITE_ROCK_SLAB)
                 .define('R', ModItems.SERPENTINITE_ROD)
-                .unlockedBy("B", this.has(ModItems.CRUDE_SACRIFICE_BOWL))
+                .unlockedBy("has_crude_sacrificial_bowl", this.has(ModItems.CRUDE_SACRIFICE_BOWL))
+                .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK.asItem()))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.LITTLE_MAN_VOODOO)
+                .pattern(" J ")
+                .pattern("WSW")
+                .pattern(" s ")
+                .define('J', ModBlocks.JADE_BLOCK)
+                .define('s', ModBlocks.SERPENTINITE_ROCK_STAIRS)
+                .define('S', ModBlocks.SERPENTINITE_ROCK)
+                .define('W', ModBlocks.SERPENTINITE_ROCK_WALL)
+                .unlockedBy("has_jade", this.has(ModBlocks.JADE_BLOCK.asItem()))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.VOODOO_CATCHER)
+                .pattern("  J")
+                .pattern(" R ")
+                .pattern("R  ")
+                .define('R', ModItems.SERPENTINITE_ROD)
+                .define('J', ModItems.JADE)
+                .unlockedBy("B", this.has(ModItems.JADE))
+                .unlockedBy("R", this.has(ModItems.SERPENTINITE_ROD))
                 .save(this.output);
 
         nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.RAW_PYRITE, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_PYRITE_BLOCK);

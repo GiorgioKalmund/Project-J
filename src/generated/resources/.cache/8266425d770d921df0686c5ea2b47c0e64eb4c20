@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-04T01:22:36.257465	Model Definitions - projectj
+// 1.21.4	2025-04-04T10:10:39.9775781	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -83,6 +83,7 @@ ff3f2d911ddbc9dce854b3666386ba2b3fa3c506 assets/projectj/items/jade_helmet.json
 571d265eb581067a257ac763b27592fc39c4b7cb assets/projectj/items/liquid_pyrite_bucket.json
 9d9aa488d731bf92cd39d7cd8d9433408f62bf53 assets/projectj/items/little_man_spawn_egg.json
 5828b03bd08e4920dd1880277b78640efc633326 assets/projectj/items/little_man_statue_block.json
+a924ec65d1fb19d09b1152c5a566d3b0f2d25947 assets/projectj/items/little_man_voodoo.json
 7d3e39c0634b0b68205702ce95c37259502e7dba assets/projectj/items/macuahuitl.json
 f4bb679a69f46a02b1d7c182ec7858960ceebc6d assets/projectj/items/magnifying_glass.json
 4a249e215bad42bcd7365b7871cd7bd653d99c36 assets/projectj/items/magnifying_glass_stand.json
@@ -134,6 +135,7 @@ b3f78545baad0f40008b21e14c868927e22c6898 assets/projectj/items/stripped_mesquite
 959a6d9c67ad5c22a8e6b8a05b7dbeee0189b13d assets/projectj/items/teleportation_key.json
 4b981089a82540f2b5396454b4c8e7ee5bafb98b assets/projectj/items/teleportation_pad.json
 0d07cd1207b3b870c10d6f978b1871f1354d7463 assets/projectj/items/trowel.json
+d9961ad2e0926a89990c8620709b43a18895d664 assets/projectj/items/voodoo_catcher.json
 43a4a30bf747df0266fb42396721117d33cf3e08 assets/projectj/models/block/adobe_bricks.json
 f895cfd78c398b8432120af12614de924d3f283e assets/projectj/models/block/adobe_bricks_slab.json
 b8c9026970e53138d82cb3980552ded513418081 assets/projectj/models/block/adobe_bricks_slab_top.json
@@ -223,6 +225,7 @@ aac07639f9960cc7e0e85f1d298694c7b6d01e88 assets/projectj/models/item/crude_sacri
 4a3620df8111c82691b9e37b45c59241104415ed assets/projectj/models/item/jade_helmet.json
 5ca45076d9cd376d1879706c9648b75858a44d38 assets/projectj/models/item/liquid_pyrite_bucket.json
 653a1c840d240ee616fe47f9771941c08934e1ee assets/projectj/models/item/little_man_spawn_egg.json
+2a92e05fba88eb741f72bab0824315718c6ef4fd assets/projectj/models/item/little_man_voodoo.json
 23eed9a4ee89e3825630c941d8381fbf4fdc7e01 assets/projectj/models/item/macuahuitl.json
 dbe697aa36b878514a33bd372ccbe2fded25f49d assets/projectj/models/item/magnifying_glass.json
 9114e82cc7b26786a659af8ac521ac62f7f920af assets/projectj/models/item/mesquite_brazier.json
@@ -236,3 +239,4 @@ caa4448fff1934cc38f77c2a2f2dd6853ae4515d assets/projectj/models/item/sacrificial
 c85e270be39290e186d49c4771f2e7d7316c0708 assets/projectj/models/item/sun_crown.json
 9ffe4d6b68a7fb44280cc4bb12ff9639e30abeb6 assets/projectj/models/item/teleportation_key.json
 382fad977e9d13a5cf6d7ab400e1084e79d63200 assets/projectj/models/item/trowel.json
+a5f73dd0fcb15f6c6f2dd2501d973952aaed6bd0 assets/projectj/models/item/voodoo_catcher.json

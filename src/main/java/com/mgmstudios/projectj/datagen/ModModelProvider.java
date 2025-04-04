@@ -86,8 +86,10 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.LIQUID_PYRITE_BUCKET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.OBSIDIAN_TOOTH.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.SERPENTINITE_ROD.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
-        itemModels.generateSpyglass(ModItems.MACUAHUITL.get());
+        itemModels.generateFlatItem(ModItems.LITTLE_MAN_VOODOO.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.VOODOO_CATCHER.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
 
+        itemModels.generateSpyglass(ModItems.MACUAHUITL.get());
         itemModels.generateSpyglass(ModItems.SUN_ARMOR_HELMET.get());
         itemModels.generateSpyglass(ModItems.JADE_HELMET.get());
         itemModels.generateSpyglass(ModItems.MAGNIFYING_GLASS.get());

@@ -2,6 +2,7 @@ package com.mgmstudios.projectj.entity.custom;
 
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.block.custom.EmptyLittleManStatueBlock;
+import com.mgmstudios.projectj.entity.VoodooEntity;
 import com.mgmstudios.projectj.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -17,15 +18,17 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.AbstractGolem;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
+import static com.mgmstudios.projectj.block.custom.LittleManStatueBlock.ACTIVE;
 import static com.mgmstudios.projectj.block.custom.LittleManStatueBlock.LITTLE_MAN_WILL_RESET;
 
-public class LittleManEntity extends AbstractGolem {
+public class LittleManEntity extends AbstractGolem implements VoodooEntity {
 
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
@@ -45,10 +48,11 @@ public class LittleManEntity extends AbstractGolem {
         this.goalSelector.addGoal(1, new WaterAvoidingRandomStrollGoal(this, 1.0));
         this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class, 6.0F));
         this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(4, new MoveToBlockGoal(this, 1, 30) {
+        this.goalSelector.addGoal(4, new GolemRandomStrollInVillageGoal(this, 0.6));
+        this.goalSelector.addGoal(6, new MoveToBlockGoal(this, 1.15, 30) {
             @Override
             protected boolean isValidTarget(LevelReader levelReader, BlockPos blockPos) {
-                return levelReader.getBlockState(blockPos).is(ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK) || (levelReader.getBlockState(blockPos).is(ModBlocks.LITTLE_MAN_STATUE_BLOCK.get()) && levelReader.getBlockState(blockPos).getValue(LITTLE_MAN_WILL_RESET));
+                return levelReader.getBlockState(blockPos).is(ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK) || (levelReader.getBlockState(blockPos).is(ModBlocks.LITTLE_MAN_STATUE_BLOCK.get()) && levelReader.getBlockState(blockPos).getValue(ACTIVE));
             }
         });
     }
@@ -81,6 +85,8 @@ public class LittleManEntity extends AbstractGolem {
         }
     }
 
-
-
+    @Override
+    public Item getVoodoo() {
+        return ModItems.LITTLE_MAN_VOODOO.get();
+    }
 }
