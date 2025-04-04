@@ -1,63 +1,33 @@
 {
   "variants": {
-    "active=false,facing=east,summoning=false": {
+    "facing=east,summoning=false": {
       "model": "projectj:block/little_man_statue_block",
       "y": 90
     },
-    "active=false,facing=east,summoning=true": {
+    "facing=east,summoning=true": {
       "model": "projectj:block/little_man_statue_block_summoning",
       "y": 90
     },
-    "active=false,facing=north,summoning=false": {
+    "facing=north,summoning=false": {
       "model": "projectj:block/little_man_statue_block"
     },
-    "active=false,facing=north,summoning=true": {
+    "facing=north,summoning=true": {
       "model": "projectj:block/little_man_statue_block_summoning"
     },
-    "active=false,facing=south,summoning=false": {
+    "facing=south,summoning=false": {
       "model": "projectj:block/little_man_statue_block",
       "y": 180
     },
-    "active=false,facing=south,summoning=true": {
+    "facing=south,summoning=true": {
       "model": "projectj:block/little_man_statue_block_summoning",
       "y": 180
     },
-    "active=false,facing=west,summoning=false": {
+    "facing=west,summoning=false": {
       "model": "projectj:block/little_man_statue_block",
       "y": 270
     },
-    "active=false,facing=west,summoning=true": {
+    "facing=west,summoning=true": {
       "model": "projectj:block/little_man_statue_block_summoning",
-      "y": 270
-    },
-    "active=true,facing=east,summoning=false": {
-      "model": "projectj:block/little_man_statue_block_active",
-      "y": 90
-    },
-    "active=true,facing=east,summoning=true": {
-      "model": "projectj:block/little_man_statue_block_wrong",
-      "y": 90
-    },
-    "active=true,facing=north,summoning=false": {
-      "model": "projectj:block/little_man_statue_block_active"
-    },
-    "active=true,facing=north,summoning=true": {
-      "model": "projectj:block/little_man_statue_block_wrong"
-    },
-    "active=true,facing=south,summoning=false": {
-      "model": "projectj:block/little_man_statue_block_active",
-      "y": 180
-    },
-    "active=true,facing=south,summoning=true": {
-      "model": "projectj:block/little_man_statue_block_wrong",
-      "y": 180
-    },
-    "active=true,facing=west,summoning=false": {
-      "model": "projectj:block/little_man_statue_block_active",
-      "y": 270
-    },
-    "active=true,facing=west,summoning=true": {
-      "model": "projectj:block/little_man_statue_block_wrong",
       "y": 270
     }
   }

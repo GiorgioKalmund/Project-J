@@ -36,20 +36,18 @@ public class LittleManStatueBlock extends HorizontalDirectionalBlock {
 
     protected static final MapCodec<LittleManStatueBlock> CODEC = simpleCodec(LittleManStatueBlock::new);
     public static final BooleanProperty SUMMONING = BooleanProperty.create("summoning");
-    public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
-    public static final BooleanProperty LITTLE_MAN_WILL_RESET = BooleanProperty.create("little_man_will_reset");
 
     public static final VoxelShape SHAPE_BASE = Block.box(0,0,0, 16, 5, 16);
     public static final VoxelShape SHAPE_BODY = Block.box(4,0,4, 13, 16, 13);
     public static final VoxelShape SHAPE = Shapes.or(SHAPE_BASE, SHAPE_BODY);
     public LittleManStatueBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(SUMMONING, false).setValue(ACTIVE, false).setValue(LITTLE_MAN_WILL_RESET, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(SUMMONING, false));
     }
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return active(state) && !summoning(state) ? SHAPE_BASE : SHAPE;
+        return SHAPE;
     }
 
     @Override
@@ -59,20 +57,20 @@ public class LittleManStatueBlock extends HorizontalDirectionalBlock {
 
     @Override
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
-        return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(SUMMONING, false).setValue(ACTIVE, false).setValue(LITTLE_MAN_WILL_RESET, false);
+        return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(SUMMONING, false);
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(FACING, SUMMONING, ACTIVE, LITTLE_MAN_WILL_RESET);
+        builder.add(FACING, SUMMONING);
     }
 
     @Override
     protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (level.isClientSide) return InteractionResult.SUCCESS;
 
-        if (level instanceof ServerLevel && stack.is(ModItems.JADE.get()) && !summoning(state) && !active(state)){
+        if (level instanceof ServerLevel && stack.is(ModItems.JADE.get()) && !summoning(state)){
             setSummoning(level, state, pos, true);
             level.scheduleTick(pos, this, 60);
             stack.shrink(1);
@@ -85,9 +83,8 @@ public class LittleManStatueBlock extends HorizontalDirectionalBlock {
 
     @Override
     protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (summoning(state) && !active(state)) {
+        if (summoning(state)){
             setSummoning(level, state, pos, false);
-            setActive(level, state, pos, true);
 
             LittleManEntity littleMan = new LittleManEntity(ModEntities.LITTLE_MAN_ENTITY.get(), level);
             Vec3 spawnPos = pos.getCenter().add(new Vec3(0, 0, 0));
@@ -99,9 +96,8 @@ public class LittleManStatueBlock extends HorizontalDirectionalBlock {
             level.playSound(null, BlockPos.containing(spawnPos), SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS);
 
             // Little man can refreeze as early as 16 seconds after spawning
-            level.scheduleTick(pos, this, 320);
-        } if (active(state) && !littleManWillReset(state))  {
-            setLittleManWillReset(level, state, pos, true);
+            level.scheduleTick(pos, ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK.get(), 320);
+            level.setBlockAndUpdate(pos, ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK.get().defaultBlockState());
         } else {
             System.err.println("Received tick but state is: " + state);
         }
@@ -110,7 +106,7 @@ public class LittleManStatueBlock extends HorizontalDirectionalBlock {
 
     @Override
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
-        if (entity instanceof LittleManEntity littleMan && state.getValue(LITTLE_MAN_WILL_RESET)){
+        if (entity instanceof LittleManEntity littleMan){
             resetState(level, state, pos);
             littleMan.remove(Entity.RemovalReason.DISCARDED);
             level.playSound(null, littleMan.blockPosition(), SoundEvents.SNIFFER_EGG_CRACK, SoundSource.BLOCKS);
@@ -122,27 +118,14 @@ public class LittleManStatueBlock extends HorizontalDirectionalBlock {
     private boolean summoning(BlockState state){
         return state.getValue(SUMMONING);
     }
-    private boolean active(BlockState state){
-        return state.getValue(ACTIVE);
-    }
 
-    private boolean littleManWillReset(BlockState state){
-        return state.getValue(LITTLE_MAN_WILL_RESET);
-    }
 
     private void setSummoning(Level level, BlockState state, BlockPos pos, boolean value){
-        level.setBlockAndUpdate(pos, state.setValue(SUMMONING, value).setValue(ACTIVE, false));
+        level.setBlockAndUpdate(pos, state.setValue(SUMMONING, value));
     }
 
-    private void setActive(Level level, BlockState state, BlockPos pos, boolean value){
-        level.setBlockAndUpdate(pos, state.setValue(SUMMONING, false).setValue(ACTIVE, value));
-    }
-
-    private void setLittleManWillReset(Level level, BlockState state, BlockPos pos, boolean value){
-        level.setBlockAndUpdate(pos, state.setValue(LITTLE_MAN_WILL_RESET, value));
-    }
 
     private void resetState(Level level, BlockState state, BlockPos pos){
-        level.setBlockAndUpdate(pos, state.setValue(SUMMONING, false).setValue(ACTIVE, false).setValue(LITTLE_MAN_WILL_RESET, false));
+        level.setBlockAndUpdate(pos, state.setValue(SUMMONING, false));
     }
 }

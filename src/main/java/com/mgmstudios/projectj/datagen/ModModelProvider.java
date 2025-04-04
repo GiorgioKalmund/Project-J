@@ -34,7 +34,6 @@ import java.util.List;
 import static com.mgmstudios.projectj.block.custom.AdobeFurnaceBlock.TIER1;
 import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.CRAFTING;
 import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.PRODUCT_INSIDE;
-import static com.mgmstudios.projectj.block.custom.LittleManStatueBlock.ACTIVE;
 import static com.mgmstudios.projectj.block.custom.LittleManStatueBlock.SUMMONING;
 import static com.mgmstudios.projectj.block.custom.TeleportationBlock.UNLOCKED;
 import static net.minecraft.client.data.models.BlockModelGenerators.*;
@@ -189,31 +188,11 @@ public class ModModelProvider extends ModelProvider {
     public void createLittleManStatue(BlockModelGenerators blockModels, Block block){
         ResourceLocation regular = ModelLocationUtils.getModelLocation(block );
         ResourceLocation summoning = ModelLocationUtils.getModelLocation(block, "_summoning");
-        ResourceLocation active = ModelLocationUtils.getModelLocation(block, "_active");
-        ResourceLocation wrong = ModelLocationUtils.getModelLocation(block, "_wrong");
         blockModels.blockStateOutput
                 .accept(
                         MultiVariantGenerator.multiVariant(block)
                                 .with(createHorizontalFacingDispatch())
-                                .with(
-                                        PropertyDispatch.properties(SUMMONING, ACTIVE)
-                                                .select(
-                                                        false, false,
-                                                        Variant.variant().with(VariantProperties.MODEL, regular)
-                                                )
-                                                .select(
-                                                        true, false,
-                                                        Variant.variant().with(VariantProperties.MODEL, summoning)
-                                                )
-                                                .select(
-                                                        false, true,
-                                                        Variant.variant().with(VariantProperties.MODEL, active)
-                                                )
-                                                .select(
-                                                        true, true,
-                                                        Variant.variant().with(VariantProperties.MODEL, wrong)
-                                                )
-                                )
+                                .with(createBooleanModelDispatch(SUMMONING, summoning, regular))
                 );
     }
 

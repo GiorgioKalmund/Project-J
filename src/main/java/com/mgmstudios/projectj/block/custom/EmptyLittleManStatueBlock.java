@@ -11,6 +11,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -25,6 +26,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -34,10 +36,11 @@ import static com.mgmstudios.projectj.block.custom.LittleManStatueBlock.SHAPE_BA
 
 public class EmptyLittleManStatueBlock extends HorizontalDirectionalBlock {
 
+    public static final BooleanProperty LITTLE_MAN_WILL_RESET = BooleanProperty.create("little_man_will_reset");
     protected static final MapCodec<EmptyLittleManStatueBlock> CODEC = simpleCodec(EmptyLittleManStatueBlock::new);
     public EmptyLittleManStatueBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(LITTLE_MAN_WILL_RESET, false));
     }
 
     @Override
@@ -52,18 +55,18 @@ public class EmptyLittleManStatueBlock extends HorizontalDirectionalBlock {
 
     @Override
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
-        return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite());
+        return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(LITTLE_MAN_WILL_RESET, false);
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(FACING);
+        builder.add(FACING, LITTLE_MAN_WILL_RESET);
     }
 
     @Override
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
-        if (entity instanceof LittleManEntity littleMan){
+        if (entity instanceof LittleManEntity littleMan && littleManWillReset(state)){
             littleMan.remove(Entity.RemovalReason.DISCARDED);
             //level.playSound(null, littleMan.blockPosition(), SoundEvents.BEEHIVE_ENTER, SoundSource.BLOCKS);
             level.playSound(null, pos, SoundEvents.SNIFFER_EGG_CRACK, SoundSource.BLOCKS);
@@ -86,6 +89,23 @@ public class EmptyLittleManStatueBlock extends HorizontalDirectionalBlock {
         } else {
             return InteractionResult.PASS;
         }
+    }
+
+    @Override
+    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if (!littleManWillReset(state)) {
+            setLittleManWillReset(level, state, pos, true);
+        }
+        super.tick(state, level, pos, random);
+    }
+
+    private boolean littleManWillReset(BlockState state){
+        return state.getValue(LITTLE_MAN_WILL_RESET);
+    }
+
+
+    private void setLittleManWillReset(Level level, BlockState state, BlockPos pos, boolean value){
+        level.setBlockAndUpdate(pos, state.setValue(LITTLE_MAN_WILL_RESET, value));
     }
 
 }

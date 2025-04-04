@@ -23,11 +23,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Random;
-
-import static com.mgmstudios.projectj.block.custom.LittleManStatueBlock.ACTIVE;
-import static com.mgmstudios.projectj.block.custom.LittleManStatueBlock.LITTLE_MAN_WILL_RESET;
-
 public class LittleManEntity extends AbstractGolem implements VoodooEntity {
 
     public final AnimationState idleAnimationState = new AnimationState();
@@ -52,7 +47,7 @@ public class LittleManEntity extends AbstractGolem implements VoodooEntity {
         this.goalSelector.addGoal(6, new MoveToBlockGoal(this, 1.15, 30) {
             @Override
             protected boolean isValidTarget(LevelReader levelReader, BlockPos blockPos) {
-                return levelReader.getBlockState(blockPos).is(ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK) || (levelReader.getBlockState(blockPos).is(ModBlocks.LITTLE_MAN_STATUE_BLOCK.get()) && levelReader.getBlockState(blockPos).getValue(ACTIVE));
+                return levelReader.getBlockState(blockPos).is(ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK);
             }
         });
     }

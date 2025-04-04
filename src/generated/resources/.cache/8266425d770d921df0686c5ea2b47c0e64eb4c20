@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-04T10:10:39.9775781	Model Definitions - projectj
+// 1.21.4	2025-04-04T10:59:15.4664184	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -17,7 +17,7 @@ e631c7188802b1c576f60a6935f58c5e177154ac assets/projectj/blockstates/damage_olme
 129f51236b5a037a8804262c7bd8d01d2a437567 assets/projectj/blockstates/jade_block.json
 dfdd72869320254b3ae6795b1e4d9a0a0c36ce64 assets/projectj/blockstates/jade_ore.json
 7fe76ecd31a04d044f73f3ca4e274d88eb70cecd assets/projectj/blockstates/liquid_pyrite.json
-30dac0da0db64b68a6aadafffd00cca4099025bc assets/projectj/blockstates/little_man_statue_block.json
+5d3574f0da9ade7d6f1b68d3d20f42cebd219198 assets/projectj/blockstates/little_man_statue_block.json
 2d399e8a69a98c18e4f5c50da79d873ae190d86d assets/projectj/blockstates/magnifying_glass_stand.json
 bf115fb9b83dd686f0304a8e409af9fdf6021be4 assets/projectj/blockstates/mesquite_bench.json
 4dd385c45ff3fee293019bf0bc2dbb9e9b01df1a assets/projectj/blockstates/mesquite_bench_corner.json
