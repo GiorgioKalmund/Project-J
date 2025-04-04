@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "projectj:pyrite_ingot",
+    "S": "projectj:serpentinite_rock"
+  },
+  "pattern": [
+    "S S",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectj:pyrite_magnet"
+  }
+}

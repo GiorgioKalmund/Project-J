@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-04T10:31:21.4110009	ModRecipeProvider
+// 1.21.4	2025-04-04T16:34:28.1012831	ModRecipeProvider
 6452fecec3921d0f3482c70b92d2b933f016e37a data/minecraft/advancement/recipes/building_blocks/adobe_bricks_smelting.json
 ac4b2c37b12e7e2dd5a94dcbc0f93297da607b33 data/minecraft/advancement/recipes/building_blocks/jade_block.json
 2ad5ba8a982b9bbdbf73f012b05a8e91ea044622 data/minecraft/advancement/recipes/building_blocks/obsidian.json
@@ -75,6 +75,7 @@ de3330ee5f558b664bcefcc0f27dab916f07cc94 data/projectj/advancement/recipes/build
 119fe74f18ef7ee8f0fc065f10d1a976efe29325 data/projectj/advancement/recipes/building_blocks/mesquite_stairs.json
 a552a8ab8801b6ca5c962943bc41838a1564eb2c data/projectj/advancement/recipes/building_blocks/mesquite_wood.json
 fd1835f9f40cc14a8dbc10c8e5d6bb569085a5f4 data/projectj/advancement/recipes/building_blocks/olmec_altar.json
+ca531e6c83bc5562aecdf290142417ac19d5a443 data/projectj/advancement/recipes/building_blocks/pyrite_magnet.json
 b06deb276950915b0177a375e5574ab7ea32b509 data/projectj/advancement/recipes/building_blocks/raw_adobe.json
 e5f231a725bd1d17285d561a02c73324b18676d3 data/projectj/advancement/recipes/building_blocks/regeneration_olmec_head.json
 83eb63643f933f1143635eb4e0b1e8af3d3916b6 data/projectj/advancement/recipes/building_blocks/resistant_olmec_head.json
@@ -128,6 +129,7 @@ f5cde97918845e5293886992881afae87b01bc37 data/projectj/recipe/mesquite_bench.jso
 d42335e0402088337db2ed061fd368ee466795b5 data/projectj/recipe/mesquite_stairs.json
 81c4e553d02cf3f5d925111feb21074ab45d7bc4 data/projectj/recipe/mesquite_wood.json
 d6bafa9589e1af7f3818ed514e953a5dae4d8c8f data/projectj/recipe/olmec_altar.json
+4eb79eafc1c4c1daf9553bcf7f278a57a5b457f0 data/projectj/recipe/pyrite_magnet.json
 4f4c8b320a685be033f916d31696a305e280425f data/projectj/recipe/raw_adobe.json
 769810dd21717629befaabae6c25bd6510d0d6c2 data/projectj/recipe/regeneration_olmec_head.json
 a4e05396ae98b853bb9f24935c11cecb797a9c3f data/projectj/recipe/resistant_olmec_head.json

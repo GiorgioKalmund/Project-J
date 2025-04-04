@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-04T10:59:15.4664184	Model Definitions - projectj
+// 1.21.4	2025-04-04T16:56:29.4840611	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -106,6 +106,7 @@ a6dcba9dc781c521a78cc57cc3363cc82e5e48d8 assets/projectj/items/olmec_altar.json
 d33cdaaaaf0cd0ee49f8738e18078fcebad32356 assets/projectj/items/potted_mesquite_sapling.json
 d0874c2112a868fe14a1e74e40f1a42d0b94cb06 assets/projectj/items/pyrite_block.json
 babf0a0116cd33c470ef8b746cdd8cc591fd07e7 assets/projectj/items/pyrite_ingot.json
+c96da2e62b739675003038590660a1dd8d060dd8 assets/projectj/items/pyrite_magnet.json
 6738029d49709fa728677ae1385128236398986a assets/projectj/items/pyrite_ore.json
 492f9f434f6bb99befe23a82340ec8394427218e assets/projectj/items/raw_adobe.json
 5e4f7fcf393f89cf7bd262bb1481ac02750dcf26 assets/projectj/items/raw_jade.json
@@ -232,6 +233,7 @@ dbe697aa36b878514a33bd372ccbe2fded25f49d assets/projectj/models/item/magnifying_
 0ed8110b95f96e3c9081e1ec3b05018acb71b9bd assets/projectj/models/item/mesquite_sapling.json
 09cab150482989c21b2d2de107eb18eedfbac95b assets/projectj/models/item/obsidian_tooth.json
 ffcc726298e3611b938887a80a1db9c4391d1035 assets/projectj/models/item/pyrite_ingot.json
+017d7efbff9698bd3727d1d340292a684d146368 assets/projectj/models/item/pyrite_magnet.json
 ba637adad06995f9e8f952ca598514c60ce4cfbb assets/projectj/models/item/raw_jade.json
 dea83879f7224ce8e5006eb343d4d8bf63b2fd25 assets/projectj/models/item/raw_pyrite.json
 caa4448fff1934cc38f77c2a2f2dd6853ae4515d assets/projectj/models/item/sacrificial_dagger.json

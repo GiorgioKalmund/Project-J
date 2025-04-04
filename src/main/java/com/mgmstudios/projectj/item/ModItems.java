@@ -72,6 +72,8 @@ public class ModItems {
 
     public static final DeferredItem<Item> VOODOO_CATCHER = register("voodoo_catcher", VoodooCatcherItem::new, new Item.Properties().stacksTo(1));
 
+    public static final DeferredItem<Item> PYRITE_MAGNET = register("pyrite_magnet", (properties) -> new MagnetItem(properties.setId(createKey("pyrite_magnet")), 5, 0.3F));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

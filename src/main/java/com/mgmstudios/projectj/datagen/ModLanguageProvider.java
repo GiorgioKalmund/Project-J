@@ -41,6 +41,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.LITTLE_MAN_SPAWN_EGG, "Little Man Spawn Egg");
         addItem(ModItems.LITTLE_MAN_VOODOO, "Little Man Voodoo");
         addItem(ModItems.VOODOO_CATCHER, "Voodoo Catcher");
+        addItem(ModItems.PYRITE_MAGNET, "Pyrite Magnet");
 
         // Blocks
         addBlock(ModBlocks.RAW_ADOBE, "Raw Adobe");
