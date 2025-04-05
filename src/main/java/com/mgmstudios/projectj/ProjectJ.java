@@ -22,10 +22,13 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.animal.Ocelot;
 import net.minecraft.world.entity.monster.Zombie;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.items.IItemHandler;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -120,6 +123,13 @@ public class ProjectJ
             event.registerBlockEntityRenderer(ModBlockEntities.ANCIENT_ALTAR_BE.get(), AncientAltarEntityRenderer::new);
         }
 
+        @SubscribeEvent
+        private static void registerCapabilities(RegisterCapabilitiesEvent event) {
+            event.registerBlockEntity(Capabilities.FluidHandler.BLOCK,
+                    ModBlockEntities.ANCIENT_ALTAR_BE.get(),
+                    (entity, context) -> entity.getCapability(Capabilities.FluidHandler.BLOCK, entity)
+            );
+        }
     }
 
     @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.GAME)

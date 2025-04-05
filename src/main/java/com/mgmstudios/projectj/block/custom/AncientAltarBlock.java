@@ -1,6 +1,7 @@
 package com.mgmstudios.projectj.block.custom;
 
 import com.mgmstudios.projectj.block.entity.custom.AncientAltarBlockEntity;
+import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -19,6 +20,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -38,7 +40,12 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.FluidType;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class AncientAltarBlock extends BaseEntityBlock {
 
@@ -114,10 +121,25 @@ public class AncientAltarBlock extends BaseEntityBlock {
             player.displayClientMessage(Component.literal("Crafting procedure started."), true);
 
             return InteractionResult.SUCCESS;
+        } else if (stackToInsert.is(ModItems.LIQUID_PYRITE_BUCKET)){
+            FluidStack pyrite = new FluidStack(ModFluids.FLOWING_PYRITE.get(), FluidType.BUCKET_VOLUME);
+            int filled = altarEntity.fill(pyrite, IFluidHandler.FluidAction.EXECUTE);
+            if (filled > 0){
+                player.setItemInHand(hand, new ItemStack(Items.BUCKET));
+                player.displayClientMessage(Component.literal("Filled altar with " + filled + "mb"), true);
+                return InteractionResult.SUCCESS;
+            }
+        } else if (stackToInsert.is(Items.BUCKET.asItem())){
+            FluidStack drained = altarEntity.drain(1000, IFluidHandler.FluidAction.EXECUTE);
+            if (!drained.isEmpty()){
+                player.setItemInHand(hand, new ItemStack(ModItems.LIQUID_PYRITE_BUCKET.get()));
+                player.displayClientMessage(Component.literal("Drained altar with " + drained.getAmount() + "mb"), true);
+                return InteractionResult.SUCCESS;
+            }
+            return InteractionResult.PASS;
         }
-
         // Sacrificial blood interactions
-        if (stackToInsert.is(ModItems.CRUDE_SACRIFICE_BOWL) || stackToInsert.is(ModItems.FILLED_CRUDE_SACRIFICE_BOWL)){
+        else if (stackToInsert.is(ModItems.CRUDE_SACRIFICE_BOWL) || stackToInsert.is(ModItems.FILLED_CRUDE_SACRIFICE_BOWL)){
             if (state.getValue(PRODUCT_INSIDE) && stackToInsert.is(ModItems.CRUDE_SACRIFICE_BOWL)){
                 if (stackToInsert.getCount() == 1){
                     player.setItemInHand(hand, new ItemStack(ModItems.FILLED_CRUDE_SACRIFICE_BOWL.get()));

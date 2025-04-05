@@ -1,46 +1,47 @@
 package com.mgmstudios.projectj.block.entity.custom;
 
-import com.google.common.annotations.VisibleForTesting;
-import com.mgmstudios.projectj.block.custom.AncientAltarBlock;
 import com.mgmstudios.projectj.block.entity.ModBlockEntities;
-import net.minecraft.Optionull;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.client.multiplayer.chat.report.ReportEnvironment;
+import com.mgmstudios.projectj.fluid.ModFluids;
 import net.minecraft.core.*;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.animal.allay.Allay;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.EntityBlock;
-import net.minecraft.world.level.block.SculkCatalystBlock;
-import net.minecraft.world.level.block.SculkSpreader;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.SculkCatalystBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.gameevent.*;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.capabilities.BlockCapability;
+import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.ICapabilityProvider;
+import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
 import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.PRODUCT_INSIDE;
 
-public class AncientAltarBlockEntity extends BlockEntity  implements GameEventListener.Provider<AncientAltarBlockEntity.AncientAltarListener>{
+public class AncientAltarBlockEntity extends BlockEntity  implements GameEventListener.Provider<AncientAltarBlockEntity.AncientAltarListener>, IFluidHandler,ICapabilityProvider<BlockCapability<IFluidHandler, Direction>,  IFluidHandler, IFluidHandler> {
+
+    private final FluidTank fluidTank = new FluidTank(1000, fs -> fs.getFluid() == ModFluids.FLOWING_PYRITE.get());
+
+    private BlockCapabilityCache<IFluidHandler, Direction> fluidCache;
+
+    @Override
+    public void onLoad() {
+        super.onLoad();
+    }
+
     public final ItemStackHandler inventory = new ItemStackHandler(3) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -102,6 +103,10 @@ public class AncientAltarBlockEntity extends BlockEntity  implements GameEventLi
         itemsInside = 0;
         crafting = false;
 
+        if (level instanceof ServerLevel serverLevel){
+            System.out.println("Created fluid capability");
+            this.fluidCache = BlockCapabilityCache.<IFluidHandler, Direction>create(Capabilities.FluidHandler.BLOCK, serverLevel, pos, Direction.UP);
+        }
         this.deathListener= new AncientAltarListener(blockState, new BlockPositionSource(pos));
     }
 
@@ -164,6 +169,49 @@ public class AncientAltarBlockEntity extends BlockEntity  implements GameEventLi
     @Override
     public AncientAltarListener getListener() {
         return deathListener;
+    }
+
+    @Override
+    public int getTanks() {
+        return fluidTank.getTanks();
+    }
+
+    @Override
+    public FluidStack getFluidInTank(int i) {
+        return fluidTank.getFluid();
+    }
+
+    @Override
+    public int getTankCapacity(int tank) {
+        return fluidTank.getTankCapacity(tank);
+    }
+
+    @Override
+    public boolean isFluidValid(int tank, FluidStack fluidStack) {
+        return fluidTank.isFluidValid(tank, fluidStack);
+    }
+
+    @Override
+    public int fill(FluidStack fluidStack, FluidAction fluidAction) {
+        return fluidTank.fill(fluidStack, fluidAction);
+    }
+
+    @Override
+    public FluidStack drain(FluidStack fluidStack, FluidAction fluidAction) {
+        return fluidTank.drain(fluidStack, fluidAction);
+    }
+
+    @Override
+    public FluidStack drain(int maxDrain, FluidAction fluidAction) {
+        return fluidTank.drain(maxDrain, fluidAction);
+    }
+
+    @Override
+    public @Nullable IFluidHandler getCapability(BlockCapability<IFluidHandler, Direction> cap, IFluidHandler fluidHandler) {
+        if (cap.equals(Capabilities.FluidHandler.BLOCK)) {
+            return fluidHandler;
+        }
+        return null;
     }
 
 
