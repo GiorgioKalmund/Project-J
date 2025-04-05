@@ -36,6 +36,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
+import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.PYRITE_INSIDE;
 import static com.mgmstudios.projectj.block.custom.TeleportationBlock.UNLOCKED;
 
 public class ModBlocks {
@@ -154,7 +155,7 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> TELEPORTATION_PAD = register("teleportation_pad", TeleportationBlock::new, BlockBehaviour.Properties.of().noOcclusion().lightLevel(teleportationPadEmission(10)));
 
-    public static final DeferredBlock<Block> ANCIENT_ALTAR = register("ancient_altar", AncientAltarBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).noOcclusion().lightLevel(state -> 3), new Item.Properties().rarity(Rarity.RARE));
+    public static final DeferredBlock<Block> ANCIENT_ALTAR = register("ancient_altar", AncientAltarBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).noOcclusion().lightLevel(ancientAltarBlockEmission(12)), new Item.Properties().rarity(Rarity.RARE));
 
     public static final DeferredBlock<Block> LITTLE_MAN_STATUE_BLOCK = register("little_man_statue_block", LittleManStatueBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).noOcclusion(), new Item.Properties());
 
@@ -271,6 +272,10 @@ public class ModBlocks {
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return properties -> properties.getValue(BlockStateProperties.LIT) ? lightValue : 0;
+    }
+
+    private static ToIntFunction<BlockState> ancientAltarBlockEmission(int lightValue) {
+        return properties -> properties.getValue(PYRITE_INSIDE) ? lightValue : 3;
     }
 
     private static ToIntFunction<BlockState> teleportationPadEmission(int lightValue) {

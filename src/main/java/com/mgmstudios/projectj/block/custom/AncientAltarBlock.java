@@ -22,6 +22,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.StructureBlock;
@@ -84,7 +85,7 @@ public class AncientAltarBlock extends BaseEntityBlock {
         if (state.getValue(CRAFTING)){
             if (level.getBlockEntity(pos) instanceof AncientAltarBlockEntity altarEntity) {
                 // TODO: Crafting system
-                level.setBlockAndUpdate(pos, state.setValue(BLOOD_INSIDE, false).setValue(CRAFTING, false));
+                level.setBlockAndUpdate(pos, state.setValue(BLOOD_INSIDE, false).setValue(CRAFTING, false).setValue(PYRITE_INSIDE, false));
                 level.playSound(null, pos, SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.BLOCKS, 1f, 1f);
 
                 altarEntity.clearAllContents();
@@ -93,6 +94,8 @@ public class AncientAltarBlock extends BaseEntityBlock {
                 System.out.println("Crafted: " + resultStack);
                 Vec3 centerPos = pos.getBottomCenter();
                 level.addFreshEntity(new ItemEntity(level, centerPos.x, centerPos.y + 1.5, centerPos.z, resultStack));
+
+                altarEntity.drain(FluidType.BUCKET_VOLUME, IFluidHandler.FluidAction.EXECUTE);
             }
         }
         super.tick(state, level, pos, random);
@@ -108,10 +111,10 @@ public class AncientAltarBlock extends BaseEntityBlock {
         if (stackToInsert.is(ModItems.SACRIFICIAL_DAGGER) && !altarEntity.isEmpty()){
 
             // Check if valid recipe
-
             level.setBlockAndUpdate(pos, state.setValue(CRAFTING, true));
             level.playSound(player, pos, SoundEvents.BEACON_ACTIVATE, SoundSource.BLOCKS, 1f, 2f);
             level.scheduleTick(pos, this, 60);
+
             player.displayClientMessage(Component.literal("Crafting procedure started."), true);
 
             return InteractionResult.SUCCESS;
@@ -119,25 +122,26 @@ public class AncientAltarBlock extends BaseEntityBlock {
             FluidStack pyrite = new FluidStack(ModFluids.FLOWING_PYRITE.get(), FluidType.BUCKET_VOLUME);
             int filled = altarEntity.fill(pyrite, IFluidHandler.FluidAction.EXECUTE);
             if (filled > 0){
-                player.setItemInHand(hand, new ItemStack(Items.BUCKET));
-                player.displayClientMessage(Component.literal("Filled altar with " + filled + "mb"), true);
+                if (!player.isCreative()){
+                    player.setItemInHand(hand, new ItemStack(Items.BUCKET));
+                }
+                //player.displayClientMessage(Component.literal("Filled altar with " + filled + "mb"), true);
                 player.playNotifySound(SoundEvents.BUCKET_EMPTY_LAVA, SoundSource.BLOCKS, 1f, 1f);
                 level.setBlockAndUpdate(pos, state.setValue(PYRITE_INSIDE, true));
                 return InteractionResult.SUCCESS;
             }
-        } else if (stackToInsert.is(Items.BUCKET.asItem())){
-            FluidStack drained = altarEntity.drain(1000, IFluidHandler.FluidAction.EXECUTE);
+        } else if (stackToInsert.is(Items.BUCKET)){
+            FluidStack drained = altarEntity.drain(FluidType.BUCKET_VOLUME, IFluidHandler.FluidAction.EXECUTE);
             if (!drained.isEmpty()){
-                player.setItemInHand(hand, new ItemStack(ModItems.LIQUID_PYRITE_BUCKET.get()));
-                player.displayClientMessage(Component.literal("Drained altar with " + drained.getAmount() + "mb of " + drained.getFluid()), true);
+                if (!player.isCreative()){
+                    player.setItemInHand(hand, new ItemStack(ModItems.LIQUID_PYRITE_BUCKET.get()));
+                }
+                //player.displayClientMessage(Component.literal("Drained altar with " + drained.getAmount() + "mb of " + drained.getFluid()), true);
                 player.playNotifySound(SoundEvents.BUCKET_FILL_LAVA, SoundSource.BLOCKS, 1f, 1f);
                 level.setBlockAndUpdate(pos, state.setValue(PYRITE_INSIDE, false));
                 return InteractionResult.SUCCESS;
             }
-            return InteractionResult.PASS;
-        }
-        // Sacrificial blood interactions
-        else if (stackToInsert.is(ModItems.CRUDE_SACRIFICE_BOWL) || stackToInsert.is(ModItems.FILLED_CRUDE_SACRIFICE_BOWL)){
+        } else if (stackToInsert.is(ModItems.CRUDE_SACRIFICE_BOWL) || stackToInsert.is(ModItems.FILLED_CRUDE_SACRIFICE_BOWL)){
             if (state.getValue(BLOOD_INSIDE) && stackToInsert.is(ModItems.CRUDE_SACRIFICE_BOWL)){
                 if (stackToInsert.getCount() == 1){
                     player.setItemInHand(hand, new ItemStack(ModItems.FILLED_CRUDE_SACRIFICE_BOWL.get()));
@@ -165,10 +169,11 @@ public class AncientAltarBlock extends BaseEntityBlock {
             return InteractionResult.SUCCESS;
         }
 
+
         boolean canInsert = altarEntity.canInsert();
         boolean itemInHand = !stackToInsert.isEmpty();
 
-        if (level instanceof ClientLevel) {
+        if (level.isClientSide()) {
             return InteractionResult.SUCCESS;
         }
 
@@ -218,6 +223,14 @@ public class AncientAltarBlock extends BaseEntityBlock {
     @Override
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
         return super.getStateForPlacement(context).setValue(CRAFTING, false).setValue(BLOOD_INSIDE, false).setValue(PYRITE_INSIDE, false);
+    }
+
+    @Override
+    public void onBlockStateChange(LevelReader level, BlockPos pos, BlockState oldState, BlockState newState) {
+        if (level instanceof ServerLevel serverLevel){
+            System.out.println(" -> " + newState);
+        }
+        super.onBlockStateChange(level, pos, oldState, newState);
     }
 
     @Override

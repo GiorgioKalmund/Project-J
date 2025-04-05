@@ -243,7 +243,7 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
                 if (livingentity instanceof Animal){
                     this.positionSource
                             .getPosition(serverLevel)
-                            .ifPresent(vec3 -> fillAltar(serverLevel, BlockPos.containing(vec3), blockState));
+                            .ifPresent(vec3 -> fillAltar(serverLevel, BlockPos.containing(vec3)));
                     livingentity.skipDropExperience();
                 }
                 return true;
@@ -252,8 +252,8 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
             }
         }
 
-        public void fillAltar(ServerLevel serverLevel, BlockPos blockPos, BlockState blockState){
-            serverLevel.setBlockAndUpdate(blockPos, blockState.setValue(BLOOD_INSIDE, true));
+        public void fillAltar(ServerLevel serverLevel, BlockPos blockPos){
+            serverLevel.setBlockAndUpdate(blockPos, serverLevel.getBlockState(blockPos).setValue(BLOOD_INSIDE, true));
             serverLevel.playSound(null, blockPos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS);
         }
     }
