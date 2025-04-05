@@ -20,7 +20,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.*;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.capabilities.BlockCapability;
-import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.ICapabilityProvider;
 import net.neoforged.neoforge.fluids.FluidStack;
@@ -29,9 +28,9 @@ import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
-import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.PRODUCT_INSIDE;
+import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.BLOOD_INSIDE;
 
-public class AncientAltarBlockEntity extends BlockEntity  implements GameEventListener.Provider<AncientAltarBlockEntity.AncientAltarListener>, IFluidHandler,ICapabilityProvider<BlockCapability<IFluidHandler, Direction>,  IFluidHandler, IFluidHandler> {
+public class AncientAltarBlockEntity extends BlockEntity  implements GameEventListener.Provider<AncientAltarBlockEntity.AncientAltarListener>, IFluidHandler, ICapabilityProvider<BlockCapability<IFluidHandler, Direction>,  IFluidHandler, IFluidHandler> {
 
     private final FluidTank fluidTank = new FluidTank(1000, fs -> fs.getFluid() == ModFluids.FLOWING_PYRITE.get());
 
@@ -137,6 +136,7 @@ public class AncientAltarBlockEntity extends BlockEntity  implements GameEventLi
         tag.put("inventory", inventory.serializeNBT(registries));
         tag.putInt("itemsInside", itemsInside);
         tag.putBoolean("crafting", crafting);
+        fluidTank.writeToNBT(registries, tag);
     }
 
 
@@ -158,6 +158,7 @@ public class AncientAltarBlockEntity extends BlockEntity  implements GameEventLi
         inventory.deserializeNBT(registries, tag.getCompound("inventory"));
         itemsInside = tag.getInt("itemsInside");
         crafting = tag.getBoolean("crafting");
+        fluidTank.readFromNBT(registries, tag);
     }
 
     @Override
@@ -249,7 +250,7 @@ public class AncientAltarBlockEntity extends BlockEntity  implements GameEventLi
         }
 
         public void fillAltar(ServerLevel serverLevel, BlockPos blockPos, BlockState blockState){
-            serverLevel.setBlockAndUpdate(blockPos, blockState.setValue(PRODUCT_INSIDE, true));
+            serverLevel.setBlockAndUpdate(blockPos, blockState.setValue(BLOOD_INSIDE, true));
             serverLevel.playSound(null, blockPos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS);
         }
     }

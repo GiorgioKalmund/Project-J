@@ -32,8 +32,7 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 import java.util.List;
 
 import static com.mgmstudios.projectj.block.custom.AdobeFurnaceBlock.TIER1;
-import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.CRAFTING;
-import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.PRODUCT_INSIDE;
+import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.*;
 import static com.mgmstudios.projectj.block.custom.LittleManStatueBlock.SUMMONING;
 import static com.mgmstudios.projectj.block.custom.TeleportationBlock.UNLOCKED;
 import static net.minecraft.client.data.models.BlockModelGenerators.*;
@@ -330,26 +329,44 @@ public class ModModelProvider extends ModelProvider {
         ResourceLocation crafting = ModelLocationUtils.getModelLocation(block, "_crafting");
         ResourceLocation filled = ModelLocationUtils.getModelLocation(block, "_filled");
         ResourceLocation craftingFilled = ModelLocationUtils.getModelLocation(block, "_crafting_filled");
+        ResourceLocation pyrite = ModelLocationUtils.getModelLocation(block, "_pyrite");
+        ResourceLocation pyriteFilled = ModelLocationUtils.getModelLocation(block, "_pyrite_filled");
 
         blockModels.blockStateOutput
                 .accept(
                         MultiVariantGenerator.multiVariant(block)
                                 .with(
-                                        PropertyDispatch.properties(CRAFTING, PRODUCT_INSIDE)
+                                        PropertyDispatch.properties(CRAFTING, BLOOD_INSIDE, PYRITE_INSIDE)
                                                 .select(
-                                                        false, false,
+                                                        false, false, false,
                                                         Variant.variant().with(VariantProperties.MODEL, modelLocation)
                                                 )
                                                 .select(
-                                                        true, false,
+                                                        true, false, false,
                                                         Variant.variant().with(VariantProperties.MODEL, crafting)
                                                 )
                                                 .select(
-                                                        false, true,
+                                                        false, true, false,
                                                         Variant.variant().with(VariantProperties.MODEL, filled)
                                                 )
                                                 .select(
-                                                        true, true,
+                                                        true, true, false,
+                                                        Variant.variant().with(VariantProperties.MODEL, craftingFilled)
+                                                )
+                                                .select(
+                                                        false, false, true,
+                                                        Variant.variant().with(VariantProperties.MODEL, pyrite)
+                                                )
+                                                .select(
+                                                        true, false, true,
+                                                        Variant.variant().with(VariantProperties.MODEL, crafting)
+                                                )
+                                                .select(
+                                                        false, true, true,
+                                                        Variant.variant().with(VariantProperties.MODEL, pyriteFilled)
+                                                )
+                                                .select(
+                                                        true, true, true,
                                                         Variant.variant().with(VariantProperties.MODEL, craftingFilled)
                                                 )
                                 )

@@ -1,15 +1,27 @@
 {
   "variants": {
-    "altar_crafting=false,altar_product_inside=false": {
+    "altar_blood_inside=false,altar_crafting=false,altar_pyrite_inside=false": {
       "model": "projectj:block/ancient_altar"
     },
-    "altar_crafting=false,altar_product_inside=true": {
-      "model": "projectj:block/ancient_altar_filled"
+    "altar_blood_inside=false,altar_crafting=false,altar_pyrite_inside=true": {
+      "model": "projectj:block/ancient_altar_pyrite"
     },
-    "altar_crafting=true,altar_product_inside=false": {
+    "altar_blood_inside=false,altar_crafting=true,altar_pyrite_inside=false": {
       "model": "projectj:block/ancient_altar_crafting"
     },
-    "altar_crafting=true,altar_product_inside=true": {
+    "altar_blood_inside=false,altar_crafting=true,altar_pyrite_inside=true": {
+      "model": "projectj:block/ancient_altar_crafting"
+    },
+    "altar_blood_inside=true,altar_crafting=false,altar_pyrite_inside=false": {
+      "model": "projectj:block/ancient_altar_filled"
+    },
+    "altar_blood_inside=true,altar_crafting=false,altar_pyrite_inside=true": {
+      "model": "projectj:block/ancient_altar_pyrite_filled"
+    },
+    "altar_blood_inside=true,altar_crafting=true,altar_pyrite_inside=false": {
+      "model": "projectj:block/ancient_altar_crafting_filled"
+    },
+    "altar_blood_inside=true,altar_crafting=true,altar_pyrite_inside=true": {
       "model": "projectj:block/ancient_altar_crafting_filled"
     }
   }

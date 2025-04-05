@@ -1,10 +1,10 @@
-// 1.21.4	2025-04-04T16:56:29.4840611	Model Definitions - projectj
+// 1.21.4	2025-04-05T19:02:14.057206	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
 639e3e158347a8da7d7e87c7d0ffe4a9bd159c4d assets/projectj/blockstates/adobe_bricks_wall.json
 68534f251c3c82fa6c7db8f259874b2acb9e8fec assets/projectj/blockstates/adobe_furnace.json
-6f99f541d363a457c01a92451bb2289560e501b4 assets/projectj/blockstates/ancient_altar.json
+56d477c1553bf8f402af01cea84809d8b0301378 assets/projectj/blockstates/ancient_altar.json
 309790fd770e0a99af56c7e38a82bd6f18f80fda assets/projectj/blockstates/chimney.json
 231593025ca503c9848576d43d124808adc10da9 assets/projectj/blockstates/cobbled_serpentinite.json
 8d5be98e392edd478c242d7cdbb17dc0d893d743 assets/projectj/blockstates/cobbled_serpentinite_slab.json
