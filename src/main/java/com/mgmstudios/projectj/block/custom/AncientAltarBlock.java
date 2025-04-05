@@ -210,9 +210,6 @@ public class AncientAltarBlock extends BaseEntityBlock {
         return InteractionResult.SUCCESS;
     }
 
-
-
-
     @Override
     protected MapCodec<? extends BaseEntityBlock> codec() {
         return CODEC;

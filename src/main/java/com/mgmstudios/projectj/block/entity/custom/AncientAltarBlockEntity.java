@@ -30,7 +30,11 @@ import org.jetbrains.annotations.Nullable;
 
 import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.BLOOD_INSIDE;
 
-public class AncientAltarBlockEntity extends BlockEntity  implements GameEventListener.Provider<AncientAltarBlockEntity.AncientAltarListener>, IFluidHandler, ICapabilityProvider<BlockCapability<IFluidHandler, Direction>,  IFluidHandler, IFluidHandler> {
+public class AncientAltarBlockEntity extends BlockEntity  implements
+        GameEventListener.Provider<AncientAltarBlockEntity.AncientAltarListener>,
+        IFluidHandler,
+        ICapabilityProvider<BlockCapability<IFluidHandler, Direction>,  IFluidHandler, IFluidHandler>
+{
 
     private final FluidTank fluidTank = new FluidTank(1000, fs -> fs.getFluid() == ModFluids.FLOWING_PYRITE.get());
 
@@ -208,7 +212,6 @@ public class AncientAltarBlockEntity extends BlockEntity  implements GameEventLi
         }
         return null;
     }
-
 
     public static class AncientAltarListener implements GameEventListener {
         private final BlockState blockState;

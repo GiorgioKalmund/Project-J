@@ -129,6 +129,8 @@ public class ProjectJ
                     ModBlockEntities.ANCIENT_ALTAR_BE.get(),
                     (entity, context) -> entity.getCapability(Capabilities.FluidHandler.BLOCK, entity)
             );
+
+            event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.ANCIENT_ALTAR_BE.get(), (entity, context) -> entity.getInventory());
         }
     }
 
