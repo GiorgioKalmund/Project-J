@@ -35,8 +35,6 @@ public class AncientAltarBlockEntity extends BlockEntity  implements GameEventLi
 
     private final FluidTank fluidTank = new FluidTank(1000, fs -> fs.getFluid() == ModFluids.FLOWING_PYRITE.get());
 
-    private BlockCapabilityCache<IFluidHandler, Direction> fluidCache;
-
     @Override
     public void onLoad() {
         super.onLoad();
@@ -103,10 +101,6 @@ public class AncientAltarBlockEntity extends BlockEntity  implements GameEventLi
         itemsInside = 0;
         crafting = false;
 
-        if (level instanceof ServerLevel serverLevel){
-            System.out.println("Created fluid capability");
-            this.fluidCache = BlockCapabilityCache.<IFluidHandler, Direction>create(Capabilities.FluidHandler.BLOCK, serverLevel, pos, Direction.UP);
-        }
         this.deathListener= new AncientAltarListener(blockState, new BlockPositionSource(pos));
     }
 
