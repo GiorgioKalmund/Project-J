@@ -43,13 +43,14 @@ public class AncientAltarRecipe implements Recipe<AncientAltarInput> {
             return false;
         }
 
-        for (int i = 0; i < input.size(); i++) {
-            //System.out.println(inputItems.get(i) + " vs " + input.getItem(i));
-            if (!this.inputItems.get(i).test(input.getItem(i))) {
-                //System.out.println(inputItems.get(i).getValues().get(0) + " is not equal to " + input.getItem(i));
-                return false;
-            }
-        }
+        var nonEmptyItems = new java.util.ArrayList<ItemStack>(input.size());
+        for (var item : input.items())
+            if (!item.isEmpty())
+                nonEmptyItems.add(item);
+
+        boolean valid = net.neoforged.neoforge.common.util.RecipeMatcher.findMatches(nonEmptyItems, this.inputItems) != null;
+        if (!valid)
+            return false;
 
         System.out.println("VALID");
         return true;
