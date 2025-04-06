@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 2738116,
+    "separation": 5,
+    "spacing": 10
+  },
+  "structures": [
+    {
+      "structure": "projectj:big_olmec_head",
+      "weight": 1
+    }
+  ]
+}
