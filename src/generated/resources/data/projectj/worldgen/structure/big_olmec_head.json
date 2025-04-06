@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:desert_pyramid",
+  "type": "projectj:big_olmec_head",
   "biomes": "#minecraft:has_structure/swamp_hut",
   "spawn_overrides": {},
   "step": "surface_structures"

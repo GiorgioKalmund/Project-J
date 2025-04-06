@@ -1,6 +1,7 @@
 package com.mgmstudios.projectj.worldgen;
 
 import com.mgmstudios.projectj.ProjectJ;
+import com.mgmstudios.projectj.worldgen.structure.BigOlmecHeadStructure;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -26,7 +27,7 @@ public class ModStructures {
         HolderGetter<Biome> holdergetter = context.lookup(Registries.BIOME);
         HolderGetter<StructureTemplatePool> templatePools = context.lookup(Registries.TEMPLATE_POOL);
 
-        context.register(BIG_OLMEC_HEAD, new DesertPyramidStructure(new Structure.StructureSettings.Builder(
+        context.register(BIG_OLMEC_HEAD, new BigOlmecHeadStructure(new Structure.StructureSettings.Builder(
                 holdergetter.getOrThrow(BiomeTags.HAS_SWAMP_HUT))
                 .generationStep(GenerationStep.Decoration.SURFACE_STRUCTURES)
                 .build()

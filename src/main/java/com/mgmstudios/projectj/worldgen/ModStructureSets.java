@@ -23,7 +23,8 @@ public class ModStructureSets {
         HolderGetter<Structure> structures = context.lookup(Registries.STRUCTURE);
 
         context.register(BIG_OLMEC_HEADS, new StructureSet(structures.getOrThrow(ModStructures.BIG_OLMEC_HEAD),
-                new RandomSpreadStructurePlacement(10, 5, RandomSpreadType.LINEAR, 2738116)));
+                new RandomSpreadStructurePlacement(10, 5, RandomSpreadType.LINEAR, 2738116))
+        );
     }
 
 
