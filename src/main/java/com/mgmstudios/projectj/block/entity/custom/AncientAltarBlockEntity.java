@@ -2,6 +2,7 @@ package com.mgmstudios.projectj.block.entity.custom;
 
 import com.mgmstudios.projectj.block.entity.ModBlockEntities;
 import com.mgmstudios.projectj.fluid.ModFluids;
+import net.minecraft.client.multiplayer.chat.report.ReportEnvironment;
 import net.minecraft.core.*;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -29,6 +30,7 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
 import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.BLOOD_INSIDE;
+import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.PYRITE_INSIDE;
 
 public class AncientAltarBlockEntity extends BlockEntity  implements
         GameEventListener.Provider<AncientAltarBlockEntity.AncientAltarListener>,
@@ -36,15 +38,24 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
         ICapabilityProvider<BlockCapability<IFluidHandler, Direction>,  IFluidHandler, IFluidHandler>
 {
 
-    private final FluidTank fluidTank = new FluidTank(1000, fs -> fs.getFluid() == ModFluids.FLOWING_PYRITE.get());
+    private final FluidTank fluidTank = new FluidTank(1000, fs -> fs.getFluid() == ModFluids.FLOWING_PYRITE.get()){
+        @Override
+        protected void onContentsChanged() {
+            setChanged();
+            if (!level.isClientSide()){
+                if (isEmpty()){
+                    level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(PYRITE_INSIDE, false));
+                } else {
+                    level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(PYRITE_INSIDE, true));
+                }
+            }
+            super.onContentsChanged();
+        }
+    };
 
+    public static final int ANCIENT_ALTAR_INVENTORY_SIZE = 8;
 
-    @Override
-    public void onLoad() {
-        super.onLoad();
-    }
-
-    public final ItemStackHandler inventory = new ItemStackHandler(3) {
+    public final ItemStackHandler inventory = new ItemStackHandler(ANCIENT_ALTAR_INVENTORY_SIZE) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -71,7 +82,7 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
     }
 
     public boolean canInsert(){
-        //System.out.println("Items: " + itemsInside + " Inv: " + inventory.getSlots());
+        System.out.println("Items: " + itemsInside + " Inv: " + inventory.getSlots());
         return itemsInside < inventory.getSlots();
     }
 

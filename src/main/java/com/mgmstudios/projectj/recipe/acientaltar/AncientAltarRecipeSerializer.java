@@ -10,11 +10,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.neoforged.neoforge.fluids.FluidStack;
 
+import static com.mgmstudios.projectj.block.entity.custom.AncientAltarBlockEntity.ANCIENT_ALTAR_INVENTORY_SIZE;
+
 public class AncientAltarRecipeSerializer implements RecipeSerializer<AncientAltarRecipe> {
-    // Define the MapCodec using RecordCodecBuilder.
     public static final MapCodec<AncientAltarRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
             FluidStack.CODEC.fieldOf("fluidStack").forGetter(AncientAltarRecipe::getFluidStack),
-            Codec.lazyInitialized(() -> Ingredient.CODEC.listOf(1, 3))
+            Codec.lazyInitialized(() -> Ingredient.CODEC.listOf(1, ANCIENT_ALTAR_INVENTORY_SIZE))
                     .fieldOf("ingredients").forGetter(AncientAltarRecipe::getInputItems),
             ItemStack.CODEC.fieldOf("result").forGetter(AncientAltarRecipe::getResult)
     ).apply(inst, AncientAltarRecipe::new));

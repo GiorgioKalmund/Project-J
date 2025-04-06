@@ -1,5 +1,6 @@
 package com.mgmstudios.projectj.recipe.acientaltar;
 
+import com.mgmstudios.projectj.block.entity.custom.AncientAltarBlockEntity;
 import com.mgmstudios.projectj.fluid.ModFluids;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.Criterion;
@@ -7,6 +8,7 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -23,6 +25,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.mgmstudios.projectj.block.entity.custom.AncientAltarBlockEntity.ANCIENT_ALTAR_INVENTORY_SIZE;
+
 public class AncientAltarRecipeBuilder implements RecipeBuilder {
 
     private final HolderGetter<Item> items;
@@ -33,6 +37,7 @@ public class AncientAltarRecipeBuilder implements RecipeBuilder {
     private final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
     @Nullable
     private String group;
+    private boolean showNotification = true;
 
     public AncientAltarRecipeBuilder(HolderGetter<Item> items, RecipeCategory category, ItemStack result, FluidStack fluid) {
         this.result = result;
@@ -114,6 +119,11 @@ public class AncientAltarRecipeBuilder implements RecipeBuilder {
         return this;
     }
 
+    public AncientAltarRecipeBuilder showNotification(boolean showNotification) {
+        this.showNotification = showNotification;
+        return this;
+    }
+
     @Override
     public Item getResult() {
         return this.result.getItem();
@@ -145,6 +155,8 @@ public class AncientAltarRecipeBuilder implements RecipeBuilder {
     private void ensureValid(ResourceKey<Recipe<?>> recipe) {
         if (this.criteria.isEmpty()) {
             throw new IllegalStateException("No way of obtaining recipe " + recipe.location());
+        } else if (ingredients.size() > ANCIENT_ALTAR_INVENTORY_SIZE){
+            throw new IllegalStateException(recipe.location() + " has too many ingredients.");
         }
     }
 }

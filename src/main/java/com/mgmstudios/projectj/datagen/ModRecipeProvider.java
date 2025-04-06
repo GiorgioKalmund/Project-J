@@ -331,12 +331,13 @@ public class ModRecipeProvider extends RecipeProvider {
 
         // ANCIENT ALTAR
 
-        AncientAltarRecipeBuilder.regularWithPyrite(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, Items.DIAMOND)
-                .requires(Items.APPLE )
+        AncientAltarRecipeBuilder.regularWithPyrite(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.MACUAHUITL)
+                .requires(ModItems.SERPENTINITE_ROD)
+                .requires(ModItems.OBSIDIAN_TOOTH, 4)
                 .requires(ModItems.JADE)
-                .unlockedBy("has_apple", this.has(Items.APPLE))
+                .requires(Items.STICK )
                 .unlockedBy("has_jade", this.has(ModItems.JADE))
-                .save(this.output);
+                .save(this.output, "macuahuitl_from_altar");
 
         // SMELTING
 

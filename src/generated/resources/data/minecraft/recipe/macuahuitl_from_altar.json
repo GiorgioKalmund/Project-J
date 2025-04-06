@@ -1,0 +1,20 @@
+{
+  "type": "projectj:ancient_altar",
+  "fluidStack": {
+    "amount": 1000,
+    "id": "projectj:flowing_pyrite"
+  },
+  "ingredients": [
+    "projectj:serpentinite_rod",
+    "projectj:obsidian_tooth",
+    "projectj:obsidian_tooth",
+    "projectj:obsidian_tooth",
+    "projectj:obsidian_tooth",
+    "projectj:jade",
+    "minecraft:stick"
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectj:macuahuitl"
+  }
+}

@@ -17,18 +17,26 @@ public class AncientAltarRecipe implements Recipe<AncientAltarInput> {
     private final FluidStack fluidStack;
     private final List<Ingredient> inputItems;
     private final ItemStack result;
+    final boolean showNotification;
 
 
-    public AncientAltarRecipe(FluidStack fluidStack, List<Ingredient> items, ItemStack result){
+    public AncientAltarRecipe(FluidStack fluidStack, List<Ingredient> items, ItemStack result, boolean showNotification){
         this.fluidStack = fluidStack;
         this.inputItems = items;
         this.result = result;
+        this.showNotification = showNotification;
+    }
+
+    public AncientAltarRecipe(FluidStack fluidStack, List<Ingredient> items, ItemStack result){
+        this(fluidStack, items, result, true); // We use water as FluidStack.EMPTY cannot be used in recipes
+    }
+
+    public AncientAltarRecipe(List<Ingredient> items, ItemStack result, boolean showNotification){
+        this(new FluidStack(Fluids.WATER, 1), items, result, showNotification); // We use water as FluidStack.EMPTY cannot be used in recipes
     }
 
     public AncientAltarRecipe(List<Ingredient> items, ItemStack result){
-        this.fluidStack = new FluidStack(Fluids.WATER, 1); // We use water as FluidStack.EMPTY cannot be used in recipes
-        this.inputItems = items;
-        this.result = result;
+        this(new FluidStack(Fluids.WATER, 1), items, result, true); // We use water as FluidStack.EMPTY cannot be used in recipes
     }
 
     @Override
@@ -93,5 +101,10 @@ public class AncientAltarRecipe implements Recipe<AncientAltarInput> {
     @Override
     public RecipeBookCategory recipeBookCategory() {
         return ModRecipeBookCategories.ANCIENT_ALTAR_RECIPE_CATEGORY.get();
+    }
+
+    @Override
+    public boolean showNotification() {
+        return showNotification;
     }
 }
