@@ -20,9 +20,18 @@ import com.mgmstudios.projectj.screen.ModMenuTypes;
 import com.mgmstudios.projectj.screen.custom.AdobeFurnaceScreen;
 import com.mgmstudios.projectj.recipe.ModRecipeBookCategories;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.core.BlockPos;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.animal.Ocelot;
 import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.BedBlock;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FurnaceBlock;
+import net.minecraft.world.level.block.entity.ChestBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BedPart;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
@@ -133,17 +142,6 @@ public class ProjectJ
             );
 
             event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.ANCIENT_ALTAR_BE.get(), (entity, context) -> entity.getInventory());
-        }
-    }
-
-    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.GAME)
-    public static class ForgeEvents{
-
-        @SubscribeEvent
-        public static void modifyZombieBehaviour(EntityJoinLevelEvent event){
-            if (event.getEntity() instanceof Zombie zombie){
-                zombie.goalSelector.addGoal(0, new AvoidBlockGoal(zombie,  2F, 1.2F));
-            }
         }
     }
 }

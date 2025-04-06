@@ -15,22 +15,29 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ai.util.DefaultRandomPos;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class LittleManStatueBlock extends HorizontalDirectionalBlock {
 
@@ -98,8 +105,17 @@ public class LittleManStatueBlock extends HorizontalDirectionalBlock {
             level.setBlockAndUpdate(pos, ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK.get().defaultBlockState());
         } else {
             System.err.println(pos + "Received tick but state is: " + state);
+            List<Zombie> allEntities = level.getEntitiesOfClass(Zombie.class, new AABB(pos).inflate(10));
+            Vec3 targetPos = new Vec3(pos.getX(), pos.getY(), pos.getZ());
+            for (Zombie zombie : allEntities) {
+                Vec3 vec3 = DefaultRandomPos.getPosAway(zombie, 16, 7, pos.getCenter());
+                if(vec3 != null){
+                    zombie.getNavigation().moveTo(vec3.x,vec3.y, vec3.z, 1.5f);
+                }
+            }
         }
         super.tick(state, level, pos, random);
+        level.scheduleTick(pos, this, 1);
     }
 
     private boolean summoning(BlockState state){
@@ -114,5 +130,12 @@ public class LittleManStatueBlock extends HorizontalDirectionalBlock {
 
     private void resetState(Level level, BlockState state, BlockPos pos){
         level.setBlockAndUpdate(pos, state.setValue(SUMMONING, false));
+    }
+
+    @Override
+    public void onBlockStateChange(LevelReader level, BlockPos pos, BlockState oldState, BlockState newState) {
+        if(level instanceof ServerLevel serverLevel)
+            serverLevel.scheduleTick(pos, this, 1);
+        super.onBlockStateChange(level, pos, oldState, newState);
     }
 }
