@@ -1,6 +1,7 @@
 package com.mgmstudios.projectj.recipe;
 
 import com.mgmstudios.projectj.ProjectJ;
+import com.mgmstudios.projectj.recipe.acientaltar.AncientAltarRecipe;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.bus.api.IEventBus;
@@ -21,6 +22,18 @@ public class ModRecipeTypes {
                         }
                     }
                     );
+
+    public static final Supplier<RecipeType<AncientAltarRecipe>> ANCIENT_ALTAR_RECIPE_TYPE =
+            RECIPE_TYPES.register(
+                    "ancient_altar_type",
+                    // We need the qualifying generic here due to generics being generics.
+                    registryName -> new RecipeType<AncientAltarRecipe>() {
+                        @Override
+                        public String toString() {
+                            return registryName.toString();
+                        }
+                    }
+            );
 
     public static void register(IEventBus eventBus){
         RECIPE_TYPES.register(eventBus);

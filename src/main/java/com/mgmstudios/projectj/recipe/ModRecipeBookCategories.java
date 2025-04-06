@@ -15,6 +15,9 @@ public class ModRecipeBookCategories {
     public static final Supplier<RecipeBookCategory> ADOBE_FURNACE_RECIPE_CATEGORY =
             RECIPE_BOOK_CATEGORIES.register("adobe_furnace_recipe_category", RecipeBookCategory::new);
 
+    public static final Supplier<RecipeBookCategory> ANCIENT_ALTAR_RECIPE_CATEGORY =
+            RECIPE_BOOK_CATEGORIES.register("ancient_altar_recipe_category", RecipeBookCategory::new);
+
     public static void register(IEventBus eventBus){
         RECIPE_BOOK_CATEGORIES.register(eventBus);
     }

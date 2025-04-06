@@ -3,8 +3,13 @@ package com.mgmstudios.projectj.block.custom;
 import com.mgmstudios.projectj.block.entity.custom.AncientAltarBlockEntity;
 import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.item.ModItems;
+import com.mgmstudios.projectj.recipe.ModRecipeBookCategories;
+import com.mgmstudios.projectj.recipe.ModRecipeTypes;
+import com.mgmstudios.projectj.recipe.acientaltar.AncientAltarInput;
+import com.mgmstudios.projectj.recipe.acientaltar.AncientAltarRecipe;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.multiplayer.chat.report.ReportEnvironment;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -20,6 +25,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.crafting.CraftingInput;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -38,7 +46,12 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class AncientAltarBlock extends BaseEntityBlock {
 
@@ -84,18 +97,16 @@ public class AncientAltarBlock extends BaseEntityBlock {
     protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (state.getValue(CRAFTING)){
             if (level.getBlockEntity(pos) instanceof AncientAltarBlockEntity altarEntity) {
-                // TODO: Crafting system
                 level.setBlockAndUpdate(pos, state.setValue(BLOOD_INSIDE, false).setValue(CRAFTING, false).setValue(PYRITE_INSIDE, false));
                 level.playSound(null, pos, SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.BLOCKS, 1f, 1f);
 
-                altarEntity.clearAllContents();
+                ItemStack resultStack = altarEntity.getCraftingResult();
 
-                ItemStack resultStack = new ItemStack(ModItems.JADE.get());
-                System.out.println("Crafted: " + resultStack);
                 Vec3 centerPos = pos.getBottomCenter();
                 level.addFreshEntity(new ItemEntity(level, centerPos.x, centerPos.y + 1.5, centerPos.z, resultStack));
 
                 altarEntity.drain(FluidType.BUCKET_VOLUME, IFluidHandler.FluidAction.EXECUTE);
+                altarEntity.clearAllContents();
             }
         }
         super.tick(state, level, pos, random);
@@ -108,16 +119,41 @@ public class AncientAltarBlock extends BaseEntityBlock {
         }
 
         // Initializes crafting procedure
-        if (stackToInsert.is(ModItems.SACRIFICIAL_DAGGER) && !altarEntity.isEmpty()){
+        if (stackToInsert.is(ModItems.SACRIFICIAL_DAGGER) && !altarEntity.isEmpty() && level instanceof ServerLevel serverLevel){
+            List<ItemStack> items = new ArrayList<>();
+            ItemStackHandler inventory = altarEntity.getInventory();
+            for (int index = 0; index < inventory.getSlots(); index++){
+                if (!inventory.getStackInSlot(index).is(Items.AIR)){
+                    items.add(inventory.getStackInSlot(index));
+                }
+            }
 
-            // Check if valid recipe
-            level.setBlockAndUpdate(pos, state.setValue(CRAFTING, true));
-            level.playSound(player, pos, SoundEvents.BEACON_ACTIVATE, SoundSource.BLOCKS, 1f, 2f);
-            level.scheduleTick(pos, this, 60);
+            AncientAltarInput input = new AncientAltarInput(
+                    altarEntity.getFluidInTank(0),
+                    items
+                    );
+            Optional<RecipeHolder<AncientAltarRecipe>> optional = serverLevel.recipeAccess().getRecipeFor(
+                    ModRecipeTypes.ANCIENT_ALTAR_RECIPE_TYPE.get(),
+                    input,
+                    level
+            );
 
-            player.displayClientMessage(Component.literal("Crafting procedure started."), true);
+            ItemStack result = optional
+                    .map(RecipeHolder::value)
+                    .map(e -> e.assemble(input, level.registryAccess()))
+                    .orElse(ItemStack.EMPTY);
 
-            return InteractionResult.SUCCESS;
+            if (!result.isEmpty()){
+                altarEntity.setCraftingResult(result);
+                level.setBlockAndUpdate(pos, state.setValue(CRAFTING, true));
+                level.playSound(null, pos, SoundEvents.BEACON_ACTIVATE, SoundSource.BLOCKS, 1f, 2f);
+                level.scheduleTick(pos, this, 60);
+                return InteractionResult.SUCCESS;
+            } else {
+                player.displayClientMessage(Component.literal("§cInvalid Recipe.§r"), true);
+                return InteractionResult.PASS;
+            }
+
         } else if (stackToInsert.is(ModItems.LIQUID_PYRITE_BUCKET)){
             FluidStack pyrite = new FluidStack(ModFluids.FLOWING_PYRITE.get(), FluidType.BUCKET_VOLUME);
             int filled = altarEntity.fill(pyrite, IFluidHandler.FluidAction.EXECUTE);

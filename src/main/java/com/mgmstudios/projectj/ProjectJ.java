@@ -14,6 +14,7 @@ import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.item.ModCreativeModeTabs;
 import com.mgmstudios.projectj.item.ModItemBehaviours;
 import com.mgmstudios.projectj.item.ModItems;
+import com.mgmstudios.projectj.recipe.ModRecipeSerializers;
 import com.mgmstudios.projectj.recipe.ModRecipeTypes;
 import com.mgmstudios.projectj.screen.ModMenuTypes;
 import com.mgmstudios.projectj.screen.custom.AdobeFurnaceScreen;
@@ -73,6 +74,7 @@ public class ProjectJ
         ModFluidTypes.register(modEventBus);
         ModRecipeBookCategories.register(modEventBus);
         ModRecipeTypes.register(modEventBus);
+        ModRecipeSerializers.register(modEventBus);
         ModItems.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
         ModBlocks.register(modEventBus);

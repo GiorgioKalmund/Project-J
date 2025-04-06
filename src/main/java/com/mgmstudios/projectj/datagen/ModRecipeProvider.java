@@ -5,6 +5,7 @@ import com.mgmstudios.projectj.block.ModBlockFamilies;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.item.custom.MagnifyingGlassItem.MagnifyingRecipeBuilder;
+import com.mgmstudios.projectj.recipe.acientaltar.AncientAltarRecipeBuilder;
 import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -327,6 +328,15 @@ public class ModRecipeProvider extends RecipeProvider {
 
         nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.RAW_PYRITE, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_PYRITE_BLOCK);
         nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.PYRITE_INGOT, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PYRITE_BLOCK);
+
+        // ANCIENT ALTAR
+
+        AncientAltarRecipeBuilder.regularWithPyrite(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, Items.DIAMOND)
+                .requires(Items.APPLE )
+                .requires(ModItems.JADE)
+                .unlockedBy("has_apple", this.has(Items.APPLE))
+                .unlockedBy("has_jade", this.has(ModItems.JADE))
+                .save(this.output);
 
         // SMELTING
 

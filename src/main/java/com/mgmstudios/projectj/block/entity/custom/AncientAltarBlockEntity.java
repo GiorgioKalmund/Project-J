@@ -38,6 +38,7 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
 
     private final FluidTank fluidTank = new FluidTank(1000, fs -> fs.getFluid() == ModFluids.FLOWING_PYRITE.get());
 
+
     @Override
     public void onLoad() {
         super.onLoad();
@@ -99,18 +100,29 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
     private float rotation;
     private boolean crafting;
     private final AncientAltarListener deathListener;
+    private ItemStack craftingResultItem;
     public AncientAltarBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntities.ANCIENT_ALTAR_BE.get(), pos, blockState);
         itemsInside = 0;
         crafting = false;
+        craftingResultItem = ItemStack.EMPTY;
 
         this.deathListener= new AncientAltarListener(blockState, new BlockPositionSource(pos));
+    }
+
+    public ItemStack getCraftingResult() {
+        return craftingResultItem.copy();
+    }
+
+    public void setCraftingResult(ItemStack craftingResultItem) {
+        this.craftingResultItem = craftingResultItem;
     }
 
     public void clearAllContents(){
         for (int slot = 0; slot < inventory.getSlots(); slot++){
             inventory.setStackInSlot(slot, ItemStack.EMPTY);
         }
+        craftingResultItem = ItemStack.EMPTY;
         itemsInside = 0;
     }
 
