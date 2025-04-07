@@ -185,17 +185,17 @@ public class AncientAltarBlock extends BaseEntityBlock {
             }
         } else if (stackToInsert.is(ModItems.CRUDE_SACRIFICE_BOWL) || stackToInsert.is(ModItems.FILLED_CRUDE_SACRIFICE_BOWL)){
             if (state.getValue(BLOOD_INSIDE) && stackToInsert.is(ModItems.CRUDE_SACRIFICE_BOWL)){
+                ItemStack extracted = altarEntity.extractBlood();
                 if (!player.isCreative()){
                     if (stackToInsert.getCount() == 1){
-                        player.setItemInHand(hand, new ItemStack(ModItems.FILLED_CRUDE_SACRIFICE_BOWL.get()));
+                        player.setItemInHand(hand, extracted);
                     } else {
                         stackToInsert.shrink(1);
-                        player.getInventory().add(new ItemStack(ModItems.FILLED_CRUDE_SACRIFICE_BOWL.get()));
+                        player.getInventory().add(extracted);
                     }
                 }
                 level.playSound(player, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1f, 1f);
                 level.setBlockAndUpdate(pos, state.setValue(BLOOD_INSIDE, false));
-                altarEntity.extractBlood();
                 return InteractionResult.SUCCESS_SERVER;
             } else if (!state.getValue(BLOOD_INSIDE) && stackToInsert.is(ModItems.FILLED_CRUDE_SACRIFICE_BOWL)){
                 if (!player.isCreative()){

@@ -369,6 +369,9 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
 
         public void fillAltar(ServerLevel serverLevel, BlockPos blockPos){
             serverLevel.setBlockAndUpdate(blockPos, serverLevel.getBlockState(blockPos).setValue(BLOOD_INSIDE, true));
+            if ((serverLevel.getBlockEntity(blockPos) instanceof AncientAltarBlockEntity altarEntity)) {
+                altarEntity.insertBlood(new ItemStack(ModItems.FILLED_CRUDE_SACRIFICE_BOWL.get()));
+            }
             serverLevel.playSound(null, blockPos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS);
         }
     }
