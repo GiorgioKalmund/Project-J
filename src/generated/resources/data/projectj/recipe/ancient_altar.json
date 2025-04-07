@@ -3,13 +3,13 @@
   "category": "building",
   "key": {
     "#": "projectj:adobe_bricks",
-    "B": "projectj:crude_sacrifice_bowl",
     "J": "projectj:jade_block",
+    "P": "projectj:pyrite_ingot",
     "R": "projectj:serpentinite_rod",
     "s": "projectj:serpentinite_rock_slab"
   },
   "pattern": [
-    "#B#",
+    "#P#",
     " R ",
     "sJs"
   ],

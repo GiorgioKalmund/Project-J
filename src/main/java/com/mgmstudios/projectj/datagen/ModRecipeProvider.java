@@ -283,15 +283,15 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.ANCIENT_ALTAR)
-                .pattern("#B#")
+                .pattern("#P#")
                 .pattern(" R ")
                 .pattern("sJs")
                 .define('#', ModBlocks.ADOBE_BRICKS)
-                .define('B', ModItems.CRUDE_SACRIFICE_BOWL)
+                .define('P', ModItems.PYRITE_INGOT)
                 .define('J', ModBlocks.JADE_BLOCK)
                 .define('s', ModBlocks.SERPENTINITE_ROCK_SLAB)
                 .define('R', ModItems.SERPENTINITE_ROD)
-                .unlockedBy("has_crude_sacrificial_bowl", this.has(ModItems.CRUDE_SACRIFICE_BOWL))
+                .unlockedBy("has_pyrite_ingot", this.has(ModItems.PYRITE_INGOT))
                 .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK.asItem()))
                 .save(this.output);
 
@@ -339,27 +339,10 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_jade", this.has(ModItems.JADE))
                 .save(this.output, "macuahuitl_from_altar");
 
-        AncientAltarRecipeBuilder.regular(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.JADE)
-                .requires(ModItems.RAW_JADE)
-                .unlockedBy("has_raw_jade", this.has(ModItems.RAW_JADE))
-                .save(this.output, "jade_from_altar");
-
-        AncientAltarRecipeBuilder.regular(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModBlocks.JADE_BLOCK)
-                .requires(ModItems.RAW_JADE, 9)
-                .unlockedBy("has_raw_jade", this.has(ModItems.RAW_JADE))
-                .save(this.output, "jade_block_from_altar");
-
-        AncientAltarRecipeBuilder.regular(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, Items.DIAMOND)
-                .requires(ModItems.RAW_JADE)
-                .requiresBlood()
-                .unlockedBy("has_raw_jade", this.has(ModItems.RAW_JADE))
-                .save(this.output, "diamond_from_altar");
-
-        AncientAltarRecipeBuilder.regularWithPyrite(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, Items.DIAMOND, 2)
-                .requires(ModItems.RAW_JADE, 2)
-                .requiresBlood()
-                .unlockedBy("has_raw_jade", this.has(ModItems.RAW_JADE))
-                .save(this.output, "diamonds_from_altar");
+        AncientAltarRecipeBuilder.regularWithPyrite(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.CRUDE_SACRIFICE_BOWL)
+                .requires(Items.BOWL)
+                .unlockedBy("has_bowl", this.has(Items.BOW))
+                .save(this.output, "crude_sacrifice_bowl_from_altar");
 
         // SMELTING
 
