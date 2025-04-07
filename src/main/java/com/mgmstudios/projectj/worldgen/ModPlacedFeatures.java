@@ -35,8 +35,8 @@ public class ModPlacedFeatures {
 
         register(context, PYRITE_ORE_PLACED_KEY,
                 configuredFeatures.getOrThrow(ModConfiguredFeatures.PYRITE_ORE_KEY),
-                    ModOrePlacement.commonOrePlacement( 10, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80))
-               ));
+                    ModOrePlacement.commonOrePlacement( 10, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT)
+               );
 
         register(context, MESQUITE_PLACED_KEY,
                 configuredFeatures.getOrThrow(ModConfiguredFeatures.MESQUITE_KEY),
