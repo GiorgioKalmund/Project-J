@@ -243,7 +243,7 @@ public class AncientAltarBlock extends BaseEntityBlock {
             } else {
                 //player.displayClientMessage(Component.literal("Extracted " + extractedStack.getDisplayName().getString()), true);
                 int suitableSlot = player.getInventory().getSlotWithRemainingSpace(extractedStack);
-                if (suitableSlot > 0){
+                if (suitableSlot >= 0){
                     ItemStack slotStack = player.getInventory().getItem(suitableSlot);
                     slotStack.grow(1);
                 } else {
