@@ -35,12 +35,12 @@ public class AncientAltarEntityRenderer implements BlockEntityRenderer<AncientAl
 
         float ownAxisRotation = altarBlockEntity.getRenderingRotation();
         poseStack.pushPose();
-        poseStack.translate(0.5F, 1.2F, 0.5F);
+        poseStack.translate(0.5F, altarBlockEntity.getRenderingHeight(), 0.5F);
         poseStack.scale(0.5F, 0.5F, 0.5F);
         poseStack.mulPose(Axis.YP.rotationDegrees(ownAxisRotation));
 
         int itemCount = altarBlockEntity.itemsInside;
-        float radius = 0.75F;
+        float radius = altarBlockEntity.getRenderingRadius();
 
         for (int index = 0; index < itemCount; index++) {
             poseStack.pushPose();

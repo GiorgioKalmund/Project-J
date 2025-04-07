@@ -1,0 +1,22 @@
+{
+  "type": "projectj:ancient_altar",
+  "fluidStack": {
+    "amount": 1,
+    "id": "minecraft:water"
+  },
+  "ingredients": [
+    "projectj:raw_jade",
+    "projectj:raw_jade",
+    "projectj:raw_jade",
+    "projectj:raw_jade",
+    "projectj:raw_jade",
+    "projectj:raw_jade",
+    "projectj:raw_jade",
+    "projectj:raw_jade",
+    "projectj:raw_jade"
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectj:jade_block"
+  }
+}

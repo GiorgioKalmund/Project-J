@@ -339,6 +339,16 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_jade", this.has(ModItems.JADE))
                 .save(this.output, "macuahuitl_from_altar");
 
+        AncientAltarRecipeBuilder.regular(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.JADE)
+                .requires(ModItems.RAW_JADE)
+                .unlockedBy("has_raw_jade", this.has(ModItems.RAW_JADE))
+                .save(this.output, "jade_from_altar");
+
+        AncientAltarRecipeBuilder.regular(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModBlocks.JADE_BLOCK)
+                .requires(ModItems.RAW_JADE, 9)
+                .unlockedBy("has_raw_jade", this.has(ModItems.RAW_JADE))
+                .save(this.output, "jade_block_from_altar");
+
         // SMELTING
 
         SimpleCookingRecipeBuilder.smelting(

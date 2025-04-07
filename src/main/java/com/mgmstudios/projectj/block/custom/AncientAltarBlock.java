@@ -11,6 +11,7 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.multiplayer.chat.report.ReportEnvironment;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -104,6 +105,7 @@ public class AncientAltarBlock extends BaseEntityBlock {
 
                 Vec3 centerPos = pos.getBottomCenter();
                 level.addFreshEntity(new ItemEntity(level, centerPos.x, centerPos.y + 1.5, centerPos.z, resultStack));
+                level.sendParticles(ParticleTypes.WHITE_SMOKE, centerPos.x, centerPos.y + 1.6, centerPos.z, 10, 0, 0, 0, 0.05F);
 
                 altarEntity.drain(FluidType.BUCKET_VOLUME, IFluidHandler.FluidAction.EXECUTE);
                 altarEntity.clearAllContents();
@@ -118,7 +120,8 @@ public class AncientAltarBlock extends BaseEntityBlock {
             return InteractionResult.PASS;
         }
 
-        // Initializes crafting procedure
+        altarEntity.resetRenderingAttributes(); // Calling it at the end of crafting does not seem to change it, have a look if possible, however this works for now
+
         if (stackToInsert.is(ModItems.SACRIFICIAL_DAGGER) && !altarEntity.isEmpty() && level instanceof ServerLevel serverLevel){
             List<ItemStack> items = new ArrayList<>();
             ItemStackHandler inventory = altarEntity.getInventory();

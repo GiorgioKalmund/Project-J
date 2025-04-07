@@ -1,5 +1,6 @@
 package com.mgmstudios.projectj.block.entity.custom;
 
+import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.block.entity.ModBlockEntities;
 import com.mgmstudios.projectj.fluid.ModFluids;
 import net.minecraft.client.multiplayer.chat.report.ReportEnvironment;
@@ -29,8 +30,7 @@ import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
-import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.BLOOD_INSIDE;
-import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.PYRITE_INSIDE;
+import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.*;
 
 public class AncientAltarBlockEntity extends BlockEntity  implements
         GameEventListener.Provider<AncientAltarBlockEntity.AncientAltarListener>,
@@ -53,7 +53,7 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
         }
     };
 
-    public static final int ANCIENT_ALTAR_INVENTORY_SIZE = 8;
+    public static final int ANCIENT_ALTAR_INVENTORY_SIZE = 9;
 
     public final ItemStackHandler inventory = new ItemStackHandler(ANCIENT_ALTAR_INVENTORY_SIZE) {
         @Override
@@ -109,6 +109,8 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
 
     public int itemsInside;
     private float rotation;
+    private float height;
+    private float radius;
     private boolean crafting;
     private final AncientAltarListener deathListener;
     private ItemStack craftingResultItem;
@@ -116,6 +118,8 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
         super(ModBlockEntities.ANCIENT_ALTAR_BE.get(), pos, blockState);
         itemsInside = 0;
         crafting = false;
+        height = 1.2F;
+        radius = 0.75F;
         craftingResultItem = ItemStack.EMPTY;
 
         this.deathListener= new AncientAltarListener(blockState, new BlockPositionSource(pos));
@@ -145,6 +149,27 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
         rotation += 0.5F;
         rotation %= 360;
         return rotation;
+    }
+
+    public float getRenderingHeight(){
+        assert level != null;
+        if (level.getBlockState(getBlockPos()).is(ModBlocks.ANCIENT_ALTAR) && getBlockState().getValue(CRAFTING)){
+            height = Math.min(height + 0.003F, 1.7F);
+        }
+        return this.height;
+    }
+
+    public float getRenderingRadius(){
+        assert level != null;
+        if (level.getBlockState(getBlockPos()).is(ModBlocks.ANCIENT_ALTAR) && getBlockState().getValue(CRAFTING)){
+            radius = Math.max(radius - 0.01F, 0.1F);
+        }
+        return this.radius;
+    }
+
+    public void resetRenderingAttributes(){
+        this.radius = 0.75F;
+        this.height = 1.2F;
     }
 
     public void drops(){
