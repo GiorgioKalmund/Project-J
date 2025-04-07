@@ -61,6 +61,7 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
             setChanged();
             if (!level.isClientSide()){
                 level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+                itemsInside = getItemsInside();
             }
             super.onContentsChanged(slot);
         }
@@ -71,10 +72,19 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
         }
     };
 
+    private int getItemsInside(){
+        int result = 0;
+        for (int i = 0; i < inventory.getSlots(); i++) {
+            if (!inventory.getStackInSlot(i).isEmpty()){
+                result++;
+            }
+        }
+        return result;
+    }
+
     public void insertNewItemStack(ItemStack stack){
         ItemStack returned = inventory.insertItem(itemsInside, stack.copy(), false);
         //System.out.println("Inserted " + stack + " and got back " + returned);
-        itemsInside++;
     }
 
     public ItemStackHandler getInventory() {
@@ -96,13 +106,12 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
 
     public ItemStack extractLatestItem(){
         if (itemsInside <= 0){
-            itemsInside = 0;
             return ItemStack.EMPTY;
         }
         ItemStack extracted = inventory.extractItem(itemsInside - 1, 1, false);
-        inventory.setStackInSlot(itemsInside - 1 , ItemStack.EMPTY);
-        itemsInside--;
-        //System.out.println("extracted: " + extracted + " inside: " + itemsInside);
+        // Move one index down, as we now have one less item inside and the value is updated in the onChanged() method of the inventory
+        inventory.setStackInSlot(itemsInside , ItemStack.EMPTY);
+        System.out.println("extracted: " + extracted + " inside: " + itemsInside);
         return extracted;
     }
 
