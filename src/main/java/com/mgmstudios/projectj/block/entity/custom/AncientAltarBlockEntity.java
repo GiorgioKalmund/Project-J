@@ -183,16 +183,6 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        super.saveAdditional(tag, registries);
-        tag.put("inventory", inventory.serializeNBT(registries));
-        tag.putInt("itemsInside", itemsInside);
-        tag.putBoolean("crafting", crafting);
-        fluidTank.writeToNBT(registries, tag);
-    }
-
-
-    @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
         CompoundTag tag = new CompoundTag();
         saveAdditional(tag, registries);
@@ -205,11 +195,25 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
     }
 
     @Override
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.saveAdditional(tag, registries);
+        tag.put("inventory", inventory.serializeNBT(registries));
+        tag.putInt("itemsInside", itemsInside);
+        tag.putBoolean("crafting", crafting);
+        if (!craftingResultItem.isEmpty())
+            tag.put("craftingResult", craftingResultItem.save(registries));
+        fluidTank.writeToNBT(registries, tag);
+    }
+
+    @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
         inventory.deserializeNBT(registries, tag.getCompound("inventory"));
         itemsInside = tag.getInt("itemsInside");
         crafting = tag.getBoolean("crafting");
+        if (tag.contains("craftingResult")) {
+            craftingResultItem = ItemStack.parse(registries, tag.getCompound("craftingResult")).orElse(ItemStack.EMPTY);
+        }
         fluidTank.readFromNBT(registries, tag);
     }
 
