@@ -1,0 +1,16 @@
+{
+  "type": "projectj:ancient_altar",
+  "fluidStack": {
+    "amount": 1000,
+    "id": "projectj:flowing_pyrite"
+  },
+  "ingredients": [
+    "projectj:raw_jade",
+    "projectj:raw_jade",
+    "projectj:filled_crude_sacrifice_bowl"
+  ],
+  "result": {
+    "count": 2,
+    "id": "minecraft:diamond"
+  }
+}

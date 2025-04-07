@@ -3,6 +3,7 @@ package com.mgmstudios.projectj.block.entity.custom;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.block.entity.ModBlockEntities;
 import com.mgmstudios.projectj.fluid.ModFluids;
+import com.mgmstudios.projectj.item.ModItems;
 import net.minecraft.client.multiplayer.chat.report.ReportEnvironment;
 import net.minecraft.core.*;
 import net.minecraft.nbt.CompoundTag;
@@ -72,7 +73,23 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
         }
     };
 
-    private int getItemsInside(){
+    public final ItemStackHandler bowlInventory = new ItemStackHandler(1) {
+        @Override
+        protected void onContentsChanged(int slot) {
+            setChanged();
+            if (!level.isClientSide()){
+                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+            }
+            super.onContentsChanged(slot);
+        }
+
+        @Override
+        protected int getStackLimit(int slot, ItemStack stack) {
+            return 1;
+        }
+    };
+
+    public int getItemsInside(){
         int result = 0;
         for (int i = 0; i < inventory.getSlots(); i++) {
             if (!inventory.getStackInSlot(i).isEmpty()){
@@ -87,12 +104,21 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
         //System.out.println("Inserted " + stack + " and got back " + returned);
     }
 
+    public void insertBlood(ItemStack stack){
+        ItemStack returned = bowlInventory.insertItem(0, stack.copy(), false);
+        //System.out.println("Inserted " + stack + " and got back " + returned);
+    }
+
     public ItemStackHandler getInventory() {
         return inventory;
     }
 
+    public ItemStackHandler getBowlInventory() {
+        return bowlInventory;
+    }
+
     public boolean canInsert(){
-        System.out.println("Items: " + itemsInside + " Inv: " + inventory.getSlots());
+        //System.out.println("Items: " + itemsInside + " Inv: " + inventory.getSlots());
         return itemsInside < inventory.getSlots();
     }
 
@@ -111,13 +137,21 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
         ItemStack extracted = inventory.extractItem(itemsInside - 1, 1, false);
         // Move one index down, as we now have one less item inside and the value is updated in the onChanged() method of the inventory
         inventory.setStackInSlot(itemsInside , ItemStack.EMPTY);
-        System.out.println("extracted: " + extracted + " inside: " + itemsInside);
+        //System.out.println("extracted: " + extracted + " inside: " + itemsInside);
+        return extracted;
+    }
+
+    public ItemStack extractBlood(){
+        ItemStack extracted = bowlInventory.extractItem(0, 1, false);
+        bowlInventory.setStackInSlot(0, ItemStack.EMPTY);
+        //System.out.println("BOWL: extracted: " + extracted + " inside: " + itemsInside);
         return extracted;
     }
 
 
     public int itemsInside;
     private float rotation;
+    private float rotationSpeed;
     private float height;
     private float radius;
     private boolean crafting;
@@ -129,6 +163,7 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
         crafting = false;
         height = 1.2F;
         radius = 0.75F;
+        rotationSpeed = 0.5F;
         craftingResultItem = ItemStack.EMPTY;
 
         this.deathListener= new AncientAltarListener(blockState, new BlockPositionSource(pos));
@@ -155,9 +190,22 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
     }
 
     public float getRenderingRotation(){
-        rotation += 0.5F;
+        assert level != null;
+        if (level.getBlockState(getBlockPos()).is(ModBlocks.ANCIENT_ALTAR) && getBlockState().getValue(CRAFTING)){
+            rotation += getRotationSpeed();
+        } else {
+            rotation += 0.5F;
+        }
         rotation %= 360;
         return rotation;
+    }
+
+    public float getRotationSpeed(){
+        assert level != null;
+        if (level.getBlockState(getBlockPos()).is(ModBlocks.ANCIENT_ALTAR) && getBlockState().getValue(CRAFTING)){
+            rotationSpeed = Math.min(rotationSpeed + 0.1F, 3F);
+        }
+        return this.rotationSpeed;
     }
 
     public float getRenderingHeight(){
@@ -171,7 +219,7 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
     public float getRenderingRadius(){
         assert level != null;
         if (level.getBlockState(getBlockPos()).is(ModBlocks.ANCIENT_ALTAR) && getBlockState().getValue(CRAFTING)){
-            radius = Math.max(radius - 0.01F, 0.1F);
+            radius = Math.max(radius - 0.005F, 0.1F);
         }
         return this.radius;
     }
@@ -187,8 +235,12 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
             inv.setItem(slot, this.inventory.getStackInSlot(slot));
         }
 
+        SimpleContainer bowlInv = new SimpleContainer(inventory.getSlots());
+        bowlInv.setItem(0, this.inventory.getStackInSlot(0));
+
         assert this.level != null;
         Containers.dropContents(this.level, this.worldPosition, inv);
+        Containers.dropContents(this.level, this.worldPosition, bowlInv);
     }
 
     @Override
@@ -207,6 +259,7 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.saveAdditional(tag, registries);
         tag.put("inventory", inventory.serializeNBT(registries));
+        tag.put("bowlInventory", bowlInventory.serializeNBT(registries));
         tag.putInt("itemsInside", itemsInside);
         tag.putBoolean("crafting", crafting);
         if (!craftingResultItem.isEmpty())
@@ -218,6 +271,7 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
         inventory.deserializeNBT(registries, tag.getCompound("inventory"));
+        bowlInventory.deserializeNBT(registries, tag.getCompound("bowlInventory"));
         itemsInside = tag.getInt("itemsInside");
         crafting = tag.getBoolean("crafting");
         if (tag.contains("craftingResult")) {

@@ -104,9 +104,7 @@ public class LittleManStatueBlock extends HorizontalDirectionalBlock {
 
             level.setBlockAndUpdate(pos, ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK.get().defaultBlockState());
         } else {
-            System.err.println(pos + "Received tick but state is: " + state);
             List<Zombie> allEntities = level.getEntitiesOfClass(Zombie.class, new AABB(pos).inflate(10));
-            Vec3 targetPos = new Vec3(pos.getX(), pos.getY(), pos.getZ());
             for (Zombie zombie : allEntities) {
                 Vec3 vec3 = DefaultRandomPos.getPosAway(zombie, 16, 7, pos.getCenter());
                 if(vec3 != null){

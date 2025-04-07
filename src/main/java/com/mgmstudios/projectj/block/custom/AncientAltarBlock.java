@@ -130,6 +130,9 @@ public class AncientAltarBlock extends BaseEntityBlock {
                     items.add(inventory.getStackInSlot(index));
                 }
             }
+            ItemStackHandler bowlInventory = altarEntity.getBowlInventory();
+            if (!bowlInventory.getStackInSlot(0).is(Items.AIR))
+                items.add(bowlInventory.getStackInSlot(0));
 
             AncientAltarInput input = new AncientAltarInput(
                     altarEntity.getFluidInTank(0),
@@ -182,32 +185,38 @@ public class AncientAltarBlock extends BaseEntityBlock {
             }
         } else if (stackToInsert.is(ModItems.CRUDE_SACRIFICE_BOWL) || stackToInsert.is(ModItems.FILLED_CRUDE_SACRIFICE_BOWL)){
             if (state.getValue(BLOOD_INSIDE) && stackToInsert.is(ModItems.CRUDE_SACRIFICE_BOWL)){
-                if (stackToInsert.getCount() == 1){
-                    player.setItemInHand(hand, new ItemStack(ModItems.FILLED_CRUDE_SACRIFICE_BOWL.get()));
-                } else {
-                    stackToInsert.shrink(1);
-                    player.getInventory().add(new ItemStack(ModItems.FILLED_CRUDE_SACRIFICE_BOWL.get()));
+                if (!player.isCreative()){
+                    if (stackToInsert.getCount() == 1){
+                        player.setItemInHand(hand, new ItemStack(ModItems.FILLED_CRUDE_SACRIFICE_BOWL.get()));
+                    } else {
+                        stackToInsert.shrink(1);
+                        player.getInventory().add(new ItemStack(ModItems.FILLED_CRUDE_SACRIFICE_BOWL.get()));
+                    }
                 }
                 level.playSound(player, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1f, 1f);
                 level.setBlockAndUpdate(pos, state.setValue(BLOOD_INSIDE, false));
+                altarEntity.extractBlood();
+                return InteractionResult.SUCCESS_SERVER;
             } else if (!state.getValue(BLOOD_INSIDE) && stackToInsert.is(ModItems.FILLED_CRUDE_SACRIFICE_BOWL)){
-                ItemStack bowlStack = new ItemStack(ModItems.CRUDE_SACRIFICE_BOWL.get());
-                int suitableSlot = player.getInventory().getSlotWithRemainingSpace(bowlStack);
-                if (suitableSlot > 0){
-                    stackToInsert.shrink(1);
-                    ItemStack slotStack = player.getInventory().getItem(suitableSlot);
-                    slotStack.grow(1);
-                } else {
-                    player.setItemInHand(hand, bowlStack);
+                if (!player.isCreative()){
+                    ItemStack bowlStack = new ItemStack(ModItems.CRUDE_SACRIFICE_BOWL.get());
+                    int suitableSlot = player.getInventory().getSlotWithRemainingSpace(bowlStack);
+                    if (suitableSlot > 0){
+                        stackToInsert.shrink(1);
+                        ItemStack slotStack = player.getInventory().getItem(suitableSlot);
+                        slotStack.grow(1);
+                    } else {
+                        player.setItemInHand(hand, bowlStack);
+                    }
                 }
                 level.setBlockAndUpdate(pos, state.setValue(BLOOD_INSIDE, true));
+                altarEntity.insertBlood(new ItemStack(ModItems.FILLED_CRUDE_SACRIFICE_BOWL.get()));
                 level.playSound(player, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1f, 1f);
+                return InteractionResult.SUCCESS_SERVER;
             } else {
                 return InteractionResult.PASS;
             }
-            return InteractionResult.SUCCESS;
         }
-
 
         boolean canInsert = altarEntity.canInsert();
         boolean itemInHand = !stackToInsert.isEmpty();

@@ -2,6 +2,7 @@ package com.mgmstudios.projectj.recipe.acientaltar;
 
 import com.mgmstudios.projectj.block.entity.custom.AncientAltarBlockEntity;
 import com.mgmstudios.projectj.fluid.ModFluids;
+import com.mgmstudios.projectj.item.ModItems;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.core.HolderGetter;
@@ -76,6 +77,10 @@ public class AncientAltarRecipeBuilder implements RecipeBuilder {
 
     public static AncientAltarRecipeBuilder regularWithPyrite(HolderGetter<Item> items, RecipeCategory category, ItemLike result, int count) {
         return new AncientAltarRecipeBuilder(items, category, result.asItem().getDefaultInstance().copyWithCount(count), new FluidStack(ModFluids.FLOWING_PYRITE.get(), 1000));
+    }
+
+    public AncientAltarRecipeBuilder requiresBlood() {
+        return this.requires(ModItems.FILLED_CRUDE_SACRIFICE_BOWL, 1);
     }
 
     public AncientAltarRecipeBuilder requires(TagKey<Item> tag) {
@@ -155,7 +160,7 @@ public class AncientAltarRecipeBuilder implements RecipeBuilder {
     private void ensureValid(ResourceKey<Recipe<?>> recipe) {
         if (this.criteria.isEmpty()) {
             throw new IllegalStateException("No way of obtaining recipe " + recipe.location());
-        } else if (ingredients.size() > ANCIENT_ALTAR_INVENTORY_SIZE){
+        } else if (ingredients.size() > ANCIENT_ALTAR_INVENTORY_SIZE + 1){ // Add one because of potential blood
             throw new IllegalStateException(recipe.location() + " has too many ingredients.");
         }
     }

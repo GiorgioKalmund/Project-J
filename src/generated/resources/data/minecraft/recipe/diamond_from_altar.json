@@ -1,0 +1,15 @@
+{
+  "type": "projectj:ancient_altar",
+  "fluidStack": {
+    "amount": 1,
+    "id": "minecraft:water"
+  },
+  "ingredients": [
+    "projectj:raw_jade",
+    "projectj:filled_crude_sacrifice_bowl"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:diamond"
+  }
+}
