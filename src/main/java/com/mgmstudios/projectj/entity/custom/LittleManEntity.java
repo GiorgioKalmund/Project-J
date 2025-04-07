@@ -1,29 +1,38 @@
 package com.mgmstudios.projectj.entity.custom;
 
+import com.google.common.collect.ImmutableMap;
 import com.mgmstudios.projectj.block.ModBlocks;
-import com.mgmstudios.projectj.block.custom.EmptyLittleManStatueBlock;
 import com.mgmstudios.projectj.entity.VoodooEntity;
 import com.mgmstudios.projectj.item.ModItems;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.AnimationState;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
+import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
-import net.minecraft.world.entity.animal.AbstractGolem;
+import net.minecraft.world.entity.npc.AbstractVillager;
+import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.trading.ItemCost;
+import net.minecraft.world.item.trading.MerchantOffer;
+import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.common.BasicItemListing;
 import org.jetbrains.annotations.Nullable;
 
-public class LittleManEntity extends AbstractGolem implements VoodooEntity {
+public class LittleManEntity extends AbstractVillager implements VoodooEntity {
 
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
@@ -84,4 +93,112 @@ public class LittleManEntity extends AbstractGolem implements VoodooEntity {
     public Item getVoodoo() {
         return ModItems.LITTLE_MAN_VOODOO.get();
     }
+
+    @Override
+    public boolean showProgressBar() {
+        return false;
+    }
+
+
+
+    @Override
+    public InteractionResult mobInteract(Player player, InteractionHand hand) {
+        ItemStack itemstack = player.getItemInHand(hand);
+        if (!itemstack.is(ModItems.VOODOO_CATCHER) && this.isAlive() && !this.isTrading() && !this.isBaby()) {
+            if (hand == InteractionHand.MAIN_HAND) {
+                player.awardStat(Stats.TALKED_TO_VILLAGER);
+            }
+
+            if (!this.level().isClientSide) {
+                if (this.getOffers().isEmpty()) {
+                    return InteractionResult.CONSUME;
+                }
+
+                this.setTradingPlayer(player);
+                this.openTradingScreen(player, this.getDisplayName(), 1);
+            }
+
+            return InteractionResult.SUCCESS;
+        } else {
+            return super.mobInteract(player, hand);
+        }
+    }
+
+    @Override
+    protected void updateTrades() {
+
+        VillagerTrades.ItemListing[] itemListings = LITTLE_MAN_TRADES.get(1);
+        VillagerTrades.ItemListing[] itemListings1 = LITTLE_MAN_TRADES.get(2);
+
+
+        if (itemListings != null && itemListings1 != null) {
+            MerchantOffers merchantoffers = this.getOffers();
+            this.addOffersFromItemListings(merchantoffers, itemListings, 5);
+            int i = this.random.nextInt(itemListings1.length);
+            VillagerTrades.ItemListing villagertrades$itemlisting = itemListings1[i];
+            MerchantOffer merchantoffer = villagertrades$itemlisting.getOffer(this, this.random);
+            if (merchantoffer != null) {
+                merchantoffers.add(merchantoffer);
+            }
+        }
+    }
+
+
+     @Override
+    protected void rewardTradeXp(MerchantOffer offer) {
+        if (offer.shouldRewardExp()) {
+            int i = 3 + this.random.nextInt(4);
+            this.level().addFreshEntity(new ExperienceOrb(this.level(), this.getX(), this.getY() + 0.5, this.getZ(), i));
+        }
+    }
+
+    @Override
+    public void notifyTradeUpdated(ItemStack stack) {
+        if (!this.level().isClientSide && this.ambientSoundTime > -this.getAmbientSoundInterval() + 20) {
+            this.ambientSoundTime = -this.getAmbientSoundInterval();
+            this.makeSound(this.getTradeUpdatedSound(!stack.isEmpty()));
+        }
+    }
+
+    protected SoundEvent getTradeUpdatedSound(boolean isYesSound) {
+        return isYesSound ? SoundEvents.VILLAGER_YES : SoundEvents.VILLAGER_NO;
+    }
+
+    @Override
+    public boolean removeWhenFarAway(double distanceToClosestPlayer) {
+        return false;
+    }
+
+    @Nullable
+    @Override
+    public AgeableMob getBreedOffspring(ServerLevel p_150046_, AgeableMob p_150047_) {
+        return null;
+    }
+
+    private static Int2ObjectMap<VillagerTrades.ItemListing[]> toIntMap(ImmutableMap<Integer, VillagerTrades.ItemListing[]> map) {
+        return new Int2ObjectOpenHashMap<>(map);
+    }
+
+    public static final Int2ObjectMap<VillagerTrades.ItemListing[]> LITTLE_MAN_TRADES = toIntMap(
+            ImmutableMap.of(
+                    1,
+                    new VillagerTrades.ItemListing[]{
+                            new BasicItemListing(new ItemStack(ModItems.JADE.get(), 16), new ItemStack(ModItems.LIQUID_PYRITE_BUCKET.get(), 1), 1, 3, 1),
+                            new BasicItemListing(new ItemStack(ModItems.RAW_PYRITE.get(), 1), new ItemStack(ModItems.PYRITE_INGOT.get(), 1), 24, 3, 1),
+                            new VillagerTrades.ItemsForEmeralds(Items.SEA_PICKLE, 2, 1, 5, 1),
+                            new VillagerTrades.ItemsForEmeralds(Items.SLIME_BALL, 4, 1, 5, 1),
+                            new VillagerTrades.ItemsForEmeralds(Items.GLOWSTONE, 2, 1, 5, 1),
+                            new VillagerTrades.ItemsForEmeralds(Items.NAUTILUS_SHELL, 5, 1, 5, 1),
+                            new VillagerTrades.ItemsForEmeralds(Items.FERN, 1, 1, 12, 1),
+                    },
+                    2,
+                    new VillagerTrades.ItemListing[]{
+                            new BasicItemListing(new ItemStack(Items.DIAMOND, 6), new ItemStack(Items.COBBLESTONE, 6), 10, 3, 1),
+                            new VillagerTrades.ItemsForEmeralds(Items.TROPICAL_FISH_BUCKET, 5, 1, 4, 1),
+                            new VillagerTrades.ItemsForEmeralds(Items.GUNPOWDER, 1, 1, 8, 1),
+                            new VillagerTrades.ItemsForEmeralds(Items.PODZOL, 3, 3, 6, 1)
+                    }
+            )
+    );
+
 }
