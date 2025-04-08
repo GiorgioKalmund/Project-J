@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-04T09:25:30.0114645	Loot Tables
+// 1.21.4	2025-04-08T13:43:22.7635584	Loot Tables
 645e23f8676b8f0e4d797aeab743aa1e3606c703 data/projectj/loot_table/blocks/adobe_bricks.json
 c52a58507f4c8bc3dcdd97ef286a063d396844cc data/projectj/loot_table/blocks/adobe_bricks_slab.json
 c80294a187a6c6c06ea794e6c6d418870c792578 data/projectj/loot_table/blocks/adobe_bricks_stairs.json
@@ -18,6 +18,7 @@ e236002db4b8a69bcaa8a7e7484db5d3319458a7 data/projectj/loot_table/blocks/deepsla
 9ad80c3265b1b2ec4949f718f7f0bd9358890e7b data/projectj/loot_table/blocks/jade_ore.json
 9b06c5d3e28e7e62e2e6b456f4b225c54ff3b6e2 data/projectj/loot_table/blocks/little_man_statue_block.json
 2092fc1f0509198346208a82a4ce0a97c1115401 data/projectj/loot_table/blocks/magnifying_glass_stand.json
+4378e45d64196063ce42afbf0acf0d4d2f29cd32 data/projectj/loot_table/blocks/maize_crop.json
 5a6df041a821e108fd66d795b6fb670ea5d0064f data/projectj/loot_table/blocks/mesquite_bench.json
 0ae061b1db60958cfccec134106c7dd97b903d62 data/projectj/loot_table/blocks/mesquite_bench_corner.json
 3573a77d9fe16eba3197dcc0f05682c55703b37b data/projectj/loot_table/blocks/mesquite_brazier.json

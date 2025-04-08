@@ -48,6 +48,9 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.SERPENTINITE_BENCH_CORNER.get());
                 output.accept(ModItems.SERPENTINITE_ROD.get());
 
+                output.accept(ModItems.MAIZE);
+                output.accept(ModItems.MAIZE_SEEDS);
+
                 output.accept(ModBlocks.REGENERATION_OLMEC_HEAD.get());
                 output.accept(ModBlocks.DAMAGE_OLMEC_HEAD.get());
                 output.accept(ModBlocks.CONDUIT_OLMEC_HEAD.get());

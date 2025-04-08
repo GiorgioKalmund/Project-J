@@ -161,6 +161,8 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> EMPTY_LITTLE_MAN_STATUE_BLOCK = register("empty_little_man_statue_block", EmptyLittleManStatueBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).noOcclusion(), new Item.Properties());
 
+    public static final DeferredBlock<Block> MAIZE_CROP = registerMaizeCropBlock("maize_crop", BlockBehaviour.Properties.ofFullCopy(Blocks.BEETROOTS));
+
     private static DeferredBlock<Block> register(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> factory.apply(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
         ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
@@ -191,6 +193,10 @@ public class ModBlocks {
         return toBeRegistered;
     }
 
+    private static DeferredBlock<Block> registerMaizeCropBlock(String name, BlockBehaviour.Properties properties) {
+        return BLOCKS.register(name, registryName -> new MaizeCropBlock(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+    }
+
     private static DeferredBlock<Block> registerPressurePlateBlock(String name, BlockSetType type, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> new PressurePlateBlock(type, properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
         ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
@@ -208,6 +214,7 @@ public class ModBlocks {
         ModItems.registerOlmecHeadItem(toBeRegistered, itemProperties, effect);
         return toBeRegistered;
     }
+
 
     private static DeferredBlock<Block> registerOlmecHeadBlock(String name, ParticleOptions particleOptions, Holder<MobEffect> effect, int effectTime) {
         BlockBehaviour.Properties properties =

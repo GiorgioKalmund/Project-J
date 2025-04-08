@@ -4,7 +4,10 @@ import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlockFamilies;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.block.custom.MagnifyingGlassStandBlock;
+import com.mgmstudios.projectj.block.custom.MaizeCropBlock;
 import com.mgmstudios.projectj.item.ModItems;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
@@ -22,12 +25,15 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.model.generators.template.ExtendedModelTemplateBuilder;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -120,6 +126,9 @@ public class ModModelProvider extends ModelProvider {
                 .filter(BlockFamily::shouldGenerateModel)
                 .forEach(family -> this.family(blockModels, family.getBaseBlock()).generateFor(family));
 
+        createCropBlock(blockModels, ModBlocks.MAIZE_CROP.get(), MaizeCropBlock.AGE, 0, 1, 2, 3);
+        itemModels.generateFlatItem(ModItems.MAIZE.get(), ModelTemplates.FLAT_ITEM);
+
     }
 
     public void createSimpleItemWithCustomModel(ItemModelGenerators itemModelGenerators, Item item){
@@ -150,6 +159,31 @@ public class ModModelProvider extends ModelProvider {
 
         ItemModel.Unbaked itemmodel$unbaked = ItemModelUtils.plainModel(itemModelGenerators.createFlatItemModel(block.asItem(), ModelTemplates.FLAT_ITEM));
         itemModelGenerators.itemModelOutput.accept(block.asItem(), itemmodel$unbaked);
+    }
+
+    public void createCropBlock(BlockModelGenerators blockModelGenerators, Block cropBlock, Property<Integer> ageProperty, int... ageToVisualStageMapping) {
+        if (ageProperty.getPossibleValues().size() != ageToVisualStageMapping.length) {
+            throw new IllegalArgumentException();
+        } else {
+            Int2ObjectMap<ResourceLocation> int2objectmap = new Int2ObjectOpenHashMap<>();
+            PropertyDispatch propertydispatch = PropertyDispatch.property(ageProperty)
+                    .generate(
+                            p_388091_ -> {
+                                int i = ageToVisualStageMapping[p_388091_];
+                                ResourceLocation resourcelocation = int2objectmap.computeIfAbsent(
+                                        i, property -> {
+                                            var modelBuilder = ModelTemplates.CROP.extend().renderType("minecraft:cutout");
+
+                                            return blockModelGenerators
+                                                    .createSuffixedVariant(cropBlock, "_stage" + i, modelBuilder.build(), TextureMapping::crop);
+                                        }
+                                );
+                                return Variant.variant().with(VariantProperties.MODEL, resourcelocation);
+                            }
+                    );
+            blockModelGenerators.registerSimpleFlatItemModel(cropBlock.asItem());
+            blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(cropBlock).with(propertydispatch));
+        }
     }
 
     public void createCutoutPlantWithDefaultItem(BlockModelGenerators blockModelGenerators, Block block, Block pottedBlock, PlantType plantType){

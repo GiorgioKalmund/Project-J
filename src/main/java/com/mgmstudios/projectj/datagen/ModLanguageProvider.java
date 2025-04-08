@@ -42,6 +42,8 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.LITTLE_MAN_VOODOO, "Little Man Voodoo");
         addItem(ModItems.VOODOO_CATCHER, "Voodoo Catcher");
         addItem(ModItems.PYRITE_MAGNET, "Pyrite Magnet");
+        addItem(ModItems.MAIZE_SEEDS, "Maize Seeds");
+        addItem(ModItems.MAIZE, "Maize");
 
         // Blocks
         addBlock(ModBlocks.RAW_ADOBE, "Raw Adobe");
@@ -55,6 +57,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.TELEPORTATION_PAD, "Teleportation Pad");
         addBlock(ModBlocks.LITTLE_MAN_STATUE_BLOCK, "Little Man Statue");
         addBlock(ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK, "Empty Little Man Statue");
+        addBlock(ModBlocks.MAIZE_CROP, "Maize Crop");
 
         addBlock(ModBlocks.PYRITE_BLOCK, "Pyrite Block");
         addBlock(ModBlocks.RAW_PYRITE_BLOCK, "Raw Pyrite Block");
