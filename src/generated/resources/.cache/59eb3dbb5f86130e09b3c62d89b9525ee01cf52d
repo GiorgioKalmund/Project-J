@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-08T13:43:22.7635584	Loot Tables
+// 1.21.4	2025-04-08T16:29:56.8222819	Loot Tables
 645e23f8676b8f0e4d797aeab743aa1e3606c703 data/projectj/loot_table/blocks/adobe_bricks.json
 c52a58507f4c8bc3dcdd97ef286a063d396844cc data/projectj/loot_table/blocks/adobe_bricks_slab.json
 c80294a187a6c6c06ea794e6c6d418870c792578 data/projectj/loot_table/blocks/adobe_bricks_stairs.json
@@ -33,6 +33,7 @@ d8639e8921306256b3e40346a14fa55186df6c45 data/projectj/loot_table/blocks/mesquit
 1d09be1543c5dbd4c9ac9d8b8831a5075879be98 data/projectj/loot_table/blocks/mesquite_slab.json
 e34b8dc24a6e16977b2a4db550311ddd291b736e data/projectj/loot_table/blocks/mesquite_stairs.json
 478484d2d7a5bfac1a31f5afc8c1ae9d71d0a842 data/projectj/loot_table/blocks/mesquite_wood.json
+feef33b6527e19a03eb8b26bb018978b8c3bb5e9 data/projectj/loot_table/blocks/metate.json
 51f7e8a1d974fbf98905a30c1213a765e82861d4 data/projectj/loot_table/blocks/olmec_altar.json
 8fbbaec90f89cf12091783bf474bed8cd70d545c data/projectj/loot_table/blocks/potted_mesquite_sapling.json
 ec90fb883da2f097916bce5f09782e485adebd18 data/projectj/loot_table/blocks/pyrite_block.json

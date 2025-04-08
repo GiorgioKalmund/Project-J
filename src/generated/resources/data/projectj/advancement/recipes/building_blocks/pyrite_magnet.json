@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "#": {
+    "has_pyrite_ingot": {
       "conditions": {
         "items": [
           {
@@ -11,7 +11,7 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "S": {
+    "has_serpentinite_rock": {
       "conditions": {
         "items": [
           {
@@ -31,8 +31,8 @@
   "requirements": [
     [
       "has_the_recipe",
-      "S",
-      "#"
+      "has_serpentinite_rock",
+      "has_pyrite_ingot"
     ]
   ],
   "rewards": {

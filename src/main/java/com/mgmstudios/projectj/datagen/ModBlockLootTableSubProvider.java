@@ -61,6 +61,7 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.MAGNIFYING_GLASS_STAND.get());
         this.dropSelf(ModBlocks.TELEPORTATION_PAD.get());
         this.dropSelf(ModBlocks.ANCIENT_ALTAR.get());
+        this.dropSelf(ModBlocks.METATE.get());
 
         this.dropSelf(ModBlocks.ADOBE_BRICKS.get());
         this.dropSelf(ModBlocks.ADOBE_BRICKS_STAIRS.get());

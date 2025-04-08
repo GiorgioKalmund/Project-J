@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "projectj:block/metate",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "projectj:block/metate"
+    },
+    "facing=south": {
+      "model": "projectj:block/metate",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "projectj:block/metate",
+      "y": 270
+    }
+  }
+}

@@ -312,8 +312,8 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("R  ")
                 .define('R', ModItems.SERPENTINITE_ROD)
                 .define('J', ModItems.JADE)
-                .unlockedBy("B", this.has(ModItems.JADE))
-                .unlockedBy("R", this.has(ModItems.SERPENTINITE_ROD))
+                .unlockedBy("has_jade", this.has(ModItems.JADE))
+                .unlockedBy("has_serpentinite_rod", this.has(ModItems.SERPENTINITE_ROD))
                 .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.PYRITE_MAGNET)
@@ -322,8 +322,8 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("###")
                 .define('S', ModBlocks.SERPENTINITE_ROCK)
                 .define('#', ModItems.PYRITE_INGOT)
-                .unlockedBy("S", this.has(ModBlocks.SERPENTINITE_ROCK.asItem()))
-                .unlockedBy("#", this.has(ModItems.PYRITE_INGOT))
+                .unlockedBy("has_serpentinite_rock", this.has(ModBlocks.SERPENTINITE_ROCK.asItem()))
+                .unlockedBy("has_pyrite_ingot", this.has(ModItems.PYRITE_INGOT))
                 .save(this.output);
 
         nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.RAW_PYRITE, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_PYRITE_BLOCK);
@@ -333,7 +333,14 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("###")
                 .pattern("# #")
                 .define('#', Items.IRON_INGOT)
-                .unlockedBy("#", this.has(Items.IRON_INGOT))
+                .unlockedBy("has_iron_infot", this.has(Items.IRON_INGOT))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.METATE)
+                .pattern("###")
+                .pattern("# #")
+                .define('#', Items.STONE)
+                .unlockedBy("has_stone", this.has(Items.STONE))
                 .save(this.output);
 
         // ANCIENT ALTAR

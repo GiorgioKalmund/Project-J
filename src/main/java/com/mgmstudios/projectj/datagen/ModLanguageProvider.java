@@ -58,6 +58,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.LITTLE_MAN_STATUE_BLOCK, "Little Man Statue");
         addBlock(ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK, "Empty Little Man Statue");
         addBlock(ModBlocks.MAIZE_CROP, "Maize Crop");
+        addBlock(ModBlocks.METATE, "Metate and Mano");
 
         addBlock(ModBlocks.PYRITE_BLOCK, "Pyrite Block");
         addBlock(ModBlocks.RAW_PYRITE_BLOCK, "Raw Pyrite Block");
