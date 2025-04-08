@@ -329,6 +329,13 @@ public class ModRecipeProvider extends RecipeProvider {
         nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.RAW_PYRITE, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_PYRITE_BLOCK);
         nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.PYRITE_INGOT, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PYRITE_BLOCK);
 
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.MAGNIFYING_GLASS_STAND)
+                .pattern("###")
+                .pattern("# #")
+                .define('#', Items.IRON_INGOT)
+                .unlockedBy("#", this.has(Items.IRON_INGOT))
+                .save(this.output);
+
         // ANCIENT ALTAR
 
         AncientAltarRecipeBuilder.regularWithPyrite(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.MACUAHUITL)

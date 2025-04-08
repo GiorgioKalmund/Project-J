@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-07T11:55:26.944103	ModRecipeProvider
+// 1.21.4	2025-04-08T11:58:50.0638023	ModRecipeProvider
 6452fecec3921d0f3482c70b92d2b933f016e37a data/minecraft/advancement/recipes/building_blocks/adobe_bricks_smelting.json
 ac4b2c37b12e7e2dd5a94dcbc0f93297da607b33 data/minecraft/advancement/recipes/building_blocks/jade_block.json
 2ad5ba8a982b9bbdbf73f012b05a8e91ea044622 data/minecraft/advancement/recipes/building_blocks/obsidian.json
@@ -72,6 +72,7 @@ de3330ee5f558b664bcefcc0f27dab916f07cc94 data/projectj/advancement/recipes/build
 72f4047e28935534623d54213fea1f66e48515b4 data/projectj/advancement/recipes/building_blocks/jade.json
 50b09991479f19fc2554c39e34f3d2cfef4ed690 data/projectj/advancement/recipes/building_blocks/little_man_voodoo.json
 0466c5e6b97a2482ba0f119fa83290a7168fc9b6 data/projectj/advancement/recipes/building_blocks/magnifying_glass.json
+c2520d0a32d767a62444440ab987e5050e68fb5c data/projectj/advancement/recipes/building_blocks/magnifying_glass_stand.json
 6a86eddce530f626e8299b01a93cc1eaef14fd36 data/projectj/advancement/recipes/building_blocks/mesquite_bench.json
 43a1c2db1fe6855200ee96c7ff110a4666b64619 data/projectj/advancement/recipes/building_blocks/mesquite_brazier.json
 57ea93e205c1f66311ade392c778c62efd90626c data/projectj/advancement/recipes/building_blocks/mesquite_planks.json
@@ -122,6 +123,7 @@ c5fc4509a8f3ac3bc882c05c48249f21fa40bce8 data/projectj/recipe/fire_starter.json
 4ca75c00f71538c263cb1c7255c893732d1c7598 data/projectj/recipe/little_man_voodoo.json
 bf4e43d6498fe6e6fad452bd4c7dd52695ec8542 data/projectj/recipe/macuahuitl.json
 34be3a6c7e2ec13af6c73b304eb86acb9b3a48f7 data/projectj/recipe/magnifying_glass.json
+9a571711638fb57907ef8dafc96387d2af7771f9 data/projectj/recipe/magnifying_glass_stand.json
 f5cde97918845e5293886992881afae87b01bc37 data/projectj/recipe/mesquite_bench.json
 4324854f9b366f6f63ee48a5b8710404016848a9 data/projectj/recipe/mesquite_brazier.json
 22c76a774b689c31f7b939f5a028a59c11635b42 data/projectj/recipe/mesquite_button.json
