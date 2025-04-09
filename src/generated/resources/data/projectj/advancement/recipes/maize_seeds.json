@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_iron_ingot": {
+    "has_maize": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:iron_ingot"
+            "items": "projectj:maize"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "projectj:magnifying_glass_stand"
+        "recipe": "projectj:maize_seeds"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_iron_ingot"
+      "has_maize"
     ]
   ],
   "rewards": {
     "recipes": [
-      "projectj:magnifying_glass_stand"
+      "projectj:maize_seeds"
     ]
   }
 }

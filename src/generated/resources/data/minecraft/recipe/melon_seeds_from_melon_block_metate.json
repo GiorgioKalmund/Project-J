@@ -1,0 +1,8 @@
+{
+  "type": "projectj:metate",
+  "ingredient": "minecraft:melon",
+  "result": {
+    "count": 8,
+    "id": "minecraft:melon_seeds"
+  }
+}

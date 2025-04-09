@@ -18,6 +18,9 @@ public class ModRecipeBookCategories {
     public static final Supplier<RecipeBookCategory> ANCIENT_ALTAR_RECIPE_CATEGORY =
             RECIPE_BOOK_CATEGORIES.register("ancient_altar_recipe_category", RecipeBookCategory::new);
 
+    public static final Supplier<RecipeBookCategory> METATE_RECIPE_CATEGORY =
+            RECIPE_BOOK_CATEGORIES.register("metate_recipe_category", RecipeBookCategory::new);
+
     public static void register(IEventBus eventBus){
         RECIPE_BOOK_CATEGORIES.register(eventBus);
     }

@@ -6,6 +6,7 @@ import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.item.custom.MagnifyingGlassItem.MagnifyingRecipeBuilder;
 import com.mgmstudios.projectj.recipe.acientaltar.AncientAltarRecipeBuilder;
+import com.mgmstudios.projectj.recipe.metate.MetateRecipeBuilder;
 import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -333,7 +334,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("###")
                 .pattern("# #")
                 .define('#', Items.IRON_INGOT)
-                .unlockedBy("has_iron_infot", this.has(Items.IRON_INGOT))
+                .unlockedBy("has_iron_ingot", this.has(Items.IRON_INGOT))
                 .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.METATE)
@@ -367,6 +368,32 @@ public class ModRecipeProvider extends RecipeProvider {
                 .requires(Items.BOWL)
                 .unlockedBy("has_bowl", this.has(Items.BOWL))
                 .save(this.output, "crude_sacrifice_bowl_from_altar");
+
+        // METATE
+
+        MetateRecipeBuilder.regular(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.MAIZE, ModItems.MAIZE_SEEDS, 2)
+                .unlockedBy("has_maize", this.has(ModItems.MAIZE))
+                .save(this.output);
+
+        MetateRecipeBuilder.regular(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, Items.WHEAT, Items.WHEAT_SEEDS, 2)
+                .unlockedBy("has_wheat", this.has(Items.WHEAT))
+                .save(this.output);
+
+        MetateRecipeBuilder.regular(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, Items.BEETROOT, Items.BEETROOT_SEEDS, 2)
+                .unlockedBy("has_beetroot", this.has(Items.BEETROOT))
+                .save(this.output);
+
+        MetateRecipeBuilder.regular(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, Blocks.MELON, Items.MELON_SEEDS, 8)
+                .unlockedBy("has_melon_block", this.has(Blocks.MELON))
+                .save(this.output, "melon_seeds_from_melon_block_metate");
+
+        MetateRecipeBuilder.regular(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, Items.MELON_SLICE, Items.MELON_SEEDS, 2)
+                .unlockedBy("has_melon", this.has(Items.MELON_SLICE))
+                .save(this.output, "melon_seeds_from_melon_slice_metate");
+
+        MetateRecipeBuilder.regular(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, Items.PUMPKIN, Items.PUMPKIN_SEEDS, 8)
+                .unlockedBy("has_pumpkin", this.has(Items.PUMPKIN))
+                .save(this.output, "pumpkin_seeds_from_pumpkin_metate");
 
         // SMELTING
 

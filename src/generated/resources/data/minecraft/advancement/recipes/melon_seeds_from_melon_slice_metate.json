@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_iron_ingot": {
+    "has_melon": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:iron_ingot"
+            "items": "minecraft:melon_slice"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "projectj:magnifying_glass_stand"
+        "recipe": "minecraft:melon_seeds_from_melon_slice_metate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_iron_ingot"
+      "has_melon"
     ]
   ],
   "rewards": {
     "recipes": [
-      "projectj:magnifying_glass_stand"
+      "minecraft:melon_seeds_from_melon_slice_metate"
     ]
   }
 }

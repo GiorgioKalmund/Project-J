@@ -2,6 +2,7 @@ package com.mgmstudios.projectj.recipe;
 
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.recipe.acientaltar.AncientAltarRecipe;
+import com.mgmstudios.projectj.recipe.metate.MetateRecipe;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.bus.api.IEventBus;
@@ -28,6 +29,17 @@ public class ModRecipeTypes {
                     "ancient_altar_type",
                     // We need the qualifying generic here due to generics being generics.
                     registryName -> new RecipeType<AncientAltarRecipe>() {
+                        @Override
+                        public String toString() {
+                            return registryName.toString();
+                        }
+                    }
+            );
+
+    public static final Supplier<RecipeType<MetateRecipe>> METATE_RECIPE_TYPE =
+            RECIPE_TYPES.register(
+                    "metate_type",
+                    registryName -> new RecipeType<MetateRecipe>() {
                         @Override
                         public String toString() {
                             return registryName.toString();

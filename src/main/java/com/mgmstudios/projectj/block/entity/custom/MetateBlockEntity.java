@@ -37,10 +37,9 @@ public class MetateBlockEntity extends BlockEntity {
         }
     };
 
-    public boolean canInsert(){
+    public boolean isEmpty(){
         return inventory.getStackInSlot(0).isEmpty();
     }
-
 
     public void drops(){
         SimpleContainer inv = new SimpleContainer(inventory.getSlots());
@@ -50,6 +49,16 @@ public class MetateBlockEntity extends BlockEntity {
 
         assert this.level != null;
         Containers.dropContents(this.level, this.worldPosition, inv);
+    }
+
+    public void swapItem(ItemStack newItem){
+        inventory.setStackInSlot(0, newItem);
+    }
+
+    public void clearAllContents(){
+        for (int slot = 0; slot < inventory.getSlots(); slot++){
+            inventory.setStackInSlot(slot, ItemStack.EMPTY);
+        }
     }
 
     public void insertNewItemStack(ItemStack stack){
