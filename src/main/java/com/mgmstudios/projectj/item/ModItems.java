@@ -80,6 +80,8 @@ public class ModItems {
 
     public static final DeferredItem<Item> MAIZE_MASH = register("maize_mash", Item::new, new Item.Properties().food(Foods.MUSHROOM_STEW).usingConvertsTo(Items.BOWL));
 
+    public static final DeferredItem<Item> STONE_MANO = register("stone_mano");
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

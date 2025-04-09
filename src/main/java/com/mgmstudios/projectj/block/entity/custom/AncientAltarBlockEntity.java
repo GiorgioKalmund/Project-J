@@ -235,8 +235,8 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
             inv.setItem(slot, this.inventory.getStackInSlot(slot));
         }
 
-        SimpleContainer bowlInv = new SimpleContainer(inventory.getSlots());
-        bowlInv.setItem(0, this.inventory.getStackInSlot(0));
+        SimpleContainer bowlInv = new SimpleContainer(bowlInventory.getSlots());
+        bowlInv.setItem(0, this.bowlInventory.getStackInSlot(0));
 
         assert this.level != null;
         Containers.dropContents(this.level, this.worldPosition, inv);

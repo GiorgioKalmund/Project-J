@@ -3,6 +3,7 @@ package com.mgmstudios.projectj;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.block.entity.ModBlockEntities;
 import com.mgmstudios.projectj.block.entity.renderer.AncientAltarEntityRenderer;
+import com.mgmstudios.projectj.block.entity.renderer.MetateEntityRenderer;
 import com.mgmstudios.projectj.block.entity.renderer.SittableEntityRenderer;
 import com.mgmstudios.projectj.client.ProjectJClientExtension;
 import com.mgmstudios.projectj.entity.ModEntities;
@@ -56,6 +57,8 @@ import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+
+import java.lang.management.MemoryType;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(ProjectJ.MOD_ID)
@@ -132,6 +135,7 @@ public class ProjectJ
         @SubscribeEvent
         public static void registerBER(EntityRenderersEvent.RegisterRenderers event){
             event.registerBlockEntityRenderer(ModBlockEntities.ANCIENT_ALTAR_BE.get(), AncientAltarEntityRenderer::new);
+            event.registerBlockEntityRenderer(ModBlockEntities.METATE_BE.get(), MetateEntityRenderer::new);
         }
 
         @SubscribeEvent
@@ -140,8 +144,9 @@ public class ProjectJ
                     ModBlockEntities.ANCIENT_ALTAR_BE.get(),
                     (entity, context) -> entity.getCapability(Capabilities.FluidHandler.BLOCK, entity)
             );
-
             event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.ANCIENT_ALTAR_BE.get(), (entity, context) -> entity.getInventory());
+
+            event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.METATE_BE.get(), (entity, context) -> entity.getInventory());
         }
     }
 }

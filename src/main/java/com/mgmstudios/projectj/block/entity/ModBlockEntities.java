@@ -5,8 +5,10 @@ import java.util.function.Supplier;
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlocks;
 
+import com.mgmstudios.projectj.block.custom.MetateBlock;
 import com.mgmstudios.projectj.block.entity.custom.AdobeFurnaceBlockEntity;
 import com.mgmstudios.projectj.block.entity.custom.AncientAltarBlockEntity;
+import com.mgmstudios.projectj.block.entity.custom.MetateBlockEntity;
 import com.mgmstudios.projectj.block.entity.custom.TeleportationBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -25,6 +27,9 @@ public class ModBlockEntities {
 
     public static final Supplier<BlockEntityType<AncientAltarBlockEntity>> ANCIENT_ALTAR_BE =
             BLOCK_ENTITIES.register("ancient_altar",() -> new BlockEntityType<>(AncientAltarBlockEntity::new, ModBlocks.ANCIENT_ALTAR.get()));
+
+    public static final Supplier<BlockEntityType<MetateBlockEntity>> METATE_BE =
+            BLOCK_ENTITIES.register("metate",() -> new BlockEntityType<>(MetateBlockEntity::new, ModBlocks.METATE.get()));
 
     public static void register(IEventBus eventBus){
         BLOCK_ENTITIES.register(eventBus);
