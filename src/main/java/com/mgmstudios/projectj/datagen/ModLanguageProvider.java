@@ -44,6 +44,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.PYRITE_MAGNET, "Pyrite Magnet");
         addItem(ModItems.MAIZE_SEEDS, "Maize Seeds");
         addItem(ModItems.MAIZE, "Maize");
+        addItem(ModItems.MAIZE_MASH, "Maize Mash");
 
         // Blocks
         addBlock(ModBlocks.RAW_ADOBE, "Raw Adobe");

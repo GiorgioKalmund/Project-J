@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "projectj:maize",
+    "projectj:maize",
+    "projectj:maize",
+    "minecraft:bowl"
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectj:maize_mash"
+  }
+}

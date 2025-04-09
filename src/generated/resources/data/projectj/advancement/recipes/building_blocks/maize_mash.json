@@ -1,21 +1,21 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_stone": {
+    "has_bowl": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:stone"
+            "items": "minecraft:bowl"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_stone_slab": {
+    "has_maize": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:stone_slab"
+            "items": "projectj:maize"
           }
         ]
       },
@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "projectj:metate"
+        "recipe": "projectj:maize_mash"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -31,13 +31,13 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_stone",
-      "has_stone_slab"
+      "has_maize",
+      "has_bowl"
     ]
   ],
   "rewards": {
     "recipes": [
-      "projectj:metate"
+      "projectj:maize_mash"
     ]
   }
 }

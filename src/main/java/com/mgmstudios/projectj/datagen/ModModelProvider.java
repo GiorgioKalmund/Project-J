@@ -129,6 +129,7 @@ public class ModModelProvider extends ModelProvider {
 
         createCropBlock(blockModels, ModBlocks.MAIZE_CROP.get(), MaizeCropBlock.AGE, 0, 1, 2, 3);
         itemModels.generateFlatItem(ModItems.MAIZE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.MAIZE_MASH.get(), ModelTemplates.FLAT_ITEM);
 
     }
 

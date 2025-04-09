@@ -337,11 +337,21 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.METATE)
-                .pattern("###")
+                .pattern("SSS")
                 .pattern("# #")
                 .define('#', Items.STONE)
+                .define('S', Items.STONE_SLAB)
                 .unlockedBy("has_stone", this.has(Items.STONE))
+                .unlockedBy("has_stone_slab", this.has(Items.STONE_SLAB))
                 .save(this.output);
+
+        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.MAIZE_MASH)
+                .requires(ModItems.MAIZE, 3)
+                .requires(Items.BOWL )
+                .unlockedBy("has_maize", this.has(ModItems.MAIZE))
+                .unlockedBy("has_bowl", this.has(Items.BOWL))
+                .save(this.output);
+
 
         // ANCIENT ALTAR
 
@@ -355,7 +365,7 @@ public class ModRecipeProvider extends RecipeProvider {
 
         AncientAltarRecipeBuilder.regularWithPyrite(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.CRUDE_SACRIFICE_BOWL)
                 .requires(Items.BOWL)
-                .unlockedBy("has_bowl", this.has(Items.BOW))
+                .unlockedBy("has_bowl", this.has(Items.BOWL))
                 .save(this.output, "crude_sacrifice_bowl_from_altar");
 
         // SMELTING
