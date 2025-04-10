@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "projectj:block/raw_adobe"
+    "model": "projectj:block/packed_adobe"
   }
 }

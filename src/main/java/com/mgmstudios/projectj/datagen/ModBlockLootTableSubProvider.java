@@ -10,7 +10,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
@@ -52,7 +51,8 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
     // Actually add our loot tables.
     @Override
     protected void generate() {
-        this.dropSelf(ModBlocks.RAW_ADOBE.get());
+        this.dropSelf(ModBlocks.PACKED_ADOBE.get());
+        this.dropSelf(ModBlocks.ADOBE_SAND.get());
         this.dropSelf(ModBlocks.ADOBE_FURNACE.get());
         this.dropSelf(ModBlocks.CHIMNEY.get());
         this.dropSelf(ModBlocks.JADE_BLOCK.get());

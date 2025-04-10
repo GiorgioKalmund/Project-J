@@ -22,7 +22,8 @@ public class ModCreativeModeTabs {
             .icon(() -> new ItemStack(ModItems.JADE.get()))
             //Add your items to the tab.
             .displayItems((params, output) -> {
-                output.accept(ModBlocks.RAW_ADOBE.get());
+                output.accept(ModBlocks.PACKED_ADOBE.get());
+                output.accept(ModBlocks.ADOBE_SAND.get());
                 output.accept(ModBlocks.ADOBE_FURNACE.get());
                 output.accept(ModBlocks.CHIMNEY.get());
 

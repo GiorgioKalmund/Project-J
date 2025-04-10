@@ -6,9 +6,7 @@ import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Blocks;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 
 import java.util.concurrent.CompletableFuture;
@@ -40,6 +38,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .addTag(ModTags.Blocks.ADOBE)
                 .addTag(ModTags.Blocks.SERPENTINITE)
                 .addTag(ModTags.Blocks.PYRITE_BLOCKS);
+
+        tag(BlockTags.MINEABLE_WITH_SHOVEL)
+                .add(ModBlocks.ADOBE_SAND.get())
+                .add(ModBlocks.PACKED_ADOBE.get());
 
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.JADE_ORE.get())
@@ -136,7 +138,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
 
         tag(BlockTags.DIRT)
-                .add(ModBlocks.RAW_ADOBE.get());
+                .add(ModBlocks.PACKED_ADOBE.get());
+
+        tag(BlockTags.SAND)
+                .add(ModBlocks.ADOBE_SAND.get());
 
         tag(BlockTags.LOGS_THAT_BURN)
                 .addTag(ModTags.Blocks.MESQUITE_LOGS);

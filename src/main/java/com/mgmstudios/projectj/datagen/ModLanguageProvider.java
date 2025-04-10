@@ -48,7 +48,8 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.STONE_MANO, "Stone Mano");
 
         // Blocks
-        addBlock(ModBlocks.RAW_ADOBE, "Raw Adobe");
+        addBlock(ModBlocks.PACKED_ADOBE, "Packed Adobe");
+        addBlock(ModBlocks.ADOBE_SAND, "Adobe Sand");
         addBlock(ModBlocks.ADOBE_BRICKS, "Adobe Bricks");
         addBlock(ModBlocks.JADE_ORE, "Jade Ore");
         addBlock(ModBlocks.DEEPSLATE_JADE_ORE, "Deepslate Jade Ore");
@@ -68,9 +69,9 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.LIQUID_PYRITE, "Liquid Pyrite");
 
         addBlock(ModBlocks.ADOBE_FURNACE, "Adobe Furnace");
-        addBlock(ModBlocks.ADOBE_BRICKS_SLAB, "Adobe Bricks Slab");
-        addBlock(ModBlocks.ADOBE_BRICKS_STAIRS, "Adobe Bricks Stairs");
-        addBlock(ModBlocks.ADOBE_BRICKS_WALL, "Adobe Bricks Wall");
+        addBlock(ModBlocks.ADOBE_BRICKS_SLAB, "Adobe Brick Slab");
+        addBlock(ModBlocks.ADOBE_BRICKS_STAIRS, "Adobe Brick Stairs");
+        addBlock(ModBlocks.ADOBE_BRICKS_WALL, "Adobe Brick Wall");
 
         addBlock(ModBlocks.SERPENTINITE_ROCK, "Serpentinite Rock");
         addBlock(ModBlocks.SERPENTINITE_ROCK_SLAB, "Serpentinite Rock Slab");
@@ -80,9 +81,9 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.SERPENTINITE_ROCK_PRESSURE_PLATE, "Serpentinite Rock Pressure Plate");
 
         addBlock(ModBlocks.SERPENTINITE_BRICKS, "Serpentinite Bricks");
-        addBlock(ModBlocks.SERPENTINITE_BRICKS_SLAB, "Serpentinite Bricks Slab");
-        addBlock(ModBlocks.SERPENTINITE_BRICKS_STAIRS, "Serpentinite Bricks Stairs");
-        addBlock(ModBlocks.SERPENTINITE_BRICKS_WALL, "Serpentinite Bricks Wall");
+        addBlock(ModBlocks.SERPENTINITE_BRICKS_SLAB, "Serpentinite Brick Slab");
+        addBlock(ModBlocks.SERPENTINITE_BRICKS_STAIRS, "Serpentinite Brick Stairs");
+        addBlock(ModBlocks.SERPENTINITE_BRICKS_WALL, "Serpentinite Brick Wall");
 
         addBlock(ModBlocks.COBBLED_SERPENTINITE, "Cobbled Serpentinite");
         addBlock(ModBlocks.COBBLED_SERPENTINITE_SLAB, "Cobbled Serpentinite Slab");

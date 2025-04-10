@@ -37,17 +37,17 @@ public class ModRecipeProvider extends RecipeProvider {
         generateForEnabledBlockFamilies(FeatureFlagSet.of(FeatureFlags.VANILLA));
 
         // CRAFTING
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_ADOBE, 4)
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.PACKED_ADOBE, 4)
                 .pattern("SB")
                 .pattern("CW")
                 .define('B', Items.WATER_BUCKET)
                 .define('C', Items.CLAY_BALL)
                 .define('W', Items.WHEAT)
-                .define('S', Blocks.SAND)
+                .define('S', ModBlocks.ADOBE_SAND.get())
                 .unlockedBy("has_water_bucket", this.has(Items.WATER_BUCKET))
                 .unlockedBy("has_wheat", this.has(Items.WHEAT))
                 .unlockedBy("has_clay", this.has(Items.CLAY_BALL))
-                .unlockedBy("has_sand", this.has(Blocks.SAND))
+                .unlockedBy("has_adobe_sand", this.has(ModBlocks.ADOBE_SAND))
                 .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.ADOBE_FURNACE.get())
@@ -398,13 +398,13 @@ public class ModRecipeProvider extends RecipeProvider {
         // SMELTING
 
         SimpleCookingRecipeBuilder.smelting(
-                        Ingredient.of(ModBlocks.RAW_ADOBE.get()),
+                        Ingredient.of(ModBlocks.PACKED_ADOBE.get()),
                         RecipeCategory.BUILDING_BLOCKS,
                         ModBlocks.ADOBE_BRICKS.get(),
                         0.1f,
                         200
                 )
-                .unlockedBy("has_raw_adobe", this.has(ModBlocks.RAW_ADOBE.asItem()))
+                .unlockedBy("has_raw_adobe", this.has(ModBlocks.PACKED_ADOBE.asItem()))
                 .save(this.output, "adobe_bricks_smelting");
 
         SimpleCookingRecipeBuilder.smelting(

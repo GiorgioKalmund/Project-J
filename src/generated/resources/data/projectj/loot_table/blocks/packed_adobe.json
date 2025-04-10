@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "projectj:raw_adobe"
+          "name": "projectj:packed_adobe"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "projectj:blocks/raw_adobe"
+  "random_sequence": "projectj:blocks/packed_adobe"
 }

@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "projectj:raw_adobe"
+            "items": "projectj:packed_adobe"
           }
         ]
       },

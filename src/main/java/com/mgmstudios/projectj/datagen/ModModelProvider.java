@@ -25,7 +25,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.Property;
@@ -33,7 +32,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.model.generators.template.ExtendedModelTemplateBuilder;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -54,7 +52,8 @@ public class ModModelProvider extends ModelProvider {
     protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
         // Generate models and associated files here
 
-        blockModels.createTrivialCube(ModBlocks.RAW_ADOBE.get());
+        blockModels.createTrivialCube(ModBlocks.PACKED_ADOBE.get());
+        blockModels.createTrivialCube(ModBlocks.ADOBE_SAND.get());
         blockModels.createTrivialCube(ModBlocks.JADE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.DEEPSLATE_JADE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.JADE_BLOCK.get());
@@ -100,7 +99,6 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateSpyglass(ModItems.MAGNIFYING_GLASS.get());
         itemModels.generateSpyglass(ModItems.STONE_MANO.get());
 
-        //itemModels.generateSpawnEgg(ModItems.LITTLE_MAN_SPAWN_EGG.get(), 0x1e2e1d, 0x55bd4d);
         itemModels.generateFlatItem(ModItems.LITTLE_MAN_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
 
         createFurnaceUntilTier1(blockModels, ModBlocks.ADOBE_FURNACE.get());

@@ -3,7 +3,7 @@
   "category": "blocks",
   "cookingtime": 200,
   "experience": 0.1,
-  "ingredient": "projectj:raw_adobe",
+  "ingredient": "projectj:packed_adobe",
   "result": {
     "count": 1,
     "id": "projectj:adobe_bricks"

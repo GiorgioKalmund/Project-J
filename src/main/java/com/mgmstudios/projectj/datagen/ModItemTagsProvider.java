@@ -26,7 +26,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(ModTags.Items.ADOBE_FURNACE_SMELTABLE)
                .add(ModItems.RAW_JADE.get())
-               .add(ModBlocks.RAW_ADOBE.asItem());
+               .add(ModBlocks.PACKED_ADOBE.asItem());
 
         tag(ModTags.Items.SMELTS_TO_JADE)
                 .add(ModBlocks.JADE_ORE.asItem())

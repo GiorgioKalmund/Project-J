@@ -5,7 +5,6 @@ import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -85,7 +84,7 @@ public class ModConfiguredFeatures {
         );
 
         register(context, ADOBE_PATCH_KEY, Feature.DISK, new DiskConfiguration(
-                RuleBasedBlockStateProvider.simple(ModBlocks.RAW_ADOBE.get()),
+                RuleBasedBlockStateProvider.simple(ModBlocks.PACKED_ADOBE.get()),
                 BlockPredicate.matchesBlocks(
                         Blocks.SAND
                 ),

@@ -12,6 +12,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.ColorRGBA;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
@@ -32,6 +33,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.awt.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
@@ -43,7 +45,9 @@ public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(ProjectJ.MOD_ID);
 
-    public static final DeferredBlock<Block> RAW_ADOBE = register("raw_adobe", BlockBehaviour.Properties.of().mapColor(MapColor.CLAY).instrument(NoteBlockInstrument.FLUTE).strength(0.6F).sound(SoundType.GRAVEL));
+    public static final DeferredBlock<Block> PACKED_ADOBE = register("packed_adobe", BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_MUD));
+
+    public static final DeferredBlock<Block> ADOBE_SAND = register("adobe_sand", (properties) -> new ColoredFallingBlock(new ColorRGBA(11098145), properties), BlockBehaviour.Properties.ofFullCopy(Blocks.SAND));
 
     public static final DeferredBlock<Block> ADOBE_BRICKS = register("adobe_bricks", BlockBehaviour.Properties.ofFullCopy(Blocks.MUD_BRICKS));
 
