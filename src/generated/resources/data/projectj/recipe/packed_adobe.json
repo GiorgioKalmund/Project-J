@@ -4,7 +4,7 @@
   "key": {
     "B": "minecraft:water_bucket",
     "C": "minecraft:clay_ball",
-    "S": "minecraft:sand",
+    "S": "projectj:adobe_sand",
     "W": "minecraft:wheat"
   },
   "pattern": [

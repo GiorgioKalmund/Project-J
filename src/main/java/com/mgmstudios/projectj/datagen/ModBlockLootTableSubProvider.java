@@ -10,10 +10,13 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SweetBerryBushBlock;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -116,7 +119,6 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         add(ModBlocks.SNAKE_STATUE.get(), this::createTallBlockTable);
 
         add(ModBlocks.LITTLE_MAN_STATUE_BLOCK.get(), block -> createSingleItemTableWithSilkTouch(ModBlocks.LITTLE_MAN_STATUE_BLOCK.get(), ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK.get()));
-        //this.dropOther(ModBlocks.LITTLE_MAN_STATUE_BLOCK.get(), ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK.asItem());
         this.dropSelf(ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK.get());
 
         this.dropSelf(ModBlocks.OLMEC_ALTAR.get());
@@ -131,6 +133,36 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(MaizeCropBlock.AGE, 3));
         this.add(ModBlocks.MAIZE_CROP.get(), this.createCropDrops(ModBlocks.MAIZE_CROP.get(), ModItems.MAIZE.get(), ModItems.MAIZE_SEEDS.get(), cropDrops));
 
+        this.add(ModBlocks.CHILI_BUSH.get(), createItemBushDrop(ModBlocks.CHILI_BUSH.get(), ModItems.CHILI.get(), 1, 2, 3));
+    }
+
+    protected LootTable.Builder createItemBushDrop(Block block, Item item, float minDrops, float midDrops, float maxDrops){
+        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+
+        return this.applyExplosionDecay(
+                block,
+                LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .when(
+                                                LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                                                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 3))
+                                        )
+                                        .add(LootItem.lootTableItem(item))
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(midDrops, maxDrops)))
+                                        .apply(ApplyBonusCount.addUniformBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))
+                        )
+                        .withPool(
+                                LootPool.lootPool()
+                                        .when(
+                                                LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                                                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 2))
+                                        )
+                                        .add(LootItem.lootTableItem(item))
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(minDrops, midDrops)))
+                                        .apply(ApplyBonusCount.addUniformBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))
+                        )
+        );
     }
 
     protected LootTable.Builder createMultipleOreDrops(Block pBlock, Item item, float minDrops, float maxDrops) {

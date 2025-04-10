@@ -24,7 +24,10 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SweetBerryBushBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.Property;
@@ -129,6 +132,10 @@ public class ModModelProvider extends ModelProvider {
         createCropBlock(blockModels, ModBlocks.MAIZE_CROP.get(), MaizeCropBlock.AGE, 0, 1, 2, 3);
         itemModels.generateFlatItem(ModItems.MAIZE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.MAIZE_MASH.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.CHILI.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.CHILI_SEEDS.get(), ModelTemplates.FLAT_ITEM);
+
+        createBushBlock(blockModels, ModBlocks.CHILI_BUSH.get());
 
     }
 
@@ -437,6 +444,25 @@ public class ModModelProvider extends ModelProvider {
     public void createSerpentinitePillar(BlockModelGenerators blockModels, ItemModelGenerators itemModels, Block block) {
         TexturedModel.COLUMN_ALT.create(block, blockModels.modelOutput);
         blockModels.createRotatableColumn(block);
+    }
+
+    public void createBushBlock(BlockModelGenerators blockModels, Block block) {
+        blockModels.blockStateOutput
+                .accept(
+                        MultiVariantGenerator.multiVariant(block)
+                                .with(
+                                        PropertyDispatch.property(BlockStateProperties.AGE_3)
+                                                .generate(
+                                                        p_388136_ -> Variant.variant()
+                                                                .with(
+                                                                        VariantProperties.MODEL,
+                                                                        blockModels.createSuffixedVariant(
+                                                                                block, "_stage" + p_388136_, ModelTemplates.CROSS.extend().renderType("minecraft:cutout").build(), TextureMapping::cross
+                                                                        )
+                                                                )
+                                                )
+                                )
+                );
     }
 
     @SubscribeEvent

@@ -42,9 +42,11 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.LITTLE_MAN_VOODOO, "Little Man Voodoo");
         addItem(ModItems.VOODOO_CATCHER, "Voodoo Catcher");
         addItem(ModItems.PYRITE_MAGNET, "Pyrite Magnet");
-        addItem(ModItems.MAIZE_SEEDS, "Maize Seeds");
         addItem(ModItems.MAIZE, "Maize");
+        addItem(ModItems.MAIZE_SEEDS, "Maize Seeds");
         addItem(ModItems.MAIZE_MASH, "Maize Mash");
+        addItem(ModItems.CHILI, "Chili");
+        addItem(ModItems.CHILI_SEEDS, "Chili Seeds");
         addItem(ModItems.STONE_MANO, "Stone Mano");
 
         // Blocks
@@ -61,6 +63,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.LITTLE_MAN_STATUE_BLOCK, "Little Man Statue");
         addBlock(ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK, "Empty Little Man Statue");
         addBlock(ModBlocks.MAIZE_CROP, "Maize Crop");
+        addBlock(ModBlocks.CHILI_BUSH, "Chili Bush");
         addBlock(ModBlocks.METATE, "Metate and Mano");
 
         addBlock(ModBlocks.PYRITE_BLOCK, "Pyrite Block");

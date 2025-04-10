@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-10T15:45:27.5950552	Loot Tables
+// 1.21.4	2025-04-10T17:09:32.4683865	Loot Tables
 645e23f8676b8f0e4d797aeab743aa1e3606c703 data/projectj/loot_table/blocks/adobe_bricks.json
 c52a58507f4c8bc3dcdd97ef286a063d396844cc data/projectj/loot_table/blocks/adobe_bricks_slab.json
 c80294a187a6c6c06ea794e6c6d418870c792578 data/projectj/loot_table/blocks/adobe_bricks_stairs.json
@@ -6,6 +6,7 @@ c80294a187a6c6c06ea794e6c6d418870c792578 data/projectj/loot_table/blocks/adobe_b
 c1935a254394f32f5c532b04dae7c39bc47610aa data/projectj/loot_table/blocks/adobe_furnace.json
 d6d84ed04d41ae3211fb8a5a82066153693a1c16 data/projectj/loot_table/blocks/adobe_sand.json
 8d0db64bfc99e962b58dbc58ba33d90f039a131f data/projectj/loot_table/blocks/ancient_altar.json
+4c093a48408534ee979a18cfb0eed948d5ae7636 data/projectj/loot_table/blocks/chili_bush.json
 a83c817d872b29e383079bd07d3cc0a59907eda0 data/projectj/loot_table/blocks/chimney.json
 0ad014d93337fe3c4ae7566a51956bd2682b91dc data/projectj/loot_table/blocks/cobbled_serpentinite.json
 7f1e20509dde9042d5229bf9d5daa39333472159 data/projectj/loot_table/blocks/cobbled_serpentinite_slab.json

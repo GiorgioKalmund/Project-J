@@ -59,7 +59,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('C', Items.CLAY_BALL)
                 .unlockedBy("has_furnace", this.has(Items.FURNACE))
                 .unlockedBy("has_clay", this.has(Items.CLAY_BALL))
-                .unlockedBy("has_sand", this.has(Blocks.SAND))
+                .unlockedBy("has_adobe_bricks", this.has(ModBlocks.ADOBE_BRICKS))
                 .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHIMNEY.get())
@@ -377,6 +377,10 @@ public class ModRecipeProvider extends RecipeProvider {
 
         MetateRecipeBuilder.regular(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, Items.WHEAT, Items.WHEAT_SEEDS, 2)
                 .unlockedBy("has_wheat", this.has(Items.WHEAT))
+                .save(this.output);
+
+        MetateRecipeBuilder.regular(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.CHILI, ModItems.CHILI_SEEDS, 2)
+                .unlockedBy("has_chili", this.has(ModItems.CHILI))
                 .save(this.output);
 
         MetateRecipeBuilder.regular(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, Items.BEETROOT, Items.BEETROOT_SEEDS, 2)

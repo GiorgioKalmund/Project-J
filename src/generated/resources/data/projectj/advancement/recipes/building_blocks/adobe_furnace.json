@@ -1,6 +1,16 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
+    "has_adobe_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:adobe_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_clay": {
       "conditions": {
         "items": [
@@ -21,16 +31,6 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_sand": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:sand"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_the_recipe": {
       "conditions": {
         "recipe": "projectj:adobe_furnace"
@@ -43,7 +43,7 @@
       "has_the_recipe",
       "has_furnace",
       "has_clay",
-      "has_sand"
+      "has_adobe_bricks"
     ]
   ],
   "rewards": {

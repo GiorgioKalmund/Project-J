@@ -1,21 +1,21 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_clay": {
+    "has_adobe_sand": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:clay_ball"
+            "items": "projectj:adobe_sand"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_sand": {
+    "has_clay": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:sand"
+            "items": "minecraft:clay_ball"
           }
         ]
       },
@@ -54,7 +54,7 @@
       "has_water_bucket",
       "has_wheat",
       "has_clay",
-      "has_sand"
+      "has_adobe_sand"
     ]
   ],
   "rewards": {

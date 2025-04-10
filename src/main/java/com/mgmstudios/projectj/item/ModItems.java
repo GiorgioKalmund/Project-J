@@ -1,5 +1,7 @@
 package com.mgmstudios.projectj.item;
 
+import com.mgmstudios.food.ModConsumables;
+import com.mgmstudios.food.ModFoods;
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.entity.ModEntities;
@@ -18,7 +20,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -32,13 +33,13 @@ import static net.minecraft.world.item.Items.registerItem;
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ProjectJ.MOD_ID);
 
-    public static final DeferredItem<Item> RAW_JADE = register("raw_jade", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final DeferredItem<Item> RAW_JADE = register("raw_jade", new Item.Properties().rarity(Rarity.UNCOMMON));
 
-    public static final DeferredItem<Item> JADE = ITEMS.registerItem("jade", Item::new, new Item.Properties().rarity(Rarity.RARE));
+    public static final DeferredItem<Item> JADE = register("jade", new Item.Properties().rarity(Rarity.RARE));
 
-    public static final DeferredItem<Item> PYRITE_INGOT = register("pyrite_ingot", Item::new);
+    public static final DeferredItem<Item> PYRITE_INGOT = register("pyrite_ingot");
 
-    public static final DeferredItem<Item> RAW_PYRITE = register("raw_pyrite", Item::new);
+    public static final DeferredItem<Item> RAW_PYRITE = register("raw_pyrite");
 
     public static final DeferredItem<Item> LIQUID_PYRITE_BUCKET = register("liquid_pyrite_bucket", (properties) -> new BucketItem(ModFluids.PYRITE.get(), properties.stacksTo(1).craftRemainder(Items.BUCKET)));
 
@@ -58,7 +59,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> FIRE_STARTER = register("fire_starter", FireStarterItem::new, new Item.Properties().stacksTo(1).durability(128));
 
-    public static final DeferredItem<Item> CRUDE_SACRIFICE_BOWL = register("crude_sacrifice_bowl", Item::new, new Item.Properties().stacksTo(16));
+    public static final DeferredItem<Item> CRUDE_SACRIFICE_BOWL = register("crude_sacrifice_bowl", new Item.Properties().stacksTo(16));
 
     public static final DeferredItem<Item> FILLED_CRUDE_SACRIFICE_BOWL = register("filled_crude_sacrifice_bowl", () -> new Item.Properties().stacksTo(1).food(Foods.RABBIT_STEW).usingConvertsTo(ModItems.CRUDE_SACRIFICE_BOWL.get()));
 
@@ -68,7 +69,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> LITTLE_MAN_SPAWN_EGG = register("little_man_spawn_egg", (properties) -> new SpawnEggItem(ModEntities.LITTLE_MAN_ENTITY.get(), properties));
 
-    public static final DeferredItem<Item> LITTLE_MAN_VOODOO = register("little_man_voodoo", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(16));
+    public static final DeferredItem<Item> LITTLE_MAN_VOODOO = register("little_man_voodoo", new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(16));
 
     public static final DeferredItem<Item> VOODOO_CATCHER = register("voodoo_catcher", VoodooCatcherItem::new, new Item.Properties().stacksTo(1));
 
@@ -76,9 +77,13 @@ public class ModItems {
 
     public static final DeferredItem<Item> MAIZE_SEEDS = register("maize_seeds", (properties) -> new BlockItem(ModBlocks.MAIZE_CROP.get(), properties.useItemDescriptionPrefix()));
 
-    public static final DeferredItem<Item> MAIZE = register("maize", Item::new, new Item.Properties().food(Foods.BEETROOT));
+    public static final DeferredItem<Item> MAIZE = register("maize", new Item.Properties().food(ModFoods.MAIZE));
 
-    public static final DeferredItem<Item> MAIZE_MASH = register("maize_mash", Item::new, new Item.Properties().food(Foods.MUSHROOM_STEW).usingConvertsTo(Items.BOWL));
+    public static final DeferredItem<Item> MAIZE_MASH = register("maize_mash", new Item.Properties().food(ModFoods.MAIZE_MASH).usingConvertsTo(Items.BOWL));
+
+    public static final DeferredItem<Item> CHILI = register("chili", (properties) -> new BlockItem(ModBlocks.CHILI_BUSH.get(), properties.useItemDescriptionPrefix().food(ModFoods.CHILI, ModConsumables.CHILI_PEPPER)));
+
+    public static final DeferredItem<Item> CHILI_SEEDS = register("chili_seeds", new Item.Properties());
 
     public static final DeferredItem<Item> STONE_MANO = register("stone_mano");
 
@@ -116,6 +121,10 @@ public class ModItems {
 
     public static DeferredItem<Item> register(String name, Function<Item.Properties, Item> function, Item.Properties properties){
         return ITEMS.register(name, key -> function.apply(properties.setId(ResourceKey.create(Registries.ITEM, key))));
+    }
+
+    public static DeferredItem<Item> register(String name, Item.Properties properties){
+        return register(name, Item::new, properties);
     }
 
     private static ResourceKey<Item> createKey(String name) {
