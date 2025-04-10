@@ -14,9 +14,11 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -354,17 +356,16 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
 
         @Override
         public boolean handleGameEvent(ServerLevel serverLevel, Holder<GameEvent> gameEvent, GameEvent.Context context, Vec3 pos) {
-            if (gameEvent.is(GameEvent.ENTITY_DIE) && context.sourceEntity() instanceof LivingEntity livingentity) {
-                if (livingentity instanceof Animal){
+            if (gameEvent.is(GameEvent.ENTITY_DAMAGE) && context.sourceEntity() instanceof Player player) {
+                if (player.getItemInHand(InteractionHand.MAIN_HAND).is(ModItems.SACRIFICIAL_DAGGER)
+                        || player.getItemInHand(InteractionHand.OFF_HAND).is(ModItems.SACRIFICIAL_DAGGER)) {
                     this.positionSource
                             .getPosition(serverLevel)
                             .ifPresent(vec3 -> fillAltar(serverLevel, BlockPos.containing(vec3)));
-                    livingentity.skipDropExperience();
+                    return true;
                 }
-                return true;
-            } else {
-                return false;
             }
+            return false;
         }
 
         public void fillAltar(ServerLevel serverLevel, BlockPos blockPos){
