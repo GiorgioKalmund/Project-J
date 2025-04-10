@@ -112,6 +112,7 @@ public class ModModelProvider extends ModelProvider {
         createOlmecHead(blockModels, itemModels, ModBlocks.RESISTANT_OLMEC_HEAD.get());
 
         createSimpleBlockWithCustomModel(blockModels, ModBlocks.CHIMNEY.get());
+        createSimpleBlockWithCustomModel(blockModels, ModBlocks.BOTANY_POT.get());
         createSimpleBlockWithCustomModelAndFlatItem(blockModels, itemModels, ModBlocks.MESQUITE_BRAZIER.get());
         createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.OLMEC_ALTAR.get());
         createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.SERPENTINITE_BENCH.get());

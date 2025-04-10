@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-10T17:00:17.6535181	Model Definitions - projectj
+// 1.21.4	2025-04-10T18:27:45.4418518	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -6,6 +6,7 @@ b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_brick
 68534f251c3c82fa6c7db8f259874b2acb9e8fec assets/projectj/blockstates/adobe_furnace.json
 16d574f88709fe34786bd8f4b8a12b221119ada0 assets/projectj/blockstates/adobe_sand.json
 56d477c1553bf8f402af01cea84809d8b0301378 assets/projectj/blockstates/ancient_altar.json
+5072d166ebdf5256c210db01705270a5de8eead1 assets/projectj/blockstates/botany_pot.json
 f6e028755d11c8212a48cfb910846c0f22889b53 assets/projectj/blockstates/chili_bush.json
 309790fd770e0a99af56c7e38a82bd6f18f80fda assets/projectj/blockstates/chimney.json
 231593025ca503c9848576d43d124808adc10da9 assets/projectj/blockstates/cobbled_serpentinite.json
@@ -69,6 +70,7 @@ fd02c864f9876ea05243e11486bd82108f4ea668 assets/projectj/items/adobe_bricks_stai
 13e17e699a8d9c78c3b62bc09a6d557d48707f73 assets/projectj/items/adobe_furnace.json
 6012dd349c62a995811c467f6285cd877b031489 assets/projectj/items/adobe_sand.json
 6537b813398b59163efdaad636378d998c37ae1f assets/projectj/items/ancient_altar.json
+c236a7fe29cff9fefcb5a438001d0bb91e903bdd assets/projectj/items/botany_pot.json
 ab51c3c90a6fae8c12fdf1055703a34a3cf2354c assets/projectj/items/chili.json
 f72709b86b820e3df0dbbad38bfcd945f7d73899 assets/projectj/items/chili_bush.json
 559f147574b51074d388fae48a967b6b14eedf3d assets/projectj/items/chili_seeds.json

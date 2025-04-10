@@ -65,6 +65,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.MAIZE_CROP, "Maize Crop");
         addBlock(ModBlocks.CHILI_BUSH, "Chili Bush");
         addBlock(ModBlocks.METATE, "Metate and Mano");
+        addBlock(ModBlocks.BOTANY_POT, "Botany Pot");
 
         addBlock(ModBlocks.PYRITE_BLOCK, "Pyrite Block");
         addBlock(ModBlocks.RAW_PYRITE_BLOCK, "Raw Pyrite Block");

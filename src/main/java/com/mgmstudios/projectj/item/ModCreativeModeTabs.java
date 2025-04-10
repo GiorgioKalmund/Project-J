@@ -10,6 +10,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.objectweb.asm.tree.ModuleNode;
 
 import java.util.function.Supplier;
 
@@ -56,6 +57,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.MAIZE_MASH);
                 output.accept(ModBlocks.METATE);
                 output.accept(ModItems.STONE_MANO);
+                output.accept(ModBlocks.BOTANY_POT);
 
                 output.accept(ModBlocks.REGENERATION_OLMEC_HEAD.get());
                 output.accept(ModBlocks.DAMAGE_OLMEC_HEAD.get());
