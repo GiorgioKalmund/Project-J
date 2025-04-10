@@ -48,7 +48,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> OBSIDIAN_TOOTH = register("obsidian_tooth");
 
-    public static final DeferredItem<Item> SACRIFICIAL_DAGGER = registerSwordItem("sacrificial_dagger", ModToolMaterials.SACRIFICIAL_DAGGER_MATERIAL, 30F, -3.6F, new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final DeferredItem<Item> SACRIFICIAL_DAGGER = register("sacrificial_dagger", properties -> new SacrificialDagger(30F, -3.6F, properties.rarity(Rarity.UNCOMMON)));
 
     public static final DeferredItem<Item> TROWEL = register("trowel", TrowelItem::new);
 
