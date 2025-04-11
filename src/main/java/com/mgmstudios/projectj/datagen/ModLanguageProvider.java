@@ -64,6 +64,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK, "Empty Little Man Statue");
         addBlock(ModBlocks.MAIZE_CROP, "Maize Crop");
         addBlock(ModBlocks.CHILI_BUSH, "Chili Bush");
+        addBlock(ModBlocks.POTTED_CHILI_BUSH, "Potted Chili Bush");
         addBlock(ModBlocks.METATE, "Metate and Mano");
         addBlock(ModBlocks.BOTANY_POT, "Botany Pot");
 

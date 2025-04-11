@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-11T10:19:17.962448	Model Definitions - projectj
+// 1.21.4	2025-04-11T13:26:48.985371	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -40,6 +40,7 @@ b5f70cf8fd7935ea601cd7f726692c13f6cfcb24 assets/projectj/blockstates/mesquite_wo
 d8e3dc92807a4d8f08751e7f5db6ebbfafc90474 assets/projectj/blockstates/metate.json
 35039ead1a066fac963698c12723cd22c30e9fe6 assets/projectj/blockstates/olmec_altar.json
 68de66c3de0e993cd5a098b16be6ac2664531856 assets/projectj/blockstates/packed_adobe.json
+d7115f959b1e309ea58723e02ed35b73b0864641 assets/projectj/blockstates/potted_chili_bush.json
 c8f2d86486c6977b50b56f644a44996a2f9fc246 assets/projectj/blockstates/potted_mesquite_sapling.json
 f30c032a99968db3ff7fc48aabff75f606c3a2bb assets/projectj/blockstates/pyrite_block.json
 e0efb73e513ae43b41d9f07476ea87b12d5befd0 assets/projectj/blockstates/pyrite_ore.json
@@ -72,7 +73,6 @@ fd02c864f9876ea05243e11486bd82108f4ea668 assets/projectj/items/adobe_bricks_stai
 6537b813398b59163efdaad636378d998c37ae1f assets/projectj/items/ancient_altar.json
 c236a7fe29cff9fefcb5a438001d0bb91e903bdd assets/projectj/items/botany_pot.json
 ab51c3c90a6fae8c12fdf1055703a34a3cf2354c assets/projectj/items/chili.json
-f72709b86b820e3df0dbbad38bfcd945f7d73899 assets/projectj/items/chili_bush.json
 559f147574b51074d388fae48a967b6b14eedf3d assets/projectj/items/chili_seeds.json
 4c516558ea1e299d150365077530145726a6315e assets/projectj/items/chimney.json
 0d2de578d854c0b97a6e839c3adcf8369b1444ba assets/projectj/items/cobbled_serpentinite.json

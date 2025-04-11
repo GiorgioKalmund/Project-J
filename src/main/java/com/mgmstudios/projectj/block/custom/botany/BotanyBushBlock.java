@@ -37,29 +37,30 @@ public class BotanyBushBlock extends SweetBerryBushBlock {
 
     @Override
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+
     }
 
     @Override
-    protected InteractionResult useWithoutItem(BlockState p_316134_, Level p_316429_, BlockPos p_316748_, Player p_316431_, BlockHitResult p_316474_) {
-        int i = p_316134_.getValue(AGE);
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        int i = state.getValue(AGE);
         boolean flag = i == 3;
         if (i > 1) {
-            int j = 1 + p_316429_.random.nextInt(2);
-            popResource(p_316429_, p_316748_, new ItemStack(getItem(), j + (flag ? 1 : 0)));
-            p_316429_.playSound(
-                    null, p_316748_, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + p_316429_.random.nextFloat() * 0.4F
+            int j = 1 + level.random.nextInt(2);
+            popResource(level, pos, new ItemStack(getItem(), j + (flag ? 1 : 0)));
+            level.playSound(
+                    null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F
             );
-            BlockState blockstate = p_316134_.setValue(AGE, Integer.valueOf(1));
-            p_316429_.setBlock(p_316748_, blockstate, 2);
-            p_316429_.gameEvent(GameEvent.BLOCK_CHANGE, p_316748_, GameEvent.Context.of(p_316431_, blockstate));
+            BlockState blockstate = state.setValue(AGE, Integer.valueOf(1));
+            level.setBlock(pos, blockstate, 2);
+            level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockstate));
             return InteractionResult.SUCCESS;
         } else {
-            return super.useWithoutItem(p_316134_, p_316429_, p_316748_, p_316431_, p_316474_);
+            return super.useWithoutItem(state, level, pos, player, hitResult);
         }
     }
 
     @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-        return state.is(ModBlocks.BOTANY_POT.get()) || state.is(BlockTags.DIRT) || state.getBlock() instanceof FarmBlock;
+        return state.is(BlockTags.DIRT) || state.getBlock() instanceof FarmBlock;
     }
 }

@@ -4,7 +4,6 @@ import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlockFamilies;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.block.custom.MagnifyingGlassStandBlock;
-import com.mgmstudios.projectj.block.custom.botany.MaizeCropBlock;
 import com.mgmstudios.projectj.item.ModItems;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
@@ -134,6 +133,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.CHILI_SEEDS.get(), ModelTemplates.FLAT_ITEM);
 
         createBushBlock(blockModels, ModBlocks.CHILI_BUSH.get());
+        createPottedBushBlock(blockModels, ModBlocks.POTTED_CHILI_BUSH.get());
         createBushBlock(blockModels, ModBlocks.MAIZE_CROP.get());
 
     }
@@ -458,6 +458,23 @@ public class ModModelProvider extends ModelProvider {
                                                                         blockModels.createSuffixedVariant(
                                                                                 block, "_stage" + p_388136_, ModelTemplates.CROSS.extend().renderType("minecraft:cutout").build(), TextureMapping::cross
                                                                         )
+                                                                )
+                                                )
+                                )
+                );
+    }
+
+    public void createPottedBushBlock(BlockModelGenerators blockModels, Block block) {
+        blockModels.blockStateOutput
+                .accept(
+                        MultiVariantGenerator.multiVariant(block)
+                                .with(
+                                        PropertyDispatch.property(BlockStateProperties.AGE_3)
+                                                .generate(
+                                                        integer -> Variant.variant()
+                                                                .with(
+                                                                        VariantProperties.MODEL,
+                                                                        ModelLocationUtils.getModelLocation(block, "_stage" + integer)
                                                                 )
                                                 )
                                 )

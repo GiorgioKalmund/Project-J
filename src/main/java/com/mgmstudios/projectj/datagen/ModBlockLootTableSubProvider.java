@@ -1,7 +1,7 @@
 package com.mgmstudios.projectj.datagen;
 
 import com.mgmstudios.projectj.block.ModBlocks;
-import com.mgmstudios.projectj.block.custom.botany.MaizeCropBlock;
+import com.mgmstudios.projectj.block.custom.botany.BotanyBushBlock;
 import com.mgmstudios.projectj.block.custom.TallBlock;
 import com.mgmstudios.projectj.item.ModItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
@@ -114,6 +114,8 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.MESQUITE_BENCH_CORNER.get());
         this.dropPottedContents(ModBlocks.POTTED_MESQUITE_SAPLING.get());
 
+        this.dropOther(ModBlocks.POTTED_CHILI_BUSH.get(), ModBlocks.BOTANY_POT.get());
+
         add(ModBlocks.MESQUITE_LEAVES.get(), block -> super.createLeavesDrops(ModBlocks.MESQUITE_LEAVES.get(), ModBlocks.MESQUITE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         add(ModBlocks.SNAKE_STATUE.get(), this::createTallBlockTable);
 
@@ -128,11 +130,13 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
                 createMultipleOreDrops(ModBlocks.DEEPSLATE_JADE_ORE.get(), ModItems.RAW_JADE.get(), 2, 5));
         add(ModBlocks.PYRITE_ORE.get(), block -> createOreDrop(ModBlocks.PYRITE_ORE.get(), ModItems.RAW_PYRITE.get()));
 
-        LootItemCondition.Builder cropDrops = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.MAIZE_CROP.get())
-                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(MaizeCropBlock.AGE, 3));
-        this.add(ModBlocks.MAIZE_CROP.get(), this.createCropDrops(ModBlocks.MAIZE_CROP.get(), ModItems.MAIZE.get(), ModItems.MAIZE_SEEDS.get(), cropDrops));
+        LootItemCondition.Builder maizeCropDrops = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.MAIZE_CROP.get())
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BotanyBushBlock.AGE, 3));
+        this.add(ModBlocks.MAIZE_CROP.get(), this.createCropDrops(ModBlocks.MAIZE_CROP.get(), ModItems.MAIZE.get(), ModItems.MAIZE_SEEDS.get(), maizeCropDrops));
 
-        this.add(ModBlocks.CHILI_BUSH.get(), createItemBushDrop(ModBlocks.CHILI_BUSH.get(), ModItems.CHILI.get(), 1, 2, 3));
+        LootItemCondition.Builder chiliCropDrops = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.CHILI_BUSH.get())
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BotanyBushBlock.AGE, 3));
+        this.add(ModBlocks.CHILI_BUSH.get(), this.createCropDrops(ModBlocks.CHILI_BUSH.get(), ModItems.CHILI.get(), ModItems.CHILI_SEEDS.get(), chiliCropDrops));
     }
 
     protected LootTable.Builder createItemBushDrop(Block block, Item item, float minDrops, float midDrops, float maxDrops){
