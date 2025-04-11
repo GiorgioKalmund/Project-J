@@ -20,14 +20,24 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 
+import java.util.function.Supplier;
+
 public class BotanyBushBlock extends SweetBerryBushBlock {
+
+    private final Supplier<Item> itemSupplier;
+
+    public BotanyBushBlock(Supplier itemSupplier, Properties properties) {
+        super(properties);
+        this.itemSupplier = itemSupplier;
+    }
 
     public BotanyBushBlock(Properties properties) {
         super(properties);
+        this.itemSupplier = () -> Items.AIR;
     }
 
     protected Item getItem(){
-        return Items.AIR;
+        return itemSupplier.get();
     }
 
     @Override

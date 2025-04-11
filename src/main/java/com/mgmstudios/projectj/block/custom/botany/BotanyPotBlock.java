@@ -4,10 +4,13 @@ import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.datagen.ModRecipeProvider;
 import com.mgmstudios.projectj.item.ModItems;
+import com.nimbusds.openid.connect.sdk.assurance.IdentityTrustFramework;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -38,28 +41,35 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.CommonHooks;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Supplier;
 
-@EventBusSubscriber(modid = ProjectJ.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class BotanyPotBlock extends FlowerPotBlock implements BonemealableBlock {
 
     public static final IntegerProperty AGE;
     public static final VoxelShape SHAPE_BOTTOM = Block.box(2, 0, 2, 14, 8, 14);
     public static final VoxelShape SHAPE_TOP = Block.box(0, 8, 0, 16, 11, 16);
     public static final VoxelShape SHAPE = Shapes.or(SHAPE_BOTTOM, SHAPE_TOP);
-
-    public static HashMap<Item, Block> INTERACTIONS = new HashMap<>(){
-
-    };
+    public static HashMap<Supplier<Item>, Supplier<BlockState>> INTERACTIONS = new HashMap<>();
+    private final Supplier<Item> itemSupplier;
 
     public BotanyPotBlock(Properties properties) {
+        this(() -> Items.AIR, () -> Items.AIR, properties);
+    }
+
+    public BotanyPotBlock(Supplier<Item> itemSupplier, Supplier<Item> seedSupplier, Properties properties) {
         super(Blocks.AIR, properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
+        this.itemSupplier = itemSupplier;
+        INTERACTIONS.put(seedSupplier, this::defaultBlockState);
     }
 
     @Override
@@ -111,22 +121,25 @@ public class BotanyPotBlock extends FlowerPotBlock implements BonemealableBlock 
     }
 
     protected Item getItem(){
-        return Items.AIR;
+        return itemSupplier.get();
     }
 
     @Override
     protected InteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         Item item = itemStack.getItem();
-        boolean contains =  INTERACTIONS.containsKey(item);
-
-        if (level instanceof ServerLevel serverLevel && contains){
-            Block block = INTERACTIONS.get(item);
-            serverLevel.setBlockAndUpdate(pos, block.defaultBlockState());
-            if (!player.isCreative()){
-                itemStack.shrink(1);
+        Supplier<BlockState> supplierStateToBe = getBlockStateForItem(item);
+        if (supplierStateToBe != null){
+            BlockState stateToBe = supplierStateToBe.get();
+            if (level instanceof ServerLevel serverLevel && player instanceof ServerPlayer serverPlayer){
+                serverPlayer.playNotifySound(SoundEvents.CROP_PLANTED, SoundSource.BLOCKS, 1f, 1f);
+                serverLevel.setBlockAndUpdate(pos, stateToBe);
+                if (!player.isCreative()){
+                    itemStack.shrink(1);
+                }
+                return InteractionResult.SUCCESS_SERVER;
             }
-            return InteractionResult.SUCCESS_SERVER;
         }
+
 
         int i = state.getValue(AGE);
         boolean flag = i == 3;
@@ -150,20 +163,18 @@ public class BotanyPotBlock extends FlowerPotBlock implements BonemealableBlock 
         }
     }
 
-    @SubscribeEvent
-    public static void onRegisterBlocks(RegisterEvent event) {
-        if (event.getRegistryKey().equals(Registries.BLOCK_TYPE)){
-            INTERACTIONS= new HashMap<>();
-            INTERACTIONS.put(ModItems.CHILI_SEEDS.get(), ModBlocks.POTTED_CHILI_BUSH.get());
-            INTERACTIONS.put(ModItems.MAIZE_SEEDS.get(), ModBlocks.POTTED_MAIZE_CROP.get());
-        }
-    }
-
-
     static {
         AGE = BlockStateProperties.AGE_3;
     }
 
+    public Supplier<BlockState> getBlockStateForItem(Item targetItem) {
+        for (Map.Entry<Supplier<Item>, Supplier<BlockState>> entry : INTERACTIONS.entrySet()) {
+            if (entry.getKey().get() == targetItem) {
+                return entry.getValue();
+            }
+        }
+        return null;
+    }
 
     @Override
     public boolean isValidBonemealTarget(LevelReader p_256056_, BlockPos p_57261_, BlockState p_57262_) {

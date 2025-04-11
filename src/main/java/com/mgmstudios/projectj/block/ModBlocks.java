@@ -170,34 +170,15 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> BOTANY_POT = register("botany_pot", BotanyPotBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.DECORATED_POT));
 
-    public static final DeferredBlock<Block> MAIZE_CROP = registerWithoutItem("maize_crop", (p) -> new BotanyBushBlock(p){
-        @Override
-        protected Item getItem() {
-            return ModItems.MAIZE.get();
-        }
-    }, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.BEETROOTS));
+    public static final DeferredBlock<Block> MAIZE_CROP = registerBotanyPlant("maize_crop", ModItems.MAIZE, BlockBehaviour.Properties.ofFullCopy(Blocks.BEETROOTS));
 
 
-    public static final DeferredBlock<Block> POTTED_MAIZE_CROP = registerWithoutItem("potted_maize_crop", (p) -> new BotanyPotBlock(p){
-        @Override
-        protected Item getItem() {
-            return ModItems.MAIZE.get();
-        }
-    }, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.BEETROOTS));
+    public static final DeferredBlock<Block> POTTED_MAIZE_CROP = registerPottedBotanyPlant("potted_maize_crop", ModItems.MAIZE, ModItems.MAIZE_SEEDS, BlockBehaviour.Properties.ofFullCopy(Blocks.BEETROOTS));
 
-    public static final DeferredBlock<Block> CHILI_BUSH = registerWithoutItem("chili_bush", (p) -> new BotanyBushBlock(p){
-        @Override
-        protected Item getItem() {
-            return ModItems.CHILI.get();
-        }
-    }, BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH));
+    public static final DeferredBlock<Block> CHILI_BUSH = registerBotanyPlant("chili_bush", ModItems.CHILI, BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH));
 
-    public static final DeferredBlock<Block> POTTED_CHILI_BUSH = registerWithoutItem("potted_chili_bush", (properties) -> new BotanyPotBlock(properties){
-        @Override
-        protected Item getItem() {
-            return ModItems.CHILI.get();
-        }
-    }, BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH));
+    public static final DeferredBlock<Block> POTTED_CHILI_BUSH = registerPottedBotanyPlant("potted_chili_bush", ModItems.CHILI, ModItems.CHILI_SEEDS, BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH));
+
 
 
     private static DeferredBlock<Block> register(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
@@ -209,6 +190,16 @@ public class ModBlocks {
 
     private static DeferredBlock<Block> registerWithoutItem(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties) {
         return BLOCKS.register(name, registryName -> factory.apply(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+    }
+
+    private static DeferredBlock<Block> registerBotanyPlant(String name, Supplier<Item> item, BlockBehaviour.Properties properties) {
+        return BLOCKS.register(name, registryName -> new BotanyBushBlock(item, properties.setId(ResourceKey.create(Registries.BLOCK, registryName))){
+        });
+    }
+
+    private static DeferredBlock<Block> registerPottedBotanyPlant(String name, Supplier<Item> item, Supplier<Item> seeds, BlockBehaviour.Properties properties) {
+        return BLOCKS.register(name, registryName -> new BotanyPotBlock(item, seeds, properties.setId(ResourceKey.create(Registries.BLOCK, registryName))){
+        });
     }
 
     private static DeferredBlock<Block> register(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties) {
