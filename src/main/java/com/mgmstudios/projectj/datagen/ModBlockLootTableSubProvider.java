@@ -115,6 +115,7 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropPottedContents(ModBlocks.POTTED_MESQUITE_SAPLING.get());
 
         this.dropOther(ModBlocks.POTTED_CHILI_BUSH.get(), ModBlocks.BOTANY_POT.get());
+        this.dropOther(ModBlocks.POTTED_MAIZE_CROP.get(), ModBlocks.BOTANY_POT.get());
 
         add(ModBlocks.MESQUITE_LEAVES.get(), block -> super.createLeavesDrops(ModBlocks.MESQUITE_LEAVES.get(), ModBlocks.MESQUITE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         add(ModBlocks.SNAKE_STATUE.get(), this::createTallBlockTable);

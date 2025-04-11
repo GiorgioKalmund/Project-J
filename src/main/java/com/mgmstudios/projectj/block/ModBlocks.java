@@ -166,6 +166,10 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> EMPTY_LITTLE_MAN_STATUE_BLOCK = register("empty_little_man_statue_block", EmptyLittleManStatueBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).noOcclusion(), new Item.Properties());
 
+    public static final DeferredBlock<Block> METATE = register("metate", MetateBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).noOcclusion());
+
+    public static final DeferredBlock<Block> BOTANY_POT = register("botany_pot", BotanyPotBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.DECORATED_POT));
+
     public static final DeferredBlock<Block> MAIZE_CROP = registerWithoutItem("maize_crop", (p) -> new BotanyBushBlock(p){
         @Override
         protected Item getItem() {
@@ -173,7 +177,13 @@ public class ModBlocks {
         }
     }, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.BEETROOTS));
 
-    public static final DeferredBlock<Block> METATE = register("metate", MetateBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).noOcclusion());
+
+    public static final DeferredBlock<Block> POTTED_MAIZE_CROP = registerWithoutItem("potted_maize_crop", (p) -> new BotanyPotBlock(p){
+        @Override
+        protected Item getItem() {
+            return ModItems.MAIZE.get();
+        }
+    }, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.BEETROOTS));
 
     public static final DeferredBlock<Block> CHILI_BUSH = registerWithoutItem("chili_bush", (p) -> new BotanyBushBlock(p){
         @Override
@@ -189,7 +199,6 @@ public class ModBlocks {
         }
     }, BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH));
 
-    public static final DeferredBlock<Block> BOTANY_POT = register("botany_pot", BotanyPotBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.DECORATED_POT));
 
     private static DeferredBlock<Block> register(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> factory.apply(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));

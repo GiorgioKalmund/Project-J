@@ -135,6 +135,7 @@ public class ModModelProvider extends ModelProvider {
         createBushBlock(blockModels, ModBlocks.CHILI_BUSH.get());
         createPottedBushBlock(blockModels, ModBlocks.POTTED_CHILI_BUSH.get());
         createBushBlock(blockModels, ModBlocks.MAIZE_CROP.get());
+        createPottedBushBlock(blockModels, ModBlocks.POTTED_MAIZE_CROP.get());
 
     }
 
@@ -312,6 +313,12 @@ public class ModModelProvider extends ModelProvider {
         return resourcelocation.withPrefix("block/");
     }
 
+
+    public static ResourceLocation getPrefixedModelLocation(Block block, String prefix, String suffix) {
+        ResourceLocation resourcelocation = BuiltInRegistries.BLOCK.getKey(block);
+        return resourcelocation.withPath((p_388420_) -> "block/" + prefix + p_388420_ + suffix);
+    }
+
     public void createOlmecHead(BlockModelGenerators blockModels, ItemModelGenerators itemModels, Block block) {
         ResourceLocation resourcelocation = ModelLocationUtils.getModelLocation(block);
         ResourceLocation resourcelocation1 = ModelLocationUtils.getModelLocation(block, "_on");
@@ -474,7 +481,7 @@ public class ModModelProvider extends ModelProvider {
                                                         integer -> Variant.variant()
                                                                 .with(
                                                                         VariantProperties.MODEL,
-                                                                        ModelLocationUtils.getModelLocation(block, "_stage" + integer)
+                                                                        getPrefixedModelLocation(block, "crops/", "_stage" + integer)
                                                                 )
                                                 )
                                 )
@@ -485,4 +492,6 @@ public class ModModelProvider extends ModelProvider {
     public static void gatherData(GatherDataEvent.Client event) {
         event.createProvider(ModModelProvider::new);
     }
+
+
 }

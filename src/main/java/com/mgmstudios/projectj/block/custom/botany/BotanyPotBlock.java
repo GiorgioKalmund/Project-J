@@ -67,6 +67,17 @@ public class BotanyPotBlock extends FlowerPotBlock implements BonemealableBlock 
         return super.getStateForPlacement(context).setValue(AGE, 0);
     }
 
+    @Override
+    public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
+        int i = state.getValue(AGE);
+        boolean flag = i == 3;
+        int j = 1 + level.random.nextInt(2);
+        if (i > 1 && !player.isCreative()){
+            popResource(level, pos, new ItemStack(getItem(), j + (flag ? 1 : 0)));
+        }
+        return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);
+    }
+
     protected void randomTick(BlockState state, ServerLevel serverLevel, BlockPos pos, RandomSource randomSource) {
         int i = state.getValue(AGE);
         if (i < 3 && serverLevel.getRawBrightness(pos.above(), 0) >= 9 && CommonHooks.canCropGrow(serverLevel, pos, state, randomSource.nextInt(5) == 0)) {
@@ -94,6 +105,10 @@ public class BotanyPotBlock extends FlowerPotBlock implements BonemealableBlock 
         return SHAPE;
     }
 
+    @Override
+    protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return SHAPE;
+    }
 
     protected Item getItem(){
         return Items.AIR;
@@ -107,7 +122,9 @@ public class BotanyPotBlock extends FlowerPotBlock implements BonemealableBlock 
         if (level instanceof ServerLevel serverLevel && contains){
             Block block = INTERACTIONS.get(item);
             serverLevel.setBlockAndUpdate(pos, block.defaultBlockState());
-            itemStack.shrink(1);
+            if (!player.isCreative()){
+                itemStack.shrink(1);
+            }
             return InteractionResult.SUCCESS_SERVER;
         }
 
@@ -138,6 +155,7 @@ public class BotanyPotBlock extends FlowerPotBlock implements BonemealableBlock 
         if (event.getRegistryKey().equals(Registries.BLOCK_TYPE)){
             INTERACTIONS= new HashMap<>();
             INTERACTIONS.put(ModItems.CHILI_SEEDS.get(), ModBlocks.POTTED_CHILI_BUSH.get());
+            INTERACTIONS.put(ModItems.MAIZE_SEEDS.get(), ModBlocks.POTTED_MAIZE_CROP.get());
         }
     }
 

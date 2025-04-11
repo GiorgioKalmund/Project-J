@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-11T13:33:19.62633	Loot Tables
+// 1.21.4	2025-04-11T13:59:19.548163	Loot Tables
 645e23f8676b8f0e4d797aeab743aa1e3606c703 data/projectj/loot_table/blocks/adobe_bricks.json
 c52a58507f4c8bc3dcdd97ef286a063d396844cc data/projectj/loot_table/blocks/adobe_bricks_slab.json
 c80294a187a6c6c06ea794e6c6d418870c792578 data/projectj/loot_table/blocks/adobe_bricks_stairs.json
@@ -40,6 +40,7 @@ feef33b6527e19a03eb8b26bb018978b8c3bb5e9 data/projectj/loot_table/blocks/metate.
 51f7e8a1d974fbf98905a30c1213a765e82861d4 data/projectj/loot_table/blocks/olmec_altar.json
 e5a77622f3642401e9cd1e4ec67aabe403fe612d data/projectj/loot_table/blocks/packed_adobe.json
 fe2c03c0d44ee78b415baf0a50c7a71f06454e30 data/projectj/loot_table/blocks/potted_chili_bush.json
+a094730359d8fc802b982d05203d49c31574cecf data/projectj/loot_table/blocks/potted_maize_crop.json
 8fbbaec90f89cf12091783bf474bed8cd70d545c data/projectj/loot_table/blocks/potted_mesquite_sapling.json
 ec90fb883da2f097916bce5f09782e485adebd18 data/projectj/loot_table/blocks/pyrite_block.json
 f2f277f95ac46f0d265c8340fb0f92b4cd518a83 data/projectj/loot_table/blocks/pyrite_ore.json
