@@ -2,6 +2,9 @@ package com.mgmstudios.projectj.block;
 
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.custom.*;
+import com.mgmstudios.projectj.block.custom.botany.BotanyPotBlock;
+import com.mgmstudios.projectj.block.custom.botany.ChiliBushBlock;
+import com.mgmstudios.projectj.block.custom.botany.MaizeCropBlock;
 import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.worldgen.feature.ModTreeGrowers;
@@ -33,7 +36,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.awt.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;

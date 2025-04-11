@@ -1,4 +1,4 @@
-package com.mgmstudios.food;
+package com.mgmstudios.projectj.food;
 
 import net.minecraft.world.food.FoodProperties;
 

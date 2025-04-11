@@ -1,7 +1,7 @@
 package com.mgmstudios.projectj.item;
 
-import com.mgmstudios.food.ModConsumables;
-import com.mgmstudios.food.ModFoods;
+import com.mgmstudios.projectj.food.ModConsumables;
+import com.mgmstudios.projectj.food.ModFoods;
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.entity.ModEntities;
@@ -81,9 +81,9 @@ public class ModItems {
 
     public static final DeferredItem<Item> MAIZE_MASH = register("maize_mash", new Item.Properties().food(ModFoods.MAIZE_MASH).usingConvertsTo(Items.BOWL));
 
-    public static final DeferredItem<Item> CHILI = register("chili", (properties) -> new BlockItem(ModBlocks.CHILI_BUSH.get(), properties.useItemDescriptionPrefix().food(ModFoods.CHILI, ModConsumables.CHILI_PEPPER)));
+    public static final DeferredItem<Item> CHILI_SEEDS = register("chili_seeds", (properties) -> new BlockItem(ModBlocks.CHILI_BUSH.get(), properties.useItemDescriptionPrefix()));
 
-    public static final DeferredItem<Item> CHILI_SEEDS = register("chili_seeds", new Item.Properties());
+    public static final DeferredItem<Item> CHILI = register("chili", new Item.Properties().food(ModFoods.CHILI, ModConsumables.CHILI_PEPPER));
 
     public static final DeferredItem<Item> STONE_MANO = register("stone_mano");
 

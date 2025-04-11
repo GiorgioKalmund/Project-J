@@ -4,7 +4,7 @@ import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlockFamilies;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.block.custom.MagnifyingGlassStandBlock;
-import com.mgmstudios.projectj.block.custom.MaizeCropBlock;
+import com.mgmstudios.projectj.block.custom.botany.MaizeCropBlock;
 import com.mgmstudios.projectj.item.ModItems;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
@@ -24,10 +24,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SweetBerryBushBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.Property;
@@ -130,13 +127,14 @@ public class ModModelProvider extends ModelProvider {
                 .filter(BlockFamily::shouldGenerateModel)
                 .forEach(family -> this.family(blockModels, family.getBaseBlock()).generateFor(family));
 
-        createCropBlock(blockModels, ModBlocks.MAIZE_CROP.get(), MaizeCropBlock.AGE, 0, 1, 2, 3);
         itemModels.generateFlatItem(ModItems.MAIZE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.MAIZE_SEEDS.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.MAIZE_MASH.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.CHILI.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.CHILI_SEEDS.get(), ModelTemplates.FLAT_ITEM);
 
         createBushBlock(blockModels, ModBlocks.CHILI_BUSH.get());
+        createBushBlock(blockModels, ModBlocks.MAIZE_CROP.get());
 
     }
 

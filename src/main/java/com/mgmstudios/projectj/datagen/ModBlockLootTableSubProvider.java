@@ -1,7 +1,7 @@
 package com.mgmstudios.projectj.datagen;
 
 import com.mgmstudios.projectj.block.ModBlocks;
-import com.mgmstudios.projectj.block.custom.MaizeCropBlock;
+import com.mgmstudios.projectj.block.custom.botany.MaizeCropBlock;
 import com.mgmstudios.projectj.block.custom.TallBlock;
 import com.mgmstudios.projectj.item.ModItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
@@ -10,12 +10,10 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SweetBerryBushBlock;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
