@@ -2,11 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    "projectj:maize",
-    "minecraft:bowl"
+    "projectj:maize_mash",
+    "projectj:chili",
+    "#projectj:cooked_meat"
   ],
   "result": {
     "count": 1,
-    "id": "projectj:maize_mash"
+    "id": "projectj:chili_con_carne"
   }
 }

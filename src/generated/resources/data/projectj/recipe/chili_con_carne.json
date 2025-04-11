@@ -3,10 +3,12 @@
   "category": "building",
   "ingredients": [
     "projectj:maize",
+    "projectj:chili",
+    "#projectj:cooked_meat",
     "minecraft:bowl"
   ],
   "result": {
     "count": 1,
-    "id": "projectj:maize_mash"
+    "id": "projectj:chili_con_carne"
   }
 }

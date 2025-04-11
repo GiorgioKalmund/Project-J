@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_chili": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:chili"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_cooked_meat": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#projectj:cooked_meat"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_maize_mash": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:maize_mash"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:chili_con_carne_from_maize_mash"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_maize_mash",
+      "has_chili",
+      "has_cooked_meat"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:chili_con_carne_from_maize_mash"
+    ]
+  }
+}

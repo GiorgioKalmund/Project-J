@@ -74,6 +74,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(ModTags.Blocks.BENCHES, ModTags.Items.BENCHES);
         copy(ModTags.Blocks.PYRITE_BLOCKS, ModTags.Items.PYRITE_BLOCKS);
 
+        tag(ModTags.Items.COOKED_MEAT)
+                .add(Items.COOKED_BEEF)
+                .add(Items.COOKED_CHICKEN)
+                .add(Items.COOKED_MUTTON)
+                .add(Items.COOKED_PORKCHOP);
+
         tag(ItemTags.SAPLINGS)
                 .add(ModBlocks.MESQUITE_SAPLING.asItem());
 

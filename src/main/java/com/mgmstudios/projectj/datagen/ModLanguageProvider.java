@@ -47,6 +47,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.MAIZE_MASH, "Maize Mash");
         addItem(ModItems.CHILI, "Chili");
         addItem(ModItems.CHILI_SEEDS, "Chili Seeds");
+        addItem(ModItems.CHILI_CON_CARNE, "Chili con Carne");
         addItem(ModItems.STONE_MANO, "Stone Mano");
 
         // Blocks

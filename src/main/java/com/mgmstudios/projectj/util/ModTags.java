@@ -6,7 +6,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.player.ProfileKeyPair;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
@@ -61,6 +60,8 @@ public class ModTags {
         public static final TagKey<Item> SERPENTINITE = createTag("serpentinite");
 
         public static final TagKey<Item> BENCHES = createTag("benches");
+
+        public static final TagKey<Item> COOKED_MEAT = createTag("cooked_meat");
 
         private static TagKey<Item> createTag(String name){
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, name));

@@ -131,6 +131,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.MAIZE_MASH.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.CHILI.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.CHILI_SEEDS.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.CHILI_CON_CARNE.get(), ModelTemplates.FLAT_ITEM);
 
         createBushBlock(blockModels, ModBlocks.CHILI_BUSH.get());
         createPottedBushBlock(blockModels, ModBlocks.POTTED_CHILI_BUSH.get());

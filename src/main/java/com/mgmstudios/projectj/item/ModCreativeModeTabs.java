@@ -55,6 +55,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.CHILI);
                 output.accept(ModItems.CHILI_SEEDS);
                 output.accept(ModItems.MAIZE_MASH);
+                output.accept(ModItems.CHILI_CON_CARNE);
                 output.accept(ModBlocks.METATE);
                 output.accept(ModItems.STONE_MANO);
                 output.accept(ModBlocks.BOTANY_POT);

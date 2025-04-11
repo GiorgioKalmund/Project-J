@@ -347,11 +347,31 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(this.output);
 
         ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.MAIZE_MASH)
-                .requires(ModItems.MAIZE, 3)
+                .requires(ModItems.MAIZE)
                 .requires(Items.BOWL )
                 .unlockedBy("has_maize", this.has(ModItems.MAIZE))
                 .unlockedBy("has_bowl", this.has(Items.BOWL))
                 .save(this.output);
+
+        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.CHILI_CON_CARNE)
+                .requires(ModItems.MAIZE)
+                .requires(ModItems.CHILI)
+                .requires(ModTags.Items.COOKED_MEAT)
+                .requires(Items.BOWL)
+                .unlockedBy("has_maize", this.has(ModItems.MAIZE))
+                .unlockedBy("has_chili", this.has(ModItems.CHILI))
+                .unlockedBy("has_cooked_meat", this.has(ModTags.Items.COOKED_MEAT))
+                .unlockedBy("has_bowl", this.has(Items.BOWL))
+                .save(this.output);
+
+        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.CHILI_CON_CARNE)
+                .requires(ModItems.MAIZE_MASH)
+                .requires(ModItems.CHILI)
+                .requires(ModTags.Items.COOKED_MEAT)
+                .unlockedBy("has_maize_mash", this.has(ModItems.MAIZE_MASH))
+                .unlockedBy("has_chili", this.has(ModItems.CHILI))
+                .unlockedBy("has_cooked_meat", this.has(ModTags.Items.COOKED_MEAT))
+                .save(this.output, "chili_con_carne_from_maize_mash");
 
 
         // ANCIENT ALTAR
