@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:projectj/story/ancient_altar",
+  "criteria": {
+    "sacrificial_dagger": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:sacrificial_dagger"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.projectj.story.sacrificial_dagger.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectj:sacrificial_dagger"
+    },
+    "title": {
+      "translate": "advancements.projectj.story.sacrificial_dagger.title"
+    }
+  },
+  "requirements": [
+    [
+      "sacrificial_dagger"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

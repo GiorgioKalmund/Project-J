@@ -16,7 +16,6 @@
     "description": {
       "translate": "advancements.projectj.story.botany_pot.description"
     },
-    "frame": "goal",
     "icon": {
       "count": 1,
       "id": "projectj:botany_pot"

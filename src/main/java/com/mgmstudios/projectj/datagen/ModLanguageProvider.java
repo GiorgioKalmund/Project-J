@@ -146,11 +146,25 @@ public class ModLanguageProvider extends LanguageProvider {
         addAdvancementStoryTitle("root", "Project J");
         addAdvancementStoryDescription("root", "Your Project J journey begins!");
         addAdvancementStoryTitle("get_jade", "Oh, Shiny...er?");
-        addAdvancementStoryDescription("get_jade", "Find a Jade Ore");
+        addAdvancementStoryDescription("get_jade", "Find a Jade Ore and smelt the Result");
         addAdvancementStoryTitle("botany_pot", "Botany Pots?");
         addAdvancementStoryDescription("botany_pot", "Not quite, but still useful! (and pretty)");
-
-
+        addAdvancementStoryTitle("magnifying_glass", "Precise Inspection");
+        addAdvancementStoryDescription("magnifying_glass", "Don't look into the sun with it!");
+        addAdvancementStoryTitle("magnifying_glass_stand", "Hand's off");
+        addAdvancementStoryDescription("magnifying_glass_stand", "Automate your Magnifying Glass using a Magnifying Glass Stand");
+        addAdvancementStoryTitle("pyrite", "Gold?");
+        addAdvancementStoryDescription("pyrite", "Find Pyrite, also known as Fool's Fold");
+        addAdvancementStoryTitle("liquid_pyrite_bucket", "Liquify!");
+        addAdvancementStoryDescription("liquid_pyrite_bucket", "Collect some Liquid Pyrite");
+        addAdvancementStoryTitle("ancient_altar", "Ancient Rirtuals");
+        addAdvancementStoryDescription("ancient_altar", "Craft an Ancient Altar");
+        addAdvancementStoryTitle("crude_sacrificial_bowl", "Sacrifices will be made");
+        addAdvancementStoryDescription("crude_sacrificial_bowl", "Obtain a Crude Sacrificial Bowl by using a Bowl and some Liquid Pyrite in the Ancient Altar");
+        addAdvancementStoryTitle("sacrificial_dagger", "Oh, Sharp!");
+        addAdvancementStoryDescription("sacrificial_dagger", "Craft a Sacrificial Dagger");
+        addAdvancementStoryTitle("filled_crude_sacrificial_bowl", "Centeotl's Will");
+        addAdvancementStoryDescription("filled_crude_sacrificial_bowl", "Perform a self sacrifice to obtain a Filled Crude Sacrificial Bowl");
     }
 
     protected void addTooltip(ItemLike itemLike, String value){

@@ -1,11 +1,11 @@
 {
-  "parent": "minecraft:projectj/story/root",
+  "parent": "minecraft:projectj/story/pyrite",
   "criteria": {
-    "get_jade": {
+    "ancient_altar": {
       "conditions": {
         "items": [
           {
-            "items": "projectj:jade"
+            "items": "projectj:ancient_altar"
           }
         ]
       },
@@ -14,19 +14,19 @@
   },
   "display": {
     "description": {
-      "translate": "advancements.projectj.story.get_jade.description"
+      "translate": "advancements.projectj.story.ancient_altar.description"
     },
     "icon": {
       "count": 1,
-      "id": "projectj:jade"
+      "id": "projectj:ancient_altar"
     },
     "title": {
-      "translate": "advancements.projectj.story.get_jade.title"
+      "translate": "advancements.projectj.story.ancient_altar.title"
     }
   },
   "requirements": [
     [
-      "get_jade"
+      "ancient_altar"
     ]
   ],
   "sends_telemetry_event": true

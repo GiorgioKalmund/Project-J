@@ -373,6 +373,15 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_cooked_meat", this.has(ModTags.Items.COOKED_MEAT))
                 .save(this.output, "chili_con_carne_from_maize_mash");
 
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.BOTANY_POT)
+                .pattern("#D#")
+                .pattern("###")
+                .define('#', Items.BRICK)
+                .define('D', ItemTags.DIRT)
+                .unlockedBy("has_brick", this.has(Items.BRICK))
+                .unlockedBy("has_dirt", this.has(ItemTags.DIRT))
+                .save(this.output);
+
 
         // ANCIENT ALTAR
 

@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:projectj/story/liquid_pyrite_bucket",
+  "criteria": {
+    "crude_sacrificial_bowl": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:crude_sacrifice_bowl"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.projectj.story.crude_sacrificial_bowl.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectj:crude_sacrifice_bowl"
+    },
+    "title": {
+      "translate": "advancements.projectj.story.crude_sacrificial_bowl.title"
+    }
+  },
+  "requirements": [
+    [
+      "crude_sacrificial_bowl"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

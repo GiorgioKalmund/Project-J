@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-11T23:38:48.417289	ModRecipeProvider
+// 1.21.4	2025-04-12T22:22:22.336331	ModRecipeProvider
 3805c773c67c25685a42a0810f910faacb328964 data/minecraft/advancement/recipes/beetroot_seeds.json
 9d0b4243e93bb8fe0a90f5936460b23bedc28f89 data/minecraft/advancement/recipes/building_blocks/adobe_bricks_smelting.json
 d8e64883f5c848da2d094ba3a38aac11e888156b data/minecraft/advancement/recipes/building_blocks/chili_con_carne_from_maize_mash.json
@@ -75,6 +75,7 @@ f79ad26847f8baa062ae694360e4dc503675c609 data/minecraft/recipe/serpentinite_rock
 610e49987a6d7e701dbf9a35d240f9f170f785a0 data/projectj/advancement/recipes/building_blocks/adobe_bricks_stairs.json
 0ccdc021c36cf45ebbceac35067653a2906797a3 data/projectj/advancement/recipes/building_blocks/adobe_furnace.json
 5a8c83e6896c7f14b7042bce5e79c2730d9d43dc data/projectj/advancement/recipes/building_blocks/ancient_altar.json
+5d3797666a4f3abd272bf27efd7ff2a625e7aa7e data/projectj/advancement/recipes/building_blocks/botany_pot.json
 8f56a3dfe25fdde9fbae91d9e7ca3a58f5824d0e data/projectj/advancement/recipes/building_blocks/chili_con_carne.json
 d3713f4d3cbdf692276e89f0c5dd1cded1105056 data/projectj/advancement/recipes/building_blocks/chimney.json
 041c46b8a44805be95700b0061bacff720674fa4 data/projectj/advancement/recipes/building_blocks/cobbled_serpentinite_slab.json
@@ -129,6 +130,7 @@ dddae0f11a5d5fc96e8bf0b57ca54e023a137d06 data/projectj/recipe/adobe_bricks_slab.
 0b972bb58fc657c1668767990b1f52b3ff30dcd2 data/projectj/recipe/adobe_bricks_wall.json
 a1e10a2b0c495ece4ae4c6d3835f9f698187f7e0 data/projectj/recipe/adobe_furnace.json
 04944d0356348d0d8eceb8a8b22df01000dc28cd data/projectj/recipe/ancient_altar.json
+5233fe986eed84ac7e99bbd0b6963b16f094efe1 data/projectj/recipe/botany_pot.json
 7fdc6828460dba7234b58090060f5b43d7bcd5ee data/projectj/recipe/chili_con_carne.json
 ab8115de363910bcc3454b6d16f9152cd2e79353 data/projectj/recipe/chili_seeds.json
 005129fc58f531abcba634ec9f28ce751e628ad2 data/projectj/recipe/chimney.json

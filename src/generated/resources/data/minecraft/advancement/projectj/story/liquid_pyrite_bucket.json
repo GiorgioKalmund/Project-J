@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:projectj/story/magnifying_glass",
+  "criteria": {
+    "liquid_pyrite_bucket": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:liquid_pyrite_bucket"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.projectj.story.liquid_pyrite_bucket.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectj:liquid_pyrite_bucket"
+    },
+    "title": {
+      "translate": "advancements.projectj.story.liquid_pyrite_bucket.title"
+    }
+  },
+  "requirements": [
+    [
+      "liquid_pyrite_bucket"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

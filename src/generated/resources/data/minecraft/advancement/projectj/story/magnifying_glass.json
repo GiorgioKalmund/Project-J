@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:projectj/story/root",
   "criteria": {
-    "get_jade": {
+    "magnifying_glass": {
       "conditions": {
         "items": [
           {
-            "items": "projectj:jade"
+            "items": "projectj:magnifying_glass"
           }
         ]
       },
@@ -14,19 +14,19 @@
   },
   "display": {
     "description": {
-      "translate": "advancements.projectj.story.get_jade.description"
+      "translate": "advancements.projectj.story.magnifying_glass.description"
     },
     "icon": {
       "count": 1,
-      "id": "projectj:jade"
+      "id": "projectj:magnifying_glass"
     },
     "title": {
-      "translate": "advancements.projectj.story.get_jade.title"
+      "translate": "advancements.projectj.story.magnifying_glass.title"
     }
   },
   "requirements": [
     [
-      "get_jade"
+      "magnifying_glass"
     ]
   ],
   "sends_telemetry_event": true

@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:projectj/story/sacrificial_dagger",
+  "criteria": {
+    "filled_crude_sacrificial_bowl": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:filled_crude_sacrifice_bowl"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.projectj.story.filled_crude_sacrificial_bowl.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectj:filled_crude_sacrifice_bowl"
+    },
+    "title": {
+      "translate": "advancements.projectj.story.filled_crude_sacrificial_bowl.title"
+    }
+  },
+  "requirements": [
+    [
+      "filled_crude_sacrificial_bowl"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

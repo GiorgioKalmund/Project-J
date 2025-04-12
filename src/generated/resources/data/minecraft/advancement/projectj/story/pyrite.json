@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:projectj/story/root",
   "criteria": {
-    "get_jade": {
+    "pyrite": {
       "conditions": {
         "items": [
           {
-            "items": "projectj:jade"
+            "items": "projectj:raw_pyrite"
           }
         ]
       },
@@ -14,19 +14,19 @@
   },
   "display": {
     "description": {
-      "translate": "advancements.projectj.story.get_jade.description"
+      "translate": "advancements.projectj.story.pyrite.description"
     },
     "icon": {
       "count": 1,
-      "id": "projectj:jade"
+      "id": "projectj:raw_pyrite"
     },
     "title": {
-      "translate": "advancements.projectj.story.get_jade.title"
+      "translate": "advancements.projectj.story.pyrite.title"
     }
   },
   "requirements": [
     [
-      "get_jade"
+      "pyrite"
     ]
   ],
   "sends_telemetry_event": true

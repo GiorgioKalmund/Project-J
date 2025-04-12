@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:projectj/story/magnifying_glass",
+  "criteria": {
+    "magnifying_glass_stand": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:magnifying_glass_stand"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.projectj.story.magnifying_glass_stand.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectj:magnifying_glass_stand"
+    },
+    "title": {
+      "translate": "advancements.projectj.story.magnifying_glass_stand.title"
+    }
+  },
+  "requirements": [
+    [
+      "magnifying_glass_stand"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
