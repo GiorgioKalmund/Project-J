@@ -69,6 +69,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.LOGS_THAT_BURN)
                 .addTag(ModTags.Items.MESQUITE_LOGS);
 
+        tag(ItemTags.STONE_TOOL_MATERIALS)
+                .add(ModBlocks.COBBLED_SERPENTINITE.asItem());
+
+        tag(ItemTags.STONE_CRAFTING_MATERIALS)
+                .add(ModBlocks.COBBLED_SERPENTINITE.asItem());
+
         copy(ModTags.Blocks.MESQUITE_LOGS, ModTags.Items.MESQUITE_LOGS);
         copy(ModTags.Blocks.SERPENTINITE, ModTags.Items.SERPENTINITE);
         copy(ModTags.Blocks.BENCHES, ModTags.Items.BENCHES);

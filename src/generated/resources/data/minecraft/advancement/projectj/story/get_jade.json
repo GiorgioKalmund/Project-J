@@ -1,6 +1,7 @@
 {
+  "parent": "minecraft:projectj/story/root",
   "criteria": {
-    "get_ancient_altar": {
+    "get_jade": {
       "conditions": {
         "items": [
           {
@@ -12,9 +13,8 @@
     }
   },
   "display": {
-    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
     "description": {
-      "translate": "advancements.projectj.story.craft_ancient_altar.description"
+      "translate": "advancements.projectj.story.get_jade.description"
     },
     "frame": "goal",
     "icon": {
@@ -22,12 +22,12 @@
       "id": "projectj:jade"
     },
     "title": {
-      "translate": "advancements.projectj.story.craft_ancient_altar.title"
+      "translate": "advancements.projectj.story.get_jade.title"
     }
   },
   "requirements": [
     [
-      "get_ancient_altar"
+      "get_jade"
     ]
   ],
   "sends_telemetry_event": true

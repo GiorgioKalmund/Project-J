@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-11T23:38:48.416206	Tags for minecraft:item mod id vanilla
+// 1.21.4	2025-04-12T21:51:13.517063	Tags for minecraft:item mod id vanilla
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/axes.json
 13774df12a771570323d285bfc3f11b3548cc957 data/minecraft/tags/item/enchantable/durability.json
 177d72f6b3e93c23cbac2c6995c3e57d46b4e250 data/minecraft/tags/item/fence_gates.json
@@ -12,6 +12,8 @@ c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/shovels.json
 15b1affce63c25a9e434441dcce373f2e1eb9dcf data/minecraft/tags/item/slabs.json
 05c1f38eb1356da9ac9e42e9a50ceee010d4273b data/minecraft/tags/item/stairs.json
 69cbcfee7b665e112affe9af683a617f370dd263 data/minecraft/tags/item/stone_buttons.json
+1462b9f5b0bf5a16ad9e569fd9f4b929098f6538 data/minecraft/tags/item/stone_crafting_materials.json
+1462b9f5b0bf5a16ad9e569fd9f4b929098f6538 data/minecraft/tags/item/stone_tool_materials.json
 997d1ac77e12ce5d410de532438561823ce42b07 data/minecraft/tags/item/walls.json
 30de720dbf32117f66a83013ea736cd046f64f3f data/minecraft/tags/item/wooden_buttons.json
 e8fbcca79baecae4d93218a4c7cb501a279b5cd9 data/minecraft/tags/item/wooden_fences.json

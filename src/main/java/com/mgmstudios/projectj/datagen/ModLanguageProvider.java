@@ -143,8 +143,13 @@ public class ModLanguageProvider extends LanguageProvider {
         addEntity(ModEntities.LITTLE_MAN_ENTITY.get(), "Little Man");
 
         // Advancements
-        addAdvancementTitle("craft_ancient_altar", "Oh, Shiny...er?");
-        addAdvancementDescription("craft_ancient_altar", "Find a Jade Ore");
+        addAdvancementStoryTitle("root", "Project J");
+        addAdvancementStoryDescription("root", "Your Project J journey begins!");
+        addAdvancementStoryTitle("get_jade", "Oh, Shiny...er?");
+        addAdvancementStoryDescription("get_jade", "Find a Jade Ore");
+        addAdvancementStoryTitle("botany_pot", "Botany Pots?");
+        addAdvancementStoryDescription("botany_pot", "Not quite, but still useful! (and pretty)");
+
 
     }
 
@@ -164,11 +169,19 @@ public class ModLanguageProvider extends LanguageProvider {
         add("entity." + ProjectJ.MOD_ID + "." + BuiltInRegistries.ENTITY_TYPE.getKey(entity).getPath(), name);
     }
 
-    private void addAdvancementTitle(String name, String title){
+    private void addAdvancementTitle(String folder, String name, String title){
+        add("advancements.projectj."+folder+"."+name+".title", title);
+    }
+
+    private void addAdvancementStoryTitle(String name, String title){
         add("advancements.projectj.story."+name+".title", title);
     }
 
-    private void addAdvancementDescription(String name, String description){
+    private void addAdvancementDescription(String folder, String name, String description){
+        add("advancements.projectj."+folder+"."+name+".description", description);
+    }
+
+    private void addAdvancementStoryDescription(String name, String description){
         add("advancements.projectj.story."+name+".description", description);
     }
 

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:projectj/story/root",
+  "criteria": {
+    "botany_pot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:botany_pot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.projectj.story.botany_pot.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "projectj:botany_pot"
+    },
+    "title": {
+      "translate": "advancements.projectj.story.botany_pot.title"
+    }
+  },
+  "requirements": [
+    [
+      "botany_pot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

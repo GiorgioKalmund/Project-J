@@ -1,6 +1,10 @@
 {
-  "advancements.projectj.story.craft_ancient_altar.description": "Find a Jade Ore",
-  "advancements.projectj.story.craft_ancient_altar.title": "Oh, Shiny...er?",
+  "advancements.projectj.story.botany_pot.description": "Not quite, but still useful! (and pretty)",
+  "advancements.projectj.story.botany_pot.title": "Botany Pots?",
+  "advancements.projectj.story.get_jade.description": "Find a Jade Ore",
+  "advancements.projectj.story.get_jade.title": "Oh, Shiny...er?",
+  "advancements.projectj.story.root.description": "Your Project J journey begins!",
+  "advancements.projectj.story.root.title": "Project J",
   "block.projectj.adobe_bricks": "Adobe Bricks",
   "block.projectj.adobe_bricks_slab": "Adobe Brick Slab",
   "block.projectj.adobe_bricks_stairs": "Adobe Brick Stairs",
