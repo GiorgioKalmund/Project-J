@@ -4,6 +4,7 @@ import com.mgmstudios.projectj.ProjectJ;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.advancements.AdvancementProvider;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.resources.ResourceKey;
@@ -36,6 +37,13 @@ public class DataGenProvider extends LootTableProvider {
                         new SubProviderEntry(ModBlockLootTableSubProvider::new, LootContextParamSets.BLOCK)
                 ),
             lookupProvider
+        ));
+
+        event.createProvider((output, lookupProvider) -> new AdvancementProvider(
+                output, lookupProvider,
+                List.of(
+                        new ModAdvancementSubProvider()
+                )
         ));
 
         event.createProvider(ModRecipeProvider.Runner::new);

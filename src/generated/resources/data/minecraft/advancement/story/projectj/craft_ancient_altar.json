@@ -1,0 +1,34 @@
+{
+  "criteria": {
+    "get_ancient_altar": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:jade"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "description": {
+      "translate": "advancements.projectj.story.craft_ancient_altar.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "projectj:jade"
+    },
+    "title": {
+      "translate": "advancements.projectj.story.craft_ancient_altar.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_ancient_altar"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

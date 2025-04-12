@@ -142,6 +142,10 @@ public class ModLanguageProvider extends LanguageProvider {
         // Entity
         addEntity(ModEntities.LITTLE_MAN_ENTITY.get(), "Little Man");
 
+        // Advancements
+        addAdvancementTitle("craft_ancient_altar", "Oh, Shiny...er?");
+        addAdvancementDescription("craft_ancient_altar", "Find a Jade Ore");
+
     }
 
     protected void addTooltip(ItemLike itemLike, String value){
@@ -158,6 +162,14 @@ public class ModLanguageProvider extends LanguageProvider {
 
     private void addEntity(EntityType<? extends Entity> entity, String name){
         add("entity." + ProjectJ.MOD_ID + "." + BuiltInRegistries.ENTITY_TYPE.getKey(entity).getPath(), name);
+    }
+
+    private void addAdvancementTitle(String name, String title){
+        add("advancements.projectj.story."+name+".title", title);
+    }
+
+    private void addAdvancementDescription(String name, String description){
+        add("advancements.projectj.story."+name+".description", description);
     }
 
     String getName(ItemLike itemLike){
