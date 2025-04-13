@@ -31,7 +31,7 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 import java.util.HashMap;
 import java.util.List;
 
-@EventBusSubscriber(modid = ProjectJ.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = ProjectJ.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class MagnifyingGlassItem extends SpyglassItem {
 
 
