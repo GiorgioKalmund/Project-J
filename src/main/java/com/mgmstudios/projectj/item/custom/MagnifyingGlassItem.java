@@ -14,15 +14,18 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.SpyglassItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -59,7 +62,7 @@ public class MagnifyingGlassItem extends SpyglassItem {
         Level level = context.getLevel();
         if (level instanceof ServerLevel serverLevel){
             lastContext = context;
-            this.validConversion = isValidConversion(serverLevel, context.getClickedPos(), context.getClickedFace(), 5, true);
+            this.validConversion = isValidConversion(context.getPlayer(), serverLevel, context.getClickedPos(), context.getClickedFace(), 5, true);
         }
         return super.useOn(context);
     }
@@ -68,10 +71,13 @@ public class MagnifyingGlassItem extends SpyglassItem {
         return CONVERSION_DURATION;
     }
 
-    public boolean isValidConversion(ServerLevel serverLevel, BlockPos clickedPos, Direction clickedFace, int minimumLightLevel, boolean needsToBeDay){
+    public boolean isValidConversion(Player player, ServerLevel serverLevel, BlockPos clickedPos, Direction clickedFace, int minimumLightLevel, boolean needsToBeDay){
         int skyLightLevel = serverLevel.getBrightness(LightLayer.SKY, clickedPos.relative(clickedFace));
         boolean day = !needsToBeDay || serverLevel.isDay();
-        boolean contains = MAGNIFYING_CONVERTABLES.containsKey(serverLevel.getBlockState(lastContext.getClickedPos()));
+        boolean contains = MAGNIFYING_CONVERTABLES.containsKey(serverLevel.getBlockState(clickedPos));
+        if (player != null){
+            player.displayClientMessage(Component.literal("L: " +skyLightLevel + " / D:" + day + " / V:" + contains + ": " + serverLevel.getBlockState(clickedPos)), true);
+        }
         return skyLightLevel > minimumLightLevel && day && contains && serverLevel.isDay();
     }
 
@@ -81,15 +87,23 @@ public class MagnifyingGlassItem extends SpyglassItem {
         if (lastContext == null || !validConversion)
             return;
 
-        showBurningParticles(level, lastContext.getClickedPos());
-        conversion++;
-        if (level instanceof ServerLevel serverLevel){
-            if (conversion >= getConversionDuration()){
-                BlockPos clickedPos = lastContext.getClickedPos();
-                BlockState clickedBlockState = serverLevel.getBlockState(clickedPos);
-                serverLevel.setBlockAndUpdate(clickedPos, MAGNIFYING_CONVERTABLES.get(clickedBlockState));
-                level.playSound(null, clickedPos, SoundEvents.GENERIC_BURN, SoundSource.BLOCKS);
+        if (livingEntity instanceof Player player){
+            BlockHitResult povHitResult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.ANY);
+            BlockPos selectedPos = povHitResult.getBlockPos();
+            if (!lastContext.getClickedPos().equals(selectedPos)){
                 reset();
+                return;
+            }
+
+            showBurningParticles(level, selectedPos);
+            conversion++;
+            if (level instanceof ServerLevel serverLevel){
+                if (conversion >= getConversionDuration()){
+                    BlockState clickedBlockState = serverLevel.getBlockState(selectedPos);
+                    serverLevel.setBlockAndUpdate(selectedPos, MAGNIFYING_CONVERTABLES.get(clickedBlockState));
+                    level.playSound(null, selectedPos, SoundEvents.GENERIC_BURN, SoundSource.BLOCKS);
+                    reset();
+                }
             }
         }
     }
@@ -107,17 +121,23 @@ public class MagnifyingGlassItem extends SpyglassItem {
 
     public static void showBurningParticles(Level level, BlockPos pos){
         RandomSource randomsource = level.getRandom();
-        for (int k1 = 0; k1 < 2; k1++) {
-            level
-                    .addParticle(
-                            ParticleTypes.FLAME,
-                            (double)pos.getX() + randomsource.nextDouble(),
-                            (double)pos.getY()+ 1,
-                            (double)pos.getZ() + randomsource.nextDouble(),
-                            0.0,
-                            0.01,
-                            0.0
-                    );
+        if (level.isClientSide())
+            return;
+        else if (level instanceof ServerLevel serverLevel){
+            for (int k1 = 0; k1 < 2; k1++) {
+               serverLevel
+                        .sendParticles(
+                                ParticleTypes.FLAME,
+                                (double)pos.getX() + randomsource.nextDouble(),
+                                (double)pos.getY()+ 1,
+                                (double)pos.getZ() + randomsource.nextDouble(),
+                                1,
+                                0.01,
+                                0.0,
+                                0.0,
+                                0.01F
+                        );
+            }
         }
     }
 

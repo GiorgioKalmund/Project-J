@@ -126,20 +126,21 @@ public class BotanyPotBlock extends FlowerPotBlock implements BonemealableBlock 
 
     @Override
     protected InteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        Item item = itemStack.getItem();
-        Supplier<BlockState> supplierStateToBe = getBlockStateForItem(item);
-        if (supplierStateToBe != null){
-            BlockState stateToBe = supplierStateToBe.get();
-            if (level instanceof ServerLevel serverLevel && player instanceof ServerPlayer serverPlayer){
-                serverPlayer.playNotifySound(SoundEvents.CROP_PLANTED, SoundSource.BLOCKS, 1f, 1f);
-                serverLevel.setBlockAndUpdate(pos, stateToBe);
-                if (!player.isCreative()){
-                    itemStack.shrink(1);
+        if (state.is(ModBlocks.BOTANY_POT) && itemStack.is(getItem())){
+            Item item = itemStack.getItem();
+            Supplier<BlockState> supplierStateToBe = getBlockStateForItem(item);
+            if (supplierStateToBe != null){
+                BlockState stateToBe = supplierStateToBe.get();
+                if (level instanceof ServerLevel serverLevel && player instanceof ServerPlayer serverPlayer){
+                    serverPlayer.playNotifySound(SoundEvents.CROP_PLANTED, SoundSource.BLOCKS, 1f, 1f);
+                    serverLevel.setBlockAndUpdate(pos, stateToBe);
+                    if (!player.isCreative()){
+                        itemStack.shrink(1);
+                    }
+                    return InteractionResult.SUCCESS_SERVER;
                 }
-                return InteractionResult.SUCCESS_SERVER;
             }
         }
-
 
         int i = state.getValue(AGE);
         boolean flag = i == 3;

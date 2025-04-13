@@ -70,7 +70,12 @@ public class BotanyBushBlock extends SweetBerryBushBlock {
     }
 
     @Override
+    public void onNeighborChange(BlockState state, LevelReader level, BlockPos pos, BlockPos neighbor) {
+        super.onNeighborChange(state, level, pos, neighbor);
+    }
+
+    @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-        return state.is(BlockTags.DIRT) || state.getBlock() instanceof FarmBlock;
+        return state.getBlock() instanceof FarmBlock;
     }
 }
