@@ -13,6 +13,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -55,11 +56,15 @@ import java.util.function.Supplier;
 public class BotanyPotBlock extends FlowerPotBlock implements BonemealableBlock {
 
     public static final IntegerProperty AGE;
-    public static final VoxelShape SHAPE_BOTTOM = Block.box(2, 0, 2, 14, 8, 14);
-    public static final VoxelShape SHAPE_TOP = Block.box(0, 8, 0, 16, 11, 16);
-    public static final VoxelShape SHAPE = Shapes.or(SHAPE_BOTTOM, SHAPE_TOP);
+    public static final VoxelShape SHAPE_BOTTOM = Block.box(2, 0, 2, 14, 10, 14);
+    public static final VoxelShape SHAPE_NORTH = Block.box(0, 8, 2, 2, 10, 14);
+    public static final VoxelShape SHAPE_SOUTH = Block.box(2, 8, 0, 14, 10, 2);
+    public static final VoxelShape SHAPE_EAST = Block.box(14, 8, 2, 16, 10, 14);
+    public static final VoxelShape SHAPE_WEST = Block.box(2, 8, 14, 14, 10, 16);
+    public static final VoxelShape SHAPE = Shapes.or(SHAPE_BOTTOM, SHAPE_NORTH, SHAPE_SOUTH, SHAPE_EAST, SHAPE_WEST);
     public static HashMap<Supplier<Item>, Supplier<BlockState>> INTERACTIONS = new HashMap<>();
     private final Supplier<Item> itemSupplier;
+    private final Supplier<Item> seedSupplier;
 
     public BotanyPotBlock(Properties properties) {
         this(() -> Items.AIR, () -> Items.AIR, properties);
@@ -69,6 +74,7 @@ public class BotanyPotBlock extends FlowerPotBlock implements BonemealableBlock 
         super(Blocks.AIR, properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
         this.itemSupplier = itemSupplier;
+        this.seedSupplier = seedSupplier;
         INTERACTIONS.put(seedSupplier, this::defaultBlockState);
     }
 
@@ -79,12 +85,7 @@ public class BotanyPotBlock extends FlowerPotBlock implements BonemealableBlock 
 
     @Override
     public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
-        int i = state.getValue(AGE);
-        boolean flag = i == 3;
-        int j = 1 + level.random.nextInt(2);
-        if (i > 1 && !player.isCreative()){
-            popResource(level, pos, new ItemStack(getItem(), j + (flag ? 1 : 0)));
-        }
+        dropContents(state, level, player, pos);
         return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);
     }
 
@@ -124,9 +125,13 @@ public class BotanyPotBlock extends FlowerPotBlock implements BonemealableBlock 
         return itemSupplier.get();
     }
 
+    protected Item getSeeds(){
+        return seedSupplier.get();
+    }
+
     @Override
     protected InteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (state.is(ModBlocks.BOTANY_POT) && itemStack.is(getItem())){
+        if (state.is(ModBlocks.BOTANY_POT) && !itemStack.is(Items.AIR)){
             Item item = itemStack.getItem();
             Supplier<BlockState> supplierStateToBe = getBlockStateForItem(item);
             if (supplierStateToBe != null){
@@ -140,11 +145,26 @@ public class BotanyPotBlock extends FlowerPotBlock implements BonemealableBlock 
                     return InteractionResult.SUCCESS_SERVER;
                 }
             }
+        } else if (itemStack.is(ItemTags.SHOVELS)){
+            dropContents(state, level, player, pos);
+            popResource(level, pos, new ItemStack(getSeeds()));
+            level.setBlockAndUpdate(pos, ModBlocks.BOTANY_POT.get().defaultBlockState());
+            level.playSound(player, pos.above(), SoundEvents.ROOTED_DIRT_BREAK, SoundSource.BLOCKS);
+            return InteractionResult.SUCCESS_SERVER;
         }
 
         int i = state.getValue(AGE);
         boolean flag = i == 3;
         return (!flag && itemStack.is(Items.BONE_MEAL) ? InteractionResult.PASS : super.useItemOn(itemStack, state, level, pos, player, hand, hitResult));
+    }
+
+    private void dropContents(BlockState state, Level level, Player player, BlockPos pos){
+        int i = state.getValue(AGE);
+        boolean flag = i == 3;
+        int j = 1 + level.random.nextInt(2);
+        if (i > 1 && !player.isCreative()){
+            popResource(level, pos, new ItemStack(getItem(), j + (flag ? 1 : 0)));
+        }
     }
 
     @Override

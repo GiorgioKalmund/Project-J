@@ -172,7 +172,6 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> MAIZE_CROP = registerBotanyPlant("maize_crop", ModItems.MAIZE, BlockBehaviour.Properties.ofFullCopy(Blocks.BEETROOTS));
 
-
     public static final DeferredBlock<Block> POTTED_MAIZE_CROP = registerPottedBotanyPlant("potted_maize_crop", ModItems.MAIZE, ModItems.MAIZE_SEEDS, BlockBehaviour.Properties.ofFullCopy(Blocks.BEETROOTS));
 
     public static final DeferredBlock<Block> CHILI_BUSH = registerBotanyPlant("chili_bush", ModItems.CHILI, BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH));

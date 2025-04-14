@@ -86,6 +86,7 @@ public class ModItems {
     public static final DeferredItem<Item> CHILI = register("chili", new Item.Properties().food(ModFoods.CHILI, ModConsumables.CHILI_PEPPER));
 
     public static final DeferredItem<Item> CHILI_CON_CARNE = register("chili_con_carne", new Item.Properties().food(ModFoods.CHILI_CON_CARNE).usingConvertsTo(Items.BOWL));
+
     public static final DeferredItem<Item> STONE_MANO = register("stone_mano");
 
     public static void register(IEventBus eventBus) {

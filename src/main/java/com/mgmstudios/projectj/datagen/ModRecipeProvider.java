@@ -479,6 +479,7 @@ public class ModRecipeProvider extends RecipeProvider {
 
     public static void buildMagnifyingGlassRecipes(){
         MagnifyingRecipeBuilder.magnify(Blocks.SAND, Blocks.GLASS);
+        MagnifyingRecipeBuilder.magnify(ModBlocks.ADOBE_SAND.get(), Blocks.BROWN_STAINED_GLASS);
         MagnifyingRecipeBuilder.magnify(Blocks.RAW_IRON_BLOCK, Blocks.IRON_BLOCK);
         MagnifyingRecipeBuilder.magnify(Blocks.RAW_GOLD_BLOCK, Blocks.GOLD_BLOCK);
         MagnifyingRecipeBuilder.magnify(Blocks.RAW_COPPER_BLOCK, Blocks.COPPER_BLOCK);

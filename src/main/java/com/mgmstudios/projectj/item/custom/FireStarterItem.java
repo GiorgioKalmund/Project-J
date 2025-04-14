@@ -10,10 +10,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUseAnimation;
-import net.minecraft.world.item.ItemUtils;
-import net.minecraft.world.item.SpyglassItem;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseFireBlock;
@@ -22,7 +19,8 @@ import net.minecraft.world.level.gameevent.GameEvent;
 
 import static com.mgmstudios.projectj.item.custom.MagnifyingGlassItem.showBurningParticles;
 
-public class FireStarterItem extends MagnifyingGlassItem{
+// TODO
+public class FireStarterItem extends FlintAndSteelItem {
 
     public FireStarterItem(Properties properties) {
         super(properties);
@@ -41,29 +39,12 @@ public class FireStarterItem extends MagnifyingGlassItem{
     @Override
     public InteractionResult useOn(UseOnContext context) {
         if (context.getLevel() instanceof ServerLevel serverLevel){
-            lastContext = context;
             return InteractionResult.SUCCESS_SERVER;
         }
         return InteractionResult.PASS;
     }
 
-    @Override
-    protected int getConversionDuration() {
-        return 50;
-    }
 
-    @Override
-    public void onUseTick(Level level, LivingEntity livingEntity, ItemStack stack, int remainingUseDuration) {
-        if (lastContext == null)
-            return;
-
-        showBurningParticles(level, lastContext.getClickedPos());
-        conversion++;
-        if (conversion == getConversionDuration()){
-            summonFire(lastContext);
-            reset();
-        }
-    }
 
     protected void summonFire(UseOnContext context){
         Player player = context.getPlayer();
