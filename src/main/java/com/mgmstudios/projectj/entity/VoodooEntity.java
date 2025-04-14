@@ -1,7 +1,10 @@
 package com.mgmstudios.projectj.entity;
 
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Item;
 
 public interface VoodooEntity {
-    public Item getVoodoo();
+    Item getVoodoo();
+    SoundEvent getVoodooSound();
 }

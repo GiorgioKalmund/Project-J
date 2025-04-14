@@ -1,4 +1,4 @@
-package com.mgmstudios.projectj.entity.client;
+package com.mgmstudios.projectj.entity.client.little_man;
 
 import net.minecraft.client.animation.AnimationChannel;
 import net.minecraft.client.animation.AnimationDefinition;

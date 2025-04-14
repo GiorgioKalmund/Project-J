@@ -7,9 +7,8 @@ import com.mgmstudios.projectj.block.entity.renderer.MetateEntityRenderer;
 import com.mgmstudios.projectj.block.entity.renderer.SittableEntityRenderer;
 import com.mgmstudios.projectj.client.ProjectJClientExtension;
 import com.mgmstudios.projectj.entity.ModEntities;
-import com.mgmstudios.projectj.entity.client.LittleManRenderer;
-import com.mgmstudios.projectj.entity.custom.LittleManEntity;
-import com.mgmstudios.projectj.entity.goals.AvoidBlockGoal;
+import com.mgmstudios.projectj.entity.client.little_king.LittleKingRenderer;
+import com.mgmstudios.projectj.entity.client.little_man.LittleManRenderer;
 import com.mgmstudios.projectj.fluid.ModFluidTypes;
 import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.item.ModCreativeModeTabs;
@@ -21,25 +20,9 @@ import com.mgmstudios.projectj.screen.ModMenuTypes;
 import com.mgmstudios.projectj.screen.custom.AdobeFurnaceScreen;
 import com.mgmstudios.projectj.recipe.ModRecipeBookCategories;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.world.entity.animal.Ocelot;
-import net.minecraft.world.entity.monster.Zombie;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.BedBlock;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FurnaceBlock;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BedPart;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
-import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
-import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.neoforged.neoforge.items.IItemHandler;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -57,8 +40,6 @@ import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-
-import java.lang.management.MemoryType;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(ProjectJ.MOD_ID)
@@ -130,6 +111,7 @@ public class ProjectJ
         {
             EntityRenderers.register(ModEntities.SITTABLE_ENTITY.get(), SittableEntityRenderer::new);
             EntityRenderers.register(ModEntities.LITTLE_MAN_ENTITY.get(), LittleManRenderer::new);
+            EntityRenderers.register(ModEntities.LITTLE_KING_ENTITY.get(), LittleKingRenderer::new);
         }
 
         @SubscribeEvent

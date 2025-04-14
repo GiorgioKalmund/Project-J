@@ -1,8 +1,6 @@
-package com.mgmstudios.projectj.entity.client;
+package com.mgmstudios.projectj.entity.client.little_man;
 
-import com.mgmstudios.projectj.entity.custom.LittleManEntity;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mgmstudios.projectj.ProjectJ;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -10,13 +8,12 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
 
 import java.util.Objects;
 
 public class LittleManModel extends EntityModel<LittleManRenderState> {
 
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Objects.requireNonNull(ResourceLocation.tryBuild("modid", "littleman")), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Objects.requireNonNull(ResourceLocation.tryBuild(ProjectJ.MOD_ID, "littleman")), "main");
     private final ModelPart body;
     private final ModelPart chest;
     private final ModelPart leftArm;

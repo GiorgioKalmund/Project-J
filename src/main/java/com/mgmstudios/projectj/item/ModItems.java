@@ -89,6 +89,10 @@ public class ModItems {
 
     public static final DeferredItem<Item> STONE_MANO = register("stone_mano");
 
+    public static final DeferredItem<Item> LITTLE_KING_SPAWN_EGG = register("little_king_spawn_egg", (properties) -> new SpawnEggItem(ModEntities.LITTLE_KING_ENTITY.get(), properties));
+
+    public static final DeferredItem<Item> LITTLE_KING_VOODOO = register("little_king_voodoo", new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(16));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

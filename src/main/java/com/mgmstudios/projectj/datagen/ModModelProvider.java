@@ -90,6 +90,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.OBSIDIAN_TOOTH.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.SERPENTINITE_ROD.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
         itemModels.generateFlatItem(ModItems.LITTLE_MAN_VOODOO.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.LITTLE_KING_VOODOO.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.VOODOO_CATCHER.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
         itemModels.generateFlatItem(ModItems.PYRITE_MAGNET.get(), ModelTemplates.FLAT_ITEM);
 
@@ -100,6 +101,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateSpyglass(ModItems.STONE_MANO.get());
 
         itemModels.generateFlatItem(ModItems.LITTLE_MAN_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.LITTLE_KING_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
 
         createFurnaceUntilTier1(blockModels, ModBlocks.ADOBE_FURNACE.get());
 

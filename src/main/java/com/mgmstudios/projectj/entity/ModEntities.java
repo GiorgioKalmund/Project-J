@@ -1,6 +1,7 @@
 package com.mgmstudios.projectj.entity;
 
 import com.mgmstudios.projectj.ProjectJ;
+import com.mgmstudios.projectj.entity.custom.LittleKingEntity;
 import com.mgmstudios.projectj.entity.custom.LittleManEntity;
 import com.mgmstudios.projectj.entity.custom.SittableEntity;
 import net.minecraft.world.entity.EntityType;
@@ -24,6 +25,12 @@ public class ModEntities {
                     LittleManEntity::new, MobCategory.MISC,
                     builder -> builder.sized(0.5f, 1.4f)
                     );
+
+    public static final Supplier<EntityType<LittleKingEntity>> LITTLE_KING_ENTITY =
+            ENTITY_TYPES.registerEntityType("little_king",
+                    LittleKingEntity::new, MobCategory.MISC,
+                    builder -> builder.sized(0.5f, 1.2f)
+            );
 
     public static void register(IEventBus eventBus){
         ENTITY_TYPES.register(eventBus);

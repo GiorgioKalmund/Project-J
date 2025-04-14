@@ -17,6 +17,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.animal.AbstractGolem;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
@@ -32,7 +33,8 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.common.BasicItemListing;
 import org.jetbrains.annotations.Nullable;
 
-public class LittleManEntity extends AbstractVillager implements VoodooEntity {
+
+public class LittleManEntity extends AbstractGolem implements VoodooEntity {
 
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
@@ -95,73 +97,8 @@ public class LittleManEntity extends AbstractVillager implements VoodooEntity {
     }
 
     @Override
-    public boolean showProgressBar() {
-        return false;
-    }
-
-
-
-    @Override
-    public InteractionResult mobInteract(Player player, InteractionHand hand) {
-        ItemStack itemstack = player.getItemInHand(hand);
-        if (!itemstack.is(ModItems.VOODOO_CATCHER) && this.isAlive() && !this.isTrading() && !this.isBaby()) {
-            if (hand == InteractionHand.MAIN_HAND) {
-                player.awardStat(Stats.TALKED_TO_VILLAGER);
-            }
-
-            if (!this.level().isClientSide) {
-                if (this.getOffers().isEmpty()) {
-                    return InteractionResult.CONSUME;
-                }
-
-                this.setTradingPlayer(player);
-                this.openTradingScreen(player, this.getDisplayName(), 1);
-            }
-
-            return InteractionResult.SUCCESS;
-        } else {
-            return super.mobInteract(player, hand);
-        }
-    }
-
-    @Override
-    protected void updateTrades() {
-
-        VillagerTrades.ItemListing[] itemListings = LITTLE_MAN_TRADES.get(1);
-        VillagerTrades.ItemListing[] itemListings1 = LITTLE_MAN_TRADES.get(2);
-
-
-        if (itemListings != null && itemListings1 != null) {
-            MerchantOffers merchantoffers = this.getOffers();
-            this.addOffersFromItemListings(merchantoffers, itemListings, 5);
-            int i = this.random.nextInt(itemListings1.length);
-            VillagerTrades.ItemListing villagertrades$itemlisting = itemListings1[i];
-            MerchantOffer merchantoffer = villagertrades$itemlisting.getOffer(this, this.random);
-            if (merchantoffer != null) {
-                merchantoffers.add(merchantoffer);
-            }
-        }
-    }
-
-
-     @Override
-    protected void rewardTradeXp(MerchantOffer offer) {
-        if (offer.shouldRewardExp()) {
-            int i = 3 + this.random.nextInt(4);
-            this.level().addFreshEntity(new ExperienceOrb(this.level(), this.getX(), this.getY() + 0.5, this.getZ(), i));
-        }
-    }
-
-    @Override
-    public void notifyTradeUpdated(ItemStack stack) {
-        if (!this.level().isClientSide && this.ambientSoundTime > -this.getAmbientSoundInterval() + 20) {
-            this.ambientSoundTime = -this.getAmbientSoundInterval();
-            this.makeSound(this.getTradeUpdatedSound(!stack.isEmpty()));
-        }
-    }
-
-    protected SoundEvent getTradeUpdatedSound(boolean isYesSound) {
-        return isYesSound ? SoundEvents.VILLAGER_YES : SoundEvents.VILLAGER_NO;
+    public SoundEvent getVoodooSound() {
+        return SoundEvents.IRON_GOLEM_STEP;
     }
 
     @Override
@@ -169,36 +106,8 @@ public class LittleManEntity extends AbstractVillager implements VoodooEntity {
         return false;
     }
 
-    @Nullable
-    @Override
-    public AgeableMob getBreedOffspring(ServerLevel p_150046_, AgeableMob p_150047_) {
-        return null;
-    }
 
-    private static Int2ObjectMap<VillagerTrades.ItemListing[]> toIntMap(ImmutableMap<Integer, VillagerTrades.ItemListing[]> map) {
+    static Int2ObjectMap<VillagerTrades.ItemListing[]> toIntMap(ImmutableMap<Integer, VillagerTrades.ItemListing[]> map) {
         return new Int2ObjectOpenHashMap<>(map);
     }
-
-    public static final Int2ObjectMap<VillagerTrades.ItemListing[]> LITTLE_MAN_TRADES = toIntMap(
-            ImmutableMap.of(
-                    1,
-                    new VillagerTrades.ItemListing[]{
-                            new BasicItemListing(new ItemStack(ModItems.JADE.get(), 16), new ItemStack(ModItems.LIQUID_PYRITE_BUCKET.get(), 1), 1, 3, 1),
-                            new BasicItemListing(new ItemStack(ModItems.RAW_PYRITE.get(), 1), new ItemStack(ModItems.PYRITE_INGOT.get(), 1), 24, 3, 1),
-                            new VillagerTrades.ItemsForEmeralds(Items.SEA_PICKLE, 2, 1, 5, 1),
-                            new VillagerTrades.ItemsForEmeralds(Items.SLIME_BALL, 4, 1, 5, 1),
-                            new VillagerTrades.ItemsForEmeralds(Items.GLOWSTONE, 2, 1, 5, 1),
-                            new VillagerTrades.ItemsForEmeralds(Items.NAUTILUS_SHELL, 5, 1, 5, 1),
-                            new VillagerTrades.ItemsForEmeralds(Items.FERN, 1, 1, 12, 1),
-                    },
-                    2,
-                    new VillagerTrades.ItemListing[]{
-                            new BasicItemListing(new ItemStack(Items.DIAMOND, 6), new ItemStack(Items.COBBLESTONE, 6), 10, 3, 1),
-                            new VillagerTrades.ItemsForEmeralds(Items.TROPICAL_FISH_BUCKET, 5, 1, 4, 1),
-                            new VillagerTrades.ItemsForEmeralds(Items.GUNPOWDER, 1, 1, 8, 1),
-                            new VillagerTrades.ItemsForEmeralds(Items.PODZOL, 3, 3, 6, 1)
-                    }
-            )
-    );
-
 }

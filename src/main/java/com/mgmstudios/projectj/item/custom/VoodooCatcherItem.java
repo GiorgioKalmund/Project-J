@@ -30,13 +30,13 @@ public class VoodooCatcherItem extends Item {
             ItemEntity dropppedEntity = new ItemEntity(
                     level,
                     pos.x(),
-                    pos.y() + 0.5,
+                    pos.y() + 0.25,
                     pos.z(),
                     droppedVoodoo
             );
-            level.levelEvent(2009, interactionTarget.blockPosition(), 0);
+            level.levelEvent(2009, interactionTarget.blockPosition().below(), 0);
             level.addFreshEntity(dropppedEntity);
-            player.playNotifySound(SoundEvents.IRON_GOLEM_STEP, SoundSource.BLOCKS, 1f, 1f);
+            player.playNotifySound(voodooEntity.getVoodooSound(), SoundSource.BLOCKS, 1f, 1f);
             return InteractionResult.SUCCESS_SERVER;
         }
         return super.interactLivingEntity(stack, player, interactionTarget, usedHand);

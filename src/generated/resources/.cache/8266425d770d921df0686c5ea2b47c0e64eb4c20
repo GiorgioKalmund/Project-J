@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-11T23:33:08.579266	Model Definitions - projectj
+// 1.21.4	2025-04-14T22:38:42.5651445	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -93,6 +93,8 @@ c4f3775626f4c829574376d0a454e0940c3ca14a assets/projectj/items/cobbled_serpentin
 ff3f2d911ddbc9dce854b3666386ba2b3fa3c506 assets/projectj/items/jade_helmet.json
 6c67bf56da03612616be77ed4bd0cc89a742b31b assets/projectj/items/jade_ore.json
 571d265eb581067a257ac763b27592fc39c4b7cb assets/projectj/items/liquid_pyrite_bucket.json
+9c5d368f085309c9cbf298641fd1a8cfc92c3d1b assets/projectj/items/little_king_spawn_egg.json
+adf7ffb495441d4400f30042ca8794c92f8dd939 assets/projectj/items/little_king_voodoo.json
 9d9aa488d731bf92cd39d7cd8d9433408f62bf53 assets/projectj/items/little_man_spawn_egg.json
 5828b03bd08e4920dd1880277b78640efc633326 assets/projectj/items/little_man_statue_block.json
 a924ec65d1fb19d09b1152c5a566d3b0f2d25947 assets/projectj/items/little_man_voodoo.json
@@ -254,6 +256,8 @@ aac07639f9960cc7e0e85f1d298694c7b6d01e88 assets/projectj/models/item/crude_sacri
 9cc0c435272b7a37105bfd68afa6dd08bf45ef1e assets/projectj/models/item/jade.json
 4a3620df8111c82691b9e37b45c59241104415ed assets/projectj/models/item/jade_helmet.json
 5ca45076d9cd376d1879706c9648b75858a44d38 assets/projectj/models/item/liquid_pyrite_bucket.json
+665d75f63f1adf52376b6ee97fbb3d04fe6ee9a5 assets/projectj/models/item/little_king_spawn_egg.json
+8d9503258c54c9fa5fee944131ae9fdf14f79510 assets/projectj/models/item/little_king_voodoo.json
 653a1c840d240ee616fe47f9771941c08934e1ee assets/projectj/models/item/little_man_spawn_egg.json
 2a92e05fba88eb741f72bab0824315718c6ef4fd assets/projectj/models/item/little_man_voodoo.json
 23eed9a4ee89e3825630c941d8381fbf4fdc7e01 assets/projectj/models/item/macuahuitl.json

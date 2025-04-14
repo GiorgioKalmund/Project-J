@@ -40,6 +40,8 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.TELEPORTATION_KEY, "Teleportation Key");
         addItem(ModItems.LITTLE_MAN_SPAWN_EGG, "Little Man Spawn Egg");
         addItem(ModItems.LITTLE_MAN_VOODOO, "Little Man Voodoo");
+        addItem(ModItems.LITTLE_KING_SPAWN_EGG, "Little King Spawn Egg");
+        addItem(ModItems.LITTLE_KING_VOODOO, "Little King Voodoo");
         addItem(ModItems.VOODOO_CATCHER, "Voodoo Catcher");
         addItem(ModItems.PYRITE_MAGNET, "Pyrite Magnet");
         addItem(ModItems.MAIZE, "Maize");
@@ -141,6 +143,7 @@ public class ModLanguageProvider extends LanguageProvider {
 
         // Entity
         addEntity(ModEntities.LITTLE_MAN_ENTITY.get(), "Little Man");
+        addEntity(ModEntities.LITTLE_KING_ENTITY.get(), "Little King");
 
         // Advancements
         addAdvancementStoryTitle("root", "Project J");

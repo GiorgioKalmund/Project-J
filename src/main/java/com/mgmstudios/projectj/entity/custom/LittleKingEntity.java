@@ -1,68 +1,215 @@
-// Made with Blockbench 4.12.4
-// Exported for Minecraft version 1.17 or later with Mojang mappings
-// Paste this class into your mod and generate all required imports
+package com.mgmstudios.projectj.entity.custom;
+
+import com.google.common.collect.ImmutableMap;
+import com.mgmstudios.projectj.entity.VoodooEntity;
+import com.mgmstudios.projectj.item.ModItems;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.monster.*;
+import net.minecraft.world.entity.npc.AbstractVillager;
+import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.trading.MerchantOffer;
+import net.minecraft.world.item.trading.MerchantOffers;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.common.BasicItemListing;
+import org.jetbrains.annotations.Nullable;
+
+import static com.mgmstudios.projectj.entity.custom.LittleManEntity.toIntMap;
+
+public class LittleKingEntity extends AbstractVillager implements VoodooEntity {
+
+    public final AnimationState idleAnimationState = new AnimationState();
+    private int idleAnimationTimeout = 0;
+
+    public LittleKingEntity(EntityType<? extends AbstractVillager> entityType, Level level) {
+        super(entityType, level);
+    }
+
+    @Override
+    protected @Nullable SoundEvent getDeathSound() {
+        return SoundEvents.VILLAGER_DEATH;
+    }
+
+    @Override
+    public SoundEvent getVoodooSound() {
+        return SoundEvents.WANDERING_TRADER_DISAPPEARED;
+    }
+
+    @Override
+    protected void registerGoals() {
+        this.goalSelector.addGoal(0, new FloatGoal(this));
+        this.goalSelector.addGoal(0, new TemptGoal(this, 1.1, stack -> stack.is(ModItems.JADE.get()), false));
+        this.goalSelector.addGoal(1, new TradeWithPlayerGoal(this));
+        this.goalSelector.addGoal(1, new AvoidEntityGoal(this, Zombie.class, 8.0F, (double)0.5F, (double)0.5F));
+        this.goalSelector.addGoal(1, new AvoidEntityGoal(this, Evoker.class, 12.0F, (double)0.5F, (double)0.5F));
+        this.goalSelector.addGoal(1, new AvoidEntityGoal(this, Vindicator.class, 8.0F, (double)0.5F, (double)0.5F));
+        this.goalSelector.addGoal(1, new AvoidEntityGoal(this, Vex.class, 8.0F, (double)0.5F, (double)0.5F));
+        this.goalSelector.addGoal(1, new AvoidEntityGoal(this, Pillager.class, 15.0F, (double)0.5F, (double)0.5F));
+        this.goalSelector.addGoal(1, new AvoidEntityGoal(this, Illusioner.class, 12.0F, (double)0.5F, (double)0.5F));
+        this.goalSelector.addGoal(1, new AvoidEntityGoal(this, Zoglin.class, 10.0F, (double)0.5F, (double)0.5F));
+        this.goalSelector.addGoal(1, new PanicGoal(this, (double)0.5F));
+        this.goalSelector.addGoal(1, new LookAtTradingPlayerGoal(this));
+        this.goalSelector.addGoal(4, new MoveTowardsRestrictionGoal(this, 0.35));
+        this.goalSelector.addGoal(8, new WaterAvoidingRandomStrollGoal(this, 0.35));
+        this.goalSelector.addGoal(9, new InteractGoal(this, Player.class, 3.0F, 1.0F));
+        this.goalSelector.addGoal(10, new LookAtPlayerGoal(this, Mob.class, 8.0F));
+    }
+
+    public static AttributeSupplier.Builder createAttributes() {
+        return Mob.createMobAttributes()
+                .add(Attributes.TEMPT_RANGE, 20.0)
+                .add(Attributes.MAX_HEALTH, 20.0)
+                .add(Attributes.MOVEMENT_SPEED, 0.25)
+                .add(Attributes.STEP_HEIGHT, 1.0);
+    }
+
+    private void setupAnimationStates(){
+        if(this.idleAnimationTimeout <= 0){
+            this.idleAnimationTimeout = 40;
+            this.idleAnimationState.start(this.tickCount);
+        } else {
+            --this.idleAnimationTimeout;
+        }
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+
+        if(this.level().isClientSide()){
+            this.setupAnimationStates();
+        }
+    }
+
+    @Override
+    public boolean showProgressBar() {
+        return false;
+    }
 
 
-public class little_king<T extends Entity> extends EntityModel<T> {
-	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "little_king"), "main");
-	private final ModelPart leftleg;
-	private final ModelPart leftarm;
-	private final ModelPart lowerbody;
-	private final ModelPart head;
-	private final ModelPart rightarm;
-	private final ModelPart rightleg;
-	private final ModelPart backpack;
+    @Override
+    public Item getVoodoo() {
+        return ModItems.LITTLE_KING_VOODOO.get();
+    }
 
-	public little_king(ModelPart root) {
-		this.leftleg = root.getChild("leftleg");
-		this.leftarm = root.getChild("leftarm");
-		this.lowerbody = root.getChild("lowerbody");
-		this.head = root.getChild("head");
-		this.rightarm = root.getChild("rightarm");
-		this.rightleg = root.getChild("rightleg");
-		this.backpack = root.getChild("backpack");
-	}
+    @Override
+    public InteractionResult mobInteract(Player player, InteractionHand hand) {
+        ItemStack itemstack = player.getItemInHand(hand);
+        if (!itemstack.is(ModItems.VOODOO_CATCHER) && this.isAlive() && !this.isTrading() && !this.isBaby()) {
+            if (hand == InteractionHand.MAIN_HAND) {
+                player.awardStat(Stats.TALKED_TO_VILLAGER);
+            }
 
-	public static LayerDefinition createBodyLayer() {
-		MeshDefinition meshdefinition = new MeshDefinition();
-		PartDefinition partdefinition = meshdefinition.getRoot();
+            if (!this.level().isClientSide) {
+                if (this.getOffers().isEmpty()) {
+                    return InteractionResult.CONSUME;
+                }
 
-		PartDefinition leftleg = partdefinition.addOrReplaceChild("leftleg", CubeListBuilder.create().texOffs(28, 9).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(-2.0F, 21.0F, 0.0F));
+                this.setTradingPlayer(player);
+                this.openTradingScreen(player, this.getDisplayName(), 1);
+            }
 
-		PartDefinition leftarm = partdefinition.addOrReplaceChild("leftarm", CubeListBuilder.create().texOffs(20, 17).addBox(-1.0F, -1.0F, -1.0F, 2.0F, 6.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(-4.0F, 14.0F, 0.0F));
+            return InteractionResult.SUCCESS;
+        } else {
+            return super.mobInteract(player, hand);
+        }
+    }
 
-		PartDefinition lowerbody = partdefinition.addOrReplaceChild("lowerbody", CubeListBuilder.create().texOffs(0, 19).addBox(-1.0F, -13.0F, -2.0F, 6.0F, 6.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(-2.0F, 28.0F, 0.0F));
+    @Override
+    protected void updateTrades() {
 
-		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 8).addBox(-1.0F, -15.0F, -6.0F, 6.0F, 7.0F, 4.0F, new CubeDeformation(0.0F))
-		.texOffs(0, 0).addBox(-4.0F, -19.0F, -4.0F, 12.0F, 8.0F, 0.0F, new CubeDeformation(0.0F))
-		.texOffs(0, 29).addBox(1.0F, -11.0F, -2.0F, 2.0F, 3.0F, 1.0F, new CubeDeformation(0.0F))
-		.texOffs(20, 8).addBox(-3.0F, -20.0F, -4.0F, 10.0F, 1.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offset(-2.0F, 23.0F, 4.0F));
+        VillagerTrades.ItemListing[] itemListings = LITTLE_KING_TRADES.get(1);
+        VillagerTrades.ItemListing[] itemListings1 = LITTLE_KING_TRADES.get(2);
 
-		PartDefinition rightarm = partdefinition.addOrReplaceChild("rightarm", CubeListBuilder.create().texOffs(20, 9).addBox(-1.0F, -1.0F, -1.0F, 2.0F, 6.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(4.0F, 14.0F, 0.0F));
 
-		PartDefinition rightleg = partdefinition.addOrReplaceChild("rightleg", CubeListBuilder.create().texOffs(28, 14).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(2.0F, 21.0F, 0.0F));
+        if (itemListings != null && itemListings1 != null) {
+            MerchantOffers merchantoffers = this.getOffers();
+            this.addOffersFromItemListings(merchantoffers, itemListings, 5);
+            int i = this.random.nextInt(itemListings1.length);
+            VillagerTrades.ItemListing villagertrades$itemlisting = itemListings1[i];
+            MerchantOffer merchantoffer = villagertrades$itemlisting.getOffer(this, this.random);
+            if (merchantoffer != null) {
+                merchantoffers.add(merchantoffer);
+            }
+        }
+    }
 
-		PartDefinition backpack = partdefinition.addOrReplaceChild("backpack", CubeListBuilder.create().texOffs(24, 0).addBox(-2.0F, -2.0F, 1.0F, 4.0F, 5.0F, 1.0F, new CubeDeformation(0.0F))
-		.texOffs(28, 19).addBox(-2.0F, -4.0F, 1.0F, 4.0F, 2.0F, 0.0F, new CubeDeformation(0.0F))
-		.texOffs(20, 25).addBox(-2.0F, -1.0F, 0.0F, 4.0F, 4.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 17.0F, -4.0F));
 
-		return LayerDefinition.create(meshdefinition, 64, 64);
-	}
+    @Override
+    protected void rewardTradeXp(MerchantOffer offer) {
+        if (offer.shouldRewardExp()) {
+            int i = 3 + this.random.nextInt(4);
+            this.level().addFreshEntity(new ExperienceOrb(this.level(), this.getX(), this.getY() + 0.5, this.getZ(), i));
+        }
+    }
 
-	@Override
-	public void setupAnim(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    @Override
+    public void notifyTradeUpdated(ItemStack stack) {
+        if (!this.level().isClientSide && this.ambientSoundTime > -this.getAmbientSoundInterval() + 20) {
+            this.ambientSoundTime = -this.getAmbientSoundInterval();
+            this.makeSound(this.getTradeUpdatedSound(!stack.isEmpty()));
+        }
+    }
 
-	}
+    protected SoundEvent getTradeUpdatedSound(boolean isYesSound) {
+        return isYesSound ? SoundEvents.VILLAGER_YES : SoundEvents.VILLAGER_NO;
+    }
 
-	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		leftleg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		leftarm.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		lowerbody.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		head.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		rightarm.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		rightleg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		backpack.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-	}
+    @Override
+    public boolean removeWhenFarAway(double distanceToClosestPlayer) {
+        return false;
+    }
+
+    @Nullable
+    @Override
+    public AgeableMob getBreedOffspring(ServerLevel p_150046_, AgeableMob p_150047_) {
+        return null;
+    }
+
+    public static final Int2ObjectMap<VillagerTrades.ItemListing[]> LITTLE_KING_TRADES = toIntMap(
+            ImmutableMap.of(
+                    1,
+                    new VillagerTrades.ItemListing[]{
+                            jadeBasicListing(16, ModItems.LIQUID_PYRITE_BUCKET.get(),  1, 3, 1),
+                            jadeBasicListing(Items.FEATHER, 8, 4, 3, 1),
+                            jadeBasicListing(2, Items.SLIME_BALL, 4, 8, 3, 1),
+                            basicListing(ModItems.RAW_PYRITE, 1, ModItems.PYRITE_INGOT, 1, 24, 3, 1)
+                    },
+                    2,
+                    new VillagerTrades.ItemListing[]{
+                            jadeBasicListing(32, ModItems.SUN_ARMOR_HELMET,  1, 5, 1),
+                    }
+            )
+    );
+
+    protected static final BasicItemListing basicListing(ItemLike item, int count, ItemLike resultItem, int resultCount, int maxTrades, int xp, int priceMult){
+        return new BasicItemListing(new ItemStack(item, count), new ItemStack(resultItem, resultCount), maxTrades, xp, priceMult);
+    }
+
+    protected static final BasicItemListing jadeBasicListing(int count, ItemLike resultItem, int resultCount, int maxTrades, int xp, int priceMult){
+        return new BasicItemListing(new ItemStack(ModItems.JADE.get(), count), new ItemStack(resultItem, resultCount), maxTrades, xp, priceMult);
+    }
+    protected static final BasicItemListing jadeBasicListing(ItemLike resultItem, int resultCount, int maxTrades, int xp, int priceMult){
+        return jadeBasicListing(1, resultItem, resultCount, maxTrades, xp, priceMult);
+    }
+    protected static final BasicItemListing jadeBasicListing(int count, ItemLike resultItem, int maxTrades, int xp, int priceMult){
+        return jadeBasicListing(count, resultItem, 1, maxTrades, xp, priceMult);
+    }
+    protected static final BasicItemListing jadeBasicListing(ItemLike resultItem, int maxTrades, int xp, int priceMult){
+        return jadeBasicListing(1, resultItem, 1, maxTrades, xp, priceMult);
+    }
 }
