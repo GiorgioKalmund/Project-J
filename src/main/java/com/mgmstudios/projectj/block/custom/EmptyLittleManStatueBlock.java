@@ -94,7 +94,7 @@ public class EmptyLittleManStatueBlock extends HorizontalDirectionalBlock {
             level.setBlockAndUpdate(pos, ModBlocks.LITTLE_MAN_STATUE_BLOCK.get().defaultBlockState().setValue(FACING, player.getDirection().getOpposite()));
             level.levelEvent(2009, pos, 0);
             serverPlayer.playNotifySound(SoundEvents.BEACON_ACTIVATE, SoundSource.BLOCKS, 1f, 1.5f);
-
+            stack.shrink(1);
             return InteractionResult.SUCCESS_SERVER;
         } else {
             return InteractionResult.PASS;
