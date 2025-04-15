@@ -1,16 +1,10 @@
 package com.mgmstudios.projectj.entity.client.quetzal;
 
 import com.mgmstudios.projectj.ProjectJ;
-import com.mgmstudios.projectj.entity.client.little_king.LittleKingRenderState;
-import com.mgmstudios.projectj.entity.custom.LittleKingEntity;
 import com.mgmstudios.projectj.entity.custom.QuetzalEntity;
-import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.resources.ResourceLocation;
-
-import java.util.Queue;
 
 public class QuetzalRenderer extends MobRenderer<QuetzalEntity, QuetzalRenderState, QuetzalModel> {
 
@@ -24,15 +18,16 @@ public class QuetzalRenderer extends MobRenderer<QuetzalEntity, QuetzalRenderSta
         return new QuetzalRenderState();
     }
 
-
     @Override
-    public void extractRenderState(QuetzalEntity littleKingEntity, QuetzalRenderState littleKingRenderState, float v) {
-        super.extractRenderState(littleKingEntity, littleKingRenderState, v);
-        littleKingRenderState.idle.copyFrom(littleKingEntity.idleAnimationState);
+    public void extractRenderState(QuetzalEntity quetzalEntity, QuetzalRenderState quetzalRenderState, float v) {
+        super.extractRenderState(quetzalEntity, quetzalRenderState, v);
+        quetzalRenderState.isResting = quetzalEntity.isResting();
+        quetzalRenderState.restAnimationState.copyFrom(quetzalEntity.restAnimationState);
+        quetzalRenderState.flyAnimationState.copyFrom(quetzalEntity.flyAnimationState);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(QuetzalRenderState littleKingRenderState) {
+    public ResourceLocation getTextureLocation(QuetzalRenderState quetzalRenderState) {
         return ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "textures/entity/quetzal/quetzal_texture.png");
     }
 }

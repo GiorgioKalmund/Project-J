@@ -1,25 +1,17 @@
 package com.mgmstudios.projectj.entity.custom;
 
-import com.google.common.collect.ImmutableMap;
-import com.mgmstudios.projectj.datagen.ModGiftLoot;
 import com.mgmstudios.projectj.entity.ModEntities;
-import com.mgmstudios.projectj.entity.VoodooEntity;
-import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.loot.ModLootTables;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceKey;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -27,35 +19,19 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Chicken;
-import net.minecraft.world.entity.monster.*;
-import net.minecraft.world.entity.npc.AbstractVillager;
-import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.providers.EnchantmentProvider;
-import net.minecraft.world.item.trading.ItemCost;
-import net.minecraft.world.item.trading.MerchantOffer;
-import net.minecraft.world.item.trading.MerchantOffers;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.pathfinder.PathType;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.common.BasicItemListing;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.Optional;
+// TODO: Some stuff copied from Bat and Parrot, but has to be properly looked at
+public class QuetzalEntity extends Animal {
 
-import static com.mgmstudios.projectj.entity.custom.LittleManEntity.toIntMap;
-
-public class QuetzalEntity extends Animal{
-
-    public final AnimationState idleAnimationState = new AnimationState();
+    public final AnimationState restAnimationState = new AnimationState();
+    public final AnimationState flyAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
 
     private static final EntityDimensions BABY_DIMENSIONS;
@@ -93,12 +69,36 @@ public class QuetzalEntity extends Animal{
         return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(p_316516_);
     }
 
+    // TODO:
     private void setupAnimationStates(){
-        if(this.idleAnimationTimeout <= 0){
-            this.idleAnimationTimeout = 40;
-            this.idleAnimationState.start(this.tickCount);
+          if (this.isResting()) {
+            this.flyAnimationState.stop();
+            this.restAnimationState.startIfStopped(this.tickCount);
         } else {
-            --this.idleAnimationTimeout;
+            this.restAnimationState.stop();
+            this.flyAnimationState.startIfStopped(this.tickCount);
+        }
+    }
+
+
+    private static final EntityDataAccessor<Byte> DATA_ID_FLAGS;
+
+    public boolean isResting() {
+        return ((Byte)this.entityData.get(DATA_ID_FLAGS) & 1) != 0;
+    }
+
+    protected void defineSynchedData(SynchedEntityData.Builder p_326297_) {
+        super.defineSynchedData(p_326297_);
+        p_326297_.define(DATA_ID_FLAGS, (byte)0);
+    }
+
+    // TODO:
+    public void setResting(boolean isResting) {
+        byte b0 = (Byte)this.entityData.get(DATA_ID_FLAGS);
+        if (isResting) {
+            this.entityData.set(DATA_ID_FLAGS, (byte)(b0 | 1));
+        } else {
+            this.entityData.set(DATA_ID_FLAGS, (byte)(b0 & -2));
         }
     }
 
@@ -141,7 +141,7 @@ public class QuetzalEntity extends Animal{
         this.nextFlap = this.flyDist + this.flapSpeed / 2.0F;
     }
 
-    protected SoundEvent getAmbientSound() {
+    public SoundEvent getAmbientSound() {
         return SoundEvents.CHICKEN_AMBIENT;
     }
 
@@ -182,13 +182,18 @@ public class QuetzalEntity extends Animal{
     @Override
     public void tick() {
         super.tick();
-
-        if(this.level().isClientSide()){
-            this.setupAnimationStates();
+        if (this.isResting()) {
+            this.setDeltaMovement(Vec3.ZERO);
+            this.setPosRaw(this.getX(), (double)Mth.floor(this.getY()) + (double)1.0F - (double)this.getBbHeight(), this.getZ());
+        } else {
+            this.setDeltaMovement(this.getDeltaMovement().multiply((double)1.0F, 0.6, (double)1.0F));
         }
+
+        this.setupAnimationStates();
     }
 
     static {
         BABY_DIMENSIONS = ModEntities.QUETZAL_ENTITY.get().getDimensions().scale(0.5F).withEyeHeight(0.2975F);
+        DATA_ID_FLAGS = SynchedEntityData.defineId(QuetzalEntity.class, EntityDataSerializers.BYTE);
     }
 }

@@ -5,12 +5,15 @@ package com.mgmstudios.projectj.entity.client.quetzal;// Made with Blockbench 4.
 
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.entity.client.little_man.LittleManAnimations;
+import net.minecraft.client.animation.definitions.BatAnimation;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.renderer.entity.state.BatRenderState;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.AnimationState;
 
 public class QuetzalModel extends EntityModel<QuetzalRenderState> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
@@ -81,8 +84,11 @@ public class QuetzalModel extends EntityModel<QuetzalRenderState> {
 	@Override
 	public void setupAnim(QuetzalRenderState renderState) {
 		super.setupAnim(renderState);
+		if (renderState.isResting) {
+			animate(renderState.restAnimationState, QuetzalAnimations.IDLE, renderState.ageInTicks);
+		}
 
-		animate(renderState.idle, QuetzalAnimations.IDLE, renderState.ageInTicks);
-		animateWalk(LittleManAnimations.WALKING, renderState.walkAnimationPos * 10, renderState.walkAnimationSpeed, 1, 1);
+		this.animate(renderState.flyAnimationState, QuetzalAnimations.FLYING, renderState.ageInTicks, 1.0F);
 	}
+
 }
