@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-11T13:59:19.548163	Loot Tables
+// 1.21.4	2025-04-15T10:21:51.561648	Loot Tables
 645e23f8676b8f0e4d797aeab743aa1e3606c703 data/projectj/loot_table/blocks/adobe_bricks.json
 c52a58507f4c8bc3dcdd97ef286a063d396844cc data/projectj/loot_table/blocks/adobe_bricks_slab.json
 c80294a187a6c6c06ea794e6c6d418870c792578 data/projectj/loot_table/blocks/adobe_bricks_stairs.json
@@ -64,3 +64,6 @@ f4a311fb12a5014d812148a5fa327ffc20808787 data/projectj/loot_table/blocks/serpent
 597c39f8eba781969bcd8ee3d2e0906373dc4d89 data/projectj/loot_table/blocks/stripped_mesquite_log.json
 d38f1b32da908385739a02a72da68c28528f60bf data/projectj/loot_table/blocks/stripped_mesquite_wood.json
 98c87bff22de880fa70573827b0d73b15c8183e6 data/projectj/loot_table/blocks/teleportation_pad.json
+67325663ac262480e7686cf856062e05d59613e6 data/projectj/loot_table/entities/little_king.json
+c92c9a850872c8a14d8bc134c22a3e8d8cdeb187 data/projectj/loot_table/entities/little_man.json
+151554d16a9f75a979147557c733d52fc07ca1b8 data/projectj/loot_table/entities/sittable_entity.json

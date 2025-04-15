@@ -5,6 +5,7 @@ package com.mgmstudios.projectj.entity.client.little_king;// Made with Blockbenc
 
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.entity.client.little_man.LittleManAnimations;
+import com.mgmstudios.projectj.entity.custom.LittleKingEntity;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -65,6 +66,6 @@ public class LittleKingModel extends EntityModel<LittleKingRenderState> {
 		super.setupAnim(renderState);
 
 		animate(renderState.idle, LittleKingAnimations.IDLE, renderState.ageInTicks);
-		animateWalk(LittleManAnimations.WALKING, renderState.walkAnimationPos * 10, renderState.walkAnimationSpeed, 1, 1);
+		animateWalk(LittleKingAnimations.WALKING, renderState.walkAnimationPos * 10, renderState.walkAnimationSpeed, 1, 1);
 	}
 }
