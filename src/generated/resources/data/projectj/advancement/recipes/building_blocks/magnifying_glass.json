@@ -11,21 +11,21 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_stick": {
+    "has_pyrite_ingot": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:stick"
+            "items": "projectj:pyrite_ingot"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_string": {
+    "has_stick": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:string"
+            "items": "minecraft:stick"
           }
         ]
       },
@@ -43,7 +43,7 @@
       "has_the_recipe",
       "has_glass_block",
       "has_stick",
-      "has_string"
+      "has_pyrite_ingot"
     ]
   ],
   "rewards": {

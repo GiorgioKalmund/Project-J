@@ -3,12 +3,12 @@
   "category": "building",
   "key": {
     "#": "#c:glass_blocks",
-    "S": "minecraft:stick",
-    "s": "minecraft:string"
+    "P": "projectj:pyrite_ingot",
+    "S": "minecraft:stick"
   },
   "pattern": [
     "#",
-    "s",
+    "P",
     "S"
   ],
   "result": {

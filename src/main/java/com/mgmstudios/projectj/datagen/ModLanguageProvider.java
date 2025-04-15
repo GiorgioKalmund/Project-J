@@ -51,10 +51,12 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.CHILI_SEEDS, "Chili Seeds");
         addItem(ModItems.CHILI_CON_CARNE, "Chili con Carne");
         addItem(ModItems.STONE_MANO, "Stone Mano");
+        addItem(ModItems.QUETZAL_FEATHER, "Quetzal Feather");
 
         // Blocks
         addBlock(ModBlocks.PACKED_ADOBE, "Packed Adobe");
         addBlock(ModBlocks.ADOBE_SAND, "Adobe Sand");
+        addBlock(ModBlocks.ADOBE_GLASS, "Adobe Glass");
         addBlock(ModBlocks.ADOBE_BRICKS, "Adobe Bricks");
         addBlock(ModBlocks.JADE_ORE, "Jade Ore");
         addBlock(ModBlocks.DEEPSLATE_JADE_ORE, "Deepslate Jade Ore");

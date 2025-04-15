@@ -25,6 +25,7 @@ public class ModCreativeModeTabs {
             .displayItems((params, output) -> {
                 output.accept(ModBlocks.PACKED_ADOBE.get());
                 output.accept(ModBlocks.ADOBE_SAND.get());
+                output.accept(ModBlocks.ADOBE_GLASS.get());
                 output.accept(ModBlocks.ADOBE_FURNACE.get());
                 output.accept(ModBlocks.CHIMNEY.get());
 
@@ -96,6 +97,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.VOODOO_CATCHER.get());
                 output.accept(ModItems.LITTLE_MAN_VOODOO.get());
                 output.accept(ModItems.LITTLE_KING_VOODOO.get());
+                output.accept(ModItems.QUETZAL_FEATHER.get());
 
                 ModBlockFamilies.getAllFamilies()
                         .forEach(family -> {

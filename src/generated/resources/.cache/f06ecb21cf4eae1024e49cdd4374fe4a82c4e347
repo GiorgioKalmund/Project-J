@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-12T22:22:22.336331	ModRecipeProvider
+// 1.21.4	2025-04-15T16:14:09.1724174	ModRecipeProvider
 3805c773c67c25685a42a0810f910faacb328964 data/minecraft/advancement/recipes/beetroot_seeds.json
 9d0b4243e93bb8fe0a90f5936460b23bedc28f89 data/minecraft/advancement/recipes/building_blocks/adobe_bricks_smelting.json
 d8e64883f5c848da2d094ba3a38aac11e888156b data/minecraft/advancement/recipes/building_blocks/chili_con_carne_from_maize_mash.json
@@ -85,7 +85,7 @@ ea6dd0222d99a7333dabc42829a514b10237c800 data/projectj/advancement/recipes/build
 de3330ee5f558b664bcefcc0f27dab916f07cc94 data/projectj/advancement/recipes/building_blocks/fire_starter.json
 72f4047e28935534623d54213fea1f66e48515b4 data/projectj/advancement/recipes/building_blocks/jade.json
 50b09991479f19fc2554c39e34f3d2cfef4ed690 data/projectj/advancement/recipes/building_blocks/little_man_voodoo.json
-0466c5e6b97a2482ba0f119fa83290a7168fc9b6 data/projectj/advancement/recipes/building_blocks/magnifying_glass.json
+a22dc619a100457652ae84e8c710b284f96f32ae data/projectj/advancement/recipes/building_blocks/magnifying_glass.json
 92a4c9c580eb82c971c281e2614f652db773e1e4 data/projectj/advancement/recipes/building_blocks/magnifying_glass_stand.json
 9063ac681a289bfd9a483a7b1935a0b07350f299 data/projectj/advancement/recipes/building_blocks/maize_mash.json
 6a86eddce530f626e8299b01a93cc1eaef14fd36 data/projectj/advancement/recipes/building_blocks/mesquite_bench.json
@@ -143,7 +143,7 @@ c5fc4509a8f3ac3bc882c05c48249f21fa40bce8 data/projectj/recipe/fire_starter.json
 753c166d3e245dc0486cd7a374cf6abdafae29ad data/projectj/recipe/jade.json
 4ca75c00f71538c263cb1c7255c893732d1c7598 data/projectj/recipe/little_man_voodoo.json
 bf4e43d6498fe6e6fad452bd4c7dd52695ec8542 data/projectj/recipe/macuahuitl.json
-34be3a6c7e2ec13af6c73b304eb86acb9b3a48f7 data/projectj/recipe/magnifying_glass.json
+3b356ba53536ee7d6d77795dbc5f90808ae15896 data/projectj/recipe/magnifying_glass.json
 9a571711638fb57907ef8dafc96387d2af7771f9 data/projectj/recipe/magnifying_glass_stand.json
 69a32926f3a17f6863ae3cacf60dc2a0c038a557 data/projectj/recipe/maize_mash.json
 260ded373d7e2ea3069faf463581fd5a028cb321 data/projectj/recipe/maize_seeds.json

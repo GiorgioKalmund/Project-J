@@ -93,6 +93,8 @@ public class ModItems {
 
     public static final DeferredItem<Item> LITTLE_KING_VOODOO = register("little_king_voodoo", new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(16));
 
+    public static final DeferredItem<Item> QUETZAL_FEATHER = register("quetzal_feather");
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

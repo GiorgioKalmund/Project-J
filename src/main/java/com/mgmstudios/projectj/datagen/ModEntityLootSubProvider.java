@@ -1,6 +1,7 @@
 package com.mgmstudios.projectj.datagen;
 
 import com.mgmstudios.projectj.entity.ModEntities;
+import com.mgmstudios.projectj.item.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.EntityLootSubProvider;
 import net.minecraft.world.entity.EntityType;
@@ -41,7 +42,7 @@ public class ModEntityLootSubProvider extends EntityLootSubProvider {
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0F))
                                         .add(
-                                                LootItem.lootTableItem(Items.FEATHER)
+                                                LootItem.lootTableItem(ModItems.QUETZAL_FEATHER.get())
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
                                         )

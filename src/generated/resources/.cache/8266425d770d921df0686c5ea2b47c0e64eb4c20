@@ -1,9 +1,10 @@
-// 1.21.4	2025-04-14T22:38:42.5651445	Model Definitions - projectj
+// 1.21.4	2025-04-15T16:27:36.484012	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
 639e3e158347a8da7d7e87c7d0ffe4a9bd159c4d assets/projectj/blockstates/adobe_bricks_wall.json
 68534f251c3c82fa6c7db8f259874b2acb9e8fec assets/projectj/blockstates/adobe_furnace.json
+7f4972b2b5668040a74155b9d2433d47116a77dc assets/projectj/blockstates/adobe_glass.json
 16d574f88709fe34786bd8f4b8a12b221119ada0 assets/projectj/blockstates/adobe_sand.json
 56d477c1553bf8f402af01cea84809d8b0301378 assets/projectj/blockstates/ancient_altar.json
 5072d166ebdf5256c210db01705270a5de8eead1 assets/projectj/blockstates/botany_pot.json
@@ -70,6 +71,7 @@ d706b874c3d232886834e6416b0fa9d9853232b1 assets/projectj/items/adobe_bricks.json
 fd02c864f9876ea05243e11486bd82108f4ea668 assets/projectj/items/adobe_bricks_stairs.json
 935d7e6298296ebe275c1a0a580f2290c59deb03 assets/projectj/items/adobe_bricks_wall.json
 13e17e699a8d9c78c3b62bc09a6d557d48707f73 assets/projectj/items/adobe_furnace.json
+ff03205688467fc89fec5a53a8b1e5f0333b1986 assets/projectj/items/adobe_glass.json
 6012dd349c62a995811c467f6285cd877b031489 assets/projectj/items/adobe_sand.json
 6537b813398b59163efdaad636378d998c37ae1f assets/projectj/items/ancient_altar.json
 c236a7fe29cff9fefcb5a438001d0bb91e903bdd assets/projectj/items/botany_pot.json
@@ -127,6 +129,7 @@ d0874c2112a868fe14a1e74e40f1a42d0b94cb06 assets/projectj/items/pyrite_block.json
 babf0a0116cd33c470ef8b746cdd8cc591fd07e7 assets/projectj/items/pyrite_ingot.json
 c96da2e62b739675003038590660a1dd8d060dd8 assets/projectj/items/pyrite_magnet.json
 6738029d49709fa728677ae1385128236398986a assets/projectj/items/pyrite_ore.json
+345948b62b56d22a50d93aea6ea151981b29ea2b assets/projectj/items/quetzal_feather.json
 5e4f7fcf393f89cf7bd262bb1481ac02750dcf26 assets/projectj/items/raw_jade.json
 53aa4499048497ad5ead0a378754583ab04aa6cc assets/projectj/items/raw_pyrite.json
 d19ac3fb4aac4dd12829332ad30062bd41d7d044 assets/projectj/items/raw_pyrite_block.json
@@ -168,6 +171,7 @@ f3d6933a6215bc109c9a6a96b4611513dd9ef5da assets/projectj/models/block/adobe_bric
 e137107b1dab43a68f5242ef6bcdc9c82443d40b assets/projectj/models/block/adobe_bricks_wall_side_tall.json
 f9b242d34949f79e409b68b64062a94ab39a13a9 assets/projectj/models/block/adobe_furnace.json
 6be9ef5091aa15e0717da95cabb3a12cd5ec0c45 assets/projectj/models/block/adobe_furnace_on.json
+de32641d72fc64c44e45f64befad67aa62d4c789 assets/projectj/models/block/adobe_glass.json
 7d22f5a66c97069f0d358792000607169cb17500 assets/projectj/models/block/adobe_sand.json
 ec5ae966886e8457c52e1217d90916146252aef5 assets/projectj/models/block/chili_bush_stage0.json
 4aa2b90a3d50281fee79dc85d14c782e7e6abd97 assets/projectj/models/block/chili_bush_stage1.json
@@ -270,6 +274,7 @@ f4599e1005d189a2ec7a00ff5c0fe9ac12947441 assets/projectj/models/item/maize_mash.
 09cab150482989c21b2d2de107eb18eedfbac95b assets/projectj/models/item/obsidian_tooth.json
 ffcc726298e3611b938887a80a1db9c4391d1035 assets/projectj/models/item/pyrite_ingot.json
 017d7efbff9698bd3727d1d340292a684d146368 assets/projectj/models/item/pyrite_magnet.json
+696be477a6698e244a22338fade326199a167478 assets/projectj/models/item/quetzal_feather.json
 ba637adad06995f9e8f952ca598514c60ce4cfbb assets/projectj/models/item/raw_jade.json
 dea83879f7224ce8e5006eb343d4d8bf63b2fd25 assets/projectj/models/item/raw_pyrite.json
 caa4448fff1934cc38f77c2a2f2dd6853ae4515d assets/projectj/models/item/sacrificial_dagger.json

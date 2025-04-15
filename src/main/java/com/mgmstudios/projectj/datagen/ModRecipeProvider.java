@@ -254,14 +254,14 @@ public class ModRecipeProvider extends RecipeProvider {
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.MAGNIFYING_GLASS)
                 .pattern("#")
-                .pattern("s")
+                .pattern("P")
                 .pattern("S")
                 .define('#', Tags.Items.GLASS_BLOCKS)
                 .define('S', Items.STICK)
-                .define('s', Items.STRING)
+                .define('P', ModItems.PYRITE_INGOT)
                 .unlockedBy("has_glass_block", this.has(Tags.Items.GLASS_BLOCKS))
                 .unlockedBy("has_stick", this.has(Items.STICK))
-                .unlockedBy("has_string", this.has(Items.STRING))
+                .unlockedBy("has_pyrite_ingot", this.has(ModItems.PYRITE_INGOT))
                 .save(this.output);
 
         ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.FIRE_STARTER)
@@ -479,7 +479,7 @@ public class ModRecipeProvider extends RecipeProvider {
 
     public static void buildMagnifyingGlassRecipes(){
         MagnifyingRecipeBuilder.magnify(Blocks.SAND, Blocks.GLASS);
-        MagnifyingRecipeBuilder.magnify(ModBlocks.ADOBE_SAND.get(), Blocks.BROWN_STAINED_GLASS);
+        MagnifyingRecipeBuilder.magnify(ModBlocks.ADOBE_SAND.get(), ModBlocks.ADOBE_GLASS.get());
         MagnifyingRecipeBuilder.magnify(Blocks.RAW_IRON_BLOCK, Blocks.IRON_BLOCK);
         MagnifyingRecipeBuilder.magnify(Blocks.RAW_GOLD_BLOCK, Blocks.GOLD_BLOCK);
         MagnifyingRecipeBuilder.magnify(Blocks.RAW_COPPER_BLOCK, Blocks.COPPER_BLOCK);

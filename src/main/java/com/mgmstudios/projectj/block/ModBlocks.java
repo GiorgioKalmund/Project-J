@@ -178,7 +178,7 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> POTTED_CHILI_BUSH = registerPottedBotanyPlant("potted_chili_bush", ModItems.CHILI, ModItems.CHILI_SEEDS, BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH));
 
-
+    public static final DeferredBlock<Block> ADOBE_GLASS = register("adobe_glass", AdobeGlass::new, BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS));
 
     private static DeferredBlock<Block> register(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> factory.apply(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));

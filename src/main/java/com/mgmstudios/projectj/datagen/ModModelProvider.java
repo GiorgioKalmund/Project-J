@@ -61,6 +61,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.PYRITE_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.MESQUITE_LEAVES.get());
         blockModels.createTrivialCube(ModBlocks.PYRITE_ORE.get());
+        blockModels.createTrivialCube(ModBlocks.ADOBE_GLASS.get());
         createCutoutPlantWithDefaultItem(blockModels, ModBlocks.MESQUITE_SAPLING.get(), ModBlocks.POTTED_MESQUITE_SAPLING.get(), PlantType.NOT_TINTED);
 
         createAncientAltar(blockModels, itemModels, ModBlocks.ANCIENT_ALTAR.get());
@@ -93,6 +94,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.LITTLE_KING_VOODOO.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.VOODOO_CATCHER.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
         itemModels.generateFlatItem(ModItems.PYRITE_MAGNET.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.QUETZAL_FEATHER.get(), ModelTemplates.FLAT_ITEM);
 
         itemModels.generateSpyglass(ModItems.MACUAHUITL.get());
         itemModels.generateSpyglass(ModItems.SUN_ARMOR_HELMET.get());
@@ -141,6 +143,10 @@ public class ModModelProvider extends ModelProvider {
         createBushBlock(blockModels, ModBlocks.MAIZE_CROP.get());
         createPottedBushBlock(blockModels, ModBlocks.POTTED_MAIZE_CROP.get());
 
+    }
+
+    public void createTrivialTransparentCube(BlockModelGenerators blockModels, Block block){
+        //return MultiVariantGenerator.multiVariant(block, Variant.variant().with(VariantProperties.MODEL, model));
     }
 
     public void createSimpleItemWithCustomModel(ItemModelGenerators itemModelGenerators, Item item){
