@@ -98,6 +98,8 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.LITTLE_MAN_VOODOO.get());
                 output.accept(ModItems.LITTLE_KING_VOODOO.get());
                 output.accept(ModItems.QUETZAL_FEATHER.get());
+                output.accept(ModItems.QUETZAL_SPAWN_EGG.get());
+                output.accept(ModItems.QUETZAL_EGG.get());
 
                 ModBlockFamilies.getAllFamilies()
                         .forEach(family -> {

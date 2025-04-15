@@ -34,6 +34,7 @@ public class ModEntityLootSubProvider extends EntityLootSubProvider {
     public void generate() {
         add(ModEntities.SITTABLE_ENTITY.get(), LootTable.lootTable());
         add(ModEntities.LITTLE_MAN_ENTITY.get(), LootTable.lootTable());
+        add(ModEntities.QUETZAL_ENTITY.get(), LootTable.lootTable());
 
         add(
                 ModEntities.LITTLE_KING_ENTITY.get(),

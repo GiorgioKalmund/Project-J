@@ -52,6 +52,8 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.CHILI_CON_CARNE, "Chili con Carne");
         addItem(ModItems.STONE_MANO, "Stone Mano");
         addItem(ModItems.QUETZAL_FEATHER, "Quetzal Feather");
+        addItem(ModItems.QUETZAL_SPAWN_EGG, "Quetzal Spawn Egg");
+        addItem(ModItems.QUETZAL_EGG, "Quetzal Egg");
 
         // Blocks
         addBlock(ModBlocks.PACKED_ADOBE, "Packed Adobe");
@@ -146,6 +148,7 @@ public class ModLanguageProvider extends LanguageProvider {
         // Entity
         addEntity(ModEntities.LITTLE_MAN_ENTITY.get(), "Little Man");
         addEntity(ModEntities.LITTLE_KING_ENTITY.get(), "Little King");
+        addEntity(ModEntities.QUETZAL_ENTITY.get(), "Quetzal");
 
         // Advancements
         addAdvancementStoryTitle("root", "Project J");

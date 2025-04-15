@@ -59,9 +59,9 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.JADE_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.RAW_PYRITE_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.PYRITE_BLOCK.get());
-        blockModels.createTrivialCube(ModBlocks.MESQUITE_LEAVES.get());
         blockModels.createTrivialCube(ModBlocks.PYRITE_ORE.get());
-        blockModels.createTrivialCube(ModBlocks.ADOBE_GLASS.get());
+        createTrivialTransparentCube(blockModels, ModBlocks.MESQUITE_LEAVES.get());
+        createTrivialTransparentCube(blockModels, ModBlocks.ADOBE_GLASS.get());
         createCutoutPlantWithDefaultItem(blockModels, ModBlocks.MESQUITE_SAPLING.get(), ModBlocks.POTTED_MESQUITE_SAPLING.get(), PlantType.NOT_TINTED);
 
         createAncientAltar(blockModels, itemModels, ModBlocks.ANCIENT_ALTAR.get());
@@ -95,6 +95,8 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.VOODOO_CATCHER.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
         itemModels.generateFlatItem(ModItems.PYRITE_MAGNET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.QUETZAL_FEATHER.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.QUETZAL_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.QUETZAL_EGG.get(), ModelTemplates.FLAT_ITEM);
 
         itemModels.generateSpyglass(ModItems.MACUAHUITL.get());
         itemModels.generateSpyglass(ModItems.SUN_ARMOR_HELMET.get());
@@ -146,7 +148,12 @@ public class ModModelProvider extends ModelProvider {
     }
 
     public void createTrivialTransparentCube(BlockModelGenerators blockModels, Block block){
-        //return MultiVariantGenerator.multiVariant(block, Variant.variant().with(VariantProperties.MODEL, model));
+        ResourceLocation resourcelocation = ModelTemplates.CUBE_ALL
+                .extend()
+                .renderType("minecraft:cutout")
+                .build()
+                .create(block, TextureMapping.cube(block), blockModels.modelOutput);
+        blockModels.blockStateOutput.accept(createSimpleBlock(block, resourcelocation));
     }
 
     public void createSimpleItemWithCustomModel(ItemModelGenerators itemModelGenerators, Item item){

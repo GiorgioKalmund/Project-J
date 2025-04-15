@@ -1,14 +1,23 @@
-// Made with Blockbench 4.12.4
+package com.mgmstudios.projectj.entity.client.quetzal;// Made with Blockbench 4.12.4
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
 
+import com.mgmstudios.projectj.ProjectJ;
+import com.mgmstudios.projectj.entity.client.little_king.LittleKingAnimations;
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.resources.ResourceLocation;
 
-public class quetzal<T extends Entity> extends EntityModel<T> {
+public class QuetzalModel extends EntityModel<QuetzalRenderState> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "quetzal"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "quetzal"), "main");
 	private final ModelPart bb_main;
 
-	public quetzal(ModelPart root) {
+	public QuetzalModel(ModelPart root) {
+		super(root);
 		this.bb_main = root.getChild("bb_main");
 	}
 
@@ -47,12 +56,10 @@ public class quetzal<T extends Entity> extends EntityModel<T> {
 	}
 
 	@Override
-	public void setupAnim(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+	public void setupAnim(QuetzalRenderState renderState) {
+		super.setupAnim(renderState);
 
-	}
-
-	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		bb_main.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		animate(renderState.idle, LittleKingAnimations.IDLE, renderState.ageInTicks);
+		animateWalk(LittleKingAnimations.WALKING, renderState.walkAnimationPos * 10, renderState.walkAnimationSpeed, 1, 1);
 	}
 }

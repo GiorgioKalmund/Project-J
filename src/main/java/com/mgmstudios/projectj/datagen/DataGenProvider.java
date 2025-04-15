@@ -7,6 +7,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.advancements.AdvancementProvider;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.loot.packs.VanillaEntityLoot;
+import net.minecraft.data.loot.packs.VanillaGiftLoot;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
@@ -36,7 +37,8 @@ public class DataGenProvider extends LootTableProvider {
                 Set.of(),
                 List.of(
                         new SubProviderEntry(ModBlockLootTableSubProvider::new, LootContextParamSets.BLOCK),
-                        new SubProviderEntry(ModEntityLootSubProvider::new, LootContextParamSets.ENTITY)
+                        new SubProviderEntry(ModEntityLootSubProvider::new, LootContextParamSets.ENTITY),
+                        new SubProviderEntry(ModGiftLoot::new, LootContextParamSets.GIFT)
                 ),
             lookupProvider
         ));

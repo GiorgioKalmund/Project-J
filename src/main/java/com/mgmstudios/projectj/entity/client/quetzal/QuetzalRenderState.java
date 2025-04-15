@@ -1,4 +1,8 @@
-﻿package com.mgmstudios.projectj.entity.client.quetzal;
+package com.mgmstudios.projectj.entity.client.quetzal;
 
-public class QuetzalRenderState {
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
+import net.minecraft.world.entity.AnimationState;
+
+public class QuetzalRenderState extends LivingEntityRenderState {
+    public final AnimationState idle = new AnimationState();
 }

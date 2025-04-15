@@ -1,4 +1,10 @@
-﻿package com.mgmstudios.projectj.block.custom;
+package com.mgmstudios.projectj.block.custom;
 
-public class QuetzalEggBlock {
+import net.minecraft.world.level.block.TurtleEggBlock;
+
+public class QuetzalEggBlock extends TurtleEggBlock {
+
+    public QuetzalEggBlock(Properties properties) {
+        super(properties);
+    }
 }

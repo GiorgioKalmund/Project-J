@@ -9,11 +9,14 @@ import com.mgmstudios.projectj.client.ProjectJClientExtension;
 import com.mgmstudios.projectj.entity.ModEntities;
 import com.mgmstudios.projectj.entity.client.little_king.LittleKingRenderer;
 import com.mgmstudios.projectj.entity.client.little_man.LittleManRenderer;
+import com.mgmstudios.projectj.entity.client.quetzal.QuetzalModel;
+import com.mgmstudios.projectj.entity.client.quetzal.QuetzalRenderer;
 import com.mgmstudios.projectj.fluid.ModFluidTypes;
 import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.item.ModCreativeModeTabs;
 import com.mgmstudios.projectj.item.ModItemBehaviours;
 import com.mgmstudios.projectj.item.ModItems;
+import com.mgmstudios.projectj.loot.ModLootTables;
 import com.mgmstudios.projectj.recipe.ModRecipeSerializers;
 import com.mgmstudios.projectj.recipe.ModRecipeTypes;
 import com.mgmstudios.projectj.screen.ModMenuTypes;
@@ -73,6 +76,7 @@ public class ProjectJ
         ModItems.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
         ModEntities.register(modEventBus);
+        ModLootTables.register(modEventBus);
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::registerScreens);
@@ -112,6 +116,7 @@ public class ProjectJ
             EntityRenderers.register(ModEntities.SITTABLE_ENTITY.get(), SittableEntityRenderer::new);
             EntityRenderers.register(ModEntities.LITTLE_MAN_ENTITY.get(), LittleManRenderer::new);
             EntityRenderers.register(ModEntities.LITTLE_KING_ENTITY.get(), LittleKingRenderer::new);
+            EntityRenderers.register(ModEntities.QUETZAL_ENTITY.get(), QuetzalRenderer::new);
         }
 
         @SubscribeEvent
