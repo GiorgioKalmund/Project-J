@@ -89,13 +89,13 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.MESQUITE_BENCH.get());
                 output.accept(ModBlocks.MESQUITE_BENCH_CORNER.get());
 
-                output.accept(ModItems.LITTLE_MAN_SPAWN_EGG.get());
                 output.accept(ModBlocks.LITTLE_MAN_STATUE_BLOCK.get());
                 output.accept(ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK.get());
                 output.accept(ModItems.LITTLE_MAN_SPAWN_EGG.get());
                 output.accept(ModItems.LITTLE_KING_SPAWN_EGG.get());
-                output.accept(ModItems.LITTLE_KING_VOODOO.get());
                 output.accept(ModItems.VOODOO_CATCHER.get());
+                output.accept(ModItems.LITTLE_MAN_VOODOO.get());
+                output.accept(ModItems.LITTLE_KING_VOODOO.get());
 
                 ModBlockFamilies.getAllFamilies()
                         .forEach(family -> {
