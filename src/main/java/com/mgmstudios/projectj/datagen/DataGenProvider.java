@@ -38,7 +38,8 @@ public class DataGenProvider extends LootTableProvider {
                 List.of(
                         new SubProviderEntry(ModBlockLootTableSubProvider::new, LootContextParamSets.BLOCK),
                         new SubProviderEntry(ModEntityLootSubProvider::new, LootContextParamSets.ENTITY),
-                        new SubProviderEntry(ModGiftLoot::new, LootContextParamSets.GIFT)
+                        new SubProviderEntry(ModGiftLoot::new, LootContextParamSets.GIFT),
+                        new SubProviderEntry(ModAdvancementLoot::new, LootContextParamSets.ADVANCEMENT_REWARD)
                 ),
             lookupProvider
         ));

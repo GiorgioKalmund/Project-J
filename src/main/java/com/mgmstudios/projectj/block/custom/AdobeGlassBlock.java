@@ -12,9 +12,9 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import static net.minecraft.world.phys.shapes.Shapes.empty;
 
-public class AdobeGlass extends TransparentBlock {
+public class AdobeGlassBlock extends TransparentBlock {
 
-    public AdobeGlass(Properties properties) {
+    public AdobeGlassBlock(Properties properties) {
         super(properties);
     }
 

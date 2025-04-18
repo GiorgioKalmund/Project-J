@@ -4,13 +4,9 @@ import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.entity.ModEntities;
 import com.mgmstudios.projectj.entity.custom.LittleManEntity;
 import com.mgmstudios.projectj.item.ModItems;
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.advancements.AdvancementType;
-import net.minecraft.advancements.critereon.EntityPredicate;
-import net.minecraft.advancements.critereon.EntityTypePredicate;
-import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.advancements.critereon.TradeTrigger;
+import com.mgmstudios.projectj.loot.ModLootTables;
+import net.minecraft.advancements.*;
+import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -22,7 +18,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.world.ModifiableBiomeInfo;
+import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 
+import java.util.Optional;
 import java.util.function.Consumer;
 
 public class ModAdvancementSubProvider implements AdvancementSubProvider {
@@ -34,16 +32,24 @@ public class ModAdvancementSubProvider implements AdvancementSubProvider {
 
         AdvancementHolder root = Advancement.Builder.advancement()
                 .display(
-                        ModBlocks.COBBLED_SERPENTINITE,
+                        ModItems.QUEST_BOOK,
                         Component.translatable(createTitleString("root")),
                         Component.translatable(createDescriptionString("root")),
                         ResourceLocation.withDefaultNamespace("textures/gui/advancements/backgrounds/stone.png"),
                         AdvancementType.TASK,
-                        false,
-                        false,
+                        true,
+                        true,
                         false
                 )
-                .addCriterion("cobbled_serpentinite", InventoryChangeTrigger.TriggerInstance.hasItems(ModBlocks.COBBLED_SERPENTINITE))
+                .addCriterion(
+                        "tick",
+                        CriteriaTriggers.TICK.createCriterion(
+                                new PlayerTrigger.TriggerInstance(Optional.empty())
+                        )
+                )
+                .rewards(
+                        AdvancementRewards.Builder.loot(ModLootTables.GRANT_QUEST_BOOK.getKey())
+                )
                 .save(consumer, createSaveString("story", "root"));
 
         AdvancementHolder getJade = Advancement.Builder.advancement()
