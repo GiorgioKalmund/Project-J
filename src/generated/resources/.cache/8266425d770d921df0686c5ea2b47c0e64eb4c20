@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-15T17:36:20.9450108	Model Definitions - projectj
+// 1.21.4	2025-04-18T11:23:13.501294	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -129,6 +129,7 @@ d0874c2112a868fe14a1e74e40f1a42d0b94cb06 assets/projectj/items/pyrite_block.json
 babf0a0116cd33c470ef8b746cdd8cc591fd07e7 assets/projectj/items/pyrite_ingot.json
 c96da2e62b739675003038590660a1dd8d060dd8 assets/projectj/items/pyrite_magnet.json
 6738029d49709fa728677ae1385128236398986a assets/projectj/items/pyrite_ore.json
+ae2c625ba1c67c2e0d506bc32ba465fb6cc8ee66 assets/projectj/items/quest_book.json
 e5de931e090fbf73f5fcc4d84e1118c631632893 assets/projectj/items/quetzal_egg.json
 345948b62b56d22a50d93aea6ea151981b29ea2b assets/projectj/items/quetzal_feather.json
 d6de33ec78e5dadcec27d4788d16fe3137d1662b assets/projectj/items/quetzal_spawn_egg.json
@@ -276,6 +277,7 @@ f4599e1005d189a2ec7a00ff5c0fe9ac12947441 assets/projectj/models/item/maize_mash.
 09cab150482989c21b2d2de107eb18eedfbac95b assets/projectj/models/item/obsidian_tooth.json
 ffcc726298e3611b938887a80a1db9c4391d1035 assets/projectj/models/item/pyrite_ingot.json
 017d7efbff9698bd3727d1d340292a684d146368 assets/projectj/models/item/pyrite_magnet.json
+685262fa51c1cbde53140c2b72c5c608a095c243 assets/projectj/models/item/quest_book.json
 f26183b0a5ddea46470c024f7ffccc269b5e0d0a assets/projectj/models/item/quetzal_egg.json
 696be477a6698e244a22338fade326199a167478 assets/projectj/models/item/quetzal_feather.json
 00692d7e6ab7f4e30dec438ea1b87f94643578a1 assets/projectj/models/item/quetzal_spawn_egg.json

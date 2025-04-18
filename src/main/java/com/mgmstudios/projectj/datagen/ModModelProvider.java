@@ -97,6 +97,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.QUETZAL_FEATHER.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.QUETZAL_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.QUETZAL_EGG.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.QUEST_BOOK.get(), ModelTemplates.FLAT_ITEM);
 
         itemModels.generateSpyglass(ModItems.MACUAHUITL.get());
         itemModels.generateSpyglass(ModItems.SUN_ARMOR_HELMET.get());

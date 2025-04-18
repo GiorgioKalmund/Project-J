@@ -98,6 +98,7 @@ public class ModItems {
     public static final DeferredItem<Item> QUETZAL_SPAWN_EGG = register("quetzal_spawn_egg", (properties) -> new SpawnEggItem(ModEntities.QUETZAL_ENTITY.get(), properties));
 
     public static final DeferredItem<Item> QUETZAL_EGG = register("quetzal_egg");
+    public static final DeferredItem<Item> QUEST_BOOK = register("quest_book", (properties) -> new QuestBook("Ancient Codex", "Project J Team", properties.stacksTo(1)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
