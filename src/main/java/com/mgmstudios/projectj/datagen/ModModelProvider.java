@@ -7,6 +7,8 @@ import com.mgmstudios.projectj.block.custom.MagnifyingGlassStandBlock;
 import com.mgmstudios.projectj.item.ModItems;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import net.minecraft.client.color.item.Dye;
+import net.minecraft.client.color.item.ItemTintSource;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
@@ -15,14 +17,21 @@ import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.blockstates.Variant;
 import net.minecraft.client.data.models.blockstates.VariantProperties;
 import net.minecraft.client.data.models.model.*;
+import net.minecraft.client.renderer.block.model.ItemModelGenerator;
 import net.minecraft.client.renderer.item.ItemModel;
+import net.minecraft.client.renderer.item.SelectItemModel;
 import net.minecraft.client.renderer.item.properties.select.DisplayContext;
+import net.minecraft.client.renderer.item.properties.select.TrimMaterialProperty;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.equipment.EquipmentAsset;
+import net.minecraft.world.item.equipment.EquipmentAssets;
+import net.minecraft.world.item.equipment.trim.TrimMaterial;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
@@ -33,6 +42,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.model.generators.template.ExtendedModelTemplateBuilder;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.mgmstudios.projectj.block.custom.AdobeFurnaceBlock.TIER1;
@@ -99,9 +109,13 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.QUETZAL_EGG.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.QUEST_BOOK.get(), ModelTemplates.FLAT_ITEM);
 
+        generateBasicArmourItem(itemModels, ModItems.JADE_HELMET.get(), false);
+        generateBasicArmourItem(itemModels, ModItems.JADE_CHESTPLATE.get(), false);
+        generateBasicArmourItem(itemModels, ModItems.JADE_LEGGINGS.get(), false);
+        generateBasicArmourItem(itemModels, ModItems.JADE_BOOTS.get(), false);
+
         itemModels.generateSpyglass(ModItems.MACUAHUITL.get());
         itemModels.generateSpyglass(ModItems.SUN_ARMOR_HELMET.get());
-        itemModels.generateSpyglass(ModItems.JADE_HELMET.get());
         itemModels.generateSpyglass(ModItems.MAGNIFYING_GLASS.get());
         itemModels.generateSpyglass(ModItems.STONE_MANO.get());
 
@@ -146,6 +160,23 @@ public class ModModelProvider extends ModelProvider {
         createBushBlock(blockModels, ModBlocks.MAIZE_CROP.get());
         createPottedBushBlock(blockModels, ModBlocks.POTTED_MAIZE_CROP.get());
 
+    }
+
+    public void generateBasicArmourItem(ItemModelGenerators itemModels, Item item, boolean dyeable) {
+        ResourceLocation resourcelocation = ModelLocationUtils.getModelLocation(item);
+        ResourceLocation resourcelocation1 = TextureMapping.getItemTexture(item);
+        ResourceLocation resourcelocation2 = TextureMapping.getItemTexture(item, "_overlay");
+
+        ItemModel.Unbaked itemmodel$unbaked1;
+        if (dyeable) {
+            ModelTemplates.TWO_LAYERED_ITEM.create(resourcelocation, TextureMapping.layered(resourcelocation1, resourcelocation2), itemModels.modelOutput);
+            itemmodel$unbaked1 = ItemModelUtils.tintedModel(resourcelocation, new ItemTintSource[]{new Dye(-6265536)});
+        } else {
+            ModelTemplates.FLAT_ITEM.create(resourcelocation, TextureMapping.layer0(resourcelocation1), itemModels.modelOutput);
+            itemmodel$unbaked1 = ItemModelUtils.plainModel(resourcelocation);
+        }
+
+        itemModels.itemModelOutput.accept(item, itemmodel$unbaked1);
     }
 
     public void createTrivialTransparentCube(BlockModelGenerators blockModels, Block block){

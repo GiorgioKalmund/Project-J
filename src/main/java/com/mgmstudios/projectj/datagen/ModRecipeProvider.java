@@ -382,6 +382,43 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_dirt", this.has(ItemTags.DIRT))
                 .save(this.output);
 
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.JADE_HELMET)
+                .pattern("###")
+                .pattern("# #")
+                .define('#', ModItems.JADE)
+                .unlockedBy("has_jade", this.has(ModItems.JADE))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.JADE_CHESTPLATE)
+                .pattern("# #")
+                .pattern("###")
+                .pattern("###")
+                .define('#', ModItems.JADE)
+                .unlockedBy("has_jade", this.has(ModItems.JADE))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.JADE_LEGGINGS)
+                .pattern("###")
+                .pattern("# #")
+                .pattern("# #")
+                .define('#', ModItems.JADE)
+                .unlockedBy("has_jade", this.has(ModItems.JADE))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.JADE_BOOTS)
+                .pattern("# #")
+                .pattern("# #")
+                .define('#', ModItems.JADE)
+                .unlockedBy("has_jade", this.has(ModItems.JADE))
+                .save(this.output);
+
+        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.QUEST_BOOK)
+                .requires(Items.BOOK)
+                .requires(ModItems.JADE)
+                .unlockedBy("has_book", this.has(Items.BOOK))
+                .unlockedBy("has_jade", this.has(ModItems.JADE))
+                .save(this.output);
+
 
         // ANCIENT ALTAR
 
