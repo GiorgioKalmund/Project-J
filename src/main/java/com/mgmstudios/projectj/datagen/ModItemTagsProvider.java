@@ -60,7 +60,17 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.TROWEL.get());
 
         tag(ItemTags.HEAD_ARMOR)
-                .add(ModItems.SUN_ARMOR_HELMET.get());
+                .add(ModItems.SUN_ARMOR_HELMET.get())
+                .add(ModItems.JADE_HELMET.get());
+
+        tag(ItemTags.CHEST_ARMOR)
+                .add(ModItems.JADE_CHESTPLATE.get());
+
+        tag(ItemTags.LEG_ARMOR)
+                .add(ModItems.JADE_LEGGINGS.get());
+
+        tag(ItemTags.FOOT_ARMOR)
+                .add(ModItems.JADE_BOOTS.get());
 
         tag(ModTags.Items.ALTAR_CRAFTABLE)
                 .add(Items.NETHERITE_PICKAXE)

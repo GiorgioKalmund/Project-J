@@ -1,9 +1,12 @@
-// 1.21.4	2025-04-18T12:49:24.866963	Tags for minecraft:item mod id vanilla
+// 1.21.4	2025-04-18T14:21:37.228711	Tags for minecraft:item mod id vanilla
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/axes.json
+eef8507b29bbe76da180374064eae34413716c15 data/minecraft/tags/item/chest_armor.json
 13774df12a771570323d285bfc3f11b3548cc957 data/minecraft/tags/item/enchantable/durability.json
 177d72f6b3e93c23cbac2c6995c3e57d46b4e250 data/minecraft/tags/item/fence_gates.json
-c184a3b0a55998ca058c5d8180e7595b3fc08396 data/minecraft/tags/item/head_armor.json
+befd7167f6ae998c20621e0f7fdd9aac388d70b6 data/minecraft/tags/item/foot_armor.json
+221a78cb97d2e369a621c406f08fb5a5a4f34694 data/minecraft/tags/item/head_armor.json
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/hoes.json
+41cc8110ba0dbcd2350bd7cb4ac23cb0b5f4125e data/minecraft/tags/item/leg_armor.json
 8189a72a7e5064d8c3c6b32896484fa360664989 data/minecraft/tags/item/logs_that_burn.json
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/pickaxes.json
 7356e7560bec3f85f86e264f83881226dfd87f93 data/minecraft/tags/item/planks.json

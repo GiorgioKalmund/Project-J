@@ -4,6 +4,7 @@ import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlockFamilies;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.block.custom.MagnifyingGlassStandBlock;
+import com.mgmstudios.projectj.item.ModEquipmentAssets;
 import com.mgmstudios.projectj.item.ModItems;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
@@ -109,10 +110,10 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.QUETZAL_EGG.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.QUEST_BOOK.get(), ModelTemplates.FLAT_ITEM);
 
-        generateBasicArmourItem(itemModels, ModItems.JADE_HELMET.get(), false);
-        generateBasicArmourItem(itemModels, ModItems.JADE_CHESTPLATE.get(), false);
-        generateBasicArmourItem(itemModels, ModItems.JADE_LEGGINGS.get(), false);
-        generateBasicArmourItem(itemModels, ModItems.JADE_BOOTS.get(), false);
+        itemModels.generateTrimmableItem(ModItems.JADE_HELMET.get(), ModEquipmentAssets.JADE, "helmet", false);
+        itemModels.generateTrimmableItem(ModItems.JADE_CHESTPLATE.get(), ModEquipmentAssets.JADE, "chestplate", false);
+        itemModels.generateTrimmableItem(ModItems.JADE_LEGGINGS.get(), ModEquipmentAssets.JADE, "leggings", false);
+        itemModels.generateTrimmableItem(ModItems.JADE_BOOTS.get(), ModEquipmentAssets.JADE, "boots", false);
 
         itemModels.generateSpyglass(ModItems.MACUAHUITL.get());
         itemModels.generateSpyglass(ModItems.SUN_ARMOR_HELMET.get());
