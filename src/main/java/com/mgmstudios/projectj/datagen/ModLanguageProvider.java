@@ -179,13 +179,13 @@ public class ModLanguageProvider extends LanguageProvider {
         addAdvancementStoryDescription("filled_crude_sacrificial_bowl", "Perform a self sacrifice to obtain a Filled Crude Sacrificial Bowl");
 
         // Quest Book
-        addQuestBookPage(0, "<cover><empty>");
-        addQuestBookPage(1, "<image>[border]macuahuitl<image><title>\n§n§lMacuahuitl§r<title>\nAnd we have some more stuff to talk about");
-        addQuestBookPage(2, "<image>[border][sprite]jade<image>\n<title>§n§lJade§r<title>\nThe most precious of all!");
-        addQuestBookPage(3, "<image>[sprite]little_king_spawn_egg<image>\n<title>§n§lThe Little King§r<title>\nHe rules the world of Minecraft!");
-        addQuestBookPage(4, "<title>\n§n§lTitle!§r<title>\nAnd we have some more stuff to talk about");
-        addQuestBookPage(5, "Veniam commodo in ex irure elit exercitation duis. Ex laborum aute quis aute exercitation enim occaecat do minim.");
-        addQuestBookPage(6, "<image>[border]jade_helmet;32;32;32;32<image>\n§n§lJade Helmet§r\nA great Helmet!!");
+        addQuestBookPage(0, "<cover>");
+        addQuestBookPage(1, "<image>[border]projectj:macuahuitl<image><title>\n§n§lMacuahuitl§r<title>\nAnd we have some more stuff to talk about");
+        addQuestBookPage(2, "<image>[border]projectj:jade<image>\n<title>§n§lJade§r<title>\nThe most precious of all!");
+        addQuestBookPage(3, "<image>projectj:little_king_spawn_egg<image>\n<title>§n§lThe Little King§r<title>\nHe rules the world of Minecraft!");
+        addQuestBookPage(4, "<title>§n§lTitle!§r<title>\nAnd we have some more stuff to talk about");
+        addQuestBookPage(5, "<image>[border]grass_block<image>\n§n§lGrass§r\nWhat makes Minecraft Minecraft. First we mine, then we craft.");
+        addQuestBookPage(6, "<image>[border]projectj:jade_ore<image>\n§n§lJade Ore§r\nHidden in the depths you can find this ore near lush caves!");
 
         // GUI
         addGuiButton("close", "Close");

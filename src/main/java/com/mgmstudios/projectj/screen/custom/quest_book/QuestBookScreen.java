@@ -1,6 +1,7 @@
-package com.mgmstudios.projectj.screen.custom;
+package com.mgmstudios.projectj.screen.custom.quest_book;
 
 import com.mgmstudios.projectj.ProjectJ;
+import com.mgmstudios.projectj.screen.custom.quest_book.pages.CoverScreen;
 import net.minecraft.client.GameNarrator;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -18,21 +19,23 @@ import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
 
+import static com.mgmstudios.projectj.util.ItemLookup.getStack;
+import static com.mgmstudios.projectj.util.ItemLookup.resourceLocationFromString;
+
 public class QuestBookScreen extends Screen {
 
     public static final int PAGE_INDICATOR_TEXT_Y_OFFSET = 16;
     public static final int PAGE_TEXT_X_OFFSET = 36;
     public static final int PAGE_TEXT_Y_OFFSET = 30;
-    private static final int BACKGROUND_TEXTURE_WIDTH = 256;
-    private static final int BACKGROUND_TEXTURE_HEIGHT = 256;
+    public static final int BACKGROUND_TEXTURE_WIDTH = 256;
+    public static final int BACKGROUND_TEXTURE_HEIGHT = 256;
     public static final BookAccess EMPTY_ACCESS = new BookAccess(List.of());
     public static final ResourceLocation BOOK_LOCATION = ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "textures/gui/quest_book/quest_book.png");
-    public static final ResourceLocation COVER_PAGE_LOCATION = ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "textures/gui/quest_book/quest_book_cover.png");
     public static final ResourceLocation IMAGE_BORDER_LOCATION = ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "textures/gui/quest_book/image_border.png");
     protected static final int TEXT_WIDTH = 114;
     protected static final int TEXT_HEIGHT = 128;
-    protected static final int IMAGE_WIDTH = 192;
-    protected static final int IMAGE_HEIGHT = 192;
+    public static final int IMAGE_WIDTH = 192;
+    public static final int IMAGE_HEIGHT = 192;
 
     protected static final int IMAGE_Y_OFFSET = 36;
     private BookAccess bookAccess;
@@ -45,11 +48,12 @@ public class QuestBookScreen extends Screen {
     private final boolean playTurnSound;
     private QuestBookImage questBookImage = new QuestBookImage();
 
-    protected static final int QUEST_IMAGE_WIDTH = 64;
-    protected static final int QUEST_IMAGE_HEIGHT = 64;
+    protected static final int QUEST_IMAGE_WIDTH = 16;
+    protected static final int QUEST_BORDER_IMAGE_WIDTH = 48;
+    protected static final int QUEST_IMAGE_HEIGHT = 16;
 
     protected boolean hasTitle = false;
-    protected boolean showCover = false;
+    protected Screen screenToShow = null;
     public QuestBookScreen(BookAccess bookAccess) {
         this(bookAccess, true);
     }
@@ -70,110 +74,93 @@ public class QuestBookScreen extends Screen {
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         super.render(guiGraphics, mouseX, mouseY, partialTick);
 
-        int i = (this.width - 192) / 2;
+        int imageWidthCenter = (this.width - IMAGE_WIDTH) / 2;
+
         if (this.cachedPage != this.currentPage) {
+
             FormattedText formattedText = this.bookAccess.getPage(this.currentPage);
-
-            if (formattedText.getString().startsWith("<image>")){
-                String[] charSequencePieces = formattedText.getString().split("<image>");
-
-                String imageString = charSequencePieces[1];
-                boolean showBorder = false;
-                boolean isSprite = false;
-                if (imageString.contains("[border]")){
-                    showBorder = true;
-                    imageString = imageString.replace("[border]", "");
+            String formattedString = formattedText.getString();
+            if (formattedString.contains("<cover>")){
+                screenToShow = new CoverScreen(Component.translatable("CoverScreen"));
+                this.pageMsg = Component.literal("");
+                formattedText = FormattedText.of("");
+                questBookImage.reset();
+            } if (formattedString.contains("<empty>")){
+                // Maybe show some sort of placeholder blank image screen
+                formattedText = FormattedText.of("");
+                questBookImage.reset();
+            } else if (formattedString.contains("<highlight>")){
+                // Could fit it any type of screen how
+            }else {
+                // Hero Screen
+                this.hasTitle = formattedString.contains("<title>");
+                if (hasTitle){
+                    formattedText = FormattedText.of(formattedString.replace("<title>", ""));
                 }
-                if (imageString.contains("[sprite]")){
-                    isSprite = true;
-                    imageString = imageString.replace("[sprite]", "");
-                }
-                String[] imageDetails = imageString.split(";");
-                if (imageDetails.length == 5 || imageDetails.length == 3 || imageDetails.length == 1){
-                    ResourceLocation resourceLocation = ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, isSprite ? "quest_book/" + imageDetails[0] : "textures/gui/quest_book/images/" + imageDetails[0] + ".png");
-                    int imageHeight = QUEST_IMAGE_HEIGHT;
-                    int imageWidth = QUEST_IMAGE_WIDTH;
-                    if (imageDetails.length >= 3){
-                        imageWidth = Integer.parseInt(imageDetails[1]);
-                        imageHeight = Integer.parseInt(imageDetails[2]);
-                    }
-                    int imageDisplayHeight = QUEST_IMAGE_HEIGHT;
-                    int imageDisplayWidth = QUEST_IMAGE_WIDTH;
-                    if (imageDetails.length == 5){
-                        imageDisplayWidth = Integer.parseInt(imageDetails[3]);
-                        imageDisplayHeight = Integer.parseInt(imageDetails[4]);
+
+                if (formattedString.startsWith("<image>")){
+                    String[] charSequencePieces = formattedString.split("<image>");
+
+                    String imageString = charSequencePieces[1];
+                    boolean showBorder = false;
+                    if (imageString.contains("[border]")){
+                        showBorder = true;
+                        imageString = imageString.replace("[border]", "");
                     }
 
-                    int capacity = (imageDisplayHeight / font.lineHeight);
+                    int capacity = (QUEST_IMAGE_HEIGHT / font.lineHeight);
                     StringBuilder sb = new StringBuilder(capacity);
                     for (int index = 0; index <= capacity; index++) {
                         sb.append("\n");
                     }
                     String buffer = sb.toString();
-                    questBookImage = new QuestBookImage(imageWidth, imageHeight, imageDisplayWidth, imageDisplayHeight, resourceLocation, showBorder, isSprite);
+                    questBookImage = new QuestBookImage(resourceLocationFromString(imageString), showBorder);
                     formattedText = FormattedText.of(buffer + charSequencePieces[2]);
-                }
-            } else {
-                questBookImage.reset();
-            }
-
-            if (formattedText.getString().contains("<cover>")){
-                this.showCover = true;
-                formattedText = FormattedText.of(formattedText.getString().replace("<cover>", ""));
-            } else {
-                this.showCover = false;
-            }
-
-            if (formattedText.getString().contains("<empty>")){
-                // Maybe show some sort of placeholder blank image screen
-                formattedText = FormattedText.of("");
-            }
-            else {
-                if (formattedText.getString().contains("<title>")){
-                    this.hasTitle = true;
-                    formattedText = FormattedText.of(formattedText.getString().replace("<title>", ""));
                 } else {
-                    this.hasTitle = false;
+                    questBookImage.reset();
                 }
-            }
-
-            this.cachedPageComponents = this.font.split(formattedText, TEXT_WIDTH);
-            if (!showCover){
+                screenToShow = null;
                 this.pageMsg = Component.translatable("book.pageIndicator", new Object[]{this.currentPage + 1, Math.max(this.getNumPages(), 1)});
-            } else {
-                this.pageMsg = Component.literal("");
             }
-        }
-
-        if (!questBookImage.isEmpty()){
-            if (questBookImage.isSprite()){
-                guiGraphics.blitSprite(RenderType::guiTextured, questBookImage.resourceLocation, questBookImage.displayWidth, questBookImage.displayHeight, 0, 0, (this.width - questBookImage.displayWidth) / 2, IMAGE_Y_OFFSET, questBookImage.width, questBookImage.height);
-            } else {
-                guiGraphics.blit(RenderType::guiTextured, questBookImage.resourceLocation, (this.width - questBookImage.displayWidth) / 2, IMAGE_Y_OFFSET, 0.0F, 0.0F, questBookImage.displayWidth, questBookImage.displayHeight, questBookImage.width, questBookImage.height);
-            }
-            if (questBookImage.showBorder){
-                float scaleFactor = 1.2F;
-                int scaledQuestBookDisplayWidth = (int)(questBookImage.displayWidth * scaleFactor);
-                int scaledQBookDisplayHeight = (int)(questBookImage.displayHeight * scaleFactor);
-                guiGraphics.blit(RenderType::guiTextured, IMAGE_BORDER_LOCATION, (this.width - scaledQuestBookDisplayWidth) / 2, IMAGE_Y_OFFSET - (scaledQBookDisplayHeight - questBookImage.displayHeight) / 2, 0.0F, 0.0F, scaledQuestBookDisplayWidth,scaledQBookDisplayHeight, scaledQuestBookDisplayWidth, scaledQBookDisplayHeight);
-            }
+            this.cachedPageComponents = this.font.split(formattedText, TEXT_WIDTH);
         }
 
         this.cachedPage = this.currentPage;
-        int i1 = this.font.width(this.pageMsg);
-        guiGraphics.drawString(this.font, this.pageMsg, i - i1 + 192 - 44, 18, 0, false);
+
+        // Render the chosen screen
+        if (screenToShow != null && !(screenToShow instanceof CoverScreen)){
+            screenToShow.render(guiGraphics, mouseX, mouseY, partialTick);
+        }
+
+        int pageMsLen = this.font.width(this.pageMsg);
+
+        guiGraphics.drawString(this.font, this.pageMsg, imageWidthCenter - pageMsLen + 192 - 44, 18, 0, false);
         int components = Math.min(14, this.cachedPageComponents.size());
 
-        int titleIndex = 1;
+        int titleIndex = 0;
         if (hasTitle && !questBookImage.isEmpty()){
-            titleIndex = (questBookImage.displayHeight/ font.lineHeight) + 2;
+            titleIndex = (QUEST_IMAGE_HEIGHT / font.lineHeight) + 2;
         }
+
+        if (pageMsLen == 0)
+            pageMsLen = 59;
+        int centeredPosition = imageWidthCenter - pageMsLen + IMAGE_WIDTH - 50;
+        if (!questBookImage.isEmpty()){
+            guiGraphics.renderItem(getStack(questBookImage.resourceLocation), centeredPosition , IMAGE_Y_OFFSET);
+            if (questBookImage.showBorder){
+                float scaleFactor = 1.3F;
+                int scaledQuestBookDisplayWidth = (int)(QUEST_BORDER_IMAGE_WIDTH * scaleFactor);
+                int scaledQBookDisplayHeight = (int)(QUEST_IMAGE_HEIGHT * scaleFactor);
+                guiGraphics.blit(RenderType::guiTextured, IMAGE_BORDER_LOCATION, (this.width - scaledQuestBookDisplayWidth) / 2 - 5, IMAGE_Y_OFFSET - (scaledQBookDisplayHeight - QUEST_IMAGE_HEIGHT) / 2, 0.0F, 0.0F, scaledQuestBookDisplayWidth, scaledQBookDisplayHeight, scaledQuestBookDisplayWidth, scaledQBookDisplayHeight);
+            }
+        }
+
         for(int component = 0; component < components; ++component) {
             FormattedCharSequence formattedcharsequence = this.cachedPageComponents.get(component);
             if (hasTitle && titleIndex == component){
-                drawCenteredStringWithoutDropShadow(guiGraphics, this.font, formattedcharsequence,  i - i1 + IMAGE_WIDTH - 44, 32 + component * 9, 0);
+                drawCenteredStringWithoutDropShadow(guiGraphics, this.font, formattedcharsequence,  imageWidthCenter - pageMsLen + IMAGE_WIDTH - 44, 32 + component * 9, 0);
             } else {
-                guiGraphics.drawString(this.font, formattedcharsequence, i + 36, 32 + component * 9, 0, false);
+                guiGraphics.drawString(this.font, formattedcharsequence, imageWidthCenter + 36, 32 + component * 9, 0, false);
             }
         }
 
@@ -181,18 +168,19 @@ public class QuestBookScreen extends Screen {
         if (style != null) {
             guiGraphics.renderComponentHoverEffect(this.font, style, mouseX, mouseY);
         }
-
     }
 
     public void drawCenteredStringWithoutDropShadow(GuiGraphics guiGraphics, Font font, FormattedCharSequence formattedcharsequence, int x, int y, int color) {
         guiGraphics.drawString(font, formattedcharsequence, x - font.width(formattedcharsequence) / 2, y, color, false);
     }
 
-
-
     public void renderBackground(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         this.renderTransparentBackground(guiGraphics);
-        guiGraphics.blit(RenderType::guiTextured, showCover ? COVER_PAGE_LOCATION : BOOK_LOCATION, (this.width - 192) / 2, 2, 0.0F, 0.0F, IMAGE_WIDTH, IMAGE_HEIGHT, BACKGROUND_TEXTURE_WIDTH, BACKGROUND_TEXTURE_HEIGHT);
+        if (screenToShow != null && screenToShow instanceof CoverScreen){
+            guiGraphics.blit(RenderType::guiTextured, CoverScreen.COVER_PAGE_LOCATION, (this.width - 192) / 2, 2, 0.0F, 0.0F, IMAGE_WIDTH, IMAGE_HEIGHT, BACKGROUND_TEXTURE_WIDTH, BACKGROUND_TEXTURE_HEIGHT);
+        } else {
+            guiGraphics.blit(RenderType::guiTextured, BOOK_LOCATION, (this.width - 192) / 2, 2, 0.0F, 0.0F, IMAGE_WIDTH, IMAGE_HEIGHT, BACKGROUND_TEXTURE_WIDTH, BACKGROUND_TEXTURE_HEIGHT);
+        }
     }
 
     public void setBookAccess(BookAccess bookAccess) {
@@ -344,46 +332,28 @@ public class QuestBookScreen extends Screen {
     }
 
     protected static class QuestBookImage{
-        int width;
-        int height;
-        int displayWidth;
-        int displayHeight;
         ResourceLocation resourceLocation;
-
         boolean showBorder;
-        boolean isSprite;
 
-        protected QuestBookImage(int width, int height, int displayWidth, int displayHeight, ResourceLocation resourceLocation, boolean showBorder, boolean isSprite){
-            this.width = width;
-            this.height = height;
-            this.displayWidth= displayWidth;
-            this.displayHeight= displayHeight;
+        protected QuestBookImage(ResourceLocation resourceLocation, boolean showBorder){
             this.resourceLocation = resourceLocation;
             this.showBorder = showBorder;
-            this.isSprite = isSprite;
-        }
-
-        protected QuestBookImage(int displayWidth, int displayHeight, ResourceLocation resourceLocation, boolean showBorder, boolean isSprite){
-            this(displayWidth, displayHeight, displayWidth, displayHeight, resourceLocation, showBorder, isSprite);
         }
 
         protected QuestBookImage(){
-            this(0, 0, 0, 0, null, false, false);
+            this( null, false);
+        }
+        protected QuestBookImage(boolean showBorder){
+            this( null, showBorder);
         }
 
-
         public void reset(){
-            width = height = 0;
             resourceLocation = null;
             showBorder = false;
         }
 
         public boolean isEmpty(){
             return resourceLocation == null;
-        }
-
-        public boolean isSprite() {
-            return isSprite;
         }
     }
 }

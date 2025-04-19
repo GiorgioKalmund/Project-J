@@ -1,12 +1,9 @@
 package com.mgmstudios.projectj.item.custom;
 
-import com.mgmstudios.projectj.screen.custom.QuestBookScreen;
+import com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.BookViewScreen;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.network.Filterable;
 import net.minecraft.server.network.FilteredText;
 import net.minecraft.world.InteractionHand;
@@ -16,8 +13,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.WrittenBookItem;
 import net.minecraft.world.item.component.WrittenBookContent;
 import net.minecraft.world.level.Level;
-
-import java.util.ArrayList;
 
 public class QuestBook extends WrittenBookItem {
 
