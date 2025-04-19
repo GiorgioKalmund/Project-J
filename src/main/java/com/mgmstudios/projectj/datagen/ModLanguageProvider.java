@@ -179,8 +179,12 @@ public class ModLanguageProvider extends LanguageProvider {
         addAdvancementStoryDescription("filled_crude_sacrificial_bowl", "Perform a self sacrifice to obtain a Filled Crude Sacrificial Bowl");
 
         // Quest Book
-        addQuestBookPage(0, "Ullamco ea tempor sit do laborum tempor excepteur consectetur consequat deserunt consequat. Nostrud ad occaecat sit ut elit adipisicing excepteur qui amet qui. Ut reprehenderit occaecat excepteur officia eu labore enim dolor reprehenderit labore anim aliquip.");
-        addQuestBookPage(1, "Well, that was a lot.");
+        addQuestBookPage(0, "<image>[border]macuahuitl<image><title>§n§lMacuahuitl§r<title>And we have some more stuff to talk about");
+        addQuestBookPage(1, "<image>[border][sprite]jade<image><title>§n§lJade§r<title>The most precious of all!");
+        addQuestBookPage(2, "<image>[sprite]little_king_spawn_egg<image><title>§n§lThe Little King§r<title>He rules the world of Minecraft!");
+        addQuestBookPage(3, "<title>§n§lTitle!§r<title>And we have some more stuff to talk about");
+        addQuestBookPage(4, "Veniam commodo in ex irure elit exercitation duis. Ex laborum aute quis aute exercitation enim occaecat do minim.");
+        addQuestBookPage(5, "<image>[border]jade_helmet;32;32;32;32<image>\n§n§lJade Helmet§r\nA great Helmet!!");
     }
 
     public void addTooltip(ItemLike itemLike, String value){

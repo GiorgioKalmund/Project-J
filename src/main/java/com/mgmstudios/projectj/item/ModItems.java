@@ -9,8 +9,10 @@ import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.item.custom.*;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.network.Filterable;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
@@ -23,8 +25,8 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.ArrayList;
 import java.util.Objects;
-import java.util.Properties;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -106,7 +108,7 @@ public class ModItems {
     public static final DeferredItem<Item> QUETZAL_SPAWN_EGG = register("quetzal_spawn_egg", (properties) -> new SpawnEggItem(ModEntities.QUETZAL_ENTITY.get(), properties));
 
     public static final DeferredItem<Item> QUETZAL_EGG = register("quetzal_egg");
-    public static final DeferredItem<Item> QUEST_BOOK = register("quest_book", (properties) -> new QuestBook("Ancient Codex", "Project J Team", properties.stacksTo(1).rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> QUEST_BOOK = register("quest_book", (properties) -> new QuestBook("Ancient Codex", "Project J Team", createQuestBookPages(6), properties.stacksTo(1).rarity(Rarity.UNCOMMON)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
@@ -180,5 +182,14 @@ public class ModItems {
 
     private static <T extends Item> DeferredItem<T> baseRegister(String name, ResourceKey<Item> key, Function<Item.Properties, T> builder, Supplier<Item.Properties> properties) {
         return ITEMS.register(name, () -> builder.apply(properties.get().setId(key)));
+    }
+
+
+    private static java.util.List<net.minecraft.server.network.Filterable<net.minecraft.network.chat.Component>> createQuestBookPages(int pageCount){
+        java.util.List<net.minecraft.server.network.Filterable<net.minecraft.network.chat.Component>> pages = new ArrayList<>();
+        for (int i = 0; i < pageCount; i++) {
+            pages.add(Filterable.passThrough(Component.translatable("quest_book.projectj.page" + i)));
+        }
+        return pages;
     }
 }
