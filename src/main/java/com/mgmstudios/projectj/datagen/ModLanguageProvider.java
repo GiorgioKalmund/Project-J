@@ -179,12 +179,16 @@ public class ModLanguageProvider extends LanguageProvider {
         addAdvancementStoryDescription("filled_crude_sacrificial_bowl", "Perform a self sacrifice to obtain a Filled Crude Sacrificial Bowl");
 
         // Quest Book
-        addQuestBookPage(0, "<image>[border]macuahuitl<image><title>§n§lMacuahuitl§r<title>And we have some more stuff to talk about");
-        addQuestBookPage(1, "<image>[border][sprite]jade<image><title>§n§lJade§r<title>The most precious of all!");
-        addQuestBookPage(2, "<image>[sprite]little_king_spawn_egg<image><title>§n§lThe Little King§r<title>He rules the world of Minecraft!");
-        addQuestBookPage(3, "<title>§n§lTitle!§r<title>And we have some more stuff to talk about");
-        addQuestBookPage(4, "Veniam commodo in ex irure elit exercitation duis. Ex laborum aute quis aute exercitation enim occaecat do minim.");
-        addQuestBookPage(5, "<image>[border]jade_helmet;32;32;32;32<image>\n§n§lJade Helmet§r\nA great Helmet!!");
+        addQuestBookPage(0, "<cover><empty>");
+        addQuestBookPage(1, "<image>[border]macuahuitl<image><title>\n§n§lMacuahuitl§r<title>\nAnd we have some more stuff to talk about");
+        addQuestBookPage(2, "<image>[border][sprite]jade<image>\n<title>§n§lJade§r<title>\nThe most precious of all!");
+        addQuestBookPage(3, "<image>[sprite]little_king_spawn_egg<image>\n<title>§n§lThe Little King§r<title>\nHe rules the world of Minecraft!");
+        addQuestBookPage(4, "<title>\n§n§lTitle!§r<title>\nAnd we have some more stuff to talk about");
+        addQuestBookPage(5, "Veniam commodo in ex irure elit exercitation duis. Ex laborum aute quis aute exercitation enim occaecat do minim.");
+        addQuestBookPage(6, "<image>[border]jade_helmet;32;32;32;32<image>\n§n§lJade Helmet§r\nA great Helmet!!");
+
+        // GUI
+        addGuiButton("close", "Close");
     }
 
     public void addTooltip(ItemLike itemLike, String value){
@@ -226,6 +230,11 @@ public class ModLanguageProvider extends LanguageProvider {
     public void addQuestBookPage(int page, String content){
         add("quest_book.projectj.page" + page, content);
     }
+
+    public void addGuiButton(String name, String description){
+        add("gui.projectj." + name, description);
+    }
+
 
     String getName(ItemLike itemLike){
         return BuiltInRegistries.ITEM.getKey(itemLike.asItem()).getPath();
