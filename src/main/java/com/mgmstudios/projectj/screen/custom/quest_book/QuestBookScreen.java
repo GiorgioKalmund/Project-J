@@ -50,13 +50,9 @@ public class QuestBookScreen extends Screen {
     private PageButton forwardButton;
     private PageButton backButton;
     private final boolean playTurnSound;
-    private QuestBookImage questBookImage = new QuestBookImage();
-
     protected static final int QUEST_IMAGE_WIDTH = 16;
     public static final int QUEST_BORDER_IMAGE_WIDTH = 48;
     public static final int QUEST_IMAGE_HEIGHT = 16;
-
-    protected boolean hasTitle = false;
     protected QuestBookTemplate screenToShow = null;
     public QuestBookScreen(BookAccess bookAccess) {
         this(bookAccess, true);
@@ -83,21 +79,16 @@ public class QuestBookScreen extends Screen {
             FormattedText formattedText = this.bookAccess.getPage(this.currentPage);
 
             if (formattedText.getString().contains("<cover>")){
-                screenToShow = new CoverScreen(this, pageMsg);
-                this.pageMsg = Component.literal("");
-                formattedText = FormattedText.of("");
-                questBookImage.reset();
+                screenToShow = new CoverScreen(this, BookPage.EMPTY);
             } else if (formattedText.getString().contains("<empty>")){
                 // Maybe show some sort of placeholder blank image screen
-                formattedText = FormattedText.of("");
-                questBookImage.reset();
+                screenToShow = QuestBookTemplate.EMPTY;
             } else if (formattedText.getString().contains("<highlight>")){
                 // Could fit it any type of screen how
             } else {
                 // Hero Screen
-                this.pageMsg = Component.translatable("book.pageIndicator", new Object[]{this.currentPage + 1, Math.max(this.getNumPages(), 1)});
-                System.out.println(pageMsg.getString());
-                this.hasTitle = formattedText.getString().contains("<title>");
+                screenToShow.page().setPageMsg(Component.translatable("book.pageIndicator", new Object[]{this.currentPage + 1, Math.max(this.getNumPages(), 1)}));
+                boolean hasTitle = formattedText.getString().contains("<title>");
                 if (hasTitle){
                     formattedText = FormattedText.of(formattedText.getString().replace("<title>", ""));
                 }
@@ -112,29 +103,24 @@ public class QuestBookScreen extends Screen {
                         imageString = imageString.replace("[border]", "");
                     }
 
-                    int capacity = (QUEST_IMAGE_HEIGHT / font.lineHeight);
-                    StringBuilder sb = new StringBuilder(capacity);
-                    for (int index = 0; index <= capacity; index++) {
-                        sb.append("\n");
-                    }
-                    String buffer = sb.toString();
-                    questBookImage = new QuestBookImage(ResourceLocation.tryParse(imageString), showBorder);
-                    formattedText = FormattedText.of(buffer + charSequencePieces[2]);
+                    screenToShow.page().setImage(new QuestBookImage(ResourceLocation.tryParse(imageString), showBorder));
+                    formattedText = FormattedText.of(charSequencePieces[2]);
                     this.cachedPageComponents = this.font.split(formattedText, TEXT_WIDTH);
-                    screenToShow = new ItemShowcaseScreen(this, this.pageMsg, questBookImage,  hasTitle);
+                    screenToShow = new ItemShowcaseScreen(this, screenToShow.page(),  hasTitle);
                 } else {
-                    questBookImage.reset();
-                    screenToShow = new TextScreen(this, this.pageMsg, hasTitle);
+                    screenToShow.page().pageImage().reset();
+                    screenToShow = new TextScreen(this, screenToShow.page(), hasTitle);
                 }
             }
             this.cachedPageComponents = this.font.split(formattedText, TEXT_WIDTH);
+            screenToShow.page().setComponents(cachedPageComponents);
         }
 
         this.cachedPage = this.currentPage;
 
         // Render the chosen screen
         if (screenToShow != null){
-            screenToShow.render(guiGraphics, cachedPageComponents, mouseX, mouseY, partialTick);
+            screenToShow.render(guiGraphics, mouseX, mouseY, partialTick);
         }
 
         Style style = this.getClickedComponentStyleAt(mouseX, mouseY);
