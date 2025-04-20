@@ -180,15 +180,15 @@ public class ModLanguageProvider extends LanguageProvider {
 
         // Quest Book
         addQuestBookPage(0, "<cover>");
-        addQuestBookPage(1, "<image>[border]projectj:macuahuitl<image><title>§n§lMacuahuitl§r<title>\nAnd we have some more stuff to talk about");
+        addQuestBookPage(1, "<image>[border]projectj:macuahuitl<image><title>§n§lMacuahuitl§r<title>\nA powerful tool capable of handling almost every block.");
         addQuestBookPage(2, "<image>[border]projectj:jade<image><title>§n§lJade§r<title>\nThe most precious of all!");
-        addQuestBookPage(3, "<image>projectj:little_king_spawn_egg<image><title>§n§lThe Little King§r<title>\nHe rules the world of Minecraft!");
+        addQuestBookPage(3, "<image>[process]projectj:raw_jade<image>§n§lRaw Jade§r\nSmelt Raw Jade to get some shiny Jade.");
         addQuestBookPage(4, "<title>§n§lTitle!§r<title>\nAnd we have some more stuff to talk about");
         addQuestBookPage(5, "<image>[border]grass_block<image>§n§lGrass§r\nWhat makes Minecraft Minecraft. First we mine, then we craft.");
         addQuestBookPage(6, "<image>[border]projectj:jade_ore<image>§n§lJade Ore§r\nHidden in the depths you can find this ore near lush caves!");
         addQuestBookPage(7, "<image>projectj:ancient_altar<image>[no-msg]§n§lAncient Altar§r\nThis powerful altar can be used in combination with a sacrificial dagger to summon powerful items!\n\nCrafted using Pyrite.");
         addQuestBookPage(8, "<empty>");
-        addQuestBookPage(9, "<cover>");
+        addQuestBookPage(9, "<image>projectj:little_king_spawn_egg<image><title>§n§lThe Little King§r<title>\nHe rules the world of Minecraft!");
 
         // GUI
         addGuiButton("close", "Close");

@@ -6,6 +6,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.RenderType;
+import org.joml.Vector2i;
 
 import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.*;
 import static com.mgmstudios.projectj.screen.custom.quest_book.components.AbstractComponent.ComponentPositionUtils.*;
@@ -17,6 +18,8 @@ public class ImageComponent extends AbstractComponent{
 
     protected float borderScaleFactor = 1F;
 
+    protected Vector2i dimensions = new Vector2i(QUEST_IMAGE_WIDTH, QUEST_IMAGE_HEIGHT);
+
     @Override
     public void render(GuiGraphics guiGraphics, Screen screen, BookPage page) {
         Font font = screen.getFont();
@@ -26,7 +29,15 @@ public class ImageComponent extends AbstractComponent{
         int centeredPosition = imageWidthCenter(screen) - pageMsLen + IMAGE_WIDTH - 44;
 
         if (!questBookImage.isEmpty()){
-            guiGraphics.renderItem(getStack(questBookImage.resourceLocation()), centeredPosition + x , IMAGE_Y_OFFSET + y);
+
+            if (questBookImage.type().equals(QuestBookImage.Type.ITEM)){
+                guiGraphics.renderItem(getStack(questBookImage.resourceLocation()), centeredPosition + x , IMAGE_Y_OFFSET + y);
+            } else if (questBookImage.type().equals(QuestBookImage.Type.SPRITE)){
+                guiGraphics.blitSprite(RenderType::guiTextured, questBookImage.resourceLocation(), centeredPosition + x, IMAGE_Y_OFFSET + y,  dimensions.x, dimensions.y);
+            } else {
+                guiGraphics.blit(RenderType::guiTextured, questBookImage.resourceLocation(), centeredPosition + x, IMAGE_Y_OFFSET + y, 0.0F, 0.0F, dimensions.x, dimensions.y, dimensions.x, dimensions.y);
+            }
+
             if (questBookImage.showBorder()){
                 int scaledQuestBookDisplayWidth = (int)(QUEST_BORDER_IMAGE_WIDTH * borderScaleFactor);
                 int scaledQBookDisplayHeight = (int)(QUEST_IMAGE_HEIGHT * borderScaleFactor);
@@ -45,9 +56,32 @@ public class ImageComponent extends AbstractComponent{
         return this;
     }
 
+    public ImageComponent setType(QuestBookImage.Type type){
+        questBookImage.setType(type);
+        return this;
+    }
+
     public ImageComponent setImage(QuestBookImage questBookImage){
         this.questBookImage = questBookImage;
         return this;
+    }
+
+    public ImageComponent setDimensions(int width, int height){
+        this.dimensions = new Vector2i(width, height);
+        return this;
+    }
+
+     public ImageComponent showBorder(boolean border){
+        this.questBookImage.showBorder(border);
+        return this;
+    }
+
+    public ImageComponent bordered(){
+        return showBorder(true);
+    }
+
+    public ImageComponent borderless(){
+        return showBorder(false);
     }
 
     public QuestBookImage image(){
@@ -58,4 +92,5 @@ public class ImageComponent extends AbstractComponent{
         this.borderScaleFactor = scale;
         return this;
     }
+
 }

@@ -32,6 +32,8 @@ public class BookPage {
     }
 
     public QuestBookImage image(int index) {
+        if (index >= questBookImages.size())
+            return QuestBookImage.EMPTY;
         return questBookImages.get(index);
     }
     public QuestBookImage image() {
@@ -39,7 +41,10 @@ public class BookPage {
     }
 
     public void setImage(QuestBookImage image){
-        questBookImages.set(0, image);
+        if (questBookImages.isEmpty())
+            addImage(image);
+        else
+            questBookImages.set(0, image);
     }
 
     public void addImage(QuestBookImage image){
@@ -59,8 +64,13 @@ public class BookPage {
     public void clear(){
         textComponents = new ArrayList<>();
         questBookImages = new ArrayList<>();
-        questBookImages.add(new QuestBookImage());
+        questBookImages.add(QuestBookImage.EMPTY);
         pageMsg = Component.literal("");
     }
+
+    public void clearImages(){
+        this.questBookImages.clear();
+    }
+
 
 }

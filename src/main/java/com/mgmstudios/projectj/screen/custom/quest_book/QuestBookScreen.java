@@ -1,6 +1,7 @@
 package com.mgmstudios.projectj.screen.custom.quest_book;
 
 import com.mgmstudios.projectj.ProjectJ;
+import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.screen.custom.quest_book.templates.*;
 import net.minecraft.client.GameNarrator;
 import net.minecraft.client.gui.Font;
@@ -15,11 +16,11 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.ItemLike;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import static com.mgmstudios.projectj.util.ItemLookup.*;
 
@@ -47,7 +48,7 @@ public class QuestBookScreen extends Screen {
     private PageButton forwardButton;
     private PageButton backButton;
     private final boolean playTurnSound;
-    protected static final int QUEST_IMAGE_WIDTH = 16;
+    public static final int QUEST_IMAGE_WIDTH = 16;
     public static final int QUEST_BORDER_IMAGE_WIDTH = 48;
     public static final int QUEST_IMAGE_HEIGHT = 16;
     protected QuestBookTemplate screenToShow = QuestBookTemplate.EMPTY;
@@ -75,6 +76,8 @@ public class QuestBookScreen extends Screen {
         if (this.cachedPage != this.currentPage) {
             FormattedText formattedText = this.bookAccess.getPage(this.currentPage);
 
+            if (screenToShow != null)
+                screenToShow.page().clear();
 
             boolean pageMsg = !formattedText.getString().contains("[no-msg]");
             if (!pageMsg){
@@ -104,19 +107,30 @@ public class QuestBookScreen extends Screen {
                         imageString = imageString.replace("[border]", "");
                     }
 
+                    boolean process = imageString.contains("[process]");
+                    if (process){
+                        imageString = imageString.replace("[process]", "");
+                    }
+
                     formattedText = FormattedText.of(charSequencePieces[2]);
 
-                    screenToShow.page().setImage(new QuestBookImage(ResourceLocation.tryParse(imageString), showBorder));
-                    screenToShow = new ItemShowcaseScreen(this, screenToShow.page(),  hasTitle, pageMsg);
+                    //screenToShow.page().setImage(new QuestBookImage(ResourceLocation.tryParse(imageString), showBorder));
+                    //screenToShow = new ItemShowcaseScreen(this, screenToShow.page(),  hasTitle, pageMsg);
 
                     //EXAMPLE: Render two images side by side
-                    /*
+
                     screenToShow.page().setImage(new QuestBookImage(ResourceLocation.tryParse(imageString), showBorder));
-                    screenToShow.page().addImage(new QuestBookImage(getResourceLocation(Items.APPLE), showBorder));
-                    screenToShow = new DoubleItemShowcaseScreen(this, screenToShow.page(),  hasTitle, pageMsg, 20, true);
-                    */
+                    if (process){
+                        screenToShow.page().addImage(QuestBookImage.PROCESS_IMAGE);
+                        screenToShow.page().addImage(new QuestBookImage(getResourceLocation(ModItems.JADE)));
+                        screenToShow.page().addImage(QuestBookImage.LIT_PROCESS_IMAGE);
+                    }
+                    if (process)
+                        screenToShow = new ProcessScreen(this, screenToShow.page(),  hasTitle, pageMsg, 20, true);
+                    else
+                        screenToShow = new ItemShowcaseScreen(this, screenToShow.page(),  hasTitle, pageMsg);
+
                 } else {
-                    screenToShow.page().image().reset();
                     screenToShow = new TextScreen(this, screenToShow.page(), hasTitle, pageMsg);
                 }
             }
@@ -299,9 +313,25 @@ public class QuestBookScreen extends Screen {
         ResourceLocation resourceLocation;
         boolean showBorder;
 
+        protected Type type;
+
+
+        protected QuestBookImage(ResourceLocation resourceLocation){
+            this.resourceLocation = resourceLocation;
+            this.showBorder = false;
+            this.type = Type.ITEM;
+        }
+
         protected QuestBookImage(ResourceLocation resourceLocation, boolean showBorder){
             this.resourceLocation = resourceLocation;
             this.showBorder = showBorder;
+            this.type = Type.ITEM;
+        }
+
+        protected QuestBookImage(ResourceLocation resourceLocation, boolean showBorder, Type type){
+            this.resourceLocation = resourceLocation;
+            this.showBorder = showBorder;
+            this.type = type;
         }
 
         protected QuestBookImage(){
@@ -337,5 +367,28 @@ public class QuestBookScreen extends Screen {
             this.showBorder = showBorder;
             return this;
         }
+
+        public Type type(){
+            return type;
+        }
+
+        public QuestBookImage setType(Type type){
+            this.type = type;
+            return this;
+        }
+
+        public enum Type {
+            ITEM, REGULAR, SPRITE
+        }
+
+        public static ResourceLocation questBookStoredImage(String name){
+            return ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "textures/gui/quest_book/images/" + name + ".png");
+        }
+
+        public static QuestBookImage PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("process"), false);
+        public static QuestBookImage ADOBE_LIT_PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("adobe_lit_process"), false);
+        public static QuestBookImage LIT_PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("lit_process"), false);
+
+        public static QuestBookImage EMPTY = new QuestBookImage();
     }
 }

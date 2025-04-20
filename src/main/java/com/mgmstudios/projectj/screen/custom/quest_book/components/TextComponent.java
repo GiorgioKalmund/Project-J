@@ -7,6 +7,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.util.FormattedCharSequence;
 
+import java.awt.*;
 import java.util.List;
 
 import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.IMAGE_WIDTH;
@@ -18,6 +19,8 @@ public class TextComponent extends AbstractComponent{
     protected List<FormattedCharSequence> textComponents;
     protected boolean hasTitle;
 
+    public int color = 0;
+
     @Override
     public void render(GuiGraphics guiGraphics, Screen screen, BookPage page) {
         Font font = screen.getFont();
@@ -27,7 +30,7 @@ public class TextComponent extends AbstractComponent{
             for(int component = 0; component < components; ++component) {
                 FormattedCharSequence formattedcharsequence = textComponents.get(component);
                 if (hasTitle && 0 == component){
-                    drawCenteredStringWithoutDropShadow(guiGraphics, font, formattedcharsequence,  textCenteredStartX(screen) + x, 32 + y, 0);
+                    drawCenteredStringWithoutDropShadow(guiGraphics, font, formattedcharsequence,  textCenteredStartX(screen) + x, 32 + y, color);
                 } else {
                     guiGraphics.drawString(font, formattedcharsequence, textStartX(screen) + x, (32 + component * 9) + y, 0, false);
                 }
@@ -41,6 +44,11 @@ public class TextComponent extends AbstractComponent{
     }
     public TextComponent hasTitle(boolean hasTitle){
         this.hasTitle = hasTitle;
+        return this;
+    }
+
+    public TextComponent color(int color){
+        this.color = color;
         return this;
     }
 
