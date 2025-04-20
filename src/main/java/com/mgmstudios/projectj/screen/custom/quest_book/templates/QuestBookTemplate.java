@@ -30,5 +30,5 @@ public class QuestBookTemplate {
         return page == null && screen == null;
     }
 
-    public static QuestBookTemplate EMPTY = new QuestBookTemplate(null, null);
+    public static QuestBookTemplate EMPTY = new QuestBookTemplate(null, BookPage.EMPTY);
 }

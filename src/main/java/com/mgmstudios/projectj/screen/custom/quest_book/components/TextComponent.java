@@ -11,6 +11,7 @@ import java.util.List;
 
 import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.IMAGE_WIDTH;
 import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.drawCenteredStringWithoutDropShadow;
+import static com.mgmstudios.projectj.screen.custom.quest_book.components.AbstractComponent.ComponentPositionUtils.*;
 
 public class TextComponent extends AbstractComponent{
 
@@ -19,20 +20,16 @@ public class TextComponent extends AbstractComponent{
 
     @Override
     public void render(GuiGraphics guiGraphics, Screen screen, BookPage page) {
-        System.out.println(hasTitle + "rendering: " + page.components().size() + "with offsets: " + x + " & " + y);
         Font font = screen.getFont();
-        int width = screen.width;
-
-        int imageWidthCenter = (width - IMAGE_WIDTH) / 2;
 
         if (textComponents != null){
             int components = Math.min(14, textComponents.size());
             for(int component = 0; component < components; ++component) {
                 FormattedCharSequence formattedcharsequence = textComponents.get(component);
                 if (hasTitle && 0 == component){
-                    drawCenteredStringWithoutDropShadow(guiGraphics, font, formattedcharsequence,  (imageWidthCenter - 59 + IMAGE_WIDTH - 44 ) + x, 32 + y, 0);
+                    drawCenteredStringWithoutDropShadow(guiGraphics, font, formattedcharsequence,  textCenteredStartX(screen) + x, 32 + y, 0);
                 } else {
-                    guiGraphics.drawString(font, formattedcharsequence, imageWidthCenter + 36 + x, (32 + component * 9) + y, 0, false);
+                    guiGraphics.drawString(font, formattedcharsequence, textStartX(screen) + x, (32 + component * 9) + y, 0, false);
                 }
             }
         }

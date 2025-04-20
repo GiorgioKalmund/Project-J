@@ -31,8 +31,11 @@ public class BookPage {
         this.textComponents = components;
     }
 
-    public QuestBookImage pageImage() {
-        return questBookImages.getFirst();
+    public QuestBookImage image(int index) {
+        return questBookImages.get(index);
+    }
+    public QuestBookImage image() {
+        return image(0);
     }
 
     public void setImage(QuestBookImage image){

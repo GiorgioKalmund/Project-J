@@ -1,11 +1,7 @@
 package com.mgmstudios.projectj.screen.custom.quest_book;
 
 import com.mgmstudios.projectj.ProjectJ;
-import com.mgmstudios.projectj.screen.custom.quest_book.templates.CoverScreen;
-import com.mgmstudios.projectj.screen.custom.quest_book.templates.ItemShowcaseScreen;
-import com.mgmstudios.projectj.screen.custom.quest_book.templates.QuestBookTemplate;
-import com.mgmstudios.projectj.screen.custom.quest_book.templates.TextScreen;
-import com.mgmstudios.projectj.util.ItemLookup;
+import com.mgmstudios.projectj.screen.custom.quest_book.templates.*;
 import net.minecraft.client.GameNarrator;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -18,13 +14,14 @@ import net.minecraft.network.chat.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
 
-import static com.mgmstudios.projectj.util.ItemLookup.getStack;
+import static com.mgmstudios.projectj.util.ItemLookup.*;
 
 public class QuestBookScreen extends Screen {
 
@@ -53,7 +50,7 @@ public class QuestBookScreen extends Screen {
     protected static final int QUEST_IMAGE_WIDTH = 16;
     public static final int QUEST_BORDER_IMAGE_WIDTH = 48;
     public static final int QUEST_IMAGE_HEIGHT = 16;
-    protected QuestBookTemplate screenToShow = null;
+    protected QuestBookTemplate screenToShow = QuestBookTemplate.EMPTY;
     public QuestBookScreen(BookAccess bookAccess) {
         this(bookAccess, true);
     }
@@ -78,21 +75,25 @@ public class QuestBookScreen extends Screen {
         if (this.cachedPage != this.currentPage) {
             FormattedText formattedText = this.bookAccess.getPage(this.currentPage);
 
+
+            boolean pageMsg = !formattedText.getString().contains("[no-msg]");
+            if (!pageMsg){
+                formattedText = FormattedText.of(formattedText.getString().replace("[no-msg]", ""));
+            }
+
             if (formattedText.getString().contains("<cover>")){
                 screenToShow = new CoverScreen(this, BookPage.EMPTY);
             } else if (formattedText.getString().contains("<empty>")){
                 // Maybe show some sort of placeholder blank image screen
-                screenToShow = QuestBookTemplate.EMPTY;
+                screenToShow = new EmptyScreen(this, BookPage.EMPTY, pageMsg);
             } else if (formattedText.getString().contains("<highlight>")){
                 // Could fit it any type of screen how
             } else {
                 // Hero Screen
-                screenToShow.page().setPageMsg(Component.translatable("book.pageIndicator", new Object[]{this.currentPage + 1, Math.max(this.getNumPages(), 1)}));
                 boolean hasTitle = formattedText.getString().contains("<title>");
                 if (hasTitle){
                     formattedText = FormattedText.of(formattedText.getString().replace("<title>", ""));
                 }
-
                 if (formattedText.getString().startsWith("<image>")){
                     String[] charSequencePieces = formattedText.getString().split("<image>");
 
@@ -103,15 +104,23 @@ public class QuestBookScreen extends Screen {
                         imageString = imageString.replace("[border]", "");
                     }
 
-                    screenToShow.page().setImage(new QuestBookImage(ResourceLocation.tryParse(imageString), showBorder));
                     formattedText = FormattedText.of(charSequencePieces[2]);
-                    this.cachedPageComponents = this.font.split(formattedText, TEXT_WIDTH);
-                    screenToShow = new ItemShowcaseScreen(this, screenToShow.page(),  hasTitle);
+
+                    screenToShow.page().setImage(new QuestBookImage(ResourceLocation.tryParse(imageString), showBorder));
+                    screenToShow = new ItemShowcaseScreen(this, screenToShow.page(),  hasTitle, pageMsg);
+
+                    //EXAMPLE: Render two images side by side
+                    /*
+                    screenToShow.page().setImage(new QuestBookImage(ResourceLocation.tryParse(imageString), showBorder));
+                    screenToShow.page().addImage(new QuestBookImage(getResourceLocation(Items.APPLE), showBorder));
+                    screenToShow = new DoubleItemShowcaseScreen(this, screenToShow.page(),  hasTitle, pageMsg, 20, true);
+                    */
                 } else {
-                    screenToShow.page().pageImage().reset();
-                    screenToShow = new TextScreen(this, screenToShow.page(), hasTitle);
+                    screenToShow.page().image().reset();
+                    screenToShow = new TextScreen(this, screenToShow.page(), hasTitle, pageMsg);
                 }
             }
+            screenToShow.page().setPageMsg(Component.translatable("book.pageIndicator", new Object[]{this.currentPage + 1, Math.max(this.getNumPages(), 1)}));
             this.cachedPageComponents = this.font.split(formattedText, TEXT_WIDTH);
             screenToShow.page().setComponents(cachedPageComponents);
         }
@@ -315,8 +324,18 @@ public class QuestBookScreen extends Screen {
             return resourceLocation;
         }
 
+        public QuestBookImage resourceLocation(ResourceLocation resourceLocation){
+            this.resourceLocation = resourceLocation;
+            return this;
+        }
+
         public boolean showBorder() {
             return showBorder;
+        }
+
+        public QuestBookImage showBorder(boolean showBorder){
+            this.showBorder = showBorder;
+            return this;
         }
     }
 }

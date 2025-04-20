@@ -8,6 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -22,14 +23,18 @@ public class ItemLookup {
         }
 
         if (item == null || item.equals(Items.AIR)) {
-            Item modItem = ModItems.ITEMS.getRegistry().get().getValue(resourceLocation);
-            if (modItem != null){
-                return new ItemStack(modItem);
-            }
             return ItemStack.EMPTY;
         }
 
         return new ItemStack(item);
+    }
+
+    public static ResourceLocation getResourceLocation(ItemLike itemLike) {
+        return getResourceLocation(itemLike.asItem());
+    }
+
+    public static ResourceLocation getResourceLocation(Item itemLike) {
+        return BuiltInRegistries.ITEM.getKey(itemLike);
     }
 
     public static ItemStack getStack(String combinedString) {
