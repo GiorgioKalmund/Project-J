@@ -33,26 +33,6 @@ public class ItemLookup {
     }
 
     public static ItemStack getStack(String combinedString) {
-        return getStack(resourceLocationFromString(combinedString));
+        return getStack(ResourceLocation.tryParse(combinedString));
     }
-
-    public static ResourceLocation resourceLocationFromString(String string){
-        String[] namespaceAndPath = string.split(":");
-        if (namespaceAndPath.length == 1){
-            System.out.println("FOUND VANILLA ITEM: " + string);
-            return ResourceLocation.withDefaultNamespace(string);
-        }
-
-        if (namespaceAndPath.length != 2)
-            return null;
-
-        System.out.println(Arrays.toString(namespaceAndPath));
-        try {
-            return ResourceLocation.fromNamespaceAndPath(namespaceAndPath[0], namespaceAndPath[1]);
-        } catch (Exception e) {
-            return ResourceLocation.withDefaultNamespace("air");
-        }
-    }
-
-
 }
