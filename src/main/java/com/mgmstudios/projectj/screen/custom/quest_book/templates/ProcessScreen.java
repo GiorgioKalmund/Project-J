@@ -1,13 +1,11 @@
 package com.mgmstudios.projectj.screen.custom.quest_book.templates;
 
 import com.mgmstudios.projectj.screen.custom.quest_book.BookPage;
-import com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen;
 import com.mgmstudios.projectj.screen.custom.quest_book.components.ImageComponent;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 
 import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.QUEST_IMAGE_HEIGHT;
-import static com.mgmstudios.projectj.screen.custom.quest_book.components.AbstractComponent.ComponentPositionUtils.textCenteredStartX;
 
 public class ProcessScreen extends TextScreen {
 
@@ -41,7 +39,7 @@ public class ProcessScreen extends TextScreen {
         ImageComponent.ImageBuilder()
                 .setImage(page.image(1))
                 .regular()
-                .setDimensions(24, 16)
+                .size(24, 16)
                 .borderless()
                 .render(guiGraphics, screen, page);
 
@@ -54,8 +52,8 @@ public class ProcessScreen extends TextScreen {
             ImageComponent.ImageBuilder()
                     .setImage(page.image(3))
                     .regular()
-                    .setDimensions(10, 10)
-                    .setOffset(5, QUEST_IMAGE_HEIGHT)
+                    .size(12, 12)
+                    .setOffset(4, QUEST_IMAGE_HEIGHT + 2)
                     .render(guiGraphics, screen, page);
         }
     }

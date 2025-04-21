@@ -79,16 +79,20 @@ public class QuestBookScreen extends Screen {
             if (screenToShow != null)
                 screenToShow.page().clear();
 
+            BookPage bookPage = BookPage.EMPTY;
+
+            // Eventually create book page from JSON
+
             boolean pageMsg = !formattedText.getString().contains("[no-msg]");
             if (!pageMsg){
                 formattedText = FormattedText.of(formattedText.getString().replace("[no-msg]", ""));
             }
 
             if (formattedText.getString().contains("<cover>")){
-                screenToShow = new CoverScreen(this, BookPage.EMPTY);
+                screenToShow = new CoverScreen(this, bookPage);
             } else if (formattedText.getString().contains("<empty>")){
                 // Maybe show some sort of placeholder blank image screen
-                screenToShow = new EmptyScreen(this, BookPage.EMPTY, pageMsg);
+                screenToShow = new EmptyScreen(this, bookPage, pageMsg);
             } else if (formattedText.getString().contains("<highlight>")){
                 // Could fit it any type of screen how
             } else {
@@ -114,27 +118,22 @@ public class QuestBookScreen extends Screen {
 
                     formattedText = FormattedText.of(charSequencePieces[2]);
 
-                    //screenToShow.page().setImage(new QuestBookImage(ResourceLocation.tryParse(imageString), showBorder));
-                    //screenToShow = new ItemShowcaseScreen(this, screenToShow.page(),  hasTitle, pageMsg);
-
-                    //EXAMPLE: Render two images side by side
-
-                    screenToShow.page().setImage(new QuestBookImage(ResourceLocation.tryParse(imageString), showBorder));
+                    bookPage.setImage(new QuestBookImage(ResourceLocation.tryParse(imageString), showBorder));
                     if (process){
-                        screenToShow.page().addImage(QuestBookImage.PROCESS_IMAGE);
-                        screenToShow.page().addImage(new QuestBookImage(getResourceLocation(ModItems.JADE)));
-                        screenToShow.page().addImage(QuestBookImage.LIT_PROCESS_IMAGE);
+                        bookPage.addImage(QuestBookImage.PROCESS_IMAGE);
+                        bookPage.addImage(new QuestBookImage(getResourceLocation(ModItems.JADE)));
+                        bookPage.addImage(QuestBookImage.LIT_PROCESS_IMAGE);
                     }
                     if (process)
-                        screenToShow = new ProcessScreen(this, screenToShow.page(),  hasTitle, pageMsg, 20, true);
+                        screenToShow = new ProcessScreen(this, bookPage,  hasTitle, pageMsg, 20, true);
                     else
-                        screenToShow = new ItemShowcaseScreen(this, screenToShow.page(),  hasTitle, pageMsg);
+                        screenToShow = new ItemShowcaseScreen(this, bookPage,  hasTitle, pageMsg);
 
                 } else {
-                    screenToShow = new TextScreen(this, screenToShow.page(), hasTitle, pageMsg);
+                    screenToShow = new TextScreen(this, bookPage, hasTitle, pageMsg);
                 }
             }
-            screenToShow.page().setPageMsg(Component.translatable("book.pageIndicator", new Object[]{this.currentPage + 1, Math.max(this.getNumPages(), 1)}));
+            bookPage.setPageMsg(Component.translatable("book.pageIndicator", new Object[]{this.currentPage + 1, Math.max(this.getNumPages(), 1)}));
             this.cachedPageComponents = this.font.split(formattedText, TEXT_WIDTH);
             screenToShow.page().setComponents(cachedPageComponents);
         }

@@ -76,7 +76,7 @@ public class ImageComponent extends AbstractComponent{
         return this;
     }
 
-    public ImageComponent setDimensions(int width, int height){
+    public ImageComponent size(int width, int height){
         this.dimensions = new Vector2i(width, height);
         return this;
     }

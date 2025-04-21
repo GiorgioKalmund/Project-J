@@ -187,8 +187,8 @@ public class ModLanguageProvider extends LanguageProvider {
         addQuestBookPage(5, "<image>[border]grass_block<image>§n§lGrass§r\nWhat makes Minecraft Minecraft. First we mine, then we craft.");
         addQuestBookPage(6, "<image>[border]projectj:jade_ore<image>§n§lJade Ore§r\nHidden in the depths you can find this ore near lush caves!");
         addQuestBookPage(7, "<image>projectj:ancient_altar<image>[no-msg]§n§lAncient Altar§r\nThis powerful altar can be used in combination with a sacrificial dagger to summon powerful items!\n\nCrafted using Pyrite.");
-        addQuestBookPage(8, "<empty>");
-        addQuestBookPage(9, "<image>projectj:little_king_spawn_egg<image><title>§n§lThe Little King§r<title>\nHe rules the world of Minecraft!");
+        addQuestBookPage(8, "<image>apple<image><title>§n§lThe Little King§r<title>\nHe rules the world of Minecraft!");
+        addQuestBookPage(9, "<empty>");
 
         // GUI
         addGuiButton("close", "Close");

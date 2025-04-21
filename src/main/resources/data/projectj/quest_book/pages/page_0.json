@@ -1,0 +1,25 @@
+{
+  "no-msg" : true,
+  "empty" : false,
+  "images" : [
+    {
+      "image": "projectj:little_man_spawn_egg",
+      "showBorder" : false,
+      "type": "item"
+    },
+    {
+      "image": ":lit_process",
+      "showBorder" : true,
+      "type": "regular"
+    },
+    {
+      "image": "apple",
+      "showBorder" : true,
+      "type": "item"
+    }
+  ],
+  "text" : {
+    "content": "Nisi irure magna sit labore tempor mollit velit ex officia pariatur quis dolore eiusmod.",
+    "title": true
+  }
+}
