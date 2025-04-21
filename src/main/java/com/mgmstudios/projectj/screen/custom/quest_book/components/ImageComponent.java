@@ -61,6 +61,16 @@ public class ImageComponent extends AbstractComponent{
         return this;
     }
 
+    public ImageComponent regular(){
+        this.questBookImage.regular();
+        return this;
+    }
+
+    public ImageComponent sprite(){
+        this.questBookImage.sprite();
+        return this;
+    }
+
     public ImageComponent setImage(QuestBookImage questBookImage){
         this.questBookImage = questBookImage;
         return this;

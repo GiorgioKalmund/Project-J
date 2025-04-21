@@ -377,6 +377,16 @@ public class QuestBookScreen extends Screen {
             return this;
         }
 
+        public QuestBookImage regular(){
+            this.type = Type.REGULAR;
+            return this;
+        }
+
+        public QuestBookImage sprite(){
+            this.type = Type.SPRITE;
+            return this;
+        }
+
         public enum Type {
             ITEM, REGULAR, SPRITE
         }
