@@ -1,25 +1,29 @@
 {
-  "no-msg" : true,
+  "show-page-msg" : false,
+  "page-msg" : {
+    "message" : "Secret message"
+  },
   "empty" : false,
+  "template" : "process",
   "images" : [
     {
       "image": "projectj:little_man_spawn_egg",
-      "showBorder" : false,
+      "show-border" : false,
       "type": "item"
     },
     {
       "image": ":lit_process",
-      "showBorder" : true,
+      "show-border" : true,
       "type": "regular"
     },
     {
       "image": "apple",
-      "showBorder" : true,
+      "show-border" : true,
       "type": "item"
     }
   ],
   "text" : {
     "content": "Nisi irure magna sit labore tempor mollit velit ex officia pariatur quis dolore eiusmod.",
-    "title": true
+    "show-title": true
   }
 }

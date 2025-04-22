@@ -3,6 +3,7 @@ package com.mgmstudios.projectj.screen.custom.quest_book;
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.screen.custom.quest_book.templates.*;
+import com.mgmstudios.projectj.screen.custom.quest_book.QuestBookParser.*;
 import net.minecraft.client.GameNarrator;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -15,13 +16,14 @@ import net.minecraft.network.chat.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
-import net.minecraft.world.item.Items;
 
 import javax.annotation.Nullable;
+import java.io.File;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
+import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookParser.bookPageFromJson;
+import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookParser.getJsonPage;
 import static com.mgmstudios.projectj.util.ItemLookup.*;
 
 public class QuestBookScreen extends Screen {
@@ -81,7 +83,8 @@ public class QuestBookScreen extends Screen {
 
             BookPage bookPage = BookPage.EMPTY;
 
-            // Eventually create book page from JSON
+            // This doesn't find the correct path
+            System.out.println(bookPageFromJson(getJsonPage(currentPage)));
 
             boolean pageMsg = !formattedText.getString().contains("[no-msg]");
             if (!pageMsg){
@@ -399,5 +402,14 @@ public class QuestBookScreen extends Screen {
         public static QuestBookImage LIT_PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("lit_process"), false);
 
         public static QuestBookImage EMPTY = new QuestBookImage();
+
+        @Override
+        public String toString() {
+            return "QuestBookImage{" +
+                    "resourceLocation=" + resourceLocation +
+                    ", showBorder=" + showBorder +
+                    ", type=" + type +
+                    '}';
+        }
     }
 }

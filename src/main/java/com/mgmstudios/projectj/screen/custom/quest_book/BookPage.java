@@ -72,5 +72,12 @@ public class BookPage {
         this.questBookImages.clear();
     }
 
-
+    @Override
+    public String toString() {
+        return "BookPage{\n" +
+                "textComponents=" + textComponents + "\n" +
+                ", questBookImages=" + questBookImages +  "\n" +
+                ", pageMsg=" + pageMsg + "\n" +
+                '}';
+    }
 }
