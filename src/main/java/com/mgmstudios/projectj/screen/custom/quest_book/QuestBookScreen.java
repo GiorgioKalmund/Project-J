@@ -43,7 +43,6 @@ public class QuestBookScreen extends Screen {
     private int currentPage;
     private List<FormattedCharSequence> cachedPageComponents;
     private int cachedPage;
-    private Component pageMsg;
     private PageButton forwardButton;
     private PageButton backButton;
     private final boolean playTurnSound;
@@ -63,7 +62,6 @@ public class QuestBookScreen extends Screen {
         super(GameNarrator.NO_TITLE);
         this.cachedPageComponents = Collections.emptyList();
         this.cachedPage = -1;
-        this.pageMsg = CommonComponents.EMPTY;
         this.bookAccess = bookAccess;
         this.playTurnSound = playTurnSound;
     }
@@ -98,11 +96,6 @@ public class QuestBookScreen extends Screen {
             if (bookParserResult.isFalsy()){
                 System.err.println("Falsy QuestBookParserResult for page: " + currentPage);
                 formattedText = FormattedText.of("§4§l<ERROR READING PAGE CONTENTS>§");
-            }
-
-
-            for(QuestBookImage image : bookPage.questBookImages){
-                System.out.println("IMAGE: " +image.showBorder() + ": " + image.resourceLocation());
             }
 
             if (bookParserResult.templateName == null)
