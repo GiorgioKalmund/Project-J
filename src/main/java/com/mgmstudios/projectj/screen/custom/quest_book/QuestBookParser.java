@@ -4,20 +4,25 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.mgmstudios.projectj.ProjectJ;
+import com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.QuestBookImage;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.Resource;
+import net.minecraft.server.packs.resources.ResourceManager;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Path;
+import java.io.*;
+import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class QuestBookParser {
     public static File PAGE_DIR = new File("src/main/resources/data/projectj/quest_book/pages/");
     public static File PAGE_BUILD_DIR = new File("resources/main/data/projectj/quest_book/pages/");
+
     public static void ls(){
         File[] files = PAGE_DIR.listFiles();
         if (files == null){
@@ -30,17 +35,25 @@ public class QuestBookParser {
         }
     }
 
-    public static void main(String[] args) {
-        System.out.println(bookPageFromJson(getJsonPage(0)));
+    public static JsonObject getJsonPage(int pageNumber, ResourceManager resourceManager){
+        //Path pagePath = PAGE_DIR.toPath().resolve("page_" + pageNumber + ".json");
+        ResourceLocation resourceLocation = ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "quest_book/pages/page_" + pageNumber +".json");
+        Optional<Resource> resource = resourceManager.getResource(resourceLocation);
+        if (resource.isPresent()){
+            try (InputStream inputStream = resource.get().open()){
+                return getJsonFromInputStream(inputStream);
+            } catch (IOException e) {
+                System.err.println(e.getLocalizedMessage());
+            }
+        }
+        System.out.println("Error opening page: " + resourceLocation.getPath());
+        JsonObject errorObject = new JsonObject();
+        errorObject.addProperty("error", true);
+        return errorObject;
     }
 
-    public static JsonObject getJsonPage(int pageNumber){
-        Path pagePath = PAGE_DIR.toPath().resolve("page_" + pageNumber + ".json");
-        return getJsonFromFile(pagePath);
-    }
-
-    public static JsonObject getJsonFromFile(Path path){
-        try (FileReader reader = new FileReader(path.toFile())) {
+    public static JsonObject getJsonFromInputStream(InputStream stream){
+        try (InputStreamReader reader = new InputStreamReader(stream)) {
             JsonElement rootElement = JsonParser.parseReader(reader);
 
             if (rootElement.isJsonObject()) {
@@ -50,43 +63,44 @@ public class QuestBookParser {
                 return new JsonObject();
             }
         } catch (IOException e) {
-            System.out.println("could not open file: " + path);
+            System.out.println("could not open stream: " + stream);
             return new JsonObject();
         }
     }
 
     public static QuestBookParserResult bookPageFromJson(JsonObject json){
-        BookPage bookPage = BookPage.EMPTY;
+        BookPage bookPage = BookPage.empty();
 
         QuestBookParserResult result = new QuestBookParserResult();
 
+        // If page could not be loaded from JSON return error page
+        if (json.has("error")){
+            if (json.get("error").getAsBoolean()){
+                result.formattedText = FormattedText.of("§4§l<ERROR LOADING PAGE>§r");
+                return result.setFalsy();
+            }
+        }
+
         // Return Empty page
-        if (json.isEmpty() || json.has("empty")){
+        if (json.isEmpty())
+            return result.setEmpty();
+
+        if (json.has("empty")){
              if (json.get("empty").getAsBoolean()){
                  return result;
              }
         }
 
-        if (json.has("empty")){
-            if (json.get("empty").getAsBoolean()){
-                return result;
-            }
-        }
-
-
-        List<QuestBookScreen.QuestBookImage> questBookImages = new ArrayList<>();
         boolean showPageMsg = true;
 
         String key = null;
         String message = null;
         if (json.has("show-page-msg")){
             showPageMsg = json.get("show-page-msg").getAsBoolean();
-            System.out.println("Show msg: " + showPageMsg);
 
             // Handle Page Message
             if (json.has("page-msg")){
                 JsonObject pageMsgElement = json.get("page-msg").getAsJsonObject();
-                System.out.println("MSG: " + pageMsgElement.toString());
 
                 if (pageMsgElement.has("key")){
                     key = pageMsgElement.get("key").getAsString();
@@ -104,16 +118,18 @@ public class QuestBookParser {
         }
 
         // Handle Images
+        List<QuestBookImage> qBookImages = new ArrayList<>();
         if (json.has("images")){
             JsonArray images = json.get("images").getAsJsonArray();
             for (int index = 0; index < images.size(); index++){
                 JsonObject image = images.get(index).getAsJsonObject();
-                QuestBookScreen.QuestBookImage bookImage = QuestBookScreen.QuestBookImage.EMPTY;
+                QuestBookImage bookImage = QuestBookImage.empty();
                 if (image.has("image")){
                     String value = image.get("image").getAsString();
                     if (value.startsWith(":")){
+                        // TODO: Properly parse existing predefined images
                         // Get predefined static image
-                        bookImage = QuestBookScreen.QuestBookImage.LIT_PROCESS_IMAGE;
+                        bookImage = QuestBookImage.PROCESS_IMAGE;
                     } else {
                         bookImage.resourceLocation(ResourceLocation.tryParse(value));
                     }
@@ -123,26 +139,24 @@ public class QuestBookParser {
                     }
 
                     if (image.has("type")){
-                        QuestBookScreen.QuestBookImage.Type type = QuestBookScreen.QuestBookImage.Type.ITEM;
+                        QuestBookImage.Type type = QuestBookImage.Type.ITEM;
                         String typeSting = image.get("type").getAsString();
                         type = switch (typeSting){
-                            case "regular" -> QuestBookScreen.QuestBookImage.Type.REGULAR;
-                            case "sprite" -> QuestBookScreen.QuestBookImage.Type.SPRITE;
-                            default -> QuestBookScreen.QuestBookImage.Type.ITEM;
+                            case "regular" -> QuestBookImage.Type.REGULAR;
+                            case "sprite" -> QuestBookImage.Type.SPRITE;
+                            default -> QuestBookImage.Type.ITEM;
                         };
                         bookImage.setType(type);
                     }
                 }
-                questBookImages.add(bookImage);
+                qBookImages.add(bookImage);
             }
         }
 
-        bookPage.questBookImages = questBookImages;
+        bookPage.questBookImages = qBookImages;
         if (message != null){
-            System.out.println("Found custom message");
             bookPage.setPageMsg(Component.literal(message));
         } else if (key != null){
-            System.out.println("Found custom key");
             bookPage.setPageMsg(Component.translatable(key));
         } else {
             result.defaultPageMsg = true;
@@ -167,10 +181,17 @@ public class QuestBookParser {
         result.formattedText = formattedText;
         result.hasTitle = hasTitle;
 
+        System.out.println("RESULTING");
+        for(QuestBookImage i :bookPage.questBookImages){
+            System.out.println(i);
+        }
         return result;
     }
 
     public static class QuestBookParserResult{
+
+        private boolean isEmpty = false;
+        private boolean isFalsy = false;
         public BookPage bookPage = BookPage.EMPTY;
         public boolean showPageMsg = true;
         public boolean defaultPageMsg = false;
@@ -188,6 +209,31 @@ public class QuestBookParser {
                     ", hasTitle=" + hasTitle +
                     ", template='" + template + '\'' +
                     '}';
+        }
+
+        protected QuestBookParserResult setFormattedText(String text){
+            return setFormattedText(FormattedText.of(text));
+        }
+        protected QuestBookParserResult setFormattedText(FormattedText text){
+            this.formattedText = formattedText;
+            return this;
+        }
+
+        protected QuestBookParserResult setEmpty(){
+            this.isEmpty = true;
+            return this;
+        }
+        protected QuestBookParserResult setFalsy(){
+            this.isFalsy = true;
+            return this;
+        }
+
+        public boolean isEmpty() {
+            return isEmpty;
+        }
+
+        public boolean isFalsy() {
+            return isFalsy;
         }
     }
 }

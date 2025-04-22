@@ -17,8 +17,8 @@
       "type": "regular"
     },
     {
-      "image": "apple",
-      "show-border" : true,
+      "image": "projectj:jade",
+      "show-border" : false,
       "type": "item"
     }
   ],

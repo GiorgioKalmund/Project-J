@@ -76,65 +76,45 @@ public class QuestBookScreen extends Screen {
 
 
         if (this.cachedPage != this.currentPage) {
-            FormattedText formattedText = this.bookAccess.getPage(this.currentPage);
-
             if (screenToShow != null)
                 screenToShow.page().clear();
 
-            BookPage bookPage = BookPage.EMPTY;
-
             // This doesn't find the correct path
-            System.out.println(bookPageFromJson(getJsonPage(currentPage)));
-
-            boolean pageMsg = !formattedText.getString().contains("[no-msg]");
-            if (!pageMsg){
-                formattedText = FormattedText.of(formattedText.getString().replace("[no-msg]", ""));
+            QuestBookParserResult bookParserResult = null;
+            if (this.minecraft != null){
+                bookParserResult = bookPageFromJson(getJsonPage(currentPage, this.minecraft.getResourceManager()));
+                if (bookParserResult.isFalsy())
+                    System.err.println("Falsy QuestBookParserResult for page: " + currentPage);
+            } else {
+                System.err.println("Could not get Minecraft because it is null (not open)");
             }
 
-            if (formattedText.getString().contains("<cover>")){
-                screenToShow = new CoverScreen(this, bookPage);
-            } else if (formattedText.getString().contains("<empty>")){
-                // Maybe show some sort of placeholder blank image screen
-                screenToShow = new EmptyScreen(this, bookPage, pageMsg);
-            } else if (formattedText.getString().contains("<highlight>")){
-                // Could fit it any type of screen how
-            } else {
-                // Hero Screen
-                boolean hasTitle = formattedText.getString().contains("<title>");
-                if (hasTitle){
-                    formattedText = FormattedText.of(formattedText.getString().replace("<title>", ""));
-                }
-                if (formattedText.getString().startsWith("<image>")){
-                    String[] charSequencePieces = formattedText.getString().split("<image>");
+            if (bookParserResult == null || bookParserResult.isEmpty()){
+                screenToShow = new EmptyScreen(this);
+                return;
+            }
 
-                    String imageString = charSequencePieces[1];
-                    boolean showBorder = false;
-                    if (imageString.contains("[border]")){
-                        showBorder = true;
-                        imageString = imageString.replace("[border]", "");
-                    }
+            FormattedText formattedText = bookParserResult.formattedText;
+            boolean showPageMsg = bookParserResult.showPageMsg;
+            boolean hasTitle = bookParserResult.hasTitle;
+            BookPage bookPage = bookParserResult.bookPage;
 
-                    boolean process = imageString.contains("[process]");
-                    if (process){
-                        imageString = imageString.replace("[process]", "");
-                    }
+            for(QuestBookImage image : bookPage.questBookImages){
+                System.out.println("IMAGE: " +image.showBorder() + ": " + image.resourceLocation());
+            }
 
-                    formattedText = FormattedText.of(charSequencePieces[2]);
-
-                    bookPage.setImage(new QuestBookImage(ResourceLocation.tryParse(imageString), showBorder));
-                    if (process){
-                        bookPage.addImage(QuestBookImage.PROCESS_IMAGE);
-                        bookPage.addImage(new QuestBookImage(getResourceLocation(ModItems.JADE)));
-                        bookPage.addImage(QuestBookImage.LIT_PROCESS_IMAGE);
-                    }
-                    if (process)
-                        screenToShow = new ProcessScreen(this, bookPage,  hasTitle, pageMsg, 20, true);
-                    else
-                        screenToShow = new ItemShowcaseScreen(this, bookPage,  hasTitle, pageMsg);
-
-                } else {
-                    screenToShow = new TextScreen(this, bookPage, hasTitle, pageMsg);
-                }
+            if (bookParserResult.template == null)
+                screenToShow = new TextScreen(this, bookPage, hasTitle, showPageMsg);
+            else{
+                screenToShow = switch(bookParserResult.template){
+                    case "empty" -> new EmptyScreen(this, showPageMsg);
+                    case "cover" -> new CoverScreen(this, BookPage.EMPTY);
+                    case "text" -> new TextScreen(this, bookPage, hasTitle, showPageMsg);
+                    case "item-showcase" -> new ItemShowcaseScreen(this, bookPage, hasTitle, showPageMsg);
+                    case "double-item-showcase" -> new DoubleItemShowcaseScreen(this, bookPage, hasTitle, showPageMsg,20);
+                    case "process" -> new ProcessScreen(this, bookPage, hasTitle, showPageMsg,20);
+                    default -> new EmptyScreen(this);
+                };
             }
             bookPage.setPageMsg(Component.translatable("book.pageIndicator", new Object[]{this.currentPage + 1, Math.max(this.getNumPages(), 1)}));
             this.cachedPageComponents = this.font.split(formattedText, TEXT_WIDTH);
@@ -341,6 +321,10 @@ public class QuestBookScreen extends Screen {
         }
         protected QuestBookImage(boolean showBorder){
             this( null, showBorder);
+        }
+
+        public static QuestBookImage empty(){
+            return new QuestBookImage();
         }
 
         public void reset(){

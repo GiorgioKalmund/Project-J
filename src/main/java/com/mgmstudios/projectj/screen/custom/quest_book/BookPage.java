@@ -61,6 +61,10 @@ public class BookPage {
         this.pageMsg = pageMsg;
     }
 
+    public static BookPage empty(){
+        return new BookPage();
+    }
+
     public void clear(){
         textComponents = new ArrayList<>();
         questBookImages = new ArrayList<>();

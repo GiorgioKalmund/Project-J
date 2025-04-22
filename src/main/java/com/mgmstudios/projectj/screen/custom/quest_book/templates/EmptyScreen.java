@@ -11,9 +11,13 @@ public class EmptyScreen extends QuestBookTemplate{
 
 
     boolean showPageMsg;
-    public EmptyScreen(Screen screen, BookPage page, boolean showPageMsg) {
-        super(screen, page);
+    public EmptyScreen(Screen screen, boolean showPageMsg) {
+        super(screen, BookPage.EMPTY);
         this.showPageMsg = showPageMsg;
+    }
+    public EmptyScreen(Screen screen) {
+        super(screen, BookPage.EMPTY);
+        this.showPageMsg = true;
     }
 
     @Override
