@@ -163,14 +163,14 @@ public class QuestBookParser {
         }
 
         FormattedText formattedText = FormattedText.EMPTY;
-        boolean hasTitle = false;
+        boolean showTitle = false;
         if (json.has("text")){
             JsonObject text = json.get("text").getAsJsonObject();
             if (text.has("content")){
                 formattedText = FormattedText.of(text.get("content").getAsString());
 
-                if (text.has("has-title")){
-                    hasTitle = text.get("has-title").getAsBoolean();
+                if (text.has("show-title")){
+                    showTitle = text.get("show-title").getAsBoolean();
                 }
             }
         }
@@ -179,12 +179,9 @@ public class QuestBookParser {
         result.showPageMsg = showPageMsg;
         result.template = template;
         result.formattedText = formattedText;
-        result.hasTitle = hasTitle;
+        result.hasTitle = showTitle;
 
-        System.out.println("RESULTING");
-        for(QuestBookImage i :bookPage.questBookImages){
-            System.out.println(i);
-        }
+        System.out.println("TITLE: " + result.hasTitle);
         return result;
     }
 
