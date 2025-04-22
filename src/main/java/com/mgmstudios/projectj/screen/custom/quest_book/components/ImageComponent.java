@@ -26,7 +26,7 @@ public class ImageComponent extends AbstractComponent{
         int width = screen.width;
         int pageMsLen = font.width(page.pageMsg());
 
-        int centeredPosition = imageWidthCenter(screen) - pageMsLen + IMAGE_WIDTH - 44;
+        int centeredPosition = imageWidthCenter(screen) - 65 - 44 + IMAGE_WIDTH;
 
         if (!questBookImage.isEmpty()){
 

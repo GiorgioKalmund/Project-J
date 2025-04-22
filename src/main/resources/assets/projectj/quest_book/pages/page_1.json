@@ -1,0 +1,34 @@
+{
+  "show-page-msg" : true,
+  "page-msg" : {
+    "message" : "Secret message"
+  },
+  "empty" : false,
+  "template" : {
+    "name" : "process",
+    "show-fuel" : true,
+    "spacing" : 20
+  },
+  "images" : [
+    {
+      "image": "projectj:raw_jade",
+      "show-border" : false,
+      "type": "item"
+    },
+    {
+      "image": ":process"
+    },
+    {
+      "image": "projectj:jade",
+      "show-border" : false,
+      "type": "item"
+    },
+    {
+      "image": ":adobe_lit_process"
+    }
+  ],
+  "text" : {
+    "content": "Nisi irure\nmagna sit labore tempor mollit velit ex officia pariatur quis dolore eiusmod.",
+    "show-title": true
+  }
+}

@@ -15,13 +15,13 @@ import net.minecraft.network.chat.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
 
-import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookParser.bookPageFromJson;
-import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookParser.getJsonPage;
+import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookParser.*;
 
 public class QuestBookScreen extends Screen {
 
@@ -66,7 +66,7 @@ public class QuestBookScreen extends Screen {
         this.playTurnSound = playTurnSound;
     }
 
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+    public void render(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         super.render(guiGraphics, mouseX, mouseY, partialTick);
 
 
@@ -74,7 +74,6 @@ public class QuestBookScreen extends Screen {
             if (screenToShow != null)
                 screenToShow.page().clear();
 
-            // This doesn't find the correct path
             QuestBookParserResult bookParserResult = null;
             if (this.minecraft != null){
                 bookParserResult = bookPageFromJson(getJsonPage(currentPage, this.minecraft.getResourceManager()));
@@ -98,20 +97,23 @@ public class QuestBookScreen extends Screen {
                 formattedText = FormattedText.of("§4§l<ERROR READING PAGE CONTENTS>§");
             }
 
-            if (bookParserResult.templateName == null)
+            System.out.println(bookParserResult);
+
+            if (bookParserResult.templateType == null)
                 screenToShow = new TextScreen(this, bookPage, hasTitle, showPageMsg);
             else{
-                screenToShow = switch(bookParserResult.templateName){
-                    case "empty" -> new EmptyScreen(this, showPageMsg);
-                    case "cover" -> new CoverScreen(this, BookPage.EMPTY);
-                    case "text" -> new TextScreen(this, bookPage, hasTitle, showPageMsg);
-                    case "item-showcase" -> new ItemShowcaseScreen(this, bookPage, hasTitle, showPageMsg);
-                    case "double-item-showcase" -> new DoubleItemShowcaseScreen(this, bookPage, hasTitle, showPageMsg,20);
-                    case "process" -> new ProcessScreen(this, bookPage, hasTitle, showPageMsg, getOrDefault(templateIntegers, 0, 0), getOrDefault(templateBooleans, 0, false));
-                    default -> new EmptyScreen(this);
+                screenToShow = switch(bookParserResult.templateType){
+                    case EMPTY -> new EmptyScreen(this, showPageMsg);
+                    case COVER -> new CoverScreen(this, bookPage, hasTitle, showPageMsg);
+                    case TEXT -> new TextScreen(this, bookPage, hasTitle, showPageMsg);
+                    case PROCESS -> new ProcessScreen(this, bookPage, hasTitle, showPageMsg, getOrDefault(templateIntegers, 0, 0), getOrDefault(templateBooleans, 0, false));
+                    case ITEM_SHOWCASE -> new ItemShowcaseScreen(this, bookPage, hasTitle, showPageMsg);
+                    case DOUBLE_ITEM_SHOWCASE -> new DoubleItemShowcaseScreen(this, bookPage, hasTitle, showPageMsg, getOrDefault(templateIntegers, 0, 0));
                 };
             }
-            bookPage.setPageMsg(Component.translatable("book.pageIndicator", new Object[]{this.currentPage + 1, Math.max(this.getNumPages(), 1)}));
+            if (bookParserResult.defaultPageMsg || bookParserResult.isFalsy()){
+                bookPage.setPageMsg(Component.translatable("book.pageIndicator", new Object[]{this.currentPage + 1, Math.max(this.getNumPages(), 1)}));
+            }
             this.cachedPageComponents = this.font.split(formattedText, TEXT_WIDTH);
             screenToShow.page().setComponents(cachedPageComponents);
         }
@@ -289,6 +291,51 @@ public class QuestBookScreen extends Screen {
             } else {
                 return null;
             }
+        }
+    }
+
+    public enum QuestBookScreenType {
+
+        EMPTY, COVER, TEXT, PROCESS, DOUBLE_ITEM_SHOWCASE("double-item-showcase"), ITEM_SHOWCASE("item-showcase");
+
+        private final String displayName;
+
+        QuestBookScreenType(String displayName) {
+            this.displayName = displayName;
+        }
+
+        QuestBookScreenType(){
+            this.displayName = this.name().toLowerCase();
+        }
+
+        public String getDisplayName() {
+            return displayName;
+        }
+
+        @Override
+        public String toString() {
+            return displayName;
+        }
+
+        public static QuestBookScreenType fromDisplayName(String displayName) {
+            for (QuestBookScreenType type : QuestBookScreenType.values()) {
+                if (type.displayName.equalsIgnoreCase(displayName)) {
+                    return type;
+                }
+            }
+            return null;
+        }
+
+        public static boolean stringIsType(String string, QuestBookScreenType type){
+            return QuestBookScreen.QuestBookScreenType.fromDisplayName(string) == type;
+        }
+
+        public static boolean stringIsAnyOfTypes(String string, QuestBookScreenType ... types){
+            for (QuestBookScreenType t : types){
+                if (stringIsType(string, t))
+                    return true;
+            }
+            return false;
         }
     }
 

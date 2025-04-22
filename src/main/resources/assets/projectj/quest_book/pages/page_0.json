@@ -1,34 +1,6 @@
 {
   "show-page-msg" : false,
-  "page-msg" : {
-    "message" : "Secret message"
-  },
-  "empty" : false,
   "template" : {
-    "name" : "process",
-    "spacing" : 20,
-    "show-fuel" : true
-  },
-  "images" : [
-    {
-      "image": "projectj:raw_jade",
-      "show-border" : false,
-      "type": "item"
-    },
-    {
-      "image": ":process"
-    },
-    {
-      "image": "projectj:jade",
-      "show-border" : false,
-      "type": "item"
-    },
-    {
-      "image": ":adobe_lit_process"
-    }
-  ],
-  "text" : {
-    "content": "Nisi irure\nmagna sit labore tempor mollit velit ex officia pariatur quis dolore eiusmod.",
-    "show-title": true
+    "name" : "cover"
   }
 }
