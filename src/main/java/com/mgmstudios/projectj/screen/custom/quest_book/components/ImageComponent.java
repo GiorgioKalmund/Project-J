@@ -39,8 +39,9 @@ public class ImageComponent extends AbstractComponent{
             }
 
             if (questBookImage.showBorder()){
-                int scaledQuestBookDisplayWidth = (int)(QUEST_BORDER_IMAGE_WIDTH * borderScaleFactor);
-                int scaledQBookDisplayHeight = (int)(QUEST_IMAGE_HEIGHT * borderScaleFactor);
+                // TODO: Properly calculate displacement based on scale and dimensions as it still looks weird sometimes
+                int scaledQuestBookDisplayWidth = (int)(QUEST_BORDER_IMAGE_WIDTH * borderScaleFactor * ((float) dimensions.x / QUEST_IMAGE_WIDTH));
+                int scaledQBookDisplayHeight = (int)(QUEST_IMAGE_HEIGHT * borderScaleFactor * ((float) dimensions.y / QUEST_IMAGE_HEIGHT));
                 guiGraphics.blit(RenderType::guiTextured, IMAGE_BORDER_LOCATION, (width - scaledQuestBookDisplayWidth) / 2 - 5 + x, IMAGE_Y_OFFSET - (scaledQBookDisplayHeight - QUEST_IMAGE_HEIGHT) / 2 + y, 0.0F, 0.0F, scaledQuestBookDisplayWidth, scaledQBookDisplayHeight, scaledQuestBookDisplayWidth, scaledQBookDisplayHeight);
             }
         }

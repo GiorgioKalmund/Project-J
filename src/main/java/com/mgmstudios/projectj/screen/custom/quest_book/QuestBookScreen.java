@@ -1,7 +1,6 @@
 package com.mgmstudios.projectj.screen.custom.quest_book;
 
 import com.mgmstudios.projectj.ProjectJ;
-import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.screen.custom.quest_book.templates.*;
 import com.mgmstudios.projectj.screen.custom.quest_book.QuestBookParser.*;
 import net.minecraft.client.GameNarrator;
@@ -18,13 +17,11 @@ import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 
 import javax.annotation.Nullable;
-import java.io.File;
 import java.util.Collections;
 import java.util.List;
 
 import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookParser.bookPageFromJson;
 import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookParser.getJsonPage;
-import static com.mgmstudios.projectj.util.ItemLookup.*;
 
 public class QuestBookScreen extends Screen {
 
@@ -83,8 +80,6 @@ public class QuestBookScreen extends Screen {
             QuestBookParserResult bookParserResult = null;
             if (this.minecraft != null){
                 bookParserResult = bookPageFromJson(getJsonPage(currentPage, this.minecraft.getResourceManager()));
-                if (bookParserResult.isFalsy())
-                    System.err.println("Falsy QuestBookParserResult for page: " + currentPage);
             } else {
                 System.err.println("Could not get Minecraft because it is null (not open)");
             }
@@ -93,26 +88,33 @@ public class QuestBookScreen extends Screen {
                 screenToShow = new EmptyScreen(this);
                 return;
             }
-
             FormattedText formattedText = bookParserResult.formattedText;
             boolean showPageMsg = bookParserResult.showPageMsg;
             boolean hasTitle = bookParserResult.hasTitle;
             BookPage bookPage = bookParserResult.bookPage;
+            List<Boolean> templateBooleans = bookParserResult.templateBooleans;
+            List<Integer> templateIntegers = bookParserResult.templateIntegers;
+
+            if (bookParserResult.isFalsy()){
+                System.err.println("Falsy QuestBookParserResult for page: " + currentPage);
+                formattedText = FormattedText.of("§4§l<ERROR READING PAGE CONTENTS>§");
+            }
+
 
             for(QuestBookImage image : bookPage.questBookImages){
                 System.out.println("IMAGE: " +image.showBorder() + ": " + image.resourceLocation());
             }
 
-            if (bookParserResult.template == null)
+            if (bookParserResult.templateName == null)
                 screenToShow = new TextScreen(this, bookPage, hasTitle, showPageMsg);
             else{
-                screenToShow = switch(bookParserResult.template){
+                screenToShow = switch(bookParserResult.templateName){
                     case "empty" -> new EmptyScreen(this, showPageMsg);
                     case "cover" -> new CoverScreen(this, BookPage.EMPTY);
                     case "text" -> new TextScreen(this, bookPage, hasTitle, showPageMsg);
                     case "item-showcase" -> new ItemShowcaseScreen(this, bookPage, hasTitle, showPageMsg);
                     case "double-item-showcase" -> new DoubleItemShowcaseScreen(this, bookPage, hasTitle, showPageMsg,20);
-                    case "process" -> new ProcessScreen(this, bookPage, hasTitle, showPageMsg,20);
+                    case "process" -> new ProcessScreen(this, bookPage, hasTitle, showPageMsg, getOrDefault(templateIntegers, 0, 0), getOrDefault(templateBooleans, 0, false));
                     default -> new EmptyScreen(this);
                 };
             }
@@ -132,6 +134,12 @@ public class QuestBookScreen extends Screen {
         if (style != null) {
             guiGraphics.renderComponentHoverEffect(this.font, style, mouseX, mouseY);
         }
+    }
+
+    public static <T> T getOrDefault(List<T> list, int index, T defaultValue){
+        if (list.isEmpty() ||index >= list.size() || list.get(index) == null)
+            return defaultValue;
+        return list.get(index);
     }
 
     public static void drawCenteredStringWithoutDropShadow(GuiGraphics guiGraphics, Font font, FormattedCharSequence formattedcharsequence, int x, int y, int color) {
@@ -381,9 +389,9 @@ public class QuestBookScreen extends Screen {
             return ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "textures/gui/quest_book/images/" + name + ".png");
         }
 
-        public static QuestBookImage PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("process"), false);
-        public static QuestBookImage ADOBE_LIT_PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("adobe_lit_process"), false);
-        public static QuestBookImage LIT_PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("lit_process"), false);
+        public static QuestBookImage PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("process"), false, Type.REGULAR);
+        public static QuestBookImage ADOBE_LIT_PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("adobe_lit_process"), false, Type.REGULAR);
+        public static QuestBookImage LIT_PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("lit_process"), false, Type.REGULAR);
 
         public static QuestBookImage EMPTY = new QuestBookImage();
 

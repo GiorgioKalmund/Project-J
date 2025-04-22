@@ -11,11 +11,10 @@ import net.minecraft.network.chat.FormattedText;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
+import org.checkerframework.checker.units.qual.A;
 
 import java.io.*;
-import java.text.Normalizer;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -72,11 +71,12 @@ public class QuestBookParser {
         BookPage bookPage = BookPage.empty();
 
         QuestBookParserResult result = new QuestBookParserResult();
+        List<Boolean> possibleTemplateBooleans = new ArrayList<>();
+        List<Integer> possibleTemplateIntegers = new ArrayList<>();
 
         // If page could not be loaded from JSON return error page
         if (json.has("error")){
             if (json.get("error").getAsBoolean()){
-                result.formattedText = FormattedText.of("§4§l<ERROR LOADING PAGE>§r");
                 return result.setFalsy();
             }
         }
@@ -112,10 +112,23 @@ public class QuestBookParser {
 
         }
 
-        String template = null;
+        JsonObject template = null;
+        String templateName = null;
+        Boolean processTemplateShowFuel = null;
+        Integer spacing = null;
         if (json.has("template")){
-            template = json.get("template").getAsString();
+            template = json.get("template").getAsJsonObject();
+            if (template.has("name"))
+                templateName = template.get("name").getAsString();
+            if (templateName != null){
+                if (template.has("show-fuel") && templateName.equals("process"))
+                    processTemplateShowFuel = template.get("show-fuel").getAsBoolean();
+                if (template.has("spacing") && (templateName.equals("process") || templateName.equals("double-item-showcase")))
+                    spacing = template.get("spacing").getAsInt();
+            }
         }
+        possibleTemplateBooleans.add(processTemplateShowFuel);
+        possibleTemplateIntegers.add(spacing);
 
         // Handle Images
         List<QuestBookImage> qBookImages = new ArrayList<>();
@@ -127,9 +140,12 @@ public class QuestBookParser {
                 if (image.has("image")){
                     String value = image.get("image").getAsString();
                     if (value.startsWith(":")){
-                        // TODO: Properly parse existing predefined images
-                        // Get predefined static image
-                        bookImage = QuestBookImage.PROCESS_IMAGE;
+                        bookImage = switch (value){
+                            case ":process" -> QuestBookImage.PROCESS_IMAGE;
+                            case ":lit_process" -> QuestBookImage.LIT_PROCESS_IMAGE;
+                            case ":adobe_lit_process" -> QuestBookImage.ADOBE_LIT_PROCESS_IMAGE;
+                            default -> QuestBookImage.empty();
+                        };
                     } else {
                         bookImage.resourceLocation(ResourceLocation.tryParse(value));
                     }
@@ -175,13 +191,17 @@ public class QuestBookParser {
             }
         }
 
+        for (Boolean b : possibleTemplateBooleans)
+            if (b != null) result.templateBooleans.add(b);
+        for (Integer i : possibleTemplateIntegers)
+            if (i != null) result.templateIntegers.add(i);
+
         result.bookPage = bookPage;
         result.showPageMsg = showPageMsg;
-        result.template = template;
+        result.templateName = templateName;
         result.formattedText = formattedText;
         result.hasTitle = showTitle;
 
-        System.out.println("TITLE: " + result.hasTitle);
         return result;
     }
 
@@ -194,17 +214,23 @@ public class QuestBookParser {
         public boolean defaultPageMsg = false;
         FormattedText formattedText = FormattedText.EMPTY;
         public boolean hasTitle = false;
-        public String template = null;
+        public String templateName = null;
+
+        List<Boolean> templateBooleans = new ArrayList<>();
+        List<Integer> templateIntegers = new ArrayList<>();
 
         @Override
         public String toString() {
             return "QuestBookParserResult{" +
-                    "bookPage=" + bookPage +
+                    "isEmpty=" + isEmpty +
+                    ", isFalsy=" + isFalsy +
+                    ", bookPage=" + bookPage +
                     ", showPageMsg=" + showPageMsg +
                     ", defaultPageMsg=" + defaultPageMsg +
                     ", formattedText=" + formattedText +
                     ", hasTitle=" + hasTitle +
-                    ", template='" + template + '\'' +
+                    ", templateName='" + templateName + '\'' +
+                    ", templateBooleans=" + templateBooleans +
                     '}';
         }
 
@@ -212,7 +238,7 @@ public class QuestBookParser {
             return setFormattedText(FormattedText.of(text));
         }
         protected QuestBookParserResult setFormattedText(FormattedText text){
-            this.formattedText = formattedText;
+            this.formattedText = text;
             return this;
         }
 

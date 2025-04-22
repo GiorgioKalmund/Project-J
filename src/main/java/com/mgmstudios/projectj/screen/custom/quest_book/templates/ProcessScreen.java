@@ -38,7 +38,6 @@ public class ProcessScreen extends TextScreen {
 
         ImageComponent.ImageBuilder()
                 .setImage(page.image(1))
-                .regular()
                 .size(24, 16)
                 .borderless()
                 .render(guiGraphics, screen, page);
@@ -51,9 +50,8 @@ public class ProcessScreen extends TextScreen {
         if (showFuel){
             ImageComponent.ImageBuilder()
                     .setImage(page.image(3))
-                    .regular()
-                    .size(12, 12)
-                    .setOffset(4, QUEST_IMAGE_HEIGHT + 2)
+                    .size(13, 13)
+                    .setOffset(3, QUEST_IMAGE_HEIGHT + 2)
                     .render(guiGraphics, screen, page);
         }
     }

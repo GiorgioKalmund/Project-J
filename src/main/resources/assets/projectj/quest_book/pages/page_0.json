@@ -4,26 +4,31 @@
     "message" : "Secret message"
   },
   "empty" : false,
-  "template" : "process",
+  "template" : {
+    "name" : "process",
+    "spacing" : 20,
+    "show-fuel" : true
+  },
   "images" : [
     {
-      "image": "projectj:little_man_spawn_egg",
+      "image": "projectj:raw_jade",
       "show-border" : false,
       "type": "item"
     },
     {
-      "image": ":lit_process",
-      "show-border" : true,
-      "type": "regular"
+      "image": ":process"
     },
     {
       "image": "projectj:jade",
       "show-border" : false,
       "type": "item"
+    },
+    {
+      "image": ":adobe_lit_process"
     }
   ],
   "text" : {
-    "content": "Nisi irure\n magna sit labore tempor mollit velit ex officia pariatur quis dolore eiusmod.",
+    "content": "Nisi irure\nmagna sit labore tempor mollit velit ex officia pariatur quis dolore eiusmod.",
     "show-title": true
   }
 }
