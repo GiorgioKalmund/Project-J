@@ -87,13 +87,9 @@ public class QuestBookParser {
             }
         }
 
-        // Return Empty page
-        if (json.isEmpty())
-            return result.setEmpty();
-
         if (json.has(KEY_EMPTY)){
              if (json.get(KEY_EMPTY).getAsBoolean()){
-                 return result;
+                 result.setEmpty();
              }
         }
 

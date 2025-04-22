@@ -81,10 +81,11 @@ public class QuestBookScreen extends Screen {
                 System.err.println("Could not get Minecraft because it is null (not open)");
             }
 
-            if (bookParserResult == null || bookParserResult.isEmpty()){
+            if (bookParserResult == null){
                 screenToShow = new EmptyScreen(this);
                 return;
             }
+
             FormattedText formattedText = bookParserResult.formattedText;
             boolean showPageMsg = bookParserResult.showPageMsg;
             boolean hasTitle = bookParserResult.hasTitle;
@@ -99,6 +100,13 @@ public class QuestBookScreen extends Screen {
 
             System.out.println(bookParserResult);
 
+            if (bookParserResult.defaultPageMsg || bookParserResult.isFalsy()){
+                bookPage.setPageMsg(Component.translatable("book.pageIndicator", new Object[]{this.currentPage + 1, Math.max(this.getNumPages(), 1)}));
+            }
+
+            this.cachedPageComponents = this.font.split(formattedText, TEXT_WIDTH);
+            bookPage.setComponents(cachedPageComponents);
+
             if (bookParserResult.templateType == null)
                 screenToShow = new TextScreen(this, bookPage, hasTitle, showPageMsg);
             else{
@@ -111,11 +119,6 @@ public class QuestBookScreen extends Screen {
                     case DOUBLE_ITEM_SHOWCASE -> new DoubleItemShowcaseScreen(this, bookPage, hasTitle, showPageMsg, getOrDefault(templateIntegers, 0, 0));
                 };
             }
-            if (bookParserResult.defaultPageMsg || bookParserResult.isFalsy()){
-                bookPage.setPageMsg(Component.translatable("book.pageIndicator", new Object[]{this.currentPage + 1, Math.max(this.getNumPages(), 1)}));
-            }
-            this.cachedPageComponents = this.font.split(formattedText, TEXT_WIDTH);
-            screenToShow.page().setComponents(cachedPageComponents);
         }
 
         this.cachedPage = this.currentPage;
