@@ -31,6 +31,10 @@ public class QuestBookPageProvider implements DataProvider {
                 .setPageMessage("§f§lNo. 1§r")
                 .save(pages);
 
+        Builder.create()
+                .setTemplate(QuestBookScreen.QuestBookScreenType.CONTENTS_PAGE)
+                .addImage(new QuestBookScreen.QuestBookImage(ModItems.RAW_JADE, false))
+                .save(pages);
 
         Builder.create()
                 .setTemplate(QuestBookScreen.QuestBookScreenType.ITEM_SHOWCASE)

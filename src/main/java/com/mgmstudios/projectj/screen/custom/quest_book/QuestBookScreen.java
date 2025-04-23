@@ -1,12 +1,14 @@
 package com.mgmstudios.projectj.screen.custom.quest_book;
 
 import com.mgmstudios.projectj.ProjectJ;
+import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.screen.custom.quest_book.templates.*;
-import com.mgmstudios.projectj.screen.custom.quest_book.QuestBookParser.*;
+import com.mgmstudios.projectj.screen.custom.quest_book.templates.ContentsPageScreen.ContentsPageEntry.*;
 import com.mgmstudios.projectj.util.ItemLookup;
 import net.minecraft.client.GameNarrator;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.BookViewScreen.BookAccess;
@@ -20,10 +22,12 @@ import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookParser.*;
+import static com.mgmstudios.projectj.screen.custom.quest_book.templates.ContentsPageScreen.ContentsPageEntry.createWidget;
 
 public class QuestBookScreen extends Screen {
 
@@ -52,6 +56,7 @@ public class QuestBookScreen extends Screen {
     public static final int QUEST_BORDER_IMAGE_WIDTH = 48;
     public static final int QUEST_IMAGE_HEIGHT = 16;
     protected QuestBookTemplate screenToShow = QuestBookTemplate.EMPTY;
+    protected List<AbstractWidget> temporaryWidgets = new ArrayList<>();
     public QuestBookScreen(BookAccess bookAccess) {
         this(bookAccess, true);
     }
@@ -73,8 +78,10 @@ public class QuestBookScreen extends Screen {
 
 
         if (this.cachedPage != this.currentPage) {
-            if (screenToShow != null)
+            if (screenToShow != null){
                 screenToShow.page().clear();
+                removeTemporaryWidgets();
+            }
 
             QuestBookParserResult bookParserResult = null;
             if (this.minecraft != null){
@@ -109,6 +116,21 @@ public class QuestBookScreen extends Screen {
             this.cachedPageComponents = this.font.split(formattedText, TEXT_WIDTH);
             bookPage.setComponents(cachedPageComponents);
 
+            // TODO: Dynamically load (+ create)
+            List<ContentsPageScreen.ContentsPageEntry> contentsPageEntries = new ArrayList<>();
+            contentsPageEntries.add(createWidget(ModItems.JADE_HELMET, 0));
+            contentsPageEntries.add(createWidget(ModItems.JADE_CHESTPLATE, 1));
+            contentsPageEntries.add(createWidget(ModItems.JADE_LEGGINGS, 2));
+            contentsPageEntries.add(createWidget(ModItems.JADE_BOOTS, 3));
+            contentsPageEntries.add(createWidget(ModItems.JADE_HELMET, 0));
+            contentsPageEntries.add(createWidget(ModItems.JADE_CHESTPLATE, 1));
+            contentsPageEntries.add(createWidget(ModItems.JADE_LEGGINGS, 2));
+            contentsPageEntries.add(createWidget(ModItems.JADE_BOOTS, 3));
+            contentsPageEntries.add(createWidget(ModItems.JADE_HELMET, 0));
+            contentsPageEntries.add(createWidget(ModItems.JADE_CHESTPLATE, 1));
+            contentsPageEntries.add(createWidget(ModItems.JADE_LEGGINGS, 2));
+            contentsPageEntries.add(createWidget(ModItems.JADE_BOOTS, 3));
+
             if (bookParserResult.templateType == null)
                 screenToShow = new TextScreen(this, bookPage, hasTitle, showPageMsg);
             else{
@@ -119,6 +141,7 @@ public class QuestBookScreen extends Screen {
                     case PROCESS -> new ProcessScreen(this, bookPage, hasTitle, showPageMsg, getOrDefault(templateIntegers, 0, 0), getOrDefault(templateBooleans, 0, false));
                     case ITEM_SHOWCASE -> new ItemShowcaseScreen(this, bookPage, hasTitle, showPageMsg);
                     case DOUBLE_ITEM_SHOWCASE -> new DoubleItemShowcaseScreen(this, bookPage, hasTitle, showPageMsg, getOrDefault(templateIntegers, 0, 0));
+                    case CONTENTS_PAGE -> new ContentsPageScreen(this, bookPage, showPageMsg, getOrDefault(templateIntegers, 0, 0), contentsPageEntries);
                 };
             }
         }
@@ -184,11 +207,28 @@ public class QuestBookScreen extends Screen {
     }
 
     protected void createPageControlButtons() {
+        System.out.println("CREATING CONTROL BUTTONS");
         int i = (this.width - 192) / 2;
         int j = 2;
         this.forwardButton = (PageButton)this.addRenderableWidget(new PageButton(i + 116, 159, true, (p_98297_) -> this.pageForward(), this.playTurnSound));
         this.backButton = (PageButton)this.addRenderableWidget(new PageButton(i + 43, 159, false, (p_98287_) -> this.pageBack(), this.playTurnSound));
         this.updateButtonVisibility();
+    }
+
+    public void addTemporaryWidgets(List<AbstractWidget> widgets){
+       for (AbstractWidget w : widgets){
+           addTemporaryWidget(w);
+       }
+    }
+
+    public void addTemporaryWidget(AbstractWidget w){
+        temporaryWidgets.add(addRenderableWidget(w));
+    }
+
+    public void removeTemporaryWidgets(){
+        for (AbstractWidget w : temporaryWidgets){
+            removeWidget(w);
+        }
     }
 
     private int getNumPages() {
@@ -301,7 +341,7 @@ public class QuestBookScreen extends Screen {
 
     public enum QuestBookScreenType {
 
-        EMPTY, COVER, TEXT, PROCESS, DOUBLE_ITEM_SHOWCASE("double-item-showcase"), ITEM_SHOWCASE("item-showcase");
+        EMPTY, COVER, TEXT, PROCESS, DOUBLE_ITEM_SHOWCASE("double-item-showcase"), ITEM_SHOWCASE("item-showcase"), CONTENTS_PAGE("contents-page");
 
         private final String displayName;
 

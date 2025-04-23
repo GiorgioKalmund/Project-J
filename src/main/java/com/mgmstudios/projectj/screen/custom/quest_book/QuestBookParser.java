@@ -79,7 +79,6 @@ public class QuestBookParser {
         List<Boolean> templateBooleans = new ArrayList<>();
         List<Integer> templateIntegers = new ArrayList<>();
 
-        // TODO: Simplify using GsonHelper class
         // If page could not be loaded from JSON return error page
         if (json.has(KEY_ERROR)){
             if (json.get(KEY_ERROR).getAsBoolean()){

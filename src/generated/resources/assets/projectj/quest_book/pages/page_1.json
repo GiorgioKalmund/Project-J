@@ -1,15 +1,10 @@
 {
   "images": [
     {
-      "image": "projectj:little_king_spawn_egg",
-      "show-border": true
+      "image": "projectj:raw_jade"
     }
   ],
   "template": {
-    "name": "item-showcase"
-  },
-  "text": {
-    "content": "§nRandom Title§r\nThis is the description.",
-    "show-title": true
+    "name": "contents-page"
   }
 }

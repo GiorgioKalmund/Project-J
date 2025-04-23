@@ -22,8 +22,16 @@ public abstract class AbstractComponent {
         this.x = x;
     }
 
+    public int getX() {
+        return x;
+    }
+
     public void setY(int y) {
         this.y = y;
+    }
+
+    public int getY() {
+        return y;
     }
 
     public AbstractComponent setOffset(int x, int y){
