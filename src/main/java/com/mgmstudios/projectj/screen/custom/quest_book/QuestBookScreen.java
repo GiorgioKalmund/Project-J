@@ -3,6 +3,7 @@ package com.mgmstudios.projectj.screen.custom.quest_book;
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.screen.custom.quest_book.templates.*;
 import com.mgmstudios.projectj.screen.custom.quest_book.QuestBookParser.*;
+import com.mgmstudios.projectj.util.ItemLookup;
 import net.minecraft.client.GameNarrator;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -15,6 +16,7 @@ import net.minecraft.network.chat.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
+import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
@@ -345,8 +347,8 @@ public class QuestBookScreen extends Screen {
     public static class QuestBookImage{
         ResourceLocation resourceLocation;
         boolean showBorder;
-
         protected Type type;
+        private String shorthand = "";
 
 
         protected QuestBookImage(ResourceLocation resourceLocation){
@@ -356,22 +358,32 @@ public class QuestBookScreen extends Screen {
         }
 
         protected QuestBookImage(ResourceLocation resourceLocation, boolean showBorder){
-            this.resourceLocation = resourceLocation;
-            this.showBorder = showBorder;
-            this.type = Type.ITEM;
+            this(resourceLocation,showBorder, Type.ITEM);
         }
 
-        protected QuestBookImage(ResourceLocation resourceLocation, boolean showBorder, Type type){
+        public QuestBookImage(ItemLike itemLike, boolean showBorder){
+            this(ItemLookup.getResourceLocation(itemLike) ,showBorder, Type.ITEM);
+        }
+
+        public QuestBookImage(ItemLike itemLike, boolean showBorder, Type type){
+            this(ItemLookup.getResourceLocation(itemLike) ,showBorder, type);
+        }
+        protected QuestBookImage(ResourceLocation resourceLocation, boolean showBorder, Type type, String shorthand){
             this.resourceLocation = resourceLocation;
             this.showBorder = showBorder;
             this.type = type;
+            this.shorthand = shorthand;
+        }
+
+        protected QuestBookImage(ResourceLocation resourceLocation, boolean showBorder, Type type){
+            this(resourceLocation, showBorder, type, null);
         }
 
         protected QuestBookImage(){
-            this( null, false);
+            this((ResourceLocation) null, false);
         }
         protected QuestBookImage(boolean showBorder){
-            this( null, showBorder);
+            this((ResourceLocation) null, showBorder);
         }
 
         public static QuestBookImage empty(){
@@ -424,6 +436,19 @@ public class QuestBookScreen extends Screen {
             return this;
         }
 
+        public QuestBookImage setShorthand(String shorthand){
+            this.shorthand = shorthand;
+            return this;
+        }
+
+        public boolean hasShortHand(){
+            return shorthand != null && !shorthand.isEmpty();
+        }
+
+        public String shorthand(){
+           return this.shorthand;
+        }
+
         public enum Type {
             ITEM, REGULAR, SPRITE
         }
@@ -432,9 +457,9 @@ public class QuestBookScreen extends Screen {
             return ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "textures/gui/quest_book/images/" + name + ".png");
         }
 
-        public static QuestBookImage PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("process"), false, Type.REGULAR);
-        public static QuestBookImage ADOBE_LIT_PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("adobe_lit_process"), false, Type.REGULAR);
-        public static QuestBookImage LIT_PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("lit_process"), false, Type.REGULAR);
+        public static QuestBookImage PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("process"), false, Type.REGULAR, ":process");
+        public static QuestBookImage ADOBE_LIT_PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("adobe_lit_process"), false, Type.REGULAR, ":adobe_lit_process");
+        public static QuestBookImage LIT_PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("lit_process"), false, Type.REGULAR, ":lit_process");
 
         public static QuestBookImage EMPTY = new QuestBookImage();
 

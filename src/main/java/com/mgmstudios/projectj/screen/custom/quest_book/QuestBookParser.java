@@ -94,24 +94,22 @@ public class QuestBookParser {
         }
 
         boolean showPageMsg = true;
-
         String key = null;
         String message = null;
         if (json.has(KEY_SHOW_PAGE_MSG)){
             showPageMsg = json.get(KEY_SHOW_PAGE_MSG).getAsBoolean();
+        }
 
-            // Handle Page Message
-            if (json.has(KEY_PAGE_MSG)){
-                JsonObject pageMsgElement = json.get(KEY_PAGE_MSG).getAsJsonObject();
+        // Handle Page Message
+        if (json.has(KEY_PAGE_MSG)){
+            JsonObject pageMsgElement = json.get(KEY_PAGE_MSG).getAsJsonObject();
 
-                if (pageMsgElement.has(KEY_KEY)){
-                    key = pageMsgElement.get(KEY_KEY).getAsString();
-                }
-                else if (pageMsgElement.has(KEY_MESSAGE)){
-                    message = pageMsgElement.get(KEY_MESSAGE).getAsString();
-                }
+            if (pageMsgElement.has(KEY_KEY)){
+                key = pageMsgElement.get(KEY_KEY).getAsString();
             }
-
+            else if (pageMsgElement.has(KEY_MESSAGE)){
+                message = pageMsgElement.get(KEY_MESSAGE).getAsString();
+            }
         }
 
         // Template
@@ -170,10 +168,13 @@ public class QuestBookParser {
 
         // Page Msg
         if (message != null){
+            System.out.println("MSG: " + message);
             bookPage.setPageMsg(Component.literal(message));
         } else if (key != null){
+            System.out.println("KEY: " + key);
             bookPage.setPageMsg(Component.translatable(key));
         } else {
+            System.out.println("DEFAULT");
             result.defaultPageMsg = true;
         }
 

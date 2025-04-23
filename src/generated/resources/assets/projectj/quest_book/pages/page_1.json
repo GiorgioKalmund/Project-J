@@ -1,0 +1,15 @@
+{
+  "images": [
+    {
+      "image": "projectj:little_king_spawn_egg",
+      "show-border": true
+    }
+  ],
+  "template": {
+    "name": "item-showcase"
+  },
+  "text": {
+    "content": "§nRandom Title§r\nThis is the description.",
+    "show-title": true
+  }
+}
