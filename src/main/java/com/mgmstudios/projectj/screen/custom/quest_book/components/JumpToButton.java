@@ -18,6 +18,8 @@ import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 
+import java.util.List;
+
 import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.TEXT_WIDTH;
 import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.drawCenteredStringWithoutDropShadow;
 import static com.mgmstudios.projectj.screen.custom.quest_book.components.AbstractComponent.ComponentPositionUtils.textCenteredStartX;
@@ -45,8 +47,9 @@ public class JumpToButton extends Button {
         if (isHoveredOrFocused())
             guiGraphics.blitSprite(RenderType::guiTextured, HIGHLIGHTED_SPRITE, getX() - 2, getY() - 2, 20, 20);
         guiGraphics.renderItem(new ItemStack(displayItem), getX(), getY());
-        FormattedCharSequence descriptionSequence = font.split(FormattedText.of(description), TEXT_WIDTH).get(0);
-        drawCenteredStringWithoutDropShadow(guiGraphics, font, descriptionSequence,  getX() + 8, getY() + 20, 0);
+        List<FormattedCharSequence> descriptionSequence = font.split(FormattedText.of(description), TEXT_WIDTH);
+        if (descriptionSequence.getFirst() != null)
+            drawCenteredStringWithoutDropShadow(guiGraphics, font, descriptionSequence.getFirst(),  getX() + 8, getY() + 20, 0);
     }
 
     public void playDownSound(SoundManager handler) {
