@@ -7,23 +7,23 @@ import net.minecraft.client.gui.screens.Screen;
 
 import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.QUEST_IMAGE_HEIGHT;
 
-public class DoubleItemShowcaseScreen extends TextScreen {
+public class DoubleImageScreen extends TextScreen {
 
     int spacing = 0;
     boolean flipOrdering = false;
 
-    public DoubleItemShowcaseScreen(Screen screen, BookPage page, boolean showTitle, boolean showPageMsg, int spacing, boolean flipOrdering) {
+    public DoubleImageScreen(Screen screen, BookPage page, boolean showTitle, boolean showPageMsg, int spacing, boolean flipOrdering) {
         super(screen, page, showTitle, showPageMsg, false, 0, QUEST_IMAGE_HEIGHT + screen.getFont().lineHeight);
         this.spacing = spacing;
         this.flipOrdering = flipOrdering;
     }
 
-    public DoubleItemShowcaseScreen(Screen screen, BookPage page, boolean showTitle, boolean showPageMsg, int spacing) {
+    public DoubleImageScreen(Screen screen, BookPage page, boolean showTitle, boolean showPageMsg, int spacing) {
         super(screen, page, showTitle, showPageMsg, false, 0, QUEST_IMAGE_HEIGHT + screen.getFont().lineHeight);
         this.spacing = spacing;
     }
 
-    public DoubleItemShowcaseScreen(Screen screen, BookPage page) {
+    public DoubleImageScreen(Screen screen, BookPage page) {
         super(screen, page, false, true, false);
     }
 

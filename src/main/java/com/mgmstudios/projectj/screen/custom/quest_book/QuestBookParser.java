@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.QuestBookScreenType.*;
+import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.QuestBookTemplateType.*;
 
 public class QuestBookParser {
 
@@ -251,7 +251,7 @@ public class QuestBookParser {
         result.templateObjects = templateObjects;
         result.bookPage = bookPage;
         result.showPageMsg = showPageMsg;
-        result.templateType = QuestBookScreen.QuestBookScreenType.fromDisplayName(templateName);
+        result.templateType = QuestBookScreen.QuestBookTemplateType.fromDisplayName(templateName);
         result.formattedText = formattedText;
         result.showTitle = showTitle;
 
@@ -267,7 +267,7 @@ public class QuestBookParser {
         public boolean defaultPageMsg = false;
         FormattedText formattedText = FormattedText.EMPTY;
         public boolean showTitle = false;
-        public QuestBookScreen.QuestBookScreenType templateType = null;
+        public QuestBookScreen.QuestBookTemplateType templateType = null;
 
         List<Boolean> templateBooleans = new ArrayList<>();
         List<Integer> templateIntegers = new ArrayList<>();

@@ -53,7 +53,7 @@ public class QuestBookScreen extends Screen {
     public static final int QUEST_IMAGE_WIDTH = 16;
     public static final int QUEST_BORDER_IMAGE_WIDTH = 48;
     public static final int QUEST_IMAGE_HEIGHT = 16;
-    protected QuestBookTemplate screenToShow = QuestBookTemplate.EMPTY;
+    protected QuestBookScreenTemplate screenToShow = QuestBookScreenTemplate.EMPTY;
     protected List<AbstractWidget> temporaryWidgets = new ArrayList<>();
     public QuestBookScreen(BookAccess bookAccess) {
         this(bookAccess, true);
@@ -129,8 +129,8 @@ public class QuestBookScreen extends Screen {
                     case COVER -> new CoverScreen(this, bookPage, showPageMsg);
                     case TEXT -> new TextScreen(this, bookPage, showTitle, showPageMsg, getOrDefault(templateBooleans, 0, false));
                     case PROCESS -> new ProcessScreen(this, bookPage, showTitle, showPageMsg, getOrDefault(templateIntegers, 0, 0), getOrDefault(templateBooleans, 0, false));
-                    case ITEM_SHOWCASE -> new ItemShowcaseScreen(this, bookPage, showTitle, showPageMsg);
-                    case DOUBLE_ITEM_SHOWCASE -> new DoubleItemShowcaseScreen(this, bookPage, showTitle, showPageMsg, getOrDefault(templateIntegers, 0, 0));
+                    case ITEM_SHOWCASE -> new ImageScreen(this, bookPage, showTitle, showPageMsg);
+                    case DOUBLE_ITEM_SHOWCASE -> new DoubleImageScreen(this, bookPage, showTitle, showPageMsg, getOrDefault(templateIntegers, 0, 0));
                     case CONTENTS_PAGE -> new ContentsPageScreen(this, bookPage, showPageMsg, getOrDefault(templateIntegers, 0, 0), contentsPageEntries);
                     case CHAPTER_COVER -> new ChapterCoverScreen(this, bookPage, getOrDefault(templateStrings, 0, ""), showPageMsg, getOrDefault(templateBooleans, 0, false));
                 };
@@ -251,16 +251,17 @@ public class QuestBookScreen extends Screen {
         if (super.keyPressed(keyCode, scanCode, modifiers)) {
             return true;
         } else {
-            switch (keyCode) {
-                case 266:
+            return switch (keyCode) {
+                case 266 -> {
                     this.backButton.onPress();
-                    return true;
-                case 267:
+                    yield true;
+                }
+                case 267 -> {
                     this.forwardButton.onPress();
-                    return true;
-                default:
-                    return false;
-            }
+                    yield true;
+                }
+                default -> false;
+            };
         }
     }
 
@@ -330,17 +331,17 @@ public class QuestBookScreen extends Screen {
         }
     }
 
-    public enum QuestBookScreenType {
+    public enum QuestBookTemplateType {
 
         EMPTY, COVER, TEXT, PROCESS, DOUBLE_ITEM_SHOWCASE("double-item-showcase"), ITEM_SHOWCASE("item-showcase"), CONTENTS_PAGE("contents-page"), CHAPTER_COVER("chapter-cover");
 
         private final String displayName;
 
-        QuestBookScreenType(String displayName) {
+        QuestBookTemplateType(String displayName) {
             this.displayName = displayName;
         }
 
-        QuestBookScreenType(){
+        QuestBookTemplateType(){
             this.displayName = this.name().toLowerCase();
         }
 
@@ -353,8 +354,8 @@ public class QuestBookScreen extends Screen {
             return displayName;
         }
 
-        public static QuestBookScreenType fromDisplayName(String displayName) {
-            for (QuestBookScreenType type : QuestBookScreenType.values()) {
+        public static QuestBookTemplateType fromDisplayName(String displayName) {
+            for (QuestBookTemplateType type : QuestBookTemplateType.values()) {
                 if (type.displayName.equalsIgnoreCase(displayName)) {
                     return type;
                 }
@@ -362,12 +363,12 @@ public class QuestBookScreen extends Screen {
             return null;
         }
 
-        public static boolean stringIsType(String string, QuestBookScreenType type){
-            return QuestBookScreen.QuestBookScreenType.fromDisplayName(string) == type;
+        public static boolean stringIsType(String string, QuestBookTemplateType type){
+            return QuestBookTemplateType.fromDisplayName(string) == type;
         }
 
-        public static boolean stringIsAnyOfTypes(String string, QuestBookScreenType ... types){
-            for (QuestBookScreenType t : types){
+        public static boolean stringIsAnyOfTypes(String string, QuestBookTemplateType... types){
+            for (QuestBookTemplateType t : types){
                 if (stringIsType(string, t))
                     return true;
             }
@@ -506,6 +507,7 @@ public class QuestBookScreen extends Screen {
                     "resourceLocation=" + resourceLocation +
                     ", showBorder=" + showBorder +
                     ", type=" + type +
+                    ", shorthand='" + shorthand + '\'' +
                     '}';
         }
     }

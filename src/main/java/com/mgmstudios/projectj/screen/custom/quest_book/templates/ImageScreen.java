@@ -8,14 +8,14 @@ import net.minecraft.client.gui.screens.Screen;
 import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.*;
 import static com.mgmstudios.projectj.util.ItemLookup.getStack;
 
-public class ItemShowcaseScreen extends TextScreen {
+public class ImageScreen extends TextScreen {
 
 
-    public ItemShowcaseScreen(Screen screen, BookPage page, boolean showTitle, boolean showPageMsg) {
+    public ImageScreen(Screen screen, BookPage page, boolean showTitle, boolean showPageMsg) {
         super(screen, page, showTitle, showPageMsg, false, 0, QUEST_IMAGE_HEIGHT + screen.getFont().lineHeight);
     }
 
-    public ItemShowcaseScreen(Screen screen, BookPage page) {
+    public ImageScreen(Screen screen, BookPage page) {
         super(screen, page, false, true, false);
     }
 

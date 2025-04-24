@@ -25,7 +25,6 @@ public class ChapterCoverScreen extends TextScreen {
         this.chapterTitle = screen.getFont().split(FormattedText.of(chapterTitle), TEXT_WIDTH);
         this.imageWidth = imageWidth;
         this.imageHeight = imageHeight;
-        System.out.println("ALIGNING: " + alignCenter);
     }
 
     public ChapterCoverScreen(QuestBookScreen screen, BookPage page, String chapterTitle, boolean showPageMsg, boolean alignCenter) {

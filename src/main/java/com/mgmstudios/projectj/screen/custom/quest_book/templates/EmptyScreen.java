@@ -7,7 +7,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import org.joml.Vector2i;
 
-public class EmptyScreen extends QuestBookTemplate{
+public class EmptyScreen extends QuestBookScreenTemplate {
 
 
     boolean showPageMsg;

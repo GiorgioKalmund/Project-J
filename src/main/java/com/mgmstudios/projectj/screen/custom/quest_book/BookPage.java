@@ -68,7 +68,7 @@ public class BookPage {
     public void clear(){
         textComponents = new ArrayList<>();
         questBookImages = new ArrayList<>();
-        questBookImages.add(QuestBookImage.EMPTY);
+        questBookImages.add(QuestBookImage.empty());
         pageMsg = Component.literal("");
     }
 

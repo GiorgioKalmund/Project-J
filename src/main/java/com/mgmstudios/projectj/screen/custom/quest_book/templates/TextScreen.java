@@ -8,7 +8,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import org.joml.Vector2i;
 
-public class TextScreen extends QuestBookTemplate{
+public class TextScreen extends QuestBookScreenTemplate {
 
     boolean showTitle;
 

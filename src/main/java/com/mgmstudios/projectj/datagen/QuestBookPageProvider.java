@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.QuestBookImage;
-import com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.QuestBookScreenType;
+import com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.QuestBookTemplateType;
 import com.mgmstudios.projectj.screen.custom.quest_book.templates.ContentsPageScreen;
 import com.mgmstudios.projectj.util.ItemLookup;
 import net.minecraft.data.CachedOutput;
@@ -31,13 +31,13 @@ public class QuestBookPageProvider implements DataProvider {
 
     public void generatePages(){
         Builder.create()
-                .setTemplate(QuestBookScreenType.COVER)
+                .setTemplate(QuestBookTemplateType.COVER)
                 .showPageMessage(true)
                 .setPageMessage("§f§lNo. 1§r")
                 .save(pages);
 
         Builder.create()
-                .setTemplate(QuestBookScreenType.CONTENTS_PAGE)
+                .setTemplate(QuestBookTemplateType.CONTENTS_PAGE)
                 .setTemplateSpacing(30)
                 .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.JADE, "Basics", 2))
                 .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(Items.APPLE, "1", 1))
@@ -49,7 +49,7 @@ public class QuestBookPageProvider implements DataProvider {
                 .save(pages);
 
         Builder.create()
-                .setTemplate(QuestBookScreenType.CHAPTER_COVER)
+                .setTemplate(QuestBookTemplateType.CHAPTER_COVER)
                 .showPageMessage(false)
                 .addImage(QuestBookImage.CHAPTER_1_IMAGE)
                 .setTemplateChapterTitle("§f§o§lThe Basics§r")
@@ -57,13 +57,13 @@ public class QuestBookPageProvider implements DataProvider {
                 .save(pages);
 
         Builder.create()
-                .setTemplate(QuestBookScreenType.ITEM_SHOWCASE)
+                .setTemplate(QuestBookTemplateType.ITEM_SHOWCASE)
                 .setImages(new QuestBookImage(ModItems.LITTLE_KING_SPAWN_EGG, true))
                 .setText("§nRandom Title§r\nThis is the description.", true)
                 .save(pages);
 
         Builder.create()
-                .setTemplate(QuestBookScreenType.PROCESS)
+                .setTemplate(QuestBookTemplateType.PROCESS)
                 .defaultTemplateSpacing()
                 .setTemplateShowFuel(true)
                 .setPageMessage("§oSecret Message!§r")
@@ -130,7 +130,7 @@ public class QuestBookPageProvider implements DataProvider {
             return this;
         }
 
-        Builder setTemplate(QuestBookScreenType type){
+        Builder setTemplate(QuestBookTemplateType type){
             JsonObject templateObject = new JsonObject();
             templateObject.addProperty(KEY_NAME, type.getDisplayName());
             json.add(KEY_TEMPLATE, templateObject);
