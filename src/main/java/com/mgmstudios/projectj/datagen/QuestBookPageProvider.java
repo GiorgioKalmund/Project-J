@@ -3,20 +3,19 @@ package com.mgmstudios.projectj.datagen;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mgmstudios.projectj.item.ModItems;
-import com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen;
+import com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.QuestBookImage;
+import com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.QuestBookScreenType;
 import com.mgmstudios.projectj.screen.custom.quest_book.templates.ContentsPageScreen;
 import com.mgmstudios.projectj.util.ItemLookup;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 import static com.mgmstudios.projectj.ProjectJ.MOD_ID;
@@ -32,35 +31,46 @@ public class QuestBookPageProvider implements DataProvider {
 
     public void generatePages(){
         Builder.create()
-                .setTemplate(QuestBookScreen.QuestBookScreenType.COVER)
+                .setTemplate(QuestBookScreenType.COVER)
                 .showPageMessage(true)
                 .setPageMessage("§f§lNo. 1§r")
                 .save(pages);
 
         Builder.create()
-                .setTemplate(QuestBookScreen.QuestBookScreenType.CONTENTS_PAGE)
+                .setTemplate(QuestBookScreenType.CONTENTS_PAGE)
                 .setTemplateSpacing(30)
-                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.JADE, "0", 0))
-                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(Items.PUMPKIN, "1", 1))
+                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.JADE, "Basics", 2))
+                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(Items.APPLE, "1", 1))
+                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(Items.WHEAT, "1", 1))
+                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(Items.ACACIA_BOAT, "1", 1))
+                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.VOODOO_CATCHER, "Voodoo", 10))
                 .setText("§lTable of Contents§r", true)
-                .addImage(new QuestBookScreen.QuestBookImage(ModItems.RAW_JADE, false))
+                .addImage(new QuestBookImage(ModItems.RAW_JADE, false))
                 .save(pages);
 
         Builder.create()
-                .setTemplate(QuestBookScreen.QuestBookScreenType.ITEM_SHOWCASE)
-                .setImages(new QuestBookScreen.QuestBookImage(ModItems.LITTLE_KING_SPAWN_EGG, true))
+                .setTemplate(QuestBookScreenType.CHAPTER_COVER)
+                .showPageMessage(false)
+                .addImage(QuestBookImage.CHAPTER_1_IMAGE)
+                .setTemplateChapterTitle("§f§o§lThe Basics§r")
+                .setText("§f§oWelcome to Project J. Let's cover some of the mod's basics items and elements!§r", false, true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookScreenType.ITEM_SHOWCASE)
+                .setImages(new QuestBookImage(ModItems.LITTLE_KING_SPAWN_EGG, true))
                 .setText("§nRandom Title§r\nThis is the description.", true)
                 .save(pages);
 
         Builder.create()
-                .setTemplate(QuestBookScreen.QuestBookScreenType.PROCESS)
+                .setTemplate(QuestBookScreenType.PROCESS)
                 .defaultTemplateSpacing()
                 .setTemplateShowFuel(true)
                 .setPageMessage("§oSecret Message!§r")
-                .addImage(new QuestBookScreen.QuestBookImage(ModItems.RAW_JADE, false))
-                .addImage(QuestBookScreen.QuestBookImage.PROCESS_IMAGE)
-                .addImage(new QuestBookScreen.QuestBookImage(ModItems.JADE, false))
-                .addImage(QuestBookScreen.QuestBookImage.ADOBE_LIT_PROCESS_IMAGE)
+                .addImage(new QuestBookImage(ModItems.RAW_JADE, false))
+                .addImage(QuestBookImage.PROCESS_IMAGE)
+                .addImage(new QuestBookImage(ModItems.JADE, false))
+                .addImage(QuestBookImage.ADOBE_LIT_PROCESS_IMAGE)
                 .setText("Hello World!", false)
                 .save(pages);
     }
@@ -90,7 +100,7 @@ public class QuestBookPageProvider implements DataProvider {
 
     public static class Builder{
 
-        JsonObject json = new JsonObject();
+        private JsonObject json = new JsonObject();
 
         static Builder create(){
             return new Builder();
@@ -120,7 +130,7 @@ public class QuestBookPageProvider implements DataProvider {
             return this;
         }
 
-        Builder setTemplate(QuestBookScreen.QuestBookScreenType type){
+        Builder setTemplate(QuestBookScreenType type){
             JsonObject templateObject = new JsonObject();
             templateObject.addProperty(KEY_NAME, type.getDisplayName());
             json.add(KEY_TEMPLATE, templateObject);
@@ -135,9 +145,19 @@ public class QuestBookPageProvider implements DataProvider {
             return this;
         }
 
+
         Builder defaultTemplateSpacing(){
             return setTemplateSpacing(20);
         }
+
+        Builder setTemplateChapterTitle(String chapterTitle){
+            JsonObject templateObject = json.getAsJsonObject(KEY_TEMPLATE);
+            if (templateObject != null){
+                templateObject.addProperty(KEY_CHAPTER_TITLE, chapterTitle);
+            }
+            return this;
+        }
+
         Builder setTemplateShowFuel(boolean showFuel){
             JsonObject templateObject = json.getAsJsonObject(KEY_TEMPLATE);
             if (templateObject != null){
@@ -171,7 +191,7 @@ public class QuestBookPageProvider implements DataProvider {
             objectsArray.add(entryObject);
             return this;
         }
-        Builder addImage(QuestBookScreen.QuestBookImage image){
+        Builder addImage(QuestBookImage image){
             JsonObject imageObject = new JsonObject();
             if (image.hasShortHand())
                 imageObject.addProperty(KEY_IMAGE, image.shorthand());
@@ -179,7 +199,7 @@ public class QuestBookPageProvider implements DataProvider {
                 imageObject.addProperty(KEY_IMAGE, image.resourceLocation().getNamespace() + ":" + image.resourceLocation().getPath());
             if (image.showBorder())
                 imageObject.addProperty(KEY_SHOW_BORDER, true);
-            if (!image.type().equals(QuestBookScreen.QuestBookImage.Type.ITEM))
+            if (!image.type().equals(QuestBookImage.Type.ITEM))
                 imageObject.addProperty(KEY_TYPE, image.type().toString().toLowerCase());
 
             JsonArray imagesArray;
@@ -193,19 +213,23 @@ public class QuestBookPageProvider implements DataProvider {
             return this;
         }
 
-        Builder setImages(QuestBookScreen.QuestBookImage ... images){
-            for (QuestBookScreen.QuestBookImage i : images){
+        Builder setImages(QuestBookImage ... images){
+            for (QuestBookImage i : images){
               addImage(i);
             }
             return this;
         }
 
-        Builder setText(String text, boolean showTitle){
+        Builder setText(String text, boolean showTitle, boolean alignCenter){
             JsonObject textObject = new JsonObject();
             textObject.addProperty(KEY_CONTENT, text);
             textObject.addProperty(KEY_SHOW_TITLE, showTitle);
+            textObject.addProperty(KEY_ALIGN_CENTER, alignCenter);
             json.add(KEY_TEXT, textObject);
             return this;
+        }
+        Builder setText(String text, boolean showTitle){
+            return setText(text, showTitle, false);
         }
 
         void save(List<JsonObject> pages){

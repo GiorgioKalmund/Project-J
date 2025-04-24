@@ -13,7 +13,6 @@ import net.minecraft.network.chat.FormattedText;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.GsonHelper;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 
@@ -36,6 +35,7 @@ public class QuestBookParser {
     public static final String KEY_NAME = "name";
     public static final String KEY_SHOW_FUEL = "show-fuel";
     public static final String KEY_SPACING = "spacing";
+    public static final String KEY_CHAPTER_TITLE = "chapter-title";
     public static final String KEY_OBJECTS = "objects";
     public static final String KEY_ITEM = "item";
     public static final String KEY_DESCRIPTION = "description";
@@ -47,6 +47,7 @@ public class QuestBookParser {
     public static final String KEY_TEXT = "text";
     public static final String KEY_CONTENT = "content";
     public static final String KEY_SHOW_TITLE = "show-title";
+    public static final String KEY_ALIGN_CENTER = "align-center";
 
     public static JsonObject getJsonPage(int pageNumber, ResourceManager resourceManager){
         ResourceLocation resourceLocation = ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "quest_book/pages/page_" + pageNumber +".json");
@@ -86,6 +87,7 @@ public class QuestBookParser {
         QuestBookParserResult result = new QuestBookParserResult();
         List<Boolean> templateBooleans = new ArrayList<>();
         List<Integer> templateIntegers = new ArrayList<>();
+        List<String> templateStrings = new ArrayList<>();
         List<Object> templateObjects = new ArrayList<>();
 
         // If page could not be loaded from JSON return error page
@@ -131,6 +133,8 @@ public class QuestBookParser {
                     templateBooleans.add(template.get(KEY_SHOW_FUEL).getAsBoolean());
                 if (template.has(KEY_SPACING) && stringIsAnyOfTypes(templateName, PROCESS, DOUBLE_ITEM_SHOWCASE, CONTENTS_PAGE))
                     templateIntegers.add(template.get(KEY_SPACING).getAsInt());
+                if (template.has(KEY_CHAPTER_TITLE) && stringIsAnyOfTypes(templateName, CHAPTER_COVER))
+                    templateStrings.add(template.get(KEY_CHAPTER_TITLE).getAsString());
                 if (template.has(KEY_OBJECTS)){
                     JsonArray objectsArray = template.get(KEY_OBJECTS).getAsJsonArray();
                     System.out.println(objectsArray.size() + " OBJECTS");
@@ -166,16 +170,24 @@ public class QuestBookParser {
         if (json.has(KEY_IMAGES)){
             JsonArray images = json.get(KEY_IMAGES).getAsJsonArray();
             for (int index = 0; index < images.size(); index++){
+                System.out.println("Found " + images.size() + images);
                 JsonObject image = images.get(index).getAsJsonObject();
                 QuestBookImage bookImage = QuestBookImage.empty();
                 if (image.has(KEY_IMAGE)){
                     String value = image.get(KEY_IMAGE).getAsString();
                     if (value.startsWith(":")){
+                        System.out.println("Shortcut detected");
+                        // TODO: Best to probably solve it using a map
                         bookImage = switch (value){
                             case ":process" -> QuestBookImage.PROCESS_IMAGE;
                             case ":lit_process" -> QuestBookImage.LIT_PROCESS_IMAGE;
                             case ":adobe_lit_process" -> QuestBookImage.ADOBE_LIT_PROCESS_IMAGE;
-                            default -> QuestBookImage.empty();
+                            case ":chapter_1" -> QuestBookImage.CHAPTER_1_IMAGE;
+                            case ":chapter_2" -> QuestBookImage.CHAPTER_2_IMAGE;
+                            default -> {
+                                System.err.println(value + " has no matching static image!");
+                                yield QuestBookImage.empty().resourceLocation(ResourceLocation.tryParse(value));
+                            }
                         };
                     } else {
                         bookImage.resourceLocation(ResourceLocation.tryParse(value));
@@ -216,6 +228,7 @@ public class QuestBookParser {
         // Page Text
         FormattedText formattedText = FormattedText.EMPTY;
         boolean showTitle = false;
+        boolean alignCenter;
         if (json.has(KEY_TEXT)){
             JsonObject text = json.get(KEY_TEXT).getAsJsonObject();
             if (text.has(KEY_CONTENT)){
@@ -224,17 +237,23 @@ public class QuestBookParser {
                 if (text.has(KEY_SHOW_TITLE)){
                     showTitle = text.get(KEY_SHOW_TITLE).getAsBoolean();
                 }
+
+                if (text.has(KEY_ALIGN_CENTER)){
+                    alignCenter = text.get(KEY_ALIGN_CENTER).getAsBoolean();
+                    templateBooleans.add(alignCenter);
+                }
             }
         }
 
         result.templateBooleans = templateBooleans;
         result.templateIntegers = templateIntegers;
+        result.templateStrings = templateStrings;
         result.templateObjects = templateObjects;
         result.bookPage = bookPage;
         result.showPageMsg = showPageMsg;
         result.templateType = QuestBookScreen.QuestBookScreenType.fromDisplayName(templateName);
         result.formattedText = formattedText;
-        result.hasTitle = showTitle;
+        result.showTitle = showTitle;
 
         return result;
     }
@@ -247,11 +266,12 @@ public class QuestBookParser {
         public boolean showPageMsg = true;
         public boolean defaultPageMsg = false;
         FormattedText formattedText = FormattedText.EMPTY;
-        public boolean hasTitle = false;
+        public boolean showTitle = false;
         public QuestBookScreen.QuestBookScreenType templateType = null;
 
         List<Boolean> templateBooleans = new ArrayList<>();
         List<Integer> templateIntegers = new ArrayList<>();
+        List<String> templateStrings = new ArrayList<>();
         List<Object> templateObjects = new ArrayList<>();
 
         @Override
@@ -263,10 +283,11 @@ public class QuestBookParser {
                     ", showPageMsg=" + showPageMsg +
                     ", defaultPageMsg=" + defaultPageMsg +
                     ", formattedText=" + formattedText +
-                    ", hasTitle=" + hasTitle +
+                    ", showTitle=" + showTitle +
                     ", templateType=" + templateType +
                     ", templateBooleans=" + templateBooleans +
                     ", templateIntegers=" + templateIntegers +
+                    ", templateStrings=" + templateStrings +
                     ", templateObjects=" + templateObjects +
                     '}';
         }

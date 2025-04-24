@@ -6,31 +6,29 @@ import com.mgmstudios.projectj.screen.custom.quest_book.components.TextComponent
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
-import org.joml.Vector2d;
 import org.joml.Vector2i;
-
-import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.IMAGE_WIDTH;
 
 public class TextScreen extends QuestBookTemplate{
 
-    boolean hasTitle;
+    boolean showTitle;
 
-    int offsetX, offsetY = 0;
+    int offsetX, offsetY;
 
     boolean showPageMsg;
+    private final boolean alignCenter;
 
-    public TextScreen(Screen screen, BookPage page, boolean hasTitle, boolean showPageMsg) {
-        super(screen, page);
-        this.hasTitle = hasTitle;
-        this.showPageMsg = showPageMsg;
-    }
 
-    public TextScreen(Screen screen, BookPage page, boolean hasTitle, boolean showPageMsg, int offsetX, int offsetY) {
+    public TextScreen(Screen screen, BookPage page, boolean showTitle, boolean showPageMsg, boolean alignCenter, int offsetX, int offsetY) {
         super(screen, page);
-        this.hasTitle = hasTitle;
+        this.showTitle = showTitle;
         this.offsetX = offsetX;
         this.offsetY = offsetY;
         this.showPageMsg = showPageMsg;
+        this.alignCenter = alignCenter;
+    }
+
+    public TextScreen(Screen screen, BookPage page, boolean showTitle, boolean showPageMsg, boolean alignCenter) {
+        this(screen, page, showTitle, showPageMsg, alignCenter, 0, 0);
     }
 
     @Override
@@ -45,8 +43,9 @@ public class TextScreen extends QuestBookTemplate{
         }
 
         TextComponent.TextBuilder()
-                .hasTitle(hasTitle)
-                .setOffset(offsetX, offsetY)
+                .alignCenter(alignCenter)
+                .showTitle(showTitle)
+                .setAdditionalOffset(offsetX, offsetY)
                 .setTextComponents(page.components())
                 .render(guiGraphics, screen, page);
     }

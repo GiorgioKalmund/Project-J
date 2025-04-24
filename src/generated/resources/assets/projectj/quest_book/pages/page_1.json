@@ -8,19 +8,35 @@
     "name": "contents-page",
     "objects": [
       {
-        "connected-page": 0,
-        "description": "0",
+        "connected-page": 2,
+        "description": "Basics",
         "item": "projectj:jade"
       },
       {
         "connected-page": 1,
         "description": "1",
-        "item": "minecraft:pumpkin"
+        "item": "minecraft:apple"
+      },
+      {
+        "connected-page": 1,
+        "description": "1",
+        "item": "minecraft:wheat"
+      },
+      {
+        "connected-page": 1,
+        "description": "1",
+        "item": "minecraft:acacia_boat"
+      },
+      {
+        "connected-page": 10,
+        "description": "Voodoo",
+        "item": "projectj:voodoo_catcher"
       }
     ],
     "spacing": 30
   },
   "text": {
+    "align-center": false,
     "content": "§lTable of Contents§r",
     "show-title": true
   }

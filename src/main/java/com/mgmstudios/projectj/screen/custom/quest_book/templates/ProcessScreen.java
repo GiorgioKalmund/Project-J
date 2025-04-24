@@ -12,19 +12,19 @@ public class ProcessScreen extends TextScreen {
     int spacing = 0;
     boolean showFuel = false;
 
-    public ProcessScreen(Screen screen, BookPage page, boolean hasTitle, boolean showPageMsg, int spacing, boolean showFuel) {
-        super(screen, page, hasTitle, showPageMsg, 0, (showFuel ? QUEST_IMAGE_HEIGHT : 0) + QUEST_IMAGE_HEIGHT + screen.getFont().lineHeight);
+    public ProcessScreen(Screen screen, BookPage page, boolean showTitle, boolean showPageMsg, int spacing, boolean showFuel) {
+        super(screen, page, showTitle, showPageMsg, false, 0, (showFuel ? QUEST_IMAGE_HEIGHT : 0) + QUEST_IMAGE_HEIGHT + screen.getFont().lineHeight);
         this.spacing = spacing;
         this.showFuel = showFuel;
     }
 
-    public ProcessScreen(Screen screen, BookPage page, boolean hasTitle, boolean showPageMsg, int spacing) {
-        super(screen, page, hasTitle, showPageMsg, 0, QUEST_IMAGE_HEIGHT + screen.getFont().lineHeight);
+    public ProcessScreen(Screen screen, BookPage page, boolean showTitle, boolean showPageMsg, int spacing) {
+        super(screen, page, showTitle, showPageMsg, false, 0, QUEST_IMAGE_HEIGHT + screen.getFont().lineHeight);
         this.spacing = spacing;
     }
 
     public ProcessScreen(Screen screen, BookPage page) {
-        super(screen, page, false, true);
+        super(screen, page, false, true, false);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class ProcessScreen extends TextScreen {
 
         ImageComponent.ImageBuilder()
                 .setImage(page.image())
-                .setOffset(-spacing, 0)
+                .setAdditionalOffset(-spacing, 0)
                 .render(guiGraphics, screen, page);
 
         ImageComponent.ImageBuilder()
@@ -44,14 +44,14 @@ public class ProcessScreen extends TextScreen {
 
         ImageComponent.ImageBuilder()
                 .setImage(page.image(2))
-                .setOffset(spacing + 8, 0)
+                .setAdditionalOffset(spacing + 8, 0)
                 .render(guiGraphics, screen, page);
 
         if (showFuel){
             ImageComponent.ImageBuilder()
                     .setImage(page.image(3))
                     .size(13, 13)
-                    .setOffset(3, QUEST_IMAGE_HEIGHT + 2)
+                    .setAdditionalOffset(3, QUEST_IMAGE_HEIGHT + 2)
                     .render(guiGraphics, screen, page);
         }
     }

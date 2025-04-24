@@ -1,9 +1,7 @@
 package com.mgmstudios.projectj.screen.custom.quest_book;
 
 import com.mgmstudios.projectj.ProjectJ;
-import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.screen.custom.quest_book.templates.*;
-import com.mgmstudios.projectj.screen.custom.quest_book.templates.ContentsPageScreen.ContentsPageEntry.*;
 import com.mgmstudios.projectj.util.ItemLookup;
 import net.minecraft.client.GameNarrator;
 import net.minecraft.client.gui.Font;
@@ -97,10 +95,11 @@ public class QuestBookScreen extends Screen {
 
             FormattedText formattedText = bookParserResult.formattedText;
             boolean showPageMsg = bookParserResult.showPageMsg;
-            boolean hasTitle = bookParserResult.hasTitle;
+            boolean showTitle = bookParserResult.showTitle;
             BookPage bookPage = bookParserResult.bookPage;
             List<Boolean> templateBooleans = bookParserResult.templateBooleans;
             List<Integer> templateIntegers = bookParserResult.templateIntegers;
+            List<String> templateStrings = bookParserResult.templateStrings;
 
             if (bookParserResult.isFalsy()){
                 System.err.println("Falsy QuestBookParserResult for page: " + currentPage);
@@ -116,7 +115,6 @@ public class QuestBookScreen extends Screen {
             this.cachedPageComponents = this.font.split(formattedText, TEXT_WIDTH);
             bookPage.setComponents(cachedPageComponents);
 
-            // TODO: Dynamically load (+ create)
             List<ContentsPageScreen.ContentsPageEntry> contentsPageEntries = new ArrayList<>();
             for (Object object : bookParserResult.templateObjects){
                 if (object instanceof ContentsPageScreen.ContentsPageEntry entry)
@@ -124,16 +122,17 @@ public class QuestBookScreen extends Screen {
             }
 
             if (bookParserResult.templateType == null)
-                screenToShow = new TextScreen(this, bookPage, hasTitle, showPageMsg);
+                screenToShow = new TextScreen(this, bookPage, showTitle, showPageMsg, false);
             else{
                 screenToShow = switch(bookParserResult.templateType){
                     case EMPTY -> new EmptyScreen(this, showPageMsg);
-                    case COVER -> new CoverScreen(this, bookPage, hasTitle, showPageMsg);
-                    case TEXT -> new TextScreen(this, bookPage, hasTitle, showPageMsg);
-                    case PROCESS -> new ProcessScreen(this, bookPage, hasTitle, showPageMsg, getOrDefault(templateIntegers, 0, 0), getOrDefault(templateBooleans, 0, false));
-                    case ITEM_SHOWCASE -> new ItemShowcaseScreen(this, bookPage, hasTitle, showPageMsg);
-                    case DOUBLE_ITEM_SHOWCASE -> new DoubleItemShowcaseScreen(this, bookPage, hasTitle, showPageMsg, getOrDefault(templateIntegers, 0, 0));
+                    case COVER -> new CoverScreen(this, bookPage, showPageMsg);
+                    case TEXT -> new TextScreen(this, bookPage, showTitle, showPageMsg, getOrDefault(templateBooleans, 0, false));
+                    case PROCESS -> new ProcessScreen(this, bookPage, showTitle, showPageMsg, getOrDefault(templateIntegers, 0, 0), getOrDefault(templateBooleans, 0, false));
+                    case ITEM_SHOWCASE -> new ItemShowcaseScreen(this, bookPage, showTitle, showPageMsg);
+                    case DOUBLE_ITEM_SHOWCASE -> new DoubleItemShowcaseScreen(this, bookPage, showTitle, showPageMsg, getOrDefault(templateIntegers, 0, 0));
                     case CONTENTS_PAGE -> new ContentsPageScreen(this, bookPage, showPageMsg, getOrDefault(templateIntegers, 0, 0), contentsPageEntries);
+                    case CHAPTER_COVER -> new ChapterCoverScreen(this, bookPage, getOrDefault(templateStrings, 0, ""), showPageMsg, getOrDefault(templateBooleans, 0, false));
                 };
             }
         }
@@ -163,7 +162,7 @@ public class QuestBookScreen extends Screen {
 
     public void renderBackground(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         this.renderTransparentBackground(guiGraphics);
-        guiGraphics.blit(RenderType::guiTextured, screenToShow != null && screenToShow instanceof CoverScreen ? CoverScreen.COVER_PAGE_LOCATION :  BOOK_LOCATION, (this.width - 192) / 2, 2, 0.0F, 0.0F, IMAGE_WIDTH, IMAGE_HEIGHT, BACKGROUND_TEXTURE_WIDTH, BACKGROUND_TEXTURE_HEIGHT);
+        guiGraphics.blit(RenderType::guiTextured, screenToShow.getBackdropImage(), (this.width - 192) / 2, 2, 0.0F, 0.0F, IMAGE_WIDTH, IMAGE_HEIGHT, BACKGROUND_TEXTURE_WIDTH, BACKGROUND_TEXTURE_HEIGHT);
     }
 
     public void setBookAccess(BookAccess bookAccess) {
@@ -333,7 +332,7 @@ public class QuestBookScreen extends Screen {
 
     public enum QuestBookScreenType {
 
-        EMPTY, COVER, TEXT, PROCESS, DOUBLE_ITEM_SHOWCASE("double-item-showcase"), ITEM_SHOWCASE("item-showcase"), CONTENTS_PAGE("contents-page");
+        EMPTY, COVER, TEXT, PROCESS, DOUBLE_ITEM_SHOWCASE("double-item-showcase"), ITEM_SHOWCASE("item-showcase"), CONTENTS_PAGE("contents-page"), CHAPTER_COVER("chapter-cover");
 
         private final String displayName;
 
@@ -401,6 +400,7 @@ public class QuestBookScreen extends Screen {
             this(ItemLookup.getResourceLocation(itemLike) ,showBorder, type);
         }
         protected QuestBookImage(ResourceLocation resourceLocation, boolean showBorder, Type type, String shorthand){
+            System.out.println("LOC: " + resourceLocation);
             this.resourceLocation = resourceLocation;
             this.showBorder = showBorder;
             this.type = type;
@@ -485,14 +485,19 @@ public class QuestBookScreen extends Screen {
             ITEM, REGULAR, SPRITE
         }
 
+        public static ResourceLocation questBookStoredImage(String name, String subFolder){
+            return ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "textures/gui/quest_book/images/" + subFolder + name + ".png");
+        }
+
         public static ResourceLocation questBookStoredImage(String name){
-            return ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "textures/gui/quest_book/images/" + name + ".png");
+           return questBookStoredImage(name, "");
         }
 
         public static QuestBookImage PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("process"), false, Type.REGULAR, ":process");
         public static QuestBookImage ADOBE_LIT_PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("adobe_lit_process"), false, Type.REGULAR, ":adobe_lit_process");
         public static QuestBookImage LIT_PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("lit_process"), false, Type.REGULAR, ":lit_process");
-
+        public static QuestBookImage CHAPTER_1_IMAGE = new QuestBookImage(questBookStoredImage("chapter_1", "chapters/"), false, Type.REGULAR, ":chapter_1");
+        public static QuestBookImage CHAPTER_2_IMAGE = new QuestBookImage(questBookStoredImage("chapter_2", "chapters/"), false, Type.REGULAR, ":chapter_2");
         public static QuestBookImage EMPTY = new QuestBookImage();
 
         @Override

@@ -12,19 +12,19 @@ public class DoubleItemShowcaseScreen extends TextScreen {
     int spacing = 0;
     boolean flipOrdering = false;
 
-    public DoubleItemShowcaseScreen(Screen screen, BookPage page, boolean hasTitle, boolean showPageMsg, int spacing, boolean flipOrdering) {
-        super(screen, page, hasTitle, showPageMsg, 0, QUEST_IMAGE_HEIGHT + screen.getFont().lineHeight);
+    public DoubleItemShowcaseScreen(Screen screen, BookPage page, boolean showTitle, boolean showPageMsg, int spacing, boolean flipOrdering) {
+        super(screen, page, showTitle, showPageMsg, false, 0, QUEST_IMAGE_HEIGHT + screen.getFont().lineHeight);
         this.spacing = spacing;
         this.flipOrdering = flipOrdering;
     }
 
-    public DoubleItemShowcaseScreen(Screen screen, BookPage page, boolean hasTitle, boolean showPageMsg, int spacing) {
-        super(screen, page, hasTitle, showPageMsg, 0, QUEST_IMAGE_HEIGHT + screen.getFont().lineHeight);
+    public DoubleItemShowcaseScreen(Screen screen, BookPage page, boolean showTitle, boolean showPageMsg, int spacing) {
+        super(screen, page, showTitle, showPageMsg, false, 0, QUEST_IMAGE_HEIGHT + screen.getFont().lineHeight);
         this.spacing = spacing;
     }
 
     public DoubleItemShowcaseScreen(Screen screen, BookPage page) {
-        super(screen, page, false, true);
+        super(screen, page, false, true, false);
     }
 
     @Override
@@ -34,13 +34,13 @@ public class DoubleItemShowcaseScreen extends TextScreen {
         ImageComponent.ImageBuilder()
                 .setImage(page.image())
                 .setBorderScale(1.3F)
-                .setOffset(flipOrdering ? spacing : -spacing, 0)
+                .setAdditionalOffset(flipOrdering ? spacing : -spacing, 0)
                 .render(guiGraphics, screen, page);
 
         ImageComponent.ImageBuilder()
                 .setImage(page.image(1).showBorder(page.image().showBorder()))
                 .setBorderScale(1.3F)
-                .setOffset(flipOrdering ? -spacing : spacing, 0)
+                .setAdditionalOffset(flipOrdering ? -spacing : spacing, 0)
                 .render(guiGraphics, screen, page);
     }
 }

@@ -52,8 +52,8 @@ public class ImageComponent extends AbstractComponent{
     }
 
     @Override
-    public ImageComponent setOffset(int x, int y) {
-        super.setOffset(x, y);
+    public ImageComponent setAdditionalOffset(int x, int y) {
+        super.setAdditionalOffset(x, y);
         return this;
     }
 

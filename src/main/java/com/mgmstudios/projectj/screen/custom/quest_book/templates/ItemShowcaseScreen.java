@@ -11,12 +11,12 @@ import static com.mgmstudios.projectj.util.ItemLookup.getStack;
 public class ItemShowcaseScreen extends TextScreen {
 
 
-    public ItemShowcaseScreen(Screen screen, BookPage page, boolean hasTitle, boolean showPageMsg) {
-        super(screen, page, hasTitle, showPageMsg, 0, QUEST_IMAGE_HEIGHT + screen.getFont().lineHeight);
+    public ItemShowcaseScreen(Screen screen, BookPage page, boolean showTitle, boolean showPageMsg) {
+        super(screen, page, showTitle, showPageMsg, false, 0, QUEST_IMAGE_HEIGHT + screen.getFont().lineHeight);
     }
 
     public ItemShowcaseScreen(Screen screen, BookPage page) {
-        super(screen, page, false, true);
+        super(screen, page, false, true, false);
     }
 
     @Override

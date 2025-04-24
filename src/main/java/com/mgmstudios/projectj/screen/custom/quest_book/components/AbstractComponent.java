@@ -1,15 +1,11 @@
 package com.mgmstudios.projectj.screen.custom.quest_book.components;
 
 import com.mgmstudios.projectj.screen.custom.quest_book.BookPage;
-import com.mgmstudios.projectj.screen.custom.quest_book.templates.QuestBookTemplate;
-import com.mojang.blaze3d.buffers.GpuBuffer;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
-import org.joml.Vector2d;
 import org.joml.Vector2i;
 
-import java.util.function.Function;
-
+import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.IMAGE_HEIGHT;
 import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.IMAGE_WIDTH;
 
 public abstract class AbstractComponent {
@@ -34,7 +30,7 @@ public abstract class AbstractComponent {
         return y;
     }
 
-    public AbstractComponent setOffset(int x, int y){
+    public AbstractComponent setAdditionalOffset(int x, int y){
         setX(x);
         setY(y);
         return this;
@@ -60,6 +56,11 @@ public abstract class AbstractComponent {
         protected static int imageWidthCenter(Screen screen){
             int width = screen.width;
             return (width - IMAGE_WIDTH) / 2;
+        }
+
+        public static int imageHeightCenter(Screen screen){
+            int height = screen.height;
+            return (height - IMAGE_HEIGHT) / 2;
         }
     }
 }

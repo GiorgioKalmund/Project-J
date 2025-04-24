@@ -19,27 +19,22 @@ import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.*
 
 public class ContentsPageScreen extends TextScreen {
 
-    private final int Y_OFFSET;
 
     public ContentsPageScreen(QuestBookScreen screen, BookPage page, boolean showPageMsg, int spacing, List<ContentsPageEntry> entries) {
-        super(screen, page, showPageMsg, true);
-        this.screen = screen;
-        this.showPageMsg = showPageMsg;
-        System.out.println("PAGE LOADED WITH SPACING: " + spacing);
+        super(screen, page, showPageMsg,false, true);
 
-        Y_OFFSET = screen.getFont().lineHeight + 4;
+        int Y_OFFSET = screen.getFont().lineHeight + 4;
 
-        // Maybe fixed position list? Items are currently aligned differently depending on screen size (fullscreen vs small)
-        int nextXPos = AbstractComponent.ComponentPositionUtils.textStartX(screen);
+        // TODO: Maybe fixed position list? Items are currently aligned differently depending on screen size (fullscreen vs small)
+        int nextXPos = AbstractComponent.ComponentPositionUtils.textStartX(screen) + 10;
         int nextYPos = PAGE_TEXT_Y_OFFSET + Y_OFFSET;
         for (ContentsPageEntry e : entries){
             JumpToButton button = new JumpToButton((p) -> {
-                System.out.println("Going to page: " + e.connectedPage);
                 screen.setPage(e.connectedPage);
             }, e.displayItem, e.displayText, nextXPos, nextYPos, true, screen);
             nextXPos += spacing;
             if (nextXPos >= BACKGROUND_TEXTURE_WIDTH){
-                nextXPos = AbstractComponent.ComponentPositionUtils.textStartX(screen);
+                nextXPos = AbstractComponent.ComponentPositionUtils.textStartX(screen) + 10;
                 nextYPos += spacing;
             }
             screen.addTemporaryWidget(button);

@@ -1,15 +1,18 @@
 {
   "images": [
     {
-      "image": "projectj:little_king_spawn_egg",
-      "show-border": true
+      "type": "regular",
+      "image": ":chapter_1"
     }
   ],
+  "show-page-msg": false,
   "template": {
-    "name": "item-showcase"
+    "chapter-title": "§f§o§lThe Basics§r",
+    "name": "chapter-cover"
   },
   "text": {
-    "content": "§nRandom Title§r\nThis is the description.",
-    "show-title": true
+    "align-center": true,
+    "content": "§f§oWelcome to Project J. Let's cover some of the mod's basics items and elements!§r",
+    "show-title": false
   }
 }

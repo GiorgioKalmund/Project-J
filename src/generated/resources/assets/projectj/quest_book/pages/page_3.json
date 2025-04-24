@@ -1,30 +1,16 @@
 {
   "images": [
     {
-      "image": "projectj:raw_jade"
-    },
-    {
-      "type": "regular",
-      "image": ":process"
-    },
-    {
-      "image": "projectj:jade"
-    },
-    {
-      "type": "regular",
-      "image": ":adobe_lit_process"
+      "image": "projectj:little_king_spawn_egg",
+      "show-border": true
     }
   ],
-  "page-msg": {
-    "message": "§oSecret Message!§r"
-  },
   "template": {
-    "name": "process",
-    "show-fuel": true,
-    "spacing": 20
+    "name": "item-showcase"
   },
   "text": {
-    "content": "Hello World!",
-    "show-title": false
+    "align-center": false,
+    "content": "§nRandom Title§r\nThis is the description.",
+    "show-title": true
   }
 }
