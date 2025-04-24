@@ -1,9 +1,9 @@
-// 1.21.4	2025-04-10T15:55:30.7767024	Tags for minecraft:block mod id projectj
+// 1.21.4	2025-04-15T16:54:55.1454797	Tags for minecraft:block mod id projectj
 6704f8a4248350a0107217e7e73ae1b90f13416a data/minecraft/tags/block/dirt.json
 177d72f6b3e93c23cbac2c6995c3e57d46b4e250 data/minecraft/tags/block/fence_gates.json
 a5e9f8e7f64233b035dbc5207bc470c671fd9cba data/minecraft/tags/block/leaves.json
 8189a72a7e5064d8c3c6b32896484fa360664989 data/minecraft/tags/block/logs_that_burn.json
-ca29f6c18ff304de67bbcb52a449c959f53d7550 data/minecraft/tags/block/mineable/pickaxe.json
+3f23372e95d0b314b89d156142b73e5df81841b9 data/minecraft/tags/block/mineable/pickaxe.json
 7d81b9d8fc55be2bfe3ad3e39442aac871beea0c data/minecraft/tags/block/mineable/shovel.json
 6bd45ca4a2926b2e214bd097d11be7521f985079 data/minecraft/tags/block/needs_iron_tool.json
 73cb11268b0118fb95f099e7b7a3f5531ca1ee90 data/minecraft/tags/block/overworld_carver_replaceables.json

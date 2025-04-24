@@ -1,11 +1,23 @@
-// Made with Blockbench 4.12.4
+package com.mgmstudios.projectj.entity.client.quetzal;// Made with Blockbench 4.12.4
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
 
 
-public class quetzal<T extends Entity> extends EntityModel<T> {
+import com.mgmstudios.projectj.ProjectJ;
+import com.mgmstudios.projectj.entity.client.little_man.LittleManAnimations;
+import net.minecraft.client.animation.definitions.BatAnimation;
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.renderer.entity.state.BatRenderState;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.AnimationState;
+
+public class QuetzalModel extends EntityModel<QuetzalRenderState> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "quetzal"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "quetzal"), "main");
 	private final ModelPart Head;
 	private final ModelPart LeftWing;
 	private final ModelPart Body;
@@ -14,7 +26,8 @@ public class quetzal<T extends Entity> extends EntityModel<T> {
 	private final ModelPart RightWing;
 	private final ModelPart TailFeathers;
 
-	public quetzal(ModelPart root) {
+	public QuetzalModel(ModelPart root) {
+		super(root);
 		this.Head = root.getChild("Head");
 		this.LeftWing = root.getChild("LeftWing");
 		this.Body = root.getChild("Body");
@@ -69,18 +82,13 @@ public class quetzal<T extends Entity> extends EntityModel<T> {
 	}
 
 	@Override
-	public void setupAnim(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+	public void setupAnim(QuetzalRenderState renderState) {
+		super.setupAnim(renderState);
+		if (renderState.isResting) {
+			animate(renderState.restAnimationState, QuetzalAnimations.IDLE, renderState.ageInTicks);
+		}
 
+		this.animate(renderState.flyAnimationState, QuetzalAnimations.FLYING, renderState.ageInTicks, 1.0F);
 	}
 
-	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		Head.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		LeftWing.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		Body.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		LeftFoot.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		RightFoot.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		RightWing.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		TailFeathers.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-	}
 }

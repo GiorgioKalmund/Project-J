@@ -28,6 +28,9 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.SERPENTINITE_ROD, "Serpentinite Rod");
         addItem(ModItems.SUN_ARMOR_HELMET, "Sun Crown");
         addItem(ModItems.JADE_HELMET, "Jade Helmet");
+        addItem(ModItems.JADE_CHESTPLATE, "Jade Chestplate");
+        addItem(ModItems.JADE_LEGGINGS, "Jade Leggings");
+        addItem(ModItems.JADE_BOOTS, "Jade Boots");
         addItem(ModItems.SACRIFICIAL_DAGGER, "Sacrificial Dagger");
         addItem(ModItems.TROWEL, "Trowel");
         addItem(ModItems.MAGNIFYING_GLASS, "Magnifying Glass");
@@ -52,6 +55,9 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.CHILI_CON_CARNE, "Chili con Carne");
         addItem(ModItems.STONE_MANO, "Stone Mano");
         addItem(ModItems.QUETZAL_FEATHER, "Quetzal Feather");
+        addItem(ModItems.QUETZAL_SPAWN_EGG, "Quetzal Spawn Egg");
+        addItem(ModItems.QUETZAL_EGG, "Quetzal Egg");
+        addItem(ModItems.QUEST_BOOK, "Ancient Codex");
 
         // Blocks
         addBlock(ModBlocks.PACKED_ADOBE, "Packed Adobe");
@@ -146,6 +152,7 @@ public class ModLanguageProvider extends LanguageProvider {
         // Entity
         addEntity(ModEntities.LITTLE_MAN_ENTITY.get(), "Little Man");
         addEntity(ModEntities.LITTLE_KING_ENTITY.get(), "Little King");
+        addEntity(ModEntities.QUETZAL_ENTITY.get(), "Quetzal");
 
         // Advancements
         addAdvancementStoryTitle("root", "Project J");
@@ -170,39 +177,47 @@ public class ModLanguageProvider extends LanguageProvider {
         addAdvancementStoryDescription("sacrificial_dagger", "Craft a Sacrificial Dagger");
         addAdvancementStoryTitle("filled_crude_sacrificial_bowl", "Centeotl's Will");
         addAdvancementStoryDescription("filled_crude_sacrificial_bowl", "Perform a self sacrifice to obtain a Filled Crude Sacrificial Bowl");
+
+        // GUI
+        addGuiButton("close", "Close");
     }
 
-    protected void addTooltip(ItemLike itemLike, String value){
+    public void addTooltip(ItemLike itemLike, String value){
         addSuffixedTooltip(itemLike, value, "");
     }
 
-    protected void addTooltipShift(ItemLike itemLike, String value){
+    public void addTooltipShift(ItemLike itemLike, String value){
         addSuffixedTooltip(itemLike, value, ".shift_down");
     }
 
-    private void addSuffixedTooltip(ItemLike itemLike, String value, String suffix){
+    public void addSuffixedTooltip(ItemLike itemLike, String value, String suffix){
         add("tooltip." + ProjectJ.MOD_ID + "." + getName(itemLike)  + ".tooltip" + suffix, value);
     }
 
-    private void addEntity(EntityType<? extends Entity> entity, String name){
+    public void addEntity(EntityType<? extends Entity> entity, String name){
         add("entity." + ProjectJ.MOD_ID + "." + BuiltInRegistries.ENTITY_TYPE.getKey(entity).getPath(), name);
     }
 
-    private void addAdvancementTitle(String folder, String name, String title){
+    public void addAdvancementTitle(String folder, String name, String title){
         add("advancements.projectj."+folder+"."+name+".title", title);
     }
 
-    private void addAdvancementStoryTitle(String name, String title){
+    public void addAdvancementStoryTitle(String name, String title){
         add("advancements.projectj.story."+name+".title", title);
     }
 
-    private void addAdvancementDescription(String folder, String name, String description){
+    public void addAdvancementDescription(String folder, String name, String description){
         add("advancements.projectj."+folder+"."+name+".description", description);
     }
 
-    private void addAdvancementStoryDescription(String name, String description){
+    public void addAdvancementStoryDescription(String name, String description){
         add("advancements.projectj.story."+name+".description", description);
     }
+
+    public void addGuiButton(String name, String description){
+        add("gui.projectj." + name, description);
+    }
+
 
     String getName(ItemLike itemLike){
         return BuiltInRegistries.ITEM.getKey(itemLike.asItem()).getPath();

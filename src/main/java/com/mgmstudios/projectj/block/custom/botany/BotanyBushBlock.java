@@ -26,7 +26,7 @@ public class BotanyBushBlock extends SweetBerryBushBlock {
 
     private final Supplier<Item> itemSupplier;
 
-    public BotanyBushBlock(Supplier itemSupplier, Properties properties) {
+    public BotanyBushBlock(Supplier<Item> itemSupplier, Properties properties) {
         super(properties);
         this.itemSupplier = itemSupplier;
     }

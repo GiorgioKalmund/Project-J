@@ -3,6 +3,8 @@ package com.mgmstudios.projectj.item.custom;
 import com.mgmstudios.projectj.item.ModArmorMaterials;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
@@ -18,6 +20,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
+import net.minecraft.world.item.equipment.EquipmentAssets;
 import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -25,7 +28,7 @@ import net.minecraft.world.level.block.Block;
 public class OlmecHeadItem extends BlockItem {
     private final Holder<MobEffect> effect;
     public OlmecHeadItem(Block block, Properties properties, Holder<MobEffect> effect) {
-        super(block, humanoidProperties(ModArmorMaterials.OLMEC_HEAD_MATERIAL, properties, ArmorType.HELMET));
+        super(block, humanoidPropertiesWithCustomAsset(ModArmorMaterials.OLMEC_HEAD_MATERIAL, properties, ArmorType.HELMET));
         this.effect = effect;
     }
 
@@ -37,7 +40,15 @@ public class OlmecHeadItem extends BlockItem {
     }
 
     public static Item.Properties humanoidProperties(ArmorMaterial material, Item.Properties properties, ArmorType armorType) {
+        return properties.attributes(createAttributes(material, armorType)).enchantable(material.enchantmentValue()).component(DataComponents.EQUIPPABLE, Equippable.builder(armorType.getSlot()).setEquipSound(material.equipSound()).setAsset(material.assetId()).build());
+    }
+
+    public static Item.Properties humanoidPropertiesWithCustomAsset(ArmorMaterial material, Item.Properties properties, ArmorType armorType) {
         return properties.attributes(createAttributes(material, armorType)).enchantable(material.enchantmentValue()).component(DataComponents.EQUIPPABLE, Equippable.builder(armorType.getSlot()).setEquipSound(material.equipSound()).build());
+    }
+
+    public static Item.Properties humanoidProperties(ArmorMaterial material, Item.Properties properties, ArmorType armorType, ResourceLocation assetLocation) {
+        return properties.attributes(createAttributes(material, armorType)).enchantable(material.enchantmentValue()).component(DataComponents.EQUIPPABLE, Equippable.builder(armorType.getSlot()).setEquipSound(material.equipSound()).setAsset(ResourceKey.create(EquipmentAssets.ROOT_ID, assetLocation)).build());
     }
 
     private static ItemAttributeModifiers createAttributes(ArmorMaterial material, ArmorType armorType) {

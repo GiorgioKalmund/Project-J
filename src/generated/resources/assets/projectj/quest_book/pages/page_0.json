@@ -1,0 +1,9 @@
+{
+  "page-msg": {
+    "message": "§f§lNo. 1§r"
+  },
+  "show-page-msg": true,
+  "template": {
+    "name": "cover"
+  }
+}

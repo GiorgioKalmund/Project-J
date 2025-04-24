@@ -9,8 +9,10 @@ import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.item.custom.*;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.network.Filterable;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
@@ -23,11 +25,13 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
 import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidProperties;
+import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidPropertiesWithCustomAsset;
 import static net.minecraft.world.item.Items.registerItem;
 
 public class ModItems {
@@ -53,7 +57,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> TROWEL = register("trowel", TrowelItem::new);
 
-    public static final DeferredItem<Item> SUN_ARMOR_HELMET = registerCustomArmorItem("sun_crown", ModArmorMaterials.SUN_ARMOR_MATERIAL, ArmorType.HELMET, new Item.Properties());
+    public static final DeferredItem<Item> SUN_ARMOR_HELMET = registerCustomArmorItemAndAsset("sun_crown", ModArmorMaterials.SUN_ARMOR_MATERIAL, ArmorType.HELMET, new Item.Properties());
 
     public static final DeferredItem<Item> MAGNIFYING_GLASS = register("magnifying_glass", MagnifyingGlassItem::new, new Item.Properties().stacksTo(1));
 
@@ -63,7 +67,13 @@ public class ModItems {
 
     public static final DeferredItem<Item> FILLED_CRUDE_SACRIFICE_BOWL = register("filled_crude_sacrifice_bowl", () -> new Item.Properties().stacksTo(1).food(Foods.RABBIT_STEW).usingConvertsTo(ModItems.CRUDE_SACRIFICE_BOWL.get()));
 
-    public static final DeferredItem<Item> JADE_HELMET = registerCustomArmorItem("jade_helmet", ModArmorMaterials.JADE_MATERIAL, ArmorType.HELMET, new Item.Properties());
+    public static final DeferredItem<Item> JADE_HELMET = registerCustomArmorItem("jade_helmet", ModArmorMaterials.JADE_MATERIAL, ArmorType.HELMET);
+
+    public static final DeferredItem<Item> JADE_CHESTPLATE = registerCustomArmorItem("jade_chestplate", ModArmorMaterials.JADE_MATERIAL, ArmorType.CHESTPLATE);
+
+    public static final DeferredItem<Item> JADE_LEGGINGS = registerCustomArmorItem("jade_leggings", ModArmorMaterials.JADE_MATERIAL, ArmorType.LEGGINGS);
+
+    public static final DeferredItem<Item> JADE_BOOTS = registerCustomArmorItem("jade_boots", ModArmorMaterials.JADE_MATERIAL, ArmorType.BOOTS);
 
     public static final DeferredItem<Item> TELEPORTATION_KEY = register("teleportation_key", TeleportationKeyItem::new , new Item.Properties());
 
@@ -95,6 +105,11 @@ public class ModItems {
 
     public static final DeferredItem<Item> QUETZAL_FEATHER = register("quetzal_feather");
 
+    public static final DeferredItem<Item> QUETZAL_SPAWN_EGG = register("quetzal_spawn_egg", (properties) -> new SpawnEggItem(ModEntities.QUETZAL_ENTITY.get(), properties));
+
+    public static final DeferredItem<Item> QUETZAL_EGG = register("quetzal_egg", EggItem::new, new Item.Properties().stacksTo(16));
+    public static final DeferredItem<Item> QUEST_BOOK = register("quest_book", (properties) -> new QuestBook("Ancient Codex", "Project J Team", createQuestBookPages(10), properties.stacksTo(1).rarity(Rarity.UNCOMMON)));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
@@ -115,8 +130,18 @@ public class ModItems {
         return ITEMS.register(name, key -> new PaxelItem(3F, -2.4F, properties.setId(ResourceKey.create(Registries.ITEM, key))));
     }
 
-    public static DeferredItem<Item> registerCustomArmorItem(String name, ArmorMaterial material, ArmorType armorType, Item.Properties properties){
-        return ITEMS.register(name, key ->new Item(humanoidProperties(material, properties.setId(ResourceKey.create(Registries.ITEM, key)).durability(armorType.getDurability(material.durability())), armorType)));
+    public static DeferredItem<Item> registerCustomArmorItemAndAsset(String name, ArmorMaterial material, ArmorType armorType, Item.Properties properties){
+        return ITEMS.register(name, key ->new Item(humanoidPropertiesWithCustomAsset(material, properties.setId(ResourceKey.create(Registries.ITEM, key)).durability(armorType.getDurability(material.durability())), armorType)));
+    }
+    public static DeferredItem<Item> registerCustomArmorItemAndAsset(String name, ArmorMaterial material, ArmorType armorType){
+        return ITEMS.register(name, key ->new Item(humanoidPropertiesWithCustomAsset(material, new Item.Properties().setId(ResourceKey.create(Registries.ITEM, key)).durability(armorType.getDurability(material.durability())), armorType)));
+    }
+    public static DeferredItem<Item> registerCustomArmorItem(String name, ArmorMaterial material, ArmorType armorType){
+        return ITEMS.register(name, key ->new Item(humanoidProperties(material, new Item.Properties().setId(ResourceKey.create(Registries.ITEM, key)).durability(armorType.getDurability(material.durability())), armorType)));
+    }
+
+    public static DeferredItem<Item> registerCustomArmorItem(String name, ArmorMaterial material, ArmorType armorType, ResourceLocation assetLocation){
+        return ITEMS.register(name, key ->new Item(humanoidProperties(material, new Item.Properties().setId(ResourceKey.create(Registries.ITEM, key)).durability(armorType.getDurability(material.durability())), armorType)));
     }
 
     public static DeferredItem<Item> registerSwordItem(String name, ToolMaterial material, float attackDamage, float attackSpeed, Item.Properties properties){
@@ -157,5 +182,14 @@ public class ModItems {
 
     private static <T extends Item> DeferredItem<T> baseRegister(String name, ResourceKey<Item> key, Function<Item.Properties, T> builder, Supplier<Item.Properties> properties) {
         return ITEMS.register(name, () -> builder.apply(properties.get().setId(key)));
+    }
+
+
+    private static java.util.List<net.minecraft.server.network.Filterable<net.minecraft.network.chat.Component>> createQuestBookPages(int pageCount){
+        java.util.List<net.minecraft.server.network.Filterable<net.minecraft.network.chat.Component>> pages = new ArrayList<>();
+        for (int i = 0; i < pageCount; i++) {
+            pages.add(Filterable.passThrough(Component.translatable("quest_book.projectj.page" + i)));
+        }
+        return pages;
     }
 }

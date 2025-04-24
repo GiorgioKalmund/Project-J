@@ -23,6 +23,7 @@ public class ModCreativeModeTabs {
             .icon(() -> new ItemStack(ModItems.JADE.get()))
             //Add your items to the tab.
             .displayItems((params, output) -> {
+                output.accept(ModItems.QUEST_BOOK.get());
                 output.accept(ModBlocks.PACKED_ADOBE.get());
                 output.accept(ModBlocks.ADOBE_SAND.get());
                 output.accept(ModBlocks.ADOBE_GLASS.get());
@@ -74,6 +75,9 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.TROWEL.get());
                 output.accept(ModItems.SUN_ARMOR_HELMET.get());
                 output.accept(ModItems.JADE_HELMET.get());
+                output.accept(ModItems.JADE_CHESTPLATE.get());
+                output.accept(ModItems.JADE_LEGGINGS.get());
+                output.accept(ModItems.JADE_BOOTS.get());
                 output.accept(ModItems.MAGNIFYING_GLASS.get());
                 output.accept(ModItems.FIRE_STARTER.get());
                 output.accept(ModItems.CRUDE_SACRIFICE_BOWL.get());
@@ -98,6 +102,8 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.LITTLE_MAN_VOODOO.get());
                 output.accept(ModItems.LITTLE_KING_VOODOO.get());
                 output.accept(ModItems.QUETZAL_FEATHER.get());
+                output.accept(ModItems.QUETZAL_SPAWN_EGG.get());
+                output.accept(ModItems.QUETZAL_EGG.get());
 
                 ModBlockFamilies.getAllFamilies()
                         .forEach(family -> {

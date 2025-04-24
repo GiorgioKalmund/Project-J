@@ -1,0 +1,15 @@
+{
+  "template" : {
+    "name" : "item-showcase"
+  },
+  "images" : [
+    {
+      "image": "projectj:macuahuitl",
+      "show-border" : true
+    }
+  ],
+  "text" : {
+    "content": "§lMacuahuitl§r\nmagna sit labore tempor mollit velit ex officia pariatur quis dolore eiusmod.",
+    "show-title": true
+  }
+}

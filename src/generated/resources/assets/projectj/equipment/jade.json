@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "projectj:jade_classic"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "projectj:jade_classic"
+      }
+    ]
+  }
+}

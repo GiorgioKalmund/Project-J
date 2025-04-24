@@ -1,35 +1,31 @@
 {
   "criteria": {
-    "cobbled_serpentinite": {
-      "conditions": {
-        "items": [
-          {
-            "items": "projectj:cobbled_serpentinite"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
+    "tick": {
+      "trigger": "minecraft:tick"
     }
   },
   "display": {
-    "announce_to_chat": false,
     "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
     "description": {
       "translate": "advancements.projectj.story.root.description"
     },
     "icon": {
       "count": 1,
-      "id": "projectj:cobbled_serpentinite"
+      "id": "projectj:quest_book"
     },
-    "show_toast": false,
     "title": {
       "translate": "advancements.projectj.story.root.title"
     }
   },
   "requirements": [
     [
-      "cobbled_serpentinite"
+      "tick"
     ]
   ],
+  "rewards": {
+    "loot": [
+      "projectj:grant_quest_book"
+    ]
+  },
   "sends_telemetry_event": true
 }
