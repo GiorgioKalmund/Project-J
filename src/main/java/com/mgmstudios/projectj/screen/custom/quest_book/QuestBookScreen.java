@@ -39,7 +39,7 @@ public class QuestBookScreen extends Screen {
     public static final BookAccess EMPTY_ACCESS = new BookAccess(List.of());
     public static final ResourceLocation BOOK_LOCATION = ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "textures/gui/quest_book/quest_book.png");
     public static final ResourceLocation IMAGE_BORDER_LOCATION = ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "textures/gui/quest_book/image_border.png");
-    protected static final int TEXT_WIDTH = 114;
+    public static final int TEXT_WIDTH = 114;
     protected static final int TEXT_HEIGHT = 128;
     public static final int IMAGE_WIDTH = 192;
     public static final int IMAGE_HEIGHT = 192;
@@ -118,18 +118,10 @@ public class QuestBookScreen extends Screen {
 
             // TODO: Dynamically load (+ create)
             List<ContentsPageScreen.ContentsPageEntry> contentsPageEntries = new ArrayList<>();
-            contentsPageEntries.add(createWidget(ModItems.JADE_HELMET, 0));
-            contentsPageEntries.add(createWidget(ModItems.JADE_CHESTPLATE, 1));
-            contentsPageEntries.add(createWidget(ModItems.JADE_LEGGINGS, 2));
-            contentsPageEntries.add(createWidget(ModItems.JADE_BOOTS, 3));
-            contentsPageEntries.add(createWidget(ModItems.JADE_HELMET, 0));
-            contentsPageEntries.add(createWidget(ModItems.JADE_CHESTPLATE, 1));
-            contentsPageEntries.add(createWidget(ModItems.JADE_LEGGINGS, 2));
-            contentsPageEntries.add(createWidget(ModItems.JADE_BOOTS, 3));
-            contentsPageEntries.add(createWidget(ModItems.JADE_HELMET, 0));
-            contentsPageEntries.add(createWidget(ModItems.JADE_CHESTPLATE, 1));
-            contentsPageEntries.add(createWidget(ModItems.JADE_LEGGINGS, 2));
-            contentsPageEntries.add(createWidget(ModItems.JADE_BOOTS, 3));
+            for (Object object : bookParserResult.templateObjects){
+                if (object instanceof ContentsPageScreen.ContentsPageEntry entry)
+                    contentsPageEntries.add(entry);
+            }
 
             if (bookParserResult.templateType == null)
                 screenToShow = new TextScreen(this, bookPage, hasTitle, showPageMsg);

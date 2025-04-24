@@ -4,13 +4,19 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen;
+import com.mgmstudios.projectj.screen.custom.quest_book.templates.ContentsPageScreen;
+import com.mgmstudios.projectj.util.ItemLookup;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 import static com.mgmstudios.projectj.ProjectJ.MOD_ID;
@@ -33,6 +39,10 @@ public class QuestBookPageProvider implements DataProvider {
 
         Builder.create()
                 .setTemplate(QuestBookScreen.QuestBookScreenType.CONTENTS_PAGE)
+                .setTemplateSpacing(30)
+                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.JADE, "0", 0))
+                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(Items.PUMPKIN, "1", 1))
+                .setText("§lTable of Contents§r", true)
                 .addImage(new QuestBookScreen.QuestBookImage(ModItems.RAW_JADE, false))
                 .save(pages);
 
@@ -136,6 +146,31 @@ public class QuestBookPageProvider implements DataProvider {
             return this;
         }
 
+        Builder setTemplateContentsPageEntries(List<ContentsPageScreen.ContentsPageEntry> entries){
+            for (ContentsPageScreen.ContentsPageEntry entry : entries)
+                addTemplateContentsPageEntry(entry);
+            return this;
+        }
+
+        Builder addTemplateContentsPageEntry(ContentsPageScreen.ContentsPageEntry entry){
+            JsonObject entryObject = new JsonObject();
+
+            ResourceLocation resourceLocation = ItemLookup.getResourceLocation(entry.displayItem());
+            entryObject.addProperty(KEY_ITEM, resourceLocation.getNamespace() + ":" + resourceLocation.getPath());
+            entryObject.addProperty(KEY_DESCRIPTION, entry.displayText());
+            entryObject.addProperty(KEY_CONNECTED_PAGE, entry.connectedPage());
+
+            JsonArray objectsArray;
+            JsonObject templateObject = json.getAsJsonObject(KEY_TEMPLATE);
+            if (templateObject.has(KEY_OBJECTS))
+                objectsArray = templateObject.getAsJsonArray(KEY_OBJECTS);
+            else{
+                objectsArray = new JsonArray();
+                templateObject.add(KEY_OBJECTS, objectsArray);
+            }
+            objectsArray.add(entryObject);
+            return this;
+        }
         Builder addImage(QuestBookScreen.QuestBookImage image){
             JsonObject imageObject = new JsonObject();
             if (image.hasShortHand())

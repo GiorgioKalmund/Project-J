@@ -6,12 +6,16 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.QuestBookImage;
+import com.mgmstudios.projectj.screen.custom.quest_book.templates.ContentsPageScreen;
+import com.mgmstudios.projectj.util.ItemLookup;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.GsonHelper;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -32,6 +36,10 @@ public class QuestBookParser {
     public static final String KEY_NAME = "name";
     public static final String KEY_SHOW_FUEL = "show-fuel";
     public static final String KEY_SPACING = "spacing";
+    public static final String KEY_OBJECTS = "objects";
+    public static final String KEY_ITEM = "item";
+    public static final String KEY_DESCRIPTION = "description";
+    public static final String KEY_CONNECTED_PAGE = "connected-page";
     public static final String KEY_IMAGES = "images";
     public static final String KEY_IMAGE = "image";
     public static final String KEY_SHOW_BORDER = "show-border";
@@ -78,6 +86,7 @@ public class QuestBookParser {
         QuestBookParserResult result = new QuestBookParserResult();
         List<Boolean> templateBooleans = new ArrayList<>();
         List<Integer> templateIntegers = new ArrayList<>();
+        List<Object> templateObjects = new ArrayList<>();
 
         // If page could not be loaded from JSON return error page
         if (json.has(KEY_ERROR)){
@@ -120,8 +129,35 @@ public class QuestBookParser {
             if (templateName != null){
                 if (template.has(KEY_SHOW_FUEL) && stringIsType(templateName, PROCESS))
                     templateBooleans.add(template.get(KEY_SHOW_FUEL).getAsBoolean());
-                if (template.has(KEY_SPACING) && stringIsAnyOfTypes(templateName, PROCESS, DOUBLE_ITEM_SHOWCASE))
+                if (template.has(KEY_SPACING) && stringIsAnyOfTypes(templateName, PROCESS, DOUBLE_ITEM_SHOWCASE, CONTENTS_PAGE))
                     templateIntegers.add(template.get(KEY_SPACING).getAsInt());
+                if (template.has(KEY_OBJECTS)){
+                    JsonArray objectsArray = template.get(KEY_OBJECTS).getAsJsonArray();
+                    System.out.println(objectsArray.size() + " OBJECTS");
+                    if (stringIsAnyOfTypes(templateName, CONTENTS_PAGE)){
+                        for (JsonElement object : objectsArray){
+                            System.out.println(objectsArray.size() + " OBJECTS");
+                            JsonObject o = object.getAsJsonObject();
+                            ContentsPageScreen.ContentsPageEntry entry = new ContentsPageScreen.ContentsPageEntry(Items.BARRIER, -1);
+                            if (!o.isEmpty()){
+                                if (o.has(KEY_ITEM)){
+                                    System.out.println("has item");
+                                    ItemLike item = ItemLookup.getStack(o.get(KEY_ITEM).getAsString()).getItem();
+                                    entry.displayItem(item);
+                                }
+                                if (o.has(KEY_DESCRIPTION)){
+                                    System.out.println("has description");
+                                    entry.displayText(o.get(KEY_DESCRIPTION).getAsString());
+                                }
+                                if (o.has(KEY_CONNECTED_PAGE)){
+                                    System.out.println("has conn page");
+                                    entry.connectedPage(o.get(KEY_CONNECTED_PAGE).getAsInt());
+                                }
+                                templateObjects.add(entry);
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -193,6 +229,7 @@ public class QuestBookParser {
 
         result.templateBooleans = templateBooleans;
         result.templateIntegers = templateIntegers;
+        result.templateObjects = templateObjects;
         result.bookPage = bookPage;
         result.showPageMsg = showPageMsg;
         result.templateType = QuestBookScreen.QuestBookScreenType.fromDisplayName(templateName);
@@ -215,6 +252,7 @@ public class QuestBookParser {
 
         List<Boolean> templateBooleans = new ArrayList<>();
         List<Integer> templateIntegers = new ArrayList<>();
+        List<Object> templateObjects = new ArrayList<>();
 
         @Override
         public String toString() {
@@ -224,10 +262,12 @@ public class QuestBookParser {
                     ", bookPage=" + bookPage +
                     ", showPageMsg=" + showPageMsg +
                     ", defaultPageMsg=" + defaultPageMsg +
-                    ", formattedText=" + formattedText.getString() +
+                    ", formattedText=" + formattedText +
                     ", hasTitle=" + hasTitle +
-                    ", templateName='" + templateType + '\'' +
+                    ", templateType=" + templateType +
                     ", templateBooleans=" + templateBooleans +
+                    ", templateIntegers=" + templateIntegers +
+                    ", templateObjects=" + templateObjects +
                     '}';
         }
 

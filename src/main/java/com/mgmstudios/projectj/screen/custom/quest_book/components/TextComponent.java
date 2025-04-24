@@ -10,7 +10,6 @@ import net.minecraft.util.FormattedCharSequence;
 import java.awt.*;
 import java.util.List;
 
-import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.IMAGE_WIDTH;
 import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.drawCenteredStringWithoutDropShadow;
 import static com.mgmstudios.projectj.screen.custom.quest_book.components.AbstractComponent.ComponentPositionUtils.*;
 

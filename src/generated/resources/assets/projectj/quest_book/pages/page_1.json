@@ -5,6 +5,23 @@
     }
   ],
   "template": {
-    "name": "contents-page"
+    "name": "contents-page",
+    "objects": [
+      {
+        "connected-page": 0,
+        "description": "0",
+        "item": "projectj:jade"
+      },
+      {
+        "connected-page": 1,
+        "description": "1",
+        "item": "minecraft:pumpkin"
+      }
+    ],
+    "spacing": 30
+  },
+  "text": {
+    "content": "§lTable of Contents§r",
+    "show-title": true
   }
 }
