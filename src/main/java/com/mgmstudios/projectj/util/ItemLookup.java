@@ -9,6 +9,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -29,8 +31,26 @@ public class ItemLookup {
         return new ItemStack(item);
     }
 
+    public static Block getBlock(ResourceLocation resourceLocation) {
+        Optional<Holder.Reference<Block>> itemOptional = BuiltInRegistries.BLOCK.get(resourceLocation);
+        Block item = null;
+        if (itemOptional.isPresent()){
+            item = itemOptional.get().value();
+        }
+
+        if (item == null || item.equals(Items.AIR)) {
+            return Blocks.AIR;
+        }
+
+        return item;
+    }
+
     public static ResourceLocation getResourceLocation(ItemLike itemLike) {
         return getResourceLocation(itemLike.asItem());
+    }
+
+    public static ResourceLocation getResourceLocationForBlock(Block block) {
+        return BuiltInRegistries.BLOCK.getKey(block);
     }
 
     public static ResourceLocation getResourceLocation(Item itemLike) {

@@ -85,6 +85,21 @@ description='''${mod_description}'''
     ordering="NONE"
     side="BOTH"
 
+# Fusion as a required dependency
+[[dependencies.projectj]]
+modId="fusion"
+type="required"
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="CLIENT"
+# Fusion as an optional dependency
+[[dependencies.projectj]]
+modId="fusion"
+type="optional"
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="CLIENT"
+
 # Features are specific properties of the game environment, that you may want to declare you require. This example declares
 # that your mod requires GL version 3.2 or higher. Other features will be added. They are side aware so declaring this won't
 # stop your mod loading on the server for example.

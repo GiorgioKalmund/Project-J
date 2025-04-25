@@ -1,6 +1,15 @@
 {
+  "type": "fusion:connecting",
   "parent": "minecraft:block/cube_all",
-  "render_type": "minecraft:cutout",
+  "connections": {
+    "type": "fusion:or",
+    "predicates": [
+      {
+        "type": "fusion:is_same_block"
+      }
+    ]
+  },
+  "loader": "fusion:model",
   "textures": {
     "all": "projectj:block/adobe_glass"
   }
