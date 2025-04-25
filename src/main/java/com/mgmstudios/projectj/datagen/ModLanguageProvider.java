@@ -146,6 +146,8 @@ public class ModLanguageProvider extends LanguageProvider {
         addTooltipShift(ModItems.MAGNIFYING_GLASS, "Helps you melt and magnify things.");
         addTooltip(ModBlocks.ADOBE_FURNACE, "A powerful new furnace!\n§9§l[LShift] to learn more§r");
         addTooltipShift(ModBlocks.ADOBE_FURNACE, "A powerful new furnace!\nWith the help of a chimney, can burn for §lEVEN§r longer");
+        addTooltip("magnet_item.radius", "§7+ Radius: %d§r");
+        addTooltip("magnet_item.strength", "§7+ Strength: %d§r");
 
         add("container.projectj.adobe_furnace", "Adobe Furnace");
         add("itemGroup.projectj.projectj_tab", "Project J");
@@ -183,16 +185,19 @@ public class ModLanguageProvider extends LanguageProvider {
         addGuiButton("close", "Close");
     }
 
+    public void addTooltip(String name, String value){
+        addSuffixedTooltip(name, value, "");
+    }
     public void addTooltip(ItemLike itemLike, String value){
-        addSuffixedTooltip(itemLike, value, "");
+        addSuffixedTooltip(getName(itemLike), value, "");
     }
 
     public void addTooltipShift(ItemLike itemLike, String value){
-        addSuffixedTooltip(itemLike, value, ".shift_down");
+        addSuffixedTooltip(getName(itemLike), value, ".shift_down");
     }
 
-    public void addSuffixedTooltip(ItemLike itemLike, String value, String suffix){
-        add("tooltip." + ProjectJ.MOD_ID + "." + getName(itemLike)  + ".tooltip" + suffix, value);
+    public void addSuffixedTooltip(String name, String value, String suffix){
+        add("tooltip." + ProjectJ.MOD_ID + "." + name  + ".tooltip" + suffix, value);
     }
 
     public void addEntity(EntityType<? extends Entity> entity, String name){
