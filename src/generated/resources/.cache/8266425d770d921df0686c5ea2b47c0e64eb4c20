@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-25T13:21:01.4562093	Model Definitions - projectj
+// 1.21.4	2025-04-26T00:27:05.142326	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -96,6 +96,7 @@ c4f3775626f4c829574376d0a454e0940c3ca14a assets/projectj/items/cobbled_serpentin
 f4889cabd89bba2f4f87d5bf3c5956000973dece assets/projectj/items/jade_chestplate.json
 f9fa2879d7e9b75372270ec7b2234e83aed0110d assets/projectj/items/jade_helmet.json
 253f8bfa3ccd68ee4ad883d7d35769434abadb14 assets/projectj/items/jade_leggings.json
+d638f9cf5a015557d595008d9cfdaf50011dbdb2 assets/projectj/items/jade_magnet.json
 6c67bf56da03612616be77ed4bd0cc89a742b31b assets/projectj/items/jade_ore.json
 571d265eb581067a257ac763b27592fc39c4b7cb assets/projectj/items/liquid_pyrite_bucket.json
 9c5d368f085309c9cbf298641fd1a8cfc92c3d1b assets/projectj/items/little_king_spawn_egg.json
@@ -313,6 +314,7 @@ adaf34f11519292af4e6fcc3486cb09c9962372a assets/projectj/models/item/jade_leggin
 d0a6756219279a8f67b71a89719cf3dfa2897626 assets/projectj/models/item/jade_leggings_quartz_trim.json
 a8bcb979c7cc3b98f427fb99490bfbeedcc2b00f assets/projectj/models/item/jade_leggings_redstone_trim.json
 e6e451c790fc2a182fcd528a7f055286bddb9838 assets/projectj/models/item/jade_leggings_resin_trim.json
+52476e2f31e853967ccf8540e03910b350176e41 assets/projectj/models/item/jade_magnet.json
 5ca45076d9cd376d1879706c9648b75858a44d38 assets/projectj/models/item/liquid_pyrite_bucket.json
 665d75f63f1adf52376b6ee97fbb3d04fe6ee9a5 assets/projectj/models/item/little_king_spawn_egg.json
 8d9503258c54c9fa5fee944131ae9fdf14f79510 assets/projectj/models/item/little_king_voodoo.json

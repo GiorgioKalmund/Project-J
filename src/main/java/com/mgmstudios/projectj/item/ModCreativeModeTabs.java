@@ -46,6 +46,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.PYRITE_ORE.get());
                 output.accept(ModItems.LIQUID_PYRITE_BUCKET.get());
                 output.accept(ModItems.PYRITE_MAGNET.get());
+                output.accept(ModItems.JADE_MAGNET.get());
 
                 output.accept(ModBlocks.SERPENTINITE_PILLAR.get());
                 output.accept(ModBlocks.SERPENTINITE_BENCH.get());

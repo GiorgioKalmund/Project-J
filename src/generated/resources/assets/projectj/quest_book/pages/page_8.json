@@ -12,12 +12,18 @@
       "image": "minecraft:wind_charge"
     }
   ],
+  "page-msg": {
+    "message": "in:    "
+  },
   "template": {
     "name": "recipe-list",
-    "recipe-result": [
+    "secondary-images": [
       {
         "image": "projectj:teleportation_core",
         "show-border": true
+      },
+      {
+        "image": "projectj:ancient_altar"
       }
     ],
     "spacing": 30

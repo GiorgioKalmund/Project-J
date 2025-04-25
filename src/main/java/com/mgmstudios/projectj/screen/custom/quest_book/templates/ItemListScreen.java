@@ -42,7 +42,6 @@ public class ItemListScreen extends SpacingScreen {
 
     public static void renderListStackImage(GuiGraphics guiGraphics, BookPage page, Screen screen, int imageCount, int spacing, int imageIndex,  int mouseX, int mouseY, int xOff, int yOff){
         int xOffset = getListXOffset(imageCount, spacing, imageIndex);
-        System.out.println(imageIndex + ": " + page.images().get(imageIndex).resourceLocation().getPath() + ": " + xOffset);
         renderListStackImage(guiGraphics, imageIndex, page, screen, mouseX, mouseY, xOff + xOffset, yOff);
     }
 

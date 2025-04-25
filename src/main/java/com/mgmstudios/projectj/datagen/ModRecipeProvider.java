@@ -327,6 +327,16 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_pyrite_ingot", this.has(ModItems.PYRITE_INGOT))
                 .save(this.output);
 
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.JADE_MAGNET)
+                .pattern("S S")
+                .pattern("# #")
+                .pattern("###")
+                .define('S', ModBlocks.SERPENTINITE_ROCK)
+                .define('#', ModItems.JADE)
+                .unlockedBy("has_serpentinite_rock", this.has(ModBlocks.SERPENTINITE_ROCK.asItem()))
+                .unlockedBy("has_jade", this.has(ModItems.JADE))
+                .save(this.output);
+
         nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.RAW_PYRITE, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_PYRITE_BLOCK);
         nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.PYRITE_INGOT, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PYRITE_BLOCK);
 

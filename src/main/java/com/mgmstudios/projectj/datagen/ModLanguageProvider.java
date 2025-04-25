@@ -47,6 +47,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.LITTLE_KING_VOODOO, "Little King Voodoo");
         addItem(ModItems.VOODOO_CATCHER, "Voodoo Catcher");
         addItem(ModItems.PYRITE_MAGNET, "Pyrite Magnet");
+        addItem(ModItems.JADE_MAGNET, "Jade Magnet");
         addItem(ModItems.MAIZE, "Maize");
         addItem(ModItems.MAIZE_SEEDS, "Maize Seeds");
         addItem(ModItems.MAIZE_MASH, "Maize Mash");

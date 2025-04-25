@@ -16,6 +16,7 @@ import net.minecraft.network.chat.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 import org.openjdk.nashorn.internal.ir.annotations.Ignore;
@@ -455,6 +456,10 @@ public class QuestBookScreen extends Screen {
 
         public static QuestBookImage empty(){
             return new QuestBookImage();
+        }
+
+        public static QuestBookImage unavailable(){
+            return new QuestBookImage(Items.BARRIER, false);
         }
 
         public void reset(){

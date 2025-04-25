@@ -1,7 +1,6 @@
 package com.mgmstudios.projectj.datagen;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.item.ModItems;
@@ -14,6 +13,7 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -105,7 +105,9 @@ public class QuestBookPageProvider implements DataProvider {
         Builder.create()
                 .setTemplate(QuestBookTemplateType.RECIPE_LIST)
                 .setTemplateSpacing(30)
-                .setTemplateRecipeResult(new QuestBookImage(ModItems.TELEPORTATION_CORE,true))
+                .setInLocationMessage()
+                .addSecondaryImage(new QuestBookImage(ModItems.TELEPORTATION_CORE,true))
+                .addSecondaryImage(new QuestBookImage(ModBlocks.ANCIENT_ALTAR))
                 .setImages(new QuestBookImage(ModItems.JADE,4, false))
                 .setImages(new QuestBookImage(Items.ENDER_PEARL, 2, false))
                 .setImages(new QuestBookImage(Items.WIND_CHARGE))
@@ -117,7 +119,8 @@ public class QuestBookPageProvider implements DataProvider {
                 .setTemplate(QuestBookTemplateType.PROCESS)
                 .defaultTemplateSpacing()
                 .setTemplateShowFuel(true)
-                .setPageMessage("§oSecret Message!§r")
+                .setInLocationMessage()
+                .addSecondaryImage(new QuestBookImage(Blocks.FURNACE))
                 .addImage(new QuestBookImage(ModItems.RAW_JADE))
                 .addImage(QuestBookImage.PROCESS_IMAGE)
                 .addImage(new QuestBookImage(ModItems.JADE))
@@ -169,6 +172,10 @@ public class QuestBookPageProvider implements DataProvider {
             return this;
         }
 
+        Builder setInLocationMessage(){
+            return this.setPageMessage("in:    ");
+        }
+
         Builder setPageMessageKey(String key){
             JsonObject keyObject = new JsonObject();
             keyObject.addProperty(KEY_KEY, key);
@@ -200,16 +207,15 @@ public class QuestBookPageProvider implements DataProvider {
             return setTemplateSpacing(20);
         }
 
-        Builder setTemplateRecipeResult(QuestBookImage recipeResult){
+        Builder addSecondaryImage(QuestBookImage recipeResult){
             JsonObject templateObject = json.getAsJsonObject(KEY_TEMPLATE);
             JsonArray recipeResults;
-            if (templateObject.has(KEY_RECIPE_RESULT))
-                recipeResults = templateObject.getAsJsonArray(KEY_RECIPE_RESULT);
+            if (templateObject.has(KEY_SECONDARY_IMAGES))
+                recipeResults = templateObject.getAsJsonArray(KEY_SECONDARY_IMAGES);
             else{
                 recipeResults = new JsonArray();
-                templateObject.add(KEY_RECIPE_RESULT, recipeResults);
+                templateObject.add(KEY_SECONDARY_IMAGES, recipeResults);
             }
-
             addImage(recipeResult, recipeResults);
             return this;
         }

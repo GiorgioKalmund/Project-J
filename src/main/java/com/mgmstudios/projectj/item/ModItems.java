@@ -85,7 +85,9 @@ public class ModItems {
 
     public static final DeferredItem<Item> VOODOO_CATCHER = register("voodoo_catcher", VoodooCatcherItem::new, new Item.Properties().stacksTo(1));
 
-    public static final DeferredItem<Item> PYRITE_MAGNET = register("pyrite_magnet", (properties) -> new MagnetItem(properties.setId(createKey("pyrite_magnet")), 5, 0.3F));
+    public static final DeferredItem<Item> PYRITE_MAGNET = register("pyrite_magnet", (properties) -> new MagnetItem(properties.stacksTo(1), 5, 0.3F));
+
+    public static final DeferredItem<Item> JADE_MAGNET = register("jade_magnet", (properties) -> new MagnetItem(properties.stacksTo(1), 8, 0.5F));
 
     public static final DeferredItem<Item> MAIZE_SEEDS = register("maize_seeds", (properties) -> new BlockItem(ModBlocks.MAIZE_CROP.get(), properties.useItemDescriptionPrefix()));
 
