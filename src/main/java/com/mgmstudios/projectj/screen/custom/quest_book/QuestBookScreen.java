@@ -18,6 +18,7 @@ import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
+import org.openjdk.nashorn.internal.ir.annotations.Ignore;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -134,6 +135,8 @@ public class QuestBookScreen extends Screen {
                     case DOUBLE_ITEM_SHOWCASE -> new DoubleImageScreen(this, bookPage, showTitle, showPageMsg, getOrDefault(templateIntegers, 0, 0));
                     case CONTENTS_PAGE -> new ContentsPageScreen(this, bookPage, showPageMsg, getOrDefault(templateIntegers, 0, 0), contentsPageEntries);
                     case CHAPTER_COVER -> new ChapterCoverScreen(this, bookPage, getOrDefault(templateStrings, 0, ""), showPageMsg, getOrDefault(templateBooleans, 0, false));
+                    case ITEM_LIST -> new ItemListScreen(this, bookPage, showTitle, showPageMsg, getOrDefault(templateIntegers, 0, 0));
+                    case RECIPE_LIST -> new RecipeListScreen(this, bookPage, showTitle, showPageMsg, getOrDefault(templateIntegers, 0, 0));
                 };
             }
         }
@@ -271,7 +274,9 @@ public class QuestBookScreen extends Screen {
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
         if (button == 0) {
             Style style = this.getClickedComponentStyleAt(mouseX, mouseY);
+            System.out.println("STYLE: " + style);
             if (style != null && this.handleComponentClicked(style)) {
+                System.out.println(">> " + style.getClickEvent() + " / " + style.getClickEvent().getAction());
                 return true;
             }
         }
@@ -284,6 +289,7 @@ public class QuestBookScreen extends Screen {
         if (clickevent == null) {
             return false;
         } else if (clickevent.getAction() == ClickEvent.Action.CHANGE_PAGE) {
+            System.out.println("CHANGED PAGE");
             String s = clickevent.getValue();
 
             try {
@@ -334,7 +340,13 @@ public class QuestBookScreen extends Screen {
 
     public enum QuestBookTemplateType {
 
-        EMPTY, COVER, TEXT, PROCESS, DOUBLE_ITEM_SHOWCASE("double-item-showcase"), ITEM_SHOWCASE("item-showcase"), CONTENTS_PAGE("contents-page"), CHAPTER_COVER("chapter-cover");
+        EMPTY, COVER, TEXT, PROCESS,
+        DOUBLE_ITEM_SHOWCASE("double-item-showcase"),
+        ITEM_SHOWCASE("item-showcase"),
+        CONTENTS_PAGE("contents-page"),
+        CHAPTER_COVER("chapter-cover"),
+        ITEM_LIST("item-list"),
+        RECIPE_LIST("recipe-list");
 
         private final String displayName;
 
@@ -381,10 +393,41 @@ public class QuestBookScreen extends Screen {
         ResourceLocation resourceLocation;
         boolean showBorder;
         protected Type type;
+        protected int count;
         private String shorthand;
 
-        public static HashMap<String, QuestBookImage> SHORTHAND_MAP = new HashMap<>();
+
+        protected QuestBookImage(ResourceLocation resourceLocation){
+            this(resourceLocation, false, Type.ITEM, "");
+        }
+
+
+        protected QuestBookImage(ResourceLocation resourceLocation, boolean showBorder){
+            this(resourceLocation, 1, showBorder, Type.ITEM);
+        }
+
+        public QuestBookImage(ItemLike itemLike, boolean showBorder){
+            this(ItemLookup.getResourceLocation(itemLike) ,1 ,showBorder, Type.ITEM);
+        }
+
+        public QuestBookImage(ItemLike itemLike){
+            this(ItemLookup.getResourceLocation(itemLike) ,1 ,false, Type.ITEM);
+        }
+
+        public QuestBookImage(ItemLike itemLike, int count, boolean showBorder){
+            this(ItemLookup.getResourceLocation(itemLike), count, showBorder, Type.ITEM);
+        }
+
+        public QuestBookImage(ItemLike itemLike, boolean showBorder, Type type){
+            this(ItemLookup.getResourceLocation(itemLike) , 1, showBorder, type);
+        }
+
         protected QuestBookImage(ResourceLocation resourceLocation, boolean showBorder, Type type, String shorthand){
+            this(resourceLocation, 1, showBorder, type, shorthand);
+        }
+
+        public static HashMap<String, QuestBookImage> SHORTHAND_MAP = new HashMap<>();
+        protected QuestBookImage(ResourceLocation resourceLocation, int count, boolean showBorder, Type type, String shorthand){
             this.resourceLocation = resourceLocation;
             this.showBorder = showBorder;
             this.type = type;
@@ -392,30 +435,15 @@ public class QuestBookScreen extends Screen {
             if (shorthand != null && !shorthand.isBlank()){
                 SHORTHAND_MAP.put(this.shorthand, this);
             }
+            this.count = count;
         }
 
         public static QuestBookImage getShortHandImage(String key){
             return SHORTHAND_MAP.getOrDefault(key, QuestBookImage.empty());
         }
 
-        protected QuestBookImage(ResourceLocation resourceLocation){
-            this(resourceLocation, false, Type.ITEM);
-        }
-
-        protected QuestBookImage(ResourceLocation resourceLocation, boolean showBorder){
-            this(resourceLocation,showBorder, Type.ITEM);
-        }
-
-        public QuestBookImage(ItemLike itemLike, boolean showBorder){
-            this(ItemLookup.getResourceLocation(itemLike) ,showBorder, Type.ITEM);
-        }
-
-        public QuestBookImage(ItemLike itemLike, boolean showBorder, Type type){
-            this(ItemLookup.getResourceLocation(itemLike) ,showBorder, type);
-        }
-
-        protected QuestBookImage(ResourceLocation resourceLocation, boolean showBorder, Type type){
-            this(resourceLocation, showBorder, type, null);
+        protected QuestBookImage(ResourceLocation resourceLocation, int count, boolean showBorder, Type type){
+            this(resourceLocation, count, showBorder, type, null);
         }
 
         protected QuestBookImage(){
@@ -472,6 +500,15 @@ public class QuestBookScreen extends Screen {
 
         public QuestBookImage sprite(){
             this.type = Type.SPRITE;
+            return this;
+        }
+
+        public int count(){
+            return this.count;
+        }
+
+        public QuestBookImage count(int count){
+            this.count = count;
             return this;
         }
 

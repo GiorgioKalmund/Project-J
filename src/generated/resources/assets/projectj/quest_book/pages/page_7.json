@@ -1,0 +1,25 @@
+{
+  "images": [
+    {
+      "image": "projectj:teleportation_core"
+    },
+    {
+      "image": "projectj:teleportation_pad"
+    },
+    {
+      "image": "projectj:teleportation_key"
+    },
+    {
+      "image": "minecraft:apple"
+    }
+  ],
+  "template": {
+    "name": "double-item-showcase",
+    "spacing": 20
+  },
+  "text": {
+    "align-center": false,
+    "content": "Two",
+    "show-title": false
+  }
+}

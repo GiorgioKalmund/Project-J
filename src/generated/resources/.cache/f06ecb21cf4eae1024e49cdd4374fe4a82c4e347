@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-18T14:08:23.093291	ModRecipeProvider
+// 1.21.4	2025-04-25T13:21:01.4662097	ModRecipeProvider
 3805c773c67c25685a42a0810f910faacb328964 data/minecraft/advancement/recipes/beetroot_seeds.json
 9d0b4243e93bb8fe0a90f5936460b23bedc28f89 data/minecraft/advancement/recipes/building_blocks/adobe_bricks_smelting.json
 d8e64883f5c848da2d094ba3a38aac11e888156b data/minecraft/advancement/recipes/building_blocks/chili_con_carne_from_maize_mash.json
@@ -130,6 +130,7 @@ bb0ed7d11cb219b582f485abb3824c6562fe1579 data/projectj/advancement/recipes/decor
 cf2c466c56fe3841098b91b8b2141a80ea7eb3c8 data/projectj/advancement/recipes/redstone/mesquite_pressure_plate.json
 2122abf71b5d9ac10f4f4255d32d154669327525 data/projectj/advancement/recipes/redstone/serpentinite_rock_button.json
 7032dfaa03e0ec47617d5127c996cb42cff2d11b data/projectj/advancement/recipes/redstone/serpentinite_rock_pressure_plate.json
+5a6e3966ce5d0ff976998abca5a9a8880d91afeb data/projectj/advancement/recipes/teleportation_core.json
 dddae0f11a5d5fc96e8bf0b57ca54e023a137d06 data/projectj/recipe/adobe_bricks_slab.json
 52ccd7dcd50c698c36172b6e3b39f0316cc41cb1 data/projectj/recipe/adobe_bricks_stairs.json
 0b972bb58fc657c1668767990b1f52b3ff30dcd2 data/projectj/recipe/adobe_bricks_wall.json
@@ -187,5 +188,6 @@ b0c239e3460fcd63c3c5bce4ce627c3a71885168 data/projectj/recipe/serpentinite_rock_
 68513615ed3376a94810ab616406fdab38a5b7eb data/projectj/recipe/serpentinite_rock_wall.json
 87b8cf550d70c8a3ad81b7a26bc12476a2ad9d9d data/projectj/recipe/serpentinite_rod.json
 4e3ed3c7c39d604dd15f3b1f82f0182481d37c13 data/projectj/recipe/stripped_mesquite_wood.json
+be4e785c2589f5be894f1aab95a73041bdf49459 data/projectj/recipe/teleportation_core.json
 a514b733c0fa4542224208824c6aee59661e2bf0 data/projectj/recipe/trowel.json
 9a2a1e5befe1c93752be2ed37f65db001dceea2e data/projectj/recipe/voodoo_catcher.json

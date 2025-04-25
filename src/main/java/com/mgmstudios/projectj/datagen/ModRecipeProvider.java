@@ -435,6 +435,15 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_bowl", this.has(Items.BOWL))
                 .save(this.output, "crude_sacrifice_bowl_from_altar");
 
+        AncientAltarRecipeBuilder.regular(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.TELEPORTATION_CORE)
+                .requires(ModItems.JADE, 4)
+                .requires(Items.ENDER_PEARL, 2)
+                .requires(Items.WIND_CHARGE )
+                .unlockedBy("has_jade", this.has(ModItems.JADE))
+                .unlockedBy("has_ender_pearl", this.has(Items.ENDER_PEARL))
+                .unlockedBy("has_wind_charge", this.has(Items.WIND_CHARGE))
+                .save(this.output);
+
         // METATE
 
         MetateRecipeBuilder.regular(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.MAIZE, ModItems.MAIZE_SEEDS, 2)

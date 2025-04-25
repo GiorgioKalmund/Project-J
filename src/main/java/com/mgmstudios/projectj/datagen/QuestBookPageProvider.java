@@ -1,7 +1,9 @@
 package com.mgmstudios.projectj.datagen;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.QuestBookImage;
 import com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.QuestBookTemplateType;
@@ -36,16 +38,17 @@ public class QuestBookPageProvider implements DataProvider {
                 .setPageMessage("§f§lNo. 1§r")
                 .save(pages);
 
+        // TODO: Maybe some sort of anchor system so shifting indices around does not mess up connections
         Builder.create()
                 .setTemplate(QuestBookTemplateType.CONTENTS_PAGE)
                 .setTemplateSpacing(30)
                 .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.JADE, "Basics", 2))
-                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(Items.APPLE, "1", 1))
+                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.TELEPORTATION_CORE, "TP", 4))
                 .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(Items.WHEAT, "1", 1))
                 .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(Items.ACACIA_BOAT, "1", 1))
                 .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.VOODOO_CATCHER, "Voodoo", 10))
                 .setText("§lTable of Contents§r", true)
-                .addImage(new QuestBookImage(ModItems.RAW_JADE, false))
+                .addImage(new QuestBookImage(ModItems.RAW_JADE))
                 .save(pages);
 
         Builder.create()
@@ -63,15 +66,63 @@ public class QuestBookPageProvider implements DataProvider {
                 .save(pages);
 
         Builder.create()
+                .setTemplate(QuestBookTemplateType.CHAPTER_COVER)
+                .showPageMessage(false)
+                .addImage(QuestBookImage.CHAPTER_2_IMAGE)
+                .setTemplateChapterTitle("§f§o§lTeleportation§r")
+                .setText("§f§oSwoosh!§r", false, true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_LIST)
+                .setTemplateSpacing(30)
+                .setImages(new QuestBookImage(ModItems.TELEPORTATION_CORE))
+                .setImages(new QuestBookImage(ModBlocks.TELEPORTATION_PAD))
+                .setImages(new QuestBookImage(ModItems.TELEPORTATION_KEY))
+                .setText("Teleportation is cool!", false)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_LIST)
+                .setTemplateSpacing(30)
+                .setImages(new QuestBookImage(ModItems.TELEPORTATION_CORE))
+                .setImages(new QuestBookImage(ModBlocks.TELEPORTATION_PAD))
+                .setImages(new QuestBookImage(ModItems.TELEPORTATION_KEY))
+                .setImages(new QuestBookImage(Items.APPLE))
+                .setText("Teleportation is cool and Apple!", false)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.DOUBLE_ITEM_SHOWCASE)
+                .setTemplateSpacing(20)
+                .setImages(new QuestBookImage(ModItems.TELEPORTATION_CORE))
+                .setImages(new QuestBookImage(ModBlocks.TELEPORTATION_PAD))
+                .setImages(new QuestBookImage(ModItems.TELEPORTATION_KEY))
+                .setImages(new QuestBookImage(Items.APPLE))
+                .setText("Two", false)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.RECIPE_LIST)
+                .setTemplateSpacing(30)
+                .setTemplateRecipeResult(new QuestBookImage(ModItems.TELEPORTATION_CORE,true))
+                .setImages(new QuestBookImage(ModItems.JADE,4, false))
+                .setImages(new QuestBookImage(Items.ENDER_PEARL, 2, false))
+                .setImages(new QuestBookImage(Items.WIND_CHARGE))
+                .setText("§nTeleportation Core§r\n\nThe Teleportation Core opens the door to a whole lot of blocks and items allowing you to travel faster.", true)
+                .save(pages);
+
+
+        Builder.create()
                 .setTemplate(QuestBookTemplateType.PROCESS)
                 .defaultTemplateSpacing()
                 .setTemplateShowFuel(true)
                 .setPageMessage("§oSecret Message!§r")
-                .addImage(new QuestBookImage(ModItems.RAW_JADE, false))
+                .addImage(new QuestBookImage(ModItems.RAW_JADE))
                 .addImage(QuestBookImage.PROCESS_IMAGE)
-                .addImage(new QuestBookImage(ModItems.JADE, false))
+                .addImage(new QuestBookImage(ModItems.JADE))
                 .addImage(QuestBookImage.ADOBE_LIT_PROCESS_IMAGE)
-                .setText("Hello World!", false)
+                .setText("Hello World!")
                 .save(pages);
     }
 
@@ -145,9 +196,22 @@ public class QuestBookPageProvider implements DataProvider {
             return this;
         }
 
-
         Builder defaultTemplateSpacing(){
             return setTemplateSpacing(20);
+        }
+
+        Builder setTemplateRecipeResult(QuestBookImage recipeResult){
+            JsonObject templateObject = json.getAsJsonObject(KEY_TEMPLATE);
+            JsonArray recipeResults;
+            if (templateObject.has(KEY_RECIPE_RESULT))
+                recipeResults = templateObject.getAsJsonArray(KEY_RECIPE_RESULT);
+            else{
+                recipeResults = new JsonArray();
+                templateObject.add(KEY_RECIPE_RESULT, recipeResults);
+            }
+
+            addImage(recipeResult, recipeResults);
+            return this;
         }
 
         Builder setTemplateChapterTitle(String chapterTitle){
@@ -192,16 +256,6 @@ public class QuestBookPageProvider implements DataProvider {
             return this;
         }
         Builder addImage(QuestBookImage image){
-            JsonObject imageObject = new JsonObject();
-            if (image.hasShortHand())
-                imageObject.addProperty(KEY_IMAGE, image.shorthand());
-            else
-                imageObject.addProperty(KEY_IMAGE, image.resourceLocation().getNamespace() + ":" + image.resourceLocation().getPath());
-            if (image.showBorder())
-                imageObject.addProperty(KEY_SHOW_BORDER, true);
-            if (!image.type().equals(QuestBookImage.Type.ITEM))
-                imageObject.addProperty(KEY_TYPE, image.type().toString().toLowerCase());
-
             JsonArray imagesArray;
             if (json.has(KEY_IMAGES))
                 imagesArray = json.getAsJsonArray(KEY_IMAGES);
@@ -209,7 +263,25 @@ public class QuestBookPageProvider implements DataProvider {
                 imagesArray = new JsonArray();
                 json.add(KEY_IMAGES, imagesArray);
             }
-            imagesArray.add(imageObject);
+
+            addImage(image, imagesArray);
+            return this;
+        }
+
+        Builder addImage(QuestBookImage image, JsonArray array){
+            JsonObject imageObject = new JsonObject();
+            if (image.hasShortHand())
+                imageObject.addProperty(KEY_IMAGE, image.shorthand());
+            else
+                imageObject.addProperty(KEY_IMAGE, image.resourceLocation().getNamespace() + ":" + image.resourceLocation().getPath());
+            if (image.count() > 1)
+                imageObject.addProperty(KEY_COUNT, image.count());
+            if (image.showBorder())
+                imageObject.addProperty(KEY_SHOW_BORDER, true);
+            if (!image.type().equals(QuestBookImage.Type.ITEM))
+                imageObject.addProperty(KEY_TYPE, image.type().toString().toLowerCase());
+
+            array.add(imageObject);
             return this;
         }
 
@@ -230,6 +302,10 @@ public class QuestBookPageProvider implements DataProvider {
         }
         Builder setText(String text, boolean showTitle){
             return setText(text, showTitle, false);
+        }
+
+        Builder setText(String text){
+            return setText(text, false, false);
         }
 
         void save(List<JsonObject> pages){

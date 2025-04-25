@@ -1,0 +1,25 @@
+{
+  "images": [
+    {
+      "image": "projectj:teleportation_core"
+    },
+    {
+      "image": "projectj:teleportation_pad"
+    },
+    {
+      "image": "projectj:teleportation_key"
+    },
+    {
+      "image": "minecraft:apple"
+    }
+  ],
+  "template": {
+    "name": "item-list",
+    "spacing": 30
+  },
+  "text": {
+    "align-center": false,
+    "content": "Teleportation is cool and Apple!",
+    "show-title": false
+  }
+}

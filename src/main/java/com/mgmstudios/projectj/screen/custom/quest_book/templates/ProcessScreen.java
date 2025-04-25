@@ -6,6 +6,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 
 import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.QUEST_IMAGE_HEIGHT;
+import static com.mgmstudios.projectj.screen.custom.quest_book.templates.ItemListScreen.renderListStackImage;
 
 public class ProcessScreen extends TextScreen {
 
@@ -31,10 +32,7 @@ public class ProcessScreen extends TextScreen {
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
         super.render(guiGraphics, mouseX, mouseY, partialTicks);
 
-        ImageComponent.ImageBuilder()
-                .setImage(page.image())
-                .setAdditionalOffset(-spacing, 0)
-                .render(guiGraphics, screen, page);
+        renderListStackImage(guiGraphics, 0, page, screen, mouseX, mouseY, -spacing, 0);
 
         ImageComponent.ImageBuilder()
                 .setImage(page.image(1))
@@ -42,10 +40,7 @@ public class ProcessScreen extends TextScreen {
                 .borderless()
                 .render(guiGraphics, screen, page);
 
-        ImageComponent.ImageBuilder()
-                .setImage(page.image(2))
-                .setAdditionalOffset(spacing + 8, 0)
-                .render(guiGraphics, screen, page);
+        renderListStackImage(guiGraphics, 2, page, screen, mouseX, mouseY, spacing + 8, 0);
 
         if (showFuel){
             ImageComponent.ImageBuilder()

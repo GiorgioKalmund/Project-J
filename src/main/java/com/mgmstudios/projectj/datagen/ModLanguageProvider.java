@@ -58,6 +58,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.QUETZAL_SPAWN_EGG, "Quetzal Spawn Egg");
         addItem(ModItems.QUETZAL_EGG, "Quetzal Egg");
         addItem(ModItems.QUEST_BOOK, "Ancient Codex");
+        addItem(ModItems.TELEPORTATION_CORE, "Teleportation Core");
 
         // Blocks
         addBlock(ModBlocks.PACKED_ADOBE, "Packed Adobe");

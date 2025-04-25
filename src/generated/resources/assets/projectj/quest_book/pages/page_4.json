@@ -1,31 +1,18 @@
 {
   "images": [
     {
-      "image": "projectj:raw_jade"
-    },
-    {
       "type": "regular",
-      "image": ":process"
-    },
-    {
-      "image": "projectj:jade"
-    },
-    {
-      "type": "regular",
-      "image": ":adobe_lit_process"
+      "image": ":chapter_2"
     }
   ],
-  "page-msg": {
-    "message": "§oSecret Message!§r"
-  },
+  "show-page-msg": false,
   "template": {
-    "name": "process",
-    "show-fuel": true,
-    "spacing": 20
+    "chapter-title": "§f§o§lTeleportation§r",
+    "name": "chapter-cover"
   },
   "text": {
-    "align-center": false,
-    "content": "Hello World! This is a test for longer text",
+    "align-center": true,
+    "content": "§f§oSwoosh!§r",
     "show-title": false
   }
 }

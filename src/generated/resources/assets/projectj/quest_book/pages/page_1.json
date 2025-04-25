@@ -13,9 +13,9 @@
         "item": "projectj:jade"
       },
       {
-        "connected-page": 1,
-        "description": "1",
-        "item": "minecraft:apple"
+        "connected-page": 4,
+        "description": "TP",
+        "item": "projectj:teleportation_core"
       },
       {
         "connected-page": 1,

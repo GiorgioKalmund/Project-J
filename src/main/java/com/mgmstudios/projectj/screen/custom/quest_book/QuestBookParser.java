@@ -32,6 +32,7 @@ public class QuestBookParser {
     public static final String KEY_KEY = "key";
     public static final String KEY_MESSAGE = "message";
     public static final String KEY_TEMPLATE = "template";
+    public static final String KEY_RECIPE_RESULT = "recipe-result";
     public static final String KEY_NAME = "name";
     public static final String KEY_SHOW_FUEL = "show-fuel";
     public static final String KEY_SPACING = "spacing";
@@ -42,6 +43,7 @@ public class QuestBookParser {
     public static final String KEY_CONNECTED_PAGE = "connected-page";
     public static final String KEY_IMAGES = "images";
     public static final String KEY_IMAGE = "image";
+    public static final String KEY_COUNT = "count";
     public static final String KEY_SHOW_BORDER = "show-border";
     public static final String KEY_TYPE = "type";
     public static final String KEY_TEXT = "text";
@@ -124,6 +126,7 @@ public class QuestBookParser {
 
         // Template
         String templateName = null;
+        List<QuestBookImage> resultImages = new ArrayList<>();
         if (json.has(KEY_TEMPLATE)){
             JsonObject template = json.get(KEY_TEMPLATE).getAsJsonObject();
             if (template.has(KEY_NAME))
@@ -131,30 +134,30 @@ public class QuestBookParser {
             if (templateName != null){
                 if (template.has(KEY_SHOW_FUEL) && stringIsType(templateName, PROCESS))
                     templateBooleans.add(template.get(KEY_SHOW_FUEL).getAsBoolean());
-                if (template.has(KEY_SPACING) && stringIsAnyOfTypes(templateName, PROCESS, DOUBLE_ITEM_SHOWCASE, CONTENTS_PAGE))
+                if (template.has(KEY_SPACING) && stringIsAnyOfTypes(templateName, PROCESS, DOUBLE_ITEM_SHOWCASE, CONTENTS_PAGE, ITEM_LIST, RECIPE_LIST))
                     templateIntegers.add(template.get(KEY_SPACING).getAsInt());
                 if (template.has(KEY_CHAPTER_TITLE) && stringIsAnyOfTypes(templateName, CHAPTER_COVER))
                     templateStrings.add(template.get(KEY_CHAPTER_TITLE).getAsString());
+                if (template.has(KEY_RECIPE_RESULT) && stringIsAnyOfTypes(templateName, RECIPE_LIST)){
+                    JsonArray images = template.get(KEY_RECIPE_RESULT).getAsJsonArray();
+                    addImagesToList(images, resultImages);
+                    bookPage.secondaryImages = resultImages;
+                }
                 if (template.has(KEY_OBJECTS)){
                     JsonArray objectsArray = template.get(KEY_OBJECTS).getAsJsonArray();
-                    System.out.println(objectsArray.size() + " OBJECTS");
                     if (stringIsAnyOfTypes(templateName, CONTENTS_PAGE)){
                         for (JsonElement object : objectsArray){
-                            System.out.println(objectsArray.size() + " OBJECTS");
                             JsonObject o = object.getAsJsonObject();
                             ContentsPageScreen.ContentsPageEntry entry = new ContentsPageScreen.ContentsPageEntry(Items.BARRIER, -1);
                             if (!o.isEmpty()){
                                 if (o.has(KEY_ITEM)){
-                                    System.out.println("has item");
                                     ItemLike item = ItemLookup.getStack(o.get(KEY_ITEM).getAsString()).getItem();
                                     entry.displayItem(item);
                                 }
                                 if (o.has(KEY_DESCRIPTION)){
-                                    System.out.println("has description");
                                     entry.displayText(o.get(KEY_DESCRIPTION).getAsString());
                                 }
                                 if (o.has(KEY_CONNECTED_PAGE)){
-                                    System.out.println("has conn page");
                                     entry.connectedPage(o.get(KEY_CONNECTED_PAGE).getAsInt());
                                 }
                                 templateObjects.add(entry);
@@ -169,47 +172,16 @@ public class QuestBookParser {
         List<QuestBookImage> qBookImages = new ArrayList<>();
         if (json.has(KEY_IMAGES)){
             JsonArray images = json.get(KEY_IMAGES).getAsJsonArray();
-            for (int index = 0; index < images.size(); index++){
-                System.out.println("Found " + images.size() + images);
-                JsonObject image = images.get(index).getAsJsonObject();
-                QuestBookImage bookImage = QuestBookImage.empty();
-                if (image.has(KEY_IMAGE)){
-                    String value = image.get(KEY_IMAGE).getAsString();
-                    if (value.startsWith(":")){
-                        bookImage = QuestBookImage.getShortHandImage(value);
-                    } else {
-                        bookImage.resourceLocation(ResourceLocation.tryParse(value));
-                    }
-
-                    if (image.has(KEY_SHOW_BORDER)){
-                        bookImage.showBorder(image.get(KEY_SHOW_BORDER).getAsBoolean());
-                    }
-
-                    if (image.has(KEY_TYPE)){
-                        QuestBookImage.Type type;
-                        String typeSting = image.get(KEY_TYPE).getAsString();
-                        type = switch (typeSting){
-                            case "regular" -> QuestBookImage.Type.REGULAR;
-                            case "sprite" -> QuestBookImage.Type.SPRITE;
-                            default -> QuestBookImage.Type.ITEM;
-                        };
-                        bookImage.setType(type);
-                    }
-                }
-                qBookImages.add(bookImage);
-            }
+            addImagesToList(images, qBookImages);
         }
         bookPage.questBookImages = qBookImages;
 
         // Page Msg
         if (message != null){
-            System.out.println("MSG: " + message);
             bookPage.setPageMsg(Component.literal(message));
         } else if (key != null){
-            System.out.println("KEY: " + key);
             bookPage.setPageMsg(Component.translatable(key));
         } else {
-            System.out.println("DEFAULT");
             result.defaultPageMsg = true;
         }
 
@@ -244,6 +216,39 @@ public class QuestBookParser {
         result.showTitle = showTitle;
 
         return result;
+    }
+
+    protected static void addImagesToList(JsonArray imagesArray, List<QuestBookImage> list){
+        for (int index = 0; index < imagesArray.size(); index++){
+            JsonObject image = imagesArray.get(index).getAsJsonObject();
+            QuestBookImage bookImage = QuestBookImage.empty();
+            if (image.has(KEY_IMAGE)){
+                String value = image.get(KEY_IMAGE).getAsString();
+                if (value.startsWith(":")){
+                    bookImage = QuestBookImage.getShortHandImage(value);
+                } else {
+                    bookImage.resourceLocation(ResourceLocation.tryParse(value));
+                }
+
+                if (image.has(KEY_SHOW_BORDER))
+                    bookImage.showBorder(image.get(KEY_SHOW_BORDER).getAsBoolean());
+
+                if (image.has(KEY_COUNT))
+                    bookImage.count(image.get(KEY_COUNT).getAsInt());
+
+                if (image.has(KEY_TYPE)){
+                    QuestBookImage.Type type = QuestBookImage.Type.ITEM;
+                    String typeSting = image.get(KEY_TYPE).getAsString();
+                    type = switch (typeSting){
+                        case "regular" -> QuestBookImage.Type.REGULAR;
+                        case "sprite" -> QuestBookImage.Type.SPRITE;
+                        default -> QuestBookImage.Type.ITEM;
+                    };
+                    bookImage.setType(type);
+                }
+            }
+            list.add(bookImage);
+        }
     }
 
     public static class QuestBookParserResult{

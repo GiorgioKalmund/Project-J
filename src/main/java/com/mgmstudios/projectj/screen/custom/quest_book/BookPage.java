@@ -13,6 +13,7 @@ public class BookPage {
     public static BookPage EMPTY = new BookPage();
     protected List<FormattedCharSequence> textComponents;
     protected List<QuestBookImage> questBookImages;
+    protected List<QuestBookImage> secondaryImages;
     protected Component pageMsg;
 
     public Component pageMsg() {
@@ -56,7 +57,11 @@ public class BookPage {
     }
 
     public BookPage(List<FormattedCharSequence> textComponents, List<QuestBookImage> images, Component pageMsg){
+       this(textComponents, images, List.of(), pageMsg);
+    }
+    public BookPage(List<FormattedCharSequence> textComponents, List<QuestBookImage> images, List<QuestBookImage> secondaryImages, Component pageMsg){
         this.textComponents = textComponents;
+        this.secondaryImages = secondaryImages;
         this.questBookImages = images;
         this.pageMsg = pageMsg;
     }
@@ -75,6 +80,15 @@ public class BookPage {
     public void clearImages(){
         this.questBookImages.clear();
     }
+
+    public List<QuestBookImage> images() {
+        return questBookImages;
+    }
+
+    public List<QuestBookImage> secondaryImages() {
+        return secondaryImages;
+    }
+
 
     @Override
     public String toString() {

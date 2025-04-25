@@ -1,0 +1,30 @@
+{
+  "images": [
+    {
+      "count": 4,
+      "image": "projectj:jade"
+    },
+    {
+      "count": 2,
+      "image": "minecraft:ender_pearl"
+    },
+    {
+      "image": "minecraft:wind_charge"
+    }
+  ],
+  "template": {
+    "name": "recipe-list",
+    "recipe-result": [
+      {
+        "image": "projectj:teleportation_core",
+        "show-border": true
+      }
+    ],
+    "spacing": 30
+  },
+  "text": {
+    "align-center": false,
+    "content": "§nTeleportation Core§r\n\nThe Teleportation Core opens the door to a whole lot of blocks and items allowing you to travel faster.",
+    "show-title": true
+  }
+}

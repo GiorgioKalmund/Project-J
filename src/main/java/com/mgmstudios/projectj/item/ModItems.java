@@ -75,6 +75,8 @@ public class ModItems {
 
     public static final DeferredItem<Item> JADE_BOOTS = registerCustomArmorItem("jade_boots", ModArmorMaterials.JADE_MATERIAL, ArmorType.BOOTS);
 
+    public static final DeferredItem<Item> TELEPORTATION_CORE = register("teleportation_core");
+
     public static final DeferredItem<Item> TELEPORTATION_KEY = register("teleportation_key", TeleportationKeyItem::new , new Item.Properties());
 
     public static final DeferredItem<Item> LITTLE_MAN_SPAWN_EGG = register("little_man_spawn_egg", (properties) -> new SpawnEggItem(ModEntities.LITTLE_MAN_ENTITY.get(), properties));
@@ -108,6 +110,7 @@ public class ModItems {
     public static final DeferredItem<Item> QUETZAL_SPAWN_EGG = register("quetzal_spawn_egg", (properties) -> new SpawnEggItem(ModEntities.QUETZAL_ENTITY.get(), properties));
 
     public static final DeferredItem<Item> QUETZAL_EGG = register("quetzal_egg", EggItem::new, new Item.Properties().stacksTo(16));
+
     public static final DeferredItem<Item> QUEST_BOOK = register("quest_book", (properties) -> new QuestBook("Ancient Codex", "Project J Team", createQuestBookPages(10), properties.stacksTo(1).rarity(Rarity.UNCOMMON)));
 
     public static void register(IEventBus eventBus) {
