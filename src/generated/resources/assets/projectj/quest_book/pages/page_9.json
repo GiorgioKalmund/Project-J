@@ -16,10 +16,15 @@
     }
   ],
   "page-msg": {
-    "message": "§oSecret Message!§r"
+    "message": "in:    "
   },
   "template": {
     "name": "process",
+    "secondary-images": [
+      {
+        "image": "minecraft:furnace"
+      }
+    ],
     "show-fuel": true,
     "spacing": 20
   },

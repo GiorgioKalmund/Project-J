@@ -1,11 +1,13 @@
 package com.mgmstudios.projectj.screen.custom.quest_book.templates;
 
 import com.mgmstudios.projectj.screen.custom.quest_book.BookPage;
+import com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen;
 import com.mgmstudios.projectj.screen.custom.quest_book.components.ImageComponent;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 
-import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.QUEST_IMAGE_HEIGHT;
+import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.*;
+import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.PAGE_TEXT_Y_OFFSET;
 import static com.mgmstudios.projectj.screen.custom.quest_book.templates.ItemListScreen.renderListStackImage;
 
 public class ProcessScreen extends TextScreen {
@@ -41,6 +43,8 @@ public class ProcessScreen extends TextScreen {
                 .render(guiGraphics, screen, page);
 
         renderListStackImage(guiGraphics, 2, page, screen, mouseX, mouseY, spacing + 8, 0);
+
+        renderListStackImage(guiGraphics, getOrDefault(page.secondaryImages(), 0, QuestBookScreen.QuestBookImage.unavailable()), page, screen,  mouseX, mouseY, PAGE_TEXT_X_OFFSET + 16, -PAGE_TEXT_Y_OFFSET + 8);
 
         if (showFuel){
             ImageComponent.ImageBuilder()

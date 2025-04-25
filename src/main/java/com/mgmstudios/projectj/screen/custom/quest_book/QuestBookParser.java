@@ -32,7 +32,7 @@ public class QuestBookParser {
     public static final String KEY_KEY = "key";
     public static final String KEY_MESSAGE = "message";
     public static final String KEY_TEMPLATE = "template";
-    public static final String KEY_RECIPE_RESULT = "recipe-result";
+    public static final String KEY_SECONDARY_IMAGES = "secondary-images";
     public static final String KEY_NAME = "name";
     public static final String KEY_SHOW_FUEL = "show-fuel";
     public static final String KEY_SPACING = "spacing";
@@ -138,9 +138,9 @@ public class QuestBookParser {
                     templateIntegers.add(template.get(KEY_SPACING).getAsInt());
                 if (template.has(KEY_CHAPTER_TITLE) && stringIsAnyOfTypes(templateName, CHAPTER_COVER))
                     templateStrings.add(template.get(KEY_CHAPTER_TITLE).getAsString());
-                if (template.has(KEY_RECIPE_RESULT) && stringIsAnyOfTypes(templateName, RECIPE_LIST)){
-                    JsonArray images = template.get(KEY_RECIPE_RESULT).getAsJsonArray();
-                    addImagesToList(images, resultImages);
+                if (template.has(KEY_SECONDARY_IMAGES) && stringIsAnyOfTypes(templateName, RECIPE_LIST, PROCESS)){
+                    JsonArray secondaryImages = template.get(KEY_SECONDARY_IMAGES).getAsJsonArray();
+                    addImagesToList(secondaryImages, resultImages);
                     bookPage.secondaryImages = resultImages;
                 }
                 if (template.has(KEY_OBJECTS)){
