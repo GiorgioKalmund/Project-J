@@ -176,19 +176,7 @@ public class QuestBookParser {
                 if (image.has(KEY_IMAGE)){
                     String value = image.get(KEY_IMAGE).getAsString();
                     if (value.startsWith(":")){
-                        System.out.println("Shortcut detected");
-                        // TODO: Best to probably solve it using a map
-                        bookImage = switch (value){
-                            case ":process" -> QuestBookImage.PROCESS_IMAGE;
-                            case ":lit_process" -> QuestBookImage.LIT_PROCESS_IMAGE;
-                            case ":adobe_lit_process" -> QuestBookImage.ADOBE_LIT_PROCESS_IMAGE;
-                            case ":chapter_1" -> QuestBookImage.CHAPTER_1_IMAGE;
-                            case ":chapter_2" -> QuestBookImage.CHAPTER_2_IMAGE;
-                            default -> {
-                                System.err.println(value + " has no matching static image!");
-                                yield QuestBookImage.empty().resourceLocation(ResourceLocation.tryParse(value));
-                            }
-                        };
+                        bookImage = QuestBookImage.getShortHandImage(value);
                     } else {
                         bookImage.resourceLocation(ResourceLocation.tryParse(value));
                     }
@@ -198,7 +186,7 @@ public class QuestBookParser {
                     }
 
                     if (image.has(KEY_TYPE)){
-                        QuestBookImage.Type type = QuestBookImage.Type.ITEM;
+                        QuestBookImage.Type type;
                         String typeSting = image.get(KEY_TYPE).getAsString();
                         type = switch (typeSting){
                             case "regular" -> QuestBookImage.Type.REGULAR;

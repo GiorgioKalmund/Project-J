@@ -22,6 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookParser.*;
@@ -380,13 +381,25 @@ public class QuestBookScreen extends Screen {
         ResourceLocation resourceLocation;
         boolean showBorder;
         protected Type type;
-        private String shorthand = "";
+        private String shorthand;
 
+        public static HashMap<String, QuestBookImage> SHORTHAND_MAP = new HashMap<>();
+        protected QuestBookImage(ResourceLocation resourceLocation, boolean showBorder, Type type, String shorthand){
+            this.resourceLocation = resourceLocation;
+            this.showBorder = showBorder;
+            this.type = type;
+            this.shorthand = shorthand;
+            if (shorthand != null && !shorthand.isBlank()){
+                SHORTHAND_MAP.put(this.shorthand, this);
+            }
+        }
+
+        public static QuestBookImage getShortHandImage(String key){
+            return SHORTHAND_MAP.getOrDefault(key, QuestBookImage.empty());
+        }
 
         protected QuestBookImage(ResourceLocation resourceLocation){
-            this.resourceLocation = resourceLocation;
-            this.showBorder = false;
-            this.type = Type.ITEM;
+            this(resourceLocation, false, Type.ITEM);
         }
 
         protected QuestBookImage(ResourceLocation resourceLocation, boolean showBorder){
@@ -399,13 +412,6 @@ public class QuestBookScreen extends Screen {
 
         public QuestBookImage(ItemLike itemLike, boolean showBorder, Type type){
             this(ItemLookup.getResourceLocation(itemLike) ,showBorder, type);
-        }
-        protected QuestBookImage(ResourceLocation resourceLocation, boolean showBorder, Type type, String shorthand){
-            System.out.println("LOC: " + resourceLocation);
-            this.resourceLocation = resourceLocation;
-            this.showBorder = showBorder;
-            this.type = type;
-            this.shorthand = shorthand;
         }
 
         protected QuestBookImage(ResourceLocation resourceLocation, boolean showBorder, Type type){
