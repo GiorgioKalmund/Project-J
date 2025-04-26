@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "P": "projectj:pyrite_ingot",
+    "R": "projectj:serpentinite_rod",
+    "T": "projectj:teleportation_core"
+  },
+  "pattern": [
+    "P",
+    "R",
+    "T"
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectj:teleportation_key"
+  }
+}

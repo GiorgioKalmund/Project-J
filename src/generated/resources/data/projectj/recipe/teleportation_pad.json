@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": "projectj:serpentinite_rock",
+    "T": "projectj:teleportation_core",
+    "s": "projectj:serpentinite_rock_slab"
+  },
+  "pattern": [
+    "sTs",
+    "SSS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectj:teleportation_pad"
+  }
+}
