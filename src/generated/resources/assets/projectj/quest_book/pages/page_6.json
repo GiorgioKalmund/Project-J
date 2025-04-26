@@ -5,6 +5,7 @@
       "image": ":chapter_2"
     }
   ],
+  "page-shortcut": "chapter_2_shortcut",
   "show-page-msg": false,
   "template": {
     "chapter-title": "§f§o§lTeleportation§r",

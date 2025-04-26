@@ -1,5 +1,9 @@
 package com.mgmstudios.projectj.screen.custom.quest_book;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.internal.LinkedTreeMap;
+import com.google.gson.reflect.TypeToken;
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.screen.custom.quest_book.components.QuestPageButton;
 import com.mgmstudios.projectj.screen.custom.quest_book.templates.*;
@@ -22,10 +26,8 @@ import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.lang.reflect.Type;
+import java.util.*;
 
 import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookParser.*;
 
@@ -58,6 +60,7 @@ public class QuestBookScreen extends Screen {
     public static final int QUEST_IMAGE_HEIGHT = 16;
     protected QuestBookScreenTemplate screenToShow = QuestBookScreenTemplate.EMPTY;
     protected List<AbstractWidget> temporaryWidgets = new ArrayList<>();
+    public LinkedTreeMap<String, Integer> pageShortcutMap;
     public QuestBookScreen(BookAccess bookAccess) {
         this(bookAccess, true);
     }
@@ -72,6 +75,12 @@ public class QuestBookScreen extends Screen {
         this.cachedPage = -1;
         this.bookAccess = bookAccess;
         this.playTurnSound = playTurnSound;
+        this.pageShortcutMap = new LinkedTreeMap<>();
+
+    }
+
+    public int currentPage(){
+        return currentPage;
     }
 
     public void render(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
@@ -79,6 +88,8 @@ public class QuestBookScreen extends Screen {
 
 
         if (this.cachedPage != this.currentPage) {
+
+
             if (screenToShow != null){
                 screenToShow.page().clear();
                 removeTemporaryWidgets();
@@ -87,6 +98,12 @@ public class QuestBookScreen extends Screen {
             QuestBookParserResult bookParserResult = null;
             if (this.minecraft != null){
                 bookParserResult = bookPageFromJson(getJsonPage(currentPage, this.minecraft.getResourceManager()));
+
+                ResourceLocation resourceLocation = ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "quest_book/pages/shortcuts.json");
+                JsonObject jsonObject = QuestBookParser.getJsonObject(resourceLocation, this.minecraft.getResourceManager());
+                Gson gson = new Gson();
+                Type type = new TypeToken<Map<String, Integer>>() {}.getType();
+                pageShortcutMap = gson.fromJson(jsonObject, type);
             } else {
                 System.err.println("Could not get Minecraft because it is null (not open)");
             }

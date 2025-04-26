@@ -30,7 +30,14 @@ public class ContentsPageScreen extends TextScreen {
         int nextYPos = PAGE_TEXT_Y_OFFSET + Y_OFFSET;
         for (ContentsPageEntry e : entries){
             JumpToButton button = new JumpToButton((p) -> {
-                screen.setPage(e.connectedPage);
+                if (e.connectedPage != -1)
+                    screen.setPage(e.connectedPage);
+                else{
+                    var pageToGo = screen.pageShortcutMap.getOrDefault(e.connectedShortcut, (screen.currentPage()));
+                    if (pageToGo == screen.currentPage())
+                        System.err.println(e.connectedShortcut + " is not a valid / connected shortcut!");
+                    screen.setPage(pageToGo);
+                }
             }, e.displayItem, e.displayText, nextXPos, nextYPos, true, screen);
             nextXPos += spacing;
             if (nextXPos >= BACKGROUND_TEXTURE_WIDTH){
@@ -51,11 +58,19 @@ public class ContentsPageScreen extends TextScreen {
         protected ItemLike displayItem;
         protected String displayText;
         private int connectedPage;
+        private String connectedShortcut;
 
         public ContentsPageEntry(ItemLike displayItem, String displayText, int connectedPage){
             this.displayItem = displayItem;
             this.connectedPage = connectedPage;
             this.displayText = displayText;
+            this.connectedShortcut = null;
+        }
+        public ContentsPageEntry(ItemLike displayItem, String displayText, String connectedShortcut){
+            this.displayItem = displayItem;
+            this.connectedPage = -1;
+            this.displayText = displayText;
+            this.connectedShortcut = connectedShortcut;
         }
         public ContentsPageEntry(ItemLike displayItem, int connectedPage){
             this(displayItem, "", connectedPage);
@@ -82,6 +97,13 @@ public class ContentsPageScreen extends TextScreen {
 
         public void connectedPage(int connectedPage) {
             this.connectedPage = connectedPage;
+        }
+        public void connectedShortcut(String connectedShortcut) {
+            this.connectedShortcut = connectedShortcut;
+        }
+
+        public String connectedShortcut(){
+            return connectedShortcut;
         }
 
         public static ContentsPageEntry createWidget(ItemLike displayItem, String displayText, int connectedPage){

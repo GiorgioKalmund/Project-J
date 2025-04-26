@@ -14,9 +14,19 @@
         "item": "projectj:jade"
       },
       {
-        "connected-page": 6,
+        "connected-page": "chapter_2_shortcut",
         "description": "TP",
         "item": "projectj:teleportation_core"
+      },
+      {
+        "connected-page": "chapter_4_shortcut",
+        "description": "3",
+        "item": "projectj:obsidian_tooth"
+      },
+      {
+        "connected-page": 8,
+        "description": "Quetzal",
+        "item": "projectj:quetzal_feather"
       }
     ],
     "spacing": 30

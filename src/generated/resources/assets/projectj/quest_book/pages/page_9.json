@@ -18,6 +18,7 @@
   "page-msg": {
     "message": "in:    "
   },
+  "page-shortcut": "chapter_4_shortcut",
   "template": {
     "name": "process",
     "secondary-images": [

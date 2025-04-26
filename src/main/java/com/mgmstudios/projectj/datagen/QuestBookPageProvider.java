@@ -1,5 +1,6 @@
 package com.mgmstudios.projectj.datagen;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mgmstudios.projectj.block.ModBlocks;
@@ -17,6 +18,7 @@ import net.minecraft.world.level.block.Blocks;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -24,6 +26,12 @@ import static com.mgmstudios.projectj.ProjectJ.MOD_ID;
 import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookParser.*;
 
 public class QuestBookPageProvider implements DataProvider {
+
+    protected static final String CHAPTER_1_SHORTCUT = "chapter_1_shortcut";
+    protected static final String CHAPTER_2_SHORTCUT = "chapter_2_shortcut";
+    protected static final String CHAPTER_3_SHORTCUT = "chapter_3_shortcut";
+    protected static final String CHAPTER_4_SHORTCUT = "chapter_4_shortcut";
+
     private final PackOutput packOutput;
     List<JsonObject> pages = new ArrayList<>();
 
@@ -44,12 +52,15 @@ public class QuestBookPageProvider implements DataProvider {
                 .setTemplate(QuestBookTemplateType.CONTENTS_PAGE)
                 .setTemplateSpacing(30)
                 .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.JADE, "Basics", 2))
-                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.TELEPORTATION_CORE, "TP", 6))
+                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.TELEPORTATION_CORE, "TP", CHAPTER_2_SHORTCUT))
+                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.OBSIDIAN_TOOTH, "3", CHAPTER_4_SHORTCUT))
+                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.QUETZAL_FEATHER, "Quetzal", 8))
                 .setText("§lTable of Contents§r", true)
                 .addImage(new QuestBookImage(ModItems.RAW_JADE))
                 .save(pages);
 
         Builder.create()
+                .setPageShortcut(CHAPTER_1_SHORTCUT)
                 .setTemplate(QuestBookTemplateType.CHAPTER_COVER)
                 .showPageMessage(false)
                 .addImage(QuestBookImage.CHAPTER_1_IMAGE)
@@ -91,6 +102,7 @@ public class QuestBookPageProvider implements DataProvider {
                 .save(pages);
 
         Builder.create()
+                .setPageShortcut(CHAPTER_2_SHORTCUT)
                 .setTemplate(QuestBookTemplateType.CHAPTER_COVER)
                 .showPageMessage(false)
                 .addImage(QuestBookImage.CHAPTER_2_IMAGE)
@@ -122,6 +134,7 @@ public class QuestBookPageProvider implements DataProvider {
 
 
         Builder.create()
+                .setPageShortcut(CHAPTER_4_SHORTCUT)
                 .setTemplate(QuestBookTemplateType.PROCESS)
                 .defaultTemplateSpacing()
                 .setTemplateShowFuel(true)
@@ -143,12 +156,18 @@ public class QuestBookPageProvider implements DataProvider {
         generatePages();
 
         List<CompletableFuture<?>> futures = new ArrayList<>();
-
+        HashMap<String, Integer> shortcutsMap = new HashMap<>();
+        Gson gson = new Gson();
         for (int index = 0; index < pages.size(); index++){
+            if (pages.get(index).has(KEY_PAGE_SHORTCUT))
+                shortcutsMap.put(pages.get(index).get(KEY_PAGE_SHORTCUT).getAsString(), index);
+
             Path path = basePath.resolve("page_" + index + ".json");
             JsonObject page = pages.get(index);
             futures.add(DataProvider.saveStable(cachedOutput, page, path));
         }
+        Path shortcutsPath = basePath.resolve("shortcuts.json");
+        futures.add(DataProvider.saveStable(cachedOutput, gson.toJsonTree(shortcutsMap), shortcutsPath));
 
         return CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
     }
@@ -200,6 +219,11 @@ public class QuestBookPageProvider implements DataProvider {
 
         Builder setEmpty(boolean value){
             json.addProperty(KEY_EMPTY, value);
+            return this;
+        }
+
+        Builder setPageShortcut(String shortcut){
+            json.addProperty(KEY_PAGE_SHORTCUT, shortcut);
             return this;
         }
 
@@ -263,7 +287,10 @@ public class QuestBookPageProvider implements DataProvider {
             ResourceLocation resourceLocation = ItemLookup.getResourceLocation(entry.displayItem());
             entryObject.addProperty(KEY_ITEM, resourceLocation.getNamespace() + ":" + resourceLocation.getPath());
             entryObject.addProperty(KEY_DESCRIPTION, entry.displayText());
-            entryObject.addProperty(KEY_CONNECTED_PAGE, entry.connectedPage());
+            if (entry.connectedPage() != -1)
+                entryObject.addProperty(KEY_CONNECTED_PAGE, entry.connectedPage());
+            else
+                entryObject.addProperty(KEY_CONNECTED_PAGE, entry.connectedShortcut());
 
             JsonArray objectsArray;
             JsonObject templateObject = json.getAsJsonObject(KEY_TEMPLATE);
