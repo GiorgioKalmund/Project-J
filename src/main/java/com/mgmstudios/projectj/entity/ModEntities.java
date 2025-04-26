@@ -5,8 +5,10 @@ import com.mgmstudios.projectj.entity.custom.LittleKingEntity;
 import com.mgmstudios.projectj.entity.custom.LittleManEntity;
 import com.mgmstudios.projectj.entity.custom.QuetzalEntity;
 import com.mgmstudios.projectj.entity.custom.SittableEntity;
+import com.mgmstudios.projectj.entity.projectile.ObsidianArrow;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.projectile.SpectralArrow;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -37,6 +39,12 @@ public class ModEntities {
             ENTITY_TYPES.registerEntityType("quetzal",
                     QuetzalEntity::new, MobCategory.MISC,
                     builder -> builder.sized(0.5f, 1.2f)
+            );
+
+    public static final Supplier<EntityType<ObsidianArrow>> OBSIDIAN_ARROW_ENTITY =
+            ENTITY_TYPES.registerEntityType("obsidian_arrow",
+                    ObsidianArrow::new, MobCategory.MISC,
+                    builder -> builder.noLootTable().sized(0.5F, 0.5F).eyeHeight(0.13F).clientTrackingRange(4).updateInterval(20)
             );
 
     public static void register(IEventBus eventBus){

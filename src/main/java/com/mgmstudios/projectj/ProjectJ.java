@@ -11,6 +11,7 @@ import com.mgmstudios.projectj.client.ProjectJClientExtension;
 import com.mgmstudios.projectj.entity.ModEntities;
 import com.mgmstudios.projectj.entity.client.little_king.LittleKingRenderer;
 import com.mgmstudios.projectj.entity.client.little_man.LittleManRenderer;
+import com.mgmstudios.projectj.entity.client.obsidian_arrow.ObsidianArrowRenderer;
 import com.mgmstudios.projectj.entity.client.quetzal.QuetzalRenderer;
 import com.mgmstudios.projectj.fluid.ModFluidTypes;
 import com.mgmstudios.projectj.fluid.ModFluids;
@@ -118,6 +119,7 @@ public class ProjectJ
             EntityRenderers.register(ModEntities.LITTLE_MAN_ENTITY.get(), LittleManRenderer::new);
             EntityRenderers.register(ModEntities.LITTLE_KING_ENTITY.get(), LittleKingRenderer::new);
             EntityRenderers.register(ModEntities.QUETZAL_ENTITY.get(), QuetzalRenderer::new);
+            EntityRenderers.register(ModEntities.OBSIDIAN_ARROW_ENTITY.get(), ObsidianArrowRenderer::new);
         }
 
         @SubscribeEvent

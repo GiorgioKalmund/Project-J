@@ -453,6 +453,17 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_jade", this.has(ModItems.JADE))
                 .save(this.output);
 
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.COMBAT, ModItems.OBSIDIAN_ARROW, 4)
+                .define('#', Items.STICK)
+                .define('O', ModItems.OBSIDIAN_TOOTH)
+                .define('Y', Items.FEATHER)
+                .pattern("O")
+                .pattern("#")
+                .pattern("Y")
+                .unlockedBy("has_obsidian_tooth", this.has(ModItems.OBSIDIAN_TOOTH))
+                .unlockedBy("has_feather", this.has(Items.FEATHER))
+                .unlockedBy("has_flint", this.has(Items.FLINT))
+                .save(this.output);
 
         // ANCIENT ALTAR
 
@@ -463,6 +474,12 @@ public class ModRecipeProvider extends RecipeProvider {
                 .requires(Items.STICK )
                 .unlockedBy("has_jade", this.has(ModItems.JADE))
                 .save(this.output, "macuahuitl_from_altar");
+
+        AncientAltarRecipeBuilder.regularWithPyrite(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.CHIMALLI_SHIELD)
+                .requires(Items.SHIELD)
+                .requiresBlood()
+                .unlockedBy("has_shield", this.has(Items.SHIELD))
+                .save(this.output);
 
         AncientAltarRecipeBuilder.regularWithPyrite(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.CRUDE_SACRIFICE_BOWL)
                 .requires(Items.BOWL)

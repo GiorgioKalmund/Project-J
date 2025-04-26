@@ -14,24 +14,19 @@
         "item": "projectj:jade"
       },
       {
-        "connected-page": 4,
+        "connected-page": "chapter_2_shortcut",
         "description": "TP",
         "item": "projectj:teleportation_core"
       },
       {
-        "connected-page": 1,
-        "description": "1",
-        "item": "minecraft:wheat"
+        "connected-page": "chapter_4_shortcut",
+        "description": "3",
+        "item": "projectj:obsidian_tooth"
       },
       {
-        "connected-page": 1,
-        "description": "1",
-        "item": "minecraft:acacia_boat"
-      },
-      {
-        "connected-page": 10,
-        "description": "Voodoo",
-        "item": "projectj:voodoo_catcher"
+        "connected-page": 8,
+        "description": "Quetzal",
+        "item": "projectj:quetzal_feather"
       }
     ],
     "spacing": 30

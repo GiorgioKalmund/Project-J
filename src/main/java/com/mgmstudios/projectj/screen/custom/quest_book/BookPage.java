@@ -15,6 +15,7 @@ public class BookPage {
     protected List<QuestBookImage> questBookImages;
     protected List<QuestBookImage> secondaryImages;
     protected Component pageMsg;
+    protected String shortcut;
 
     public Component pageMsg() {
         return pageMsg;
@@ -60,10 +61,14 @@ public class BookPage {
        this(textComponents, images, List.of(), pageMsg);
     }
     public BookPage(List<FormattedCharSequence> textComponents, List<QuestBookImage> images, List<QuestBookImage> secondaryImages, Component pageMsg){
+        this(textComponents, images, secondaryImages, pageMsg, null);
+    }
+    public BookPage(List<FormattedCharSequence> textComponents, List<QuestBookImage> images, List<QuestBookImage> secondaryImages, Component pageMsg, String shortcut){
         this.textComponents = textComponents;
         this.secondaryImages = secondaryImages;
         this.questBookImages = images;
         this.pageMsg = pageMsg;
+        this.shortcut = shortcut;
     }
 
     public static BookPage empty(){
@@ -89,13 +94,14 @@ public class BookPage {
         return secondaryImages;
     }
 
-
     @Override
     public String toString() {
-        return "BookPage{\n" +
-                "textComponents=" + textComponents + "\n" +
-                ", questBookImages=" + questBookImages +  "\n" +
-                ", pageMsg=" + pageMsg + "\n" +
+        return "BookPage{" +
+                "textComponents=" + textComponents +
+                ", questBookImages=" + questBookImages +
+                ", secondaryImages=" + secondaryImages +
+                ", pageMsg=" + pageMsg +
+                ", shortcut='" + shortcut + '\'' +
                 '}';
     }
 }

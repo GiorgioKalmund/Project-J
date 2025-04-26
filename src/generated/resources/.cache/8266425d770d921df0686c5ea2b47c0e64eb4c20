@@ -1,3 +1,4 @@
+// 1.21.4	2025-04-26T17:00:45.112068	Model Definitions - projectj
 // 1.21.4	2025-04-26T19:08:20.264679917	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
@@ -78,6 +79,7 @@ c236a7fe29cff9fefcb5a438001d0bb91e903bdd assets/projectj/items/botany_pot.json
 ab51c3c90a6fae8c12fdf1055703a34a3cf2354c assets/projectj/items/chili.json
 1e7c11deed3ba7ccad3b8fe1548b21a95a51fa16 assets/projectj/items/chili_con_carne.json
 559f147574b51074d388fae48a967b6b14eedf3d assets/projectj/items/chili_seeds.json
+85ce947d8f922c9d57d31ffe5d93b5dc6f72368d assets/projectj/items/chimalli_shield.json
 4c516558ea1e299d150365077530145726a6315e assets/projectj/items/chimney.json
 0d2de578d854c0b97a6e839c3adcf8369b1444ba assets/projectj/items/cobbled_serpentinite.json
 a97481cad32e058958e7eac0e6dd4ce9e97d6075 assets/projectj/items/cobbled_serpentinite_slab.json
@@ -126,6 +128,7 @@ e42e82dea807fe8704bd425a970f13fc0fabf836 assets/projectj/items/mesquite_pressure
 2c3862d3290c3974d89fb2b0bddf3b2d4ce0e1e9 assets/projectj/items/mesquite_stairs.json
 4af782fa8fea2a3b6f896a2c94bdf73135dbbea7 assets/projectj/items/mesquite_wood.json
 da296558472311ae6a660687e56b93daec23f56b assets/projectj/items/metate.json
+98b689293cb75c02c874c04866a056a3c2680cc9 assets/projectj/items/obsidian_arrow.json
 bd8e1284e4e6223cc96888851ecab7d4d770dfaf assets/projectj/items/obsidian_tooth.json
 a6dcba9dc781c521a78cc57cc3363cc82e5e48d8 assets/projectj/items/olmec_altar.json
 1fd2dc1dd796f135a0cd1d26103b4f785f7a0ac7 assets/projectj/items/packed_adobe.json
@@ -329,6 +332,7 @@ f4599e1005d189a2ec7a00ff5c0fe9ac12947441 assets/projectj/models/item/maize_mash.
 600d421c4f221ef5e95defb1c1e5edeec355d948 assets/projectj/models/item/maize_seeds.json
 9114e82cc7b26786a659af8ac521ac62f7f920af assets/projectj/models/item/mesquite_brazier.json
 0ed8110b95f96e3c9081e1ec3b05018acb71b9bd assets/projectj/models/item/mesquite_sapling.json
+be3dbf0b05738e4dff042801437c0830688d0370 assets/projectj/models/item/obsidian_arrow.json
 09cab150482989c21b2d2de107eb18eedfbac95b assets/projectj/models/item/obsidian_tooth.json
 ffcc726298e3611b938887a80a1db9c4391d1035 assets/projectj/models/item/pyrite_ingot.json
 017d7efbff9698bd3727d1d340292a684d146368 assets/projectj/models/item/pyrite_magnet.json

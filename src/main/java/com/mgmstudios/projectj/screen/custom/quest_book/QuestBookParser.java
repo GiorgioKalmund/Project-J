@@ -27,6 +27,7 @@ public class QuestBookParser {
 
     public static final String KEY_ERROR = "error";
     public static final String KEY_EMPTY = "empty";
+    public static final String KEY_PAGE_SHORTCUT = "page-shortcut";
     public static final String KEY_SHOW_PAGE_MSG = "show-page-msg";
     public static final String KEY_SHOW_HOME_BUTTON = "show-home-button";
     public static final String KEY_PAGE_MSG = "page-msg";
@@ -54,6 +55,9 @@ public class QuestBookParser {
 
     public static JsonObject getJsonPage(int pageNumber, ResourceManager resourceManager){
         ResourceLocation resourceLocation = ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "quest_book/pages/page_" + pageNumber +".json");
+        return getJsonObject(resourceLocation, resourceManager);
+    }
+    public static JsonObject getJsonObject(ResourceLocation resourceLocation, ResourceManager resourceManager){
         Optional<Resource> resource = resourceManager.getResource(resourceLocation);
         if (resource.isPresent()){
             try (InputStream inputStream = resource.get().open()){
@@ -164,7 +168,11 @@ public class QuestBookParser {
                                     entry.displayText(o.get(KEY_DESCRIPTION).getAsString());
                                 }
                                 if (o.has(KEY_CONNECTED_PAGE)){
-                                    entry.connectedPage(o.get(KEY_CONNECTED_PAGE).getAsInt());
+                                    try {
+                                        entry.connectedPage(o.get(KEY_CONNECTED_PAGE).getAsInt());
+                                    } catch (NumberFormatException e){
+                                        entry.connectedShortcut(o.get(KEY_CONNECTED_PAGE).getAsString());
+                                    }
                                 }
                                 templateObjects.add(entry);
                             }

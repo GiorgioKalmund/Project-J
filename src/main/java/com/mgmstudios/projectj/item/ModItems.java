@@ -26,13 +26,17 @@ import com.mgmstudios.projectj.item.custom.TrowelItem;
 import com.mgmstudios.projectj.item.custom.VoodooCatcherItem;
 import com.mgmstudios.projectj.sound.ModSounds;
 
+import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.network.Filterable;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.BucketItem;
@@ -46,11 +50,21 @@ import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.ArrayList;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.function.Supplier;
+
+import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidProperties;
+import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidPropertiesWithCustomAsset;
+import static net.minecraft.world.item.Items.registerItem;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ProjectJ.MOD_ID);
@@ -99,7 +113,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> LITTLE_MAN_SPAWN_EGG = register("little_man_spawn_egg", (properties) -> new SpawnEggItem(ModEntities.LITTLE_MAN_ENTITY.get(), properties));
 
-    public static final DeferredItem<Item> LITTLE_MAN_VOODOO = register("little_man_voodoo", new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(16));
+    public static final DeferredItem<Item> LITTLE_MAN_VOODOO = register("little_man_voodoo", LittleManVoodoo::new);
 
     public static final DeferredItem<Item> VOODOO_CATCHER = register("voodoo_catcher", VoodooCatcherItem::new, new Item.Properties().stacksTo(1));
 
@@ -132,6 +146,10 @@ public class ModItems {
     public static final DeferredItem<Item> QUETZAL_EGG = register("quetzal_egg", EggItem::new, new Item.Properties().stacksTo(16));
 
     public static final DeferredItem<Item> QUEST_BOOK = register("quest_book", (properties) -> new QuestBook("Ancient Codex", "Project J Team", createQuestBookPages(10), properties.stacksTo(1).rarity(Rarity.UNCOMMON)));
+
+    public static final DeferredItem<Item> CHIMALLI_SHIELD = register("chimalli_shield", ShieldItem::new, new Item.Properties().durability(336));
+
+    public static final DeferredItem<Item> OBSIDIAN_ARROW = register("obsidian_arrow", ObsidianArrowItem::new);
 
     public static final DeferredItem<Item> DEATH_WHISTLE = register("death_whistle", (properties) -> new CustomInstrumentItem(ModSounds.DEATH_WHISTLE_SOUND.value(), properties.stacksTo(1).rarity(Rarity.EPIC),3.0F));
 

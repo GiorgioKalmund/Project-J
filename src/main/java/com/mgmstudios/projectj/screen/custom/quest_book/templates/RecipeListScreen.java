@@ -30,8 +30,10 @@ public class RecipeListScreen extends SpacingScreen {
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
         super.render(guiGraphics, mouseX, mouseY, partialTicks);
 
-        renderListStackImage(guiGraphics, getOrDefault(page.secondaryImages(), 0, QuestBookImage.unavailable()), page, screen,  mouseX, mouseY, 0, 0);
-        renderListStackImage(guiGraphics, getOrDefault(page.secondaryImages(), 1, QuestBookImage.unavailable()), page, screen,  mouseX, mouseY, PAGE_TEXT_X_OFFSET + 16, -PAGE_TEXT_Y_OFFSET + 8);
+        // In location (i.e. Ancient Altar, Furnace, etc.)
+        renderListStackImage(guiGraphics, getOrDefault(page.secondaryImages(), 0, QuestBookImage.unavailable()), page, screen,  mouseX, mouseY, PAGE_TEXT_X_OFFSET + 16, -PAGE_TEXT_Y_OFFSET + 8);
+        // Recipe result
+        renderListStackImage(guiGraphics, getOrDefault(page.secondaryImages(), 1, QuestBookImage.unavailable()), page, screen,  mouseX, mouseY, 0, 0);
 
         int imageCount = page.images().size();
         for (int imageIndex = 0; imageIndex < imageCount; imageIndex++){
