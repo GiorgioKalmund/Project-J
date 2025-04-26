@@ -87,7 +87,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> LITTLE_MAN_SPAWN_EGG = register("little_man_spawn_egg", (properties) -> new SpawnEggItem(ModEntities.LITTLE_MAN_ENTITY.get(), properties));
 
-    public static final DeferredItem<Item> LITTLE_MAN_VOODOO = register("little_man_voodoo", new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(16));
+    public static final DeferredItem<Item> LITTLE_MAN_VOODOO = register("little_man_voodoo", LittleManVoodoo::new);
 
     public static final DeferredItem<Item> VOODOO_CATCHER = register("voodoo_catcher", VoodooCatcherItem::new, new Item.Properties().stacksTo(1));
 

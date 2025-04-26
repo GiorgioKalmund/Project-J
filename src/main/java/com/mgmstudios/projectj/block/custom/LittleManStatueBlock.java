@@ -3,6 +3,7 @@ package com.mgmstudios.projectj.block.custom;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.entity.ModEntities;
 import com.mgmstudios.projectj.entity.custom.LittleManEntity;
+import com.mgmstudios.projectj.entity.goals.NearestAttackableTargetGoalWithExceptions;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
@@ -15,6 +16,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.util.DefaultRandomPos;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Zombie;
@@ -40,6 +42,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class LittleManStatueBlock extends HorizontalDirectionalBlock {
+
+    private double range = 20;
 
     protected static final MapCodec<LittleManStatueBlock> CODEC = simpleCodec(LittleManStatueBlock::new);
     public static final BooleanProperty SUMMONING = BooleanProperty.create("summoning");
@@ -104,11 +108,17 @@ public class LittleManStatueBlock extends HorizontalDirectionalBlock {
 
             level.setBlockAndUpdate(pos, ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK.get().defaultBlockState());
         } else {
-            List<Zombie> allEntities = level.getEntitiesOfClass(Zombie.class, new AABB(pos).inflate(10));
+            List<Zombie> allEntities = level.getEntitiesOfClass(Zombie.class, new AABB(pos).inflate(range));
+
             for (Zombie zombie : allEntities) {
+
+                NearestAttackableTargetGoal<Player> goal = new NearestAttackableTargetGoal<>(zombie, Player.class, true);
+
+                goal.stop();
+
                 Vec3 vec3 = DefaultRandomPos.getPosAway(zombie, 16, 7, pos.getCenter());
                 if(vec3 != null){
-                    zombie.getNavigation().moveTo(vec3.x,vec3.y, vec3.z, 1.5f);
+                    zombie.getNavigation().moveTo(vec3.x,vec3.y, vec3.z, 1f);
                 }
             }
         }
