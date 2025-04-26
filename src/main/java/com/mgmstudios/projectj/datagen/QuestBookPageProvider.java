@@ -76,8 +76,8 @@ public class QuestBookPageProvider implements DataProvider {
         Builder.create()
                 .setTemplate(QuestBookTemplateType.ITEM_LIST)
                 .setTemplateSpacing(30)
-                .setImages(new QuestBookImage(ModItems.TELEPORTATION_CORE))
-                .setImages(new QuestBookImage(ModBlocks.TELEPORTATION_PAD))
+                .addImage(new QuestBookImage(ModItems.TELEPORTATION_CORE))
+                .addImage(new QuestBookImage(ModBlocks.TELEPORTATION_PAD))
                 .setImages(new QuestBookImage(ModItems.TELEPORTATION_KEY))
                 .setText("Teleportation is cool!", false)
                 .save(pages);
@@ -85,20 +85,20 @@ public class QuestBookPageProvider implements DataProvider {
         Builder.create()
                 .setTemplate(QuestBookTemplateType.ITEM_LIST)
                 .setTemplateSpacing(30)
-                .setImages(new QuestBookImage(ModItems.TELEPORTATION_CORE))
-                .setImages(new QuestBookImage(ModBlocks.TELEPORTATION_PAD))
-                .setImages(new QuestBookImage(ModItems.TELEPORTATION_KEY))
-                .setImages(new QuestBookImage(Items.APPLE))
+                .addImage(new QuestBookImage(ModItems.TELEPORTATION_CORE))
+                .addImage(new QuestBookImage(ModBlocks.TELEPORTATION_PAD))
+                .addImage(new QuestBookImage(ModItems.TELEPORTATION_KEY))
+                .addImage(new QuestBookImage(Items.APPLE))
                 .setText("Teleportation is cool and Apple!", false)
                 .save(pages);
 
         Builder.create()
                 .setTemplate(QuestBookTemplateType.DOUBLE_ITEM_SHOWCASE)
                 .setTemplateSpacing(20)
-                .setImages(new QuestBookImage(ModItems.TELEPORTATION_CORE))
-                .setImages(new QuestBookImage(ModBlocks.TELEPORTATION_PAD))
-                .setImages(new QuestBookImage(ModItems.TELEPORTATION_KEY))
-                .setImages(new QuestBookImage(Items.APPLE))
+                .addImage(new QuestBookImage(ModItems.TELEPORTATION_CORE))
+                .addImage(new QuestBookImage(ModBlocks.TELEPORTATION_PAD))
+                .addImage(new QuestBookImage(ModItems.TELEPORTATION_KEY))
+                .addImage(new QuestBookImage(Items.APPLE))
                 .setText("Two", false)
                 .save(pages);
 
@@ -108,9 +108,9 @@ public class QuestBookPageProvider implements DataProvider {
                 .setInLocationMessage()
                 .addSecondaryImage(new QuestBookImage(ModItems.TELEPORTATION_CORE,true))
                 .addSecondaryImage(new QuestBookImage(ModBlocks.ANCIENT_ALTAR))
-                .setImages(new QuestBookImage(ModItems.JADE,4, false))
-                .setImages(new QuestBookImage(Items.ENDER_PEARL, 2, false))
-                .setImages(new QuestBookImage(Items.WIND_CHARGE))
+                .addImage(new QuestBookImage(ModItems.JADE,4, false))
+                .addImage(new QuestBookImage(Items.ENDER_PEARL, 2, false))
+                .addImage(new QuestBookImage(Items.WIND_CHARGE))
                 .setText("§nTeleportation Core§r\n\nThe Teleportation Core opens the door to a whole lot of blocks and items allowing you to travel faster.", true)
                 .save(pages);
 
