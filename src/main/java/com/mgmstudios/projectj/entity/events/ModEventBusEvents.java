@@ -2,10 +2,10 @@ package com.mgmstudios.projectj.entity.events;
 
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.entity.ModEntities;
+import com.mgmstudios.projectj.entity.client.canoe.CanoeModel;
 import com.mgmstudios.projectj.entity.client.little_king.LittleKingModel;
 import com.mgmstudios.projectj.entity.client.little_man.LittleManModel;
 import com.mgmstudios.projectj.entity.client.quetzal.QuetzalModel;
-import com.mgmstudios.projectj.entity.client.quetzal.QuetzalRenderState;
 import com.mgmstudios.projectj.entity.custom.LittleKingEntity;
 import com.mgmstudios.projectj.entity.custom.LittleManEntity;
 import com.mgmstudios.projectj.entity.custom.QuetzalEntity;
@@ -22,6 +22,7 @@ public class ModEventBusEvents {
         event.registerLayerDefinition(LittleManModel.LAYER_LOCATION, LittleManModel::createBodyLayer);
         event.registerLayerDefinition(LittleKingModel.LAYER_LOCATION, LittleKingModel::createBodyLayer);
         event.registerLayerDefinition(QuetzalModel.LAYER_LOCATION, QuetzalModel::createBodyLayer);
+        event.registerLayerDefinition(CanoeModel.LAYER_LOCATION, CanoeModel::createBodyLayer);
     }
 
     @SubscribeEvent

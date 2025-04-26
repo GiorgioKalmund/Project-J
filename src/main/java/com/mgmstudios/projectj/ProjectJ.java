@@ -9,6 +9,8 @@ import com.mgmstudios.projectj.block.entity.renderer.MetateEntityRenderer;
 import com.mgmstudios.projectj.block.entity.renderer.SittableEntityRenderer;
 import com.mgmstudios.projectj.client.ProjectJClientExtension;
 import com.mgmstudios.projectj.entity.ModEntities;
+import com.mgmstudios.projectj.entity.client.canoe.CanoeModel;
+import com.mgmstudios.projectj.entity.client.canoe.CanoeRenderer;
 import com.mgmstudios.projectj.entity.client.little_king.LittleKingRenderer;
 import com.mgmstudios.projectj.entity.client.little_man.LittleManRenderer;
 import com.mgmstudios.projectj.entity.client.obsidian_arrow.ObsidianArrowRenderer;
@@ -25,6 +27,17 @@ import com.mgmstudios.projectj.recipe.ModRecipeTypes;
 import com.mgmstudios.projectj.screen.ModMenuTypes;
 import com.mgmstudios.projectj.screen.custom.AdobeFurnaceScreen;
 import com.mgmstudios.projectj.sound.ModSounds;
+import com.mgmstudios.projectj.recipe.ModRecipeBookCategories;
+import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.renderer.entity.ArrowRenderer;
+import net.minecraft.client.renderer.entity.BoatRenderer;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.world.entity.EntityType;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import org.slf4j.Logger;
+
 import com.mojang.logging.LogUtils;
 
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -66,7 +79,6 @@ public class ProjectJ
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
-        ModSounds.register(modEventBus);
         ModMenuTypes.register(modEventBus);
         ModFluids.register(modEventBus);
         ModFluidTypes.register(modEventBus);
@@ -79,6 +91,7 @@ public class ProjectJ
         ModCreativeModeTabs.register(modEventBus);
         ModEntities.register(modEventBus);
         ModLootTables.register(modEventBus);
+        ModSounds.register(modEventBus);
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::registerScreens);
@@ -120,6 +133,7 @@ public class ProjectJ
             EntityRenderers.register(ModEntities.LITTLE_KING_ENTITY.get(), LittleKingRenderer::new);
             EntityRenderers.register(ModEntities.QUETZAL_ENTITY.get(), QuetzalRenderer::new);
             EntityRenderers.register(ModEntities.OBSIDIAN_ARROW_ENTITY.get(), ObsidianArrowRenderer::new);
+            EntityRenderers.register(ModEntities.CANOE_ENTITY_3.get(), context -> new CanoeRenderer(context, CanoeModel.LAYER_LOCATION));
         }
 
         @SubscribeEvent

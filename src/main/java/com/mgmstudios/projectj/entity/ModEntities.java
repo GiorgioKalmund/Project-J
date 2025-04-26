@@ -1,14 +1,12 @@
 package com.mgmstudios.projectj.entity;
 
 import com.mgmstudios.projectj.ProjectJ;
-import com.mgmstudios.projectj.entity.custom.LittleKingEntity;
-import com.mgmstudios.projectj.entity.custom.LittleManEntity;
-import com.mgmstudios.projectj.entity.custom.QuetzalEntity;
-import com.mgmstudios.projectj.entity.custom.SittableEntity;
+import com.mgmstudios.projectj.entity.custom.*;
 import com.mgmstudios.projectj.entity.projectile.ObsidianArrow;
+import com.mgmstudios.projectj.item.ModItems;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.projectile.SpectralArrow;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -44,6 +42,12 @@ public class ModEntities {
     public static final Supplier<EntityType<ObsidianArrow>> OBSIDIAN_ARROW_ENTITY =
             ENTITY_TYPES.registerEntityType("obsidian_arrow",
                     ObsidianArrow::new, MobCategory.MISC,
+                    builder -> builder.noLootTable().sized(0.5F, 0.5F).eyeHeight(0.13F).clientTrackingRange(4).updateInterval(20)
+            );
+
+    public static final Supplier<EntityType<Canoe>> CANOE_ENTITY_3 =
+            ENTITY_TYPES.registerEntityType("canoe_entity_3",
+                    (type, level) -> new Canoe(3, level, Blocks.STRIPPED_SPRUCE_LOG::asItem), MobCategory.MISC,
                     builder -> builder.noLootTable().sized(0.5F, 0.5F).eyeHeight(0.13F).clientTrackingRange(4).updateInterval(20)
             );
 

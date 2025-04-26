@@ -87,6 +87,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.FILLED_CRUDE_SACRIFICE_BOWL.get());
                 output.accept(ModItems.TELEPORTATION_KEY.get());
                 output.accept(ModItems.TELEPORTATION_CORE.get());
+                output.accept(ModItems.DEATH_WHISTLE.get());
 
                 output.accept(ModBlocks.MESQUITE_LOG.get());
                 output.accept(ModBlocks.STRIPPED_MESQUITE_LOG.get());
