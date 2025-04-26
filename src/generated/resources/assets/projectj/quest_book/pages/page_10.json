@@ -1,0 +1,19 @@
+{
+  "images": [
+    {
+      "type": "regular",
+      "image": ":chapter_2"
+    }
+  ],
+  "page-shortcut": "teleportation",
+  "show-page-msg": false,
+  "template": {
+    "chapter-title": "§f§o§lTeleportation§r",
+    "name": "chapter-cover"
+  },
+  "text": {
+    "align-center": true,
+    "content": "§f§oSwoosh!§r",
+    "show-title": false
+  }
+}

@@ -1,19 +1,31 @@
 {
   "images": [
     {
-      "type": "regular",
-      "image": ":chapter_2"
+      "image": "projectj:liquid_pyrite_bucket"
+    },
+    {
+      "image": "minecraft:bowl"
     }
   ],
-  "page-shortcut": "chapter_2_shortcut",
-  "show-page-msg": false,
+  "page-msg": {
+    "message": "in:    "
+  },
   "template": {
-    "chapter-title": "§f§o§lTeleportation§r",
-    "name": "chapter-cover"
+    "name": "recipe-list",
+    "secondary-images": [
+      {
+        "image": "projectj:crude_sacrifice_bowl",
+        "show-border": true
+      },
+      {
+        "image": "projectj:ancient_altar"
+      }
+    ],
+    "spacing": 30
   },
   "text": {
-    "align-center": true,
-    "content": "§f§oSwoosh!§r",
-    "show-title": false
+    "align-center": false,
+    "content": "§nCrude Sacrificial Bowl§r\n\nThe Basis of many more things. Allows you to fill it with a bloody sacrifice.",
+    "show-title": true
   }
 }

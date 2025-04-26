@@ -14,22 +14,22 @@
         "item": "projectj:jade"
       },
       {
-        "connected-page": "chapter_2_shortcut",
-        "description": "TP",
+        "connected-page": "ancient-altar-recipes",
+        "description": "Ancient Altar",
+        "item": "projectj:ancient_altar"
+      },
+      {
+        "connected-page": "teleportation",
+        "description": "§oSwoosh§r",
         "item": "projectj:teleportation_core"
       },
       {
-        "connected-page": "chapter_4_shortcut",
-        "description": "3",
-        "item": "projectj:obsidian_tooth"
-      },
-      {
-        "connected-page": 8,
-        "description": "Quetzal",
-        "item": "projectj:quetzal_feather"
+        "connected-page": "magnets",
+        "description": "Magnets",
+        "item": "projectj:pyrite_magnet"
       }
     ],
-    "spacing": 30
+    "spacing": 40
   },
   "text": {
     "align-center": false,

@@ -17,8 +17,8 @@ public class RecipeListScreen extends SpacingScreen {
     public static int INGREDIENTS_Y_OFFSET = 20;
     Vector2i recipeBlockRenderPos;
 
-    public RecipeListScreen(Screen screen, BookPage page, boolean showTitle, boolean showPageMsg, int spacing) {
-        super(screen, page, showTitle, showPageMsg, false, 0, QUEST_IMAGE_HEIGHT + screen.getFont().lineHeight + INGREDIENTS_Y_OFFSET, spacing);
+    public RecipeListScreen(Screen screen, BookPage page, boolean showTitle, boolean showPageMsg, int spacing, boolean alignCenter) {
+        super(screen, page, showTitle, showPageMsg, alignCenter, 0, QUEST_IMAGE_HEIGHT + screen.getFont().lineHeight + INGREDIENTS_Y_OFFSET, spacing);
          recipeBlockRenderPos = AbstractComponent.ComponentPositionUtils.getBookTopRightCorner(screen);
     }
 
@@ -30,10 +30,10 @@ public class RecipeListScreen extends SpacingScreen {
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
         super.render(guiGraphics, mouseX, mouseY, partialTicks);
 
-        // In location (i.e. Ancient Altar, Furnace, etc.)
-        renderListStackImage(guiGraphics, getOrDefault(page.secondaryImages(), 0, QuestBookImage.unavailable()), page, screen,  mouseX, mouseY, PAGE_TEXT_X_OFFSET + 16, -PAGE_TEXT_Y_OFFSET + 8);
         // Recipe result
-        renderListStackImage(guiGraphics, getOrDefault(page.secondaryImages(), 1, QuestBookImage.unavailable()), page, screen,  mouseX, mouseY, 0, 0);
+        renderListStackImage(guiGraphics, getOrDefault(page.secondaryImages(), 0, QuestBookImage.unavailable()), page, screen,  mouseX, mouseY, 0, 0);
+        // In location (i.e. Ancient Altar, Furnace, etc.)
+        renderListStackImage(guiGraphics, getOrDefault(page.secondaryImages(), 1, QuestBookImage.unavailable()), page, screen,  mouseX, mouseY, PAGE_TEXT_X_OFFSET + 16, -PAGE_TEXT_Y_OFFSET + 8);
 
         int imageCount = page.images().size();
         for (int imageIndex = 0; imageIndex < imageCount; imageIndex++){

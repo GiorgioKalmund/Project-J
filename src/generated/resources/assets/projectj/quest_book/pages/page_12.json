@@ -1,0 +1,19 @@
+{
+  "images": [
+    {
+      "type": "regular",
+      "image": ":magnets_chapter"
+    }
+  ],
+  "page-shortcut": "magnets",
+  "show-page-msg": false,
+  "template": {
+    "chapter-title": "§f§o§lMagnets§r",
+    "name": "chapter-cover"
+  },
+  "text": {
+    "align-center": true,
+    "content": "§f§oOur connection seems to get stronger ;)§r",
+    "show-title": false
+  }
+}

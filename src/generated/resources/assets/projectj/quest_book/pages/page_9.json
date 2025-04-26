@@ -1,37 +1,36 @@
 {
   "images": [
     {
-      "image": "projectj:raw_jade"
-    },
-    {
-      "type": "regular",
-      "image": ":process"
-    },
-    {
+      "count": 4,
       "image": "projectj:jade"
     },
     {
-      "type": "regular",
-      "image": ":adobe_lit_process"
+      "count": 2,
+      "image": "minecraft:ender_pearl"
+    },
+    {
+      "image": "minecraft:wind_charge"
     }
   ],
   "page-msg": {
     "message": "in:    "
   },
-  "page-shortcut": "chapter_4_shortcut",
   "template": {
-    "name": "process",
+    "name": "recipe-list",
     "secondary-images": [
       {
-        "image": "minecraft:furnace"
+        "image": "projectj:teleportation_core",
+        "show-border": true
+      },
+      {
+        "image": "projectj:ancient_altar"
       }
     ],
-    "show-fuel": true,
-    "spacing": 20
+    "spacing": 30
   },
   "text": {
     "align-center": false,
-    "content": "Hello World!",
-    "show-title": false
+    "content": "§nTeleportation Core§r\n\nThe Teleportation Core opens the door to a whole lot of blocks and items allowing you to travel faster.",
+    "show-title": true
   }
 }

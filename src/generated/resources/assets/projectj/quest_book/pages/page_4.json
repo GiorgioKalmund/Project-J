@@ -1,41 +1,31 @@
 {
   "images": [
     {
-      "count": 4,
-      "image": "projectj:obsidian_tooth"
+      "image": "projectj:sacrificial_dagger"
     },
     {
-      "image": "minecraft:stick"
-    },
-    {
-      "image": "projectj:serpentinite_rod"
-    },
-    {
-      "image": "projectj:jade"
-    },
-    {
-      "image": "projectj:liquid_pyrite_bucket"
+      "image": "projectj:crude_sacrifice_bowl"
     }
   ],
   "page-msg": {
-    "message": "in:    "
+    "message": "next to:    "
   },
   "template": {
     "name": "recipe-list",
     "secondary-images": [
       {
-        "image": "projectj:ancient_altar"
+        "image": "projectj:filled_crude_sacrifice_bowl",
+        "show-border": true
       },
       {
-        "image": "projectj:macuahuitl",
-        "show-border": true
+        "image": "projectj:ancient_altar"
       }
     ],
-    "spacing": 20
+    "spacing": 30
   },
   "text": {
     "align-center": false,
-    "content": "§nMacuahuitl§r\n\nStrong weapon which can handle almost every type of block.",
-    "show-title": true
+    "content": "§nFilled Crude Sacrificial Bowl§r\n\nPerform a self sacrifice, or sacrifice an animal near an Ancient Altar to fill its bowl.",
+    "show-title": false
   }
 }

@@ -2,14 +2,19 @@
   "images": [
     {
       "count": 4,
+      "image": "projectj:obsidian_tooth"
+    },
+    {
+      "image": "minecraft:stick"
+    },
+    {
+      "image": "projectj:serpentinite_rod"
+    },
+    {
       "image": "projectj:jade"
     },
     {
-      "count": 2,
-      "image": "minecraft:ender_pearl"
-    },
-    {
-      "image": "minecraft:wind_charge"
+      "image": "projectj:liquid_pyrite_bucket"
     }
   ],
   "page-msg": {
@@ -19,18 +24,18 @@
     "name": "recipe-list",
     "secondary-images": [
       {
-        "image": "projectj:ancient_altar"
+        "image": "projectj:macuahuitl",
+        "show-border": true
       },
       {
-        "image": "projectj:teleportation_core",
-        "show-border": true
+        "image": "projectj:ancient_altar"
       }
     ],
-    "spacing": 30
+    "spacing": 20
   },
   "text": {
     "align-center": false,
-    "content": "§nTeleportation Core§r\n\nThe Teleportation Core opens the door to a whole lot of blocks and items allowing you to travel faster.",
+    "content": "§nMacuahuitl§r\n\nStrong weapon which can handle almost every type of block.",
     "show-title": true
   }
 }

@@ -43,13 +43,14 @@ public class ChapterCoverScreen extends TextScreen {
 
         TextComponent.TextBuilder()
                 .alignCenter()
-                .setTextComponents(List.of(chapterTitle.getFirst()))
+                .alignCenter(true)
+                .setTextComponents(chapterTitle)
                 .render(guiGraphics, screen, page);
 
         ImageComponent.ImageBuilder()
                 .setImage(page.image())
                 .size(imageWidth, imageHeight)
-                .setAdditionalOffset(-6, imageHeight - 16)
+                .setAdditionalOffset(-8, imageHeight - 8)
                 .setBorderScale(1.3F)
                 .render(guiGraphics, screen, page);
     }

@@ -15,7 +15,7 @@ public class TextScreen extends QuestBookScreenTemplate {
     int offsetX, offsetY;
 
     boolean showPageMsg;
-    private final boolean alignCenter;
+    protected final boolean alignCenter;
 
 
     public TextScreen(Screen screen, BookPage page, boolean showTitle, boolean showPageMsg, boolean alignCenter, int offsetX, int offsetY) {

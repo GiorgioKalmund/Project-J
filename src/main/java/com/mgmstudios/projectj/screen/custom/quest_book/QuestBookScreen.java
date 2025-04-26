@@ -47,7 +47,6 @@ public class QuestBookScreen extends Screen {
     public static final int IMAGE_HEIGHT = 192;
 
     public static final int IMAGE_Y_OFFSET = 36;
-    private BookAccess bookAccess;
     private int currentPage;
     private List<FormattedCharSequence> cachedPageComponents;
     private int cachedPage;
@@ -61,6 +60,7 @@ public class QuestBookScreen extends Screen {
     protected QuestBookScreenTemplate screenToShow = QuestBookScreenTemplate.EMPTY;
     protected List<AbstractWidget> temporaryWidgets = new ArrayList<>();
     public LinkedTreeMap<String, Integer> pageShortcutMap;
+    private int totalPages = 0;
     public QuestBookScreen(BookAccess bookAccess) {
         this(bookAccess, true);
     }
@@ -73,7 +73,6 @@ public class QuestBookScreen extends Screen {
         super(GameNarrator.NO_TITLE);
         this.cachedPageComponents = Collections.emptyList();
         this.cachedPage = -1;
-        this.bookAccess = bookAccess;
         this.playTurnSound = playTurnSound;
         this.pageShortcutMap = new LinkedTreeMap<>();
 
@@ -104,6 +103,7 @@ public class QuestBookScreen extends Screen {
                 Gson gson = new Gson();
                 Type type = new TypeToken<Map<String, Integer>>() {}.getType();
                 pageShortcutMap = gson.fromJson(jsonObject, type);
+                recalculateTotalPages();
             } else {
                 System.err.println("Could not get Minecraft because it is null (not open)");
             }
@@ -155,7 +155,7 @@ public class QuestBookScreen extends Screen {
                     case CONTENTS_PAGE -> new ContentsPageScreen(this, bookPage, showPageMsg, getOrDefault(templateIntegers, 0, 0), contentsPageEntries);
                     case CHAPTER_COVER -> new ChapterCoverScreen(this, bookPage, getOrDefault(templateStrings, 0, ""), showPageMsg, getOrDefault(templateBooleans, 0, false));
                     case ITEM_LIST -> new ItemListScreen(this, bookPage, showTitle, showPageMsg, getOrDefault(templateIntegers, 0, 0));
-                    case RECIPE_LIST -> new RecipeListScreen(this, bookPage, showTitle, showPageMsg, getOrDefault(templateIntegers, 0, 0));
+                    case RECIPE_LIST -> new RecipeListScreen(this, bookPage, showTitle, showPageMsg, getOrDefault(templateIntegers, 0, 0), getOrDefault(templateBooleans, 0, false));
                 };
             }
 
@@ -190,15 +190,8 @@ public class QuestBookScreen extends Screen {
         guiGraphics.blit(RenderType::guiTextured, screenToShow.getBackdropImage(), (this.width - IMAGE_WIDTH) / 2, 2, 0.0F, 0.0F, IMAGE_WIDTH, IMAGE_HEIGHT, BACKGROUND_TEXTURE_WIDTH, BACKGROUND_TEXTURE_HEIGHT);
     }
 
-    public void setBookAccess(BookAccess bookAccess) {
-        this.bookAccess = bookAccess;
-        this.currentPage = Mth.clamp(this.currentPage, 0, bookAccess.getPageCount());
-        this.updateButtonVisibility();
-        this.cachedPage = -1;
-    }
-
     public boolean setPage(int pageNum) {
-        int i = Mth.clamp(pageNum, 0, this.bookAccess.getPageCount() - 1);
+        int i = Mth.clamp(pageNum, 0, 99);
         if (i != this.currentPage) {
             this.currentPage = i;
             this.updateButtonVisibility();
@@ -244,11 +237,24 @@ public class QuestBookScreen extends Screen {
         this.backButton = this.addRenderableWidget(new QuestPageButton(i + 43, 159, false, (button) -> pageBack(), playTurnSound));
         this.homeButton = this.addRenderableWidget(new QuestPageButton(i + 32, 16,  (button) -> setPage(1), playTurnSound, true));
         this.updateButtonVisibility();
+        recalculateTotalPages();
+    }
+
+    private void recalculateTotalPages(){
+        if (this.minecraft != null){
+            ResourceLocation resourceLocation = ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "quest_book/pages/shortcuts.json");
+            JsonObject jsonObject = QuestBookParser.getJsonObject(resourceLocation, this.minecraft.getResourceManager());
+            if (jsonObject.has(KEY_TOTAL_PAGES))
+                totalPages = jsonObject.get(KEY_TOTAL_PAGES).getAsInt();
+
+            System.out.println("TOTAL PAGES: " + totalPages);
+        }
+        updateButtonVisibility();
     }
 
 
     private int getNumPages() {
-        return this.bookAccess.getPageCount();
+        return totalPages;
     }
     protected void pageBack() {
         if (this.currentPage > 0) {
@@ -338,7 +344,7 @@ public class QuestBookScreen extends Screen {
             int i = Mth.floor(mouseX - (double)((this.width - 192) / 2) - (double)36.0F);
             int j = Mth.floor(mouseY - (double)2.0F - (double)30.0F);
             if (i >= 0 && j >= 0) {
-                int k = Math.min(14, this.cachedPageComponents.size());
+                int k =  this.cachedPageComponents.size();
                 if (i <= TEXT_WIDTH && j < 9 * k + k) {
                     int l = j / 9;
                     if (l < this.cachedPageComponents.size()) {
@@ -440,6 +446,9 @@ public class QuestBookScreen extends Screen {
             this(ItemLookup.getResourceLocation(itemLike) , 1, showBorder, type);
         }
 
+        protected QuestBookImage(ResourceLocation resourceLocation, boolean showBorder, Type type){
+            this(resourceLocation, 1, showBorder, type, null);
+        }
         protected QuestBookImage(ResourceLocation resourceLocation, boolean showBorder, Type type, String shorthand){
             this(resourceLocation, 1, showBorder, type, shorthand);
         }
@@ -567,6 +576,8 @@ public class QuestBookScreen extends Screen {
         public static QuestBookImage LIT_PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("lit_process"), false, Type.REGULAR, ":lit_process");
         public static QuestBookImage CHAPTER_1_IMAGE = new QuestBookImage(questBookStoredImage("chapter_1", "chapters/"), false, Type.REGULAR, ":chapter_1");
         public static QuestBookImage CHAPTER_2_IMAGE = new QuestBookImage(questBookStoredImage("chapter_2", "chapters/"), false, Type.REGULAR, ":chapter_2");
+        public static QuestBookImage ANCIENT_ALTAR_RECIPES_CHAPTER = new QuestBookImage(questBookStoredImage("ancient_altar_recipes", "chapters/"), false, Type.REGULAR, ":ancient_altar_recipes");
+        public static QuestBookImage MAGNETS_CHAPTER = new QuestBookImage(questBookStoredImage("magnets_chapter", "chapters/"), false, Type.REGULAR, ":magnets_chapter");
         public static QuestBookImage EMPTY = new QuestBookImage();
 
 
