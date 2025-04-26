@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-26T00:27:05.143718	ModRecipeProvider
+// 1.21.4	2025-04-26T12:46:59.849729	ModRecipeProvider
 3805c773c67c25685a42a0810f910faacb328964 data/minecraft/advancement/recipes/beetroot_seeds.json
 9d0b4243e93bb8fe0a90f5936460b23bedc28f89 data/minecraft/advancement/recipes/building_blocks/adobe_bricks_smelting.json
 d8e64883f5c848da2d094ba3a38aac11e888156b data/minecraft/advancement/recipes/building_blocks/chili_con_carne_from_maize_mash.json
@@ -115,6 +115,8 @@ a014a4401f9f20c76ea82d34bb6d324fe31d8515 data/projectj/advancement/recipes/build
 e4b97dc474b1f52afcf4d2ff7826f722c084701e data/projectj/advancement/recipes/building_blocks/serpentinite_rock_slab.json
 f47a879c7e5d53c07999efeaa7e6feca4c2f1d67 data/projectj/advancement/recipes/building_blocks/serpentinite_rock_stairs.json
 b2522f36066e15232df588623141422bb52e4868 data/projectj/advancement/recipes/building_blocks/stripped_mesquite_wood.json
+ebd391596135879168c7caab00564d42822d079a data/projectj/advancement/recipes/building_blocks/teleportation_key.json
+334300b2211f0eb59984034f69b2fb72a50b99e6 data/projectj/advancement/recipes/building_blocks/teleportation_pad.json
 d1c68a65172ffac67b189709fee6bcb247e28fc4 data/projectj/advancement/recipes/building_blocks/trowel.json
 2736cf2499abc2189f916e5fbf5a35c79302dd51 data/projectj/advancement/recipes/building_blocks/voodoo_catcher.json
 a6accc780bb9a55222031158de3fae11d14ec2f4 data/projectj/advancement/recipes/chili_seeds.json
@@ -191,5 +193,7 @@ b0c239e3460fcd63c3c5bce4ce627c3a71885168 data/projectj/recipe/serpentinite_rock_
 87b8cf550d70c8a3ad81b7a26bc12476a2ad9d9d data/projectj/recipe/serpentinite_rod.json
 4e3ed3c7c39d604dd15f3b1f82f0182481d37c13 data/projectj/recipe/stripped_mesquite_wood.json
 be4e785c2589f5be894f1aab95a73041bdf49459 data/projectj/recipe/teleportation_core.json
+75913b6e79d99db92c2ae363d5c93c9e74ad6598 data/projectj/recipe/teleportation_key.json
+305a9eb583d969fe287eca55591d21dffa560d28 data/projectj/recipe/teleportation_pad.json
 a514b733c0fa4542224208824c6aee59661e2bf0 data/projectj/recipe/trowel.json
 9a2a1e5befe1c93752be2ed37f65db001dceea2e data/projectj/recipe/voodoo_catcher.json

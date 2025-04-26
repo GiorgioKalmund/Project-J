@@ -18,6 +18,7 @@ import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.ShapedRecipePattern;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
@@ -335,6 +336,29 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('#', ModItems.JADE)
                 .unlockedBy("has_serpentinite_rock", this.has(ModBlocks.SERPENTINITE_ROCK.asItem()))
                 .unlockedBy("has_jade", this.has(ModItems.JADE))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.TELEPORTATION_KEY)
+                .pattern("P")
+                .pattern("R")
+                .pattern("T")
+                .define('T', ModItems.TELEPORTATION_CORE)
+                .define('P', ModItems.PYRITE_INGOT)
+                .define('R', ModItems.SERPENTINITE_ROD)
+                .unlockedBy("has_teleportation_core", this.has(ModItems.TELEPORTATION_CORE))
+                .unlockedBy("has_pyrite_ingot", this.has(ModItems.PYRITE_INGOT))
+                .unlockedBy("has_serpentinite_rod", this.has(ModItems.SERPENTINITE_ROD))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.TELEPORTATION_PAD)
+                .pattern("sTs")
+                .pattern("SSS")
+                .define('T', ModItems.TELEPORTATION_CORE)
+                .define('s', ModBlocks.SERPENTINITE_ROCK_SLAB)
+                .define('S', ModBlocks.SERPENTINITE_ROCK)
+                .unlockedBy("has_teleportation_core", this.has(ModItems.TELEPORTATION_CORE))
+                .unlockedBy("has_serpentinite_rock", this.has(ModBlocks.SERPENTINITE_ROCK))
+                .unlockedBy("has_serpentinite_rock_slab", this.has(ModBlocks.SERPENTINITE_ROCK_SLAB))
                 .save(this.output);
 
         nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.RAW_PYRITE, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_PYRITE_BLOCK);

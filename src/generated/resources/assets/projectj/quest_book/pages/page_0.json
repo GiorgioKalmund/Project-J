@@ -2,7 +2,7 @@
   "page-msg": {
     "message": "§f§lNo. 1§r"
   },
-  "show-page-msg": true,
+  "show-home-button": false,
   "template": {
     "name": "cover"
   }
