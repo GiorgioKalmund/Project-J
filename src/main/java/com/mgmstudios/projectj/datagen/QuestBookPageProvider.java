@@ -33,13 +33,14 @@ public class QuestBookPageProvider implements DataProvider {
 
     public void generatePages(){
         Builder.create()
+                .hideHomeButton()
                 .setTemplate(QuestBookTemplateType.COVER)
-                .showPageMessage(true)
                 .setPageMessage("§f§lNo. 1§r")
                 .save(pages);
 
         // TODO: Maybe some sort of anchor system so shifting indices around does not mess up connections
         Builder.create()
+                .hideHomeButton()
                 .setTemplate(QuestBookTemplateType.CONTENTS_PAGE)
                 .setTemplateSpacing(30)
                 .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.JADE, "Basics", 2))
@@ -163,6 +164,15 @@ public class QuestBookPageProvider implements DataProvider {
         Builder showPageMessage(boolean value){
             json.addProperty(KEY_SHOW_PAGE_MSG, value);
             return this;
+        }
+
+        Builder showHomeButton(boolean value){
+            json.addProperty(KEY_SHOW_HOME_BUTTON, value);
+            return this;
+        }
+
+        Builder hideHomeButton(){
+            return this.showHomeButton(false);
         }
 
         Builder setPageMessage(String message){

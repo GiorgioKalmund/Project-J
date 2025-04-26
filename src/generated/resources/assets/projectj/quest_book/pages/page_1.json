@@ -4,6 +4,7 @@
       "image": "projectj:raw_jade"
     }
   ],
+  "show-home-button": false,
   "template": {
     "name": "contents-page",
     "objects": [

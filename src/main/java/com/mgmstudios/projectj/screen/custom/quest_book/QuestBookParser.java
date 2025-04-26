@@ -28,6 +28,7 @@ public class QuestBookParser {
     public static final String KEY_ERROR = "error";
     public static final String KEY_EMPTY = "empty";
     public static final String KEY_SHOW_PAGE_MSG = "show-page-msg";
+    public static final String KEY_SHOW_HOME_BUTTON = "show-home-button";
     public static final String KEY_PAGE_MSG = "page-msg";
     public static final String KEY_KEY = "key";
     public static final String KEY_MESSAGE = "message";
@@ -103,6 +104,11 @@ public class QuestBookParser {
              if (json.get(KEY_EMPTY).getAsBoolean()){
                  result.setEmpty();
              }
+        }
+
+        boolean showHomeButton = true;
+        if (json.has(KEY_SHOW_HOME_BUTTON)){
+            showHomeButton = json.get(KEY_SHOW_HOME_BUTTON).getAsBoolean();
         }
 
         boolean showPageMsg = true;
@@ -211,6 +217,7 @@ public class QuestBookParser {
         result.templateObjects = templateObjects;
         result.bookPage = bookPage;
         result.showPageMsg = showPageMsg;
+        result.showHomeButton = showHomeButton;
         result.templateType = QuestBookScreen.QuestBookTemplateType.fromDisplayName(templateName);
         result.formattedText = formattedText;
         result.showTitle = showTitle;
@@ -257,6 +264,7 @@ public class QuestBookParser {
         private boolean isFalsy = false;
         public BookPage bookPage = BookPage.EMPTY;
         public boolean showPageMsg = true;
+        public boolean showHomeButton = true;
         public boolean defaultPageMsg = false;
         FormattedText formattedText = FormattedText.EMPTY;
         public boolean showTitle = false;
@@ -274,6 +282,7 @@ public class QuestBookParser {
                     ", isFalsy=" + isFalsy +
                     ", bookPage=" + bookPage +
                     ", showPageMsg=" + showPageMsg +
+                    ", showHomeButton=" + showHomeButton +
                     ", defaultPageMsg=" + defaultPageMsg +
                     ", formattedText=" + formattedText +
                     ", showTitle=" + showTitle +

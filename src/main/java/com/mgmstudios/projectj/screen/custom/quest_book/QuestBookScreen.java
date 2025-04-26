@@ -5,7 +5,6 @@ import com.mgmstudios.projectj.screen.custom.quest_book.components.QuestPageButt
 import com.mgmstudios.projectj.screen.custom.quest_book.templates.*;
 import com.mgmstudios.projectj.util.ItemLookup;
 import net.minecraft.client.GameNarrator;
-import net.minecraft.client.gui.ComponentPath;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
@@ -13,7 +12,6 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.BookViewScreen.BookAccess;
-import net.minecraft.client.gui.screens.inventory.PageButton;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.*;
 import net.minecraft.resources.ResourceLocation;
@@ -22,7 +20,6 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
-import org.openjdk.nashorn.internal.ir.annotations.Ignore;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -31,7 +28,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookParser.*;
-import static com.mgmstudios.projectj.screen.custom.quest_book.templates.ContentsPageScreen.ContentsPageEntry.createWidget;
 
 public class QuestBookScreen extends Screen {
 
@@ -55,6 +51,7 @@ public class QuestBookScreen extends Screen {
     private int cachedPage;
     private QuestPageButton forwardButton;
     private QuestPageButton backButton;
+    private QuestPageButton homeButton;
     private final boolean playTurnSound;
     public static final int QUEST_IMAGE_WIDTH = 16;
     public static final int QUEST_BORDER_IMAGE_WIDTH = 48;
@@ -144,6 +141,8 @@ public class QuestBookScreen extends Screen {
                     case RECIPE_LIST -> new RecipeListScreen(this, bookPage, showTitle, showPageMsg, getOrDefault(templateIntegers, 0, 0));
                 };
             }
+
+            this.homeButton.visible = bookParserResult.showHomeButton;
         }
 
         this.cachedPage = this.currentPage;
@@ -169,9 +168,9 @@ public class QuestBookScreen extends Screen {
         guiGraphics.drawString(font, formattedcharsequence, x - font.width(formattedcharsequence) / 2, y, color, false);
     }
 
-    public void renderBackground(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+    public void renderBackground(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         this.renderTransparentBackground(guiGraphics);
-        guiGraphics.blit(RenderType::guiTextured, screenToShow.getBackdropImage(), (this.width - 192) / 2, 2, 0.0F, 0.0F, IMAGE_WIDTH, IMAGE_HEIGHT, BACKGROUND_TEXTURE_WIDTH, BACKGROUND_TEXTURE_HEIGHT);
+        guiGraphics.blit(RenderType::guiTextured, screenToShow.getBackdropImage(), (this.width - IMAGE_WIDTH) / 2, 2, 0.0F, 0.0F, IMAGE_WIDTH, IMAGE_HEIGHT, BACKGROUND_TEXTURE_WIDTH, BACKGROUND_TEXTURE_HEIGHT);
     }
 
     public void setBookAccess(BookAccess bookAccess) {
@@ -224,8 +223,9 @@ public class QuestBookScreen extends Screen {
 
     protected void createPageControlButtons() {
         int i = (this.width - 192) / 2;
-        this.forwardButton = this.addRenderableWidget(new QuestPageButton(i + 116, 159, true, (p_98297_) -> pageForward(), playTurnSound));
-        this.backButton = this.addRenderableWidget(new QuestPageButton(i + 43, 159, false, (p_98287_) -> pageBack(), playTurnSound));
+        this.forwardButton = this.addRenderableWidget(new QuestPageButton(i + 116, 159, true, (button) -> pageForward(), playTurnSound));
+        this.backButton = this.addRenderableWidget(new QuestPageButton(i + 43, 159, false, (button) -> pageBack(), playTurnSound));
+        this.homeButton = this.addRenderableWidget(new QuestPageButton(i + 32, 16,  (button) -> setPage(1), playTurnSound, true));
         this.updateButtonVisibility();
     }
 
@@ -257,16 +257,17 @@ public class QuestBookScreen extends Screen {
         if (super.keyPressed(keyCode, scanCode, modifiers)) {
             return true;
         } else {
-            switch (keyCode) {
-                case 266:
+            return switch (keyCode) {
+                case 266 -> {
                     this.backButton.onPress();
-                    return true;
-                case 267:
+                    yield true;
+                }
+                case 267 -> {
                     this.forwardButton.onPress();
-                    return true;
-                default:
-                    return false;
-            }
+                    yield true;
+                }
+                default -> false;
+            };
         }
     }
 
@@ -321,10 +322,10 @@ public class QuestBookScreen extends Screen {
             int j = Mth.floor(mouseY - (double)2.0F - (double)30.0F);
             if (i >= 0 && j >= 0) {
                 int k = Math.min(14, this.cachedPageComponents.size());
-                if (i <= 114 && j < 9 * k + k) {
+                if (i <= TEXT_WIDTH && j < 9 * k + k) {
                     int l = j / 9;
-                    if (l >= 0 && l < this.cachedPageComponents.size()) {
-                        FormattedCharSequence formattedcharsequence = (FormattedCharSequence)this.cachedPageComponents.get(l);
+                    if (l < this.cachedPageComponents.size()) {
+                        FormattedCharSequence formattedcharsequence = this.cachedPageComponents.get(l);
                         return this.minecraft.font.getSplitter().componentStyleAtWidth(formattedcharsequence, i);
                     } else {
                         return null;
@@ -464,6 +465,9 @@ public class QuestBookScreen extends Screen {
         public void reset(){
             resourceLocation = null;
             showBorder = false;
+            shorthand = "";
+            count = 1;
+            type = Type.ITEM;
         }
 
         public boolean isEmpty(){
