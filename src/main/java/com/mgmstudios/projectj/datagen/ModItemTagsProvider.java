@@ -20,6 +20,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
 
+        tag(ItemTags.ARROWS)
+                .add(ModItems.OBSIDIAN_ARROW.get());
+
         tag(ModTags.Items.JADE_ORES)
                 .add(ModBlocks.JADE_ORE.asItem())
                 .add(ModBlocks.DEEPSLATE_JADE_ORE.asItem());
@@ -57,7 +60,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(ItemTags.DURABILITY_ENCHANTABLE)
                 .add(ModItems.SACRIFICIAL_DAGGER.get())
-                .add(ModItems.TROWEL.get());
+                .add(ModItems.TROWEL.get())
+                .add(ModItems.CHIMALLI_SHIELD.get());
 
         tag(ItemTags.HEAD_ARMOR)
                 .add(ModItems.SUN_ARMOR_HELMET.get())

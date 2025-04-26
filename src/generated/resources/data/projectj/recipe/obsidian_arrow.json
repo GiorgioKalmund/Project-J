@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:stick",
+    "O": "projectj:obsidian_tooth",
+    "Y": "minecraft:feather"
+  },
+  "pattern": [
+    "O",
+    "#",
+    "Y"
+  ],
+  "result": {
+    "count": 4,
+    "id": "projectj:obsidian_arrow"
+  }
+}

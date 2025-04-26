@@ -48,7 +48,8 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.VOODOO_CATCHER, "Voodoo Catcher");
         addItem(ModItems.PYRITE_MAGNET, "Pyrite Magnet");
         addItem(ModItems.JADE_MAGNET, "Jade Magnet");
-        addItem(ModItems.CHIMALLI_SHIELD, "Chīmalli");
+        addItem(ModItems.CHIMALLI_SHIELD, "Chimalli Shield");
+        addItem(ModItems.OBSIDIAN_ARROW, "Obsidian Arrow");
         addItem(ModItems.MAIZE, "Maize");
         addItem(ModItems.MAIZE_SEEDS, "Maize Seeds");
         addItem(ModItems.MAIZE_MASH, "Maize Mash");

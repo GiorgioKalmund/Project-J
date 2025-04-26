@@ -48,6 +48,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.PYRITE_MAGNET.get());
                 output.accept(ModItems.JADE_MAGNET.get());
                 output.accept(ModItems.CHIMALLI_SHIELD.get());
+                output.accept(ModItems.OBSIDIAN_ARROW.get());
 
                 output.accept(ModBlocks.SERPENTINITE_PILLAR.get());
                 output.accept(ModBlocks.SERPENTINITE_BENCH.get());

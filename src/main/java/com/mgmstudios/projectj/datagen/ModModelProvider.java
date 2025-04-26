@@ -112,6 +112,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.QUETZAL_EGG.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.QUEST_BOOK.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.TELEPORTATION_CORE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.OBSIDIAN_ARROW.get(), ModelTemplates.FLAT_ITEM);
 
         itemModels.generateTrimmableItem(ModItems.JADE_HELMET.get(), ModEquipmentAssets.JADE, "helmet", false);
         itemModels.generateTrimmableItem(ModItems.JADE_CHESTPLATE.get(), ModEquipmentAssets.JADE, "chestplate", false);

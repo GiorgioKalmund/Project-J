@@ -123,6 +123,8 @@ public class ModItems {
 
     public static final DeferredItem<Item> CHIMALLI_SHIELD = register("chimalli_shield", ShieldItem::new, new Item.Properties().durability(336));
 
+    public static final DeferredItem<Item> OBSIDIAN_ARROW = register("obsidian_arrow", ObsidianArrowItem::new);
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

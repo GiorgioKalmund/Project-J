@@ -453,6 +453,17 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_jade", this.has(ModItems.JADE))
                 .save(this.output);
 
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.COMBAT, ModItems.OBSIDIAN_ARROW, 4)
+                .define('#', Items.STICK)
+                .define('O', ModItems.OBSIDIAN_TOOTH)
+                .define('Y', Items.FEATHER)
+                .pattern("O")
+                .pattern("#")
+                .pattern("Y")
+                .unlockedBy("has_obsidian_tooth", this.has(ModItems.OBSIDIAN_TOOTH))
+                .unlockedBy("has_feather", this.has(Items.FEATHER))
+                .unlockedBy("has_flint", this.has(Items.FLINT))
+                .save(this.output);
 
         // ANCIENT ALTAR
 
