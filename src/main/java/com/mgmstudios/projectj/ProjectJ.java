@@ -1,5 +1,7 @@
 package com.mgmstudios.projectj;
 
+import org.slf4j.Logger;
+
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.block.entity.ModBlockEntities;
 import com.mgmstudios.projectj.block.entity.renderer.AncientAltarEntityRenderer;
@@ -9,7 +11,6 @@ import com.mgmstudios.projectj.client.ProjectJClientExtension;
 import com.mgmstudios.projectj.entity.ModEntities;
 import com.mgmstudios.projectj.entity.client.little_king.LittleKingRenderer;
 import com.mgmstudios.projectj.entity.client.little_man.LittleManRenderer;
-import com.mgmstudios.projectj.entity.client.quetzal.QuetzalModel;
 import com.mgmstudios.projectj.entity.client.quetzal.QuetzalRenderer;
 import com.mgmstudios.projectj.fluid.ModFluidTypes;
 import com.mgmstudios.projectj.fluid.ModFluids;
@@ -17,20 +18,15 @@ import com.mgmstudios.projectj.item.ModCreativeModeTabs;
 import com.mgmstudios.projectj.item.ModItemBehaviours;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.loot.ModLootTables;
+import com.mgmstudios.projectj.recipe.ModRecipeBookCategories;
 import com.mgmstudios.projectj.recipe.ModRecipeSerializers;
 import com.mgmstudios.projectj.recipe.ModRecipeTypes;
 import com.mgmstudios.projectj.screen.ModMenuTypes;
 import com.mgmstudios.projectj.screen.custom.AdobeFurnaceScreen;
 import com.mgmstudios.projectj.sound.ModSounds;
-import com.mgmstudios.projectj.recipe.ModRecipeBookCategories;
-import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import org.slf4j.Logger;
-
 import com.mojang.logging.LogUtils;
 
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -40,6 +36,9 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
@@ -66,6 +65,7 @@ public class ProjectJ
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
+        ModSounds.register(modEventBus);
         ModMenuTypes.register(modEventBus);
         ModFluids.register(modEventBus);
         ModFluidTypes.register(modEventBus);
@@ -78,7 +78,6 @@ public class ProjectJ
         ModCreativeModeTabs.register(modEventBus);
         ModEntities.register(modEventBus);
         ModLootTables.register(modEventBus);
-        ModSounds.register(modEventBus);
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::registerScreens);

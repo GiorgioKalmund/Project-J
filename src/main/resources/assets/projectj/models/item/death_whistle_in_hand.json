@@ -70,5 +70,21 @@
 				"down": {"uv": [0, 0, 2, 2], "texture": "#0"}
 			}
 		}
-	]
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 6.5, 0]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 6.5, 0]
+		},
+		"firstperson_righthand": {
+			"rotation": [2, -16, 4],
+			"translation": [1.75, 7.5, -0.5]
+		},
+		"firstperson_lefthand": {
+			"rotation": [2, -16, 4],
+			"translation": [1.75, 7.5, -0.5]
+		}
+	}
 }

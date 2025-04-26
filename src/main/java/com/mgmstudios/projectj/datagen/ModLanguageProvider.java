@@ -4,6 +4,7 @@ import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.entity.ModEntities;
 import com.mgmstudios.projectj.item.ModItems;
+
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.entity.Entity;
@@ -60,6 +61,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.QUETZAL_EGG, "Quetzal Egg");
         addItem(ModItems.QUEST_BOOK, "Ancient Codex");
         addItem(ModItems.TELEPORTATION_CORE, "Teleportation Core");
+        addItem(ModItems.DEATH_WHISTLE, "Death Whistle");
 
         // Blocks
         addBlock(ModBlocks.PACKED_ADOBE, "Packed Adobe");

@@ -1,12 +1,31 @@
 package com.mgmstudios.projectj.item;
 
-import com.mgmstudios.projectj.food.ModConsumables;
-import com.mgmstudios.projectj.food.ModFoods;
+import java.util.ArrayList;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.function.Supplier;
+
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.entity.ModEntities;
 import com.mgmstudios.projectj.fluid.ModFluids;
-import com.mgmstudios.projectj.item.custom.*;
+import com.mgmstudios.projectj.food.ModConsumables;
+import com.mgmstudios.projectj.food.ModFoods;
+import com.mgmstudios.projectj.item.custom.CustomInstrumentItem;
+import com.mgmstudios.projectj.item.custom.FireStarterItem;
+import com.mgmstudios.projectj.item.custom.MagnetItem;
+import com.mgmstudios.projectj.item.custom.MagnifyingGlassItem;
+import com.mgmstudios.projectj.item.custom.OlmecHeadItem;
+import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidProperties;
+import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidPropertiesWithCustomAsset;
+import com.mgmstudios.projectj.item.custom.PaxelItem;
+import com.mgmstudios.projectj.item.custom.QuestBook;
+import com.mgmstudios.projectj.item.custom.SacrificialDagger;
+import com.mgmstudios.projectj.item.custom.TeleportationKeyItem;
+import com.mgmstudios.projectj.item.custom.TrowelItem;
+import com.mgmstudios.projectj.item.custom.VoodooCatcherItem;
+import com.mgmstudios.projectj.sound.ModSounds;
+
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -15,7 +34,15 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.network.Filterable;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.food.Foods;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.EggItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.block.Block;
@@ -24,15 +51,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.function.Supplier;
-
-import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidProperties;
-import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidPropertiesWithCustomAsset;
-import static net.minecraft.world.item.Items.registerItem;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ProjectJ.MOD_ID);
@@ -114,6 +132,8 @@ public class ModItems {
     public static final DeferredItem<Item> QUETZAL_EGG = register("quetzal_egg", EggItem::new, new Item.Properties().stacksTo(16));
 
     public static final DeferredItem<Item> QUEST_BOOK = register("quest_book", (properties) -> new QuestBook("Ancient Codex", "Project J Team", createQuestBookPages(10), properties.stacksTo(1).rarity(Rarity.UNCOMMON)));
+
+    public static final DeferredItem<Item> DEATH_WHISTLE = register("death_whistle", (properties) -> new CustomInstrumentItem(ModSounds.DEATH_WHISTLE_SOUND.value(), properties.stacksTo(1).rarity(Rarity.EPIC),3.0F));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

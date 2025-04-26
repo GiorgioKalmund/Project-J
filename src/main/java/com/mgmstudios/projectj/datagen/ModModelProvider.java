@@ -121,6 +121,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateSpyglass(ModItems.SUN_ARMOR_HELMET.get());
         itemModels.generateSpyglass(ModItems.MAGNIFYING_GLASS.get());
         itemModels.generateSpyglass(ModItems.STONE_MANO.get());
+        itemModels.generateSpyglass(ModItems.DEATH_WHISTLE.get());
 
         itemModels.generateFlatItem(ModItems.LITTLE_MAN_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.LITTLE_KING_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
