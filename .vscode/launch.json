@@ -12,13 +12,13 @@
       "projectName": "Project-J",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@F:\\Minecraft Mods\\Project-J\\build\\moddev\\clientRunProgramArgs.txt"
+        "@/home/safetymax/Desktop/Project-J/build/moddev/clientRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@F:\\Minecraft Mods\\Project-J\\build\\moddev\\clientRunVmArgs.txt",
-        "-Dfml.modFolders\u003dprojectj%%F:\\Minecraft Mods\\Project-J\\bin\\main"
+        "@/home/safetymax/Desktop/Project-J/build/moddev/clientRunVmArgs.txt",
+        "-Dfml.modFolders\u003dprojectj%%/home/safetymax/Desktop/Project-J/bin/main"
       ],
-      "cwd": "${workspaceFolder}\\run",
+      "cwd": "${workspaceFolder}/run",
       "env": {},
       "console": "internalConsole",
       "shortenCommandLine": "none"
@@ -34,13 +34,13 @@
       "projectName": "Project-J",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@F:\\Minecraft Mods\\Project-J\\build\\moddev\\clientDataRunProgramArgs.txt"
+        "@/home/safetymax/Desktop/Project-J/build/moddev/clientDataRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@F:\\Minecraft Mods\\Project-J\\build\\moddev\\clientDataRunVmArgs.txt",
-        "-Dfml.modFolders\u003dprojectj%%F:\\Minecraft Mods\\Project-J\\bin\\main"
+        "@/home/safetymax/Desktop/Project-J/build/moddev/clientDataRunVmArgs.txt",
+        "-Dfml.modFolders\u003dprojectj%%/home/safetymax/Desktop/Project-J/bin/main"
       ],
-      "cwd": "${workspaceFolder}\\run",
+      "cwd": "${workspaceFolder}/run",
       "env": {},
       "console": "internalConsole",
       "shortenCommandLine": "none"
@@ -56,13 +56,13 @@
       "projectName": "Project-J",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@F:\\Minecraft Mods\\Project-J\\build\\moddev\\gameTestServerRunProgramArgs.txt"
+        "@/home/safetymax/Desktop/Project-J/build/moddev/gameTestServerRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@F:\\Minecraft Mods\\Project-J\\build\\moddev\\gameTestServerRunVmArgs.txt",
-        "-Dfml.modFolders\u003dprojectj%%F:\\Minecraft Mods\\Project-J\\bin\\main"
+        "@/home/safetymax/Desktop/Project-J/build/moddev/gameTestServerRunVmArgs.txt",
+        "-Dfml.modFolders\u003dprojectj%%/home/safetymax/Desktop/Project-J/bin/main"
       ],
-      "cwd": "${workspaceFolder}\\run",
+      "cwd": "${workspaceFolder}/run",
       "env": {},
       "console": "internalConsole",
       "shortenCommandLine": "none"
@@ -78,13 +78,13 @@
       "projectName": "Project-J",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@F:\\Minecraft Mods\\Project-J\\build\\moddev\\serverRunProgramArgs.txt"
+        "@/home/safetymax/Desktop/Project-J/build/moddev/serverRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@F:\\Minecraft Mods\\Project-J\\build\\moddev\\serverRunVmArgs.txt",
-        "-Dfml.modFolders\u003dprojectj%%F:\\Minecraft Mods\\Project-J\\bin\\main"
+        "@/home/safetymax/Desktop/Project-J/build/moddev/serverRunVmArgs.txt",
+        "-Dfml.modFolders\u003dprojectj%%/home/safetymax/Desktop/Project-J/bin/main"
       ],
-      "cwd": "${workspaceFolder}\\run",
+      "cwd": "${workspaceFolder}/run",
       "env": {},
       "console": "internalConsole",
       "shortenCommandLine": "none"

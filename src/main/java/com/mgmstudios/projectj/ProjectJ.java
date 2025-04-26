@@ -21,6 +21,7 @@ import com.mgmstudios.projectj.recipe.ModRecipeSerializers;
 import com.mgmstudios.projectj.recipe.ModRecipeTypes;
 import com.mgmstudios.projectj.screen.ModMenuTypes;
 import com.mgmstudios.projectj.screen.custom.AdobeFurnaceScreen;
+import com.mgmstudios.projectj.sound.ModSounds;
 import com.mgmstudios.projectj.recipe.ModRecipeBookCategories;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -77,6 +78,7 @@ public class ProjectJ
         ModCreativeModeTabs.register(modEventBus);
         ModEntities.register(modEventBus);
         ModLootTables.register(modEventBus);
+        ModSounds.register(modEventBus);
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::registerScreens);
