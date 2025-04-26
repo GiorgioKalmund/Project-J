@@ -44,10 +44,7 @@ public class QuestBookPageProvider implements DataProvider {
                 .setTemplate(QuestBookTemplateType.CONTENTS_PAGE)
                 .setTemplateSpacing(30)
                 .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.JADE, "Basics", 2))
-                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.TELEPORTATION_CORE, "TP", 4))
-                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(Items.WHEAT, "1", 1))
-                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(Items.ACACIA_BOAT, "1", 1))
-                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.VOODOO_CATCHER, "Voodoo", 10))
+                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.TELEPORTATION_CORE, "TP", 6))
                 .setText("§lTable of Contents§r", true)
                 .addImage(new QuestBookImage(ModItems.RAW_JADE))
                 .save(pages);
@@ -66,6 +63,33 @@ public class QuestBookPageProvider implements DataProvider {
                 .setText("§nRandom Title§r\nThis is the description.", true)
                 .save(pages);
 
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.RECIPE_LIST)
+                .setTemplateSpacing(20)
+                .setInLocationMessage()
+                .addSecondaryImage(new QuestBookImage(ModBlocks.ANCIENT_ALTAR))
+                .addSecondaryImage(new QuestBookImage(ModItems.MACUAHUITL,true))
+                .addImage(new QuestBookImage(ModItems.OBSIDIAN_TOOTH,4, false))
+                .addImage(new QuestBookImage(Items.STICK))
+                .addImage(new QuestBookImage(ModItems.SERPENTINITE_ROD))
+                .addImage(new QuestBookImage(ModItems.JADE))
+                .addImage(new QuestBookImage(ModItems.LIQUID_PYRITE_BUCKET))
+                .setText("§nMacuahuitl§r\n\nStrong weapon which can handle almost every type of block.", true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.RECIPE_LIST)
+                .setTemplateSpacing(30)
+                .setInLocationMessage()
+                .addSecondaryImage(new QuestBookImage(ModBlocks.ANCIENT_ALTAR))
+                .addSecondaryImage(new QuestBookImage(ModItems.CHIMALLI_SHIELD,true))
+                .addImage(new QuestBookImage(Items.SHIELD))
+                .addImage(new QuestBookImage(ModItems.LIQUID_PYRITE_BUCKET))
+                .addImage(new QuestBookImage(ModItems.FILLED_CRUDE_SACRIFICE_BOWL))
+                .setText("§nChīmalli§r\n\nPowerful shield capable of blocking projectiles and hits.", true)
+                .save(pages);
+
         Builder.create()
                 .setTemplate(QuestBookTemplateType.CHAPTER_COVER)
                 .showPageMessage(false)
@@ -73,6 +97,7 @@ public class QuestBookPageProvider implements DataProvider {
                 .setTemplateChapterTitle("§f§o§lTeleportation§r")
                 .setText("§f§oSwoosh!§r", false, true)
                 .save(pages);
+
 
         Builder.create()
                 .setTemplate(QuestBookTemplateType.ITEM_LIST)
@@ -84,31 +109,11 @@ public class QuestBookPageProvider implements DataProvider {
                 .save(pages);
 
         Builder.create()
-                .setTemplate(QuestBookTemplateType.ITEM_LIST)
-                .setTemplateSpacing(30)
-                .addImage(new QuestBookImage(ModItems.TELEPORTATION_CORE))
-                .addImage(new QuestBookImage(ModBlocks.TELEPORTATION_PAD))
-                .addImage(new QuestBookImage(ModItems.TELEPORTATION_KEY))
-                .addImage(new QuestBookImage(Items.APPLE))
-                .setText("Teleportation is cool and Apple!", false)
-                .save(pages);
-
-        Builder.create()
-                .setTemplate(QuestBookTemplateType.DOUBLE_ITEM_SHOWCASE)
-                .setTemplateSpacing(20)
-                .addImage(new QuestBookImage(ModItems.TELEPORTATION_CORE))
-                .addImage(new QuestBookImage(ModBlocks.TELEPORTATION_PAD))
-                .addImage(new QuestBookImage(ModItems.TELEPORTATION_KEY))
-                .addImage(new QuestBookImage(Items.APPLE))
-                .setText("Two", false)
-                .save(pages);
-
-        Builder.create()
                 .setTemplate(QuestBookTemplateType.RECIPE_LIST)
                 .setTemplateSpacing(30)
                 .setInLocationMessage()
-                .addSecondaryImage(new QuestBookImage(ModItems.TELEPORTATION_CORE,true))
                 .addSecondaryImage(new QuestBookImage(ModBlocks.ANCIENT_ALTAR))
+                .addSecondaryImage(new QuestBookImage(ModItems.TELEPORTATION_CORE,true))
                 .addImage(new QuestBookImage(ModItems.JADE,4, false))
                 .addImage(new QuestBookImage(Items.ENDER_PEARL, 2, false))
                 .addImage(new QuestBookImage(Items.WIND_CHARGE))

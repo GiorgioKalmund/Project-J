@@ -8,18 +8,15 @@
     },
     {
       "image": "projectj:teleportation_key"
-    },
-    {
-      "image": "minecraft:apple"
     }
   ],
   "template": {
-    "name": "double-item-showcase",
-    "spacing": 20
+    "name": "item-list",
+    "spacing": 30
   },
   "text": {
     "align-center": false,
-    "content": "Two",
+    "content": "Teleportation is cool!",
     "show-title": false
   }
 }

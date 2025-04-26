@@ -1,25 +1,18 @@
 {
   "images": [
     {
-      "image": "projectj:teleportation_core"
-    },
-    {
-      "image": "projectj:teleportation_pad"
-    },
-    {
-      "image": "projectj:teleportation_key"
-    },
-    {
-      "image": "minecraft:apple"
+      "type": "regular",
+      "image": ":chapter_2"
     }
   ],
+  "show-page-msg": false,
   "template": {
-    "name": "item-list",
-    "spacing": 30
+    "chapter-title": "§f§o§lTeleportation§r",
+    "name": "chapter-cover"
   },
   "text": {
-    "align-center": false,
-    "content": "Teleportation is cool and Apple!",
+    "align-center": true,
+    "content": "§f§oSwoosh!§r",
     "show-title": false
   }
 }

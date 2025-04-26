@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-26T12:46:59.849729	ModRecipeProvider
+// 1.21.4	2025-04-26T15:18:00.9779	ModRecipeProvider
 3805c773c67c25685a42a0810f910faacb328964 data/minecraft/advancement/recipes/beetroot_seeds.json
 9d0b4243e93bb8fe0a90f5936460b23bedc28f89 data/minecraft/advancement/recipes/building_blocks/adobe_bricks_smelting.json
 d8e64883f5c848da2d094ba3a38aac11e888156b data/minecraft/advancement/recipes/building_blocks/chili_con_carne_from_maize_mash.json
@@ -120,6 +120,7 @@ ebd391596135879168c7caab00564d42822d079a data/projectj/advancement/recipes/build
 d1c68a65172ffac67b189709fee6bcb247e28fc4 data/projectj/advancement/recipes/building_blocks/trowel.json
 2736cf2499abc2189f916e5fbf5a35c79302dd51 data/projectj/advancement/recipes/building_blocks/voodoo_catcher.json
 a6accc780bb9a55222031158de3fae11d14ec2f4 data/projectj/advancement/recipes/chili_seeds.json
+887ee07ec83d3372ee9b0083e3a13daa2014c0a2 data/projectj/advancement/recipes/chimalli_shield.json
 3d99954820607651b6cc68e3e345f19f395869f3 data/projectj/advancement/recipes/combat/macuahuitl.json
 d6499f6734d1d845e3d09217122c1fe18aa4268e data/projectj/advancement/recipes/combat/serpentinite_rod.json
 a33da2a9f4eaf0f7feab7816463ba38a96601101 data/projectj/advancement/recipes/decorations/adobe_bricks_wall.json
@@ -142,6 +143,7 @@ a1e10a2b0c495ece4ae4c6d3835f9f698187f7e0 data/projectj/recipe/adobe_furnace.json
 5233fe986eed84ac7e99bbd0b6963b16f094efe1 data/projectj/recipe/botany_pot.json
 7fdc6828460dba7234b58090060f5b43d7bcd5ee data/projectj/recipe/chili_con_carne.json
 ab8115de363910bcc3454b6d16f9152cd2e79353 data/projectj/recipe/chili_seeds.json
+58663289e52d4b6604a3ceab457b3ef2d7a69850 data/projectj/recipe/chimalli_shield.json
 005129fc58f531abcba634ec9f28ce751e628ad2 data/projectj/recipe/chimney.json
 f426b3c0bc47c2cef16d13bc63e2e829f496a762 data/projectj/recipe/cobbled_serpentinite_slab.json
 6f9025fe5f21a376f54e3bf4852f25c0925c2ede data/projectj/recipe/cobbled_serpentinite_stairs.json

@@ -19,11 +19,11 @@
     "name": "recipe-list",
     "secondary-images": [
       {
-        "image": "projectj:teleportation_core",
-        "show-border": true
+        "image": "projectj:ancient_altar"
       },
       {
-        "image": "projectj:ancient_altar"
+        "image": "projectj:teleportation_core",
+        "show-border": true
       }
     ],
     "spacing": 30

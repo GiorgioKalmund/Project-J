@@ -23,6 +23,7 @@ import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.SelectItemModel;
 import net.minecraft.client.renderer.item.properties.select.DisplayContext;
 import net.minecraft.client.renderer.item.properties.select.TrimMaterialProperty;
+import net.minecraft.client.renderer.special.ShieldSpecialRenderer;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
@@ -125,6 +126,8 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.LITTLE_MAN_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.LITTLE_KING_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
 
+        createCustomShield(itemModels, ModItems.CHIMALLI_SHIELD.get());
+
         createFurnaceUntilTier1(blockModels, ModBlocks.ADOBE_FURNACE.get());
 
         createOlmecHead(blockModels, itemModels, ModBlocks.DAMAGE_OLMEC_HEAD.get());
@@ -195,6 +198,15 @@ public class ModModelProvider extends ModelProvider {
         ResourceLocation resourceLocation = ModelLocationUtils.getModelLocation(item);
         ItemModel.Unbaked itemModel = ItemModelUtils.plainModel(resourceLocation);
         itemModelGenerators.itemModelOutput.accept(item, itemModel);
+    }
+
+    public void createCustomShield(ItemModelGenerators itemModelGenerators, Item shieldItem){
+        ResourceLocation resourceLocation = ModelLocationUtils.getModelLocation(shieldItem);
+        ResourceLocation resourceLocation1 = ModelLocationUtils.getModelLocation(shieldItem, "_blocking");
+
+        ItemModel.Unbaked specialModel = ItemModelUtils.plainModel(resourceLocation);
+        ItemModel.Unbaked specialModel1 = ItemModelUtils.plainModel(resourceLocation1);
+        itemModelGenerators.generateBooleanDispatch(shieldItem, ItemModelUtils.isUsingItem(), specialModel1, specialModel);
     }
 
     public BlockModelGenerators.BlockFamilyProvider family(BlockModelGenerators blockModels, Block block) {

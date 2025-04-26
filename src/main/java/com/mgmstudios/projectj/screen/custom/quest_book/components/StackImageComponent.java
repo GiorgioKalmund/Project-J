@@ -15,13 +15,19 @@ import static com.mgmstudios.projectj.util.ItemLookup.getStack;
 
 public class StackImageComponent extends ImageComponent{
 
-    protected Vector2i countOffset = new Vector2i(QUEST_IMAGE_WIDTH / 2, QUEST_IMAGE_HEIGHT / 2);
+    protected Vector2i countOffset = new Vector2i(QUEST_IMAGE_WIDTH / 2 + 2, QUEST_IMAGE_HEIGHT / 2 + 1);
 
     @Override
     public void render(GuiGraphics guiGraphics, Screen screen, BookPage page) {
         calculateCenterIfNeeded(screen);
         if (questBookImage.count() > 1){
-            guiGraphics.drawString(screen.getFont(), "§f" + questBookImage.count() + "x§r", centeredPosition + x + countOffset.x , IMAGE_Y_OFFSET + y +  countOffset.y,0, false);
+            if (questBookImage.count() > 9)
+            {
+                countOffset.x -= 5;
+            }
+            guiGraphics.pose().translate(0, 0, 250);
+            guiGraphics.drawString(screen.getFont(), "§6" + questBookImage.count() + "§r", centeredPosition + x + countOffset.x , IMAGE_Y_OFFSET + y +  countOffset.y,0, true);
+            guiGraphics.pose().translate(0, 0, -250);
         }
        super.render(guiGraphics, screen, page);
     }

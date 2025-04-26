@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-26T00:27:05.142326	Model Definitions - projectj
+// 1.21.4	2025-04-26T14:11:16.012705	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -78,6 +78,7 @@ c236a7fe29cff9fefcb5a438001d0bb91e903bdd assets/projectj/items/botany_pot.json
 ab51c3c90a6fae8c12fdf1055703a34a3cf2354c assets/projectj/items/chili.json
 1e7c11deed3ba7ccad3b8fe1548b21a95a51fa16 assets/projectj/items/chili_con_carne.json
 559f147574b51074d388fae48a967b6b14eedf3d assets/projectj/items/chili_seeds.json
+85ce947d8f922c9d57d31ffe5d93b5dc6f72368d assets/projectj/items/chimalli_shield.json
 4c516558ea1e299d150365077530145726a6315e assets/projectj/items/chimney.json
 0d2de578d854c0b97a6e839c3adcf8369b1444ba assets/projectj/items/cobbled_serpentinite.json
 a97481cad32e058958e7eac0e6dd4ce9e97d6075 assets/projectj/items/cobbled_serpentinite_slab.json

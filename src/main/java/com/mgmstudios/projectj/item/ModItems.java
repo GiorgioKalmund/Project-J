@@ -7,18 +7,23 @@ import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.entity.ModEntities;
 import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.item.custom.*;
+import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.network.Filterable;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -32,6 +37,7 @@ import java.util.function.Supplier;
 
 import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidProperties;
 import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidPropertiesWithCustomAsset;
+import static net.minecraft.world.item.Items.IRON_SWORD;
 import static net.minecraft.world.item.Items.registerItem;
 
 public class ModItems {
@@ -114,6 +120,8 @@ public class ModItems {
     public static final DeferredItem<Item> QUETZAL_EGG = register("quetzal_egg", EggItem::new, new Item.Properties().stacksTo(16));
 
     public static final DeferredItem<Item> QUEST_BOOK = register("quest_book", (properties) -> new QuestBook("Ancient Codex", "Project J Team", createQuestBookPages(10), properties.stacksTo(1).rarity(Rarity.UNCOMMON)));
+
+    public static final DeferredItem<Item> CHIMALLI_SHIELD = register("chimalli_shield", ShieldItem::new, new Item.Properties().durability(336));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
