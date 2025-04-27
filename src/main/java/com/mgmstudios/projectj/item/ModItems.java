@@ -136,6 +136,8 @@ public class ModItems {
 
     public static final DeferredItem<Item> DEATH_WHISTLE = register("death_whistle", (properties) -> new CustomInstrumentItem(ModSounds.DEATH_WHISTLE_SOUND.value(), properties.stacksTo(1).rarity(Rarity.EPIC),3.0F));
 
+    public static final DeferredItem<Item> HATCHET = register("hatchet", (properties) -> new HatchetItem(ToolMaterial.IRON, 6, -3.1F, properties));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

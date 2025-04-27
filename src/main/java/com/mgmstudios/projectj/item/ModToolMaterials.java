@@ -19,5 +19,4 @@ public class ModToolMaterials {
     public static final ToolMaterial TROWEL_MATERIAL =  new ToolMaterial(
             BlockTags.INCORRECT_FOR_STONE_TOOL, 132, 4.0F, 1.0F, 5, ModTags.Items.SERPENTINITE
     );
-
 }
