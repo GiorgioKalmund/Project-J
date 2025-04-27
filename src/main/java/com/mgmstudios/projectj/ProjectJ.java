@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.block.entity.ModBlockEntities;
 import com.mgmstudios.projectj.block.entity.renderer.AncientAltarEntityRenderer;
+import com.mgmstudios.projectj.block.entity.renderer.JadeCrystalEntityRenderer;
 import com.mgmstudios.projectj.block.entity.renderer.MetateEntityRenderer;
 import com.mgmstudios.projectj.block.entity.renderer.SittableEntityRenderer;
 import com.mgmstudios.projectj.client.ProjectJClientExtension;
@@ -126,6 +127,7 @@ public class ProjectJ
         public static void registerBER(EntityRenderersEvent.RegisterRenderers event){
             event.registerBlockEntityRenderer(ModBlockEntities.ANCIENT_ALTAR_BE.get(), AncientAltarEntityRenderer::new);
             event.registerBlockEntityRenderer(ModBlockEntities.METATE_BE.get(), MetateEntityRenderer::new);
+            event.registerBlockEntityRenderer(ModBlockEntities.JADE_CRYSTAL_BE.get(), JadeCrystalEntityRenderer::new);
         }
 
         @SubscribeEvent

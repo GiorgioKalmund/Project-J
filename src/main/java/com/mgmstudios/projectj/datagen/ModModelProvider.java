@@ -1,39 +1,49 @@
 package com.mgmstudios.projectj.datagen;
 
+import java.util.List;
+
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlockFamilies;
 import com.mgmstudios.projectj.block.ModBlocks;
+import static com.mgmstudios.projectj.block.custom.AdobeFurnaceBlock.TIER1;
+import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.BLOOD_INSIDE;
+import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.CRAFTING;
+import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.PYRITE_INSIDE;
+import static com.mgmstudios.projectj.block.custom.LittleManStatueBlock.SUMMONING;
 import com.mgmstudios.projectj.block.custom.MagnifyingGlassStandBlock;
+import static com.mgmstudios.projectj.block.custom.TeleportationBlock.UNLOCKED;
 import com.mgmstudios.projectj.item.ModEquipmentAssets;
 import com.mgmstudios.projectj.item.ModItems;
+
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.client.color.item.Dye;
 import net.minecraft.client.color.item.ItemTintSource;
 import net.minecraft.client.data.models.BlockModelGenerators;
+import net.minecraft.client.data.models.BlockModelGenerators.PlantType;
+import static net.minecraft.client.data.models.BlockModelGenerators.createBooleanModelDispatch;
+import static net.minecraft.client.data.models.BlockModelGenerators.createHorizontalFacingDispatch;
+import static net.minecraft.client.data.models.BlockModelGenerators.createSimpleBlock;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.blockstates.Variant;
 import net.minecraft.client.data.models.blockstates.VariantProperties;
-import net.minecraft.client.data.models.model.*;
-import net.minecraft.client.renderer.block.model.ItemModelGenerator;
+import net.minecraft.client.data.models.model.ItemModelUtils;
+import net.minecraft.client.data.models.model.ModelLocationUtils;
+import net.minecraft.client.data.models.model.ModelTemplates;
+import net.minecraft.client.data.models.model.TextureMapping;
+import net.minecraft.client.data.models.model.TextureSlot;
+import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.client.renderer.item.ItemModel;
-import net.minecraft.client.renderer.item.SelectItemModel;
 import net.minecraft.client.renderer.item.properties.select.DisplayContext;
-import net.minecraft.client.renderer.item.properties.select.TrimMaterialProperty;
-import net.minecraft.client.renderer.special.ShieldSpecialRenderer;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.equipment.EquipmentAsset;
-import net.minecraft.world.item.equipment.EquipmentAssets;
-import net.minecraft.world.item.equipment.trim.TrimMaterial;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
@@ -43,15 +53,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.model.generators.template.ExtendedModelTemplateBuilder;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.mgmstudios.projectj.block.custom.AdobeFurnaceBlock.TIER1;
-import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.*;
-import static com.mgmstudios.projectj.block.custom.LittleManStatueBlock.SUMMONING;
-import static com.mgmstudios.projectj.block.custom.TeleportationBlock.UNLOCKED;
-import static net.minecraft.client.data.models.BlockModelGenerators.*;
 
 @EventBusSubscriber (modid = ProjectJ.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModModelProvider extends ModelProvider {
@@ -138,6 +139,7 @@ public class ModModelProvider extends ModelProvider {
         createOlmecHead(blockModels, itemModels, ModBlocks.RESISTANT_OLMEC_HEAD.get());
 
         createSimpleBlockWithCustomModel(blockModels, ModBlocks.CHIMNEY.get());
+        createSimpleBlockWithCustomModel(blockModels, ModBlocks.JADE_CRYSTAL.get());
         createSimpleBlockWithCustomModel(blockModels, ModBlocks.BOTANY_POT.get());
         createSimpleBlockWithCustomModelAndFlatItem(blockModels, itemModels, ModBlocks.MESQUITE_BRAZIER.get());
         createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.OLMEC_ALTAR.get());

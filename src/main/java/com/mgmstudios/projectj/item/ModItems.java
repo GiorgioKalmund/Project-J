@@ -13,8 +13,10 @@ import com.mgmstudios.projectj.food.ModConsumables;
 import com.mgmstudios.projectj.food.ModFoods;
 import com.mgmstudios.projectj.item.custom.CustomInstrumentItem;
 import com.mgmstudios.projectj.item.custom.FireStarterItem;
+import com.mgmstudios.projectj.item.custom.LittleManVoodoo;
 import com.mgmstudios.projectj.item.custom.MagnetItem;
 import com.mgmstudios.projectj.item.custom.MagnifyingGlassItem;
+import com.mgmstudios.projectj.item.custom.ObsidianArrowItem;
 import com.mgmstudios.projectj.item.custom.OlmecHeadItem;
 import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidProperties;
 import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidPropertiesWithCustomAsset;
@@ -26,17 +28,13 @@ import com.mgmstudios.projectj.item.custom.TrowelItem;
 import com.mgmstudios.projectj.item.custom.VoodooCatcherItem;
 import com.mgmstudios.projectj.sound.ModSounds;
 
-import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.network.Filterable;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.BucketItem;
@@ -44,27 +42,18 @@ import net.minecraft.world.item.EggItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.function.Supplier;
-
-import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidProperties;
-import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidPropertiesWithCustomAsset;
-import static net.minecraft.world.item.Items.registerItem;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ProjectJ.MOD_ID);

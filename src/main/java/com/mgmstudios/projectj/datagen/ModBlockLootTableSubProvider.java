@@ -1,9 +1,12 @@
 package com.mgmstudios.projectj.datagen;
 
+import java.util.Set;
+
 import com.mgmstudios.projectj.block.ModBlocks;
-import com.mgmstudios.projectj.block.custom.botany.BotanyBushBlock;
 import com.mgmstudios.projectj.block.custom.TallBlock;
+import com.mgmstudios.projectj.block.custom.botany.BotanyBushBlock;
 import com.mgmstudios.projectj.item.ModItems;
+
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -27,8 +30,6 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-
-import java.util.Set;
 
 public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
 
@@ -70,6 +71,8 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.ADOBE_BRICKS_SLAB.get());
         this.dropSelf(ModBlocks.ADOBE_BRICKS_WALL.get());
         this.dropSelf(ModBlocks.ADOBE_GLASS.get());
+
+        this.dropNothing(ModBlocks.JADE_CRYSTAL.get());
 
         this.dropSelf(ModBlocks.SERPENTINITE_BENCH.get());
         this.dropSelf(ModBlocks.SERPENTINITE_BENCH_CORNER.get());
@@ -224,5 +227,10 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
 
     protected LootTable.Builder createTallBlockTable(Block doorBlock) {
         return this.createSinglePropConditionTable(doorBlock, TallBlock.HALF, DoubleBlockHalf.LOWER);
+    }
+
+    protected LootTable.Builder dropNothing(Block block) {
+        add(block, LootTable.lootTable());
+        return LootTable.lootTable();
     }
 }

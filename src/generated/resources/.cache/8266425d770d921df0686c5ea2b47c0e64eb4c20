@@ -1,5 +1,4 @@
-// 1.21.4	2025-04-26T17:00:45.112068	Model Definitions - projectj
-// 1.21.4	2025-04-26T19:08:20.264679917	Model Definitions - projectj
+// 1.21.4	2025-04-27T11:59:20.833245223	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -20,6 +19,7 @@ e631c7188802b1c576f60a6935f58c5e177154ac assets/projectj/blockstates/damage_olme
 7ede5fc8477af56fefd275aa88bd0ef32052d47b assets/projectj/blockstates/deepslate_jade_ore.json
 651cef31d781bcf77fab88cd6ea2c7d34d11709a assets/projectj/blockstates/empty_little_man_statue_block.json
 129f51236b5a037a8804262c7bd8d01d2a437567 assets/projectj/blockstates/jade_block.json
+69d17a9c0bf80266f4719dda34a25788d5b27a80 assets/projectj/blockstates/jade_crystal.json
 dfdd72869320254b3ae6795b1e4d9a0a0c36ce64 assets/projectj/blockstates/jade_ore.json
 7fe76ecd31a04d044f73f3ca4e274d88eb70cecd assets/projectj/blockstates/liquid_pyrite.json
 5d3574f0da9ade7d6f1b68d3d20f42cebd219198 assets/projectj/blockstates/little_man_statue_block.json
@@ -97,6 +97,7 @@ c4f3775626f4c829574376d0a454e0940c3ca14a assets/projectj/items/cobbled_serpentin
 9c8cb0c378da07b61725adb0d0a48b374dae6f8d assets/projectj/items/jade_block.json
 8d8e20d6d95ae9b556af3e79ca355aea8c1dbc41 assets/projectj/items/jade_boots.json
 f4889cabd89bba2f4f87d5bf3c5956000973dece assets/projectj/items/jade_chestplate.json
+80b39fd31edd9a712910ba7c6d886fe53e804a31 assets/projectj/items/jade_crystal.json
 f9fa2879d7e9b75372270ec7b2234e83aed0110d assets/projectj/items/jade_helmet.json
 253f8bfa3ccd68ee4ad883d7d35769434abadb14 assets/projectj/items/jade_leggings.json
 d638f9cf5a015557d595008d9cfdaf50011dbdb2 assets/projectj/items/jade_magnet.json

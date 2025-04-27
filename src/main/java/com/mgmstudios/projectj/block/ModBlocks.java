@@ -1,12 +1,36 @@
 package com.mgmstudios.projectj.block;
 
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.function.ToIntFunction;
+
 import com.mgmstudios.projectj.ProjectJ;
-import com.mgmstudios.projectj.block.custom.*;
+import com.mgmstudios.projectj.block.custom.AdobeChimneyBlock;
+import com.mgmstudios.projectj.block.custom.AdobeFurnaceBlock;
+import com.mgmstudios.projectj.block.custom.AdobeGlassBlock;
+import com.mgmstudios.projectj.block.custom.AncientAltarBlock;
+import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.PYRITE_INSIDE;
+import com.mgmstudios.projectj.block.custom.BenchCornerBlock;
+import com.mgmstudios.projectj.block.custom.BrazierBlock;
+import com.mgmstudios.projectj.block.custom.EmptyLittleManStatueBlock;
+import com.mgmstudios.projectj.block.custom.JadeCrystalBlock;
+import com.mgmstudios.projectj.block.custom.LittleManStatueBlock;
+import com.mgmstudios.projectj.block.custom.MagnifyingGlassStandBlock;
+import com.mgmstudios.projectj.block.custom.MetateBlock;
+import com.mgmstudios.projectj.block.custom.MultiAxisDirectionalBlock;
+import com.mgmstudios.projectj.block.custom.OlmecAltarBlock;
+import com.mgmstudios.projectj.block.custom.OlmecHeadBlock;
+import com.mgmstudios.projectj.block.custom.SittableBlock;
+import com.mgmstudios.projectj.block.custom.StrippableModLogBlock;
+import com.mgmstudios.projectj.block.custom.TallStatueBlock;
+import com.mgmstudios.projectj.block.custom.TeleportationBlock;
+import static com.mgmstudios.projectj.block.custom.TeleportationBlock.UNLOCKED;
 import com.mgmstudios.projectj.block.custom.botany.BotanyBushBlock;
 import com.mgmstudios.projectj.block.custom.botany.BotanyPotBlock;
 import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.worldgen.feature.ModTreeGrowers;
+
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
@@ -14,6 +38,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ColorRGBA;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.effect.MobEffect;
@@ -21,7 +46,23 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ButtonBlock;
+import net.minecraft.world.level.block.ColoredFallingBlock;
+import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.FenceBlock;
+import net.minecraft.world.level.block.FenceGateBlock;
+import net.minecraft.world.level.block.FlowerPotBlock;
+import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.PressurePlateBlock;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.SaplingBlock;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -34,13 +75,6 @@ import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
-
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.function.ToIntFunction;
-
-import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.PYRITE_INSIDE;
-import static com.mgmstudios.projectj.block.custom.TeleportationBlock.UNLOCKED;
 
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
@@ -180,9 +214,12 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> ADOBE_GLASS = register("adobe_glass", AdobeGlassBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS));
 
+    public static final DeferredBlock<Block> JADE_CRYSTAL = register("jade_crystal", JadeCrystalBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).noOcclusion().destroyTime(2F).requiresCorrectToolForDrops().strength(5.0F), new Item.Properties());
+
     private static DeferredBlock<Block> register(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> factory.apply(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
         ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
+
         return toBeRegistered;
     }
 
