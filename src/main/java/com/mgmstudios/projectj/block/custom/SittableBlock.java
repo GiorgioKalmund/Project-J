@@ -2,10 +2,12 @@ package com.mgmstudios.projectj.block.custom;
 
 import com.mgmstudios.projectj.entity.ModEntities;
 import com.mgmstudios.projectj.entity.custom.SittableEntity;
+import com.mgmstudios.projectj.item.ModItems;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.game.ServerPacketListener;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySpawnReason;
@@ -51,18 +53,14 @@ public class SittableBlock extends HorizontalDirectionalBlock {
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-        if(!level.isClientSide()) {
-            System.out.println("Used without item");
+        if(!level.isClientSide() && !player.getItemInHand(InteractionHand.MAIN_HAND).is(ModItems.HATCHET)) {
             Entity entity = null;
             List<SittableEntity> entities = level.getEntities(ModEntities.SITTABLE_ENTITY.get(), new AABB(pos), chair -> true);
             if(entities.isEmpty()) {
-                System.out.println("Spawned new Entity");
                 entity = ModEntities.SITTABLE_ENTITY.get().spawn(((ServerLevel) level), pos, EntitySpawnReason.SPAWN_ITEM_USE);
             } else {
-                System.out.println("Got existing entity");
                 entity = entities.getFirst();
             }
-            System.out.println("Entity: " + entity);
 
             assert entity != null;
             player.startRiding(entity);
