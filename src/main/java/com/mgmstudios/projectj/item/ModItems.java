@@ -1,7 +1,6 @@
 package com.mgmstudios.projectj.item;
 
-import java.util.ArrayList;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -11,21 +10,11 @@ import com.mgmstudios.projectj.entity.ModEntities;
 import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.food.ModConsumables;
 import com.mgmstudios.projectj.food.ModFoods;
-import com.mgmstudios.projectj.item.custom.CustomInstrumentItem;
-import com.mgmstudios.projectj.item.custom.FireStarterItem;
-import com.mgmstudios.projectj.item.custom.LittleManVoodoo;
-import com.mgmstudios.projectj.item.custom.MagnetItem;
-import com.mgmstudios.projectj.item.custom.MagnifyingGlassItem;
-import com.mgmstudios.projectj.item.custom.ObsidianArrowItem;
-import com.mgmstudios.projectj.item.custom.OlmecHeadItem;
+import com.mgmstudios.projectj.item.custom.*;
+
 import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidProperties;
 import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidPropertiesWithCustomAsset;
-import com.mgmstudios.projectj.item.custom.PaxelItem;
-import com.mgmstudios.projectj.item.custom.QuestBook;
-import com.mgmstudios.projectj.item.custom.SacrificialDagger;
-import com.mgmstudios.projectj.item.custom.TeleportationKeyItem;
-import com.mgmstudios.projectj.item.custom.TrowelItem;
-import com.mgmstudios.projectj.item.custom.VoodooCatcherItem;
+
 import com.mgmstudios.projectj.sound.ModSounds;
 
 import net.minecraft.core.Holder;
@@ -42,7 +31,6 @@ import net.minecraft.world.item.EggItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.ToolMaterial;
@@ -134,13 +122,15 @@ public class ModItems {
 
     public static final DeferredItem<Item> QUETZAL_EGG = register("quetzal_egg", EggItem::new, new Item.Properties().stacksTo(16));
 
-    public static final DeferredItem<Item> QUEST_BOOK = register("quest_book", (properties) -> new QuestBook("Ancient Codex", "Project J Team", createQuestBookPages(10), properties.stacksTo(1).rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> QUEST_BOOK = register("quest_book", (properties) -> new QuestBook("Ancient Codex", "Project J Team", List.of(), properties.stacksTo(1).rarity(Rarity.UNCOMMON)));
 
     public static final DeferredItem<Item> CHIMALLI_SHIELD = register("chimalli_shield", ShieldItem::new, new Item.Properties().durability(336));
 
     public static final DeferredItem<Item> OBSIDIAN_ARROW = register("obsidian_arrow", ObsidianArrowItem::new);
 
     public static final DeferredItem<Item> DEATH_WHISTLE = register("death_whistle", (properties) -> new CustomInstrumentItem(ModSounds.DEATH_WHISTLE_SOUND.value(), properties.stacksTo(1).rarity(Rarity.EPIC),3.0F));
+
+    public static final DeferredItem<Item> HATCHET = register("hatchet", (properties) -> new HatchetItem(ToolMaterial.IRON, 6, -3.1F, properties));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
@@ -214,14 +204,5 @@ public class ModItems {
 
     private static <T extends Item> DeferredItem<T> baseRegister(String name, ResourceKey<Item> key, Function<Item.Properties, T> builder, Supplier<Item.Properties> properties) {
         return ITEMS.register(name, () -> builder.apply(properties.get().setId(key)));
-    }
-
-
-    private static java.util.List<net.minecraft.server.network.Filterable<net.minecraft.network.chat.Component>> createQuestBookPages(int pageCount){
-        java.util.List<net.minecraft.server.network.Filterable<net.minecraft.network.chat.Component>> pages = new ArrayList<>();
-        for (int i = 0; i < pageCount; i++) {
-            pages.add(Filterable.passThrough(Component.translatable("quest_book.projectj.page" + i)));
-        }
-        return pages;
     }
 }

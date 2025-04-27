@@ -25,6 +25,7 @@ import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.Q
 
 public class QuestBookParser {
 
+    public static final String KEY_TOTAL_PAGES = "total-pages";
     public static final String KEY_ERROR = "error";
     public static final String KEY_EMPTY = "empty";
     public static final String KEY_PAGE_SHORTCUT = "page-shortcut";

@@ -29,8 +29,6 @@ public class QuestBook extends WrittenBookItem {
         return InteractionResult.CONSUME;
     }
 
-
-
     public static void openGUI(ItemStack stack) {
         Minecraft.getInstance().setScreen(new QuestBookScreen(BookViewScreen.BookAccess.fromItem(stack)));
     }

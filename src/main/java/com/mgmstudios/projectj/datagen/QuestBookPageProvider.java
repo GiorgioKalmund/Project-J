@@ -2,6 +2,7 @@ package com.mgmstudios.projectj.datagen;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.item.ModItems;
@@ -27,10 +28,10 @@ import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookParser.*
 
 public class QuestBookPageProvider implements DataProvider {
 
-    protected static final String CHAPTER_1_SHORTCUT = "chapter_1_shortcut";
-    protected static final String CHAPTER_2_SHORTCUT = "chapter_2_shortcut";
-    protected static final String CHAPTER_3_SHORTCUT = "chapter_3_shortcut";
-    protected static final String CHAPTER_4_SHORTCUT = "chapter_4_shortcut";
+    protected static final String SHORTCUT_BASICS = "basics";
+    protected static final String SHORTCUT_TELEPORTATION = "teleportation";
+    protected static final String SHORTCUT_ANCIENT_ALTAR_RECIPES = "ancient-altar-recipes";
+    protected static final String SHORTCUT_MAGNETS = "magnets";
 
     private final PackOutput packOutput;
     List<JsonObject> pages = new ArrayList<>();
@@ -50,17 +51,17 @@ public class QuestBookPageProvider implements DataProvider {
         Builder.create()
                 .hideHomeButton()
                 .setTemplate(QuestBookTemplateType.CONTENTS_PAGE)
-                .setTemplateSpacing(30)
+                .setTemplateSpacing(40)
                 .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.JADE, "Basics", 2))
-                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.TELEPORTATION_CORE, "TP", CHAPTER_2_SHORTCUT))
-                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.OBSIDIAN_TOOTH, "3", CHAPTER_4_SHORTCUT))
-                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.QUETZAL_FEATHER, "Quetzal", 8))
+                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModBlocks.ANCIENT_ALTAR, "Ancient Altar", SHORTCUT_ANCIENT_ALTAR_RECIPES))
+                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.TELEPORTATION_CORE, "§oSwoosh§r", SHORTCUT_TELEPORTATION))
+                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.PYRITE_MAGNET, "Magnets", SHORTCUT_MAGNETS))
                 .setText("§lTable of Contents§r", true)
                 .addImage(new QuestBookImage(ModItems.RAW_JADE))
                 .save(pages);
 
         Builder.create()
-                .setPageShortcut(CHAPTER_1_SHORTCUT)
+                .setPageShortcut(SHORTCUT_BASICS)
                 .setTemplate(QuestBookTemplateType.CHAPTER_COVER)
                 .showPageMessage(false)
                 .addImage(QuestBookImage.CHAPTER_1_IMAGE)
@@ -69,18 +70,65 @@ public class QuestBookPageProvider implements DataProvider {
                 .save(pages);
 
         Builder.create()
-                .setTemplate(QuestBookTemplateType.ITEM_SHOWCASE)
-                .setImages(new QuestBookImage(ModItems.LITTLE_KING_SPAWN_EGG, true))
-                .setText("§nRandom Title§r\nThis is the description.", true)
+                .setTemplate(QuestBookTemplateType.ITEM_LIST)
+                .defaultTemplateSpacing()
+                .addImage(new QuestBookImage(ModItems.RAW_JADE))
+                .addImage(new QuestBookImage(ModBlocks.DEEPSLATE_JADE_ORE))
+                .addImage(new QuestBookImage(ModItems.JADE))
+                .addImage(new QuestBookImage(ModBlocks.JADE_ORE))
+                .addImage(new QuestBookImage(ModBlocks.JADE_BLOCK))
+                .setText("§nJade§r\n\nJade is the building block of Project J. It is used for most recipes, so get digging in and around§o§2 lush caves§r.", true)
                 .save(pages);
 
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.RECIPE_LIST)
+                .setTemplateSpacing(30)
+                .setPageMessage("next to:    ")
+                .addSecondaryImage(new QuestBookImage(ModItems.FILLED_CRUDE_SACRIFICE_BOWL, true))
+                .addSecondaryImage(new QuestBookImage(ModBlocks.ANCIENT_ALTAR, false))
+                .addImage(new QuestBookImage(ModItems.SACRIFICIAL_DAGGER, false))
+                .addImage(new QuestBookImage(ModItems.CRUDE_SACRIFICE_BOWL, false))
+                .setText("§nFilled Crude Sacrificial Bowl§r\n\nPerform a self sacrifice, or sacrifice an animal near an Ancient Altar to fill its bowl.", false, false)
+                .save(pages);
+
+        Builder.create()
+                .setPageShortcut(SHORTCUT_ANCIENT_ALTAR_RECIPES)
+                .setTemplate(QuestBookTemplateType.CHAPTER_COVER)
+                .showPageMessage(false)
+                .addImage(QuestBookImage.ANCIENT_ALTAR_RECIPES_CHAPTER)
+                .setTemplateChapterTitle("§f§o§lAncient Altar Crafting§r")
+                .setText("§f§oPowerful sacrifices using Blood and Pyrite§r", false, true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.RECIPE_LIST)
+                .setTemplateSpacing(30)
+                .setInLocationMessage()
+                .addSecondaryImage(new QuestBookImage(ModItems.CRUDE_SACRIFICE_BOWL,true))
+                .addSecondaryImage(new QuestBookImage(ModBlocks.ANCIENT_ALTAR))
+                .addImage(new QuestBookImage(ModItems.LIQUID_PYRITE_BUCKET))
+                .addImage(new QuestBookImage(Items.BOWL))
+                .setText("§nCrude Sacrificial Bowl§r\n\nThe Basis of many more things. Allows you to fill it with a bloody sacrifice.", true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.RECIPE_LIST)
+                .setTemplateSpacing(30)
+                .setInLocationMessage()
+                .addSecondaryImage(new QuestBookImage(ModItems.CHIMALLI_SHIELD,true))
+                .addSecondaryImage(new QuestBookImage(ModBlocks.ANCIENT_ALTAR))
+                .addImage(new QuestBookImage(Items.SHIELD))
+                .addImage(new QuestBookImage(ModItems.LIQUID_PYRITE_BUCKET))
+                .addImage(new QuestBookImage(ModItems.FILLED_CRUDE_SACRIFICE_BOWL))
+                .setText("§nChīmalli§r\n\nPowerful shield capable of blocking projectiles and hits.", true)
+                .save(pages);
 
         Builder.create()
                 .setTemplate(QuestBookTemplateType.RECIPE_LIST)
                 .setTemplateSpacing(20)
                 .setInLocationMessage()
-                .addSecondaryImage(new QuestBookImage(ModBlocks.ANCIENT_ALTAR))
                 .addSecondaryImage(new QuestBookImage(ModItems.MACUAHUITL,true))
+                .addSecondaryImage(new QuestBookImage(ModBlocks.ANCIENT_ALTAR))
                 .addImage(new QuestBookImage(ModItems.OBSIDIAN_TOOTH,4, false))
                 .addImage(new QuestBookImage(Items.STICK))
                 .addImage(new QuestBookImage(ModItems.SERPENTINITE_ROD))
@@ -93,16 +141,16 @@ public class QuestBookPageProvider implements DataProvider {
                 .setTemplate(QuestBookTemplateType.RECIPE_LIST)
                 .setTemplateSpacing(30)
                 .setInLocationMessage()
+                .addSecondaryImage(new QuestBookImage(ModItems.TELEPORTATION_CORE,true))
                 .addSecondaryImage(new QuestBookImage(ModBlocks.ANCIENT_ALTAR))
-                .addSecondaryImage(new QuestBookImage(ModItems.CHIMALLI_SHIELD,true))
-                .addImage(new QuestBookImage(Items.SHIELD))
-                .addImage(new QuestBookImage(ModItems.LIQUID_PYRITE_BUCKET))
-                .addImage(new QuestBookImage(ModItems.FILLED_CRUDE_SACRIFICE_BOWL))
-                .setText("§nChīmalli§r\n\nPowerful shield capable of blocking projectiles and hits.", true)
+                .addImage(new QuestBookImage(ModItems.JADE,4, false))
+                .addImage(new QuestBookImage(Items.ENDER_PEARL, 2, false))
+                .addImage(new QuestBookImage(Items.WIND_CHARGE))
+                .setText("§nTeleportation Core§r\n\nThe Teleportation Core opens the door to a whole lot of blocks and items allowing you to travel faster.", true)
                 .save(pages);
 
         Builder.create()
-                .setPageShortcut(CHAPTER_2_SHORTCUT)
+                .setPageShortcut(SHORTCUT_TELEPORTATION)
                 .setTemplate(QuestBookTemplateType.CHAPTER_COVER)
                 .showPageMessage(false)
                 .addImage(QuestBookImage.CHAPTER_2_IMAGE)
@@ -120,31 +168,22 @@ public class QuestBookPageProvider implements DataProvider {
                 .setText("Teleportation is cool!", false)
                 .save(pages);
 
+
         Builder.create()
-                .setTemplate(QuestBookTemplateType.RECIPE_LIST)
-                .setTemplateSpacing(30)
-                .setInLocationMessage()
-                .addSecondaryImage(new QuestBookImage(ModBlocks.ANCIENT_ALTAR))
-                .addSecondaryImage(new QuestBookImage(ModItems.TELEPORTATION_CORE,true))
-                .addImage(new QuestBookImage(ModItems.JADE,4, false))
-                .addImage(new QuestBookImage(Items.ENDER_PEARL, 2, false))
-                .addImage(new QuestBookImage(Items.WIND_CHARGE))
-                .setText("§nTeleportation Core§r\n\nThe Teleportation Core opens the door to a whole lot of blocks and items allowing you to travel faster.", true)
+                .setPageShortcut(SHORTCUT_MAGNETS)
+                .setTemplate(QuestBookTemplateType.CHAPTER_COVER)
+                .showPageMessage(false)
+                .addImage(QuestBookImage.MAGNETS_CHAPTER)
+                .setTemplateChapterTitle("§f§o§lMagnets§r")
+                .setText("§f§oOur connection seems to get stronger ;)§r", false, true)
                 .save(pages);
 
-
         Builder.create()
-                .setPageShortcut(CHAPTER_4_SHORTCUT)
-                .setTemplate(QuestBookTemplateType.PROCESS)
-                .defaultTemplateSpacing()
-                .setTemplateShowFuel(true)
-                .setInLocationMessage()
-                .addSecondaryImage(new QuestBookImage(Blocks.FURNACE))
-                .addImage(new QuestBookImage(ModItems.RAW_JADE))
-                .addImage(QuestBookImage.PROCESS_IMAGE)
-                .addImage(new QuestBookImage(ModItems.JADE))
-                .addImage(QuestBookImage.ADOBE_LIT_PROCESS_IMAGE)
-                .setText("Hello World!")
+                .setTemplate(QuestBookTemplateType.ITEM_LIST)
+                .setTemplateSpacing(30)
+                .addImage(new QuestBookImage(ModItems.PYRITE_MAGNET, true))
+                .addImage(new QuestBookImage(ModItems.JADE_MAGNET, true))
+                .setText("§nMagnets§r\n\nMagnets are harness the magnetism to attract nearby items. §oTheir materials determine their radius and strength§r", true)
                 .save(pages);
     }
 
@@ -167,7 +206,10 @@ public class QuestBookPageProvider implements DataProvider {
             futures.add(DataProvider.saveStable(cachedOutput, page, path));
         }
         Path shortcutsPath = basePath.resolve("shortcuts.json");
-        futures.add(DataProvider.saveStable(cachedOutput, gson.toJsonTree(shortcutsMap), shortcutsPath));
+        JsonElement jsonElement = gson.toJsonTree(shortcutsMap);
+        JsonObject jsonObject = jsonElement.getAsJsonObject();
+        jsonObject.addProperty(KEY_TOTAL_PAGES, pages.size());
+        futures.add(DataProvider.saveStable(cachedOutput, jsonObject, shortcutsPath));
 
         return CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
     }

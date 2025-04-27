@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-27T11:59:20.833245223	Model Definitions - projectj
+// 1.21.4	2025-04-27T11:32:08.488353	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -93,6 +93,7 @@ c4f3775626f4c829574376d0a454e0940c3ca14a assets/projectj/items/cobbled_serpentin
 48d99f43129145fad1afdeaa7fd3f9617f632021 assets/projectj/items/empty_little_man_statue_block.json
 158ef8b3692a5b675b2d8414808d3d285564c18b assets/projectj/items/filled_crude_sacrifice_bowl.json
 3b6458d2375f942b3fd027659dd3aa77eacc6baf assets/projectj/items/fire_starter.json
+635f09337da422deff2ab66f0bf8d1cad618ba21 assets/projectj/items/hatchet.json
 20e974e68377b3d13568f54b52c8c52e9ccf5e66 assets/projectj/items/jade.json
 9c8cb0c378da07b61725adb0d0a48b374dae6f8d assets/projectj/items/jade_block.json
 8d8e20d6d95ae9b556af3e79ca355aea8c1dbc41 assets/projectj/items/jade_boots.json
@@ -271,6 +272,7 @@ aac07639f9960cc7e0e85f1d298694c7b6d01e88 assets/projectj/models/item/crude_sacri
 da5311311d366194e64154b2f0e1cf5408ea8fd6 assets/projectj/models/item/death_whistle.json
 5997f340b1c359ea3e3d1d8275bb3a50128bc24f assets/projectj/models/item/filled_crude_sacrifice_bowl.json
 30b985172cbbef1e3f927bfadb025bd16adda0a0 assets/projectj/models/item/fire_starter.json
+6fab0152ce1b51acd697298952bf004091e17b84 assets/projectj/models/item/hatchet.json
 9cc0c435272b7a37105bfd68afa6dd08bf45ef1e assets/projectj/models/item/jade.json
 82d5aa6725cf6efc0bd6817ccf445fec23e0d3f9 assets/projectj/models/item/jade_boots.json
 e4ccbbfbd4b62d3732f2464c7261160bf8fb77ee assets/projectj/models/item/jade_boots_amethyst_trim.json

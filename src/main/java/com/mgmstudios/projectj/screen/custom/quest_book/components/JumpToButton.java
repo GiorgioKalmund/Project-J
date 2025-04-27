@@ -47,9 +47,9 @@ public class JumpToButton extends Button {
         if (isHoveredOrFocused())
             guiGraphics.blitSprite(RenderType::guiTextured, HIGHLIGHTED_SPRITE, getX() - 2, getY() - 2, 20, 20);
         guiGraphics.renderItem(new ItemStack(displayItem), getX(), getY());
-        List<FormattedCharSequence> descriptionSequence = font.split(FormattedText.of(description), TEXT_WIDTH);
-        if (descriptionSequence.getFirst() != null)
-            drawCenteredStringWithoutDropShadow(guiGraphics, font, descriptionSequence.getFirst(),  getX() + 8, getY() + 20, 0);
+        List<FormattedCharSequence> descriptionSequence = font.split(FormattedText.of(description), 40);
+        for (int index = 0; index < descriptionSequence.size(); index++)
+            drawCenteredStringWithoutDropShadow(guiGraphics, font, descriptionSequence.get(index),  getX() + 8, (index * font.lineHeight) + getY() + 20, 0);
     }
 
     public void playDownSound(SoundManager handler) {

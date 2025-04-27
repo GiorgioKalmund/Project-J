@@ -3,16 +3,14 @@
   "category": "equipment",
   "key": {
     "#": "minecraft:stick",
-    "F": "minecraft:feather",
     "O": "projectj:obsidian_tooth"
   },
   "pattern": [
-    "O",
-    "#",
-    "F"
+    "OO",
+    "# "
   ],
   "result": {
-    "count": 4,
-    "id": "projectj:obsidian_arrow"
+    "count": 1,
+    "id": "projectj:hatchet"
   }
 }

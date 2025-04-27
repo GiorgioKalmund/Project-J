@@ -454,15 +454,24 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.COMBAT, ModItems.OBSIDIAN_ARROW, 4)
-                .define('#', Items.STICK)
-                .define('O', ModItems.OBSIDIAN_TOOTH)
-                .define('Y', Items.FEATHER)
                 .pattern("O")
                 .pattern("#")
-                .pattern("Y")
+                .pattern("F")
+                .define('#', Items.STICK)
+                .define('O', ModItems.OBSIDIAN_TOOTH)
+                .define('F', Items.FEATHER)
                 .unlockedBy("has_obsidian_tooth", this.has(ModItems.OBSIDIAN_TOOTH))
+                .unlockedBy("has_stick", this.has(Items.STICK))
                 .unlockedBy("has_feather", this.has(Items.FEATHER))
-                .unlockedBy("has_flint", this.has(Items.FLINT))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.COMBAT, ModItems.HATCHET)
+                .pattern("OO")
+                .pattern("# ")
+                .define('#', Items.STICK)
+                .define('O', ModItems.OBSIDIAN_TOOTH)
+                .unlockedBy("has_obsidian_tooth", this.has(ModItems.OBSIDIAN_TOOTH))
+                .unlockedBy("has_stick", this.has(Items.STICK))
                 .save(this.output);
 
         // ANCIENT ALTAR

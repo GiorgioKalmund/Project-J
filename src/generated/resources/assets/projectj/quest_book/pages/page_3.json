@@ -1,16 +1,28 @@
 {
   "images": [
     {
-      "image": "projectj:little_king_spawn_egg",
-      "show-border": true
+      "image": "projectj:raw_jade"
+    },
+    {
+      "image": "projectj:deepslate_jade_ore"
+    },
+    {
+      "image": "projectj:jade"
+    },
+    {
+      "image": "projectj:jade_ore"
+    },
+    {
+      "image": "projectj:jade_block"
     }
   ],
   "template": {
-    "name": "item-showcase"
+    "name": "item-list",
+    "spacing": 20
   },
   "text": {
     "align-center": false,
-    "content": "§nRandom Title§r\nThis is the description.",
+    "content": "§nJade§r\n\nJade is the building block of Project J. It is used for most recipes, so get digging in and around§o§2 lush caves§r.",
     "show-title": true
   }
 }

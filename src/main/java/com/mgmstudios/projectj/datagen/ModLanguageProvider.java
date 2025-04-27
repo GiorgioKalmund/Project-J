@@ -64,6 +64,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.QUEST_BOOK, "Ancient Codex");
         addItem(ModItems.TELEPORTATION_CORE, "Teleportation Core");
         addItem(ModItems.DEATH_WHISTLE, "Death Whistle");
+        addItem(ModItems.HATCHET, "Hatchet");
 
         // Blocks
         addBlock(ModBlocks.PACKED_ADOBE, "Packed Adobe");

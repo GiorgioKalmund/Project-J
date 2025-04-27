@@ -106,6 +106,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.LITTLE_MAN_VOODOO.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.LITTLE_KING_VOODOO.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.VOODOO_CATCHER.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
+        itemModels.generateFlatItem(ModItems.HATCHET.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
         itemModels.generateFlatItem(ModItems.PYRITE_MAGNET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.JADE_MAGNET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.QUETZAL_FEATHER.get(), ModelTemplates.FLAT_ITEM);
