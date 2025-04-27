@@ -174,16 +174,58 @@
 				"up": {"uv": [1, 0, 0, 0], "texture": "#0"},
 				"down": {"uv": [1, 0, 0, 0], "texture": "#0"}
 			}
+		},
+		{
+			"name": "Handle",
+			"from": [10, 5.25, 8],
+			"to": [10.5, 7.25, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [11, 5.25, 8]},
+			"faces": {
+				"north": {"uv": [0.5, 0, 0.75, 1], "texture": "#0"},
+				"east": {"uv": [0.5, 0, 3, 1], "texture": "#0"},
+				"south": {"uv": [0.5, 0, 0.75, 1], "texture": "#missing"},
+				"west": {"uv": [0.5, 0, 3, 1], "texture": "#0"},
+				"up": {"uv": [0.5, 0, 0.75, 2.5], "texture": "#0"},
+				"down": {"uv": [0.5, 0, 0.75, 2.5], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Handle",
+			"from": [5.5, 5.25, 8],
+			"to": [6, 7.25, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [5, 5.25, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 0.25, 1], "texture": "#0"},
+				"east": {"uv": [0, 0, 2.5, 1], "texture": "#0"},
+				"south": {"uv": [0, 0, 0.25, 1], "texture": "#missing"},
+				"west": {"uv": [0, 0, 2.5, 1], "texture": "#0"},
+				"up": {"uv": [0, 0, 0.25, 2.5], "texture": "#0"},
+				"down": {"uv": [0, 0, 0.25, 2.5], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Handle",
+			"from": [5.5, 5.25, 13],
+			"to": [10.5, 7.25, 13.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [10, 5.25, 13]},
+			"faces": {
+				"north": {"uv": [0, 0, 2.5, 1], "texture": "#0"},
+				"east": {"uv": [0, 0, 0.25, 1], "texture": "#0"},
+				"south": {"uv": [0, 0, 2.5, 1], "texture": "#0"},
+				"west": {"uv": [0, 0, 0.25, 1], "texture": "#0"},
+				"up": {"uv": [0, 0, 0.25, 2.5], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [0, 0, 0.25, 2.5], "rotation": 270, "texture": "#0"}
+			}
 		}
 	],
 	"display": {
 		"thirdperson_righthand": {
-			"rotation": [76.12, -9.37, 1.45],
-			"translation": [0, 1.25, 2.25]
+			"rotation": [83.06, -87.09, -8.64],
+			"translation": [3.25, -2, 5.75]
 		},
 		"thirdperson_lefthand": {
-			"rotation": [76.12, -9.37, 1.45],
-			"translation": [0, 1.25, 2.25]
+			"rotation": [83.06, -87.09, -8.64],
+			"translation": [3.25, -2, 5.75]
 		},
 		"ground": {
 			"translation": [0, 3.25, 0],
@@ -225,6 +267,12 @@
 			"origin": [7.5, -3, 7],
 			"color": 0,
 			"children": [11, 12]
+		},
+		{
+			"name": "Handle",
+			"origin": [10, 5.25, 13],
+			"color": 0,
+			"children": [13, 14, 15]
 		}
 	]
 }
