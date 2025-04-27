@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "connected=false,facing=east": {
+      "model": "projectj:block/hollow_mesquite_log",
+      "y": 90
+    },
+    "connected=false,facing=north": {
+      "model": "projectj:block/hollow_mesquite_log"
+    },
+    "connected=false,facing=south": {
+      "model": "projectj:block/hollow_mesquite_log",
+      "y": 180
+    },
+    "connected=false,facing=west": {
+      "model": "projectj:block/hollow_mesquite_log",
+      "y": 270
+    },
+    "connected=true,facing=east": {
+      "model": "projectj:block/hollow_mesquite_log_connected",
+      "y": 90
+    },
+    "connected=true,facing=north": {
+      "model": "projectj:block/hollow_mesquite_log_connected"
+    },
+    "connected=true,facing=south": {
+      "model": "projectj:block/hollow_mesquite_log_connected",
+      "y": 180
+    },
+    "connected=true,facing=west": {
+      "model": "projectj:block/hollow_mesquite_log_connected",
+      "y": 270
+    }
+  }
+}

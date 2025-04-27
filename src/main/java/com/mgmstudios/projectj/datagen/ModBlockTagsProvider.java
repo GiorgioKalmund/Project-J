@@ -151,7 +151,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.MESQUITE_LOG.get())
                 .add(ModBlocks.STRIPPED_MESQUITE_LOG.get())
                 .add(ModBlocks.MESQUITE_WOOD.get())
-                .add(ModBlocks.STRIPPED_MESQUITE_WOOD.get());
+                .add(ModBlocks.STRIPPED_MESQUITE_WOOD.get())
+                .add(ModBlocks.HOLLOW_MESQUITE_LOG.get());
 
         tag(ModTags.Blocks.BENCHES)
                 .add(ModBlocks.MESQUITE_BENCH.get())

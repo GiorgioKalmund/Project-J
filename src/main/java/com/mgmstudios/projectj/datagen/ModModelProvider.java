@@ -9,6 +9,7 @@ import static com.mgmstudios.projectj.block.custom.AdobeFurnaceBlock.TIER1;
 import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.BLOOD_INSIDE;
 import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.CRAFTING;
 import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.PYRITE_INSIDE;
+import static com.mgmstudios.projectj.block.custom.HollowTreeBlock.CONNECTED;
 import static com.mgmstudios.projectj.block.custom.LittleManStatueBlock.SUMMONING;
 import com.mgmstudios.projectj.block.custom.MagnifyingGlassStandBlock;
 import static com.mgmstudios.projectj.block.custom.TeleportationBlock.UNLOCKED;
@@ -154,6 +155,8 @@ public class ModModelProvider extends ModelProvider {
         createLittleManStatue(blockModels, ModBlocks.LITTLE_MAN_STATUE_BLOCK.get());
 
         createMagnifyingGlassBlock(blockModels, itemModels, ModBlocks.MAGNIFYING_GLASS_STAND.get());
+
+        createHollowTreeBlock(blockModels, ModBlocks.HOLLOW_MESQUITE_LOG.get());
 
         ModBlockFamilies.getAllFamilies()
                 .filter(BlockFamily::shouldGenerateModel)
@@ -332,6 +335,17 @@ public class ModModelProvider extends ModelProvider {
                                                 .select(DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.MODEL, bottom))
                                                 .select(DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.MODEL, top))
                                 )
+                                .with(createHorizontalFacingDispatch())
+                );
+    }
+
+    public void createHollowTreeBlock(BlockModelGenerators blockModels, Block block){
+        ResourceLocation connecting = ModelLocationUtils.getModelLocation(block);
+        ResourceLocation end = ModelLocationUtils.getModelLocation(block, "_connected");
+        blockModels.blockStateOutput
+                .accept(
+                        MultiVariantGenerator.multiVariant(block)
+                                .with(createBooleanModelDispatch(CONNECTED, end, connecting))
                                 .with(createHorizontalFacingDispatch())
                 );
     }

@@ -5,25 +5,9 @@ import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
 import com.mgmstudios.projectj.ProjectJ;
-import com.mgmstudios.projectj.block.custom.AdobeChimneyBlock;
-import com.mgmstudios.projectj.block.custom.AdobeFurnaceBlock;
-import com.mgmstudios.projectj.block.custom.AdobeGlassBlock;
-import com.mgmstudios.projectj.block.custom.AncientAltarBlock;
+import com.mgmstudios.projectj.block.custom.*;
+
 import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.PYRITE_INSIDE;
-import com.mgmstudios.projectj.block.custom.BenchCornerBlock;
-import com.mgmstudios.projectj.block.custom.BrazierBlock;
-import com.mgmstudios.projectj.block.custom.EmptyLittleManStatueBlock;
-import com.mgmstudios.projectj.block.custom.JadeCrystalBlock;
-import com.mgmstudios.projectj.block.custom.LittleManStatueBlock;
-import com.mgmstudios.projectj.block.custom.MagnifyingGlassStandBlock;
-import com.mgmstudios.projectj.block.custom.MetateBlock;
-import com.mgmstudios.projectj.block.custom.MultiAxisDirectionalBlock;
-import com.mgmstudios.projectj.block.custom.OlmecAltarBlock;
-import com.mgmstudios.projectj.block.custom.OlmecHeadBlock;
-import com.mgmstudios.projectj.block.custom.SittableBlock;
-import com.mgmstudios.projectj.block.custom.StrippableModLogBlock;
-import com.mgmstudios.projectj.block.custom.TallStatueBlock;
-import com.mgmstudios.projectj.block.custom.TeleportationBlock;
 import static com.mgmstudios.projectj.block.custom.TeleportationBlock.UNLOCKED;
 import com.mgmstudios.projectj.block.custom.botany.BotanyBushBlock;
 import com.mgmstudios.projectj.block.custom.botany.BotanyPotBlock;
@@ -215,6 +199,8 @@ public class ModBlocks {
     public static final DeferredBlock<Block> ADOBE_GLASS = register("adobe_glass", AdobeGlassBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS));
 
     public static final DeferredBlock<Block> JADE_CRYSTAL = register("jade_crystal", JadeCrystalBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).noOcclusion().destroyTime(2F).requiresCorrectToolForDrops().strength(5.0F), new Item.Properties());
+
+    public static final DeferredBlock<Block> HOLLOW_MESQUITE_LOG = register("hollow_mesquite_log", HollowTreeBlock::new, BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava());
 
     private static DeferredBlock<Block> register(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> factory.apply(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));

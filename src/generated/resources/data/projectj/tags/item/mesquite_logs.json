@@ -3,6 +3,7 @@
     "projectj:mesquite_log",
     "projectj:stripped_mesquite_log",
     "projectj:mesquite_wood",
-    "projectj:stripped_mesquite_wood"
+    "projectj:stripped_mesquite_wood",
+    "projectj:hollow_mesquite_log"
   ]
 }

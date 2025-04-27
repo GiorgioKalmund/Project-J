@@ -92,6 +92,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.HATCHET.get());
 
                 output.accept(ModBlocks.MESQUITE_LOG.get());
+                output.accept(ModBlocks.HOLLOW_MESQUITE_LOG.get());
                 output.accept(ModBlocks.STRIPPED_MESQUITE_LOG.get());
                 output.accept(ModBlocks.MESQUITE_WOOD.get());
                 output.accept(ModBlocks.STRIPPED_MESQUITE_WOOD.get());
