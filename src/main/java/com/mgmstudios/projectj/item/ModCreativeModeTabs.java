@@ -64,6 +64,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.METATE);
                 output.accept(ModItems.STONE_MANO);
                 output.accept(ModBlocks.BOTANY_POT);
+                output.accept(ModBlocks.JADE_CRYSTAL);
 
                 output.accept(ModBlocks.REGENERATION_OLMEC_HEAD.get());
                 output.accept(ModBlocks.DAMAGE_OLMEC_HEAD.get());

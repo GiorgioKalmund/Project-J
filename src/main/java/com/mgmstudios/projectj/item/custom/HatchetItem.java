@@ -55,9 +55,10 @@ public class HatchetItem extends AxeItem {
                         int canoeLength = 1;
                         Direction targetDirection = null;
                         List<BlockPos> buildingBlockPositions = new ArrayList<>();
-                        buildingBlockPositions.add(belowPos);
-                        buildingBlockPositions.add(clickedPos);
                         for (Direction direction : canoeDirections){
+                            if (direction == Direction.UP || direction == Direction.DOWN)
+                                return InteractionResult.FAIL;
+                            buildingBlockPositions.clear();
                             BlockState blockState = level.getBlockState(belowPos);
                             if (blockState.is(buildingBlock)){
                                 targetDirection = direction;
@@ -70,14 +71,18 @@ public class HatchetItem extends AxeItem {
                                     canoeLength++;
                                 }
                                 longEnoughCanoe = canoeLength >= MINIMUM_CANOE_LENGTH;
+                                if (longEnoughCanoe)
+                                    break;
                             }
                         }
+                        buildingBlockPositions.add(belowPos);
+                        buildingBlockPositions.add(clickedPos);
                         if (longEnoughCanoe && level instanceof  ServerLevel serverLevel){
                             for (BlockPos pos : buildingBlockPositions){
                                 serverLevel.destroyBlock(pos, false);
                                 serverLevel.levelEvent(2009, pos, 0);
                             }
-                            createCanoe(serverLevel, buildingBlockPositions.get(buildingBlockPositions.size() / 2), canoeLength);
+                            createCanoe(serverLevel, buildingBlockPositions.getFirst(), canoeLength);
                             return InteractionResult.SUCCESS_SERVER;
                             //serverPlayer.sendSystemMessage(Component.literal("Valid canoe facing: " + targetDirection + " with length: " + canoeLength));
                         } else {

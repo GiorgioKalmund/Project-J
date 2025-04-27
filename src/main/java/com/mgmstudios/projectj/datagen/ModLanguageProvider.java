@@ -86,6 +86,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.POTTED_CHILI_BUSH, "Potted Chili Bush");
         addBlock(ModBlocks.METATE, "Metate and Mano");
         addBlock(ModBlocks.BOTANY_POT, "Botany Pot");
+        addBlock(ModBlocks.JADE_CRYSTAL, "Jade Crystal");
 
         addBlock(ModBlocks.PYRITE_BLOCK, "Pyrite Block");
         addBlock(ModBlocks.RAW_PYRITE_BLOCK, "Raw Pyrite Block");
