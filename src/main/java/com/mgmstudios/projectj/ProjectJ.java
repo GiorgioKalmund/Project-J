@@ -153,6 +153,7 @@ public class ProjectJ
             event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.ANCIENT_ALTAR_BE.get(), (entity, context) -> entity.getInventory());
 
             event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.METATE_BE.get(), (entity, context) -> entity.getInventory());
+            event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.JADE_CRYSTAL_BE.get(), (entity, context) -> entity.getInventory());
         }
     }
 }

@@ -25,7 +25,7 @@ public class JadeCrystalEntityRenderer implements BlockEntityRenderer<JadeCrysta
     @Override
     public void render(JadeCrystalBlockEntity jadeCrystalBlockEntity, float pPartialTick, PoseStack poseStack, MultiBufferSource multiBufferSource, int pPackedLight, int pPackedOverlay) {
         ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
-        ItemStack itemStack = jadeCrystalBlockEntity.getItemStack();
+        ItemStack itemStack = jadeCrystalBlockEntity.getInventory().getStackInSlot(0);
         if (itemStack.isEmpty()) {
             return;
         }

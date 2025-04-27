@@ -34,7 +34,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.LITTLE_MAN_STATUE_BLOCK.get())
                 .add(ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK.get())
                 .add(ModBlocks.METATE.get())
-                .add(ModBlocks.ADOBE_GLASS.get());
+                .add(ModBlocks.ADOBE_GLASS.get())
+                .add(ModBlocks.JADE_CRYSTAL.get());
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .addTag(ModTags.Blocks.ADOBE)
@@ -48,7 +49,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.JADE_ORE.get())
                 .add(ModBlocks.DEEPSLATE_JADE_ORE.get())
-                .add(ModBlocks.JADE_BLOCK.get());
+                .add(ModBlocks.JADE_BLOCK.get())
+                .add(ModBlocks.JADE_CRYSTAL.get());
 
         tag(ModTags.Blocks.MINEABLE_WITH_PAXEL)
                 .addTag(BlockTags.MINEABLE_WITH_PICKAXE)
