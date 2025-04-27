@@ -3,14 +3,21 @@ package com.mgmstudios.projectj.block.custom;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -20,9 +27,10 @@ import org.jetbrains.annotations.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HollowTreeBlock extends HorizontalDirectionalBlock {
+public class HollowTreeBlock extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock {
 
     public static final BooleanProperty CONNECTED = BooleanProperty.create("connected");
+    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     public static final MapCodec<HollowTreeBlock> CODEC = simpleCodec(HollowTreeBlock::new);
 
@@ -38,7 +46,7 @@ public class HollowTreeBlock extends HorizontalDirectionalBlock {
     public static final VoxelShape SHAPE = Shapes.or(BOTTOM_LAYER);
     public HollowTreeBlock(Properties properties) {
         super(properties);
-        registerDefaultState(this.getStateDefinition().any().setValue(FACING, Direction.NORTH).setValue(CONNECTED, false));
+        registerDefaultState(this.getStateDefinition().any().setValue(FACING, Direction.NORTH).setValue(CONNECTED, false).setValue(WATERLOGGED, false));
     }
 
     @Override
@@ -46,10 +54,24 @@ public class HollowTreeBlock extends HorizontalDirectionalBlock {
         super.createBlockStateDefinition(builder);
         builder.add(FACING);
         builder.add(CONNECTED);
+        builder.add(WATERLOGGED);
     }
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return calculateShape(state);
+    }
+
+    @Override
+    protected VoxelShape getOcclusionShape(BlockState state) {
+        return calculateShape(state);
+    }
+
+    protected FluidState getFluidState(BlockState state) {
+        return (Boolean)state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+    }
+
+    private VoxelShape calculateShape(BlockState state){
         VoxelShape baseShape = switch (state.getValue(FACING)){
             case NORTH, SOUTH-> SHAPE_NORTH_SOUTH;
             case EAST, WEST -> SHAPE_EAST_WEST;
@@ -66,6 +88,14 @@ public class HollowTreeBlock extends HorizontalDirectionalBlock {
             };
         }
         return Shapes.or(baseShape, endShape);
+    }
+
+    @Override
+    protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess scheduledTickAccess, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
+        if (state.getValue(WATERLOGGED)) {
+            scheduledTickAccess.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+        }
+        return super.updateShape(state, level, scheduledTickAccess, pos, direction, neighborPos, neighborState, random);
     }
 
     @Override
@@ -93,8 +123,8 @@ public class HollowTreeBlock extends HorizontalDirectionalBlock {
         Direction placedirection = context.getHorizontalDirection().getOpposite();
         Level level = context.getLevel();
         BlockPos blockPos = context.getClickedPos();
-
-        return super.getStateForPlacement(context).setValue(FACING, placedirection).setValue(CONNECTED, inBetweenLogs(level, placedirection, blockPos));
+        FluidState fluidstate = context.getLevel().getFluidState(blockPos);
+        return super.getStateForPlacement(context).setValue(FACING, placedirection).setValue(CONNECTED, inBetweenLogs(level, placedirection, blockPos)).setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
     }
 
     private boolean inBetweenLogs(Level level, Direction placementDirection, BlockPos placedPos){
