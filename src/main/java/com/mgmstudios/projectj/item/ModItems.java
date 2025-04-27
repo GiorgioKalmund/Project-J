@@ -1,6 +1,7 @@
 package com.mgmstudios.projectj.item;
 
-import java.util.*;
+import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -10,19 +11,28 @@ import com.mgmstudios.projectj.entity.ModEntities;
 import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.food.ModConsumables;
 import com.mgmstudios.projectj.food.ModFoods;
-import com.mgmstudios.projectj.item.custom.*;
-
+import com.mgmstudios.projectj.item.custom.CustomInstrumentItem;
+import com.mgmstudios.projectj.item.custom.FireStarterItem;
+import com.mgmstudios.projectj.item.custom.HatchetItem;
+import com.mgmstudios.projectj.item.custom.LittleManVoodoo;
+import com.mgmstudios.projectj.item.custom.MagnetItem;
+import com.mgmstudios.projectj.item.custom.MagnifyingGlassItem;
+import com.mgmstudios.projectj.item.custom.ObsidianArrowItem;
+import com.mgmstudios.projectj.item.custom.OlmecHeadItem;
 import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidProperties;
 import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidPropertiesWithCustomAsset;
-
+import com.mgmstudios.projectj.item.custom.PaxelItem;
+import com.mgmstudios.projectj.item.custom.QuestBook;
+import com.mgmstudios.projectj.item.custom.SacrificialDagger;
+import com.mgmstudios.projectj.item.custom.TeleportationKeyItem;
+import com.mgmstudios.projectj.item.custom.TrowelItem;
+import com.mgmstudios.projectj.item.custom.VoodooCatcherItem;
 import com.mgmstudios.projectj.sound.ModSounds;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.network.Filterable;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.BlockItem;
@@ -31,6 +41,7 @@ import net.minecraft.world.item.EggItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.ToolMaterial;
