@@ -4,6 +4,7 @@ import com.mgmstudios.projectj.block.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
+import net.minecraft.core.Position;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -103,18 +104,19 @@ public class OlmecHeadBlock extends RedstoneLampBlock {
         }
     }
 
-    public void spawnBeaconBeam(ServerLevel serverLevel, BlockPos headPosition, BlockPos targetPosition, int particleCount) {
+    public static void spawnBeaconBeam(ServerLevel serverLevel, BlockPos headPosition, BlockPos targetPosition, ParticleOptions particleOptions, int particleCount) {
         Vec3 headVec = headPosition.getCenter();
         Vec3 targetVec = targetPosition.getCenter();
 
         Vec3 directionVec = targetVec.subtract(headVec);
 
         var dist = directionVec.length();
-        var stepSize = dist / (particleCount - 1) / 2;
+        var stepSize = dist / (particleCount - 1);
 
+        directionVec = directionVec.normalize();
         for (int i = 0; i < particleCount ; i ++){
             var position = headVec.add(directionVec.scale(stepSize * i));
-            serverLevel.sendParticles(effectParticle,true,true,  position.x, position.y, position.z, 1, 0, 0, 0, 0.05);
+            serverLevel.sendParticles(particleOptions,true,true,  position.x, position.y, position.z, 1, 0, 0, 0, 0.05);
         }
     }
 

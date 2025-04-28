@@ -5,6 +5,9 @@ import com.mgmstudios.projectj.block.entity.custom.TeleportationBlockEntity;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Vec3i;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -31,9 +34,12 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
+
+import static com.mgmstudios.projectj.block.custom.OlmecHeadBlock.spawnBeaconBeam;
 
 public class TeleportationBlock extends BaseEntityBlock {
 
@@ -112,6 +118,15 @@ public class TeleportationBlock extends BaseEntityBlock {
         if (blockEntity != null && blockEntity.getConnectedPosition() != null) {
             BlockPos connectedPos = blockEntity.getConnectedPosition();
             player.displayClientMessage(Component.literal("Linked to: [" + connectedPos.getX() + "/" + connectedPos.getY() + "/" + connectedPos.getZ() + "]"), true);
+            if (level instanceof  ServerLevel serverLevel){
+                BlockPos distance = connectedPos.subtract(pos);
+                Vec3 direction = distance.getCenter();
+                direction = direction.normalize().scale(Math.min(direction.length(), 3));
+                Vec3i offset = new Vec3i((int) direction.x, (int) direction.y, (int) direction.z);
+                BlockPos directionPosition = pos.offset(offset);
+                int particleCount = (int)(direction.length() * 1.5F);
+                spawnBeaconBeam(serverLevel, pos, directionPosition, ParticleTypes.HAPPY_VILLAGER, particleCount);
+            }
         } else if (blockEntity != null){
             player.displayClientMessage(Component.literal("Unlinked"), true);
             return InteractionResult.PASS;

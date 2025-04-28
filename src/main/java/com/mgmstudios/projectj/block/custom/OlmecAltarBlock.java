@@ -35,6 +35,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
+import static com.mgmstudios.projectj.block.custom.OlmecHeadBlock.spawnBeaconBeam;
+
 public class OlmecAltarBlock extends HorizontalDirectionalBlock {
 
     public static final BooleanProperty CRAFTING = BooleanProperty.create("altar_crafting");
@@ -127,7 +129,7 @@ public class OlmecAltarBlock extends HorizontalDirectionalBlock {
         for (BlockPos pos : positionDirectionsMap.keySet()){
             BlockState blockState = level.getBlockState(pos);
             if (blockState.getBlock() instanceof OlmecHeadBlock olmecHeadBlock && blockState.getValue(OlmecHeadBlock.LIT) && blockState.getValue(FACING) == positionDirectionsMap.get(pos)){
-                olmecHeadBlock.spawnBeaconBeam(level, pos, altarPos, 10);
+                spawnBeaconBeam(level, pos, altarPos, olmecHeadBlock.effectParticle, 10);
                 copyList.remove(level.getBlockState(pos).getBlock());
             }
         }
