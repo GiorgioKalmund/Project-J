@@ -11,40 +11,21 @@ import com.mgmstudios.projectj.entity.ModEntities;
 import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.food.ModConsumables;
 import com.mgmstudios.projectj.food.ModFoods;
-import com.mgmstudios.projectj.item.custom.CustomInstrumentItem;
-import com.mgmstudios.projectj.item.custom.FireStarterItem;
-import com.mgmstudios.projectj.item.custom.HatchetItem;
-import com.mgmstudios.projectj.item.custom.LittleManVoodoo;
-import com.mgmstudios.projectj.item.custom.MagnetItem;
-import com.mgmstudios.projectj.item.custom.MagnifyingGlassItem;
-import com.mgmstudios.projectj.item.custom.ObsidianArrowItem;
-import com.mgmstudios.projectj.item.custom.OlmecHeadItem;
+import com.mgmstudios.projectj.item.custom.*;
+
 import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidProperties;
 import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidPropertiesWithCustomAsset;
-import com.mgmstudios.projectj.item.custom.PaxelItem;
-import com.mgmstudios.projectj.item.custom.QuestBook;
-import com.mgmstudios.projectj.item.custom.SacrificialDagger;
-import com.mgmstudios.projectj.item.custom.TeleportationKeyItem;
-import com.mgmstudios.projectj.item.custom.TrowelItem;
-import com.mgmstudios.projectj.item.custom.VoodooCatcherItem;
+
 import com.mgmstudios.projectj.sound.ModSounds;
 
+import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.food.Foods;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.BucketItem;
-import net.minecraft.world.item.EggItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.ShieldItem;
-import net.minecraft.world.item.SpawnEggItem;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.block.Block;
@@ -87,13 +68,13 @@ public class ModItems {
 
     public static final DeferredItem<Item> FILLED_CRUDE_SACRIFICE_BOWL = register("filled_crude_sacrifice_bowl", () -> new Item.Properties().stacksTo(1).food(Foods.RABBIT_STEW).usingConvertsTo(ModItems.CRUDE_SACRIFICE_BOWL.get()));
 
-    public static final DeferredItem<Item> JADE_HELMET = registerCustomArmorItem("jade_helmet", ModArmorMaterials.JADE_MATERIAL, ArmorType.HELMET);
+    public static final DeferredItem<Item> JADE_HELMET = registerArmorItem("jade_helmet", ModArmorMaterials.JADE_MATERIAL, ArmorType.HELMET, JadeArmorItem::new);
 
-    public static final DeferredItem<Item> JADE_CHESTPLATE = registerCustomArmorItem("jade_chestplate", ModArmorMaterials.JADE_MATERIAL, ArmorType.CHESTPLATE);
+    public static final DeferredItem<Item> JADE_CHESTPLATE = registerArmorItem("jade_chestplate", ModArmorMaterials.JADE_MATERIAL, ArmorType.CHESTPLATE, JadeArmorItem::new);
 
-    public static final DeferredItem<Item> JADE_LEGGINGS = registerCustomArmorItem("jade_leggings", ModArmorMaterials.JADE_MATERIAL, ArmorType.LEGGINGS);
+    public static final DeferredItem<Item> JADE_LEGGINGS = registerArmorItem("jade_leggings", ModArmorMaterials.JADE_MATERIAL, ArmorType.LEGGINGS, JadeArmorItem::new);
 
-    public static final DeferredItem<Item> JADE_BOOTS = registerCustomArmorItem("jade_boots", ModArmorMaterials.JADE_MATERIAL, ArmorType.BOOTS);
+    public static final DeferredItem<Item> JADE_BOOTS = registerArmorItem("jade_boots", ModArmorMaterials.JADE_MATERIAL, ArmorType.BOOTS, JadeArmorItem::new);
 
     public static final DeferredItem<Item> TELEPORTATION_CORE = register("teleportation_core");
 
@@ -171,6 +152,10 @@ public class ModItems {
     }
     public static DeferredItem<Item> registerCustomArmorItem(String name, ArmorMaterial material, ArmorType armorType){
         return ITEMS.register(name, key ->new Item(humanoidProperties(material, new Item.Properties().setId(ResourceKey.create(Registries.ITEM, key)).durability(armorType.getDurability(material.durability())), armorType)));
+    }
+
+    public static <T extends ArmorItem> DeferredItem<Item> registerArmorItem(String name, ArmorMaterial material, ArmorType armorType, PropertyDispatch.TriFunction<ArmorMaterial, ArmorType, Item.Properties, T> function){
+        return ITEMS.register(name, key -> function.apply(material, armorType, new Item.Properties().setId(ResourceKey.create(Registries.ITEM, key))));
     }
 
     public static DeferredItem<Item> registerCustomArmorItem(String name, ArmorMaterial material, ArmorType armorType, ResourceLocation assetLocation){

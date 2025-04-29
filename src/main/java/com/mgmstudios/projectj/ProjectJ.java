@@ -67,6 +67,7 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import terrablender.api.Regions;
 import terrablender.api.SurfaceRuleManager;
+import software.bernie.geckolib.renderer.GeoArmorRenderer;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(ProjectJ.MOD_ID)
@@ -119,7 +120,7 @@ public class ProjectJ
         ModItemBehaviours.ModDispenserBehaviours.bootstrap();
         event.enqueueWork(() -> {
             Regions.register(new ProjectJRegion(ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "overworld"), 10));
-            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ProjectJSurfaceRule.makeRules()); 
+            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ProjectJSurfaceRule.makeRules());
         });
         }
 
