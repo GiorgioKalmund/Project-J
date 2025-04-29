@@ -1,9 +1,7 @@
 package com.mgmstudios.projectj.datagen;
 
 import com.mgmstudios.projectj.ProjectJ;
-import com.mgmstudios.projectj.item.ModItemBehaviours;
 import com.mgmstudios.projectj.worldgen.ModBiomeModifiers;
-import com.mgmstudios.projectj.worldgen.ModBiomes;
 import com.mgmstudios.projectj.worldgen.ModConfiguredFeatures;
 import com.mgmstudios.projectj.worldgen.ModPlacedFeatures;
 import net.minecraft.core.HolderLookup;
@@ -21,7 +19,7 @@ public class ModDataPackProvider extends DatapackBuiltinEntriesProvider {
             .add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap)
             .add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap)
             .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ModBiomeModifiers::bootstrap)
-            .add(Registries.BIOME, ModBiomes::bootstrap)
+            .add(Registries.BIOME, ModBiomesProvider::bootstrap)
             ;
 
     public ModDataPackProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {

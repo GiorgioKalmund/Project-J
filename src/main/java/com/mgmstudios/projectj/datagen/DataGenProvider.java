@@ -50,6 +50,8 @@ public class DataGenProvider extends LootTableProvider {
 
         event.createProvider(ModFluidTagsProvider::new);
 
+        event.createProvider(ModBiomeTagsProvider::new);
+
         event.createProvider(ModLanguageProvider::new);
 
         event.createProvider(ModDataPackProvider::new);

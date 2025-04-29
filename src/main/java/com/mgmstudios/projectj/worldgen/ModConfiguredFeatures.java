@@ -56,9 +56,9 @@ public class ModConfiguredFeatures {
 
        register(context, JADE_ORE_KEY, Feature.ORE, new OreConfiguration(list, 4));
 
-        RuleTest sandReplaceables = new TagMatchTest(ModTags.Blocks.PYRITE_ORE_REPLACEABLES);
+        RuleTest pyriteReplaceables = new TagMatchTest(ModTags.Blocks.PYRITE_ORE_REPLACEABLES);
 
-        register(context, PYRITE_ORE_KEY, Feature.ORE, new OreConfiguration(sandReplaceables, ModBlocks.PYRITE_ORE.get().defaultBlockState(),10));
+        register(context, PYRITE_ORE_KEY, Feature.ORE, new OreConfiguration(pyriteReplaceables, ModBlocks.PYRITE_ORE.get().defaultBlockState(),10));
 
         register(context, MESQUITE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(ModBlocks.MESQUITE_LOG.get()),

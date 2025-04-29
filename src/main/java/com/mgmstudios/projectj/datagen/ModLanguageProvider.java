@@ -5,11 +5,14 @@ import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.entity.ModEntities;
 import com.mgmstudios.projectj.item.ModItems;
 
+import com.mgmstudios.projectj.worldgen.ModBiomes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.biome.Biome;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
 public class ModLanguageProvider extends LanguageProvider {
@@ -191,6 +194,9 @@ public class ModLanguageProvider extends LanguageProvider {
 
         // GUI
         addGuiButton("close", "Close");
+
+        // Biomes
+        addBiome(ModBiomes.ADOBE_DESERT, "Adobe Desert");
     }
 
     public void addTooltip(String name, String value){
@@ -230,6 +236,10 @@ public class ModLanguageProvider extends LanguageProvider {
 
     public void addGuiButton(String name, String description){
         add("gui.projectj." + name, description);
+    }
+
+    public void addBiome(ResourceKey<Biome> biome, String name){
+        add("biome.projectj." + biome.location().getPath(), name);
     }
 
 

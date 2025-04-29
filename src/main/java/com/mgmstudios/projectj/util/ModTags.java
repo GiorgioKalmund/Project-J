@@ -7,6 +7,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 
@@ -40,6 +41,13 @@ public class ModTags {
         }
     }
 
+    public static class Biomes {
+        public static final TagKey<Biome> ADOBE_DESERT = createTag("adobe_desert");
+
+        private static TagKey<Biome> createTag(String name) {
+            return TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, name));
+        }
+    }
 
     public static class Items {
         public static final TagKey<Item> ADOBE_FURNACE_SMELTABLE = createTag("adobe_furnace_smeltable");

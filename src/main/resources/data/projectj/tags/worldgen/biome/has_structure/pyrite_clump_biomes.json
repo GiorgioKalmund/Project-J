@@ -8,10 +8,6 @@
   "_comment5": " Minecraft `minecraft` tags: https://github.com/misode/mcmeta/tree/b7e7f5282f9cc2ca1bd01e9a4911beab4725cb4b/data/minecraft/tags/worldgen/biome ",
   "_comment6": " Please use `c` and `minecraft` biome tags as much as possible to maximize mod/datapack compatibility. ",
   "values": [
-    "minecraft:desert",
-    {
-      "id": "#c:is_desert",
-      "required": false
-    }
+    "projectj:adobe_desert"
   ]
 }

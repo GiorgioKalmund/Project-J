@@ -1,6 +1,9 @@
 {
   "type": "neoforge:add_features",
-  "biomes": "minecraft:desert",
+  "biomes": [
+    "minecraft:desert",
+    "projectj:adobe_desert"
+  ],
   "features": "projectj:adobe_patch",
   "step": "top_layer_modification"
 }

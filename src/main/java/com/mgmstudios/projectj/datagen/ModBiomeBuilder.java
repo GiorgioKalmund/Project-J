@@ -1,15 +1,13 @@
-package com.mgmstudios.projectj.worldgen;
+package com.mgmstudios.projectj.datagen;
 
 import javax.annotation.Nullable;
-
-import com.nimbusds.openid.connect.sdk.federation.entities.EntityType;
 
 import net.minecraft.core.HolderGetter;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.sounds.Music;
+import net.minecraft.sounds.Musics;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.AmbientMoodSettings;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
@@ -18,7 +16,7 @@ import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
-public class TestOverworldBiomes
+public class ModBiomeBuilder
 {
     @Nullable
     private static final Music NORMAL_MUSIC = null;
@@ -50,9 +48,9 @@ public class TestOverworldBiomes
         BiomeDefaultFeatures.addSurfaceFreezing(builder);
     }
 
-    public static Biome hotRed(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
-        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        BiomeDefaultFeatures.desertSpawns(spawnBuilder);
+    public static Biome adobeDesert(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
+        MobSpawnSettings.Builder spawnBuider = new MobSpawnSettings.Builder();
+        BiomeDefaultFeatures.desertSpawns(spawnBuider);
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
         BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
         globalOverworldGeneration(biomeBuilder);
@@ -64,20 +62,7 @@ public class TestOverworldBiomes
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         BiomeDefaultFeatures.addDesertExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addDesertExtraDecoration(biomeBuilder);
-        return biome(Biome.Precipitation.NONE, 2.0F, 0.0F, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return biome(Biome.Precipitation.NONE, 2.0F, 0.0F, spawnBuider, biomeBuilder, Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DESERT));
     }
 
-    public static Biome coldBlue(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
-        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
-
-        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
-        globalOverworldGeneration(biomeBuilder);
-        BiomeDefaultFeatures.addFrozenSprings(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
-        BiomeDefaultFeatures.addExtraEmeralds(biomeBuilder);
-        BiomeDefaultFeatures.addInfestedStone(biomeBuilder);
-        return biome(Biome.Precipitation.SNOW, -0.7F, 0.9F, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
-    }
 }

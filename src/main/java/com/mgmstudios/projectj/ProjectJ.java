@@ -1,11 +1,8 @@
 package com.mgmstudios.projectj;
 
-import com.mgmstudios.projectj.worldgen.ModBiomes;
-import com.mgmstudios.projectj.worldgen.ModStructurePlacements;
-import com.mgmstudios.projectj.worldgen.ModStructures;
-import com.mgmstudios.projectj.worldgen.ProjectJRegion;
-import com.mgmstudios.projectj.worldgen.ProjectJSurfaceRule;
+import com.mgmstudios.projectj.worldgen.*;
 
+import com.mgmstudios.projectj.worldgen.regions.AdobeDesertRegion;
 import org.slf4j.Logger;
 
 import com.mgmstudios.projectj.block.ModBlocks;
@@ -34,21 +31,14 @@ import com.mgmstudios.projectj.recipe.ModRecipeTypes;
 import com.mgmstudios.projectj.screen.ModMenuTypes;
 import com.mgmstudios.projectj.screen.custom.AdobeFurnaceScreen;
 import com.mgmstudios.projectj.sound.ModSounds;
-import com.mgmstudios.projectj.recipe.ModRecipeBookCategories;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.ArrowRenderer;
-import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 
-import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -58,16 +48,12 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import terrablender.api.Regions;
 import terrablender.api.SurfaceRuleManager;
-import software.bernie.geckolib.renderer.GeoArmorRenderer;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(ProjectJ.MOD_ID)
@@ -119,10 +105,10 @@ public class ProjectJ
         event.enqueueWork(() ->
         {
             // Weights are kept intentionally low as we add minimal biomes
-            Regions.register(new ProjectJRegion(ResourceLocation.fromNamespaceAndPath(MOD_ID, "overworld_1"), 5));
+            Regions.register(new AdobeDesertRegion(ResourceLocation.fromNamespaceAndPath(MOD_ID, "overworld_1"), 4));
 
             // Register our surface rules
-            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ProjectJSurfaceRule.makeRules());
+            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ModSurfaceRules.makeRules());
         });
     }
 

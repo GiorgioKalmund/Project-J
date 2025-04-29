@@ -13,6 +13,17 @@
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000
     },
+    "music": [
+      {
+        "data": {
+          "max_delay": 24000,
+          "min_delay": 12000,
+          "replace_current_music": false,
+          "sound": "minecraft:music.overworld.desert"
+        },
+        "weight": 1
+      }
+    ],
     "music_volume": 1.0,
     "sky_color": 7254527,
     "water_color": 4159204,
@@ -66,7 +77,8 @@
       "minecraft:underwater_magma",
       "minecraft:disk_sand",
       "minecraft:disk_clay",
-      "minecraft:disk_gravel"
+      "minecraft:disk_gravel",
+      "projectj:adobe_patch"
     ],
     [],
     [

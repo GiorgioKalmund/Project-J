@@ -106,8 +106,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.PYRITE_ORE.get());
 
         tag(ModTags.Blocks.PYRITE_ORE_REPLACEABLES)
-                .add(Blocks.SAND)
-                .add(Blocks.SANDSTONE);
+                .add(ModBlocks.ADOBE_SAND.get());
 
         tag(BlockTags.OVERWORLD_CARVER_REPLACEABLES)
                 .add(ModBlocks.PYRITE_ORE.get())
