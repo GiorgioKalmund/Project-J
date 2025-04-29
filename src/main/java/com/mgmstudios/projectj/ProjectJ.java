@@ -105,8 +105,6 @@ public class ProjectJ
         ModSounds.register(modEventBus);
         ModStructures.register(modEventBus);
         ModStructurePlacements.register(modEventBus);
-        ModBiomes.BIOME_REGISTER.register(modEventBus);
-        ModBiomes.registerBiomes();
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::registerScreens);
@@ -118,11 +116,15 @@ public class ProjectJ
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         ModItemBehaviours.ModDispenserBehaviours.bootstrap();
-        event.enqueueWork(() -> {
-            Regions.register(new ProjectJRegion(ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "overworld"), 10));
+        event.enqueueWork(() ->
+        {
+            // Weights are kept intentionally low as we add minimal biomes
+            Regions.register(new ProjectJRegion(ResourceLocation.fromNamespaceAndPath(MOD_ID, "overworld_1"), 5));
+
+            // Register our surface rules
             SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ProjectJSurfaceRule.makeRules());
         });
-        }
+    }
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)

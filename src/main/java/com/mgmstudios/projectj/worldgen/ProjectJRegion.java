@@ -34,40 +34,19 @@ public class ProjectJRegion extends Region
     @Override
     public void addBiomes(Registry<Biome> registry, Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper)
     {
-        this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
-            VanillaParameterOverlayBuilder vanillaBuilder = new VanillaParameterOverlayBuilder();
+        VanillaParameterOverlayBuilder builder = new VanillaParameterOverlayBuilder();
+        // Overlap Vanilla's parameters with our own for our COLD_BLUE biome.
+        // The parameters for this biome are chosen arbitrarily.
+        new ParameterPointListBuilder()
+                .temperature(Temperature.span(Temperature.COOL, Temperature.FROZEN))
+                .humidity(Humidity.span(Humidity.ARID, Humidity.DRY))
+                .continentalness(Continentalness.INLAND)
+                .erosion(Erosion.EROSION_0, Erosion.EROSION_1)
+                .depth(Depth.SURFACE, Depth.FLOOR)
+                .weirdness(Weirdness.MID_SLICE_NORMAL_ASCENDING, Weirdness.MID_SLICE_NORMAL_DESCENDING)
+                .build().forEach(point -> builder.add(point, ProjectJBiomes.COLD_BLUE));
 
-            new ParameterUtils.ParameterPointListBuilder()
-                    .temperature(Temperature.ICY, Temperature.COOL, Temperature.NEUTRAL)
-                    .humidity(Humidity.ARID, Humidity.DRY, Humidity.NEUTRAL, Humidity.WET, Humidity.HUMID)
-                    .continentalness(Continentalness.span(Continentalness.COAST, Continentalness.FAR_INLAND), Continentalness.span(Continentalness.MID_INLAND, Continentalness.FAR_INLAND))
-                    .erosion(Erosion.EROSION_0, Erosion.EROSION_1)
-                    .depth(Depth.SURFACE, Depth.FLOOR)
-                    .weirdness(Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.PEAK_VARIANT, Weirdness.HIGH_SLICE_VARIANT_DESCENDING)
-                    .build().forEach(point -> {
-                        // Replace the Vanilla frozen peaks with our cold_blue biome
-                        builder.replaceBiome(point, ProjectJBiomes.COLD_BLUE);
-                    });
-
-
-            // Simple example:
-            // Replace the Vanilla desert with our hot_red biome
-            //builder.replaceBiome(Biomes.DESERT, ProjectJBiomes.HOT_RED);
-
-            // More complex example:
-            // Replace specific parameter points for the frozen peaks with our cold_blue biome
-            /*List<Climate.ParameterPoint> frozenPeaksPoints = new ParameterPointListBuilder()
-                    .temperature(Temperature.ICY, Temperature.COOL, Temperature.NEUTRAL)
-                    .humidity(Humidity.ARID, Humidity.DRY, Humidity.NEUTRAL, Humidity.WET, Humidity.HUMID)
-                    .continentalness(Continentalness.span(Continentalness.COAST, Continentalness.FAR_INLAND), Continentalness.span(Continentalness.MID_INLAND, Continentalness.FAR_INLAND))
-                    .erosion(Erosion.EROSION_0, Erosion.EROSION_1)
-                    .depth(Depth.SURFACE, Depth.FLOOR)
-                    .weirdness(Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.PEAK_VARIANT, Weirdness.HIGH_SLICE_VARIANT_DESCENDING)
-                    .build();*/
-
-            //frozenPeaksPoints.forEach(point -> builder.replaceBiome(point, ProjectJBiomes.COLD_BLUE));
-
-            builder.build().forEach(mapper::accept);
-        });
+        // Add our points to the mapper
+        builder.build().forEach(mapper);
     }
 }
