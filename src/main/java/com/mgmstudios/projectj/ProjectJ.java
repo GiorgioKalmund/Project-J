@@ -1,5 +1,7 @@
 package com.mgmstudios.projectj;
 
+import com.mgmstudios.projectj.worldgen.ModStructurePlacements;
+import com.mgmstudios.projectj.worldgen.ModStructures;
 import org.slf4j.Logger;
 
 import com.mgmstudios.projectj.block.ModBlocks;
@@ -93,6 +95,8 @@ public class ProjectJ
         ModEntities.register(modEventBus);
         ModLootTables.register(modEventBus);
         ModSounds.register(modEventBus);
+        ModStructures.register(modEventBus);
+        ModStructurePlacements.register(modEventBus);
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::registerScreens);
