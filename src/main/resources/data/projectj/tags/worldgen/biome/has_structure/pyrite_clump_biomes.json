@@ -8,24 +8,9 @@
   "_comment5": " Minecraft `minecraft` tags: https://github.com/misode/mcmeta/tree/b7e7f5282f9cc2ca1bd01e9a4911beab4725cb4b/data/minecraft/tags/worldgen/biome ",
   "_comment6": " Please use `c` and `minecraft` biome tags as much as possible to maximize mod/datapack compatibility. ",
   "values": [
-    "#minecraft:is_mountain",
-    "#minecraft:is_ocean",
-    "#minecraft:is_deep_ocean",
-    "minecraft:swamp",
+    "minecraft:desert",
     {
-      "id": "#c:is_mountain",
-      "required": false
-    },
-    {
-      "id": "#c:is_ocean",
-      "required": false
-    },
-    {
-      "id": "#c:is_deep_ocean",
-      "required": false
-    },
-    {
-      "id": "#c:is_swamp",
+      "id": "#c:is_desert",
       "required": false
     }
   ]
