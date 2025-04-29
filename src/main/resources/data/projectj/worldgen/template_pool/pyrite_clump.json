@@ -15,13 +15,13 @@
         // The Identifier of the nbt file itself of the structure piece.
         // Note, this will automatically check into the 'structures' folder for the nbt file.
         // The final path would look like 'resources/data/projectj/structure/sky_fan.nbt'
-        "location": "projectj:sky_fan",
+        "location": "projectj:pyrite_clump",
 
         // Specifies to run this processor list json for the above nbt file when placing it in the world
         // Processor lists are great for randomizing blocks and making structures appear more natural!
         // Note, this will automatically check into the 'worldgen/processor_list' folder for the json file.
         // The final path would look like 'resources/data/projectj/worldgen/processor_list/randomize_stonebrick.json'
-        "processors": "projectj:randomize_stonebrick",
+        "processors": "projectj:pyrite_clump_randomness",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }

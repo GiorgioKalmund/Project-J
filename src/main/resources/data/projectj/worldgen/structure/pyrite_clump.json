@@ -6,7 +6,7 @@
   "type": "projectj:sky_structures",
 
   // the path to the template pool json file to use
-  "start_pool": "projectj:sky_fan",
+  "start_pool": "projectj:pyrite_clump",
 
   // This is how many pieces away from the starting piece a piece of the structure can spawn
   // Think of it like the length of the branch of the structure
@@ -16,7 +16,7 @@
   "max_distance_from_center": 80,
 
   // The biome tag to use for what biomes that this structure can spawn in
-  "biomes": "#projectj:has_structure/code_structure_sky_fan_biomes",
+  "biomes": "#projectj:has_structure/pyrite_clump_biomes",
 
   // The generation step for when to generate the structure. there are 10 stages you can pick from!
   // This surface structure stage places the structure before plants and ores are generated
@@ -28,7 +28,7 @@
   // If project_start_to_heightmap is present, the y value chosen in start_height will be added to the terrain's y value.
   // So a start height that gives -5 will sink the structure 5 blocks into the terrain. Here, we will spawn this structure 60 blocks above the terrain.
   "start_height": {
-    "absolute": 60
+    "absolute": 1
   },
 
   // Makes our sky fan structure take the terrain's top y value and add it to the start_height y value above.
@@ -43,22 +43,5 @@
   // What mobs can spawn over time in the structure.
   // Make sure you add the mob to the right category (monster, creature, etc)
   "spawn_overrides": {
-    "monster": {
-      "bounding_box": "piece", // Use the bounding box of individual pieces instead of the entire structure's bounds.
-      "spawns": [
-        {
-          "type": "minecraft:evoker",
-          "weight": 5,
-          "minCount": 1,
-          "maxCount": 2
-        },
-        {
-          "type": "minecraft:phantom",
-          "weight": 1,
-          "minCount": 1,
-          "maxCount": 1
-        }
-      ]
-    }
   }
 }
