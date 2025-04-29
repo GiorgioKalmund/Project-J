@@ -1,7 +1,11 @@
 package com.mgmstudios.projectj;
 
+import com.mgmstudios.projectj.worldgen.ModBiomes;
 import com.mgmstudios.projectj.worldgen.ModStructurePlacements;
 import com.mgmstudios.projectj.worldgen.ModStructures;
+import com.mgmstudios.projectj.worldgen.ProjectJRegion;
+import com.mgmstudios.projectj.worldgen.ProjectJSurfaceRule;
+
 import org.slf4j.Logger;
 
 import com.mgmstudios.projectj.block.ModBlocks;
@@ -35,6 +39,7 @@ import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.ArrowRenderer;
 import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
@@ -60,6 +65,8 @@ import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import terrablender.api.Regions;
+import terrablender.api.SurfaceRuleManager;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(ProjectJ.MOD_ID)
@@ -97,6 +104,8 @@ public class ProjectJ
         ModSounds.register(modEventBus);
         ModStructures.register(modEventBus);
         ModStructurePlacements.register(modEventBus);
+        ModBiomes.BIOME_REGISTER.register(modEventBus);
+        ModBiomes.registerBiomes();
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::registerScreens);
@@ -108,7 +117,11 @@ public class ProjectJ
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         ModItemBehaviours.ModDispenserBehaviours.bootstrap();
-    }
+        event.enqueueWork(() -> {
+            Regions.register(new ProjectJRegion(ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "overworld"), 10));
+            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ProjectJSurfaceRule.makeRules()); 
+        });
+        }
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)

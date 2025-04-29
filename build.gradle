@@ -18,7 +18,7 @@ version = mod_version
 group = mod_group_id
 
 repositories {
-    maven { url 'https://maven.blamejared.com' }
+    maven { url 'https://cursemaven.com' }
     mavenLocal()
 }
 
@@ -119,6 +119,10 @@ dependencies {
     // compileOnly "mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}"
     // We add the full version to localRuntime, not runtimeOnly, so that we do not publish a dependency on it
     // localRuntime "mezz.jei:jei-${mc_version}-neoforge:${jei_version}"
+
+    compileOnly "curse.maven:terrablender-neoforge-api-940057:6055021"
+
+    localRuntime "curse.maven:terrablender-neoforge-940057:6055021"
 
     // TODO: Implement when Patchouli updates to be compatible with 1.21.4
     /*

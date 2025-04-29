@@ -3,6 +3,7 @@ package com.mgmstudios.projectj.datagen;
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.item.ModItemBehaviours;
 import com.mgmstudios.projectj.worldgen.ModBiomeModifiers;
+import com.mgmstudios.projectj.worldgen.ModBiomes;
 import com.mgmstudios.projectj.worldgen.ModConfiguredFeatures;
 import com.mgmstudios.projectj.worldgen.ModPlacedFeatures;
 import net.minecraft.core.HolderLookup;
