@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-27T15:49:29.853542	Loot Tables
+// 1.21.4	2025-04-30T16:11:56.847554	Loot Tables
 645e23f8676b8f0e4d797aeab743aa1e3606c703 data/projectj/loot_table/blocks/adobe_bricks.json
 c52a58507f4c8bc3dcdd97ef286a063d396844cc data/projectj/loot_table/blocks/adobe_bricks_slab.json
 c80294a187a6c6c06ea794e6c6d418870c792578 data/projectj/loot_table/blocks/adobe_bricks_stairs.json
@@ -56,6 +56,7 @@ a25e4830929436349b58ab82e14c7502ea8159ef data/projectj/loot_table/blocks/serpent
 c424b63a2434644d4dab31a5172de7a22129753a data/projectj/loot_table/blocks/serpentinite_bricks_slab.json
 42af7c0ded313a1867151d12a5d9352b1f53667b data/projectj/loot_table/blocks/serpentinite_bricks_stairs.json
 2ba29f282664d70d4bc14ded89e32bd5ec38cc1f data/projectj/loot_table/blocks/serpentinite_bricks_wall.json
+7b89167996053ea34d2b69d72bb3f3d3928041f9 data/projectj/loot_table/blocks/serpentinite_jade_ore.json
 91ae7a886a1fb39b8e305fab7c0de9c04bce4602 data/projectj/loot_table/blocks/serpentinite_pillar.json
 ff0d2d208c9c5ce07ca8c168a7ea7dfbf13ce31e data/projectj/loot_table/blocks/serpentinite_rock.json
 d67cb9a836e12c6f2f23d804f0fa57c90a884d3f data/projectj/loot_table/blocks/serpentinite_rock_button.json

@@ -23,6 +23,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.JADE_ORE.get())
                 .add(ModBlocks.DEEPSLATE_JADE_ORE.get())
+                .add(ModBlocks.SERPENTINITE_JADE_ORE.get())
                 .add(ModBlocks.JADE_BLOCK.get())
                 .add(ModBlocks.REGENERATION_OLMEC_HEAD.get())
                 .add(ModBlocks.DAMAGE_OLMEC_HEAD.get())
@@ -114,6 +115,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.RAW_PYRITE_BLOCK.get())
                 .add(ModBlocks.PYRITE_BLOCK.get())
                 .add(ModBlocks.PYRITE_ORE.get());
+
+        tag(ModTags.Blocks.SERPENTINITE_REPLACEABLES)
+                .add(ModBlocks.SERPENTINITE_ROCK.get());
 
         tag(ModTags.Blocks.PYRITE_ORE_REPLACEABLES)
                 .add(ModBlocks.ADOBE_SAND.get());

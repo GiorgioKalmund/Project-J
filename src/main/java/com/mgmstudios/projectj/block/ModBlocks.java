@@ -82,6 +82,8 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> DEEPSLATE_JADE_ORE = registerDropExperienceBlock("deepslate_jade_ore", BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE));
 
+    public static final DeferredBlock<Block> SERPENTINITE_JADE_ORE = registerDropExperienceBlock("serpentinite_jade_ore", BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_ORE));
+
     public static final DeferredBlock<Block> ADOBE_FURNACE = register("adobe_furnace", AdobeFurnaceBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).noOcclusion());
 
     public static final DeferredBlock<Block> CHIMNEY = register("chimney", AdobeChimneyBlock::new, BlockBehaviour.Properties.of().noOcclusion());

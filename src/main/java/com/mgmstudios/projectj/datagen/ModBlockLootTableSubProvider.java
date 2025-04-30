@@ -134,6 +134,8 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
                 createMultipleOreDrops(ModBlocks.JADE_ORE.get(), ModItems.RAW_JADE.get(), 2, 5));
         add(ModBlocks.DEEPSLATE_JADE_ORE.get(), block ->
                 createMultipleOreDrops(ModBlocks.DEEPSLATE_JADE_ORE.get(), ModItems.RAW_JADE.get(), 2, 5));
+        add(ModBlocks.SERPENTINITE_JADE_ORE.get(), block ->
+                createMultipleOreDrops(ModBlocks.SERPENTINITE_JADE_ORE.get(), ModItems.RAW_JADE.get(), 3, 6));
         add(ModBlocks.PYRITE_ORE.get(), block -> createOreDrop(ModBlocks.PYRITE_ORE.get(), ModItems.RAW_PYRITE.get()));
 
         LootItemCondition.Builder maizeCropDrops = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.MAIZE_CROP.get())

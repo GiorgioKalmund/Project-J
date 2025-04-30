@@ -16,6 +16,7 @@ public class ModTags {
 
     public static class Blocks {
 
+        public static final TagKey<Block> SERPENTINITE_REPLACEABLES = createTag("serpentinite_replaceables");
 
         public static final TagKey<Block> MINEABLE_WITH_PAXEL = createTag("mineable/paxel");
         public static final TagKey<Block> SERPENTINITE = createTag("serpentinite");

@@ -79,6 +79,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.ADOBE_BRICKS, "Adobe Bricks");
         addBlock(ModBlocks.JADE_ORE, "Jade Ore");
         addBlock(ModBlocks.DEEPSLATE_JADE_ORE, "Deepslate Jade Ore");
+        addBlock(ModBlocks.SERPENTINITE_JADE_ORE, "Serpentinite Jade Ore");
         addBlock(ModBlocks.JADE_BLOCK, "Block of Jade");
         addBlock(ModBlocks.CHIMNEY, "Adobe Chimney");
         addBlock(ModBlocks.SNAKE_STATUE, "Snake Statue");

@@ -20,6 +20,7 @@ public class ModSurfaceRules
     private static final SurfaceRules.RuleSource BEDROCK = makeStateRule(Blocks.BEDROCK);
     private static final SurfaceRules.RuleSource DEEPSLATE = makeStateRule(Blocks.DEEPSLATE);
     private static final SurfaceRules.RuleSource WATER = makeStateRule(Blocks.WATER);
+    private static final SurfaceRules.RuleSource SERPENTINITE = makeStateRule(ModBlocks.SERPENTINITE_ROCK.get());
 
     private static SurfaceRules.ConditionSource noiseAboveSurface(double threshold) {
         // scale = 8.25 to match Minecraft's surface noise
@@ -40,7 +41,7 @@ public class ModSurfaceRules
                 SurfaceRules.ifTrue(
                         SurfaceRules.ON_FLOOR,
                         // …and that block is in ADOBE_DESERT, place Adobe Sand
-                        SurfaceRules.ifTrue(noiseAboveSurface(-0.1), PACKED_ADOBE)
+                        SurfaceRules.ifTrue(noiseAboveSurface(0.05), PACKED_ADOBE)
                 ),
                 // if we're at the floor and in our biome, use Adobe Sand
                 SurfaceRules.ifTrue(
@@ -51,8 +52,7 @@ public class ModSurfaceRules
                 SurfaceRules.ifTrue(
                         SurfaceRules.UNDER_FLOOR,
                         SurfaceRules.ifTrue(isAdobeDesert, ADOBE_SAND)
-                ),
-                SurfaceRules.ifTrue(SurfaceRules.ON_CEILING, PACKED_ADOBE)
+                )
         );
 
         SurfaceRules.RuleSource underLayer = SurfaceRules.sequence(
@@ -105,7 +105,7 @@ public class ModSurfaceRules
         );
 
         rules.add(
-                SurfaceRules.ifTrue(isAdobeDesert, STONE)
+                SurfaceRules.ifTrue(isAdobeDesert, SERPENTINITE)
         );
 
         // finally, fallback to vanilla stone, gravel, water, etc.

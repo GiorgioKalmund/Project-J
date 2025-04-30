@@ -70,6 +70,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.ADOBE_SAND.get());
         blockModels.createTrivialCube(ModBlocks.JADE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.DEEPSLATE_JADE_ORE.get());
+        blockModels.createTrivialCube(ModBlocks.SERPENTINITE_JADE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.JADE_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.RAW_PYRITE_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.PYRITE_BLOCK.get());

@@ -41,22 +41,23 @@ public class ModConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?,?>> JADE_ORE_KEY = registerKey("jade_ore");
 
+    public static final ResourceKey<ConfiguredFeature<?,?>> JADE_ORE_SERPENTINITE_KEY = registerKey("serpentinite_jade_ore");
+
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
-        RuleTest ruletest = new TagMatchTest(BlockTags.BASE_STONE_OVERWORLD);
         RuleTest ruletest1 = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest ruletest2 = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
-        RuleTest ruletest3 = new BlockMatchTest(Blocks.NETHERRACK);
-        RuleTest ruletest4 = new TagMatchTest(BlockTags.BASE_STONE_NETHER);
+        RuleTest serpentiniteReplaceables = new TagMatchTest(ModTags.Blocks.SERPENTINITE_REPLACEABLES);
+        RuleTest pyriteReplaceables = new TagMatchTest(ModTags.Blocks.PYRITE_ORE_REPLACEABLES);
 
-        List<OreConfiguration.TargetBlockState> list = List.of(
+        List<OreConfiguration.TargetBlockState> regularJadeOre = List.of(
                 OreConfiguration.target(ruletest1, ModBlocks.JADE_ORE.get().defaultBlockState()),
                 OreConfiguration.target(ruletest2, ModBlocks.DEEPSLATE_JADE_ORE.get().defaultBlockState())
         );
 
-       register(context, JADE_ORE_KEY, Feature.ORE, new OreConfiguration(list, 4));
+       register(context, JADE_ORE_KEY, Feature.ORE, new OreConfiguration(regularJadeOre, 4));
 
-        RuleTest pyriteReplaceables = new TagMatchTest(ModTags.Blocks.PYRITE_ORE_REPLACEABLES);
+        register(context, JADE_ORE_SERPENTINITE_KEY, Feature.ORE, new OreConfiguration(serpentiniteReplaceables, ModBlocks.SERPENTINITE_JADE_ORE.get().defaultBlockState(),10));
 
         register(context, PYRITE_ORE_KEY, Feature.ORE, new OreConfiguration(pyriteReplaceables, ModBlocks.PYRITE_ORE.get().defaultBlockState(),10));
 

@@ -25,6 +25,8 @@ public class ModPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> JADE_ORE_PLACED_KEY = registerKey("jade_ore_placed");
 
+    public static final ResourceKey<PlacedFeature> JADE_ORE_SERPENTINITE_PLACED_KEY = registerKey("jade_ore_serpentinite_placed");
+
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
@@ -32,6 +34,11 @@ public class ModPlacedFeatures {
                 ModOrePlacement.commonOrePlacement(80,
                         HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80))
                 ));
+
+        register(context, JADE_ORE_SERPENTINITE_PLACED_KEY,
+                configuredFeatures.getOrThrow(ModConfiguredFeatures.JADE_ORE_SERPENTINITE_KEY),
+                ModOrePlacement.commonOrePlacement( 20, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT)
+        );
 
         register(context, PYRITE_ORE_PLACED_KEY,
                 configuredFeatures.getOrThrow(ModConfiguredFeatures.PYRITE_ORE_KEY),
