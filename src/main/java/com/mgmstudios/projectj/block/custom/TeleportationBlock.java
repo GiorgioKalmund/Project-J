@@ -2,7 +2,10 @@ package com.mgmstudios.projectj.block.custom;
 
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.block.entity.custom.TeleportationBlockEntity;
+import com.mgmstudios.projectj.particle.ModParticles;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.particle.FallingDustParticle;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
@@ -114,19 +117,18 @@ public class TeleportationBlock extends BaseEntityBlock {
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        System.out.printf("Used");
         TeleportationBlockEntity blockEntity = (TeleportationBlockEntity) level.getBlockEntity(pos);
         if (blockEntity != null && blockEntity.getConnectedPosition() != null) {
             BlockPos connectedPos = blockEntity.getConnectedPosition();
             player.displayClientMessage(Component.literal("Linked to: [" + connectedPos.getX() + "/" + connectedPos.getY() + "/" + connectedPos.getZ() + "]"), true);
-            if (level instanceof  ServerLevel serverLevel){
-                BlockPos distance = connectedPos.subtract(pos);
-                Vec3 direction = distance.getCenter();
-                direction = direction.normalize().scale(Math.min(direction.length(), 3));
-                Vec3i offset = new Vec3i((int) direction.x, (int) direction.y, (int) direction.z);
-                BlockPos directionPosition = pos.offset(offset);
-                int particleCount = (int)(direction.length() * 1.5F);
-                spawnBeaconBeam(serverLevel, pos, directionPosition, ParticleTypes.HAPPY_VILLAGER, particleCount);
-            }
+            BlockPos distance = connectedPos.subtract(pos);
+            Vec3 direction = distance.getCenter();
+            direction = direction.normalize().scale(Math.min(direction.length(), 3));
+            Vec3i offset = new Vec3i((int) direction.x, (int) direction.y, (int) direction.z);
+            BlockPos directionPosition = pos.offset(offset);
+            int particleCount = (int)(direction.length() * 2F);
+            spawnBeaconBeam(level, pos, directionPosition, ModParticles.TELEPORTATION_PARTICLES.get(), particleCount, false);
         } else if (blockEntity != null){
             player.displayClientMessage(Component.literal("Unlinked"), true);
             return InteractionResult.PASS;

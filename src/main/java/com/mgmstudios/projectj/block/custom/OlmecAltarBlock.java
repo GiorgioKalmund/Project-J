@@ -129,7 +129,7 @@ public class OlmecAltarBlock extends HorizontalDirectionalBlock {
         for (BlockPos pos : positionDirectionsMap.keySet()){
             BlockState blockState = level.getBlockState(pos);
             if (blockState.getBlock() instanceof OlmecHeadBlock olmecHeadBlock && blockState.getValue(OlmecHeadBlock.LIT) && blockState.getValue(FACING) == positionDirectionsMap.get(pos)){
-                spawnBeaconBeam(level, pos, altarPos, olmecHeadBlock.effectParticle, 10);
+                spawnBeaconBeam(level, pos, altarPos, olmecHeadBlock.effectParticle, 10, false);
                 copyList.remove(level.getBlockState(pos).getBlock());
             }
         }

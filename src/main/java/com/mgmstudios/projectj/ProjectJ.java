@@ -1,8 +1,12 @@
 package com.mgmstudios.projectj;
 
+import com.mgmstudios.projectj.particle.ModParticles;
+import com.mgmstudios.projectj.particle.TeleportationParticles;
 import com.mgmstudios.projectj.worldgen.*;
 
 import com.mgmstudios.projectj.worldgen.regions.AdobeDesertRegion;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
+import org.checkerframework.checker.signature.qual.SignatureBottom;
 import org.slf4j.Logger;
 
 import com.mgmstudios.projectj.block.ModBlocks;
@@ -91,6 +95,7 @@ public class ProjectJ
         ModSounds.register(modEventBus);
         ModStructures.register(modEventBus);
         ModStructurePlacements.register(modEventBus);
+        ModParticles.register(modEventBus);
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::registerScreens);
@@ -160,6 +165,11 @@ public class ProjectJ
 
             event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.METATE_BE.get(), (entity, context) -> entity.getInventory());
             event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.JADE_CRYSTAL_BE.get(), (entity, context) -> entity.getInventory());
+        }
+
+        @SubscribeEvent
+        public static void registerParticleFactories(RegisterParticleProvidersEvent event){
+            event.registerSpriteSet(ModParticles.TELEPORTATION_PARTICLES.get(), TeleportationParticles.Provider::new);
         }
     }
 }
