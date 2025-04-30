@@ -78,6 +78,9 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.SACRIFICIAL_DAGGER.get());
                 output.accept(ModItems.TROWEL.get());
                 output.accept(ModItems.SUN_ARMOR_HELMET.get());
+                output.accept(ModItems.SUN_ARMOR_CHESTPLATE.get());
+                output.accept(ModItems.SUN_ARMOR_LEGGINGS.get());
+                output.accept(ModItems.SUN_ARMOR_BOOTS.get());
                 output.accept(ModItems.JADE_HELMET.get());
                 output.accept(ModItems.JADE_CHESTPLATE.get());
                 output.accept(ModItems.JADE_LEGGINGS.get());

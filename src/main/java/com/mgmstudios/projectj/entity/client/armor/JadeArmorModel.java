@@ -1,10 +1,9 @@
 package com.mgmstudios.projectj.entity.client.armor;
 
 import com.mgmstudios.projectj.ProjectJ;
-import com.mgmstudios.projectj.item.custom.JadeArmorItem;
+import com.mgmstudios.projectj.item.custom.armor.JadeArmorItem;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.GeoRenderer;
 

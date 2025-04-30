@@ -1,6 +1,5 @@
-package com.mgmstudios.projectj.item.custom;
+package com.mgmstudios.projectj.item.custom.armor;
 
-import com.mgmstudios.projectj.entity.client.armor.JadeArmorModel;
 import com.mgmstudios.projectj.entity.client.armor.JadeArmorRenderer;
 import com.mgmstudios.projectj.item.ModItems;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
@@ -29,7 +28,6 @@ import software.bernie.geckolib.constant.DefaultAnimations;
 import software.bernie.geckolib.renderer.GeoArmorRenderer;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-import javax.annotation.Nullable;
 import java.util.Set;
 import java.util.function.Consumer;
 

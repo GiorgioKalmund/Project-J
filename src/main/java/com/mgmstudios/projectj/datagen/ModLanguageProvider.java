@@ -31,6 +31,9 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.OBSIDIAN_TOOTH, "Obsidian Tooth");
         addItem(ModItems.SERPENTINITE_ROD, "Serpentinite Rod");
         addItem(ModItems.SUN_ARMOR_HELMET, "Sun Crown");
+        addItem(ModItems.SUN_ARMOR_CHESTPLATE, "Sun Chestplate");
+        addItem(ModItems.SUN_ARMOR_LEGGINGS, "Sun Leggings");
+        addItem(ModItems.SUN_ARMOR_BOOTS, "Sun Boots");
         addItem(ModItems.JADE_HELMET, "Jade Helmet");
         addItem(ModItems.JADE_CHESTPLATE, "Jade Chestplate");
         addItem(ModItems.JADE_LEGGINGS, "Jade Leggings");

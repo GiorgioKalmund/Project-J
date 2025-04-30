@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-27T16:26:47.328916	Model Definitions - projectj
+// 1.21.4	2025-04-30T09:34:25.90932	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -169,7 +169,10 @@ ad69156c496a24a50949baacd6de04ad6092b9a1 assets/projectj/items/serpentinite_rod.
 dc71d3407bf373a2dec8bd1ca3cb34040c3e4152 assets/projectj/items/stone_mano.json
 86d3f4affc0795e800e8734aaf5b4ab53efa37ff assets/projectj/items/stripped_mesquite_log.json
 b3f78545baad0f40008b21e14c868927e22c6898 assets/projectj/items/stripped_mesquite_wood.json
-36c786f0d41230bab1dc764657d4962a7c1e95c8 assets/projectj/items/sun_crown.json
+4f2e61ec4a5d3c36a5bd76a99bbd18de93eb6f33 assets/projectj/items/sun_armor_boots.json
+6780e80314edbd2165a39bc56690f438c720b077 assets/projectj/items/sun_armor_chestplate.json
+3742fb112ae7f08639526a211a9681a4f8fbd468 assets/projectj/items/sun_armor_helmet.json
+c0b634600afb26a017362dd57a4b0acb5e9008c9 assets/projectj/items/sun_armor_leggings.json
 3ea275e3d393894115acac87eedc67100ebea91d assets/projectj/items/teleportation_core.json
 959a6d9c67ad5c22a8e6b8a05b7dbeee0189b13d assets/projectj/items/teleportation_key.json
 4b981089a82540f2b5396454b4c8e7ee5bafb98b assets/projectj/items/teleportation_pad.json
@@ -350,7 +353,10 @@ dea83879f7224ce8e5006eb343d4d8bf63b2fd25 assets/projectj/models/item/raw_pyrite.
 caa4448fff1934cc38f77c2a2f2dd6853ae4515d assets/projectj/models/item/sacrificial_dagger.json
 5b67a9f9fadc07b35191c8a244b0bfc16303c30f assets/projectj/models/item/serpentinite_rod.json
 e3a7718100f03f474faebbe4da0624f70911b4f5 assets/projectj/models/item/stone_mano.json
-c85e270be39290e186d49c4771f2e7d7316c0708 assets/projectj/models/item/sun_crown.json
+111fd668abca02b2ecd247f7afd7c8c0e34668d6 assets/projectj/models/item/sun_armor_boots.json
+6f72f1eb5f66a6a84c21721f8545641efd8e1432 assets/projectj/models/item/sun_armor_chestplate.json
+66116e84bcd008cf7ddf87f3a3b5fc3112381eb9 assets/projectj/models/item/sun_armor_helmet.json
+82e7580beee98a9654c18b8e5432056f233414dd assets/projectj/models/item/sun_armor_leggings.json
 a3012fb501df5f6da3f820c979ebd342df22bc51 assets/projectj/models/item/teleportation_core.json
 9ffe4d6b68a7fb44280cc4bb12ff9639e30abeb6 assets/projectj/models/item/teleportation_key.json
 382fad977e9d13a5cf6d7ab400e1084e79d63200 assets/projectj/models/item/trowel.json

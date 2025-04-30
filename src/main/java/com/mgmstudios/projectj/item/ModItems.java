@@ -16,6 +16,8 @@ import com.mgmstudios.projectj.item.custom.*;
 import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidProperties;
 import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidPropertiesWithCustomAsset;
 
+import com.mgmstudios.projectj.item.custom.armor.JadeArmorItem;
+import com.mgmstudios.projectj.item.custom.armor.SunArmorItem;
 import com.mgmstudios.projectj.sound.ModSounds;
 
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
@@ -58,7 +60,13 @@ public class ModItems {
 
     public static final DeferredItem<Item> TROWEL = register("trowel", TrowelItem::new);
 
-    public static final DeferredItem<Item> SUN_ARMOR_HELMET = registerCustomArmorItemAndAsset("sun_crown", ModArmorMaterials.SUN_ARMOR_MATERIAL, ArmorType.HELMET, new Item.Properties());
+    public static final DeferredItem<Item> SUN_ARMOR_HELMET = registerArmorItem("sun_armor_helmet", ModArmorMaterials.SUN_ARMOR_MATERIAL, ArmorType.HELMET, SunArmorItem::new);
+
+    public static final DeferredItem<Item> SUN_ARMOR_CHESTPLATE = registerArmorItem("sun_armor_chestplate", ModArmorMaterials.SUN_ARMOR_MATERIAL, ArmorType.CHESTPLATE, SunArmorItem::new);
+
+    public static final DeferredItem<Item> SUN_ARMOR_LEGGINGS = registerArmorItem("sun_armor_leggings", ModArmorMaterials.SUN_ARMOR_MATERIAL, ArmorType.LEGGINGS, SunArmorItem::new);
+
+    public static final DeferredItem<Item> SUN_ARMOR_BOOTS = registerArmorItem("sun_armor_boots", ModArmorMaterials.SUN_ARMOR_MATERIAL, ArmorType.BOOTS, SunArmorItem::new);
 
     public static final DeferredItem<Item> MAGNIFYING_GLASS = register("magnifying_glass", MagnifyingGlassItem::new, new Item.Properties().stacksTo(1));
 

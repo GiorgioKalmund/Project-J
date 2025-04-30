@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "projectj:item/sun_crown"
+    "layer0": "projectj:item/sun_armor_chestplate"
   }
 }

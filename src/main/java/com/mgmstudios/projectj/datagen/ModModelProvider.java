@@ -117,13 +117,17 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.TELEPORTATION_CORE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.OBSIDIAN_ARROW.get(), ModelTemplates.FLAT_ITEM);
 
+        itemModels.generateFlatItem(ModItems.SUN_ARMOR_HELMET.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.SUN_ARMOR_CHESTPLATE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.SUN_ARMOR_LEGGINGS.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.SUN_ARMOR_BOOTS.get(), ModelTemplates.FLAT_ITEM);
+
         itemModels.generateTrimmableItem(ModItems.JADE_HELMET.get(), ModEquipmentAssets.JADE, "helmet", false);
         itemModels.generateTrimmableItem(ModItems.JADE_CHESTPLATE.get(), ModEquipmentAssets.JADE, "chestplate", false);
         itemModels.generateTrimmableItem(ModItems.JADE_LEGGINGS.get(), ModEquipmentAssets.JADE, "leggings", false);
         itemModels.generateTrimmableItem(ModItems.JADE_BOOTS.get(), ModEquipmentAssets.JADE, "boots", false);
 
         itemModels.generateSpyglass(ModItems.MACUAHUITL.get());
-        itemModels.generateSpyglass(ModItems.SUN_ARMOR_HELMET.get());
         itemModels.generateSpyglass(ModItems.MAGNIFYING_GLASS.get());
         itemModels.generateSpyglass(ModItems.STONE_MANO.get());
         itemModels.generateSpyglass(ModItems.DEATH_WHISTLE.get());
