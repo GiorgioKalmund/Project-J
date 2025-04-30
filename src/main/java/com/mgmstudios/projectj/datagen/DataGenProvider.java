@@ -37,6 +37,8 @@ public class DataGenProvider extends LootTableProvider {
             lookupProvider
         ));
 
+        event.createProvider(ModDataPackProvider::new);
+
         event.createProvider((output, lookupProvider) -> new AdvancementProvider(
                 output, lookupProvider,
                 List.of(
@@ -53,8 +55,6 @@ public class DataGenProvider extends LootTableProvider {
         event.createProvider(ModBiomeTagsProvider::new);
 
         event.createProvider(ModLanguageProvider::new);
-
-        event.createProvider(ModDataPackProvider::new);
 
         event.createProvider(ModEquipmentInfoProvider::new);
 

@@ -1,15 +1,21 @@
 {
   "parent": "minecraft:projectj/story/root",
   "criteria": {
-    "visit_adobe_desert": {
+    "minecraft:desert": {
       "conditions": {
-        "items": [
+        "player": [
           {
-            "items": "projectj:raw_pyrite"
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biomes": "projectj:adobe_desert"
+              }
+            }
           }
         ]
       },
-      "trigger": "minecraft:inventory_changed"
+      "trigger": "minecraft:location"
     }
   },
   "display": {
@@ -26,7 +32,7 @@
   },
   "requirements": [
     [
-      "visit_adobe_desert"
+      "minecraft:desert"
     ]
   ],
   "sends_telemetry_event": true

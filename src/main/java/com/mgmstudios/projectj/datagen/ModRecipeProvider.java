@@ -9,6 +9,7 @@ import com.mgmstudios.projectj.recipe.acientaltar.AncientAltarRecipeBuilder;
 import com.mgmstudios.projectj.recipe.metate.MetateRecipeBuilder;
 import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
@@ -24,6 +25,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 
 import java.util.concurrent.CompletableFuture;
+
+import static com.mgmstudios.projectj.util.ItemLookup.getResourceLocation;
 
 public class ModRecipeProvider extends RecipeProvider {
 
@@ -414,65 +417,15 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_dirt", this.has(ItemTags.DIRT))
                 .save(this.output);
 
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.JADE_HELMET)
-                .pattern("###")
-                .pattern("# #")
-                .define('#', ModItems.JADE)
-                .unlockedBy("has_jade", this.has(ModItems.JADE))
-                .save(this.output);
+        createHelmet(ModItems.JADE, ModItems.JADE_HELMET);
+        createChestplate(ModItems.JADE, ModItems.JADE_CHESTPLATE);
+        createLeggings(ModItems.JADE, ModItems.JADE_LEGGINGS);
+        createBoots(ModItems.JADE, ModItems.JADE_BOOTS);
 
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.JADE_CHESTPLATE)
-                .pattern("# #")
-                .pattern("###")
-                .pattern("###")
-                .define('#', ModItems.JADE)
-                .unlockedBy("has_jade", this.has(ModItems.JADE))
-                .save(this.output);
-
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.JADE_LEGGINGS)
-                .pattern("###")
-                .pattern("# #")
-                .pattern("# #")
-                .define('#', ModItems.JADE)
-                .unlockedBy("has_jade", this.has(ModItems.JADE))
-                .save(this.output);
-
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.JADE_BOOTS)
-                .pattern("# #")
-                .pattern("# #")
-                .define('#', ModItems.JADE)
-                .unlockedBy("has_jade", this.has(ModItems.JADE))
-                .save(this.output);
-
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.SUN_ARMOR_HELMET)
-                .pattern("###")
-                .pattern("# #")
-                .define('#', ModItems.PYRITE_INGOT)
-                .unlockedBy("has_pyrite_ingot", this.has(ModItems.PYRITE_INGOT))
-                .save(this.output);
-
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.SUN_ARMOR_CHESTPLATE)
-                .pattern("# #")
-                .pattern("###")
-                .pattern("###")
-                .define('#', ModItems.PYRITE_INGOT)
-                .unlockedBy("has_pyrite_ingot", this.has(ModItems.PYRITE_INGOT))
-                .save(this.output);
-
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.SUN_ARMOR_LEGGINGS)
-                .pattern("###")
-                .pattern("# #")
-                .pattern("# #")
-                .define('#', ModItems.PYRITE_INGOT)
-                .unlockedBy("has_pyrite_ingot", this.has(ModItems.PYRITE_INGOT))
-                .save(this.output);
-
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.SUN_ARMOR_BOOTS)
-                .pattern("# #")
-                .pattern("# #")
-                .define('#', ModItems.PYRITE_INGOT)
-                .unlockedBy("has_pyrite_ingot", this.has(ModItems.PYRITE_INGOT))
-                .save(this.output);
+        createHelmet(ModItems.PYRITE_INGOT, ModItems.SUN_ARMOR_HELMET);
+        createChestplate(ModItems.PYRITE_INGOT, ModItems.SUN_ARMOR_CHESTPLATE);
+        createLeggings(ModItems.PYRITE_INGOT, ModItems.SUN_ARMOR_LEGGINGS);
+        createBoots(ModItems.PYRITE_INGOT, ModItems.SUN_ARMOR_BOOTS);
 
         ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.QUEST_BOOK)
                 .requires(Items.BOOK)
@@ -619,6 +572,44 @@ public class ModRecipeProvider extends RecipeProvider {
         MagnifyingRecipeBuilder.magnify(Blocks.RAW_COPPER_BLOCK, Blocks.COPPER_BLOCK);
         MagnifyingRecipeBuilder.magnify(ModBlocks.RAW_PYRITE_BLOCK.get(), ModBlocks.PYRITE_BLOCK.get());
         MagnifyingRecipeBuilder.magnify(ModBlocks.PYRITE_BLOCK.get(), ModBlocks.LIQUID_PYRITE.get());
+    }
+
+    public void createHelmet(ItemLike craftingItem, ItemLike resultItem){
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, resultItem)
+                .pattern("###")
+                .pattern("# #")
+                .define('#', craftingItem)
+                .unlockedBy("has_" + getResourceLocation(craftingItem).getPath(), this.has(craftingItem))
+                .save(this.output);
+    }
+
+    public void createChestplate(ItemLike craftingItem, ItemLike resultItem){
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, resultItem)
+                .pattern("# #")
+                .pattern("###")
+                .pattern("###")
+                .define('#', craftingItem)
+                .unlockedBy("has_" + getResourceLocation(craftingItem).getPath(), this.has(craftingItem))
+                .save(this.output);
+    }
+
+    public void createLeggings(ItemLike craftingItem, ItemLike resultItem){
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, resultItem)
+                .pattern("###")
+                .pattern("# #")
+                .pattern("# #")
+                .define('#', craftingItem)
+                .unlockedBy("has_" + getResourceLocation(craftingItem).getPath(), this.has(craftingItem))
+                .save(this.output);
+    }
+
+    public void createBoots(ItemLike craftingItem, ItemLike resultItem){
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, resultItem)
+                .pattern("# #")
+                .pattern("# #")
+                .define('#', craftingItem)
+                .unlockedBy("has_" + getResourceLocation(craftingItem).getPath(), this.has(craftingItem))
+                .save(this.output);
     }
 
     protected void generateForEnabledBlockFamilies(FeatureFlagSet enabledFeatures) {

@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "projectj:raw_pyrite"
+            "items": "projectj:raw_jade"
           }
         ]
       },
@@ -18,7 +18,7 @@
     },
     "icon": {
       "count": 1,
-      "id": "projectj:jade"
+      "id": "projectj:raw_jade"
     },
     "title": {
       "translate": "advancements.projectj.story.get_jade.title"

@@ -22,8 +22,10 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.MultiNoiseBiomeSourceParameterList;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
 import net.neoforged.neoforge.common.world.ModifiableBiomeInfo;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 
@@ -32,6 +34,17 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 public class ModAdvancementSubProvider implements AdvancementSubProvider {
+
+
+    protected static Advancement.Builder addBiomes(Advancement.Builder builder, HolderLookup.Provider levelRegistry, List<ResourceKey<Biome>> biomes) {
+        HolderGetter<Biome> holdergetter = levelRegistry.lookupOrThrow(Registries.BIOME);
+
+        for(ResourceKey<Biome> resourcekey : biomes) {
+            builder.addCriterion(resourcekey.location().toString(), net.minecraft.advancements.critereon.PlayerTrigger.TriggerInstance.located(net.minecraft.advancements.critereon.LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(resourcekey))));
+        }
+
+        return builder;
+    }
 
     @Override
     public void generate(HolderLookup.Provider provider, Consumer<AdvancementHolder> consumer) {
@@ -60,6 +73,7 @@ public class ModAdvancementSubProvider implements AdvancementSubProvider {
                 )
                 .save(consumer, createSaveString("story", "root"));
 
+        /*
         var visitAdobeDesert = Advancement.Builder.advancement()
                 .parent(root)
                 .display(
@@ -71,17 +85,14 @@ public class ModAdvancementSubProvider implements AdvancementSubProvider {
                         true,
                         true,
                         false
-                )
-                .addCriterion("visit_adobe_desert", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.RAW_PYRITE))
-                .save(consumer, createSaveString("story", "visit_adobe_desert"));
-
-        //addBiomes(visitAdobeDesert, provider, List.of(ModBiomes.ADOBE_DESERT)).save(consumer, createSaveString("story", "visit_adobe_desert"));
-
+                );
+        addBiomes(visitAdobeDesert, provider, List.of(ModBiomes.ADOBE_DESERT)).save(consumer, createSaveString("story", "visit_adobe_desert"));
+         */
 
         AdvancementHolder getJade = Advancement.Builder.advancement()
                 .parent(root)
                 .display(
-                        ModItems.JADE,
+                        ModItems.RAW_JADE,
                         Component.translatable(createTitleString("get_jade")),
                         Component.translatable(createDescriptionString("get_jade")),
                         null,
@@ -90,7 +101,7 @@ public class ModAdvancementSubProvider implements AdvancementSubProvider {
                         true,
                         false
                 )
-                .addCriterion("get_jade", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.JADE))
+                .addCriterion("get_jade", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.RAW_JADE))
                 .save(consumer, createSaveString("story", "get_jade"));
 
         AdvancementHolder botanyPots = Advancement.Builder.advancement()
@@ -241,13 +252,5 @@ public class ModAdvancementSubProvider implements AdvancementSubProvider {
         return "projectj/" + directory + "/" +name;
     }
 
-    protected static Advancement.Builder addBiomes(Advancement.Builder builder, HolderLookup.Provider levelRegistry, List<ResourceKey<Biome>> biomes) {
-        HolderGetter<Biome> holdergetter = levelRegistry.lookupOrThrow(Registries.BIOME);
 
-        for(ResourceKey<Biome> resourcekey : biomes) {
-            builder.addCriterion(resourcekey.location().toString(), net.minecraft.advancements.critereon.PlayerTrigger.TriggerInstance.located(net.minecraft.advancements.critereon.LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(resourcekey))));
-        }
-
-        return builder;
-    }
 }
