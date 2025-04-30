@@ -1,10 +1,13 @@
 {
   "images": [
     {
+      "image": "minecraft:shield"
+    },
+    {
       "image": "projectj:liquid_pyrite_bucket"
     },
     {
-      "image": "minecraft:bowl"
+      "image": "projectj:filled_crude_sacrifice_bowl"
     }
   ],
   "page-msg": {
@@ -14,7 +17,7 @@
     "name": "recipe-list",
     "secondary-images": [
       {
-        "image": "projectj:crude_sacrifice_bowl",
+        "image": "projectj:chimalli_shield",
         "show-border": true
       },
       {
@@ -25,7 +28,7 @@
   },
   "text": {
     "align-center": false,
-    "content": "§nCrude Sacrificial Bowl§r\n\nThe Basis of many more things. Allows you to fill it with a bloody sacrifice.",
+    "content": "§nChīmalli§r\n\nPowerful shield capable of blocking projectiles and hits.",
     "show-title": true
   }
 }

@@ -1,22 +1,19 @@
 {
   "images": [
     {
-      "image": "projectj:teleportation_core"
-    },
-    {
-      "image": "projectj:teleportation_pad"
-    },
-    {
-      "image": "projectj:teleportation_key"
+      "type": "regular",
+      "image": ":ancient_altar_recipes"
     }
   ],
+  "page-shortcut": "ancient-altar-recipes",
+  "show-page-msg": false,
   "template": {
-    "name": "item-list",
-    "spacing": 30
+    "chapter-title": "§f§o§lAncient Altar & Crafting§r",
+    "name": "chapter-cover"
   },
   "text": {
-    "align-center": false,
-    "content": "Teleportation is cool!",
+    "align-center": true,
+    "content": "§f§oPowerful sacrifices using Blood and Pyrite§r",
     "show-title": false
   }
 }

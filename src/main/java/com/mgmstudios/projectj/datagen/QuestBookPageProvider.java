@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.QuestBookImage;
@@ -17,6 +18,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 
+import javax.management.modelmbean.ModelMBeanNotificationBroadcaster;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -70,25 +72,81 @@ public class QuestBookPageProvider implements DataProvider {
                 .save(pages);
 
         Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_SHOWCASE)
+                .addImage(new QuestBookImage(ModBlocks.MESQUITE_SAPLING, true))
+                .setText("§nThe Adobe Desert§r\n\nThe Adobe Desert is a new biome added by ProjectJ. It is home to most blocks of the mod! You can find things like §6Adobe§r, §8Serpentinite Rock§r, as well as §aJade Ores§r and §ePyrite§r! It is also home to a new wood type.", true)
+                .save(pages);
+
+        Builder.create()
                 .setTemplate(QuestBookTemplateType.ITEM_LIST)
                 .defaultTemplateSpacing()
-                .addImage(new QuestBookImage(ModItems.RAW_JADE))
-                .addImage(new QuestBookImage(ModBlocks.DEEPSLATE_JADE_ORE))
-                .addImage(new QuestBookImage(ModItems.JADE))
-                .addImage(new QuestBookImage(ModBlocks.JADE_ORE))
-                .addImage(new QuestBookImage(ModBlocks.JADE_BLOCK))
-                .setText("§nJade§r\n\nJade is the building block of Project J. It is used for most recipes, so get digging in and around§o§2 lush caves§r.", true)
+                .addImage(new QuestBookImage(ModBlocks.ADOBE_SAND))
+                .addImage(new QuestBookImage(ModBlocks.PACKED_ADOBE))
+                .setText("§nAdobe§r\n\nThe Adobe Desert is a large, dry desert. (Packed) Adobe is an firm but simple building material made from a mixture of water, sand, wheat and clay!", true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_LIST)
+                .setTemplateSpacing(20)
+                .addImage(new QuestBookImage(ModBlocks.MESQUITE_SAPLING))
+                .addImage(new QuestBookImage(ModBlocks.MESQUITE_PLANKS))
+                .addImage(new QuestBookImage(ModBlocks.MESQUITE_BENCH))
+                .addImage(new QuestBookImage(ModBlocks.MESQUITE_LEAVES))
+                .addImage(new QuestBookImage(ModBlocks.MESQUITE_BRAZIER))
+                .addImage(new QuestBookImage(ModBlocks.MESQUITE_LOG))
+                .setText("§nMesquite Tree§r\n\nThe Mesquite Tree can be found in the §6Adobe§r§6Desert§r biome and can be used to make a great variety of useful blocks! Above you can see some of the related blocks but there are many more!", true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_LIST)
+                .defaultTemplateSpacing()
+                .addImage(new QuestBookImage(ModItems.PYRITE_INGOT))
+                .addImage(new QuestBookImage(ModItems.RAW_PYRITE))
+                .addImage(new QuestBookImage(ModItems.SUN_ARMOR_HELMET))
+                .addImage(new QuestBookImage(ModBlocks.PYRITE_ORE))
+                .setText("§nPyrite§r\n \nGold? Not Quite... Pyrite, or also sometimes referred to as §oFool's Gold§r can be found on the Adobe Desert's surface. Can be used to craft various shiny items.", true)
                 .save(pages);
 
         Builder.create()
                 .setTemplate(QuestBookTemplateType.RECIPE_LIST)
-                .setTemplateSpacing(30)
-                .setPageMessage("next to:    ")
-                .addSecondaryImage(new QuestBookImage(ModItems.FILLED_CRUDE_SACRIFICE_BOWL, true))
-                .addSecondaryImage(new QuestBookImage(ModBlocks.ANCIENT_ALTAR, false))
-                .addImage(new QuestBookImage(ModItems.SACRIFICIAL_DAGGER, false))
-                .addImage(new QuestBookImage(ModItems.CRUDE_SACRIFICE_BOWL, false))
-                .setText("§nFilled Crude Sacrificial Bowl§r\n\nPerform a self sacrifice, or sacrifice an animal near an Ancient Altar to fill its bowl.", false, false)
+                .defaultTemplateSpacing()
+                .setPageMessage("and :    ")
+                .addSecondaryImage(new QuestBookImage(ModItems.MAGNIFYING_GLASS, true))
+                .addSecondaryImage(new QuestBookImage(ModBlocks.MAGNIFYING_GLASS_STAND, false))
+                .addImage(new QuestBookImage(ModBlocks.PYRITE_BLOCK))
+                .addImage(new QuestBookImage(ModBlocks.ADOBE_GLASS))
+                .addImage(new QuestBookImage(ModItems.LIQUID_PYRITE_BUCKET))
+                .addImage(new QuestBookImage(ModBlocks.ADOBE_SAND))
+                .setText("§nMagnifying Glass§r\n\nThe Magnifying Glass is as mighty and powerful as its real-life counterpart. Use it on specific blocks during daytime to smelt them down!", true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_LIST)
+                .defaultTemplateSpacing()
+                .addImage(new QuestBookImage(ModBlocks.SERPENTINITE_PILLAR))
+                .addImage(new QuestBookImage(ModBlocks.COBBLED_SERPENTINITE))
+                .addImage(new QuestBookImage(ModBlocks.SERPENTINITE_BENCH))
+                .addImage(new QuestBookImage(ModBlocks.SERPENTINITE_ROCK))
+                .setText("§nSerpentinite§r\n\nThis green rock spawns naturally below the Adobe layer in its desert. If you dig long enough you might find some left over relics! Easy to work with using a stone cutter!", true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_LIST)
+                .defaultTemplateSpacing()
+                .addImage(new QuestBookImage(ModBlocks.DEEPSLATE_JADE_ORE))
+                .addImage(new QuestBookImage(ModBlocks.JADE_ORE))
+                .addImage(new QuestBookImage(ModBlocks.SERPENTINITE_JADE_ORE))
+                .setText("§nJade Ores§r\n\nJade is the building block of Project J. It is used for most recipes, so get digging! Most commonly found in Serpentinite but also around lush caves.", true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_LIST)
+                .defaultTemplateSpacing()
+                .addImage(new QuestBookImage(ModBlocks.JADE_BLOCK))
+                .addImage(new QuestBookImage(ModItems.RAW_JADE))
+                .addImage(new QuestBookImage(ModItems.JADE_CHESTPLATE))
+                .addImage(new QuestBookImage(ModItems.JADE))
+                .setText("§nJade Items§r\n\nJade can also be used to craft a variety of blocks and items. Including Armor!", true)
                 .save(pages);
 
         Builder.create()
@@ -96,7 +154,7 @@ public class QuestBookPageProvider implements DataProvider {
                 .setTemplate(QuestBookTemplateType.CHAPTER_COVER)
                 .showPageMessage(false)
                 .addImage(QuestBookImage.ANCIENT_ALTAR_RECIPES_CHAPTER)
-                .setTemplateChapterTitle("§f§o§lAncient Altar Crafting§r")
+                .setTemplateChapterTitle("§f§o§lAncient Altar & Crafting§r")
                 .setText("§f§oPowerful sacrifices using Blood and Pyrite§r", false, true)
                 .save(pages);
 
@@ -109,6 +167,17 @@ public class QuestBookPageProvider implements DataProvider {
                 .addImage(new QuestBookImage(ModItems.LIQUID_PYRITE_BUCKET))
                 .addImage(new QuestBookImage(Items.BOWL))
                 .setText("§nCrude Sacrificial Bowl§r\n\nThe Basis of many more things. Allows you to fill it with a bloody sacrifice.", true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.RECIPE_LIST)
+                .setTemplateSpacing(30)
+                .setPageMessage("next to:    ")
+                .addSecondaryImage(new QuestBookImage(ModItems.FILLED_CRUDE_SACRIFICE_BOWL, true))
+                .addSecondaryImage(new QuestBookImage(ModBlocks.ANCIENT_ALTAR, false))
+                .addImage(new QuestBookImage(ModItems.SACRIFICIAL_DAGGER, false))
+                .addImage(new QuestBookImage(ModItems.CRUDE_SACRIFICE_BOWL, false))
+                .setText("§nFilled Crude Sacrificial Bowl§r\n\nPerform a self sacrifice, or sacrifice an animal near an Ancient Altar to fill its bowl.", false, false)
                 .save(pages);
 
         Builder.create()
@@ -162,10 +231,10 @@ public class QuestBookPageProvider implements DataProvider {
         Builder.create()
                 .setTemplate(QuestBookTemplateType.ITEM_LIST)
                 .setTemplateSpacing(30)
+                .setImages(new QuestBookImage(ModItems.TELEPORTATION_KEY))
                 .addImage(new QuestBookImage(ModItems.TELEPORTATION_CORE))
                 .addImage(new QuestBookImage(ModBlocks.TELEPORTATION_PAD))
-                .setImages(new QuestBookImage(ModItems.TELEPORTATION_KEY))
-                .setText("Teleportation is cool!", false)
+                .setText("Teleportation is a powerful force, harnessed only by the most powerful. The Teleportation Core lays the foundation for everything regarding teleportation. Have a look at the Ancient Altar recipe's to find out how to craft it!", false)
                 .save(pages);
 
 

@@ -1,0 +1,22 @@
+{
+  "images": [
+    {
+      "image": "projectj:teleportation_key"
+    },
+    {
+      "image": "projectj:teleportation_core"
+    },
+    {
+      "image": "projectj:teleportation_pad"
+    }
+  ],
+  "template": {
+    "name": "item-list",
+    "spacing": 30
+  },
+  "text": {
+    "align-center": false,
+    "content": "Teleportation is a powerful force, harnessed only by the most powerful. The Teleportation Core lays the foundation for everything regarding teleportation. Have a look at the Ancient Altar recipe's to find out how to craft it!",
+    "show-title": false
+  }
+}

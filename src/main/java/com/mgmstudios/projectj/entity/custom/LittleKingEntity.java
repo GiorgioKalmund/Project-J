@@ -1,6 +1,7 @@
 package com.mgmstudios.projectj.entity.custom;
 
 import com.google.common.collect.ImmutableMap;
+import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.entity.VoodooEntity;
 import com.mgmstudios.projectj.item.ModItems;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -9,6 +10,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -192,60 +194,70 @@ public class LittleKingEntity extends AbstractVillager implements VoodooEntity {
                     1,
                     new VillagerTrades.ItemListing[]{
                             jadeBasicListing(16, ModItems.LIQUID_PYRITE_BUCKET.get(),  1, 3, 1),
-                            jadeBasicListing(Items.FEATHER, 8, 4, 3, 1),
+                            new JadeAndItemListing( Items.FEATHER, 8, new ItemStack(ModItems.QUETZAL_FEATHER.get(), 8), 4, 3, 1),
                             jadeBasicListing(2, Items.SLIME_BALL, 4, 8, 3, 1),
+                            jadeBasicListing(6, ModItems.TROWEL, 1, 3, 3, 1),
+                            jadeBasicListing(2, ModBlocks.ADOBE_BRICKS, 32, 3, 3, 1),
                             basicListing(ModItems.RAW_PYRITE, 1, ModItems.PYRITE_INGOT, 1, 24, 3, 1),
-                            basicListing(Items.DIAMOND, 1, ModItems.RAW_JADE, 1, 16, 3, 1)
+                            new TwoItemListing(ModItems.RAW_JADE.get(), 8, Items.COAL, new ItemStack(ModItems.JADE.get(), 16), 4, 3, 1)
                     },
                     2,
                     new VillagerTrades.ItemListing[]{
-                            jadeBasicListing(32, ModItems.SUN_ARMOR_HELMET,  1, 5, 1),
+                            jadeBasicListing(32, ModItems.SUN_ARMOR_HELMET,  1, 5, 1.1F),
+                            jadeBasicListing(48, ModItems.SUN_ARMOR_CHESTPLATE,  1, 5, 1.4F),
+                            jadeBasicListing(27, ModItems.SUN_ARMOR_LEGGINGS,  1, 5, 1.3F),
+                            jadeBasicListing(23, ModItems.SUN_ARMOR_BOOTS,  1, 5, 1.2F),
+                            new JadeAndItemListing(16, ModItems.VOODOO_CATCHER.get(),  ModItems.LITTLE_MAN_VOODOO.toStack(), 1, 6, 1.4F),
                             new TwoItemListing(Items.BOWL, ModItems.LIQUID_PYRITE_BUCKET.get(), ModItems.CRUDE_SACRIFICE_BOWL.toStack(), 3, 3, 1)
                     }
             )
     );
 
-    protected static final BasicItemListing basicListing(ItemLike item, int count, ItemLike resultItem, int resultCount, int maxTrades, int xp, int priceMult){
+    protected static final BasicItemListing basicListing(ItemLike item, int count, ItemLike resultItem, int resultCount, int maxTrades, int xp, float priceMult){
         return new BasicItemListing(new ItemStack(item, count), new ItemStack(resultItem, resultCount), maxTrades, xp, priceMult);
     }
 
-    protected static final BasicItemListing jadeBasicListing(int count, ItemLike resultItem, int resultCount, int maxTrades, int xp, int priceMult){
+    protected static final BasicItemListing jadeBasicListing(int count, ItemLike resultItem, int resultCount, int maxTrades, int xp, float priceMult){
         return new BasicItemListing(new ItemStack(ModItems.JADE.get(), count), new ItemStack(resultItem, resultCount), maxTrades, xp, priceMult);
     }
-    protected static final BasicItemListing jadeBasicListing(ItemLike resultItem, int resultCount, int maxTrades, int xp, int priceMult){
+    protected static final BasicItemListing jadeBasicListing(ItemLike resultItem, int resultCount, int maxTrades, int xp, float priceMult){
         return jadeBasicListing(1, resultItem, resultCount, maxTrades, xp, priceMult);
     }
-    protected static final BasicItemListing jadeBasicListing(int count, ItemLike resultItem, int maxTrades, int xp, int priceMult){
+    protected static final BasicItemListing jadeBasicListing(int count, ItemLike resultItem, int maxTrades, int xp, float priceMult){
         return jadeBasicListing(count, resultItem, 1, maxTrades, xp, priceMult);
     }
-    protected static final BasicItemListing jadeBasicListing(ItemLike resultItem, int maxTrades, int xp, int priceMult){
+    protected static final BasicItemListing jadeBasicListing(ItemLike resultItem, int maxTrades, int xp, float priceMult){
         return jadeBasicListing(1, resultItem, 1, maxTrades, xp, priceMult);
     }
 
     public static class JadeAndItemListing extends TwoItemListing{
 
-        public JadeAndItemListing(Item secondItem, int secondItemCost, ItemStack resultItem, int maxUses, int villagerXp, float priceMultiplier, Optional<ResourceKey<EnchantmentProvider>> enchantmentProvider) {
+        public JadeAndItemListing(ItemLike secondItem, int secondItemCost, ItemStack resultItem, int maxUses, int villagerXp, float priceMultiplier, Optional<ResourceKey<EnchantmentProvider>> enchantmentProvider) {
             super(ModItems.JADE.get(), secondItem, secondItemCost, resultItem, maxUses, villagerXp, priceMultiplier, enchantmentProvider);
         }
 
-        public JadeAndItemListing(Item secondItem, int secondItemCost, ItemStack resultItem, int maxUses, int villagerXp, float priceMultiplier) {
+        public JadeAndItemListing(ItemLike secondItem, int secondItemCost, ItemStack resultItem, int maxUses, int villagerXp, float priceMultiplier) {
             super(ModItems.JADE.get(), secondItem, secondItemCost, resultItem, maxUses, villagerXp, priceMultiplier);
         }
 
-        public JadeAndItemListing(int firstItemCost, Item secondItem, int secondItemCost, ItemStack resultItem, int maxUses, int villagerXp, float priceMultiplier, Optional<ResourceKey<EnchantmentProvider>> enchantmentProvider) {
+        public JadeAndItemListing(int firstItemCost, ItemLike secondItem, int secondItemCost, ItemStack resultItem, int maxUses, int villagerXp, float priceMultiplier, Optional<ResourceKey<EnchantmentProvider>> enchantmentProvider) {
             super(ModItems.JADE.get(), firstItemCost, secondItem, secondItemCost, resultItem, maxUses, villagerXp, priceMultiplier, enchantmentProvider);
         }
 
-        public JadeAndItemListing(int firstItemCost, Item secondItem, int secondItemCost, ItemStack resultItem, int maxUses, int villagerXp, float priceMultiplier) {
+        public JadeAndItemListing(int firstItemCost, ItemLike secondItem, int secondItemCost, ItemStack resultItem, int maxUses, int villagerXp, float priceMultiplier) {
             super(ModItems.JADE.get(), firstItemCost, secondItem, secondItemCost, resultItem, maxUses, villagerXp, priceMultiplier, Optional.empty());
+        }
+
+        public JadeAndItemListing(int firstItemCost, ItemLike secondItem, ItemStack resultItem, int maxUses, int villagerXp, float priceMultiplier) {
+            super(ModItems.JADE.get(), firstItemCost, secondItem, 1, resultItem, maxUses, villagerXp, priceMultiplier, Optional.empty());
         }
     }
 
 
     public static class TwoItemListing implements VillagerTrades.ItemListing {
-        private final Item firstItem;
+        private final ItemLike firstItem;
         private final int firstItemCost;
-        private final Item secondItem;
+        private final ItemLike secondItem;
         private final int secondItemCost;
         private final ItemStack resultItem;
         private final int maxUses;
@@ -254,22 +266,22 @@ public class LittleKingEntity extends AbstractVillager implements VoodooEntity {
         private final Optional<ResourceKey<EnchantmentProvider>> enchantmentProvider;
 
 
-        public TwoItemListing(Item firstItem, Item secondItem, int secondItemCost, ItemStack resultItem, int maxUses, int villagerXp, float priceMultiplier, Optional<ResourceKey<EnchantmentProvider>> enchantmentProvider) {
+        public TwoItemListing(ItemLike firstItem, ItemLike secondItem, int secondItemCost, ItemStack resultItem, int maxUses, int villagerXp, float priceMultiplier, Optional<ResourceKey<EnchantmentProvider>> enchantmentProvider) {
             this(firstItem, 1, secondItem, secondItemCost,   resultItem, maxUses,  villagerXp, priceMultiplier, enchantmentProvider);
         }
 
-        public TwoItemListing(Item firstItem, Item secondItem, int secondItemCost, ItemStack resultItem, int maxUses, int villagerXp, float priceMultiplier) {
+        public TwoItemListing(ItemLike firstItem, ItemLike secondItem, int secondItemCost, ItemStack resultItem, int maxUses, int villagerXp, float priceMultiplier) {
             this(firstItem, 1, secondItem, secondItemCost,   resultItem, maxUses,  villagerXp, priceMultiplier, Optional.empty());
         }
 
-        public TwoItemListing(Item firstItem, Item secondItem, ItemStack resultItem, int maxUses, int villagerXp, float priceMultiplier, Optional<ResourceKey<EnchantmentProvider>> enchantmentProvider) {
+        public TwoItemListing(ItemLike firstItem, ItemLike secondItem, ItemStack resultItem, int maxUses, int villagerXp, float priceMultiplier, Optional<ResourceKey<EnchantmentProvider>> enchantmentProvider) {
             this(firstItem, 1, secondItem, 1,   resultItem, maxUses,  villagerXp, priceMultiplier, enchantmentProvider);
         }
 
-        public TwoItemListing(Item firstItem, Item secondItem, ItemStack resultItem, int maxUses, int villagerXp, float priceMultiplier) {
+        public TwoItemListing(ItemLike firstItem, ItemLike secondItem, ItemStack resultItem, int maxUses, int villagerXp, float priceMultiplier) {
             this(firstItem, 1, secondItem, 1,   resultItem, maxUses,  villagerXp, priceMultiplier, Optional.empty());
         }
-        public TwoItemListing(Item firstItem, int firstItemCost, Item secondItem, int secondItemCost, ItemStack resultItem, int maxUses, int villagerXp, float priceMultiplier, Optional<ResourceKey<EnchantmentProvider>> enchantmentProvider) {
+        public TwoItemListing(ItemLike firstItem, int firstItemCost, ItemLike secondItem, int secondItemCost, ItemStack resultItem, int maxUses, int villagerXp, float priceMultiplier, Optional<ResourceKey<EnchantmentProvider>> enchantmentProvider) {
             this.firstItem = firstItem;
             this.firstItemCost = firstItemCost;
             this.secondItem = secondItem;
@@ -281,8 +293,12 @@ public class LittleKingEntity extends AbstractVillager implements VoodooEntity {
             this.enchantmentProvider = enchantmentProvider;
         }
 
-        public TwoItemListing(Item firstItem, int firstItemCost, Item secondItem, int secondItemCost, ItemStack resultItem, int maxUses, int villagerXp, float priceMultiplier) {
+        public TwoItemListing(ItemLike firstItem, int firstItemCost, ItemLike secondItem, int secondItemCost, ItemStack resultItem, int maxUses, int villagerXp, float priceMultiplier) {
            this(firstItem, firstItemCost, secondItem, secondItemCost, resultItem, maxUses, villagerXp, priceMultiplier, Optional.empty()) ;
+        }
+
+        public TwoItemListing(ItemLike firstItem, int firstItemCost, ItemLike secondItem, ItemStack resultItem, int maxUses, int villagerXp, float priceMultiplier) {
+            this(firstItem, firstItemCost, secondItem, 1, resultItem, maxUses, villagerXp, priceMultiplier, Optional.empty()) ;
         }
 
         @javax.annotation.Nullable

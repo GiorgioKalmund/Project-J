@@ -1,28 +1,16 @@
 {
   "images": [
     {
-      "image": "projectj:raw_jade"
-    },
-    {
-      "image": "projectj:deepslate_jade_ore"
-    },
-    {
-      "image": "projectj:jade"
-    },
-    {
-      "image": "projectj:jade_ore"
-    },
-    {
-      "image": "projectj:jade_block"
+      "image": "projectj:mesquite_sapling",
+      "show-border": true
     }
   ],
   "template": {
-    "name": "item-list",
-    "spacing": 20
+    "name": "item-showcase"
   },
   "text": {
     "align-center": false,
-    "content": "§nJade§r\n\nJade is the building block of Project J. It is used for most recipes, so get digging in and around§o§2 lush caves§r.",
+    "content": "§nThe Adobe Desert§r\n\nThe Adobe Desert is a new biome added by ProjectJ. It is home to most blocks of the mod! You can find things like §6Adobe§r, §8Serpentinite Rock§r, as well as §aJade Ores§r and §ePyrite§r! It is also home to a new wood type.",
     "show-title": true
   }
 }

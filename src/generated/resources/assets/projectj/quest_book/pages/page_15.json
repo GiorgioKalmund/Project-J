@@ -1,0 +1,41 @@
+{
+  "images": [
+    {
+      "count": 4,
+      "image": "projectj:obsidian_tooth"
+    },
+    {
+      "image": "minecraft:stick"
+    },
+    {
+      "image": "projectj:serpentinite_rod"
+    },
+    {
+      "image": "projectj:jade"
+    },
+    {
+      "image": "projectj:liquid_pyrite_bucket"
+    }
+  ],
+  "page-msg": {
+    "message": "in:    "
+  },
+  "template": {
+    "name": "recipe-list",
+    "secondary-images": [
+      {
+        "image": "projectj:macuahuitl",
+        "show-border": true
+      },
+      {
+        "image": "projectj:ancient_altar"
+      }
+    ],
+    "spacing": 20
+  },
+  "text": {
+    "align-center": false,
+    "content": "§nMacuahuitl§r\n\nStrong weapon which can handle almost every type of block.",
+    "show-title": true
+  }
+}

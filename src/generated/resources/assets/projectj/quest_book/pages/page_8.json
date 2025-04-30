@@ -1,41 +1,25 @@
 {
   "images": [
     {
-      "count": 4,
-      "image": "projectj:obsidian_tooth"
+      "image": "projectj:serpentinite_pillar"
     },
     {
-      "image": "minecraft:stick"
+      "image": "projectj:cobbled_serpentinite"
     },
     {
-      "image": "projectj:serpentinite_rod"
+      "image": "projectj:serpentinite_bench"
     },
     {
-      "image": "projectj:jade"
-    },
-    {
-      "image": "projectj:liquid_pyrite_bucket"
+      "image": "projectj:serpentinite_rock"
     }
   ],
-  "page-msg": {
-    "message": "in:    "
-  },
   "template": {
-    "name": "recipe-list",
-    "secondary-images": [
-      {
-        "image": "projectj:macuahuitl",
-        "show-border": true
-      },
-      {
-        "image": "projectj:ancient_altar"
-      }
-    ],
+    "name": "item-list",
     "spacing": 20
   },
   "text": {
     "align-center": false,
-    "content": "§nMacuahuitl§r\n\nStrong weapon which can handle almost every type of block.",
+    "content": "§nSerpentinite§r\n\nThis green rock spawns naturally below the Adobe layer in its desert. If you dig long enough you might find some left over relics! Easy to work with using a stone cutter!",
     "show-title": true
   }
 }

@@ -1,10 +1,15 @@
 {
   "images": [
     {
-      "image": "projectj:liquid_pyrite_bucket"
+      "count": 4,
+      "image": "projectj:jade"
     },
     {
-      "image": "minecraft:bowl"
+      "count": 2,
+      "image": "minecraft:ender_pearl"
+    },
+    {
+      "image": "minecraft:wind_charge"
     }
   ],
   "page-msg": {
@@ -14,7 +19,7 @@
     "name": "recipe-list",
     "secondary-images": [
       {
-        "image": "projectj:crude_sacrifice_bowl",
+        "image": "projectj:teleportation_core",
         "show-border": true
       },
       {
@@ -25,7 +30,7 @@
   },
   "text": {
     "align-center": false,
-    "content": "§nCrude Sacrificial Bowl§r\n\nThe Basis of many more things. Allows you to fill it with a bloody sacrifice.",
+    "content": "§nTeleportation Core§r\n\nThe Teleportation Core opens the door to a whole lot of blocks and items allowing you to travel faster.",
     "show-title": true
   }
 }

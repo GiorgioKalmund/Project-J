@@ -1,34 +1,37 @@
 {
   "images": [
     {
-      "image": "minecraft:shield"
+      "image": "projectj:pyrite_block"
+    },
+    {
+      "image": "projectj:adobe_glass"
     },
     {
       "image": "projectj:liquid_pyrite_bucket"
     },
     {
-      "image": "projectj:filled_crude_sacrifice_bowl"
+      "image": "projectj:adobe_sand"
     }
   ],
   "page-msg": {
-    "message": "in:    "
+    "message": "and :    "
   },
   "template": {
     "name": "recipe-list",
     "secondary-images": [
       {
-        "image": "projectj:chimalli_shield",
+        "image": "projectj:magnifying_glass",
         "show-border": true
       },
       {
-        "image": "projectj:ancient_altar"
+        "image": "projectj:magnifying_glass_stand"
       }
     ],
-    "spacing": 30
+    "spacing": 20
   },
   "text": {
     "align-center": false,
-    "content": "§nChīmalli§r\n\nPowerful shield capable of blocking projectiles and hits.",
+    "content": "§nMagnifying Glass§r\n\nThe Magnifying Glass is as mighty and powerful as its real-life counterpart. Use it on specific blocks during daytime to smelt them down!",
     "show-title": true
   }
 }

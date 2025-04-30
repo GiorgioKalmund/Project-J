@@ -40,7 +40,7 @@ public class ContentsPageScreen extends TextScreen {
                 }
             }, e.displayItem, e.displayText, nextXPos, nextYPos, true, screen);
             nextXPos += spacing;
-            if (nextXPos >= BACKGROUND_TEXTURE_WIDTH){
+            if (nextXPos >= BACKGROUND_TEXTURE_WIDTH + spacing / 2){
                 nextXPos = AbstractComponent.ComponentPositionUtils.textStartX(screen) + 10;
                 nextYPos += spacing;
             }

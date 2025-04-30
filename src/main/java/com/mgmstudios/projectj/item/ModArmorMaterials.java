@@ -24,7 +24,7 @@ import java.util.function.Supplier;
 
 public class ModArmorMaterials {
     public static final ArmorMaterial SUN_ARMOR_MATERIAL = new ArmorMaterial(
-            15,
+            4,
             Util.make(new EnumMap<>(ArmorType.class), map -> {
                 map.put(ArmorType.BOOTS, 3);
                 map.put(ArmorType.LEGGINGS, 6);

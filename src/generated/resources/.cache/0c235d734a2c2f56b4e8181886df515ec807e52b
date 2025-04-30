@@ -1,16 +1,23 @@
-// 1.21.4	2025-04-26T23:27:42.182574	Quest Book Builder: projectj
+// 1.21.4	2025-04-30T23:35:04.1735052	Quest Book Builder: projectj
 56bc081837b5a3d5cc7febc3d861b0a77abe1aba assets/projectj/quest_book/pages/page_0.json
 df19fb5ed34689d1f6ccfce077a66ccc73df1221 assets/projectj/quest_book/pages/page_1.json
-fb826f43bb154ddddca0d994853b3945da3d40a2 assets/projectj/quest_book/pages/page_10.json
-100beb385a4d8d7ab4ff289e6d1944075a7eb844 assets/projectj/quest_book/pages/page_11.json
-04119d62c6ce7af9a9e2d6155d88a72e7bffbaf8 assets/projectj/quest_book/pages/page_12.json
-259c78b3b0a511923e2612b17d32bed421ab7a40 assets/projectj/quest_book/pages/page_13.json
+3c6f004bad8e8f24274a8606a2a6691e2701d41f assets/projectj/quest_book/pages/page_10.json
+065add0f5e2984f366ff14f18aa090ce6278187d assets/projectj/quest_book/pages/page_11.json
+24cc9ea9d23696b1432c8f00c6a69ce72a620658 assets/projectj/quest_book/pages/page_12.json
+0cc2bf6281aae4485c416e274e0d055746c2c222 assets/projectj/quest_book/pages/page_13.json
+ab1cd5aa0ec43507036b0ecfb865517b287f2b60 assets/projectj/quest_book/pages/page_14.json
+96b5d3871e8817a7f7abd8bc9522c0b28cd4d489 assets/projectj/quest_book/pages/page_15.json
+d0a76ef00068c1a75d1a693a023e6e52f97f4102 assets/projectj/quest_book/pages/page_16.json
+fb826f43bb154ddddca0d994853b3945da3d40a2 assets/projectj/quest_book/pages/page_17.json
+b47c10e335ed2cff28b5edb7c669bb1ca502d8b6 assets/projectj/quest_book/pages/page_18.json
+04119d62c6ce7af9a9e2d6155d88a72e7bffbaf8 assets/projectj/quest_book/pages/page_19.json
 cdcec13c3357fb68bf38cd6523d47959863f3ead assets/projectj/quest_book/pages/page_2.json
-1f99b144d3294238e19a6a8320f1b94043100320 assets/projectj/quest_book/pages/page_3.json
-0cc2bf6281aae4485c416e274e0d055746c2c222 assets/projectj/quest_book/pages/page_4.json
-234124e599e55896de64a519e9910ac79350c259 assets/projectj/quest_book/pages/page_5.json
-24cc9ea9d23696b1432c8f00c6a69ce72a620658 assets/projectj/quest_book/pages/page_6.json
-ab1cd5aa0ec43507036b0ecfb865517b287f2b60 assets/projectj/quest_book/pages/page_7.json
-96b5d3871e8817a7f7abd8bc9522c0b28cd4d489 assets/projectj/quest_book/pages/page_8.json
-d0a76ef00068c1a75d1a693a023e6e52f97f4102 assets/projectj/quest_book/pages/page_9.json
-d4100244c9da3c06008f6292ae8f7e0dc4f1888c assets/projectj/quest_book/pages/shortcuts.json
+259c78b3b0a511923e2612b17d32bed421ab7a40 assets/projectj/quest_book/pages/page_20.json
+0cd46118a2b2ad3d7f85f114526d0128ff75870e assets/projectj/quest_book/pages/page_3.json
+8384a3b783099cb94cb67e0b553da2f71b838fd5 assets/projectj/quest_book/pages/page_4.json
+dbfae5d7ec689983ebff994e218adf1e74d36347 assets/projectj/quest_book/pages/page_5.json
+5c3c76da7c31a6317405a6c279cc0c6f8a940dbc assets/projectj/quest_book/pages/page_6.json
+b29f09cc058febb6d216090fbb4883d3bde63fe2 assets/projectj/quest_book/pages/page_7.json
+42e390ac324e22e4c3e77238fb32d0f5ccb81a36 assets/projectj/quest_book/pages/page_8.json
+4bc8dd6115dc503189372513c74fc636f153c018 assets/projectj/quest_book/pages/page_9.json
+9b487b17010bda7d8f3f2781522bfdc2f3a76912 assets/projectj/quest_book/pages/shortcuts.json

@@ -421,12 +421,12 @@ public class QuestBookScreen extends Screen {
         private String shorthand;
 
 
-        protected QuestBookImage(ResourceLocation resourceLocation){
+        public QuestBookImage(ResourceLocation resourceLocation){
             this(resourceLocation, false, Type.ITEM, "");
         }
 
 
-        protected QuestBookImage(ResourceLocation resourceLocation, boolean showBorder){
+        public QuestBookImage(ResourceLocation resourceLocation, boolean showBorder){
             this(resourceLocation, 1, showBorder, Type.ITEM);
         }
 

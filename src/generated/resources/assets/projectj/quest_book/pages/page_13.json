@@ -1,21 +1,31 @@
 {
   "images": [
     {
-      "image": "projectj:pyrite_magnet",
-      "show-border": true
+      "image": "projectj:sacrificial_dagger"
     },
     {
-      "image": "projectj:jade_magnet",
-      "show-border": true
+      "image": "projectj:crude_sacrifice_bowl"
     }
   ],
+  "page-msg": {
+    "message": "next to:    "
+  },
   "template": {
-    "name": "item-list",
+    "name": "recipe-list",
+    "secondary-images": [
+      {
+        "image": "projectj:filled_crude_sacrifice_bowl",
+        "show-border": true
+      },
+      {
+        "image": "projectj:ancient_altar"
+      }
+    ],
     "spacing": 30
   },
   "text": {
     "align-center": false,
-    "content": "§nMagnets§r\n\nMagnets are harness the magnetism to attract nearby items. §oTheir materials determine their radius and strength§r",
-    "show-title": true
+    "content": "§nFilled Crude Sacrificial Bowl§r\n\nPerform a self sacrifice, or sacrifice an animal near an Ancient Altar to fill its bowl.",
+    "show-title": false
   }
 }
