@@ -174,6 +174,8 @@ public class ModLanguageProvider extends LanguageProvider {
         // Advancements
         addAdvancementStoryTitle("root", "Project J");
         addAdvancementStoryDescription("root", "Your Project J journey begins!");
+        addAdvancementStoryTitle("visit_adobe_desert", "Adobe Land");
+        addAdvancementStoryDescription("visit_adobe_desert", "Find and Visit the Adobe Desert");
         addAdvancementStoryTitle("get_jade", "Oh, Shiny...er?");
         addAdvancementStoryDescription("get_jade", "Find a Jade Ore and smelt the Result");
         addAdvancementStoryTitle("botany_pot", "Botany Pots?");

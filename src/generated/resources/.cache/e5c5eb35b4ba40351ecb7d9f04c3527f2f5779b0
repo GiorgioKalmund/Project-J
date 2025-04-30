@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-18T18:44:27.7633	Advancements
+// 1.21.4	2025-04-30T11:25:13.8392962	Advancements
 5b8604802bbba835a6dabb7a85042aa8095e66e9 data/minecraft/advancement/projectj/story/ancient_altar.json
 1954c121566c49ef16bf7d796423fc79a5644104 data/minecraft/advancement/projectj/story/botany_pot.json
 71c32ecc587122fb8235ad4d411abd490a5c176c data/minecraft/advancement/projectj/story/crude_sacrificial_bowl.json
@@ -10,3 +10,4 @@ c0f97e1d1b845647db4a0c27c2db9e05a1965cf6 data/minecraft/advancement/projectj/sto
 488b38495ec6dce5cb7b9f86aa4215a6d70e1d6f data/minecraft/advancement/projectj/story/pyrite.json
 5b817a5bade44aacbca4414adb7472f9f9a33615 data/minecraft/advancement/projectj/story/root.json
 1b13205486fc71fc42903837b6805d124b90d10b data/minecraft/advancement/projectj/story/sacrificial_dagger.json
+92c0792662c8b390decb212a68348298a60fd235 data/minecraft/advancement/projectj/story/visit_adobe_desert.json

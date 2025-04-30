@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:projectj/story/root",
   "criteria": {
-    "get_jade": {
+    "visit_adobe_desert": {
       "conditions": {
         "items": [
           {
@@ -14,19 +14,19 @@
   },
   "display": {
     "description": {
-      "translate": "advancements.projectj.story.get_jade.description"
+      "translate": "advancements.projectj.story.visit_adobe_desert.description"
     },
     "icon": {
       "count": 1,
-      "id": "projectj:jade"
+      "id": "projectj:adobe_sand"
     },
     "title": {
-      "translate": "advancements.projectj.story.get_jade.title"
+      "translate": "advancements.projectj.story.visit_adobe_desert.title"
     }
   },
   "requirements": [
     [
-      "get_jade"
+      "visit_adobe_desert"
     ]
   ],
   "sends_telemetry_event": true

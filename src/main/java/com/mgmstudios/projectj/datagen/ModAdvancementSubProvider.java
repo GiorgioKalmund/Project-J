@@ -1,25 +1,33 @@
 package com.mgmstudios.projectj.datagen;
 
+import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.entity.ModEntities;
 import com.mgmstudios.projectj.entity.custom.LittleManEntity;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.loot.ModLootTables;
+import com.mgmstudios.projectj.worldgen.ModBiomes;
 import net.minecraft.advancements.*;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.advancements.AdvancementSubProvider;
+import net.minecraft.data.advancements.packs.VanillaAdventureAdvancements;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.MultiNoiseBiomeSourceParameterList;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.world.ModifiableBiomeInfo;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
@@ -51,6 +59,24 @@ public class ModAdvancementSubProvider implements AdvancementSubProvider {
                         AdvancementRewards.Builder.loot(ModLootTables.GRANT_QUEST_BOOK.getKey())
                 )
                 .save(consumer, createSaveString("story", "root"));
+
+        var visitAdobeDesert = Advancement.Builder.advancement()
+                .parent(root)
+                .display(
+                        ModBlocks.ADOBE_SAND,
+                        Component.translatable(createTitleString("visit_adobe_desert")),
+                        Component.translatable(createDescriptionString("visit_adobe_desert")),
+                        null,
+                        AdvancementType.TASK,
+                        true,
+                        true,
+                        false
+                )
+                .addCriterion("visit_adobe_desert", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.RAW_PYRITE))
+                .save(consumer, createSaveString("story", "visit_adobe_desert"));
+
+        //addBiomes(visitAdobeDesert, provider, List.of(ModBiomes.ADOBE_DESERT)).save(consumer, createSaveString("story", "visit_adobe_desert"));
+
 
         AdvancementHolder getJade = Advancement.Builder.advancement()
                 .parent(root)
@@ -213,5 +239,15 @@ public class ModAdvancementSubProvider implements AdvancementSubProvider {
 
     public static String createSaveString(String directory, String name){
         return "projectj/" + directory + "/" +name;
+    }
+
+    protected static Advancement.Builder addBiomes(Advancement.Builder builder, HolderLookup.Provider levelRegistry, List<ResourceKey<Biome>> biomes) {
+        HolderGetter<Biome> holdergetter = levelRegistry.lookupOrThrow(Registries.BIOME);
+
+        for(ResourceKey<Biome> resourcekey : biomes) {
+            builder.addCriterion(resourcekey.location().toString(), net.minecraft.advancements.critereon.PlayerTrigger.TriggerInstance.located(net.minecraft.advancements.critereon.LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(resourcekey))));
+        }
+
+        return builder;
     }
 }

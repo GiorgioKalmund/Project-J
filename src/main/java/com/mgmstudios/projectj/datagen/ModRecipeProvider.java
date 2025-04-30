@@ -384,7 +384,6 @@ public class ModRecipeProvider extends RecipeProvider {
                 .requires(ModItems.MAIZE)
                 .requires(Items.BOWL )
                 .unlockedBy("has_maize", this.has(ModItems.MAIZE))
-                .unlockedBy("has_bowl", this.has(Items.BOWL))
                 .save(this.output);
 
         ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.CHILI_CON_CARNE)
@@ -395,7 +394,6 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_maize", this.has(ModItems.MAIZE))
                 .unlockedBy("has_chili", this.has(ModItems.CHILI))
                 .unlockedBy("has_cooked_meat", this.has(ModTags.Items.COOKED_MEAT))
-                .unlockedBy("has_bowl", this.has(Items.BOWL))
                 .save(this.output);
 
         ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.CHILI_CON_CARNE)
@@ -444,6 +442,36 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("# #")
                 .define('#', ModItems.JADE)
                 .unlockedBy("has_jade", this.has(ModItems.JADE))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.SUN_ARMOR_HELMET)
+                .pattern("###")
+                .pattern("# #")
+                .define('#', ModItems.PYRITE_INGOT)
+                .unlockedBy("has_pyrite_ingot", this.has(ModItems.PYRITE_INGOT))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.SUN_ARMOR_CHESTPLATE)
+                .pattern("# #")
+                .pattern("###")
+                .pattern("###")
+                .define('#', ModItems.PYRITE_INGOT)
+                .unlockedBy("has_pyrite_ingot", this.has(ModItems.PYRITE_INGOT))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.SUN_ARMOR_LEGGINGS)
+                .pattern("###")
+                .pattern("# #")
+                .pattern("# #")
+                .define('#', ModItems.PYRITE_INGOT)
+                .unlockedBy("has_pyrite_ingot", this.has(ModItems.PYRITE_INGOT))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.SUN_ARMOR_BOOTS)
+                .pattern("# #")
+                .pattern("# #")
+                .define('#', ModItems.PYRITE_INGOT)
+                .unlockedBy("has_pyrite_ingot", this.has(ModItems.PYRITE_INGOT))
                 .save(this.output);
 
         ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.QUEST_BOOK)

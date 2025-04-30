@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_maize": {
+    "has_pyrite_ingot": {
       "conditions": {
         "items": [
           {
-            "items": "projectj:maize"
+            "items": "projectj:pyrite_ingot"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "projectj:maize_mash"
+        "recipe": "projectj:sun_armor_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_maize"
+      "has_pyrite_ingot"
     ]
   ],
   "rewards": {
     "recipes": [
-      "projectj:maize_mash"
+      "projectj:sun_armor_helmet"
     ]
   }
 }

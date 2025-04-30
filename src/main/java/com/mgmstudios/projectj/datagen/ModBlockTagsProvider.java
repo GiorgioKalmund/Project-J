@@ -58,15 +58,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .addTag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .addTag(BlockTags.MINEABLE_WITH_HOE);
 
-        tag(BlockTags.FENCE_GATES)
-                .add(ModBlocks.MESQUITE_FENCE_GATE.get());
-
-        tag(BlockTags.WOODEN_FENCES)
-                .add(ModBlocks.MESQUITE_FENCE.get());
-
-        tag(BlockTags.PLANKS)
-                .add(ModBlocks.MESQUITE_PLANKS.get());
-
         tag(BlockTags.SLABS)
                 .add(ModBlocks.SERPENTINITE_ROCK_SLAB.get())
                 .add(ModBlocks.SERPENTINITE_BRICKS_SLAB.get())
@@ -84,6 +75,25 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SERPENTINITE_BRICKS_WALL.get())
                 .add(ModBlocks.COBBLED_SERPENTINITE_WALL.get())
                 .add(ModBlocks.ADOBE_BRICKS_WALL.get());
+
+        tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(ModBlocks.MESQUITE_BENCH.get())
+                .add(ModBlocks.MESQUITE_BENCH_CORNER.get());
+
+        tag(BlockTags.FENCE_GATES)
+                .add(ModBlocks.MESQUITE_FENCE_GATE.get());
+
+        tag(BlockTags.WOODEN_FENCES)
+                .add(ModBlocks.MESQUITE_FENCE.get());
+
+        tag(BlockTags.PLANKS)
+                .add(ModBlocks.MESQUITE_PLANKS.get());
+
+        tag(BlockTags.WOODEN_SLABS)
+                .add(ModBlocks.MESQUITE_SLAB.get());
+
+        tag(BlockTags.WOODEN_STAIRS)
+                .add(ModBlocks.MESQUITE_STAIRS.get());
 
         tag(BlockTags.STONE_PRESSURE_PLATES)
                 .add(ModBlocks.SERPENTINITE_ROCK_PRESSURE_PLATE.get());
@@ -146,6 +156,16 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.ADOBE_SAND.get());
 
         tag(BlockTags.LOGS_THAT_BURN)
+                .addTag(ModTags.Blocks.MESQUITE_LOGS);
+
+        tag(ModTags.Blocks.MESQUITE)
+                .add(ModBlocks.MESQUITE_PLANKS.get())
+                .add(ModBlocks.MESQUITE_STAIRS.get())
+                .add(ModBlocks.MESQUITE_SLAB.get())
+                .add(ModBlocks.MESQUITE_BENCH.get())
+                .add(ModBlocks.MESQUITE_BUTTON.get())
+                .add(ModBlocks.MESQUITE_FENCE.get())
+                .add(ModBlocks.MESQUITE_FENCE_GATE.get())
                 .addTag(ModTags.Blocks.MESQUITE_LOGS);
 
         tag(ModTags.Blocks.MESQUITE_LOGS)

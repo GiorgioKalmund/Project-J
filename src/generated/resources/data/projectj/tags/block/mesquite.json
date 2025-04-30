@@ -1,0 +1,12 @@
+{
+  "values": [
+    "projectj:mesquite_planks",
+    "projectj:mesquite_stairs",
+    "projectj:mesquite_slab",
+    "projectj:mesquite_bench",
+    "projectj:mesquite_button",
+    "projectj:mesquite_fence",
+    "projectj:mesquite_fence_gate",
+    "#projectj:mesquite_logs"
+  ]
+}

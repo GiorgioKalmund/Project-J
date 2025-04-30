@@ -21,6 +21,7 @@ public class ModTags {
         public static final TagKey<Block> SERPENTINITE = createTag("serpentinite");
         public static final TagKey<Block> ADOBE = createTag("adobe");
 
+        public static final TagKey<Block> MESQUITE = createTag("mesquite");
         public static final TagKey<Block> MESQUITE_LOGS = createTag("mesquite_logs");
         public static final TagKey<Block> BENCHES = createTag("benches");
 
