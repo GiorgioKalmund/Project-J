@@ -1,31 +1,25 @@
 {
   "images": [
     {
-      "image": "projectj:liquid_pyrite_bucket"
+      "image": "projectj:jade_leggings"
     },
     {
-      "image": "minecraft:bowl"
+      "image": "projectj:jade_chestplate"
+    },
+    {
+      "image": "projectj:jade_boots"
+    },
+    {
+      "image": "projectj:jade_helmet"
     }
   ],
-  "page-msg": {
-    "message": "in:    "
-  },
   "template": {
-    "name": "recipe-list",
-    "secondary-images": [
-      {
-        "image": "projectj:crude_sacrifice_bowl",
-        "show-border": true
-      },
-      {
-        "image": "projectj:ancient_altar"
-      }
-    ],
-    "spacing": 30
+    "name": "item-list",
+    "spacing": 20
   },
   "text": {
     "align-center": false,
-    "content": "§nCrude Sacrificial Bowl§r\n\nThe Basis of many more things. Allows you to fill it with a bloody sacrifice.",
+    "content": "§nJade Armor§r\n\nJade Armor is crafted using §aJade§r. That's it for now :)",
     "show-title": true
   }
 }

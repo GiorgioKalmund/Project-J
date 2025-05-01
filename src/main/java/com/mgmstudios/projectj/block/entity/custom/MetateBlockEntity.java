@@ -15,6 +15,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
+import static com.mgmstudios.projectj.block.entity.custom.AncientAltarBlockEntity.dropInventoryContents;
+
 public class MetateBlockEntity extends BlockEntity {
 
     public MetateBlockEntity(BlockPos pos, BlockState blockState) {
@@ -42,13 +44,7 @@ public class MetateBlockEntity extends BlockEntity {
     }
 
     public void drops(){
-        SimpleContainer inv = new SimpleContainer(inventory.getSlots());
-        for (int slot = 0; slot < inventory.getSlots(); slot++){
-            inv.setItem(slot, this.inventory.getStackInSlot(slot));
-        }
-
-        assert this.level != null;
-        Containers.dropContents(this.level, this.worldPosition, inv);
+        dropInventoryContents(level, worldPosition, inventory);
     }
 
     public void swapItem(ItemStack newItem){
@@ -63,12 +59,10 @@ public class MetateBlockEntity extends BlockEntity {
 
     public void insertNewItemStack(ItemStack stack){
         ItemStack toInsert = inventory.insertItem(0, stack.copy(), false);
-        System.out.println("Inserted: " + toInsert + " / " + getStack());
     }
 
     public ItemStack getStack(){
         ItemStack toReturn = this.inventory.getStackInSlot(0);
-        System.out.println("RETURN: " + toReturn);
         return toReturn;
     }
 

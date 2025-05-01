@@ -1,7 +1,9 @@
 {
-  "ancient-altar-recipes": 11,
+  "ancient-altar": 14,
+  "armor": 11,
   "basics": 2,
-  "magnets": 19,
-  "teleportation": 17,
-  "total-pages": 21
+  "magnets": 20,
+  "teleportation": 26,
+  "total-pages": 28,
+  "voodoo": 22
 }

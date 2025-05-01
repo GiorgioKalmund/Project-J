@@ -2,18 +2,18 @@
   "images": [
     {
       "type": "regular",
-      "image": ":magnets_chapter"
+      "image": ":voodoo_chapter"
     }
   ],
-  "page-shortcut": "magnets",
+  "page-shortcut": "voodoo",
   "show-page-msg": false,
   "template": {
-    "chapter-title": "§f§o§lMagnets§r",
+    "chapter-title": "§f§o§lVoodoo§r",
     "name": "chapter-cover"
   },
   "text": {
     "align-center": true,
-    "content": "§f§oOur connection seems to get stronger ;)§r",
+    "content": "§f§oIs it a totem? Is it a plane? No! It's a retextured totem.§r",
     "show-title": false
   }
 }

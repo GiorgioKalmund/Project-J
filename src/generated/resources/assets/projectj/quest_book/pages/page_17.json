@@ -1,19 +1,34 @@
 {
   "images": [
     {
-      "type": "regular",
-      "image": ":chapter_2"
+      "image": "minecraft:shield"
+    },
+    {
+      "image": "projectj:liquid_pyrite_bucket"
+    },
+    {
+      "image": "projectj:filled_crude_sacrifice_bowl"
     }
   ],
-  "page-shortcut": "teleportation",
-  "show-page-msg": false,
+  "page-msg": {
+    "message": "in:    "
+  },
   "template": {
-    "chapter-title": "§f§o§lTeleportation§r",
-    "name": "chapter-cover"
+    "name": "recipe-list",
+    "secondary-images": [
+      {
+        "image": "projectj:chimalli_shield",
+        "show-border": true
+      },
+      {
+        "image": "projectj:ancient_altar"
+      }
+    ],
+    "spacing": 30
   },
   "text": {
-    "align-center": true,
-    "content": "§f§oSwoosh!§r",
-    "show-title": false
+    "align-center": false,
+    "content": "§nChīmalli§r\n\nPowerful shield capable of blocking projectiles and hits.",
+    "show-title": true
   }
 }

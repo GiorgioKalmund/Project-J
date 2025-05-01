@@ -578,6 +578,8 @@ public class QuestBookScreen extends Screen {
         public static QuestBookImage CHAPTER_2_IMAGE = new QuestBookImage(questBookStoredImage("chapter_2", "chapters/"), false, Type.REGULAR, ":chapter_2");
         public static QuestBookImage ANCIENT_ALTAR_RECIPES_CHAPTER = new QuestBookImage(questBookStoredImage("ancient_altar_recipes", "chapters/"), false, Type.REGULAR, ":ancient_altar_recipes");
         public static QuestBookImage MAGNETS_CHAPTER = new QuestBookImage(questBookStoredImage("magnets_chapter", "chapters/"), false, Type.REGULAR, ":magnets_chapter");
+        public static QuestBookImage VOODOO_CHAPTER = new QuestBookImage(questBookStoredImage("voodoo_chapter", "chapters/"), false, Type.REGULAR, ":voodoo_chapter");
+        public static QuestBookImage ARMOR_CHAPTER = new QuestBookImage(questBookStoredImage("armor_chapter", "chapters/"), false, Type.REGULAR, ":armor_chapter");
         public static QuestBookImage EMPTY = new QuestBookImage();
 
 

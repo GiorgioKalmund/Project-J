@@ -1,0 +1,16 @@
+{
+  "images": [
+    {
+      "image": "projectj:little_king_voodoo",
+      "show-border": true
+    }
+  ],
+  "template": {
+    "name": "item-showcase"
+  },
+  "text": {
+    "align-center": false,
+    "content": "§nLittle King§r\n\nThe Little King Voodoo looks nice in your offhand. However, you might manage to find the him roaming around in the Adobe Desert!",
+    "show-title": true
+  }
+}

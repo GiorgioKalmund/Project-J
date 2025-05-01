@@ -32,7 +32,9 @@ public class QuestBookPageProvider implements DataProvider {
 
     protected static final String SHORTCUT_BASICS = "basics";
     protected static final String SHORTCUT_TELEPORTATION = "teleportation";
-    protected static final String SHORTCUT_ANCIENT_ALTAR_RECIPES = "ancient-altar-recipes";
+    protected static final String SHORTCUT_VOODOO = "voodoo";
+    protected static final String SHORTCUT_ARMOR = "armor";
+    protected static final String SHORTCUT_ANCIENT_ALTAR_RECIPES = "ancient-altar";
     protected static final String SHORTCUT_MAGNETS = "magnets";
 
     private final PackOutput packOutput;
@@ -49,19 +51,20 @@ public class QuestBookPageProvider implements DataProvider {
                 .setPageMessage("§f§lNo. 1§r")
                 .save(pages);
 
-        // TODO: Maybe some sort of anchor system so shifting indices around does not mess up connections
         Builder.create()
                 .hideHomeButton()
                 .setTemplate(QuestBookTemplateType.CONTENTS_PAGE)
                 .setTemplateSpacing(40)
                 .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.JADE, "Basics", 2))
+                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.SUN_ARMOR_HELMET, "Armor", SHORTCUT_ARMOR))
                 .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModBlocks.ANCIENT_ALTAR, "Ancient Altar", SHORTCUT_ANCIENT_ALTAR_RECIPES))
-                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.TELEPORTATION_CORE, "§oSwoosh§r", SHORTCUT_TELEPORTATION))
                 .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.PYRITE_MAGNET, "Magnets", SHORTCUT_MAGNETS))
+                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.VOODOO_CATCHER, "Voodoo", SHORTCUT_VOODOO))
+                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.TELEPORTATION_CORE, "§oSwoosh§r", SHORTCUT_TELEPORTATION))
                 .setText("§lTable of Contents§r", true)
-                .addImage(new QuestBookImage(ModItems.RAW_JADE))
                 .save(pages);
 
+        // CHAPTER:Basics
         Builder.create()
                 .setPageShortcut(SHORTCUT_BASICS)
                 .setTemplate(QuestBookTemplateType.CHAPTER_COVER)
@@ -94,7 +97,7 @@ public class QuestBookPageProvider implements DataProvider {
                 .addImage(new QuestBookImage(ModBlocks.MESQUITE_LEAVES))
                 .addImage(new QuestBookImage(ModBlocks.MESQUITE_BRAZIER))
                 .addImage(new QuestBookImage(ModBlocks.MESQUITE_LOG))
-                .setText("§nMesquite Tree§r\n\nThe Mesquite Tree can be found in the §6Adobe§r§6Desert§r biome and can be used to make a great variety of useful blocks! Above you can see some of the related blocks but there are many more!", true)
+                .setText("§nMesquite Tree§r\n\nThe Mesquite Tree can be found in the §6Adobe§r §6Desert§r biome and can be used to make a great variety of useful blocks! Above you can see some of the related blocks but there are many more!", true)
                 .save(pages);
 
         Builder.create()
@@ -144,11 +147,42 @@ public class QuestBookPageProvider implements DataProvider {
                 .defaultTemplateSpacing()
                 .addImage(new QuestBookImage(ModBlocks.JADE_BLOCK))
                 .addImage(new QuestBookImage(ModItems.RAW_JADE))
-                .addImage(new QuestBookImage(ModItems.JADE_CHESTPLATE))
+                .addImage(new QuestBookImage(ModItems.JADE_HELMET))
                 .addImage(new QuestBookImage(ModItems.JADE))
                 .setText("§nJade Items§r\n\nJade can also be used to craft a variety of blocks and items. Including Armor!", true)
                 .save(pages);
 
+        // CHAPTER:Armor
+        Builder.create()
+                .setPageShortcut(SHORTCUT_ARMOR)
+                .setTemplate(QuestBookTemplateType.CHAPTER_COVER)
+                .showPageMessage(false)
+                .addImage(QuestBookImage.ARMOR_CHAPTER)
+                .setTemplateChapterTitle("§f§o§lArmor§r")
+                .setText("§f§oLooking shiny out there. Keep it up!§r", false, true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_LIST)
+                .defaultTemplateSpacing()
+                .addImage(new QuestBookImage(ModItems.JADE_LEGGINGS))
+                .addImage(new QuestBookImage(ModItems.JADE_CHESTPLATE))
+                .addImage(new QuestBookImage(ModItems.JADE_BOOTS))
+                .addImage(new QuestBookImage(ModItems.JADE_HELMET))
+                .setText("§nJade Armor§r\n\nJade Armor is crafted using §aJade§r. That's it for now :)", true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_LIST)
+                .defaultTemplateSpacing()
+                .addImage(new QuestBookImage(ModItems.SUN_ARMOR_LEGGINGS))
+                .addImage(new QuestBookImage(ModItems.SUN_ARMOR_CHESTPLATE))
+                .addImage(new QuestBookImage(ModItems.SUN_ARMOR_BOOTS))
+                .addImage(new QuestBookImage(ModItems.SUN_ARMOR_HELMET))
+                .setText("§nSun Armor§r\n\nSun Armor is crafted using §6Pyrite§r and although very tough and resistant, similar to it's fancier counterpart, it is very brittle.", true)
+                .save(pages);
+
+        // CHAPTER:Ancient Altar
         Builder.create()
                 .setPageShortcut(SHORTCUT_ANCIENT_ALTAR_RECIPES)
                 .setTemplate(QuestBookTemplateType.CHAPTER_COVER)
@@ -218,6 +252,56 @@ public class QuestBookPageProvider implements DataProvider {
                 .setText("§nTeleportation Core§r\n\nThe Teleportation Core opens the door to a whole lot of blocks and items allowing you to travel faster.", true)
                 .save(pages);
 
+
+        // CHAPTER:Magnets
+        Builder.create()
+                .setPageShortcut(SHORTCUT_MAGNETS)
+                .setTemplate(QuestBookTemplateType.CHAPTER_COVER)
+                .showPageMessage(false)
+                .addImage(QuestBookImage.MAGNETS_CHAPTER)
+                .setTemplateChapterTitle("§f§o§lMagnets§r")
+                .setText("§f§oOur connection seems to get stronger ;)§r", false, true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_LIST)
+                .setTemplateSpacing(30)
+                .addImage(new QuestBookImage(ModItems.PYRITE_MAGNET, true))
+                .addImage(new QuestBookImage(ModItems.JADE_MAGNET, true))
+                .setText("§nMagnets§r\n\nMagnets are harness the magnetism to attract nearby items. §oTheir materials determine their radius and strength§r", true)
+                .save(pages);
+
+        // CHAPTER:Voodoo
+        Builder.create()
+                .setPageShortcut(SHORTCUT_VOODOO)
+                .setTemplate(QuestBookTemplateType.CHAPTER_COVER)
+                .showPageMessage(false)
+                .addImage(QuestBookImage.VOODOO_CHAPTER)
+                .setTemplateChapterTitle("§f§o§lVoodoo§r")
+                .setText("§f§oIs it a totem? Is it a plane? No! It's a retextured totem.§r", false, true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_SHOWCASE)
+                .addImage(new QuestBookImage(ModItems.VOODOO_CATCHER, true))
+                .setText("§nVoodoo Catcher§r\n\nThe Voodoo Catcher is a magical wand used in catching some friendly mobs running around your world. Take a look at the following pages to learn more!", true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_LIST)
+                .addImage(new QuestBookImage(ModItems.LITTLE_MAN_VOODOO, true))
+                .setText("§nLittle Man§r\nThe Little Man Voodoo is a power totem which can be crafted. It pacifies zombies around you. Putting it onto a empty statue block, it can permanently scare away those pesky zomberts!", true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_SHOWCASE)
+                .addImage(new QuestBookImage(ModItems.LITTLE_KING_VOODOO, true))
+                .setText("§nLittle King§r\n\nThe Little King Voodoo looks nice in your offhand. However, you might manage to find the him roaming around in the Adobe Desert!", true)
+                .save(pages);
+
+
+
+        // CHAPTER:Teleportation
         Builder.create()
                 .setPageShortcut(SHORTCUT_TELEPORTATION)
                 .setTemplate(QuestBookTemplateType.CHAPTER_COVER)
@@ -234,25 +318,7 @@ public class QuestBookPageProvider implements DataProvider {
                 .setImages(new QuestBookImage(ModItems.TELEPORTATION_KEY))
                 .addImage(new QuestBookImage(ModItems.TELEPORTATION_CORE))
                 .addImage(new QuestBookImage(ModBlocks.TELEPORTATION_PAD))
-                .setText("Teleportation is a powerful force, harnessed only by the most powerful. The Teleportation Core lays the foundation for everything regarding teleportation. Have a look at the Ancient Altar recipe's to find out how to craft it!", false)
-                .save(pages);
-
-
-        Builder.create()
-                .setPageShortcut(SHORTCUT_MAGNETS)
-                .setTemplate(QuestBookTemplateType.CHAPTER_COVER)
-                .showPageMessage(false)
-                .addImage(QuestBookImage.MAGNETS_CHAPTER)
-                .setTemplateChapterTitle("§f§o§lMagnets§r")
-                .setText("§f§oOur connection seems to get stronger ;)§r", false, true)
-                .save(pages);
-
-        Builder.create()
-                .setTemplate(QuestBookTemplateType.ITEM_LIST)
-                .setTemplateSpacing(30)
-                .addImage(new QuestBookImage(ModItems.PYRITE_MAGNET, true))
-                .addImage(new QuestBookImage(ModItems.JADE_MAGNET, true))
-                .setText("§nMagnets§r\n\nMagnets are harness the magnetism to attract nearby items. §oTheir materials determine their radius and strength§r", true)
+                .setText("Teleportation is a powerful force, harnessed only by the most elite mages and technicians. The Teleportation Core lays its foundation. Have a look at the Ancient Altar recipes to find out how to craft it!", false)
                 .save(pages);
     }
 

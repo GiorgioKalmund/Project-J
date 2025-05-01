@@ -18,8 +18,10 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.*;
@@ -232,17 +234,15 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
     }
 
     public void drops(){
+        dropInventoryContents(level, worldPosition, inventory);
+    }
+
+    public static void dropInventoryContents(Level level, BlockPos pos, ItemStackHandler inventory){
         SimpleContainer inv = new SimpleContainer(inventory.getSlots());
         for (int slot = 0; slot < inventory.getSlots(); slot++){
-            inv.setItem(slot, this.inventory.getStackInSlot(slot));
+            inv.setItem(slot, inventory.getStackInSlot(slot));
         }
-
-        SimpleContainer bowlInv = new SimpleContainer(bowlInventory.getSlots());
-        bowlInv.setItem(0, this.bowlInventory.getStackInSlot(0));
-
-        assert this.level != null;
-        Containers.dropContents(this.level, this.worldPosition, inv);
-        Containers.dropContents(this.level, this.worldPosition, bowlInv);
+        Containers.dropContents(level, pos, inv);
     }
 
     @Override
