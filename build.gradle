@@ -132,14 +132,6 @@ dependencies {
 
     localRuntime "curse.maven:terrablender-neoforge-940057:6055021"
 
-    // TODO: Implement when Patchouli updates to be compatible with 1.21.4
-    /*
-        // Only compile against the API interfaces
-        compileOnly "vazkii.patchouli:Patchouli:${patchouli_version}-NEOFORGE:api"
-        // Include the NeoForge runtime implementation
-        runtimeOnly "vazkii.patchouli:Patchouli:${patchouli_version}-NEOFORGE"
-     */
-
     implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}"
 
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
@@ -172,7 +164,8 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             mod_license            : mod_license,
             mod_version            : mod_version,
             mod_authors            : mod_authors,
-            mod_description        : mod_description
+            mod_description        : mod_description,
+            terrablender_version_range : terrablender_version_range
     ]
     inputs.properties replaceProperties
     expand replaceProperties
