@@ -200,6 +200,8 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> ADOBE_GLASS = register("adobe_glass", AdobeGlassBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS));
 
+    public static final DeferredBlock<Block> TINTED_ADOBE_GLASS = register("tinted_adobe_glass", TintedAdobeGlassBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.TINTED_GLASS));
+
     public static final DeferredBlock<Block> JADE_CRYSTAL = register("jade_crystal", JadeCrystalBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).noOcclusion().requiresCorrectToolForDrops().strength(5.0F), new Item.Properties());
 
     public static final DeferredBlock<Block> HOLLOW_MESQUITE_LOG = register("hollow_mesquite_log", HollowTreeBlock::new, BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava());

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "G": "projectj:adobe_glass",
+    "O": "projectj:obsidian_tooth"
+  },
+  "pattern": [
+    " O ",
+    "OGO",
+    " O "
+  ],
+  "result": {
+    "count": 4,
+    "id": "projectj:tinted_adobe_glass"
+  }
+}

@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-30T16:11:56.846091	Model Definitions - projectj
+// 1.21.4	2025-05-01T22:45:18.610904	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -69,6 +69,7 @@ a97b1cb9bea73d43d669cc5272c0db5ec705e4c3 assets/projectj/blockstates/serpentinit
 58024b9d4ffc78feca61ba6d5f5fa840abf82491 assets/projectj/blockstates/stripped_mesquite_log.json
 7ab3f2e72946259187182eebd05d0297f3541a99 assets/projectj/blockstates/stripped_mesquite_wood.json
 a1858353e5bedf2b49e99fe3c6b6a3049dd65424 assets/projectj/blockstates/teleportation_pad.json
+89d23dbb2865e0364f795f9110324bd06beb969b assets/projectj/blockstates/tinted_adobe_glass.json
 d706b874c3d232886834e6416b0fa9d9853232b1 assets/projectj/items/adobe_bricks.json
 20f70e5778587054cf4f1a90632e143a7091e609 assets/projectj/items/adobe_bricks_slab.json
 fd02c864f9876ea05243e11486bd82108f4ea668 assets/projectj/items/adobe_bricks_stairs.json
@@ -178,6 +179,7 @@ c0b634600afb26a017362dd57a4b0acb5e9008c9 assets/projectj/items/sun_armor_legging
 3ea275e3d393894115acac87eedc67100ebea91d assets/projectj/items/teleportation_core.json
 959a6d9c67ad5c22a8e6b8a05b7dbeee0189b13d assets/projectj/items/teleportation_key.json
 4b981089a82540f2b5396454b4c8e7ee5bafb98b assets/projectj/items/teleportation_pad.json
+9bb6ab824bb641b6317f9e2c06b73b7fc97a4afc assets/projectj/items/tinted_adobe_glass.json
 0d07cd1207b3b870c10d6f978b1871f1354d7463 assets/projectj/items/trowel.json
 d9961ad2e0926a89990c8620709b43a18895d664 assets/projectj/items/voodoo_catcher.json
 43a4a30bf747df0266fb42396721117d33cf3e08 assets/projectj/models/block/adobe_bricks.json
@@ -192,7 +194,7 @@ f3d6933a6215bc109c9a6a96b4611513dd9ef5da assets/projectj/models/block/adobe_bric
 e137107b1dab43a68f5242ef6bcdc9c82443d40b assets/projectj/models/block/adobe_bricks_wall_side_tall.json
 f9b242d34949f79e409b68b64062a94ab39a13a9 assets/projectj/models/block/adobe_furnace.json
 6be9ef5091aa15e0717da95cabb3a12cd5ec0c45 assets/projectj/models/block/adobe_furnace_on.json
-8aa95a53e9906f937d641cc64e21ce4e3eeaa2a3 assets/projectj/models/block/adobe_glass.json
+ca12394a73a988596c3330df657a8989551bdb99 assets/projectj/models/block/adobe_glass.json
 7d22f5a66c97069f0d358792000607169cb17500 assets/projectj/models/block/adobe_sand.json
 ec5ae966886e8457c52e1217d90916146252aef5 assets/projectj/models/block/chili_bush_stage0.json
 4aa2b90a3d50281fee79dc85d14c782e7e6abd97 assets/projectj/models/block/chili_bush_stage1.json
@@ -273,6 +275,7 @@ ddeac4ed21273bc5a76ac2cf19c585974c7d2afb assets/projectj/models/block/serpentini
 4bfc083920aa0082d3489e02ea5863a0ee835e65 assets/projectj/models/block/stripped_mesquite_log.json
 cd0bb0cfd6624b5ec55a8f6e866341dbdfca5bd6 assets/projectj/models/block/stripped_mesquite_log_horizontal.json
 daf2d4c74604a08bc41aa0c622f86514fc9729ec assets/projectj/models/block/stripped_mesquite_wood.json
+3392429d0bffc39f12286b2c5d371ac3bf78a270 assets/projectj/models/block/tinted_adobe_glass.json
 cdcb03ebf3cc0a37809e8f77f5642c0f437220c0 assets/projectj/models/item/chili.json
 671de4a0a88d02a4c81d66cede9c8b95cda6d092 assets/projectj/models/item/chili_con_carne.json
 92e3abf5e2d588f218e7a18a1ff3a166a94059de assets/projectj/models/item/chili_seeds.json

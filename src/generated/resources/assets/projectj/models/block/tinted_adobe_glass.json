@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cube_all",
   "render_type": "minecraft:translucent",
   "textures": {
-    "all": "projectj:block/adobe_glass"
+    "all": "projectj:block/tinted_adobe_glass"
   }
 }

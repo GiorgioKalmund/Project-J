@@ -27,6 +27,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.PACKED_ADOBE.get());
                 output.accept(ModBlocks.ADOBE_SAND.get());
                 output.accept(ModBlocks.ADOBE_GLASS.get());
+                output.accept(ModBlocks.TINTED_ADOBE_GLASS.get());
                 output.accept(ModBlocks.ADOBE_FURNACE.get());
                 output.accept(ModBlocks.CHIMNEY.get());
 

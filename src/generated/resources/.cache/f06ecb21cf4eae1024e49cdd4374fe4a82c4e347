@@ -1,4 +1,4 @@
-// 1.21.4	2025-04-30T13:16:35.886348	ModRecipeProvider
+// 1.21.4	2025-05-01T22:49:15.394757	ModRecipeProvider
 3805c773c67c25685a42a0810f910faacb328964 data/minecraft/advancement/recipes/beetroot_seeds.json
 9d0b4243e93bb8fe0a90f5936460b23bedc28f89 data/minecraft/advancement/recipes/building_blocks/adobe_bricks_smelting.json
 d8e64883f5c848da2d094ba3a38aac11e888156b data/minecraft/advancement/recipes/building_blocks/chili_con_carne_from_maize_mash.json
@@ -129,6 +129,7 @@ b14793ca74bed0469d701e5fb7a6a3eecb801443 data/projectj/advancement/recipes/comba
 3d99954820607651b6cc68e3e345f19f395869f3 data/projectj/advancement/recipes/combat/macuahuitl.json
 2098ea7c81d190eb7822d60e34caed058430d239 data/projectj/advancement/recipes/combat/obsidian_arrow.json
 d6499f6734d1d845e3d09217122c1fe18aa4268e data/projectj/advancement/recipes/combat/serpentinite_rod.json
+0af5d7352379b819d7156b12c3788a1d1750d42c data/projectj/advancement/recipes/combat/tinted_adobe_glass.json
 a33da2a9f4eaf0f7feab7816463ba38a96601101 data/projectj/advancement/recipes/decorations/adobe_bricks_wall.json
 5f1a832d2347a0a765bad2d25cd801c8b23986ea data/projectj/advancement/recipes/decorations/cobbled_serpentinite_wall.json
 a889118894cd067098b9aabd3b603f053d2e943b data/projectj/advancement/recipes/decorations/mesquite_fence.json
@@ -209,5 +210,6 @@ c0d5be120004b705331d9c1dd2a02002950ccb5e data/projectj/recipe/sun_armor_helmet.j
 be4e785c2589f5be894f1aab95a73041bdf49459 data/projectj/recipe/teleportation_core.json
 75913b6e79d99db92c2ae363d5c93c9e74ad6598 data/projectj/recipe/teleportation_key.json
 305a9eb583d969fe287eca55591d21dffa560d28 data/projectj/recipe/teleportation_pad.json
+277786e378b488198209bfb38657b9702c1a3f9c data/projectj/recipe/tinted_adobe_glass.json
 a514b733c0fa4542224208824c6aee59661e2bf0 data/projectj/recipe/trowel.json
 9a2a1e5befe1c93752be2ed37f65db001dceea2e data/projectj/recipe/voodoo_catcher.json

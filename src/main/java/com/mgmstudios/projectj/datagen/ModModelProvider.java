@@ -75,8 +75,9 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.RAW_PYRITE_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.PYRITE_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.PYRITE_ORE.get());
-        createTrivialTransparentCube(blockModels, ModBlocks.MESQUITE_LEAVES.get());
-        createTrivialTransparentCube(blockModels, ModBlocks.ADOBE_GLASS.get());
+        createTrivialCutoutCube(blockModels, ModBlocks.MESQUITE_LEAVES.get());
+        createTrivialTranslucentCube(blockModels, ModBlocks.ADOBE_GLASS.get());
+        createTrivialTranslucentCube(blockModels, ModBlocks.TINTED_ADOBE_GLASS.get());
         createCutoutPlantWithDefaultItem(blockModels, ModBlocks.MESQUITE_SAPLING.get(), ModBlocks.POTTED_MESQUITE_SAPLING.get(), PlantType.NOT_TINTED);
 
         createAncientAltar(blockModels, itemModels, ModBlocks.ANCIENT_ALTAR.get());
@@ -198,10 +199,19 @@ public class ModModelProvider extends ModelProvider {
         itemModels.itemModelOutput.accept(item, itemmodel$unbaked1);
     }
 
-    public void createTrivialTransparentCube(BlockModelGenerators blockModels, Block block){
+    public void createTrivialCutoutCube(BlockModelGenerators blockModels, Block block){
         ResourceLocation resourcelocation = ModelTemplates.CUBE_ALL
                 .extend()
                 .renderType("minecraft:cutout")
+                .build()
+                .create(block, TextureMapping.cube(block), blockModels.modelOutput);
+        blockModels.blockStateOutput.accept(createSimpleBlock(block, resourcelocation));
+    }
+
+    public void createTrivialTranslucentCube(BlockModelGenerators blockModels, Block block){
+        ResourceLocation resourcelocation = ModelTemplates.CUBE_ALL
+                .extend()
+                .renderType("minecraft:translucent")
                 .build()
                 .create(block, TextureMapping.cube(block), blockModels.modelOutput);
         blockModels.blockStateOutput.accept(createSimpleBlock(block, resourcelocation));

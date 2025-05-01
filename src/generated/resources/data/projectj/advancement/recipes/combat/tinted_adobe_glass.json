@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_adobe_glass": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:adobe_glass"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_obsidian_tooth": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:obsidian_tooth"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "projectj:tinted_adobe_glass"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_obsidian_tooth",
+      "has_adobe_glass"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "projectj:tinted_adobe_glass"
+    ]
+  }
+}

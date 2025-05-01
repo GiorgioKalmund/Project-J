@@ -18,6 +18,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.MobBucketItem;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.ShapedRecipePattern;
 import net.minecraft.world.level.ItemLike;
@@ -426,6 +427,16 @@ public class ModRecipeProvider extends RecipeProvider {
         createChestplate(ModItems.PYRITE_INGOT, ModItems.SUN_ARMOR_CHESTPLATE);
         createLeggings(ModItems.PYRITE_INGOT, ModItems.SUN_ARMOR_LEGGINGS);
         createBoots(ModItems.PYRITE_INGOT, ModItems.SUN_ARMOR_BOOTS);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.COMBAT, ModBlocks.TINTED_ADOBE_GLASS, 4)
+                .pattern(" O ")
+                .pattern("OGO")
+                .pattern(" O ")
+                .define('O', ModItems.OBSIDIAN_TOOTH)
+                .define('G', ModBlocks.ADOBE_GLASS)
+                .unlockedBy("has_obsidian_tooth", this.has(ModItems.OBSIDIAN_TOOTH))
+                .unlockedBy("has_adobe_glass", this.has(ModBlocks.ADOBE_GLASS))
+                .save(this.output);
 
         ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.QUEST_BOOK)
                 .requires(Items.BOOK)

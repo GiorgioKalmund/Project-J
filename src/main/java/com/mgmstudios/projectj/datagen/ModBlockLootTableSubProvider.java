@@ -72,6 +72,7 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.ADOBE_BRICKS_SLAB.get());
         this.dropSelf(ModBlocks.ADOBE_BRICKS_WALL.get());
         this.dropSelf(ModBlocks.ADOBE_GLASS.get());
+        this.dropSelf(ModBlocks.TINTED_ADOBE_GLASS.get());
 
         this.dropNothing(ModBlocks.JADE_CRYSTAL.get());
 

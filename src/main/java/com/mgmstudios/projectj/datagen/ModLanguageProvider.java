@@ -76,6 +76,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.PACKED_ADOBE, "Packed Adobe");
         addBlock(ModBlocks.ADOBE_SAND, "Adobe Sand");
         addBlock(ModBlocks.ADOBE_GLASS, "Adobe Glass");
+        addBlock(ModBlocks.TINTED_ADOBE_GLASS, "Tinted Adobe Glass");
         addBlock(ModBlocks.ADOBE_BRICKS, "Adobe Bricks");
         addBlock(ModBlocks.JADE_ORE, "Jade Ore");
         addBlock(ModBlocks.DEEPSLATE_JADE_ORE, "Deepslate Jade Ore");
