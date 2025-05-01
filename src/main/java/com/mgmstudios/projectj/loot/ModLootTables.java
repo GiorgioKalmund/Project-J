@@ -19,6 +19,8 @@ public class ModLootTables {
             LOOT_TABLES.register("quetzal_lay", () -> LootTable.EMPTY);
     public static final DeferredHolder<LootTable, LootTable> GRANT_QUEST_BOOK =
             LOOT_TABLES.register("grant_quest_book", () -> LootTable.EMPTY);
+    public static final DeferredHolder<LootTable, LootTable> BRAZIER_POINT_LOOT =
+            LOOT_TABLES.register("structures/brazier_point", () -> LootTable.EMPTY);
 
     public static void register(IEventBus bus){
         LOOT_TABLES.register(bus);

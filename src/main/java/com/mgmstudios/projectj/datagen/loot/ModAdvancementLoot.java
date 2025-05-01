@@ -1,4 +1,4 @@
-package com.mgmstudios.projectj.datagen;
+package com.mgmstudios.projectj.datagen.loot;
 
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.loot.ModLootTables;

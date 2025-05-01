@@ -1,6 +1,9 @@
 package com.mgmstudios.projectj.datagen;
 
 import com.mgmstudios.projectj.ProjectJ;
+import com.mgmstudios.projectj.datagen.loot.ModAdvancementLoot;
+import com.mgmstudios.projectj.datagen.loot.ModContainerLoot;
+import com.mgmstudios.projectj.datagen.loot.ModGiftLoot;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.advancements.AdvancementProvider;
@@ -32,7 +35,8 @@ public class DataGenProvider extends LootTableProvider {
                         new SubProviderEntry(ModBlockLootTableSubProvider::new, LootContextParamSets.BLOCK),
                         new SubProviderEntry(ModEntityLootSubProvider::new, LootContextParamSets.ENTITY),
                         new SubProviderEntry(ModGiftLoot::new, LootContextParamSets.GIFT),
-                        new SubProviderEntry(ModAdvancementLoot::new, LootContextParamSets.ADVANCEMENT_REWARD)
+                        new SubProviderEntry(ModAdvancementLoot::new, LootContextParamSets.ADVANCEMENT_REWARD),
+                        new SubProviderEntry(ModContainerLoot::new, LootContextParamSets.CHEST)
                 ),
             lookupProvider
         ));
