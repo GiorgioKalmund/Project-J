@@ -16,7 +16,7 @@ public final class SunArmorModel extends GeoModel<SunArmorItem> {
 
     @Override
     public ResourceLocation getTextureResource(SunArmorItem animatable, @Nullable GeoRenderer<SunArmorItem> renderer) {
-        return ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "textures/armor/sun_armor_template.png");
+        return ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "textures/armor/sun_armor.png");
     }
 
     @Override
