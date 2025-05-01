@@ -16,7 +16,7 @@ public final class JadeArmorModel extends GeoModel<JadeArmorItem> {
 
     @Override
     public ResourceLocation getTextureResource(JadeArmorItem animatable, @Nullable GeoRenderer<JadeArmorItem> renderer) {
-        return ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "textures/block/jade_block.png");
+        return ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "textures/armor/jade_armor.png");
     }
 
     @Override

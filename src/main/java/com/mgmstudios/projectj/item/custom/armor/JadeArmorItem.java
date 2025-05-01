@@ -57,15 +57,9 @@ public final class JadeArmorItem extends ArmorItem implements GeoItem {
 
                 // For this example, we only want the animation to play if the entity is wearing all pieces of the armor
                 // Let's collect the armor pieces the entity is currently wearing
-                Set<Item> wornArmor = new ObjectOpenHashSet<>();
-
-                for (ItemStack stack : livingEntity.getArmorSlots()) {
-                    // We can stop immediately if any of the slots are empty
-                    if (stack.isEmpty())
-                        return PlayState.STOP;
-
-                    wornArmor.add(stack.getItem());
-                }
+                Set<Item> wornArmor = getEquippedArmor(livingEntity);
+                if (wornArmor.isEmpty())
+                    return PlayState.STOP;
 
                 // Check each of the pieces match our set
                 boolean isFullSet = wornArmor.containsAll(ObjectArrayList.of(
@@ -80,6 +74,16 @@ public final class JadeArmorItem extends ArmorItem implements GeoItem {
 
             return PlayState.STOP;
         }));
+    }
+
+    public static Set<Item> getEquippedArmor(LivingEntity entity){
+        Set<Item> wornArmor = new ObjectOpenHashSet<>();
+
+        for (ItemStack stack : entity.getArmorSlots()) {
+            wornArmor.add(stack.getItem());
+        }
+
+        return wornArmor;
     }
 
     @Override

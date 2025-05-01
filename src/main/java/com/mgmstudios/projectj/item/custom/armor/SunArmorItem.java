@@ -32,6 +32,8 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 import java.util.Set;
 import java.util.function.Consumer;
 
+import static com.mgmstudios.projectj.item.custom.armor.JadeArmorItem.getEquippedArmor;
+
 public final class SunArmorItem extends ArmorItem implements GeoItem {
     public SunArmorItem(ArmorMaterial material, ArmorType armorType, Properties properties) {
         super(material, armorType, properties);
@@ -58,15 +60,9 @@ public final class SunArmorItem extends ArmorItem implements GeoItem {
 
                 // For this example, we only want the animation to play if the entity is wearing all pieces of the armor
                 // Let's collect the armor pieces the entity is currently wearing
-                Set<Item> wornArmor = new ObjectOpenHashSet<>();
-
-                for (ItemStack stack : livingEntity.getArmorSlots()) {
-                    // We can stop immediately if any of the slots are empty
-                    if (stack.isEmpty())
-                        return PlayState.STOP;
-
-                    wornArmor.add(stack.getItem());
-                }
+                Set<Item> wornArmor = getEquippedArmor(livingEntity);
+                if (wornArmor.isEmpty())
+                    return PlayState.STOP;
 
                 // Check each of the pieces match our set
                 boolean isFullSet = wornArmor.containsAll(ObjectArrayList.of(
