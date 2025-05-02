@@ -142,6 +142,13 @@ public final class AwakenedSunArmorItem extends ArmorItem implements GeoItem {
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        if (armorType.equals(ArmorType.CHESTPLATE)){
+            if (stack.has(DataComponents.GLIDER) && stack.get(DataComponents.GLIDER).equals(Unit.INSTANCE))
+                tooltipComponents.add(Component.translatable("tooltip.projectj.awakened_armor.glider.active.tooltip"));
+            else
+                tooltipComponents.add(Component.translatable("tooltip.projectj.awakened_armor.glider.tooltip"));
+        }
+
         if (stack.has(DataComponents.ENCHANTMENT_GLINT_OVERRIDE) && stack.get(DataComponents.ENCHANTMENT_GLINT_OVERRIDE))
             tooltipComponents.add(Component.translatable("tooltip.projectj.awakened_armor.charged.tooltip"));
         else

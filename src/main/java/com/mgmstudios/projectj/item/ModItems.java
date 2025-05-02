@@ -72,13 +72,13 @@ public class ModItems {
 
     public static final DeferredItem<Item> SUN_ARMOR_BOOTS = registerArmorItem("sun_armor_boots", ModArmorMaterials.SUN_ARMOR_MATERIAL, ArmorType.BOOTS, SunArmorItem::new);
 
-    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_HELMET = registerArmorItem("awakened_sun_armor_helmet", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.HELMET, AwakenedSunArmorItem::new, new Item.Properties().component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true).rarity(Rarity.EPIC));
+    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_HELMET = registerArmorItem("awakened_sun_armor_helmet", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.HELMET, AwakenedSunArmorItem::new, new Item.Properties().rarity(Rarity.RARE));
 
-    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_CHESTPLATE = registerArmorItem("awakened_sun_armor_chestplate", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.CHESTPLATE, AwakenedSunArmorItem::new, new Item.Properties().component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true).component(DataComponents.GLIDER, Unit.INSTANCE).rarity(Rarity.EPIC));
+    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_CHESTPLATE = registerArmorItem("awakened_sun_armor_chestplate", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.CHESTPLATE, AwakenedSunArmorItem::new, new Item.Properties().rarity(Rarity.RARE));
 
-    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_LEGGINGS = registerArmorItem("awakened_sun_armor_leggings", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.LEGGINGS, AwakenedSunArmorItem::new, new Item.Properties().component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true).rarity(Rarity.EPIC));
+    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_LEGGINGS = registerArmorItem("awakened_sun_armor_leggings", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.LEGGINGS, AwakenedSunArmorItem::new, new Item.Properties().rarity(Rarity.RARE));
 
-    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_BOOTS = registerArmorItem("awakened_sun_armor_boots", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.BOOTS, AwakenedSunArmorItem::new, new Item.Properties().component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true).rarity(Rarity.EPIC));
+    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_BOOTS = registerArmorItem("awakened_sun_armor_boots", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.BOOTS, AwakenedSunArmorItem::new, new Item.Properties().rarity(Rarity.RARE));
 
     public static final DeferredItem<Item> MAGNIFYING_GLASS = register("magnifying_glass", MagnifyingGlassItem::new, new Item.Properties().stacksTo(1));
 
