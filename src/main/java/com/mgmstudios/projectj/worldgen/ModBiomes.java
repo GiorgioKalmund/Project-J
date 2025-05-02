@@ -10,6 +10,7 @@ import net.minecraft.world.level.biome.Biome;
 public class ModBiomes
 {
     public static final ResourceKey<Biome> ADOBE_DESERT = register("adobe_desert");
+    public static final ResourceKey<Biome> SERPENTINITE_HILLS = register("serpentinite_hills");
 
     private static ResourceKey<Biome> register(String name)
     {

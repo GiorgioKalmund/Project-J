@@ -212,6 +212,7 @@ public class ModLanguageProvider extends LanguageProvider {
 
         // Biomes
         addBiome(ModBiomes.ADOBE_DESERT, "Adobe Desert");
+        addBiome(ModBiomes.SERPENTINITE_HILLS, "Serpentinite Hills");
     }
 
     public void addTooltip(String name, String value){

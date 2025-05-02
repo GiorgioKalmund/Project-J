@@ -1,14 +1,13 @@
 package com.mgmstudios.projectj;
 
 import com.mgmstudios.projectj.entity.client.runner.RunnerRenderer;
-import com.mgmstudios.projectj.entity.custom.RunnerEntity;
 import com.mgmstudios.projectj.particle.ModParticles;
 import com.mgmstudios.projectj.particle.TeleportationParticles;
 import com.mgmstudios.projectj.worldgen.*;
 
 import com.mgmstudios.projectj.worldgen.regions.AdobeDesertRegion;
+import com.mgmstudios.projectj.worldgen.regions.SerpentiniteHillsRegion;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
-import org.checkerframework.checker.signature.qual.SignatureBottom;
 import org.slf4j.Logger;
 
 import com.mgmstudios.projectj.block.ModBlocks;
@@ -113,6 +112,7 @@ public class ProjectJ
         {
             // Weights are kept intentionally low as we add minimal biomes
             Regions.register(new AdobeDesertRegion(ResourceLocation.fromNamespaceAndPath(MOD_ID, "overworld_1"), 4));
+            Regions.register(new SerpentiniteHillsRegion(ResourceLocation.fromNamespaceAndPath(MOD_ID, "overworld_2"), 4));
 
             // Register our surface rules
             SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ModSurfaceRules.makeRules());

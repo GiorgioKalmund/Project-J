@@ -71,10 +71,32 @@ public class ModBiomeBuilder
         return biome(Biome.Precipitation.NONE, 2.0F, 0.0F, spawnBuider, biomeBuilder, Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DESERT));
     }
 
+    public static Biome serpentiniteHills(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
+        MobSpawnSettings.Builder spawnBuider = new MobSpawnSettings.Builder();
+        serpentinitePlainsSpawns(spawnBuider);
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
+        BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
+        globalOverworldGeneration(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
+        BiomeDefaultFeatures.addDesertExtraVegetation(biomeBuilder);
+        BiomeDefaultFeatures.addDesertExtraDecoration(biomeBuilder);
+        return biome(Biome.Precipitation.SNOW, 0.1F, 0.5F, spawnBuider, biomeBuilder, Musics.createGameMusic(SoundEvents.MUSIC_BIOME_GROVE));
+    }
+
     public static void adobeDesertSpawns(MobSpawnSettings.Builder builder) {
         builder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 4, 2, 3));
         caveSpawns(builder);
-        //monsters(builder, 19, 1, 100, false);
+        runnerSpawns(builder);
+    }
+
+    public static void serpentinitePlainsSpawns(MobSpawnSettings.Builder builder) {
+        builder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 30, 2, 3));
+        caveSpawns(builder);
+        monsters(builder, 0, 2, 15, false);
+        runnerSpawns(builder);
+    }
+
+    public static void runnerSpawns(MobSpawnSettings.Builder builder){
         builder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModEntities.RUNNER_ENTITY.get(),80, 4, 4));
     }
 

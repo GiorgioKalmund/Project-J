@@ -1,6 +1,9 @@
 {
   "type": "neoforge:add_features",
-  "biomes": "projectj:adobe_desert",
+  "biomes": [
+    "projectj:adobe_desert",
+    "projectj:serpentinite_hills"
+  ],
   "features": "projectj:jade_ore_serpentinite_placed",
   "step": "underground_ores"
 }

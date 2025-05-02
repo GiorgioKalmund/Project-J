@@ -33,7 +33,7 @@ public class ModBiomeModifiers {
         ));
 
         context.register(ADD_SERPENTINITE_JADE_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(
-                HolderSet.direct(biomes.getOrThrow(ModBiomes.ADOBE_DESERT)),
+                HolderSet.direct(biomes.getOrThrow(ModBiomes.ADOBE_DESERT), biomes.getOrThrow(ModBiomes.SERPENTINITE_HILLS)),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.JADE_ORE_SERPENTINITE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES
         ));

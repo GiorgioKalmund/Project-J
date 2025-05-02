@@ -13,9 +13,9 @@ import terrablender.api.RegionType;
 
 import java.util.function.Consumer;
 
-public class AdobeDesertRegion extends Region
+public class SerpentiniteHillsRegion extends Region
 {
-    public AdobeDesertRegion(ResourceLocation name, int weight)
+    public SerpentiniteHillsRegion(ResourceLocation name, int weight)
     {
         super(name, RegionType.OVERWORLD, weight);
     }
@@ -24,7 +24,9 @@ public class AdobeDesertRegion extends Region
     public void addBiomes(Registry<Biome> registry, Consumer<Pair<ParameterPoint, ResourceKey<Biome>>> mapper)
     {
         this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
-            builder.replaceBiome(Biomes.DESERT, ModBiomes.ADOBE_DESERT);
+            builder.replaceBiome(Biomes.FROZEN_PEAKS, ModBiomes.SERPENTINITE_HILLS);
+            builder.replaceBiome(Biomes.JAGGED_PEAKS, ModBiomes.SERPENTINITE_HILLS);
+            builder.replaceBiome(Biomes.SNOWY_SLOPES, ModBiomes.SERPENTINITE_HILLS);
         });
     }
 }

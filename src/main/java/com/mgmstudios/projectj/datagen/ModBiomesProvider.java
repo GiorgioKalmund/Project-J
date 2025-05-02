@@ -21,6 +21,7 @@ public class ModBiomesProvider
         HolderGetter<PlacedFeature> holdergetter = context.lookup(Registries.PLACED_FEATURE);
         HolderGetter<ConfiguredWorldCarver<?>> holdergetter1 = context.lookup(Registries.CONFIGURED_CARVER);
         context.register(ModBiomes.ADOBE_DESERT, ModBiomeBuilder.adobeDesert(holdergetter, holdergetter1));
+        context.register(ModBiomes.SERPENTINITE_HILLS, ModBiomeBuilder.serpentiniteHills(holdergetter, holdergetter1));
     }
 
     public static void register(IEventBus eventBus){

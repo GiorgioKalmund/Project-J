@@ -1,10 +1,11 @@
-// 1.21.4	2025-05-02T12:24:35.4926136	Registries
+// 1.21.4	2025-05-02T18:00:04.397501	Registries
 a0f88ee5b4dfb374dd0523147cf665abd2bb8962 data/projectj/neoforge/biome_modifier/add_adobe_patch.json
 e067609e8d948e7dca91e3ccca4b36bc4f081763 data/projectj/neoforge/biome_modifier/add_jade_ore.json
 a4a1a8761edaf2e9511e0e0a27c0f9376b5a5297 data/projectj/neoforge/biome_modifier/add_pyrite_ore.json
-0f6001eda97b02322f12fb29d1251165b1ef91ee data/projectj/neoforge/biome_modifier/add_serpentinite_jade_ore.json
+99f3e0237fbff5798b1e938d4dcf101b565454da data/projectj/neoforge/biome_modifier/add_serpentinite_jade_ore.json
 46a13f99e551c509d83a09e511ea691568140a36 data/projectj/neoforge/biome_modifier/add_tree_mesquite.json
 93cf8c20ec58a695c887b9ef631672c59ed25d30 data/projectj/worldgen/biome/adobe_desert.json
+e39c9a5b959a4129157d108912cb5d1308631457 data/projectj/worldgen/biome/serpentinite_hills.json
 8d405e2dc06fbf31bd65a2d24159a21337d6bd93 data/projectj/worldgen/configured_feature/adobe_patch.json
 bb276efca635f1457795af679168ade1116310a3 data/projectj/worldgen/configured_feature/jade_ore.json
 b54cbbedde3d09412e75853e52361a44a36c5fa8 data/projectj/worldgen/configured_feature/mesquite.json
