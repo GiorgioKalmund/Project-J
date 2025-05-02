@@ -2,18 +2,18 @@
   "images": [
     {
       "type": "regular",
-      "image": ":magnets_chapter"
+      "image": ":chapter_2"
     }
   ],
-  "page-shortcut": "magnets",
+  "page-shortcut": "teleportation",
   "show-page-msg": false,
   "template": {
-    "chapter-title": "§f§o§lMagnets§r",
+    "chapter-title": "§f§o§lTeleportation§r",
     "name": "chapter-cover"
   },
   "text": {
     "align-center": true,
-    "content": "§f§oOur connection seems to get stronger ;)§r",
+    "content": "§f§oSwoosh!§r",
     "show-title": false
   }
 }

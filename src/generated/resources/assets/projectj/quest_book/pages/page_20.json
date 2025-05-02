@@ -1,19 +1,36 @@
 {
   "images": [
     {
-      "type": "regular",
-      "image": ":magnets_chapter"
+      "count": 4,
+      "image": "projectj:jade"
+    },
+    {
+      "count": 2,
+      "image": "minecraft:ender_pearl"
+    },
+    {
+      "image": "minecraft:wind_charge"
     }
   ],
-  "page-shortcut": "magnets",
-  "show-page-msg": false,
+  "page-msg": {
+    "message": "in:    "
+  },
   "template": {
-    "chapter-title": "§f§o§lMagnets§r",
-    "name": "chapter-cover"
+    "name": "recipe-list",
+    "secondary-images": [
+      {
+        "image": "projectj:teleportation_core",
+        "show-border": true
+      },
+      {
+        "image": "projectj:ancient_altar"
+      }
+    ],
+    "spacing": 30
   },
   "text": {
-    "align-center": true,
-    "content": "§f§oOur connection seems to get stronger ;)§r",
-    "show-title": false
+    "align-center": false,
+    "content": "§nTeleportation Core§r\n\nThe Teleportation Core opens the door to a whole lot of blocks and items allowing you to travel faster.",
+    "show-title": true
   }
 }

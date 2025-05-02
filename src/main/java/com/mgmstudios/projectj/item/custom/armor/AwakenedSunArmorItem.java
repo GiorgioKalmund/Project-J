@@ -105,7 +105,7 @@ public final class AwakenedSunArmorItem extends ArmorItem implements GeoItem {
             // Check each of the pieces match our set
             boolean isFullSet = hasFullSuitOfArmorOn(wornArmor);
 
-            if ((!isInArmorSlot(slotId) || !isFullSet)){
+            if (!isFullSet){
                 if (stack.has(DataComponents.ENCHANTMENT_GLINT_OVERRIDE))
                     stack.remove(DataComponents.ENCHANTMENT_GLINT_OVERRIDE);
                 if (stack.has(DataComponents.RARITY))
@@ -115,7 +115,7 @@ public final class AwakenedSunArmorItem extends ArmorItem implements GeoItem {
                 if (armorType.equals(ArmorType.HELMET) && hasFullArmorOn)
                     player.playNotifySound(SoundEvents.BEACON_DEACTIVATE, SoundSource.MASTER, 1F, 2F);
                 hasFullArmorOn = false;
-            } else if (isInArmorSlot(slotId) && !hasFullArmorOn){
+            } else if (!hasFullArmorOn && isInArmorSlot(slotId)){
                 if (!stack.has(DataComponents.GLIDER) && armorType.equals(ArmorType.CHESTPLATE))
                     stack.set(DataComponents.GLIDER, Unit.INSTANCE);
                 if (armorType.equals(ArmorType.HELMET))

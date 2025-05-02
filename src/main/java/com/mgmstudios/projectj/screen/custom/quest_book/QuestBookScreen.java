@@ -442,6 +442,10 @@ public class QuestBookScreen extends Screen {
             this(ItemLookup.getResourceLocation(itemLike), count, showBorder, Type.ITEM);
         }
 
+        public QuestBookImage(ItemLike itemLike, int count){
+            this(ItemLookup.getResourceLocation(itemLike), count, false, Type.ITEM);
+        }
+
         public QuestBookImage(ItemLike itemLike, boolean showBorder, Type type){
             this(ItemLookup.getResourceLocation(itemLike) , 1, showBorder, type);
         }

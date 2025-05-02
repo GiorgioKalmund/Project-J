@@ -1,31 +1,19 @@
 {
   "images": [
     {
-      "image": "projectj:liquid_pyrite_bucket"
-    },
-    {
-      "image": "minecraft:bowl"
+      "type": "regular",
+      "image": ":ancient_altar_recipes"
     }
   ],
-  "page-msg": {
-    "message": "in:    "
-  },
+  "page-shortcut": "ancient-altar",
+  "show-page-msg": false,
   "template": {
-    "name": "recipe-list",
-    "secondary-images": [
-      {
-        "image": "projectj:crude_sacrifice_bowl",
-        "show-border": true
-      },
-      {
-        "image": "projectj:ancient_altar"
-      }
-    ],
-    "spacing": 30
+    "chapter-title": "§f§o§lAncient Altar & Crafting§r",
+    "name": "chapter-cover"
   },
   "text": {
-    "align-center": false,
-    "content": "§nCrude Sacrificial Bowl§r\n\nThe Basis of many more things. Allows you to fill it with a bloody sacrifice.",
-    "show-title": true
+    "align-center": true,
+    "content": "§f§oPowerful sacrifices using Blood and Pyrite§r",
+    "show-title": false
   }
 }

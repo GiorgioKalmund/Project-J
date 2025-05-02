@@ -1,21 +1,41 @@
 {
   "images": [
     {
-      "image": "projectj:pyrite_magnet",
-      "show-border": true
+      "image": "projectj:sun_armor_helmet"
     },
     {
-      "image": "projectj:jade_magnet",
-      "show-border": true
+      "count": 2,
+      "image": "projectj:quetzal_feather"
+    },
+    {
+      "image": "minecraft:fermented_spider_eye"
+    },
+    {
+      "image": "projectj:liquid_pyrite_bucket"
+    },
+    {
+      "image": "projectj:filled_crude_sacrifice_bowl"
     }
   ],
+  "page-msg": {
+    "message": "in:    "
+  },
   "template": {
-    "name": "item-list",
-    "spacing": 30
+    "name": "recipe-list",
+    "secondary-images": [
+      {
+        "image": "projectj:awakened_sun_armor_helmet",
+        "show-border": true
+      },
+      {
+        "image": "projectj:ancient_altar"
+      }
+    ],
+    "spacing": 20
   },
   "text": {
     "align-center": false,
-    "content": "§nMagnets§r\n\nMagnets are harness the magnetism to attract nearby items. §oTheir materials determine their radius and strength§r",
+    "content": "§nAwakened Sun Crown§r\n\nYour hair might catch on fire when wearing.",
     "show-title": true
   }
 }

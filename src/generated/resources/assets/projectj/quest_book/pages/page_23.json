@@ -1,16 +1,42 @@
 {
   "images": [
     {
-      "image": "projectj:voodoo_catcher",
-      "show-border": true
+      "image": "projectj:sun_armor_leggings"
+    },
+    {
+      "count": 3,
+      "image": "projectj:quetzal_feather"
+    },
+    {
+      "count": 2,
+      "image": "minecraft:magma_cream"
+    },
+    {
+      "image": "projectj:liquid_pyrite_bucket"
+    },
+    {
+      "image": "projectj:filled_crude_sacrifice_bowl"
     }
   ],
+  "page-msg": {
+    "message": "in:    "
+  },
   "template": {
-    "name": "item-showcase"
+    "name": "recipe-list",
+    "secondary-images": [
+      {
+        "image": "projectj:awakened_sun_armor_leggings",
+        "show-border": true
+      },
+      {
+        "image": "projectj:ancient_altar"
+      }
+    ],
+    "spacing": 20
   },
   "text": {
     "align-center": false,
-    "content": "§nVoodoo Catcher§r\n\nThe Voodoo Catcher is a magical wand used in catching some friendly mobs running around your world. Take a look at the following pages to learn more!",
-    "show-title": true
+    "content": "§nAwakened Sun Leggings§r\n\nShiny legs you got there!",
+    "show-title": false
   }
 }

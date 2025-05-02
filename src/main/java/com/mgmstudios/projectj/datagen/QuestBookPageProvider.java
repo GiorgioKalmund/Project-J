@@ -182,6 +182,16 @@ public class QuestBookPageProvider implements DataProvider {
                 .setText("§nSun Armor§r\n\nSun Armor is crafted using §6Pyrite§r and although very tough and resistant, similar to it's fancier counterpart, it is very brittle.", true)
                 .save(pages);
 
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_LIST)
+                .defaultTemplateSpacing()
+                .addImage(new QuestBookImage(ModItems.AWAKENED_SUN_ARMOR_LEGGINGS))
+                .addImage(new QuestBookImage(ModItems.AWAKENED_SUN_ARMOR_CHESTPLATE))
+                .addImage(new QuestBookImage(ModItems.AWAKENED_SUN_ARMOR_BOOTS))
+                .addImage(new QuestBookImage(ModItems.AWAKENED_SUN_ARMOR_HELMET))
+                .setText("§nAwakened Sun Armor§r\n\nForged using the power of the Nether and End, the Awakened Sun Armor applies its full effect when worn as a full set. Crafted in the Ancient Altar.", true)
+                .save(pages);
+
         // CHAPTER:Ancient Altar
         Builder.create()
                 .setPageShortcut(SHORTCUT_ANCIENT_ALTAR_RECIPES)
@@ -232,7 +242,7 @@ public class QuestBookPageProvider implements DataProvider {
                 .setInLocationMessage()
                 .addSecondaryImage(new QuestBookImage(ModItems.MACUAHUITL,true))
                 .addSecondaryImage(new QuestBookImage(ModBlocks.ANCIENT_ALTAR))
-                .addImage(new QuestBookImage(ModItems.OBSIDIAN_TOOTH,4, false))
+                .addImage(new QuestBookImage(ModItems.OBSIDIAN_TOOTH,4))
                 .addImage(new QuestBookImage(Items.STICK))
                 .addImage(new QuestBookImage(ModItems.SERPENTINITE_ROD))
                 .addImage(new QuestBookImage(ModItems.JADE))
@@ -246,12 +256,68 @@ public class QuestBookPageProvider implements DataProvider {
                 .setInLocationMessage()
                 .addSecondaryImage(new QuestBookImage(ModItems.TELEPORTATION_CORE,true))
                 .addSecondaryImage(new QuestBookImage(ModBlocks.ANCIENT_ALTAR))
-                .addImage(new QuestBookImage(ModItems.JADE,4, false))
-                .addImage(new QuestBookImage(Items.ENDER_PEARL, 2, false))
+                .addImage(new QuestBookImage(ModItems.JADE,4 ))
+                .addImage(new QuestBookImage(Items.ENDER_PEARL, 2))
                 .addImage(new QuestBookImage(Items.WIND_CHARGE))
                 .setText("§nTeleportation Core§r\n\nThe Teleportation Core opens the door to a whole lot of blocks and items allowing you to travel faster.", true)
                 .save(pages);
 
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.RECIPE_LIST)
+                .defaultTemplateSpacing()
+                .setInLocationMessage()
+                .addSecondaryImage(new QuestBookImage(ModItems.AWAKENED_SUN_ARMOR_HELMET,true))
+                .addSecondaryImage(new QuestBookImage(ModBlocks.ANCIENT_ALTAR))
+                .addImage(new QuestBookImage(ModItems.SUN_ARMOR_HELMET))
+                .addImage(new QuestBookImage(ModItems.QUETZAL_FEATHER, 2))
+                .addImage(new QuestBookImage(Items.FERMENTED_SPIDER_EYE))
+                .addImage(new QuestBookImage(ModItems.LIQUID_PYRITE_BUCKET))
+                .addImage(new QuestBookImage(ModItems.FILLED_CRUDE_SACRIFICE_BOWL))
+                .setText("§nAwakened Sun Crown§r\n\nYour hair might catch on fire when wearing.", true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.RECIPE_LIST)
+                .defaultTemplateSpacing()
+                .setInLocationMessage()
+                .addSecondaryImage(new QuestBookImage(ModItems.AWAKENED_SUN_ARMOR_CHESTPLATE,true))
+                .addSecondaryImage(new QuestBookImage(ModBlocks.ANCIENT_ALTAR))
+                .addImage(new QuestBookImage(ModItems.SUN_ARMOR_CHESTPLATE))
+                .addImage(new QuestBookImage(ModItems.QUETZAL_FEATHER, 3))
+                .addImage(new QuestBookImage(Items.NETHERITE_INGOT))
+                .addImage(new QuestBookImage(Items.ELYTRA))
+                .addImage(new QuestBookImage(ModItems.LIQUID_PYRITE_BUCKET))
+                .addImage(new QuestBookImage(ModItems.FILLED_CRUDE_SACRIFICE_BOWL))
+                .setText("§nAwakened Sun Chestplate§r\n\nYou look hot.", false)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.RECIPE_LIST)
+                .defaultTemplateSpacing()
+                .setInLocationMessage()
+                .addSecondaryImage(new QuestBookImage(ModItems.AWAKENED_SUN_ARMOR_LEGGINGS,true))
+                .addSecondaryImage(new QuestBookImage(ModBlocks.ANCIENT_ALTAR))
+                .addImage(new QuestBookImage(ModItems.SUN_ARMOR_LEGGINGS))
+                .addImage(new QuestBookImage(ModItems.QUETZAL_FEATHER, 3))
+                .addImage(new QuestBookImage(Items.MAGMA_CREAM, 2))
+                .addImage(new QuestBookImage(ModItems.LIQUID_PYRITE_BUCKET))
+                .addImage(new QuestBookImage(ModItems.FILLED_CRUDE_SACRIFICE_BOWL))
+                .setText("§nAwakened Sun Leggings§r\n\nShiny legs you got there!", false)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.RECIPE_LIST)
+                .defaultTemplateSpacing()
+                .setInLocationMessage()
+                .addSecondaryImage(new QuestBookImage(ModItems.AWAKENED_SUN_ARMOR_BOOTS,true))
+                .addSecondaryImage(new QuestBookImage(ModBlocks.ANCIENT_ALTAR))
+                .addImage(new QuestBookImage(ModItems.SUN_ARMOR_BOOTS))
+                .addImage(new QuestBookImage(ModItems.QUETZAL_FEATHER, 3))
+                .addImage(new QuestBookImage(Items.SLIME_BALL, 2))
+                .addImage(new QuestBookImage(ModItems.LIQUID_PYRITE_BUCKET))
+                .addImage(new QuestBookImage(ModItems.FILLED_CRUDE_SACRIFICE_BOWL))
+                .setText("§nAwakened Sun Boots§r\n\nThe floor is lava!", true)
+                .save(pages);
 
         // CHAPTER:Magnets
         Builder.create()

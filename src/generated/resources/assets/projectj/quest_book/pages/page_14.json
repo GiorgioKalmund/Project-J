@@ -1,19 +1,25 @@
 {
   "images": [
     {
-      "type": "regular",
-      "image": ":ancient_altar_recipes"
+      "image": "projectj:awakened_sun_armor_leggings"
+    },
+    {
+      "image": "projectj:awakened_sun_armor_chestplate"
+    },
+    {
+      "image": "projectj:awakened_sun_armor_boots"
+    },
+    {
+      "image": "projectj:awakened_sun_armor_helmet"
     }
   ],
-  "page-shortcut": "ancient-altar",
-  "show-page-msg": false,
   "template": {
-    "chapter-title": "§f§o§lAncient Altar & Crafting§r",
-    "name": "chapter-cover"
+    "name": "item-list",
+    "spacing": 20
   },
   "text": {
-    "align-center": true,
-    "content": "§f§oPowerful sacrifices using Blood and Pyrite§r",
-    "show-title": false
+    "align-center": false,
+    "content": "§nAwakened Sun Armor§r\n\nForged using the power of the Nether and End, the Awakened Sun Armor applies its full effect when worn as a full set. Crafted in the Ancient Altar.",
+    "show-title": true
   }
 }

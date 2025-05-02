@@ -1,0 +1,16 @@
+{
+  "images": [
+    {
+      "image": "projectj:little_man_voodoo",
+      "show-border": true
+    }
+  ],
+  "template": {
+    "name": "item-list"
+  },
+  "text": {
+    "align-center": false,
+    "content": "§nLittle Man§r\nThe Little Man Voodoo is a power totem which can be crafted. It pacifies zombies around you. Putting it onto a empty statue block, it can permanently scare away those pesky zomberts!",
+    "show-title": true
+  }
+}
