@@ -1,0 +1,19 @@
+{
+  "type": "projectj:ancient_altar",
+  "fluidStack": {
+    "amount": 1000,
+    "id": "projectj:flowing_pyrite"
+  },
+  "ingredients": [
+    "projectj:filled_crude_sacrifice_bowl",
+    "projectj:sun_armor_leggings",
+    "projectj:quetzal_feather",
+    "projectj:quetzal_feather",
+    "minecraft:magma_cream",
+    "minecraft:magma_cream"
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectj:awakened_sun_armor_leggings"
+  }
+}

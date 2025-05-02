@@ -500,6 +500,39 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_wind_charge", this.has(Items.WIND_CHARGE))
                 .save(this.output);
 
+        AncientAltarRecipeBuilder.regularWithPyrite(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.AWAKENED_SUN_ARMOR_BOOTS)
+                .requiresBlood()
+                .requires(ModItems.SUN_ARMOR_BOOTS)
+                .requires(ModItems.QUETZAL_FEATHER, 2)
+                .requires(Items.SLIME_BALL, 2)
+                .unlockedBy("has_sun_armor_boots", this.has(ModItems.SUN_ARMOR_BOOTS))
+                .save(this.output);
+
+        AncientAltarRecipeBuilder.regularWithPyrite(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.AWAKENED_SUN_ARMOR_LEGGINGS)
+                .requiresBlood()
+                .requires(ModItems.SUN_ARMOR_LEGGINGS)
+                .requires(ModItems.QUETZAL_FEATHER, 2)
+                .requires(Items.MAGMA_CREAM, 2)
+                .unlockedBy("has_sun_armor_leggings", this.has(ModItems.SUN_ARMOR_LEGGINGS))
+                .save(this.output);
+
+        AncientAltarRecipeBuilder.regularWithPyrite(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.AWAKENED_SUN_ARMOR_CHESTPLATE)
+                .requiresBlood()
+                .requires(ModItems.SUN_ARMOR_CHESTPLATE)
+                .requires(ModItems.QUETZAL_FEATHER, 3)
+                .requires(Items.NETHERITE_INGOT)
+                .requires(Items.ELYTRA)
+                .unlockedBy("has_sun_armor_chestplate", this.has(ModItems.SUN_ARMOR_CHESTPLATE))
+                .save(this.output);
+
+        AncientAltarRecipeBuilder.regularWithPyrite(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.AWAKENED_SUN_ARMOR_HELMET)
+                .requiresBlood()
+                .requires(ModItems.SUN_ARMOR_HELMET)
+                .requires(ModItems.QUETZAL_FEATHER, 2)
+                .requires(Items.FERMENTED_SPIDER_EYE)
+                .unlockedBy("has_sun_armor_helmet", this.has(ModItems.SUN_ARMOR_HELMET))
+                .save(this.output);
+
         // METATE
 
         MetateRecipeBuilder.regular(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.MAIZE, ModItems.MAIZE_SEEDS, 2)

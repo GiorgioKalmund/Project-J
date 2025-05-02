@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sun_armor_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:sun_armor_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "projectj:awakened_sun_armor_boots"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_sun_armor_boots"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "projectj:awakened_sun_armor_boots"
+    ]
+  }
+}

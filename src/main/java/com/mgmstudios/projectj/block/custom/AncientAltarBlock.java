@@ -227,7 +227,8 @@ public class AncientAltarBlock extends BaseEntityBlock {
 
         if (canInsert && itemInHand) {
             altarEntity.insertNewItemStack(stackToInsert);
-            stackToInsert.shrink(1);
+            if (!player.isCreative())
+                stackToInsert.shrink(1);
             if (player instanceof ServerPlayer serverPlayer){
                 serverPlayer.playNotifySound(SoundEvents.ITEM_PICKUP,SoundSource.BLOCKS, 1f, 2f);
             }
@@ -243,11 +244,13 @@ public class AncientAltarBlock extends BaseEntityBlock {
             } else {
                 //player.displayClientMessage(Component.literal("Extracted " + extractedStack.getDisplayName().getString()), true);
                 int suitableSlot = player.getInventory().getSlotWithRemainingSpace(extractedStack);
-                if (suitableSlot >= 0){
-                    ItemStack slotStack = player.getInventory().getItem(suitableSlot);
-                    slotStack.grow(1);
-                } else {
-                    player.setItemInHand(hand, extractedStack);
+                if (!player.isCreative()){
+                    if (suitableSlot >= 0){
+                        ItemStack slotStack = player.getInventory().getItem(suitableSlot);
+                        slotStack.grow(1);
+                    } else {
+                        player.setItemInHand(hand, extractedStack);
+                    }
                 }
                 if (player instanceof ServerPlayer serverPlayer){
                     serverPlayer.playNotifySound(SoundEvents.ITEM_PICKUP,SoundSource.BLOCKS, 1f, 1f);

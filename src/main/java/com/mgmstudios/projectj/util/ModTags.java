@@ -68,6 +68,7 @@ public class ModTags {
         public static final TagKey<Item> SMELTS_TO_JADE = createTag("smelts_to_jade");
 
         public static final TagKey<Item> PYRITE = createTag("pyrite");
+        public static final TagKey<Item> PYRITE_REPAIRABLE = createTag("pyrite_repairable");
         public static final TagKey<Item> PYRITE_BLOCKS = createTag("pyrite_blocks");
 
         public static final TagKey<Item> ALTAR_CRAFTABLE = createTag("altar_craftable");

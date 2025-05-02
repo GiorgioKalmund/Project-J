@@ -16,15 +16,19 @@ import com.mgmstudios.projectj.item.custom.*;
 import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidProperties;
 import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidPropertiesWithCustomAsset;
 
+import com.mgmstudios.projectj.item.custom.armor.AwakenedSunArmorItem;
 import com.mgmstudios.projectj.item.custom.armor.JadeArmorItem;
 import com.mgmstudios.projectj.item.custom.armor.SunArmorItem;
 import com.mgmstudios.projectj.sound.ModSounds;
 
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Unit;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
@@ -67,6 +71,14 @@ public class ModItems {
     public static final DeferredItem<Item> SUN_ARMOR_LEGGINGS = registerArmorItem("sun_armor_leggings", ModArmorMaterials.SUN_ARMOR_MATERIAL, ArmorType.LEGGINGS, SunArmorItem::new);
 
     public static final DeferredItem<Item> SUN_ARMOR_BOOTS = registerArmorItem("sun_armor_boots", ModArmorMaterials.SUN_ARMOR_MATERIAL, ArmorType.BOOTS, SunArmorItem::new);
+
+    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_HELMET = registerArmorItem("awakened_sun_armor_helmet", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.HELMET, AwakenedSunArmorItem::new, new Item.Properties().component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true).rarity(Rarity.EPIC));
+
+    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_CHESTPLATE = registerArmorItem("awakened_sun_armor_chestplate", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.CHESTPLATE, AwakenedSunArmorItem::new, new Item.Properties().component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true).component(DataComponents.GLIDER, Unit.INSTANCE).rarity(Rarity.EPIC));
+
+    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_LEGGINGS = registerArmorItem("awakened_sun_armor_leggings", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.LEGGINGS, AwakenedSunArmorItem::new, new Item.Properties().component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true).rarity(Rarity.EPIC));
+
+    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_BOOTS = registerArmorItem("awakened_sun_armor_boots", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.BOOTS, AwakenedSunArmorItem::new, new Item.Properties().component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true).rarity(Rarity.EPIC));
 
     public static final DeferredItem<Item> MAGNIFYING_GLASS = register("magnifying_glass", MagnifyingGlassItem::new, new Item.Properties().stacksTo(1));
 
@@ -166,8 +178,11 @@ public class ModItems {
         return ITEMS.register(name, key ->new Item(humanoidProperties(material, new Item.Properties().setId(ResourceKey.create(Registries.ITEM, key)).durability(armorType.getDurability(material.durability())), armorType)));
     }
 
+    public static <T extends ArmorItem> DeferredItem<Item> registerArmorItem(String name, ArmorMaterial material, ArmorType armorType, PropertyDispatch.TriFunction<ArmorMaterial, ArmorType, Item.Properties, T> function, Item.Properties properties){
+        return ITEMS.register(name, key -> function.apply(material, armorType, properties.setId(ResourceKey.create(Registries.ITEM, key))));
+    }
     public static <T extends ArmorItem> DeferredItem<Item> registerArmorItem(String name, ArmorMaterial material, ArmorType armorType, PropertyDispatch.TriFunction<ArmorMaterial, ArmorType, Item.Properties, T> function){
-        return ITEMS.register(name, key -> function.apply(material, armorType, new Item.Properties().setId(ResourceKey.create(Registries.ITEM, key))));
+        return registerArmorItem(name, material, armorType,  function, new Item.Properties());
     }
 
     public static DeferredItem<Item> registerCustomArmorItem(String name, ArmorMaterial material, ArmorType armorType, ResourceLocation assetLocation){

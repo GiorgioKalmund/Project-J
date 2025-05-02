@@ -30,14 +30,6 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.MACUAHUITL, "Macuahuitl");
         addItem(ModItems.OBSIDIAN_TOOTH, "Obsidian Tooth");
         addItem(ModItems.SERPENTINITE_ROD, "Serpentinite Rod");
-        addItem(ModItems.SUN_ARMOR_HELMET, "Sun Crown");
-        addItem(ModItems.SUN_ARMOR_CHESTPLATE, "Sun Chestplate");
-        addItem(ModItems.SUN_ARMOR_LEGGINGS, "Sun Leggings");
-        addItem(ModItems.SUN_ARMOR_BOOTS, "Sun Boots");
-        addItem(ModItems.JADE_HELMET, "Jade Helmet");
-        addItem(ModItems.JADE_CHESTPLATE, "Jade Chestplate");
-        addItem(ModItems.JADE_LEGGINGS, "Jade Leggings");
-        addItem(ModItems.JADE_BOOTS, "Jade Boots");
         addItem(ModItems.SACRIFICIAL_DAGGER, "Sacrificial Dagger");
         addItem(ModItems.TROWEL, "Trowel");
         addItem(ModItems.MAGNIFYING_GLASS, "Magnifying Glass");
@@ -73,6 +65,22 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.HATCHET, "Hatchet");
         addItem(ModItems.RUNNER_SPAWN_EGG, "Runner Spawn Egg");
         addItem(ModItems.FLESH, "Cooked Flesh");
+
+        addItem(ModItems.SUN_ARMOR_HELMET, "Sun Crown");
+        addItem(ModItems.SUN_ARMOR_CHESTPLATE, "Sun Chestplate");
+        addItem(ModItems.SUN_ARMOR_LEGGINGS, "Sun Leggings");
+        addItem(ModItems.SUN_ARMOR_BOOTS, "Sun Boots");
+
+        addItem(ModItems.AWAKENED_SUN_ARMOR_HELMET, "Awakened Sun Crown");
+        addItem(ModItems.AWAKENED_SUN_ARMOR_CHESTPLATE, "Awakened Sun Chestplate");
+        addItem(ModItems.AWAKENED_SUN_ARMOR_LEGGINGS, "Awakened Sun Leggings");
+        addItem(ModItems.AWAKENED_SUN_ARMOR_BOOTS, "Awakened Sun Boots");
+
+        addItem(ModItems.JADE_HELMET, "Jade Helmet");
+        addItem(ModItems.JADE_CHESTPLATE, "Jade Chestplate");
+        addItem(ModItems.JADE_LEGGINGS, "Jade Leggings");
+        addItem(ModItems.JADE_BOOTS, "Jade Boots");
+
 
         // Blocks
         addBlock(ModBlocks.PACKED_ADOBE, "Packed Adobe");

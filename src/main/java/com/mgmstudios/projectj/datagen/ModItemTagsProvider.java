@@ -37,6 +37,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.RAW_JADE.get());
 
         tag(ModTags.Items.PYRITE)
+                .add(ModItems.PYRITE_INGOT.get());
+
+        tag(ModTags.Items.PYRITE)
                 .add(ModItems.PYRITE_INGOT.get())
                 .add(ModItems.RAW_PYRITE.get())
                 .add(ModBlocks.RAW_PYRITE_BLOCK.asItem())

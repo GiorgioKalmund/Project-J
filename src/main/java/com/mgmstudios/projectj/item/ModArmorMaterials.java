@@ -26,18 +26,35 @@ public class ModArmorMaterials {
     public static final ArmorMaterial SUN_ARMOR_MATERIAL = new ArmorMaterial(
             4,
             Util.make(new EnumMap<>(ArmorType.class), map -> {
-                map.put(ArmorType.BOOTS, 3);
-                map.put(ArmorType.LEGGINGS, 6);
-                map.put(ArmorType.CHESTPLATE, 3);
-                map.put(ArmorType.HELMET, 8);
-                map.put(ArmorType.BODY, 11);
+                map.put(ArmorType.BOOTS, 2);
+                map.put(ArmorType.LEGGINGS, 5);
+                map.put(ArmorType.CHESTPLATE, 2);
+                map.put(ArmorType.HELMET, 3);
+                map.put(ArmorType.BODY, 6);
             }),
             25,
             SoundEvents.ARMOR_EQUIP_GOLD,
-            3.0F,
-            0.2F,
-            ModTags.Items.JADE,
+            1.0F,
+            0.1F,
+            ModTags.Items.PYRITE_REPAIRABLE,
             ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "sun_armor"))
+    );
+
+    public static final ArmorMaterial AWAKENED_SUN_ARMOR_MATERIAL = new ArmorMaterial(
+            15,
+            Util.make(new EnumMap<>(ArmorType.class), map -> {
+                map.put(ArmorType.BOOTS, 4);
+                map.put(ArmorType.LEGGINGS, 7);
+                map.put(ArmorType.CHESTPLATE, 4);
+                map.put(ArmorType.HELMET, 10);
+                map.put(ArmorType.BODY, 11);
+            }),
+            40,
+            SoundEvents.ARMOR_EQUIP_GOLD,
+            5.0F,
+            0.4F,
+            ModTags.Items.PYRITE_REPAIRABLE,
+            ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "awakened_sun_armor"))
     );
 
     public static final ArmorMaterial OLMEC_HEAD_MATERIAL = new ArmorMaterial(
