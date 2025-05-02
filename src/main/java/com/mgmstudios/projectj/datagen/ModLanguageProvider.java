@@ -179,6 +179,8 @@ public class ModLanguageProvider extends LanguageProvider {
         addTooltipShift(ModBlocks.ADOBE_FURNACE, "A powerful new furnace!\nWith the help of a chimney, can burn for §lEVEN§r longer");
         addTooltip("magnet_item.radius", "§7+ Radius: %d§r");
         addTooltip("magnet_item.strength", "§7+ Strength: %d§r");
+        addTooltip("awakened_armor.charged", "§4§lCH§6§lAR§e§lGED§r");
+        addTooltip("awakened_armor", "§8Charges when wearing full set§r");
 
         add("container.projectj.adobe_furnace", "Adobe Furnace");
         add("itemGroup.projectj.projectj_tab", "Project J");

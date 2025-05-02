@@ -164,6 +164,8 @@
   "itemGroup.projectj.projectj_tab": "Project J",
   "tooltip.projectj.adobe_furnace.tooltip": "A powerful new furnace!\n§9§l[LShift] to learn more§r",
   "tooltip.projectj.adobe_furnace.tooltip.shift_down": "A powerful new furnace!\nWith the help of a chimney, can burn for §lEVEN§r longer",
+  "tooltip.projectj.awakened_armor.charged.tooltip": "§4§lCH§6§lAR§e§lGED§r",
+  "tooltip.projectj.awakened_armor.tooltip": "§8Charges when wearing full set§r",
   "tooltip.projectj.magnet_item.radius.tooltip": "§7+ Radius: %d§r",
   "tooltip.projectj.magnet_item.strength.tooltip": "§7+ Strength: %d§r",
   "tooltip.projectj.magnifying_glass.tooltip": "Helps you melt things.",

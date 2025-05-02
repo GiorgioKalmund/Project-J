@@ -1,13 +1,13 @@
 package com.mgmstudios.projectj.item.custom.armor;
 
 import com.mgmstudios.projectj.entity.client.armor.AwakenedSunArmorRenderer;
-import com.mgmstudios.projectj.entity.client.armor.SunArmorRenderer;
 import com.mgmstudios.projectj.item.ModItems;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Unit;
@@ -18,10 +18,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.Level;
@@ -37,6 +34,7 @@ import software.bernie.geckolib.constant.DefaultAnimations;
 import software.bernie.geckolib.renderer.GeoArmorRenderer;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
+import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
 
@@ -44,7 +42,7 @@ import static com.mgmstudios.projectj.item.custom.armor.JadeArmorItem.getEquippe
 
 public final class AwakenedSunArmorItem extends ArmorItem implements GeoItem {
     ArmorType armorType;
-    private boolean hasFullArmorOn = false;
+    private boolean charged = false;
     public AwakenedSunArmorItem(ArmorMaterial material, ArmorType armorType, Properties properties) {
         super(material, armorType, properties);
         this.armorType = armorType;
@@ -112,17 +110,17 @@ public final class AwakenedSunArmorItem extends ArmorItem implements GeoItem {
                     stack.set(DataComponents.RARITY, Rarity.RARE);
                 if (stack.has(DataComponents.GLIDER) && armorType.equals(ArmorType.CHESTPLATE))
                     stack.remove(DataComponents.GLIDER);
-                if (armorType.equals(ArmorType.HELMET) && hasFullArmorOn)
+                if (armorType.equals(ArmorType.HELMET) && charged)
                     player.playNotifySound(SoundEvents.BEACON_DEACTIVATE, SoundSource.MASTER, 1F, 2F);
-                hasFullArmorOn = false;
-            } else if (!hasFullArmorOn && isInArmorSlot(slotId)){
+                charged = false;
+            } else if (!charged && isInArmorSlot(slotId)){
                 if (!stack.has(DataComponents.GLIDER) && armorType.equals(ArmorType.CHESTPLATE))
                     stack.set(DataComponents.GLIDER, Unit.INSTANCE);
                 if (armorType.equals(ArmorType.HELMET))
                     player.playNotifySound(SoundEvents.BEACON_ACTIVATE, SoundSource.MASTER, 1F, 2F);
                 stack.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
                 stack.set(DataComponents.RARITY, Rarity.EPIC);
-                hasFullArmorOn = true;
+                charged = true;
             }
 
             if (isFullSet){
@@ -140,6 +138,14 @@ public final class AwakenedSunArmorItem extends ArmorItem implements GeoItem {
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return this.cache;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        if (stack.has(DataComponents.ENCHANTMENT_GLINT_OVERRIDE) && stack.get(DataComponents.ENCHANTMENT_GLINT_OVERRIDE))
+            tooltipComponents.add(Component.translatable("tooltip.projectj.awakened_armor.charged.tooltip"));
+        else
+            tooltipComponents.add(Component.translatable("tooltip.projectj.awakened_armor.tooltip"));
     }
 
     @Override
