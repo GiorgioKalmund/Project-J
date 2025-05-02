@@ -98,10 +98,10 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.SERPENTINITE_BRICKS_SLAB.get());
         this.dropSelf(ModBlocks.SERPENTINITE_BRICKS_WALL.get());
 
-        this.dropSelf(ModBlocks.SMOOTH_SERPENTINITE.get());
-        this.dropSelf(ModBlocks.SMOOTH_SERPENTINITE_STAIRS.get());
-        this.dropSelf(ModBlocks.SMOOTH_SERPENTINITE_SLAB.get());
-        this.dropSelf(ModBlocks.SMOOTH_SERPENTINITE_WALL.get());
+        this.dropSelf(ModBlocks.POLISHED_SERPENTINITE.get());
+        this.dropSelf(ModBlocks.POLISHED_SERPENTINITE_STAIRS.get());
+        this.dropSelf(ModBlocks.POLISHED_SERPENTINITE_SLAB.get());
+        this.dropSelf(ModBlocks.POLISHED_SERPENTINITE_WALL.get());
 
         this.dropSelf(ModBlocks.REGENERATION_OLMEC_HEAD.get());
         this.dropSelf(ModBlocks.DAMAGE_OLMEC_HEAD.get());

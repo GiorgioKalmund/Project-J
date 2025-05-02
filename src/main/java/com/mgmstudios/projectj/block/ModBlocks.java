@@ -22,7 +22,6 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ColorRGBA;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.effect.MobEffect;
@@ -128,13 +127,13 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> COBBLED_SERPENTINITE_WALL = register("cobbled_serpentinite_wall", WallBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICK_WALL));
 
-    public static final DeferredBlock<Block> SMOOTH_SERPENTINITE = register("smooth_serpentinite", BlockBehaviour.Properties.ofFullCopy(Blocks.SMOOTH_STONE));
+    public static final DeferredBlock<Block> POLISHED_SERPENTINITE = register("polished_serpentinite", BlockBehaviour.Properties.ofFullCopy(Blocks.SMOOTH_STONE));
 
-    public static final DeferredBlock<Block> SMOOTH_SERPENTINITE_STAIRS = registerStairBlock("smooth_serpentinite_stairs", BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_STAIRS), new Item.Properties());
+    public static final DeferredBlock<Block> POLISHED_SERPENTINITE_STAIRS = registerStairBlock("polished_serpentinite_stairs", BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_STAIRS), new Item.Properties());
 
-    public static final DeferredBlock<Block> SMOOTH_SERPENTINITE_SLAB = register("smooth_serpentinite_slab", SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_SLAB));
+    public static final DeferredBlock<Block> POLISHED_SERPENTINITE_SLAB = register("polished_serpentinite_slab", SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_SLAB));
 
-    public static final DeferredBlock<Block> SMOOTH_SERPENTINITE_WALL = register("smooth_serpentinite_wall", WallBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICK_WALL));
+    public static final DeferredBlock<Block> POLISHED_SERPENTINITE_WALL = register("polished_serpentinite_wall", WallBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICK_WALL));
 
     public static final DeferredBlock<Block> MESQUITE_LOG = register("mesquite_log", StrippableModLogBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG), new Item.Properties());
 

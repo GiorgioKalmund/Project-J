@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "projectj:block/smooth_serpentinite",
-    "side": "projectj:block/smooth_serpentinite",
-    "top": "projectj:block/smooth_serpentinite"
-  }
-}

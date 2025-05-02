@@ -1,8 +1,9 @@
-// 1.21.4	2025-04-30T09:34:25.908777	Tags for minecraft:item mod id vanilla
+// 1.21.4	2025-05-02T13:04:45.1417944	Tags for minecraft:item mod id vanilla
 77e5fbee002b4876af3efe3718e21562914f7e4b data/minecraft/tags/item/arrows.json
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/axes.json
 eef8507b29bbe76da180374064eae34413716c15 data/minecraft/tags/item/chest_armor.json
 fc752cefa7d663d01795c156261e90eb1663779e data/minecraft/tags/item/enchantable/durability.json
+c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/enchantable/sword.json
 177d72f6b3e93c23cbac2c6995c3e57d46b4e250 data/minecraft/tags/item/fence_gates.json
 befd7167f6ae998c20621e0f7fdd9aac388d70b6 data/minecraft/tags/item/foot_armor.json
 3f15d8958f670171e26094ddc9f52954f4fe2a86 data/minecraft/tags/item/head_armor.json

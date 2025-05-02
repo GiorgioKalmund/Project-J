@@ -123,9 +123,9 @@
     "monster": [
       {
         "type": "projectj:runner",
-        "maxCount": 10,
+        "maxCount": 4,
         "minCount": 4,
-        "weight": 200
+        "weight": 80
       }
     ],
     "underground_water_creature": [

@@ -6,8 +6,6 @@ import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 
 import java.util.concurrent.CompletableFuture;
@@ -61,21 +59,21 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.SLABS)
                 .add(ModBlocks.SERPENTINITE_ROCK_SLAB.get())
-                .add(ModBlocks.SMOOTH_SERPENTINITE_SLAB.get())
+                .add(ModBlocks.POLISHED_SERPENTINITE_SLAB.get())
                 .add(ModBlocks.SERPENTINITE_BRICKS_SLAB.get())
                 .add(ModBlocks.COBBLED_SERPENTINITE_SLAB.get())
                 .add(ModBlocks.ADOBE_BRICKS_SLAB.get());
 
         tag(BlockTags.STAIRS)
                 .add(ModBlocks.SERPENTINITE_ROCK_STAIRS.get())
-                .add(ModBlocks.SMOOTH_SERPENTINITE_STAIRS.get())
+                .add(ModBlocks.POLISHED_SERPENTINITE_STAIRS.get())
                 .add(ModBlocks.SERPENTINITE_BRICKS_STAIRS.get())
                 .add(ModBlocks.COBBLED_SERPENTINITE_STAIRS.get())
                 .add(ModBlocks.ADOBE_BRICKS_STAIRS.get());
 
         tag(BlockTags.WALLS)
                 .add(ModBlocks.SERPENTINITE_ROCK_WALL.get())
-                .add(ModBlocks.SMOOTH_SERPENTINITE_WALL.get())
+                .add(ModBlocks.POLISHED_SERPENTINITE_WALL.get())
                 .add(ModBlocks.SERPENTINITE_BRICKS_WALL.get())
                 .add(ModBlocks.COBBLED_SERPENTINITE_WALL.get())
                 .add(ModBlocks.ADOBE_BRICKS_WALL.get());

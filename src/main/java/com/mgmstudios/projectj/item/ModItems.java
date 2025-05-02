@@ -134,6 +134,8 @@ public class ModItems {
 
     public static final DeferredItem<Item> RUNNER_SPAWN_EGG = register("runner_spawn_egg", (properties) -> new SpawnEggItem(ModEntities.RUNNER_ENTITY.get(), properties));
 
+    public static final DeferredItem<Item> FLESH = register("flesh", new Item.Properties().food(ModFoods.FLESH));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

@@ -63,6 +63,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.TROWEL.get())
                 .add(ModItems.CHIMALLI_SHIELD.get());
 
+        tag(ItemTags.SWORD_ENCHANTABLE)
+                .add(ModItems.MACUAHUITL.get());
+
         tag(ItemTags.HEAD_ARMOR)
                 .add(ModItems.SUN_ARMOR_HELMET.get())
                 .add(ModItems.JADE_HELMET.get());

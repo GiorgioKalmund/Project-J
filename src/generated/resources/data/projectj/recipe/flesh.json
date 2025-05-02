@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.15,
+  "ingredient": "minecraft:rotten_flesh",
+  "result": {
+    "count": 1,
+    "id": "projectj:flesh"
+  }
+}

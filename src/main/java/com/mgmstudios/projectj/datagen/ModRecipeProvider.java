@@ -9,7 +9,6 @@ import com.mgmstudios.projectj.recipe.acientaltar.AncientAltarRecipeBuilder;
 import com.mgmstudios.projectj.recipe.metate.MetateRecipeBuilder;
 import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
@@ -18,9 +17,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.MobBucketItem;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.ShapedRecipePattern;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
@@ -94,7 +91,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_cobblestone", this.has(Items.COBBLESTONE))
                 .save(this.output);
 
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_SERPENTINITE.get(), 4)
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SERPENTINITE.get(), 4)
                 .pattern("##")
                 .pattern("##")
                 .define('#', ModBlocks.SERPENTINITE_ROCK.get())
@@ -104,8 +101,8 @@ public class ModRecipeProvider extends RecipeProvider {
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.SERPENTINITE_BRICKS.get(), 4)
                 .pattern("##")
                 .pattern("##")
-                .define('#', ModBlocks.SMOOTH_SERPENTINITE.get())
-                .unlockedBy("has_smooth_serpentinite", this.has(ModBlocks.SMOOTH_SERPENTINITE.get()))
+                .define('#', ModBlocks.POLISHED_SERPENTINITE.get())
+                .unlockedBy("has_smooth_serpentinite", this.has(ModBlocks.POLISHED_SERPENTINITE.get()))
                 .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.REGENERATION_OLMEC_HEAD.get())
@@ -564,6 +561,18 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_cobbled_serpentinite", this.has(ModBlocks.COBBLED_SERPENTINITE))
                 .save(this.output, "cobbled_serpentinite_smelting");
 
+         SimpleCookingRecipeBuilder.smoking(Ingredient.of(Items.ROTTEN_FLESH), RecipeCategory.FOOD, ModItems.FLESH, 0.15F, 100)
+                .unlockedBy("has_rotten_flesh", this.has(Items.ROTTEN_FLESH))
+                .save(this.output, "flesh_from_smoker");
+
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(Items.ROTTEN_FLESH), RecipeCategory.FOOD, ModItems.FLESH, 0.15F, 600)
+                .unlockedBy("has_rotten_flesh", this.has(Items.ROTTEN_FLESH))
+                .save(this.output, "flesh_from_campfire");
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.ROTTEN_FLESH), RecipeCategory.FOOD, ModItems.FLESH, 0.15F, 200)
+                .unlockedBy("has_rotten_flesh", this.has(Items.ROTTEN_FLESH))
+                .save(this.output);
+
         // STONECUTTING
         stonecutterResultFromBase(RecipeCategory.MISC,  ModItems.OBSIDIAN_TOOTH.get(), Blocks.OBSIDIAN,8);
         stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_ROCK_SLAB, ModBlocks.SERPENTINITE_ROCK.get(), 2);
@@ -571,11 +580,11 @@ public class ModRecipeProvider extends RecipeProvider {
         stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_ROCK_WALL, ModBlocks.SERPENTINITE_ROCK.get());
         stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS, ModBlocks.SERPENTINITE_ROCK.get());
         stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_PILLAR, ModBlocks.SERPENTINITE_ROCK.get());
-        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SMOOTH_SERPENTINITE, ModBlocks.SERPENTINITE_ROCK.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.POLISHED_SERPENTINITE, ModBlocks.SERPENTINITE_ROCK.get());
         stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS_SLAB, ModBlocks.SERPENTINITE_BRICKS.get(), 2);
-        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SMOOTH_SERPENTINITE_STAIRS, ModBlocks.SMOOTH_SERPENTINITE.get());
-        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SMOOTH_SERPENTINITE_WALL, ModBlocks.SMOOTH_SERPENTINITE.get());
-        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SMOOTH_SERPENTINITE_SLAB, ModBlocks.SMOOTH_SERPENTINITE.get(), 2);
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.POLISHED_SERPENTINITE_STAIRS, ModBlocks.POLISHED_SERPENTINITE.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.POLISHED_SERPENTINITE_WALL, ModBlocks.POLISHED_SERPENTINITE.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.POLISHED_SERPENTINITE_SLAB, ModBlocks.POLISHED_SERPENTINITE.get(), 2);
         stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS_STAIRS, ModBlocks.SERPENTINITE_BRICKS.get());
         stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS_WALL, ModBlocks.SERPENTINITE_BRICKS.get());
         stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.COBBLED_SERPENTINITE_SLAB, ModBlocks.COBBLED_SERPENTINITE.get(), 2);

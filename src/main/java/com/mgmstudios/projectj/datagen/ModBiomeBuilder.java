@@ -75,7 +75,7 @@ public class ModBiomeBuilder
         builder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 4, 2, 3));
         caveSpawns(builder);
         //monsters(builder, 19, 1, 100, false);
-        builder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModEntities.RUNNER_ENTITY.get(),200, 4, 10));
+        builder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModEntities.RUNNER_ENTITY.get(),80, 4, 4));
     }
 
 }
