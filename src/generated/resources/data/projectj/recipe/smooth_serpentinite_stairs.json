@@ -5,11 +5,12 @@
     "#": "projectj:smooth_serpentinite"
   },
   "pattern": [
-    "##",
-    "##"
+    "#  ",
+    "## ",
+    "###"
   ],
   "result": {
     "count": 4,
-    "id": "projectj:serpentinite_bricks"
+    "id": "projectj:smooth_serpentinite_stairs"
   }
 }

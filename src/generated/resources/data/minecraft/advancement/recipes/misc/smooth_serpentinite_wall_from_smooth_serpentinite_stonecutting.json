@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "projectj:serpentinite_bricks"
+        "recipe": "minecraft:smooth_serpentinite_wall_from_smooth_serpentinite_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "projectj:serpentinite_bricks"
+      "minecraft:smooth_serpentinite_wall_from_smooth_serpentinite_stonecutting"
     ]
   }
 }

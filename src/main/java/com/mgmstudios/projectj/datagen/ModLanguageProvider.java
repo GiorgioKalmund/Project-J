@@ -119,6 +119,11 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.SERPENTINITE_BRICKS_STAIRS, "Serpentinite Brick Stairs");
         addBlock(ModBlocks.SERPENTINITE_BRICKS_WALL, "Serpentinite Brick Wall");
 
+        addBlock(ModBlocks.SMOOTH_SERPENTINITE, "Smooth Serpentinite");
+        addBlock(ModBlocks.SMOOTH_SERPENTINITE_SLAB, "Smooth Serpentinite Slab");
+        addBlock(ModBlocks.SMOOTH_SERPENTINITE_STAIRS, "Smooth Serpentinite Stairs");
+        addBlock(ModBlocks.SMOOTH_SERPENTINITE_WALL, "Smooth Serpentinite Wall");
+
         addBlock(ModBlocks.COBBLED_SERPENTINITE, "Cobbled Serpentinite");
         addBlock(ModBlocks.COBBLED_SERPENTINITE_SLAB, "Cobbled Serpentinite Slab");
         addBlock(ModBlocks.COBBLED_SERPENTINITE_STAIRS, "Cobbled Serpentinite Stairs");

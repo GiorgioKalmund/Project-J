@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "projectj:smooth_serpentinite"
+    "#": "projectj:serpentinite_rock"
   },
   "pattern": [
     "##",
@@ -10,6 +10,6 @@
   ],
   "result": {
     "count": 4,
-    "id": "projectj:serpentinite_bricks"
+    "id": "projectj:smooth_serpentinite"
   }
 }

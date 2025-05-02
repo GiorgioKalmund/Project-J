@@ -80,7 +80,7 @@ public class ModRecipeProvider extends RecipeProvider {
         nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.JADE, RecipeCategory.BUILDING_BLOCKS, ModBlocks.JADE_BLOCK);
 
         ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.JADE.get(), 9)
-                .requires(ModBlocks.JADE_BLOCK.asItem())
+                .requires(ModBlocks.JADE_BLOCK)
                 .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK.get()))
                 .save(this.output);
 
@@ -94,11 +94,18 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_cobblestone", this.has(Items.COBBLESTONE))
                 .save(this.output);
 
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.SERPENTINITE_BRICKS.get(), 4)
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_SERPENTINITE.get(), 4)
                 .pattern("##")
                 .pattern("##")
                 .define('#', ModBlocks.SERPENTINITE_ROCK.get())
                 .unlockedBy("has_serpentinite_rock", this.has(ModBlocks.SERPENTINITE_ROCK.get()))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.SERPENTINITE_BRICKS.get(), 4)
+                .pattern("##")
+                .pattern("##")
+                .define('#', ModBlocks.SMOOTH_SERPENTINITE.get())
+                .unlockedBy("has_smooth_serpentinite", this.has(ModBlocks.SMOOTH_SERPENTINITE.get()))
                 .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.REGENERATION_OLMEC_HEAD.get())
@@ -107,11 +114,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("###")
                 .define('S', Items.SUGAR)
                 .define('A', Items.GOLDEN_APPLE)
-                .define('J', ModBlocks.JADE_BLOCK.asItem())
+                .define('J', ModBlocks.JADE_BLOCK)
                 .define('#', Items.STONE_BRICKS)
                 .unlockedBy("has_sugar", this.has(Items.SUGAR))
                 .unlockedBy("has_golden_apple", this.has(Items.GOLDEN_APPLE))
-                .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK.asItem()))
+                .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK))
                 .unlockedBy("has_stone_bricks", this.has(Items.STONE_BRICKS))
                 .save(this.output);
 
@@ -121,11 +128,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("###")
                 .define('F', Items.ROTTEN_FLESH)
                 .define('S', Items.IRON_SWORD)
-                .define('J', ModBlocks.JADE_BLOCK.asItem())
+                .define('J', ModBlocks.JADE_BLOCK)
                 .define('#', Items.STONE_BRICKS)
                 .unlockedBy("has_rotten_flesh", this.has(Items.ROTTEN_FLESH))
                 .unlockedBy("has_iron_sword", this.has(Items.IRON_SWORD))
-                .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK.asItem()))
+                .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK))
                 .unlockedBy("has_stone_bricks", this.has(Items.STONE_BRICKS))
                 .save(this.output);
 
@@ -135,11 +142,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("###")
                 .define('T', Items.TURTLE_HELMET)
                 .define('O', Items.OBSIDIAN)
-                .define('J', ModBlocks.JADE_BLOCK.asItem())
+                .define('J', ModBlocks.JADE_BLOCK)
                 .define('#', Items.STONE_BRICKS)
                 .unlockedBy("has_turtle_helmet", this.has(Items.TURTLE_HELMET))
                 .unlockedBy("has_obsidian", this.has(Items.OBSIDIAN))
-                .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK.asItem()))
+                .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK))
                 .unlockedBy("has_stone_bricks", this.has(Items.STONE_BRICKS))
                 .save(this.output);
 
@@ -149,19 +156,19 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("###")
                 .define('H', Items.HEART_OF_THE_SEA)
                 .define('S', Items.SPONGE)
-                .define('J', ModBlocks.JADE_BLOCK.asItem())
+                .define('J', ModBlocks.JADE_BLOCK)
                 .define('#', Items.STONE_BRICKS)
                 .unlockedBy("has_heart_of_the_sea", this.has(Items.HEART_OF_THE_SEA))
                 .unlockedBy("has_sponge", this.has(Items.SPONGE))
-                .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK.asItem()))
+                .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK))
                 .unlockedBy("has_stone_bricks", this.has(Items.STONE_BRICKS))
                 .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.COMBAT, ModItems.SERPENTINITE_ROD.get(), 4)
                 .pattern("S")
                 .pattern("S")
-                .define('S', ModBlocks.SERPENTINITE_ROCK.asItem())
-                .unlockedBy("has_serpentinite_block", this.has(ModBlocks.SERPENTINITE_ROCK.asItem()))
+                .define('S', ModBlocks.SERPENTINITE_ROCK)
+                .unlockedBy("has_serpentinite_block", this.has(ModBlocks.SERPENTINITE_ROCK))
                 .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.COMBAT, ModItems.MACUAHUITL.get())
@@ -188,7 +195,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(this.output);
 
 
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.MESQUITE_BRAZIER.asItem())
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.MESQUITE_BRAZIER)
                 .pattern("NSN")
                 .pattern("SCS")
                 .pattern("LLL")
@@ -218,36 +225,36 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("S  ")
                 .define('G', ModItems.PYRITE_INGOT)
                 .define('S', ModItems.SERPENTINITE_ROD.get())
-                .define('R', ModBlocks.SERPENTINITE_ROCK.asItem())
+                .define('R', ModBlocks.SERPENTINITE_ROCK)
                 .unlockedBy("has_serpentinite_rod", this.has(ModItems.SERPENTINITE_ROD.get()))
-                .unlockedBy("has_serpentinite_rock", this.has(ModBlocks.SERPENTINITE_ROCK.asItem()))
+                .unlockedBy("has_serpentinite_rock", this.has(ModBlocks.SERPENTINITE_ROCK))
                 .unlockedBy("has_pyrite_ingot", this.has(ModItems.PYRITE_INGOT))
                 .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.SERPENTINITE_BENCH, 2)
                 .pattern("SPS")
                 .pattern("s s")
-                .define('S', ModBlocks.SERPENTINITE_ROCK.asItem())
-                .define('P', ModBlocks.SERPENTINITE_PILLAR.asItem())
-                .define('s', ModBlocks.SERPENTINITE_ROCK_SLAB.asItem())
-                .unlockedBy("has_serpentinite_rock", this.has(ModBlocks.SERPENTINITE_ROCK.asItem()))
-                .unlockedBy("has_serpentinite_pillar", this.has(ModBlocks.SERPENTINITE_PILLAR.asItem()))
-                .unlockedBy("has_serpentinite_rock_slab", this.has(ModBlocks.SERPENTINITE_ROCK_SLAB.asItem()))
+                .define('S', ModBlocks.SERPENTINITE_ROCK)
+                .define('P', ModBlocks.SERPENTINITE_PILLAR)
+                .define('s', ModBlocks.SERPENTINITE_ROCK_SLAB)
+                .unlockedBy("has_serpentinite_rock", this.has(ModBlocks.SERPENTINITE_ROCK))
+                .unlockedBy("has_serpentinite_pillar", this.has(ModBlocks.SERPENTINITE_PILLAR))
+                .unlockedBy("has_serpentinite_rock_slab", this.has(ModBlocks.SERPENTINITE_ROCK_SLAB))
                 .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.MESQUITE_BENCH, 2)
                 .pattern("PLP")
                 .pattern("s s")
                 .define('L', ModTags.Items.MESQUITE_LOGS)
-                .define('P', ModBlocks.MESQUITE_PLANKS.asItem())
-                .define('s', ModBlocks.MESQUITE_SLAB.asItem())
+                .define('P', ModBlocks.MESQUITE_PLANKS)
+                .define('s', ModBlocks.MESQUITE_SLAB)
                 .unlockedBy("has_mesquite_logs", this.has(ModTags.Items.MESQUITE_LOGS))
-                .unlockedBy("has_mesquite_planks", this.has(ModBlocks.MESQUITE_PLANKS.asItem()))
-                .unlockedBy("has_mesquite_slab", this.has(ModBlocks.MESQUITE_SLAB.asItem()))
+                .unlockedBy("has_mesquite_planks", this.has(ModBlocks.MESQUITE_PLANKS))
+                .unlockedBy("has_mesquite_slab", this.has(ModBlocks.MESQUITE_SLAB))
                 .save(this.output);
 
-        woodFromLogs(ModBlocks.MESQUITE_WOOD.get(), ModBlocks.MESQUITE_LOG.asItem());
-        woodFromLogs(ModBlocks.STRIPPED_MESQUITE_WOOD.get(), ModBlocks.STRIPPED_MESQUITE_LOG.asItem());
+        woodFromLogs(ModBlocks.MESQUITE_WOOD.get(), ModBlocks.MESQUITE_LOG);
+        woodFromLogs(ModBlocks.STRIPPED_MESQUITE_WOOD.get(), ModBlocks.STRIPPED_MESQUITE_LOG);
         planksFromLogs(ModBlocks.MESQUITE_PLANKS, ModTags.Items.MESQUITE_LOGS, 4);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, Items.STICK, 16)
@@ -298,7 +305,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('s', ModBlocks.SERPENTINITE_ROCK_SLAB)
                 .define('R', ModItems.SERPENTINITE_ROD)
                 .unlockedBy("has_pyrite_ingot", this.has(ModItems.PYRITE_INGOT))
-                .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK.asItem()))
+                .unlockedBy("has_jade_block", this.has(ModBlocks.JADE_BLOCK))
                 .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.LITTLE_MAN_VOODOO)
@@ -309,7 +316,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('s', ModBlocks.SERPENTINITE_ROCK_STAIRS)
                 .define('S', ModBlocks.SERPENTINITE_ROCK)
                 .define('W', ModBlocks.SERPENTINITE_ROCK_WALL)
-                .unlockedBy("has_jade", this.has(ModBlocks.JADE_BLOCK.asItem()))
+                .unlockedBy("has_jade", this.has(ModBlocks.JADE_BLOCK))
                 .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.VOODOO_CATCHER)
@@ -328,7 +335,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("###")
                 .define('S', ModBlocks.SERPENTINITE_ROCK)
                 .define('#', ModItems.PYRITE_INGOT)
-                .unlockedBy("has_serpentinite_rock", this.has(ModBlocks.SERPENTINITE_ROCK.asItem()))
+                .unlockedBy("has_serpentinite_rock", this.has(ModBlocks.SERPENTINITE_ROCK))
                 .unlockedBy("has_pyrite_ingot", this.has(ModItems.PYRITE_INGOT))
                 .save(this.output);
 
@@ -338,7 +345,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("###")
                 .define('S', ModBlocks.SERPENTINITE_ROCK)
                 .define('#', ModItems.JADE)
-                .unlockedBy("has_serpentinite_rock", this.has(ModBlocks.SERPENTINITE_ROCK.asItem()))
+                .unlockedBy("has_serpentinite_rock", this.has(ModBlocks.SERPENTINITE_ROCK))
                 .unlockedBy("has_jade", this.has(ModItems.JADE))
                 .save(this.output);
 
@@ -535,7 +542,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         0.1f,
                         200
                 )
-                .unlockedBy("has_raw_adobe", this.has(ModBlocks.PACKED_ADOBE.asItem()))
+                .unlockedBy("has_raw_adobe", this.has(ModBlocks.PACKED_ADOBE))
                 .save(this.output, "adobe_bricks_smelting");
 
         SimpleCookingRecipeBuilder.smelting(
@@ -549,30 +556,34 @@ public class ModRecipeProvider extends RecipeProvider {
 
         oreSmelting(PYRITE_SMELTABLES, RecipeCategory.MISC, ModItems.PYRITE_INGOT, 0.15F, 200, "pyrite");
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.RAW_PYRITE_BLOCK), RecipeCategory.MISC, ModBlocks.PYRITE_BLOCK.asItem(), 0.15F, 200)
-                .unlockedBy("has_raw_pyrite_block", this.has(ModBlocks.RAW_PYRITE_BLOCK.asItem()))
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.RAW_PYRITE_BLOCK), RecipeCategory.MISC, ModBlocks.PYRITE_BLOCK, 0.15F, 200)
+                .unlockedBy("has_raw_pyrite_block", this.has(ModBlocks.RAW_PYRITE_BLOCK))
                 .save(this.output, "pyrite_block_from_raw_pyrite_block");
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.COBBLED_SERPENTINITE.get()), RecipeCategory.MISC, ModBlocks.SERPENTINITE_ROCK.asItem(), 0.15F, 200)
-                .unlockedBy("has_cobbled_serpentinite", this.has(ModBlocks.COBBLED_SERPENTINITE.asItem()))
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.COBBLED_SERPENTINITE.get()), RecipeCategory.MISC, ModBlocks.SERPENTINITE_ROCK, 0.15F, 200)
+                .unlockedBy("has_cobbled_serpentinite", this.has(ModBlocks.COBBLED_SERPENTINITE))
                 .save(this.output, "cobbled_serpentinite_smelting");
 
         // STONECUTTING
         stonecutterResultFromBase(RecipeCategory.MISC,  ModItems.OBSIDIAN_TOOTH.get(), Blocks.OBSIDIAN,8);
-        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_ROCK_SLAB.asItem(), ModBlocks.SERPENTINITE_ROCK.get(), 2);
-        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_ROCK_STAIRS.asItem(), ModBlocks.SERPENTINITE_ROCK.get());
-        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_ROCK_WALL.asItem(), ModBlocks.SERPENTINITE_ROCK.get());
-        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS.asItem(), ModBlocks.SERPENTINITE_ROCK.get());
-        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_PILLAR.asItem(), ModBlocks.SERPENTINITE_ROCK.get());
-        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS_SLAB.asItem(), ModBlocks.SERPENTINITE_BRICKS.get(), 2);
-        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS_STAIRS.asItem(), ModBlocks.SERPENTINITE_BRICKS.get());
-        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS_WALL.asItem(), ModBlocks.SERPENTINITE_BRICKS.get());
-        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.COBBLED_SERPENTINITE_SLAB.asItem(), ModBlocks.COBBLED_SERPENTINITE.get(), 2);
-        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.COBBLED_SERPENTINITE_STAIRS.asItem(), ModBlocks.COBBLED_SERPENTINITE.get());
-        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.COBBLED_SERPENTINITE_WALL.asItem(), ModBlocks.COBBLED_SERPENTINITE.get());
-        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.ADOBE_BRICKS_SLAB.asItem(), ModBlocks.ADOBE_BRICKS.get(), 2);
-        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.ADOBE_BRICKS_STAIRS.asItem(), ModBlocks.ADOBE_BRICKS.get());
-        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.ADOBE_BRICKS_WALL.asItem(), ModBlocks.ADOBE_BRICKS.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_ROCK_SLAB, ModBlocks.SERPENTINITE_ROCK.get(), 2);
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_ROCK_STAIRS, ModBlocks.SERPENTINITE_ROCK.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_ROCK_WALL, ModBlocks.SERPENTINITE_ROCK.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS, ModBlocks.SERPENTINITE_ROCK.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_PILLAR, ModBlocks.SERPENTINITE_ROCK.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SMOOTH_SERPENTINITE, ModBlocks.SERPENTINITE_ROCK.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS_SLAB, ModBlocks.SERPENTINITE_BRICKS.get(), 2);
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SMOOTH_SERPENTINITE_STAIRS, ModBlocks.SMOOTH_SERPENTINITE.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SMOOTH_SERPENTINITE_WALL, ModBlocks.SMOOTH_SERPENTINITE.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SMOOTH_SERPENTINITE_SLAB, ModBlocks.SMOOTH_SERPENTINITE.get(), 2);
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS_STAIRS, ModBlocks.SERPENTINITE_BRICKS.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.SERPENTINITE_BRICKS_WALL, ModBlocks.SERPENTINITE_BRICKS.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.COBBLED_SERPENTINITE_SLAB, ModBlocks.COBBLED_SERPENTINITE.get(), 2);
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.COBBLED_SERPENTINITE_STAIRS, ModBlocks.COBBLED_SERPENTINITE.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.COBBLED_SERPENTINITE_WALL, ModBlocks.COBBLED_SERPENTINITE.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.ADOBE_BRICKS_SLAB, ModBlocks.ADOBE_BRICKS.get(), 2);
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.ADOBE_BRICKS_STAIRS, ModBlocks.ADOBE_BRICKS.get());
+        stonecutterResultFromBase(RecipeCategory.MISC, ModBlocks.ADOBE_BRICKS_WALL, ModBlocks.ADOBE_BRICKS.get());
     }
 
     public static void buildMagnifyingGlassRecipes(){

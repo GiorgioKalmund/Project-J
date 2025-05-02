@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "projectj:serpentinite_bricks"
+        "recipe": "projectj:smooth_serpentinite_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "projectj:serpentinite_bricks"
+      "projectj:smooth_serpentinite_slab"
     ]
   }
 }

@@ -20,6 +20,7 @@ public class ModBlockFamilies {
 
     public static BlockFamily SERPENTINITE_ROCK;
     public static BlockFamily SERPENTINITE_BRICKS;
+    public static BlockFamily SMOOTH_SERPENTINITE;
     public static BlockFamily COBBLED_SERPENTINITE;
     public static BlockFamily ADOBE_BRICKS;
     public static BlockFamily MESQUITE_PLANKS;
@@ -58,6 +59,12 @@ public class ModBlockFamilies {
                     .stairs(ModBlocks.SERPENTINITE_BRICKS_STAIRS.get())
                     .slab(ModBlocks.SERPENTINITE_BRICKS_SLAB.get())
                     .wall(ModBlocks.SERPENTINITE_BRICKS_WALL.get())
+                    .getFamily();
+
+            SMOOTH_SERPENTINITE = familyBuilder(ModBlocks.SMOOTH_SERPENTINITE.get())
+                    .stairs(ModBlocks.SMOOTH_SERPENTINITE_STAIRS.get())
+                    .slab(ModBlocks.SMOOTH_SERPENTINITE_SLAB.get())
+                    .wall(ModBlocks.SMOOTH_SERPENTINITE_WALL.get())
                     .getFamily();
 
             COBBLED_SERPENTINITE = familyBuilder(ModBlocks.COBBLED_SERPENTINITE.get())
