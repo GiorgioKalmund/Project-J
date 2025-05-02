@@ -1,14 +1,19 @@
 package com.mgmstudios.projectj.entity.events;
 
 import com.mgmstudios.projectj.ProjectJ;
+import com.mgmstudios.projectj.datagen.ModRecipeProvider;
 import com.mgmstudios.projectj.entity.ModEntities;
 import com.mgmstudios.projectj.entity.client.canoe.CanoeModel;
 import com.mgmstudios.projectj.entity.client.little_king.LittleKingModel;
 import com.mgmstudios.projectj.entity.client.little_man.LittleManModel;
 import com.mgmstudios.projectj.entity.client.quetzal.QuetzalModel;
+import com.mgmstudios.projectj.entity.client.runner.RunnerRenderer;
 import com.mgmstudios.projectj.entity.custom.LittleKingEntity;
 import com.mgmstudios.projectj.entity.custom.LittleManEntity;
 import com.mgmstudios.projectj.entity.custom.QuetzalEntity;
+import com.mgmstudios.projectj.entity.custom.RunnerEntity;
+import net.minecraft.client.model.ZombieModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
@@ -30,5 +35,6 @@ public class ModEventBusEvents {
         event.put(ModEntities.LITTLE_MAN_ENTITY.get(), LittleManEntity.createAttributes().build());
         event.put(ModEntities.LITTLE_KING_ENTITY.get(), LittleKingEntity.createAttributes().build());
         event.put(ModEntities.QUETZAL_ENTITY.get(), QuetzalEntity.createAttributes().build());
+        event.put(ModEntities.RUNNER_ENTITY.get(), RunnerEntity.createAttributes().build());
     }
 }

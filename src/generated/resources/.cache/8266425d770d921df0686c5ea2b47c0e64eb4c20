@@ -1,4 +1,4 @@
-// 1.21.4	2025-05-02T09:59:51.61138	Model Definitions - projectj
+// 1.21.4	2025-05-02T11:19:13.251643	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -156,6 +156,7 @@ d6de33ec78e5dadcec27d4788d16fe3137d1662b assets/projectj/items/quetzal_spawn_egg
 d19ac3fb4aac4dd12829332ad30062bd41d7d044 assets/projectj/items/raw_pyrite_block.json
 b1ef94aa64918217023c7e7dd8747433a3cd1827 assets/projectj/items/regeneration_olmec_head.json
 20e7e68da680c45787b4e50294ded1baf3b678ba assets/projectj/items/resistant_olmec_head.json
+e4d27829bfbf7c280195300b0cc615b02e2fe5fa assets/projectj/items/runner_spawn_egg.json
 c8bc8ca7b8d75aa6d72cbfa60aefcdf7613ba7ec assets/projectj/items/sacrificial_dagger.json
 477fe7d92b86a2a83eebe1ec624a303d2c979ac3 assets/projectj/items/serpentinite_bench.json
 440fe637759186a4e6768a16a971bb31c351c397 assets/projectj/items/serpentinite_bench_corner.json
@@ -374,6 +375,7 @@ f26183b0a5ddea46470c024f7ffccc269b5e0d0a assets/projectj/models/item/quetzal_egg
 00692d7e6ab7f4e30dec438ea1b87f94643578a1 assets/projectj/models/item/quetzal_spawn_egg.json
 ba637adad06995f9e8f952ca598514c60ce4cfbb assets/projectj/models/item/raw_jade.json
 dea83879f7224ce8e5006eb343d4d8bf63b2fd25 assets/projectj/models/item/raw_pyrite.json
+f8377a982ff47362dcb725ec7496dd9cde89cf44 assets/projectj/models/item/runner_spawn_egg.json
 caa4448fff1934cc38f77c2a2f2dd6853ae4515d assets/projectj/models/item/sacrificial_dagger.json
 5b67a9f9fadc07b35191c8a244b0bfc16303c30f assets/projectj/models/item/serpentinite_rod.json
 e3a7718100f03f474faebbe4da0624f70911b4f5 assets/projectj/models/item/stone_mano.json

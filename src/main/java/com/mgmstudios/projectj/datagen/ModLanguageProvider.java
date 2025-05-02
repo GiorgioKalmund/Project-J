@@ -71,6 +71,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.TELEPORTATION_CORE, "Teleportation Core");
         addItem(ModItems.DEATH_WHISTLE, "Death Whistle");
         addItem(ModItems.HATCHET, "Hatchet");
+        addItem(ModItems.RUNNER_SPAWN_EGG, "Runner Spawn Egg");
 
         // Blocks
         addBlock(ModBlocks.PACKED_ADOBE, "Packed Adobe");
@@ -177,6 +178,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addEntity(ModEntities.LITTLE_MAN_ENTITY.get(), "Little Man");
         addEntity(ModEntities.LITTLE_KING_ENTITY.get(), "Little King");
         addEntity(ModEntities.QUETZAL_ENTITY.get(), "Quetzal");
+        addEntity(ModEntities.RUNNER_ENTITY.get(), "Runner");
 
         // Advancements
         addAdvancementStoryTitle("root", "Project J");

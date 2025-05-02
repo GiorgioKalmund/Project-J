@@ -2,12 +2,15 @@ package com.mgmstudios.projectj.datagen;
 
 import javax.annotation.Nullable;
 
+import com.mgmstudios.projectj.entity.ModEntities;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.sounds.Music;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.AmbientMoodSettings;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
@@ -15,6 +18,9 @@ import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+
+import static net.minecraft.data.worldgen.BiomeDefaultFeatures.caveSpawns;
+import static net.minecraft.data.worldgen.BiomeDefaultFeatures.monsters;
 
 public class ModBiomeBuilder
 {
@@ -50,7 +56,7 @@ public class ModBiomeBuilder
 
     public static Biome adobeDesert(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
         MobSpawnSettings.Builder spawnBuider = new MobSpawnSettings.Builder();
-        BiomeDefaultFeatures.desertSpawns(spawnBuider);
+        adobeDesertSpawns(spawnBuider);
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
         BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
         globalOverworldGeneration(biomeBuilder);
@@ -63,6 +69,13 @@ public class ModBiomeBuilder
         BiomeDefaultFeatures.addDesertExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addDesertExtraDecoration(biomeBuilder);
         return biome(Biome.Precipitation.NONE, 2.0F, 0.0F, spawnBuider, biomeBuilder, Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DESERT));
+    }
+
+    public static void adobeDesertSpawns(MobSpawnSettings.Builder builder) {
+        builder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 4, 2, 3));
+        caveSpawns(builder);
+        //monsters(builder, 19, 1, 100, false);
+        builder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModEntities.RUNNER_ENTITY.get(),200, 4, 10));
     }
 
 }

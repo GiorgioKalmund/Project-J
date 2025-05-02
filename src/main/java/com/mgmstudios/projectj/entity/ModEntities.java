@@ -45,6 +45,17 @@ public class ModEntities {
                     builder -> builder.noLootTable().sized(0.5F, 0.5F).eyeHeight(0.13F).clientTrackingRange(4).updateInterval(20)
             );
 
+    public static final Supplier<EntityType<RunnerEntity>> RUNNER_ENTITY=
+            ENTITY_TYPES.registerEntityType("runner",
+                    RunnerEntity::new, MobCategory.MONSTER,
+                    builder -> builder
+                            .sized(0.6F, 1.95F)
+                            .eyeHeight(1.74F)
+                            .passengerAttachments(2.075F)
+                            .ridingOffset(-0.7F)
+                            .clientTrackingRange(8)
+            );
+
     public static final Supplier<EntityType<Canoe>> CANOE_ENTITY_3 =
             ENTITY_TYPES.registerEntityType("canoe_entity_3",
                     (type, level) -> new Canoe(3, level, Blocks.STRIPPED_SPRUCE_LOG::asItem), MobCategory.MISC,

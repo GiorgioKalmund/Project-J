@@ -13,6 +13,8 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.EnchantedCountIncreaseFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.functions.SmeltItemFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemKilledByPlayerCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWithEnchantedBonusCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
@@ -35,6 +37,28 @@ public class ModEntityLootSubProvider extends EntityLootSubProvider {
         add(ModEntities.SITTABLE_ENTITY.get(), LootTable.lootTable());
         add(ModEntities.LITTLE_MAN_ENTITY.get(), LootTable.lootTable());
         add(ModEntities.QUETZAL_ENTITY.get(), LootTable.lootTable());
+        this.add(
+                ModEntities.RUNNER_ENTITY.get(),
+                LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(Items.ROTTEN_FLESH)
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
+                                        )
+                        )
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(LootItem.lootTableItem(Items.IRON_INGOT))
+                                        .add(LootItem.lootTableItem(Items.CARROT))
+                                        .add(LootItem.lootTableItem(Items.POTATO).apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot())))
+                                        .when(LootItemKilledByPlayerCondition.killedByPlayer())
+                                        .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(this.registries, 0.025F, 0.01F))
+                        )
+        );
 
         add(
                 ModEntities.LITTLE_KING_ENTITY.get(),

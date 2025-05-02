@@ -118,6 +118,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.QUEST_BOOK.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.TELEPORTATION_CORE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.OBSIDIAN_ARROW.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.RUNNER_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
 
         itemModels.generateFlatItem(ModItems.SUN_ARMOR_HELMET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.SUN_ARMOR_CHESTPLATE.get(), ModelTemplates.FLAT_ITEM);

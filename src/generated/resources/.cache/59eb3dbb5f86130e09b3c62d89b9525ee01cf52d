@@ -1,4 +1,4 @@
-// 1.21.4	2025-05-02T09:59:51.613172	Loot Tables
+// 1.21.4	2025-05-02T11:10:58.354911	Loot Tables
 645e23f8676b8f0e4d797aeab743aa1e3606c703 data/projectj/loot_table/blocks/adobe_bricks.json
 c52a58507f4c8bc3dcdd97ef286a063d396844cc data/projectj/loot_table/blocks/adobe_bricks_slab.json
 c80294a187a6c6c06ea794e6c6d418870c792578 data/projectj/loot_table/blocks/adobe_bricks_stairs.json
@@ -76,6 +76,7 @@ bd077cf80dbae118e0c5b8fdfd8c4400d65363fc data/projectj/loot_table/blocks/tinted_
 51bb4e83edc71ba12e68eb13344934948506d89c data/projectj/loot_table/entities/little_king.json
 c92c9a850872c8a14d8bc134c22a3e8d8cdeb187 data/projectj/loot_table/entities/little_man.json
 254dbe3813fff17804939396a915c586c5eaa95d data/projectj/loot_table/entities/quetzal.json
+e45b4aead791213b89f54c36d0fdbd9cdab561e4 data/projectj/loot_table/entities/runner.json
 151554d16a9f75a979147557c733d52fc07ca1b8 data/projectj/loot_table/entities/sittable_entity.json
 bdc54eead63600284a9cadbb789bc9cd8ba56abf data/projectj/loot_table/grant_quest_book.json
 e21af4d3b95b7668160bf1ba9f7279697406b89c data/projectj/loot_table/quetzal_lay.json

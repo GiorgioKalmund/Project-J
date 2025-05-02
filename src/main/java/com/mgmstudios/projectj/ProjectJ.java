@@ -1,5 +1,7 @@
 package com.mgmstudios.projectj;
 
+import com.mgmstudios.projectj.entity.client.runner.RunnerRenderer;
+import com.mgmstudios.projectj.entity.custom.RunnerEntity;
 import com.mgmstudios.projectj.particle.ModParticles;
 import com.mgmstudios.projectj.particle.TeleportationParticles;
 import com.mgmstudios.projectj.worldgen.*;
@@ -143,6 +145,7 @@ public class ProjectJ
             EntityRenderers.register(ModEntities.SITTABLE_ENTITY.get(), SittableEntityRenderer::new);
             EntityRenderers.register(ModEntities.LITTLE_MAN_ENTITY.get(), LittleManRenderer::new);
             EntityRenderers.register(ModEntities.LITTLE_KING_ENTITY.get(), LittleKingRenderer::new);
+            EntityRenderers.register(ModEntities.RUNNER_ENTITY.get(), RunnerRenderer::new);
             EntityRenderers.register(ModEntities.QUETZAL_ENTITY.get(), QuetzalRenderer::new);
             EntityRenderers.register(ModEntities.OBSIDIAN_ARROW_ENTITY.get(), ObsidianArrowRenderer::new);
             EntityRenderers.register(ModEntities.CANOE_ENTITY_3.get(), context -> new CanoeRenderer(context, CanoeModel.LAYER_LOCATION));

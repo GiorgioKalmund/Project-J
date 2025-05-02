@@ -132,6 +132,8 @@ public class ModItems {
 
     public static final DeferredItem<Item> HATCHET = register("hatchet", (properties) -> new HatchetItem(ToolMaterial.IRON, 6, -3.1F, properties));
 
+    public static final DeferredItem<Item> RUNNER_SPAWN_EGG = register("runner_spawn_egg", (properties) -> new SpawnEggItem(ModEntities.RUNNER_ENTITY.get(), properties));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
