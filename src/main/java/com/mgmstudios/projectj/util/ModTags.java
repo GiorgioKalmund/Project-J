@@ -9,6 +9,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.material.Fluid;
 
 public class ModTags {
@@ -40,6 +41,14 @@ public class ModTags {
 
         private static TagKey<Fluid> createTag(String name) {
             return TagKey.create(Registries.FLUID, ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, name));
+        }
+    }
+
+    public static class Structures{
+        public static final TagKey<Structure> SERPENTINITE_CLUMP = createTag("serpentinite_clump");
+
+        private static TagKey<Structure> createTag(String name) {
+            return TagKey.create(Registries.STRUCTURE, ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, name));
         }
     }
 
