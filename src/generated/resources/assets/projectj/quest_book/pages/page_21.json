@@ -1,19 +1,16 @@
 {
   "images": [
     {
-      "type": "regular",
-      "image": ":armor_chapter"
+      "image": "projectj:runner_spawn_egg",
+      "show-border": true
     }
   ],
-  "page-shortcut": "armor",
-  "show-page-msg": false,
   "template": {
-    "chapter-title": "§f§o§lArmor§r",
-    "name": "chapter-cover"
+    "name": "item-showcase"
   },
   "text": {
-    "align-center": true,
-    "content": "§f§oLooking shiny out there. Keep it up!§r",
-    "show-title": false
+    "align-center": false,
+    "content": "§nRunner§r\n\nThis Adobe Desert version of the Zombie is a bit faster than his brothers. I would also not touch him or you'll be wobbling for a while.",
+    "show-title": true
   }
 }

@@ -1,19 +1,16 @@
 {
   "images": [
     {
-      "type": "regular",
-      "image": ":teleportation"
+      "image": "projectj:little_king_voodoo",
+      "show-border": true
     }
   ],
-  "page-shortcut": "teleportation",
-  "show-page-msg": false,
   "template": {
-    "chapter-title": "§f§o§lTeleportation§r",
-    "name": "chapter-cover"
+    "name": "item-showcase"
   },
   "text": {
-    "align-center": true,
-    "content": "§f§oSwoosh!§r",
-    "show-title": false
+    "align-center": false,
+    "content": "§nLittle King§r\n\nThe Little King Voodoo looks nice in your offhand. However, you might manage to find the him roaming around in the Adobe Desert!",
+    "show-title": true
   }
 }

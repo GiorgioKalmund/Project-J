@@ -1,19 +1,21 @@
 {
   "images": [
     {
-      "type": "regular",
-      "image": ":voodoo_chapter"
+      "image": "projectj:pyrite_magnet",
+      "show-border": true
+    },
+    {
+      "image": "projectj:jade_magnet",
+      "show-border": true
     }
   ],
-  "page-shortcut": "voodoo",
-  "show-page-msg": false,
   "template": {
-    "chapter-title": "§f§o§lVoodoo§r",
-    "name": "chapter-cover"
+    "name": "item-list",
+    "spacing": 30
   },
   "text": {
-    "align-center": true,
-    "content": "§f§oIs it a totem? Is it a plane? No! It's a retextured totem.§r",
-    "show-title": false
+    "align-center": false,
+    "content": "§nMagnets§r\n\nMagnets are harness the magnetism to attract nearby items. §oTheir materials determine their radius and strength§r",
+    "show-title": true
   }
 }

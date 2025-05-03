@@ -1,15 +1,17 @@
 {
   "images": [
     {
-      "image": "projectj:sun_armor_leggings"
+      "image": "projectj:sun_armor_chestplate"
     },
     {
       "count": 3,
       "image": "projectj:quetzal_feather"
     },
     {
-      "count": 2,
-      "image": "minecraft:magma_cream"
+      "image": "minecraft:netherite_ingot"
+    },
+    {
+      "image": "minecraft:elytra"
     },
     {
       "image": "projectj:liquid_pyrite_bucket"
@@ -25,7 +27,7 @@
     "name": "recipe-list",
     "secondary-images": [
       {
-        "image": "projectj:awakened_sun_armor_leggings",
+        "image": "projectj:awakened_sun_armor_chestplate",
         "show-border": true
       },
       {
@@ -36,7 +38,7 @@
   },
   "text": {
     "align-center": false,
-    "content": "§nAwakened Sun Leggings§r\n\nShiny legs you got there!",
+    "content": "§nAwakened Sun Chestplate§r\n\nYou look hot.",
     "show-title": false
   }
 }

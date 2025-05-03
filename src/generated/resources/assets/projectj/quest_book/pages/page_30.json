@@ -1,20 +1,13 @@
 {
   "images": [
     {
-      "count": 4,
-      "image": "projectj:obsidian_tooth"
-    },
-    {
-      "image": "minecraft:stick"
-    },
-    {
-      "image": "projectj:serpentinite_rod"
-    },
-    {
-      "image": "projectj:jade"
+      "image": "minecraft:shield"
     },
     {
       "image": "projectj:liquid_pyrite_bucket"
+    },
+    {
+      "image": "projectj:filled_crude_sacrifice_bowl"
     }
   ],
   "page-msg": {
@@ -24,18 +17,18 @@
     "name": "recipe-list",
     "secondary-images": [
       {
-        "image": "projectj:macuahuitl",
+        "image": "projectj:chimalli_shield",
         "show-border": true
       },
       {
         "image": "projectj:ancient_altar"
       }
     ],
-    "spacing": 20
+    "spacing": 30
   },
   "text": {
     "align-center": false,
-    "content": "§nMacuahuitl§r\n\nStrong weapon which can handle almost every type of block.",
+    "content": "§nChīmalli§r\n\nPowerful shield capable of blocking projectiles and hits.",
     "show-title": true
   }
 }

@@ -1,31 +1,15 @@
 {
   "images": [
     {
-      "image": "projectj:liquid_pyrite_bucket"
-    },
-    {
-      "image": "minecraft:bowl"
+      "image": "projectj:sacrificial_dagger"
     }
   ],
-  "page-msg": {
-    "message": "in:    "
-  },
   "template": {
-    "name": "recipe-list",
-    "secondary-images": [
-      {
-        "image": "projectj:crude_sacrifice_bowl",
-        "show-border": true
-      },
-      {
-        "image": "projectj:ancient_altar"
-      }
-    ],
-    "spacing": 30
+    "name": "item-showcase"
   },
   "text": {
     "align-center": false,
-    "content": "§nCrude Sacrificial Bowl§r\n\nThe Basis of many more things. Allows you to fill it with a bloody sacrifice when standing close to an ancient altar.",
+    "content": "§nSacrificial Dagger§r\n\nThis holy dagger is used to activate every Ancient Altar recipe. Right click the altar to start a valid recipe, or right click the air to perform a self sacrifice.",
     "show-title": true
   }
 }

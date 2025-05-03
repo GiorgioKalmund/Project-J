@@ -1,16 +1,16 @@
 {
   "images": [
     {
-      "image": "projectj:awakened_sun_armor_leggings"
+      "image": "projectj:sun_armor_leggings"
     },
     {
-      "image": "projectj:awakened_sun_armor_chestplate"
+      "image": "projectj:sun_armor_chestplate"
     },
     {
-      "image": "projectj:awakened_sun_armor_boots"
+      "image": "projectj:sun_armor_boots"
     },
     {
-      "image": "projectj:awakened_sun_armor_helmet"
+      "image": "projectj:sun_armor_helmet"
     }
   ],
   "template": {
@@ -19,7 +19,7 @@
   },
   "text": {
     "align-center": false,
-    "content": "§nAwakened Sun Armor§r\n\nForged using the power of the Nether and End, the Awakened Sun Armor applies its full effect when worn as a full set. Crafted in the Ancient Altar.",
+    "content": "§nSun Armor§r\n\nSun Armor is crafted using §6Pyrite§r and although very tough and resistant, similar to it's fancier counterpart, it is very brittle.",
     "show-title": true
   }
 }

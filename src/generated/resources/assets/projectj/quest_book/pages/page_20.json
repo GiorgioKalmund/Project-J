@@ -1,16 +1,19 @@
 {
   "images": [
     {
-      "image": "projectj:runner_spawn_egg",
-      "show-border": true
+      "type": "regular",
+      "image": ":mobs_chapter"
     }
   ],
+  "page-shortcut": "mobs",
+  "show-page-msg": false,
   "template": {
-    "name": "item-showcase"
+    "chapter-title": "§f§o§lMobs & Entities§r",
+    "name": "chapter-cover"
   },
   "text": {
-    "align-center": false,
-    "content": "§nRunner§r\n\nThis Adobe Desert version of the Zombie is a bit faster than his brothers. I would also not touch him or you'll be wobbling for a while.",
-    "show-title": true
+    "align-center": true,
+    "content": "§f§oGrrrrrr...Huh?§r",
+    "show-title": false
   }
 }

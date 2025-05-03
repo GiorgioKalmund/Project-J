@@ -205,7 +205,7 @@ public class QuestBookPageProvider implements DataProvider {
                 .addImage(new QuestBookImage(ModItems.MAIZE_SEEDS))
                 .addImage(new QuestBookImage(ModItems.CHILI_SEEDS))
                 .addImage(new QuestBookImage(ModItems.MAIZE))
-                .setText("§nMaize & Chili§r\n\nTwo new yummy crops. But be careful when eating to much chili, it might hurt your stomach!", true)
+                .setText("§nMaize & Chili§r\n\nTwo new yummy crops. But be careful when eating to much chili, it might hurt your stomach! Can be found when trading with the Little King.", true)
                 .save(pages);
 
         Builder.create()
@@ -214,6 +214,12 @@ public class QuestBookPageProvider implements DataProvider {
                 .addImage(new QuestBookImage(ModItems.CHILI_CON_CARNE))
                 .addImage(new QuestBookImage(ModItems.MAIZE_MASH))
                 .setText("§nBowls§r\n\nClassic aztec meals. The maize mash is very simple, yet nutritious recipe. Chili con carne might even be more popular today then during the Aztec's times.", true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_SHOWCASE)
+                .addImage(new QuestBookImage(ModBlocks.METATE, true))
+                .setText("§nMetate and Mano§r\n\nThis primitive pestle and mortar variant allows you to grind down any crop into its seeds.", true)
                 .save(pages);
 
         // CHAPTER:Mobs

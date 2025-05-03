@@ -1,21 +1,19 @@
 {
   "images": [
     {
-      "image": "projectj:pyrite_magnet",
-      "show-border": true
-    },
-    {
-      "image": "projectj:jade_magnet",
-      "show-border": true
+      "type": "regular",
+      "image": ":magnets_chapter"
     }
   ],
+  "page-shortcut": "magnets",
+  "show-page-msg": false,
   "template": {
-    "name": "item-list",
-    "spacing": 30
+    "chapter-title": "§f§o§lMagnets§r",
+    "name": "chapter-cover"
   },
   "text": {
-    "align-center": false,
-    "content": "§nMagnets§r\n\nMagnets are harness the magnetism to attract nearby items. §oTheir materials determine their radius and strength§r",
-    "show-title": true
+    "align-center": true,
+    "content": "§f§oOur connection seems to get stronger ;)§r",
+    "show-title": false
   }
 }

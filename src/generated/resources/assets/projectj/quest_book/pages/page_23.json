@@ -1,16 +1,16 @@
 {
   "images": [
     {
-      "image": "projectj:sun_armor_leggings"
+      "image": "projectj:jade_leggings"
     },
     {
-      "image": "projectj:sun_armor_chestplate"
+      "image": "projectj:jade_chestplate"
     },
     {
-      "image": "projectj:sun_armor_boots"
+      "image": "projectj:jade_boots"
     },
     {
-      "image": "projectj:sun_armor_helmet"
+      "image": "projectj:jade_helmet"
     }
   ],
   "template": {
@@ -19,7 +19,7 @@
   },
   "text": {
     "align-center": false,
-    "content": "§nSun Armor§r\n\nSun Armor is crafted using §6Pyrite§r and although very tough and resistant, similar to it's fancier counterpart, it is very brittle.",
+    "content": "§nJade Armor§r\n\nJade Armor is crafted using §aJade§r. That's it for now :)",
     "show-title": true
   }
 }

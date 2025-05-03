@@ -1,25 +1,19 @@
 {
   "images": [
     {
-      "image": "projectj:jade_leggings"
-    },
-    {
-      "image": "projectj:jade_chestplate"
-    },
-    {
-      "image": "projectj:jade_boots"
-    },
-    {
-      "image": "projectj:jade_helmet"
+      "type": "regular",
+      "image": ":armor_chapter"
     }
   ],
+  "page-shortcut": "armor",
+  "show-page-msg": false,
   "template": {
-    "name": "item-list",
-    "spacing": 20
+    "chapter-title": "§f§o§lArmor§r",
+    "name": "chapter-cover"
   },
   "text": {
-    "align-center": false,
-    "content": "§nJade Armor§r\n\nJade Armor is crafted using §aJade§r. That's it for now :)",
-    "show-title": true
+    "align-center": true,
+    "content": "§f§oLooking shiny out there. Keep it up!§r",
+    "show-title": false
   }
 }

@@ -1,15 +1,19 @@
 {
   "images": [
     {
-      "image": "projectj:sacrificial_dagger"
+      "type": "regular",
+      "image": ":ancient_altar_recipes"
     }
   ],
+  "page-shortcut": "ancient-altar",
+  "show-page-msg": false,
   "template": {
-    "name": "item-showcase"
+    "chapter-title": "§f§o§lAncient Altar & Crafting§r",
+    "name": "chapter-cover"
   },
   "text": {
-    "align-center": false,
-    "content": "§nSacrificial Dagger§r\n\nThis holy dagger is used to activate every Ancient Altar recipe. Right click the altar to start a valid recipe, or right click the air to perform a self sacrifice.",
-    "show-title": true
+    "align-center": true,
+    "content": "§f§oPowerful sacrifices using Blood and Pyrite§r",
+    "show-title": false
   }
 }
