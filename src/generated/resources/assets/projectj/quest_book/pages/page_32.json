@@ -1,16 +1,41 @@
 {
   "images": [
     {
-      "image": "projectj:little_man_voodoo",
-      "show-border": true
+      "image": "projectj:sun_armor_helmet"
+    },
+    {
+      "count": 2,
+      "image": "projectj:quetzal_feather"
+    },
+    {
+      "image": "minecraft:fermented_spider_eye"
+    },
+    {
+      "image": "projectj:liquid_pyrite_bucket"
+    },
+    {
+      "image": "projectj:filled_crude_sacrifice_bowl"
     }
   ],
+  "page-msg": {
+    "message": "in:    "
+  },
   "template": {
-    "name": "item-list"
+    "name": "recipe-list",
+    "secondary-images": [
+      {
+        "image": "projectj:awakened_sun_armor_helmet",
+        "show-border": true
+      },
+      {
+        "image": "projectj:ancient_altar"
+      }
+    ],
+    "spacing": 20
   },
   "text": {
     "align-center": false,
-    "content": "§nLittle Man§r\nThe Little Man Voodoo is a power totem which can be crafted. It pacifies zombies around you. Putting it onto a empty statue block, it can permanently scare away those pesky zomberts!",
+    "content": "§nAwakened Sun Crown§r\n\nYour hair might catch on fire when wearing.",
     "show-title": true
   }
 }

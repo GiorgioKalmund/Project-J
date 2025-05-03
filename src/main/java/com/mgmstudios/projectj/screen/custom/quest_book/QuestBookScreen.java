@@ -578,12 +578,14 @@ public class QuestBookScreen extends Screen {
         public static QuestBookImage PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("process"), false, Type.REGULAR, ":process");
         public static QuestBookImage ADOBE_LIT_PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("adobe_lit_process"), false, Type.REGULAR, ":adobe_lit_process");
         public static QuestBookImage LIT_PROCESS_IMAGE = new QuestBookImage(questBookStoredImage("lit_process"), false, Type.REGULAR, ":lit_process");
-        public static QuestBookImage CHAPTER_1_IMAGE = new QuestBookImage(questBookStoredImage("chapter_1", "chapters/"), false, Type.REGULAR, ":chapter_1");
-        public static QuestBookImage CHAPTER_2_IMAGE = new QuestBookImage(questBookStoredImage("chapter_2", "chapters/"), false, Type.REGULAR, ":chapter_2");
+        public static QuestBookImage BASICS_CHAPTER = new QuestBookImage(questBookStoredImage("chapter_1", "chapters/"), false, Type.REGULAR, ":basics");
+        public static QuestBookImage TELEPORTATION_CHAPTER = new QuestBookImage(questBookStoredImage("chapter_2", "chapters/"), false, Type.REGULAR, ":teleportation");
         public static QuestBookImage ANCIENT_ALTAR_RECIPES_CHAPTER = new QuestBookImage(questBookStoredImage("ancient_altar_recipes", "chapters/"), false, Type.REGULAR, ":ancient_altar_recipes");
         public static QuestBookImage MAGNETS_CHAPTER = new QuestBookImage(questBookStoredImage("magnets_chapter", "chapters/"), false, Type.REGULAR, ":magnets_chapter");
         public static QuestBookImage VOODOO_CHAPTER = new QuestBookImage(questBookStoredImage("voodoo_chapter", "chapters/"), false, Type.REGULAR, ":voodoo_chapter");
         public static QuestBookImage ARMOR_CHAPTER = new QuestBookImage(questBookStoredImage("armor_chapter", "chapters/"), false, Type.REGULAR, ":armor_chapter");
+        public static QuestBookImage FOODS_CHAPTER = new QuestBookImage(questBookStoredImage("foods_chapter", "chapters/"), false, Type.REGULAR, ":foods_chapter");
+        public static QuestBookImage MOBS_CHAPTER = new QuestBookImage(questBookStoredImage("mobs_chapter", "chapters/"), false, Type.REGULAR, ":mobs_chapter");
         public static QuestBookImage EMPTY = new QuestBookImage();
 
 

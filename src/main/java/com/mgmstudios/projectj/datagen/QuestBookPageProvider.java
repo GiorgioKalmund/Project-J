@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.screen.custom.quest_book.QuestBookScreen.QuestBookImage;
@@ -16,9 +15,7 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
 
-import javax.management.modelmbean.ModelMBeanNotificationBroadcaster;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,6 +33,8 @@ public class QuestBookPageProvider implements DataProvider {
     protected static final String SHORTCUT_ARMOR = "armor";
     protected static final String SHORTCUT_ANCIENT_ALTAR_RECIPES = "ancient-altar";
     protected static final String SHORTCUT_MAGNETS = "magnets";
+    protected static final String SHORTCUT_FOODS = "foods";
+    protected static final String SHORTCUT_MOBS = "mobs";
 
     private final PackOutput packOutput;
     List<JsonObject> pages = new ArrayList<>();
@@ -55,8 +54,10 @@ public class QuestBookPageProvider implements DataProvider {
                 .hideHomeButton()
                 .setTemplate(QuestBookTemplateType.CONTENTS_PAGE)
                 .setTemplateSpacing(40)
-                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.JADE, "Basics", 2))
+                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.JADE, "Intro", SHORTCUT_BASICS))
                 .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.SUN_ARMOR_HELMET, "Armor", SHORTCUT_ARMOR))
+                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.MAIZE, "Food", SHORTCUT_FOODS))
+                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.RUNNER_SPAWN_EGG, "Mobs", SHORTCUT_MOBS))
                 .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModBlocks.ANCIENT_ALTAR, "Ancient Altar", SHORTCUT_ANCIENT_ALTAR_RECIPES))
                 .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.PYRITE_MAGNET, "Magnets", SHORTCUT_MAGNETS))
                 .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.VOODOO_CATCHER, "Voodoo", SHORTCUT_VOODOO))
@@ -69,7 +70,7 @@ public class QuestBookPageProvider implements DataProvider {
                 .setPageShortcut(SHORTCUT_BASICS)
                 .setTemplate(QuestBookTemplateType.CHAPTER_COVER)
                 .showPageMessage(false)
-                .addImage(QuestBookImage.CHAPTER_1_IMAGE)
+                .addImage(QuestBookImage.BASICS_CHAPTER)
                 .setTemplateChapterTitle("§f§o§lThe Basics§r")
                 .setText("§f§oWelcome to Project J. Let's cover some of the mod's basics items and elements!§r", false, true)
                 .save(pages);
@@ -77,7 +78,7 @@ public class QuestBookPageProvider implements DataProvider {
         Builder.create()
                 .setTemplate(QuestBookTemplateType.ITEM_SHOWCASE)
                 .addImage(new QuestBookImage(ModBlocks.MESQUITE_SAPLING, true))
-                .setText("§nThe Adobe Desert§r\n\nThe Adobe Desert is a new biome added by ProjectJ. It is home to most blocks of the mod! You can find things like §6Adobe§r, §8Serpentinite Rock§r, as well as §aJade Ores§r and §ePyrite§r! It is also home to a new wood type.", true)
+                .setText("§nThe Adobe Desert§r\n\nThe Adobe Desert is a new biome added by ProjectJ. It is home to most blocks of the mod! Also home of the §oRunner§r and the §oLittle King§r.", true)
                 .save(pages);
 
         Builder.create()
@@ -146,15 +147,6 @@ public class QuestBookPageProvider implements DataProvider {
                 .setText("§nSerpentinite§r\n\nThis green rock spawns naturally below the Adobe layer in its desert. If you dig long enough you might find some left over relics! Easy to work with using a stone cutter!", true)
                 .save(pages);
 
-
-        Builder.create()
-                .setTemplate(QuestBookTemplateType.ITEM_LIST)
-                .setTemplateSpacing(30)
-                .addImage(new QuestBookImage(ModItems.OBSIDIAN_TOOTH, true))
-                .addImage(new QuestBookImage(ModItems.OBSIDIAN_ARROW, true))
-                .setText("§nObsidian Tooth§r\n\nObsidian Teeth can be found when mining serpentinite. However, you can also craft them using a stonecutter and some obsidian. The can be used to make Obsidian Arrows and more.", true)
-                .save(pages);
-
         Builder.create()
                 .setTemplate(QuestBookTemplateType.ITEM_LIST)
                 .defaultTemplateSpacing()
@@ -173,6 +165,73 @@ public class QuestBookPageProvider implements DataProvider {
                 .addImage(new QuestBookImage(ModItems.JADE))
                 .setText("§nJade Items§r\n\nJade can also be used to craft a variety of blocks and items. Including Armor!", true)
                 .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_LIST)
+                .setTemplateSpacing(30)
+                .addImage(new QuestBookImage(ModItems.OBSIDIAN_ARROW, true))
+                .addImage(new QuestBookImage(ModItems.OBSIDIAN_TOOTH, true))
+                .setText("§nObsidian Tooth§r\n\nObsidian Teeth can be found when mining serpentinite. However, you can also craft them using a stone cutter and some obsidian.", true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_LIST)
+                .setTemplateSpacing(30)
+                .addImage(new QuestBookImage(ModBlocks.HOLLOW_MESQUITE_LOG, true))
+                .addImage(new QuestBookImage(ModItems.HATCHET, true))
+                .setText("§nHatchet§r\n\nThis little axe lookin fella can hollow out stripped logs.", true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_SHOWCASE)
+                .addImage(new QuestBookImage(ModItems.DEATH_WHISTLE, true))
+                .setText("§nDeath Whistle§r\n\nReally loud and really annoying. Probably scares you more than anyone else.", true)
+                .save(pages);
+
+        // CHAPTER:Foods
+        Builder.create()
+                .setPageShortcut(SHORTCUT_FOODS)
+                .setTemplate(QuestBookTemplateType.CHAPTER_COVER)
+                .showPageMessage(false)
+                .addImage(QuestBookImage.FOODS_CHAPTER)
+                .setTemplateChapterTitle("§f§o§lFood & Crops§r")
+                .setText("§f§oYummy yummy in my tummy!§r", false, true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_LIST)
+                .defaultTemplateSpacing()
+                .addImage(new QuestBookImage(ModItems.CHILI))
+                .addImage(new QuestBookImage(ModItems.MAIZE_SEEDS))
+                .addImage(new QuestBookImage(ModItems.CHILI_SEEDS))
+                .addImage(new QuestBookImage(ModItems.MAIZE))
+                .setText("§nMaize & Chili§r\n\nTwo new yummy crops. But be careful when eating to much chili, it might hurt your stomach!", true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_LIST)
+                .setTemplateSpacing(30)
+                .addImage(new QuestBookImage(ModItems.CHILI_CON_CARNE))
+                .addImage(new QuestBookImage(ModItems.MAIZE_MASH))
+                .setText("§nBowls§r\n\nClassic aztec meals. The maize mash is very simple, yet nutritious recipe. Chili con carne might even be more popular today then during the Aztec's times.", true)
+                .save(pages);
+
+        // CHAPTER:Mobs
+        Builder.create()
+                .setPageShortcut(SHORTCUT_MOBS)
+                .setTemplate(QuestBookTemplateType.CHAPTER_COVER)
+                .showPageMessage(false)
+                .addImage(QuestBookImage.MOBS_CHAPTER)
+                .setTemplateChapterTitle("§f§o§lMobs & Entities§r")
+                .setText("§f§oGrrrrrr...Huh?§r", false, true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_SHOWCASE)
+                .addImage(new QuestBookImage(ModItems.RUNNER_SPAWN_EGG, true))
+                .setText("§nRunner§r\n\nThis Adobe Desert version of the Zombie is a bit faster than his brothers. I would also not touch him or you'll be wobbling for a while.", true)
+                .save(pages);
+
 
         // CHAPTER:Armor
         Builder.create()
@@ -225,6 +284,12 @@ public class QuestBookPageProvider implements DataProvider {
                 .save(pages);
 
         Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_SHOWCASE)
+                .addImage(new QuestBookImage(ModItems.SACRIFICIAL_DAGGER))
+                .setText("§nSacrificial Dagger§r\n\nThis holy dagger is used to activate every Ancient Altar recipe. Right click the altar to start a valid recipe, or right click the air to perform a self sacrifice.", true)
+                .save(pages);
+
+        Builder.create()
                 .setTemplate(QuestBookTemplateType.RECIPE_LIST)
                 .setTemplateSpacing(30)
                 .setInLocationMessage()
@@ -232,7 +297,7 @@ public class QuestBookPageProvider implements DataProvider {
                 .addSecondaryImage(new QuestBookImage(ModBlocks.ANCIENT_ALTAR))
                 .addImage(new QuestBookImage(ModItems.LIQUID_PYRITE_BUCKET))
                 .addImage(new QuestBookImage(Items.BOWL))
-                .setText("§nCrude Sacrificial Bowl§r\n\nThe Basis of many more things. Allows you to fill it with a bloody sacrifice.", true)
+                .setText("§nCrude Sacrificial Bowl§r\n\nThe Basis of many more things. Allows you to fill it with a bloody sacrifice when standing close to an ancient altar.", true)
                 .save(pages);
 
         Builder.create()
@@ -388,17 +453,15 @@ public class QuestBookPageProvider implements DataProvider {
                 .save(pages);
 
 
-
         // CHAPTER:Teleportation
         Builder.create()
                 .setPageShortcut(SHORTCUT_TELEPORTATION)
                 .setTemplate(QuestBookTemplateType.CHAPTER_COVER)
                 .showPageMessage(false)
-                .addImage(QuestBookImage.CHAPTER_2_IMAGE)
+                .addImage(QuestBookImage.TELEPORTATION_CHAPTER)
                 .setTemplateChapterTitle("§f§o§lTeleportation§r")
                 .setText("§f§oSwoosh!§r", false, true)
                 .save(pages);
-
 
         Builder.create()
                 .setTemplate(QuestBookTemplateType.ITEM_LIST)

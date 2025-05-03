@@ -168,20 +168,6 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_serpentinite_block", this.has(ModBlocks.SERPENTINITE_ROCK))
                 .save(this.output);
 
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.COMBAT, ModItems.MACUAHUITL.get())
-                .pattern("OJO")
-                .pattern("OTO")
-                .pattern(" S ")
-                .define('S', ModItems.SERPENTINITE_ROD)
-                .define('J', ModItems.JADE)
-                .define('O', ModItems.OBSIDIAN_TOOTH)
-                .define('T', Items.STICK)
-                .unlockedBy("has_jade", this.has(ModItems.JADE))
-                .unlockedBy("has_obsidian_tooth", this.has(ModItems.OBSIDIAN_TOOTH))
-                .unlockedBy("has_serpentinite_rod", this.has(ModItems.SERPENTINITE_ROD))
-                .save(this.output);
-
-
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, Items.OBSIDIAN)
                 .pattern("###")
                 .pattern("#D#")
@@ -358,7 +344,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_serpentinite_rod", this.has(ModItems.SERPENTINITE_ROD))
                 .save(this.output);
 
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.TELEPORTATION_PAD)
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.TELEPORTATION_PAD, 2)
                 .pattern("sTs")
                 .pattern("SSS")
                 .define('T', ModItems.TELEPORTATION_CORE)

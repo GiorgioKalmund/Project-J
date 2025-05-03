@@ -1,16 +1,36 @@
 {
   "images": [
     {
-      "image": "projectj:voodoo_catcher",
-      "show-border": true
+      "count": 4,
+      "image": "projectj:jade"
+    },
+    {
+      "count": 2,
+      "image": "minecraft:ender_pearl"
+    },
+    {
+      "image": "minecraft:wind_charge"
     }
   ],
+  "page-msg": {
+    "message": "in:    "
+  },
   "template": {
-    "name": "item-showcase"
+    "name": "recipe-list",
+    "secondary-images": [
+      {
+        "image": "projectj:teleportation_core",
+        "show-border": true
+      },
+      {
+        "image": "projectj:ancient_altar"
+      }
+    ],
+    "spacing": 30
   },
   "text": {
     "align-center": false,
-    "content": "§nVoodoo Catcher§r\n\nThe Voodoo Catcher is a magical wand used in catching some friendly mobs running around your world. Take a look at the following pages to learn more!",
+    "content": "§nTeleportation Core§r\n\nThe Teleportation Core opens the door to a whole lot of blocks and items allowing you to travel faster.",
     "show-title": true
   }
 }

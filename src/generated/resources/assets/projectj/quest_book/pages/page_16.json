@@ -1,25 +1,19 @@
 {
   "images": [
     {
-      "image": "projectj:sun_armor_leggings"
-    },
-    {
-      "image": "projectj:sun_armor_chestplate"
-    },
-    {
-      "image": "projectj:sun_armor_boots"
-    },
-    {
-      "image": "projectj:sun_armor_helmet"
+      "type": "regular",
+      "image": ":foods_chapter"
     }
   ],
+  "page-shortcut": "foods",
+  "show-page-msg": false,
   "template": {
-    "name": "item-list",
-    "spacing": 20
+    "chapter-title": "§f§o§lFood & Crops§r",
+    "name": "chapter-cover"
   },
   "text": {
-    "align-center": false,
-    "content": "§nSun Armor§r\n\nSun Armor is crafted using §6Pyrite§r and although very tough and resistant, similar to it's fancier counterpart, it is very brittle.",
-    "show-title": true
+    "align-center": true,
+    "content": "§f§oYummy yummy in my tummy!§r",
+    "show-title": false
   }
 }

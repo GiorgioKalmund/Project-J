@@ -1,19 +1,31 @@
 {
   "images": [
     {
-      "type": "regular",
-      "image": ":magnets_chapter"
+      "image": "projectj:sacrificial_dagger"
+    },
+    {
+      "image": "projectj:crude_sacrifice_bowl"
     }
   ],
-  "page-shortcut": "magnets",
-  "show-page-msg": false,
+  "page-msg": {
+    "message": "next to:    "
+  },
   "template": {
-    "chapter-title": "§f§o§lMagnets§r",
-    "name": "chapter-cover"
+    "name": "recipe-list",
+    "secondary-images": [
+      {
+        "image": "projectj:filled_crude_sacrifice_bowl",
+        "show-border": true
+      },
+      {
+        "image": "projectj:ancient_altar"
+      }
+    ],
+    "spacing": 30
   },
   "text": {
-    "align-center": true,
-    "content": "§f§oOur connection seems to get stronger ;)§r",
+    "align-center": false,
+    "content": "§nFilled Crude Sacrificial Bowl§r\n\nPerform a self sacrifice, or sacrifice an animal near an Ancient Altar to fill its bowl.",
     "show-title": false
   }
 }

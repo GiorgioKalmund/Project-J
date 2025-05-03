@@ -1,4 +1,4 @@
-// 1.21.4	2025-05-02T20:59:33.608893	ModRecipeProvider
+// 1.21.4	2025-05-03T17:52:20.3130638	ModRecipeProvider
 3805c773c67c25685a42a0810f910faacb328964 data/minecraft/advancement/recipes/beetroot_seeds.json
 9d0b4243e93bb8fe0a90f5936460b23bedc28f89 data/minecraft/advancement/recipes/building_blocks/adobe_bricks_smelting.json
 d8e64883f5c848da2d094ba3a38aac11e888156b data/minecraft/advancement/recipes/building_blocks/chili_con_carne_from_maize_mash.json
@@ -145,7 +145,6 @@ d1c68a65172ffac67b189709fee6bcb247e28fc4 data/projectj/advancement/recipes/build
 a6accc780bb9a55222031158de3fae11d14ec2f4 data/projectj/advancement/recipes/chili_seeds.json
 887ee07ec83d3372ee9b0083e3a13daa2014c0a2 data/projectj/advancement/recipes/chimalli_shield.json
 b14793ca74bed0469d701e5fb7a6a3eecb801443 data/projectj/advancement/recipes/combat/hatchet.json
-3d99954820607651b6cc68e3e345f19f395869f3 data/projectj/advancement/recipes/combat/macuahuitl.json
 2098ea7c81d190eb7822d60e34caed058430d239 data/projectj/advancement/recipes/combat/obsidian_arrow.json
 d6499f6734d1d845e3d09217122c1fe18aa4268e data/projectj/advancement/recipes/combat/serpentinite_rod.json
 0af5d7352379b819d7156b12c3788a1d1750d42c data/projectj/advancement/recipes/combat/tinted_adobe_glass.json
@@ -192,7 +191,6 @@ fc3f1f82d925504237ce3febb12959707bfd604c data/projectj/recipe/hatchet.json
 a62cf9ffa38897f58bdd56e2a9db4df1dce7645b data/projectj/recipe/jade_leggings.json
 cdd12588f4aa6b54db159c54ca0f5936deed8c64 data/projectj/recipe/jade_magnet.json
 4ca75c00f71538c263cb1c7255c893732d1c7598 data/projectj/recipe/little_man_voodoo.json
-bf4e43d6498fe6e6fad452bd4c7dd52695ec8542 data/projectj/recipe/macuahuitl.json
 3b356ba53536ee7d6d77795dbc5f90808ae15896 data/projectj/recipe/magnifying_glass.json
 9a571711638fb57907ef8dafc96387d2af7771f9 data/projectj/recipe/magnifying_glass_stand.json
 69a32926f3a17f6863ae3cacf60dc2a0c038a557 data/projectj/recipe/maize_mash.json
@@ -239,7 +237,7 @@ c0d5be120004b705331d9c1dd2a02002950ccb5e data/projectj/recipe/sun_armor_helmet.j
 2e1ea0acb3cb8adf5f2135a6c7c10bab3a7fc439 data/projectj/recipe/sun_armor_leggings.json
 be4e785c2589f5be894f1aab95a73041bdf49459 data/projectj/recipe/teleportation_core.json
 75913b6e79d99db92c2ae363d5c93c9e74ad6598 data/projectj/recipe/teleportation_key.json
-305a9eb583d969fe287eca55591d21dffa560d28 data/projectj/recipe/teleportation_pad.json
+0fd68f0e1f0838e25f046eeb3bc008e72665c192 data/projectj/recipe/teleportation_pad.json
 277786e378b488198209bfb38657b9702c1a3f9c data/projectj/recipe/tinted_adobe_glass.json
 a514b733c0fa4542224208824c6aee59661e2bf0 data/projectj/recipe/trowel.json
 9a2a1e5befe1c93752be2ed37f65db001dceea2e data/projectj/recipe/voodoo_catcher.json

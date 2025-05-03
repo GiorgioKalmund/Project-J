@@ -1,25 +1,16 @@
 {
   "images": [
     {
-      "image": "projectj:jade_leggings"
-    },
-    {
-      "image": "projectj:jade_chestplate"
-    },
-    {
-      "image": "projectj:jade_boots"
-    },
-    {
-      "image": "projectj:jade_helmet"
+      "image": "projectj:death_whistle",
+      "show-border": true
     }
   ],
   "template": {
-    "name": "item-list",
-    "spacing": 20
+    "name": "item-showcase"
   },
   "text": {
     "align-center": false,
-    "content": "§nJade Armor§r\n\nJade Armor is crafted using §aJade§r. That's it for now :)",
+    "content": "§nDeath Whistle§r\n\nReally loud and really annoying. Probably scares you more than anyone else.",
     "show-title": true
   }
 }

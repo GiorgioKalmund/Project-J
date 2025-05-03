@@ -1,16 +1,16 @@
 {
   "images": [
     {
-      "image": "projectj:awakened_sun_armor_leggings"
+      "image": "projectj:chili"
     },
     {
-      "image": "projectj:awakened_sun_armor_chestplate"
+      "image": "projectj:maize_seeds"
     },
     {
-      "image": "projectj:awakened_sun_armor_boots"
+      "image": "projectj:chili_seeds"
     },
     {
-      "image": "projectj:awakened_sun_armor_helmet"
+      "image": "projectj:maize"
     }
   ],
   "template": {
@@ -19,7 +19,7 @@
   },
   "text": {
     "align-center": false,
-    "content": "§nAwakened Sun Armor§r\n\nForged using the power of the Nether and End, the Awakened Sun Armor applies its full effect when worn as a full set. Crafted in the Ancient Altar.",
+    "content": "§nMaize & Chili§r\n\nTwo new yummy crops. But be careful when eating to much chili, it might hurt your stomach!",
     "show-title": true
   }
 }

@@ -1,41 +1,25 @@
 {
   "images": [
     {
-      "count": 4,
-      "image": "projectj:obsidian_tooth"
+      "image": "projectj:jade_leggings"
     },
     {
-      "image": "minecraft:stick"
+      "image": "projectj:jade_chestplate"
     },
     {
-      "image": "projectj:serpentinite_rod"
+      "image": "projectj:jade_boots"
     },
     {
-      "image": "projectj:jade"
-    },
-    {
-      "image": "projectj:liquid_pyrite_bucket"
+      "image": "projectj:jade_helmet"
     }
   ],
-  "page-msg": {
-    "message": "in:    "
-  },
   "template": {
-    "name": "recipe-list",
-    "secondary-images": [
-      {
-        "image": "projectj:macuahuitl",
-        "show-border": true
-      },
-      {
-        "image": "projectj:ancient_altar"
-      }
-    ],
+    "name": "item-list",
     "spacing": 20
   },
   "text": {
     "align-center": false,
-    "content": "§nMacuahuitl§r\n\nStrong weapon which can handle almost every type of block.",
+    "content": "§nJade Armor§r\n\nJade Armor is crafted using §aJade§r. That's it for now :)",
     "show-title": true
   }
 }

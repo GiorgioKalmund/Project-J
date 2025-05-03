@@ -1,19 +1,42 @@
 {
   "images": [
     {
-      "type": "regular",
-      "image": ":chapter_2"
+      "image": "projectj:sun_armor_leggings"
+    },
+    {
+      "count": 3,
+      "image": "projectj:quetzal_feather"
+    },
+    {
+      "count": 2,
+      "image": "minecraft:magma_cream"
+    },
+    {
+      "image": "projectj:liquid_pyrite_bucket"
+    },
+    {
+      "image": "projectj:filled_crude_sacrifice_bowl"
     }
   ],
-  "page-shortcut": "teleportation",
-  "show-page-msg": false,
+  "page-msg": {
+    "message": "in:    "
+  },
   "template": {
-    "chapter-title": "§f§o§lTeleportation§r",
-    "name": "chapter-cover"
+    "name": "recipe-list",
+    "secondary-images": [
+      {
+        "image": "projectj:awakened_sun_armor_leggings",
+        "show-border": true
+      },
+      {
+        "image": "projectj:ancient_altar"
+      }
+    ],
+    "spacing": 20
   },
   "text": {
-    "align-center": true,
-    "content": "§f§oSwoosh!§r",
+    "align-center": false,
+    "content": "§nAwakened Sun Leggings§r\n\nShiny legs you got there!",
     "show-title": false
   }
 }

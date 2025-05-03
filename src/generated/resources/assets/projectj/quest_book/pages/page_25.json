@@ -1,44 +1,19 @@
 {
   "images": [
     {
-      "image": "projectj:sun_armor_chestplate"
-    },
-    {
-      "count": 3,
-      "image": "projectj:quetzal_feather"
-    },
-    {
-      "image": "minecraft:netherite_ingot"
-    },
-    {
-      "image": "minecraft:elytra"
-    },
-    {
-      "image": "projectj:liquid_pyrite_bucket"
-    },
-    {
-      "image": "projectj:filled_crude_sacrifice_bowl"
+      "type": "regular",
+      "image": ":ancient_altar_recipes"
     }
   ],
-  "page-msg": {
-    "message": "in:    "
-  },
+  "page-shortcut": "ancient-altar",
+  "show-page-msg": false,
   "template": {
-    "name": "recipe-list",
-    "secondary-images": [
-      {
-        "image": "projectj:awakened_sun_armor_chestplate",
-        "show-border": true
-      },
-      {
-        "image": "projectj:ancient_altar"
-      }
-    ],
-    "spacing": 20
+    "chapter-title": "§f§o§lAncient Altar & Crafting§r",
+    "name": "chapter-cover"
   },
   "text": {
-    "align-center": false,
-    "content": "§nAwakened Sun Chestplate§r\n\nYou look hot.",
+    "align-center": true,
+    "content": "§f§oPowerful sacrifices using Blood and Pyrite§r",
     "show-title": false
   }
 }

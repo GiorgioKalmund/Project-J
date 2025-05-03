@@ -1,31 +1,16 @@
 {
   "images": [
     {
-      "image": "projectj:sacrificial_dagger"
-    },
-    {
-      "image": "projectj:crude_sacrifice_bowl"
+      "image": "projectj:runner_spawn_egg",
+      "show-border": true
     }
   ],
-  "page-msg": {
-    "message": "next to:    "
-  },
   "template": {
-    "name": "recipe-list",
-    "secondary-images": [
-      {
-        "image": "projectj:filled_crude_sacrifice_bowl",
-        "show-border": true
-      },
-      {
-        "image": "projectj:ancient_altar"
-      }
-    ],
-    "spacing": 30
+    "name": "item-showcase"
   },
   "text": {
     "align-center": false,
-    "content": "§nFilled Crude Sacrificial Bowl§r\n\nPerform a self sacrifice, or sacrifice an animal near an Ancient Altar to fill its bowl.",
-    "show-title": false
+    "content": "§nRunner§r\n\nThis Adobe Desert version of the Zombie is a bit faster than his brothers. I would also not touch him or you'll be wobbling for a while.",
+    "show-title": true
   }
 }

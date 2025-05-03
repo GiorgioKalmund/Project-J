@@ -1,0 +1,22 @@
+{
+  "images": [
+    {
+      "image": "projectj:teleportation_key"
+    },
+    {
+      "image": "projectj:teleportation_core"
+    },
+    {
+      "image": "projectj:teleportation_pad"
+    }
+  ],
+  "template": {
+    "name": "item-list",
+    "spacing": 30
+  },
+  "text": {
+    "align-center": false,
+    "content": "Teleportation is a powerful force, harnessed only by the most elite mages and technicians. The Teleportation Core lays its foundation. Have a look at the Ancient Altar recipes to find out how to craft it!",
+    "show-title": false
+  }
+}

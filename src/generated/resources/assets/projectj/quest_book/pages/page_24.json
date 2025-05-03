@@ -1,41 +1,25 @@
 {
   "images": [
     {
-      "image": "projectj:sun_armor_helmet"
+      "image": "projectj:awakened_sun_armor_leggings"
     },
     {
-      "count": 2,
-      "image": "projectj:quetzal_feather"
+      "image": "projectj:awakened_sun_armor_chestplate"
     },
     {
-      "image": "minecraft:fermented_spider_eye"
+      "image": "projectj:awakened_sun_armor_boots"
     },
     {
-      "image": "projectj:liquid_pyrite_bucket"
-    },
-    {
-      "image": "projectj:filled_crude_sacrifice_bowl"
+      "image": "projectj:awakened_sun_armor_helmet"
     }
   ],
-  "page-msg": {
-    "message": "in:    "
-  },
   "template": {
-    "name": "recipe-list",
-    "secondary-images": [
-      {
-        "image": "projectj:awakened_sun_armor_helmet",
-        "show-border": true
-      },
-      {
-        "image": "projectj:ancient_altar"
-      }
-    ],
+    "name": "item-list",
     "spacing": 20
   },
   "text": {
     "align-center": false,
-    "content": "§nAwakened Sun Crown§r\n\nYour hair might catch on fire when wearing.",
+    "content": "§nAwakened Sun Armor§r\n\nForged using the power of the Nether and End, the Awakened Sun Armor applies its full effect when worn as a full set. Crafted in the Ancient Altar.",
     "show-title": true
   }
 }

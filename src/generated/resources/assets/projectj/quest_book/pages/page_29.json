@@ -1,21 +1,34 @@
 {
   "images": [
     {
-      "image": "projectj:pyrite_magnet",
-      "show-border": true
+      "image": "minecraft:shield"
     },
     {
-      "image": "projectj:jade_magnet",
-      "show-border": true
+      "image": "projectj:liquid_pyrite_bucket"
+    },
+    {
+      "image": "projectj:filled_crude_sacrifice_bowl"
     }
   ],
+  "page-msg": {
+    "message": "in:    "
+  },
   "template": {
-    "name": "item-list",
+    "name": "recipe-list",
+    "secondary-images": [
+      {
+        "image": "projectj:chimalli_shield",
+        "show-border": true
+      },
+      {
+        "image": "projectj:ancient_altar"
+      }
+    ],
     "spacing": 30
   },
   "text": {
     "align-center": false,
-    "content": "§nMagnets§r\n\nMagnets are harness the magnetism to attract nearby items. §oTheir materials determine their radius and strength§r",
+    "content": "§nChīmalli§r\n\nPowerful shield capable of blocking projectiles and hits.",
     "show-title": true
   }
 }

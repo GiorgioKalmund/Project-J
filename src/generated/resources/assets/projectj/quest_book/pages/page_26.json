@@ -1,42 +1,15 @@
 {
   "images": [
     {
-      "image": "projectj:sun_armor_leggings"
-    },
-    {
-      "count": 3,
-      "image": "projectj:quetzal_feather"
-    },
-    {
-      "count": 2,
-      "image": "minecraft:magma_cream"
-    },
-    {
-      "image": "projectj:liquid_pyrite_bucket"
-    },
-    {
-      "image": "projectj:filled_crude_sacrifice_bowl"
+      "image": "projectj:sacrificial_dagger"
     }
   ],
-  "page-msg": {
-    "message": "in:    "
-  },
   "template": {
-    "name": "recipe-list",
-    "secondary-images": [
-      {
-        "image": "projectj:awakened_sun_armor_leggings",
-        "show-border": true
-      },
-      {
-        "image": "projectj:ancient_altar"
-      }
-    ],
-    "spacing": 20
+    "name": "item-showcase"
   },
   "text": {
     "align-center": false,
-    "content": "§nAwakened Sun Leggings§r\n\nShiny legs you got there!",
-    "show-title": false
+    "content": "§nSacrificial Dagger§r\n\nThis holy dagger is used to activate every Ancient Altar recipe. Right click the altar to start a valid recipe, or right click the air to perform a self sacrifice.",
+    "show-title": true
   }
 }

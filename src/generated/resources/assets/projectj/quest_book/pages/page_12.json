@@ -1,13 +1,16 @@
 {
   "images": [
     {
-      "image": "projectj:deepslate_jade_ore"
+      "image": "projectj:jade_block"
     },
     {
-      "image": "projectj:jade_ore"
+      "image": "projectj:raw_jade"
     },
     {
-      "image": "projectj:serpentinite_jade_ore"
+      "image": "projectj:jade_helmet"
+    },
+    {
+      "image": "projectj:jade"
     }
   ],
   "template": {
@@ -16,7 +19,7 @@
   },
   "text": {
     "align-center": false,
-    "content": "§nJade Ores§r\n\nJade is the building block of Project J. It is used for most recipes, so get digging! Most commonly found in Serpentinite but also around lush caves.",
+    "content": "§nJade Items§r\n\nJade can also be used to craft a variety of blocks and items. Including Armor!",
     "show-title": true
   }
 }

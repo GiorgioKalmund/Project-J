@@ -2,18 +2,18 @@
   "images": [
     {
       "type": "regular",
-      "image": ":armor_chapter"
+      "image": ":teleportation"
     }
   ],
-  "page-shortcut": "armor",
+  "page-shortcut": "teleportation",
   "show-page-msg": false,
   "template": {
-    "chapter-title": "§f§o§lArmor§r",
+    "chapter-title": "§f§o§lTeleportation§r",
     "name": "chapter-cover"
   },
   "text": {
     "align-center": true,
-    "content": "§f§oLooking shiny out there. Keep it up!§r",
+    "content": "§f§oSwoosh!§r",
     "show-title": false
   }
 }

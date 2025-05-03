@@ -4,14 +4,24 @@
     "name": "contents-page",
     "objects": [
       {
-        "connected-page": 2,
-        "description": "Basics",
+        "connected-page": "basics",
+        "description": "Intro",
         "item": "projectj:jade"
       },
       {
         "connected-page": "armor",
         "description": "Armor",
         "item": "projectj:sun_armor_helmet"
+      },
+      {
+        "connected-page": "foods",
+        "description": "Food",
+        "item": "projectj:maize"
+      },
+      {
+        "connected-page": "mobs",
+        "description": "Mobs",
+        "item": "projectj:runner_spawn_egg"
       },
       {
         "connected-page": "ancient-altar",

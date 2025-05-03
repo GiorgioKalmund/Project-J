@@ -1,19 +1,41 @@
 {
   "images": [
     {
-      "type": "regular",
-      "image": ":voodoo_chapter"
+      "count": 4,
+      "image": "projectj:obsidian_tooth"
+    },
+    {
+      "image": "minecraft:stick"
+    },
+    {
+      "image": "projectj:serpentinite_rod"
+    },
+    {
+      "image": "projectj:jade"
+    },
+    {
+      "image": "projectj:liquid_pyrite_bucket"
     }
   ],
-  "page-shortcut": "voodoo",
-  "show-page-msg": false,
+  "page-msg": {
+    "message": "in:    "
+  },
   "template": {
-    "chapter-title": "§f§o§lVoodoo§r",
-    "name": "chapter-cover"
+    "name": "recipe-list",
+    "secondary-images": [
+      {
+        "image": "projectj:macuahuitl",
+        "show-border": true
+      },
+      {
+        "image": "projectj:ancient_altar"
+      }
+    ],
+    "spacing": 20
   },
   "text": {
-    "align-center": true,
-    "content": "§f§oIs it a totem? Is it a plane? No! It's a retextured totem.§r",
-    "show-title": false
+    "align-center": false,
+    "content": "§nMacuahuitl§r\n\nStrong weapon which can handle almost every type of block.",
+    "show-title": true
   }
 }

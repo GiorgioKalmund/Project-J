@@ -1,25 +1,21 @@
 {
   "images": [
     {
-      "image": "projectj:jade_block"
+      "image": "projectj:obsidian_arrow",
+      "show-border": true
     },
     {
-      "image": "projectj:raw_jade"
-    },
-    {
-      "image": "projectj:jade_helmet"
-    },
-    {
-      "image": "projectj:jade"
+      "image": "projectj:obsidian_tooth",
+      "show-border": true
     }
   ],
   "template": {
     "name": "item-list",
-    "spacing": 20
+    "spacing": 30
   },
   "text": {
     "align-center": false,
-    "content": "§nJade Items§r\n\nJade can also be used to craft a variety of blocks and items. Including Armor!",
+    "content": "§nObsidian Tooth§r\n\nObsidian Teeth can be found when mining serpentinite. However, you can also craft them using a stone cutter and some obsidian.",
     "show-title": true
   }
 }

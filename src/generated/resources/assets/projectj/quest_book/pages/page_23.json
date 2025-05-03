@@ -1,36 +1,25 @@
 {
   "images": [
     {
-      "count": 4,
-      "image": "projectj:jade"
+      "image": "projectj:sun_armor_leggings"
     },
     {
-      "count": 2,
-      "image": "minecraft:ender_pearl"
+      "image": "projectj:sun_armor_chestplate"
     },
     {
-      "image": "minecraft:wind_charge"
+      "image": "projectj:sun_armor_boots"
+    },
+    {
+      "image": "projectj:sun_armor_helmet"
     }
   ],
-  "page-msg": {
-    "message": "in:    "
-  },
   "template": {
-    "name": "recipe-list",
-    "secondary-images": [
-      {
-        "image": "projectj:teleportation_core",
-        "show-border": true
-      },
-      {
-        "image": "projectj:ancient_altar"
-      }
-    ],
-    "spacing": 30
+    "name": "item-list",
+    "spacing": 20
   },
   "text": {
     "align-center": false,
-    "content": "§nTeleportation Core§r\n\nThe Teleportation Core opens the door to a whole lot of blocks and items allowing you to travel faster.",
+    "content": "§nSun Armor§r\n\nSun Armor is crafted using §6Pyrite§r and although very tough and resistant, similar to it's fancier counterpart, it is very brittle.",
     "show-title": true
   }
 }
