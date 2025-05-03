@@ -113,14 +113,27 @@ public class QuestBookPageProvider implements DataProvider {
         Builder.create()
                 .setTemplate(QuestBookTemplateType.RECIPE_LIST)
                 .defaultTemplateSpacing()
-                .setPageMessage("and :    ")
+                .setPageMessage("and:    ")
                 .addSecondaryImage(new QuestBookImage(ModItems.MAGNIFYING_GLASS, true))
-                .addSecondaryImage(new QuestBookImage(ModBlocks.MAGNIFYING_GLASS_STAND, false))
+                .addSecondaryImage(new QuestBookImage(ModBlocks.MAGNIFYING_GLASS_STAND))
                 .addImage(new QuestBookImage(ModBlocks.PYRITE_BLOCK))
                 .addImage(new QuestBookImage(ModBlocks.ADOBE_GLASS))
                 .addImage(new QuestBookImage(ModItems.LIQUID_PYRITE_BUCKET))
                 .addImage(new QuestBookImage(ModBlocks.ADOBE_SAND))
                 .setText("§nMagnifying Glass§r\n\nThe Magnifying Glass is as mighty and powerful as its real-life counterpart. Use it on specific blocks during daytime to smelt them down!", true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_SHOWCASE)
+                .addImage(new QuestBookImage(ModItems.FLESH, true))
+                .setText("§nCooked Flesh§r\n\nNo one really enjoys piling up huge amounts of rotten flesh. That is why you can now cook it and turn it into a yummy steak.", true)
+                .save(pages);
+
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_SHOWCASE)
+                .addImage(new QuestBookImage(ModBlocks.SERPENTINITE_ROCK, true))
+                .setText("§nSerpentinite Hills§r\n\nSerpentinite Hills are the second biome added by ProjectJ. They are usually around cold and tall biomes. I have also heard about some secret crystals, but maybe I misheard something...", true)
                 .save(pages);
 
         Builder.create()
@@ -131,6 +144,15 @@ public class QuestBookPageProvider implements DataProvider {
                 .addImage(new QuestBookImage(ModBlocks.SERPENTINITE_BENCH))
                 .addImage(new QuestBookImage(ModBlocks.SERPENTINITE_ROCK))
                 .setText("§nSerpentinite§r\n\nThis green rock spawns naturally below the Adobe layer in its desert. If you dig long enough you might find some left over relics! Easy to work with using a stone cutter!", true)
+                .save(pages);
+
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_LIST)
+                .setTemplateSpacing(30)
+                .addImage(new QuestBookImage(ModItems.OBSIDIAN_TOOTH, true))
+                .addImage(new QuestBookImage(ModItems.OBSIDIAN_ARROW, true))
+                .setText("§nObsidian Tooth§r\n\nObsidian Teeth can be found when mining serpentinite. However, you can also craft them using a stonecutter and some obsidian. The can be used to make Obsidian Arrows and more.", true)
                 .save(pages);
 
         Builder.create()

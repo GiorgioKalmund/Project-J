@@ -1,21 +1,42 @@
 {
   "images": [
     {
-      "image": "projectj:pyrite_magnet",
-      "show-border": true
+      "image": "projectj:sun_armor_leggings"
     },
     {
-      "image": "projectj:jade_magnet",
-      "show-border": true
+      "count": 3,
+      "image": "projectj:quetzal_feather"
+    },
+    {
+      "count": 2,
+      "image": "minecraft:magma_cream"
+    },
+    {
+      "image": "projectj:liquid_pyrite_bucket"
+    },
+    {
+      "image": "projectj:filled_crude_sacrifice_bowl"
     }
   ],
+  "page-msg": {
+    "message": "in:    "
+  },
   "template": {
-    "name": "item-list",
-    "spacing": 30
+    "name": "recipe-list",
+    "secondary-images": [
+      {
+        "image": "projectj:awakened_sun_armor_leggings",
+        "show-border": true
+      },
+      {
+        "image": "projectj:ancient_altar"
+      }
+    ],
+    "spacing": 20
   },
   "text": {
     "align-center": false,
-    "content": "§nMagnets§r\n\nMagnets are harness the magnetism to attract nearby items. §oTheir materials determine their radius and strength§r",
-    "show-title": true
+    "content": "§nAwakened Sun Leggings§r\n\nShiny legs you got there!",
+    "show-title": false
   }
 }

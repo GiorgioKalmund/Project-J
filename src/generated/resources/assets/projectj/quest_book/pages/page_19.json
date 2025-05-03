@@ -1,20 +1,10 @@
 {
   "images": [
     {
-      "count": 4,
-      "image": "projectj:obsidian_tooth"
-    },
-    {
-      "image": "minecraft:stick"
-    },
-    {
-      "image": "projectj:serpentinite_rod"
-    },
-    {
-      "image": "projectj:jade"
-    },
-    {
       "image": "projectj:liquid_pyrite_bucket"
+    },
+    {
+      "image": "minecraft:bowl"
     }
   ],
   "page-msg": {
@@ -24,18 +14,18 @@
     "name": "recipe-list",
     "secondary-images": [
       {
-        "image": "projectj:macuahuitl",
+        "image": "projectj:crude_sacrifice_bowl",
         "show-border": true
       },
       {
         "image": "projectj:ancient_altar"
       }
     ],
-    "spacing": 20
+    "spacing": 30
   },
   "text": {
     "align-center": false,
-    "content": "§nMacuahuitl§r\n\nStrong weapon which can handle almost every type of block.",
+    "content": "§nCrude Sacrificial Bowl§r\n\nThe Basis of many more things. Allows you to fill it with a bloody sacrifice.",
     "show-title": true
   }
 }

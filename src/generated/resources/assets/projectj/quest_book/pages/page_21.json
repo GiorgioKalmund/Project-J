@@ -1,14 +1,7 @@
 {
   "images": [
     {
-      "image": "projectj:sun_armor_helmet"
-    },
-    {
-      "count": 2,
-      "image": "projectj:quetzal_feather"
-    },
-    {
-      "image": "minecraft:fermented_spider_eye"
+      "image": "minecraft:shield"
     },
     {
       "image": "projectj:liquid_pyrite_bucket"
@@ -24,18 +17,18 @@
     "name": "recipe-list",
     "secondary-images": [
       {
-        "image": "projectj:awakened_sun_armor_helmet",
+        "image": "projectj:chimalli_shield",
         "show-border": true
       },
       {
         "image": "projectj:ancient_altar"
       }
     ],
-    "spacing": 20
+    "spacing": 30
   },
   "text": {
     "align-center": false,
-    "content": "§nAwakened Sun Crown§r\n\nYour hair might catch on fire when wearing.",
+    "content": "§nChīmalli§r\n\nPowerful shield capable of blocking projectiles and hits.",
     "show-title": true
   }
 }

@@ -1,19 +1,21 @@
 {
   "images": [
     {
-      "type": "regular",
-      "image": ":armor_chapter"
+      "image": "projectj:obsidian_tooth",
+      "show-border": true
+    },
+    {
+      "image": "projectj:obsidian_arrow",
+      "show-border": true
     }
   ],
-  "page-shortcut": "armor",
-  "show-page-msg": false,
   "template": {
-    "chapter-title": "§f§o§lArmor§r",
-    "name": "chapter-cover"
+    "name": "item-list",
+    "spacing": 30
   },
   "text": {
-    "align-center": true,
-    "content": "§f§oLooking shiny out there. Keep it up!§r",
-    "show-title": false
+    "align-center": false,
+    "content": "§nObsidian Tooth§r\n\nObsidian Teeth can be found when mining serpentinite. However, you can also craft them using a stonecutter and some obsidian. The can be used to make Obsidian Arrows and more.",
+    "show-title": true
   }
 }

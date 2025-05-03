@@ -1,16 +1,19 @@
 {
   "images": [
     {
-      "image": "projectj:little_king_voodoo",
-      "show-border": true
+      "type": "regular",
+      "image": ":voodoo_chapter"
     }
   ],
+  "page-shortcut": "voodoo",
+  "show-page-msg": false,
   "template": {
-    "name": "item-showcase"
+    "chapter-title": "§f§o§lVoodoo§r",
+    "name": "chapter-cover"
   },
   "text": {
-    "align-center": false,
-    "content": "§nLittle King§r\n\nThe Little King Voodoo looks nice in your offhand. However, you might manage to find the him roaming around in the Adobe Desert!",
-    "show-title": true
+    "align-center": true,
+    "content": "§f§oIs it a totem? Is it a plane? No! It's a retextured totem.§r",
+    "show-title": false
   }
 }

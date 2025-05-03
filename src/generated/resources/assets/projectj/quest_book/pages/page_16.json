@@ -1,31 +1,25 @@
 {
   "images": [
     {
-      "image": "projectj:liquid_pyrite_bucket"
+      "image": "projectj:sun_armor_leggings"
     },
     {
-      "image": "minecraft:bowl"
+      "image": "projectj:sun_armor_chestplate"
+    },
+    {
+      "image": "projectj:sun_armor_boots"
+    },
+    {
+      "image": "projectj:sun_armor_helmet"
     }
   ],
-  "page-msg": {
-    "message": "in:    "
-  },
   "template": {
-    "name": "recipe-list",
-    "secondary-images": [
-      {
-        "image": "projectj:crude_sacrifice_bowl",
-        "show-border": true
-      },
-      {
-        "image": "projectj:ancient_altar"
-      }
-    ],
-    "spacing": 30
+    "name": "item-list",
+    "spacing": 20
   },
   "text": {
     "align-center": false,
-    "content": "§nCrude Sacrificial Bowl§r\n\nThe Basis of many more things. Allows you to fill it with a bloody sacrifice.",
+    "content": "§nSun Armor§r\n\nSun Armor is crafted using §6Pyrite§r and although very tough and resistant, similar to it's fancier counterpart, it is very brittle.",
     "show-title": true
   }
 }

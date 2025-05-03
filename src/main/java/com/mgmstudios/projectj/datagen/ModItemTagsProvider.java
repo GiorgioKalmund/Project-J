@@ -104,6 +104,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(Items.COOKED_BEEF)
                 .add(Items.COOKED_CHICKEN)
                 .add(Items.COOKED_MUTTON)
+                .add(ModItems.FLESH.get())
                 .add(Items.COOKED_PORKCHOP);
 
         tag(ItemTags.SAPLINGS)

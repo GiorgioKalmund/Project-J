@@ -1,25 +1,16 @@
 {
   "images": [
     {
-      "image": "projectj:serpentinite_pillar"
-    },
-    {
-      "image": "projectj:cobbled_serpentinite"
-    },
-    {
-      "image": "projectj:serpentinite_bench"
-    },
-    {
-      "image": "projectj:serpentinite_rock"
+      "image": "projectj:flesh",
+      "show-border": true
     }
   ],
   "template": {
-    "name": "item-list",
-    "spacing": 20
+    "name": "item-showcase"
   },
   "text": {
     "align-center": false,
-    "content": "§nSerpentinite§r\n\nThis green rock spawns naturally below the Adobe layer in its desert. If you dig long enough you might find some left over relics! Easy to work with using a stone cutter!",
+    "content": "§nCooked Flesh§r\n\nNo one really enjoys piling up huge amounts of rotten flesh. That is why you can now cook it and turn it into a yummy steak.",
     "show-title": true
   }
 }

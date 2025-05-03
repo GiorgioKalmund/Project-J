@@ -3,6 +3,7 @@
     "minecraft:cooked_beef",
     "minecraft:cooked_chicken",
     "minecraft:cooked_mutton",
+    "projectj:flesh",
     "minecraft:cooked_porkchop"
   ]
 }

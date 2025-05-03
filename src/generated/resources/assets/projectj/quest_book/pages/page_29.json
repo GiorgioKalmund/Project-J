@@ -1,16 +1,21 @@
 {
   "images": [
     {
-      "image": "projectj:little_man_voodoo",
+      "image": "projectj:pyrite_magnet",
+      "show-border": true
+    },
+    {
+      "image": "projectj:jade_magnet",
       "show-border": true
     }
   ],
   "template": {
-    "name": "item-list"
+    "name": "item-list",
+    "spacing": 30
   },
   "text": {
     "align-center": false,
-    "content": "§nLittle Man§r\nThe Little Man Voodoo is a power totem which can be crafted. It pacifies zombies around you. Putting it onto a empty statue block, it can permanently scare away those pesky zomberts!",
+    "content": "§nMagnets§r\n\nMagnets are harness the magnetism to attract nearby items. §oTheir materials determine their radius and strength§r",
     "show-title": true
   }
 }

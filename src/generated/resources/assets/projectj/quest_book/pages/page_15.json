@@ -1,19 +1,25 @@
 {
   "images": [
     {
-      "type": "regular",
-      "image": ":ancient_altar_recipes"
+      "image": "projectj:jade_leggings"
+    },
+    {
+      "image": "projectj:jade_chestplate"
+    },
+    {
+      "image": "projectj:jade_boots"
+    },
+    {
+      "image": "projectj:jade_helmet"
     }
   ],
-  "page-shortcut": "ancient-altar",
-  "show-page-msg": false,
   "template": {
-    "chapter-title": "§f§o§lAncient Altar & Crafting§r",
-    "name": "chapter-cover"
+    "name": "item-list",
+    "spacing": 20
   },
   "text": {
-    "align-center": true,
-    "content": "§f§oPowerful sacrifices using Blood and Pyrite§r",
-    "show-title": false
+    "align-center": false,
+    "content": "§nJade Armor§r\n\nJade Armor is crafted using §aJade§r. That's it for now :)",
+    "show-title": true
   }
 }

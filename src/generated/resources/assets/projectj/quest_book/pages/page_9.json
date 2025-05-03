@@ -1,22 +1,16 @@
 {
   "images": [
     {
-      "image": "projectj:deepslate_jade_ore"
-    },
-    {
-      "image": "projectj:jade_ore"
-    },
-    {
-      "image": "projectj:serpentinite_jade_ore"
+      "image": "projectj:serpentinite_rock",
+      "show-border": true
     }
   ],
   "template": {
-    "name": "item-list",
-    "spacing": 20
+    "name": "item-showcase"
   },
   "text": {
     "align-center": false,
-    "content": "§nJade Ores§r\n\nJade is the building block of Project J. It is used for most recipes, so get digging! Most commonly found in Serpentinite but also around lush caves.",
+    "content": "§nSerpentinite Hills§r\n\nSerpentinite Hills are the second biome added by ProjectJ. They are usually around cold and tall biomes. I have also heard about some secret crystals, but maybe I misheard something...",
     "show-title": true
   }
 }

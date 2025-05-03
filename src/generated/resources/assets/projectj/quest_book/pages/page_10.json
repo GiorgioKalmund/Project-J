@@ -1,16 +1,16 @@
 {
   "images": [
     {
-      "image": "projectj:jade_block"
+      "image": "projectj:serpentinite_pillar"
     },
     {
-      "image": "projectj:raw_jade"
+      "image": "projectj:cobbled_serpentinite"
     },
     {
-      "image": "projectj:jade_helmet"
+      "image": "projectj:serpentinite_bench"
     },
     {
-      "image": "projectj:jade"
+      "image": "projectj:serpentinite_rock"
     }
   ],
   "template": {
@@ -19,7 +19,7 @@
   },
   "text": {
     "align-center": false,
-    "content": "§nJade Items§r\n\nJade can also be used to craft a variety of blocks and items. Including Armor!",
+    "content": "§nSerpentinite§r\n\nThis green rock spawns naturally below the Adobe layer in its desert. If you dig long enough you might find some left over relics! Easy to work with using a stone cutter!",
     "show-title": true
   }
 }
