@@ -1,0 +1,72 @@
+{
+  "parent": "minecraft:projectj/story/sun_armor",
+  "criteria": {
+    "awakened_sun_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:awakened_sun_armor_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "awakened_sun_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:awakened_sun_armor_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "awakened_sun_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:awakened_sun_armor_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "awakened_sun_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:awakened_sun_armor_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.projectj.story.awakened_sun_armor.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectj:awakened_sun_armor_chestplate"
+    },
+    "title": {
+      "translate": "advancements.projectj.story.awakened_sun_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "awakened_sun_helmet"
+    ],
+    [
+      "awakened_sun_chestplate"
+    ],
+    [
+      "awakened_sun_leggings"
+    ],
+    [
+      "awakened_sun_boots"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

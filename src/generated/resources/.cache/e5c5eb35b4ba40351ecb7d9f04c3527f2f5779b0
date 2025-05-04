@@ -1,5 +1,6 @@
-// 1.21.4	2025-05-02T18:00:04.398459	Advancements
+// 1.21.4	2025-05-04T19:16:50.276575	Advancements
 5b8604802bbba835a6dabb7a85042aa8095e66e9 data/minecraft/advancement/projectj/story/ancient_altar.json
+0c1e0d026fc604b4c93e268fd90054d83eb5f501 data/minecraft/advancement/projectj/story/awakened_sun_armor.json
 1954c121566c49ef16bf7d796423fc79a5644104 data/minecraft/advancement/projectj/story/botany_pot.json
 71c32ecc587122fb8235ad4d411abd490a5c176c data/minecraft/advancement/projectj/story/crude_sacrificial_bowl.json
 2383a2a1a8eb9d77ae7473e640b803c615a3a2ef data/minecraft/advancement/projectj/story/filled_crude_sacrificial_bowl.json
@@ -10,3 +11,4 @@
 488b38495ec6dce5cb7b9f86aa4215a6d70e1d6f data/minecraft/advancement/projectj/story/pyrite.json
 5b817a5bade44aacbca4414adb7472f9f9a33615 data/minecraft/advancement/projectj/story/root.json
 1b13205486fc71fc42903837b6805d124b90d10b data/minecraft/advancement/projectj/story/sacrificial_dagger.json
+be304c9c78e9e405f3b6231cedb163b7920ab123 data/minecraft/advancement/projectj/story/sun_armor.json

@@ -179,6 +179,43 @@ public class ModAdvancementSubProvider implements AdvancementSubProvider {
                 .addCriterion("pyrite", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.RAW_PYRITE))
                 .save(consumer, createSaveString("story", "pyrite"));
 
+        AdvancementHolder sunArmor = Advancement.Builder.advancement()
+                .parent(pyrite)
+                .display(
+                        ModItems.SUN_ARMOR_CHESTPLATE,
+                        Component.translatable(createTitleString("sun_armor")),
+                        Component.translatable(createDescriptionString("sun_armor")),
+                        null,
+                        AdvancementType.TASK,
+                        true,
+                        true,
+                        false
+                )
+                .addCriterion("sun_helmet", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SUN_ARMOR_HELMET))
+                .addCriterion("sun_chestplate", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SUN_ARMOR_CHESTPLATE))
+                .addCriterion("sun_leggings", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SUN_ARMOR_LEGGINGS))
+                .addCriterion("sun_boots", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SUN_ARMOR_BOOTS))
+                .save(consumer, createSaveString("story", "sun_armor"));
+
+        AdvancementHolder awakenedSunArmor = Advancement.Builder.advancement()
+                .parent(sunArmor)
+                .display(
+                        ModItems.AWAKENED_SUN_ARMOR_CHESTPLATE,
+                        Component.translatable(createTitleString("awakened_sun_armor")),
+                        Component.translatable(createDescriptionString("awakened_sun_armor")),
+                        null,
+                        AdvancementType.TASK,
+                        true,
+                        true,
+                        false
+                )
+                .addCriterion("awakened_sun_helmet", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.AWAKENED_SUN_ARMOR_HELMET))
+                .addCriterion("awakened_sun_chestplate", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.AWAKENED_SUN_ARMOR_CHESTPLATE))
+                .addCriterion("awakened_sun_leggings", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.AWAKENED_SUN_ARMOR_LEGGINGS))
+                .addCriterion("awakened_sun_boots", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.AWAKENED_SUN_ARMOR_BOOTS))
+                .save(consumer, createSaveString("story", "awakened_sun_armor"));
+
+
         AdvancementHolder ancientAltar = Advancement.Builder.advancement()
                 .parent(pyrite)
                 .display(

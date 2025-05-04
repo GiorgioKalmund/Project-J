@@ -218,6 +218,10 @@ public class ModLanguageProvider extends LanguageProvider {
         addAdvancementStoryDescription("sacrificial_dagger", "Craft a Sacrificial Dagger");
         addAdvancementStoryTitle("filled_crude_sacrificial_bowl", "Centeotl's Will");
         addAdvancementStoryDescription("filled_crude_sacrificial_bowl", "Perform a self sacrifice to obtain a Filled Crude Sacrificial Bowl");
+        addAdvancementStoryTitle("sun_armor", "Cover me in ... Gold?");
+        addAdvancementStoryDescription("sun_armor", "Sun Armor might save lives, but it certainly doesn't save your bank account.");
+        addAdvancementStoryTitle("awakened_sun_armor", "Phoenix! SC?");
+        addAdvancementStoryDescription("awakened_sun_armor", "Obtain a full set of Awakened Sun Armor. Project J endgame!");
 
         // GUI
         addGuiButton("close", "Close");

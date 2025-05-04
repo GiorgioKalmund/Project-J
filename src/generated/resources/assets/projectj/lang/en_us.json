@@ -1,6 +1,8 @@
 {
   "advancements.projectj.story.ancient_altar.description": "Craft an Ancient Altar",
   "advancements.projectj.story.ancient_altar.title": "Ancient Rirtuals",
+  "advancements.projectj.story.awakened_sun_armor.description": "Obtain a full set of Awakened Sun Armor. Project J endgame!",
+  "advancements.projectj.story.awakened_sun_armor.title": "Phoenix! SC?",
   "advancements.projectj.story.botany_pot.description": "Not quite, but still useful! (and pretty)",
   "advancements.projectj.story.botany_pot.title": "Botany Pots?",
   "advancements.projectj.story.crude_sacrificial_bowl.description": "Obtain a Crude Sacrificial Bowl by using a Bowl and some Liquid Pyrite in the Ancient Altar",
@@ -21,6 +23,8 @@
   "advancements.projectj.story.root.title": "Project J",
   "advancements.projectj.story.sacrificial_dagger.description": "Craft a Sacrificial Dagger",
   "advancements.projectj.story.sacrificial_dagger.title": "Oh, Sharp!",
+  "advancements.projectj.story.sun_armor.description": "Sun Armor might save lives, but it certainly doesn't save your bank account.",
+  "advancements.projectj.story.sun_armor.title": "Cover me in ... Gold?",
   "advancements.projectj.story.visit_adobe_desert.description": "Find a Adobe Desert",
   "advancements.projectj.story.visit_adobe_desert.title": "Baby it's hot outside",
   "biome.projectj.adobe_desert": "Adobe Desert",

@@ -1,0 +1,72 @@
+{
+  "parent": "minecraft:projectj/story/pyrite",
+  "criteria": {
+    "sun_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:sun_armor_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "sun_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:sun_armor_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "sun_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:sun_armor_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "sun_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:sun_armor_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.projectj.story.sun_armor.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "projectj:sun_armor_chestplate"
+    },
+    "title": {
+      "translate": "advancements.projectj.story.sun_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "sun_helmet"
+    ],
+    [
+      "sun_chestplate"
+    ],
+    [
+      "sun_leggings"
+    ],
+    [
+      "sun_boots"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
