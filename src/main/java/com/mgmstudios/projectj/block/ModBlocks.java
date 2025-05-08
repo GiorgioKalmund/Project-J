@@ -181,7 +181,7 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> PYRITE_ORE = register("pyrite_ore", BlockBehaviour.Properties.ofFullCopy(Blocks.SANDSTONE));
 
-    public static final DeferredBlock<LiquidBlock> LIQUID_PYRITE  = registerWithoutItem("liquid_pyrite", (properties) -> new LiquidBlock(ModFluids.PYRITE.get(), properties), () -> Block.Properties.ofFullCopy(Blocks.LAVA));
+    public static final DeferredBlock<LiquidPyriteBlock> LIQUID_PYRITE  = registerWithoutItem("liquid_pyrite", (properties) -> new LiquidPyriteBlock(ModFluids.PYRITE.get(), properties), () -> Block.Properties.ofFullCopy(Blocks.LAVA));
 
     public static final DeferredBlock<Block> MAGNIFYING_GLASS_STAND = registerMagnifyingGlassStandBlock("magnifying_glass_stand", BlockBehaviour.Properties.of().sound(SoundType.WOOD).noOcclusion().randomTicks(), new Item.Properties(), 3);
 

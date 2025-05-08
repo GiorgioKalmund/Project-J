@@ -21,14 +21,10 @@ import com.mgmstudios.projectj.item.custom.armor.JadeArmorItem;
 import com.mgmstudios.projectj.item.custom.armor.SunArmorItem;
 import com.mgmstudios.projectj.sound.ModSounds;
 
-import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Unit;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
@@ -40,6 +36,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.apache.commons.lang3.function.TriFunction;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ProjectJ.MOD_ID);
@@ -178,10 +175,10 @@ public class ModItems {
         return ITEMS.register(name, key ->new Item(humanoidProperties(material, new Item.Properties().setId(ResourceKey.create(Registries.ITEM, key)).durability(armorType.getDurability(material.durability())), armorType)));
     }
 
-    public static <T extends ArmorItem> DeferredItem<Item> registerArmorItem(String name, ArmorMaterial material, ArmorType armorType, PropertyDispatch.TriFunction<ArmorMaterial, ArmorType, Item.Properties, T> function, Item.Properties properties){
+    public static <T extends ArmorItem> DeferredItem<Item> registerArmorItem(String name, ArmorMaterial material, ArmorType armorType, TriFunction<ArmorMaterial, ArmorType, Item.Properties, T> function, Item.Properties properties){
         return ITEMS.register(name, key -> function.apply(material, armorType, properties.setId(ResourceKey.create(Registries.ITEM, key))));
     }
-    public static <T extends ArmorItem> DeferredItem<Item> registerArmorItem(String name, ArmorMaterial material, ArmorType armorType, PropertyDispatch.TriFunction<ArmorMaterial, ArmorType, Item.Properties, T> function){
+    public static <T extends ArmorItem> DeferredItem<Item> registerArmorItem(String name, ArmorMaterial material, ArmorType armorType, TriFunction<ArmorMaterial, ArmorType, Item.Properties, T> function){
         return registerArmorItem(name, material, armorType,  function, new Item.Properties());
     }
 
@@ -205,7 +202,7 @@ public class ModItems {
         return register(name, Item::new, properties);
     }
 
-    private static ResourceKey<Item> createKey(String name) {
+    public static ResourceKey<Item> createKey(String name) {
         return ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, name));
     }
 
@@ -225,7 +222,7 @@ public class ModItems {
         return baseRegister(name, createKey(name), builder, properties);
     }
 
-    private static <T extends Item> DeferredItem<T> baseRegister(String name, ResourceKey<Item> key, Function<Item.Properties, T> builder, Supplier<Item.Properties> properties) {
+    public static <T extends Item> DeferredItem<T> baseRegister(String name, ResourceKey<Item> key, Function<Item.Properties, T> builder, Supplier<Item.Properties> properties) {
         return ITEMS.register(name, () -> builder.apply(properties.get().setId(key)));
     }
 }

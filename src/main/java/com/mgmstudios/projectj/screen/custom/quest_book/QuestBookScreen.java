@@ -9,6 +9,7 @@ import com.mgmstudios.projectj.screen.custom.quest_book.components.QuestPageButt
 import com.mgmstudios.projectj.screen.custom.quest_book.templates.*;
 import com.mgmstudios.projectj.util.ItemLookup;
 import net.minecraft.client.GameNarrator;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
@@ -23,6 +24,8 @@ import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
@@ -31,6 +34,7 @@ import java.util.*;
 
 import static com.mgmstudios.projectj.screen.custom.quest_book.QuestBookParser.*;
 
+@OnlyIn(Dist.CLIENT)
 public class QuestBookScreen extends Screen {
 
     public static final int PAGE_INDICATOR_TEXT_Y_OFFSET = 16;
@@ -61,6 +65,10 @@ public class QuestBookScreen extends Screen {
     protected List<AbstractWidget> temporaryWidgets = new ArrayList<>();
     public LinkedTreeMap<String, Integer> pageShortcutMap;
     private int totalPages = 0;
+
+    public static void openQuestBookScreen() {
+        Minecraft.getInstance().setScreen(new QuestBookScreen());
+    }
     public QuestBookScreen(BookAccess bookAccess) {
         this(bookAccess, true);
     }

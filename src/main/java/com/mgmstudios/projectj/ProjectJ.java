@@ -8,6 +8,9 @@ import com.mgmstudios.projectj.worldgen.*;
 import com.mgmstudios.projectj.worldgen.regions.AdobeDesertRegion;
 import com.mgmstudios.projectj.worldgen.regions.SerpentiniteHillsRegion;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
+import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
+import net.neoforged.neoforge.fluids.FluidType;
 import org.slf4j.Logger;
 
 import com.mgmstudios.projectj.block.ModBlocks;
@@ -116,6 +119,8 @@ public class ProjectJ
 
             // Register our surface rules
             SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ModSurfaceRules.makeRules());
+
+            FluidInteractionRegistry.addInteraction(NeoForgeMod.LAVA_TYPE.value(), new FluidInteractionRegistry.InteractionInformation(ModFluidTypes.PYRITE_TYPE.get(), (fluidState) -> fluidState.isSource() ? ModBlocks.SERPENTINITE_ROCK.get().defaultBlockState() : ModBlocks.COBBLED_SERPENTINITE.get().defaultBlockState()));
         });
     }
 

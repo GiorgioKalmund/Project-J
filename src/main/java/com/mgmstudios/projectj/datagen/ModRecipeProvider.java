@@ -430,9 +430,9 @@ public class ModRecipeProvider extends RecipeProvider {
 
         ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.QUEST_BOOK)
                 .requires(Items.BOOK)
-                .requires(ModItems.JADE)
+                .requires(ModBlocks.SERPENTINITE_ROCK)
                 .unlockedBy("has_book", this.has(Items.BOOK))
-                .unlockedBy("has_jade", this.has(ModItems.JADE))
+                .unlockedBy("has_serpentinite_rock", this.has(ModBlocks.SERPENTINITE_ROCK))
                 .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.COMBAT, ModItems.OBSIDIAN_ARROW, 4)
