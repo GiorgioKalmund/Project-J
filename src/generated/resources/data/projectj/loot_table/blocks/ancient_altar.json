@@ -1,5 +1,27 @@
 {
   "type": "minecraft:block",
+  "functions": [
+    {
+      "function": "minecraft:copy_components",
+      "include": [
+        "projectj:main_inventory",
+        "projectj:side_inventory",
+        "projectj:fluid_inventory"
+      ],
+      "source": "block_entity"
+    },
+    {
+      "block": "projectj:ancient_altar",
+      "function": "minecraft:copy_state",
+      "properties": [
+        "altar_pyrite_inside",
+        "altar_blood_inside"
+      ]
+    },
+    {
+      "function": "minecraft:explosion_decay"
+    }
+  ],
   "pools": [
     {
       "bonus_rolls": 0.0,

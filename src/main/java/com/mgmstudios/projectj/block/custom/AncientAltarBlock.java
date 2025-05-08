@@ -39,6 +39,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -85,13 +86,16 @@ public class AncientAltarBlock extends BaseEntityBlock {
 
     @Override
     protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
-        if (state.getBlock() != newState.getBlock()){
-            if (level.getBlockEntity(pos) instanceof AncientAltarBlockEntity ancientAltarBlockEntity){
-                ancientAltarBlockEntity.drops();
-                level.updateNeighbourForOutputSignal(pos, this);
-            }
-        }
         super.onRemove(state, level, pos, newState, movedByPiston);
+    }
+
+    @Override
+    public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
+        if (level.getBlockEntity(pos) instanceof AncientAltarBlockEntity ancientAltarBlockEntity && player.isCrouching()){
+            ancientAltarBlockEntity.drops();
+            level.updateNeighbourForOutputSignal(pos, this);
+        }
+        return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);
     }
 
     @Override

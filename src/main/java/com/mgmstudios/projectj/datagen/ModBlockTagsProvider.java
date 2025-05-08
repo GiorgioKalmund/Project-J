@@ -34,7 +34,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK.get())
                 .add(ModBlocks.METATE.get())
                 .add(ModBlocks.ADOBE_GLASS.get())
-                .add(ModBlocks.JADE_CRYSTAL.get());
+                .add(ModBlocks.JADE_CRYSTAL.get())
+                .add(ModBlocks.MESQUITE_BRAZIER.get());
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .addTag(ModTags.Blocks.ADOBE)

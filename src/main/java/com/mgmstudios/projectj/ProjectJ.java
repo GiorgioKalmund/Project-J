@@ -1,5 +1,6 @@
 package com.mgmstudios.projectj;
 
+import com.mgmstudios.projectj.component.ModDataComponents;
 import com.mgmstudios.projectj.entity.client.runner.RunnerRenderer;
 import com.mgmstudios.projectj.particle.ModParticles;
 import com.mgmstudios.projectj.particle.TeleportationParticles;
@@ -100,6 +101,7 @@ public class ProjectJ
         ModStructures.register(modEventBus);
         ModStructurePlacements.register(modEventBus);
         ModParticles.register(modEventBus);
+        ModDataComponents.register(modEventBus);
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::registerScreens);

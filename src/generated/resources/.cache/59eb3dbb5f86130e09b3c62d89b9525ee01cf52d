@@ -1,4 +1,4 @@
-// 1.21.4	2025-05-02T18:00:04.39717	Loot Tables
+// 1.21.4	2025-05-08T16:40:27.423831	Loot Tables
 645e23f8676b8f0e4d797aeab743aa1e3606c703 data/projectj/loot_table/blocks/adobe_bricks.json
 c52a58507f4c8bc3dcdd97ef286a063d396844cc data/projectj/loot_table/blocks/adobe_bricks_slab.json
 c80294a187a6c6c06ea794e6c6d418870c792578 data/projectj/loot_table/blocks/adobe_bricks_stairs.json
@@ -6,7 +6,7 @@ c80294a187a6c6c06ea794e6c6d418870c792578 data/projectj/loot_table/blocks/adobe_b
 c1935a254394f32f5c532b04dae7c39bc47610aa data/projectj/loot_table/blocks/adobe_furnace.json
 5ab96fcd9bab0d701dd587013997bf7b5f0782e7 data/projectj/loot_table/blocks/adobe_glass.json
 d6d84ed04d41ae3211fb8a5a82066153693a1c16 data/projectj/loot_table/blocks/adobe_sand.json
-8d0db64bfc99e962b58dbc58ba33d90f039a131f data/projectj/loot_table/blocks/ancient_altar.json
+97cc8794bf08cf81b9855c37854276385801e06f data/projectj/loot_table/blocks/ancient_altar.json
 420c13b83d647a08266c41944a394429d4686d9d data/projectj/loot_table/blocks/botany_pot.json
 b1a960c598605df794470b3b6749987861684792 data/projectj/loot_table/blocks/chili_bush.json
 a83c817d872b29e383079bd07d3cc0a59907eda0 data/projectj/loot_table/blocks/chimney.json

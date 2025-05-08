@@ -11,11 +11,11 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_jade": {
+    "has_serpentinite_rock": {
       "conditions": {
         "items": [
           {
-            "items": "projectj:jade"
+            "items": "projectj:serpentinite_rock"
           }
         ]
       },
@@ -32,7 +32,7 @@
     [
       "has_the_recipe",
       "has_book",
-      "has_jade"
+      "has_serpentinite_rock"
     ]
   ],
   "rewards": {

@@ -2,11 +2,17 @@ package com.mgmstudios.projectj.block.entity.custom;
 
 import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.block.entity.ModBlockEntities;
+import com.mgmstudios.projectj.component.ModDataComponents;
 import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.item.ModItems;
-import net.minecraft.client.multiplayer.chat.report.ReportEnvironment;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DataResult;
 import net.minecraft.core.*;
+import net.minecraft.core.component.*;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
+import net.minecraft.nbt.Tag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -16,11 +22,10 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -30,10 +35,16 @@ import net.neoforged.neoforge.capabilities.BlockCapability;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.ICapabilityProvider;
 import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.SimpleFluidContent;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
+import org.jline.utils.Log;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import static com.mgmstudios.projectj.block.custom.AncientAltarBlock.*;
 
@@ -42,6 +53,8 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
         IFluidHandler,
         ICapabilityProvider<BlockCapability<IFluidHandler, Direction>,  IFluidHandler, IFluidHandler>
 {
+
+    private final PatchedDataComponentMap components = new PatchedDataComponentMap(DataComponentMap.EMPTY);
 
     private final FluidTank fluidTank = new FluidTank(1000, fs -> fs.getFluid() == ModFluids.FLOWING_PYRITE.get()){
         @Override
@@ -92,6 +105,27 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
             return 1;
         }
     };
+
+    @Override
+    protected void collectImplicitComponents(DataComponentMap.Builder components) {
+        super.collectImplicitComponents(components);
+        components.set(ModDataComponents.MAIN_INVENTORY.get(),
+                ItemContainerContents.fromItems(listFromItemStack(inventory)));
+        components.set(ModDataComponents.SIDE_INVENTORY.get(),
+                ItemContainerContents.fromItems(listFromItemStack(bowlInventory)));
+        components.set(ModDataComponents.FLUID_INVENTORY.get(),
+                SimpleFluidContent.copyOf(fluidTank.getFluid()));
+    }
+
+    private List<ItemStack> listFromItemStack(ItemStackHandler handler){
+        List<ItemStack> itemStacks = new ArrayList<>();
+        for (int index = 0; index < handler.getSlots(); index++){
+            if (!handler.getStackInSlot(index).is(Items.AIR)){
+               itemStacks.add(handler.getStackInSlot(index));
+            }
+        }
+        return  itemStacks;
+    }
 
     public int getItemsInside(){
         int result = 0;
@@ -267,6 +301,14 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
         if (!craftingResultItem.isEmpty())
             tag.put("craftingResult", craftingResultItem.save(registries));
         fluidTank.writeToNBT(registries, tag);
+        DataComponentPatch patch = components.asPatch();
+
+        Tag patchTag = DataComponentPatch.CODEC
+                .encodeStart(NbtOps.INSTANCE, patch)
+                .resultOrPartial(string -> LogUtils.getLogger().warn("Could not encode components path for ancient altar: {}", string))
+                .orElse(new CompoundTag());
+
+        tag.put("component_patch", patchTag);
     }
 
     @Override
@@ -280,6 +322,42 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
             craftingResultItem = ItemStack.parse(registries, tag.getCompound("craftingResult")).orElse(ItemStack.EMPTY);
         }
         fluidTank.readFromNBT(registries, tag);
+        if (tag.contains("component_patch")) {
+            CompoundTag patchTag = tag.getCompound("component_patch");
+
+            DataComponentPatch patch = DataComponentPatch.CODEC
+                    .parse(NbtOps.INSTANCE, patchTag)
+                    .resultOrPartial(string -> LogUtils.getLogger().warn("Could not decode components path for ancient altar: {}", string))
+                    .orElse(DataComponentPatch.EMPTY);
+            this.applyComponents(components, patch);
+        }
+    }
+
+    @Override
+    public void setComponents(DataComponentMap components) {
+        super.setComponents(components);
+        applyComponentsToFields(components);
+    }
+
+    public void applyComponentsToFields(DataComponentMap components) {
+        System.out.println("Appliying components: " + components.size());
+        ItemContainerContents main = components.get(ModDataComponents.MAIN_INVENTORY.get());
+        if (main != null) {
+            for (int i = 0; i < main.getSlots() ; i++) {
+                this.inventory.setStackInSlot(i, main.getStackInSlot(i));
+            }
+            System.out.println("Main inventory found!");
+        }
+        ItemContainerContents bowl = components.get(ModDataComponents.SIDE_INVENTORY.get());
+        if (bowl != null && bowl.getSlots() > 0) {
+            System.out.println("Bowl inventory found!");
+            this.bowlInventory.setStackInSlot(0, bowl.getStackInSlot(0));
+        }
+        SimpleFluidContent fluid = components.get(ModDataComponents.FLUID_INVENTORY.get());
+        if (fluid != null) {
+            System.out.println("Fluid inventory found!");
+            this.fluidTank.setFluid(new FluidStack(fluid.getFluid(), fluid.getAmount()));
+        }
     }
 
     @Override

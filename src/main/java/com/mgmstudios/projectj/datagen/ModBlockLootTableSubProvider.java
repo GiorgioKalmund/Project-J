@@ -3,8 +3,10 @@ package com.mgmstudios.projectj.datagen;
 import java.util.Set;
 
 import com.mgmstudios.projectj.block.ModBlocks;
+import com.mgmstudios.projectj.block.custom.AncientAltarBlock;
 import com.mgmstudios.projectj.block.custom.TallBlock;
 import com.mgmstudios.projectj.block.custom.botany.BotanyBushBlock;
+import com.mgmstudios.projectj.component.ModDataComponents;
 import com.mgmstudios.projectj.item.ModItems;
 
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
@@ -23,8 +25,7 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
-import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
-import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.functions.*;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
@@ -128,6 +129,8 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         this.dropOther(ModBlocks.POTTED_CHILI_BUSH.get(), ModBlocks.BOTANY_POT.get());
         this.dropOther(ModBlocks.POTTED_MAIZE_CROP.get(), ModBlocks.BOTANY_POT.get());
 
+        add(ModBlocks.ANCIENT_ALTAR.get(), this::createAncientAltarBlock);
+
         add(ModBlocks.MESQUITE_LEAVES.get(), block -> super.createLeavesDrops(ModBlocks.MESQUITE_LEAVES.get(), ModBlocks.MESQUITE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         add(ModBlocks.SNAKE_STATUE.get(), this::createTallBlockTable);
 
@@ -151,6 +154,19 @@ public class ModBlockLootTableSubProvider extends BlockLootSubProvider {
         LootItemCondition.Builder chiliCropDrops = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.CHILI_BUSH.get())
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BotanyBushBlock.AGE, 3));
         this.add(ModBlocks.CHILI_BUSH.get(), this.createCropDrops(ModBlocks.CHILI_BUSH.get(), ModItems.CHILI.get(), ModItems.CHILI_SEEDS.get(), chiliCropDrops));
+    }
+
+    protected LootTable.Builder createAncientAltarBlock(Block block){
+        return this.applyExplosionDecay(
+                block,
+                LootTable.lootTable()
+                        .withPool(applyExplosionCondition(block.asItem(), LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(block.asItem()))))
+                        .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(ModDataComponents.MAIN_INVENTORY.get()).include(ModDataComponents.SIDE_INVENTORY.get()).include(ModDataComponents.FLUID_INVENTORY.get()))
+                        .apply(CopyBlockState.copyState(ModBlocks.ANCIENT_ALTAR.get())
+                                .copy(AncientAltarBlock.PYRITE_INSIDE)
+                                .copy(AncientAltarBlock.BLOOD_INSIDE)
+                        ));
+
     }
 
     protected LootTable.Builder createItemBushDrop(Block block, Item item, float minDrops, float midDrops, float maxDrops){

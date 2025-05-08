@@ -1,5 +1,6 @@
 package com.mgmstudios.projectj.block;
 
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
@@ -13,6 +14,7 @@ import com.mgmstudios.projectj.block.custom.botany.BotanyBushBlock;
 import com.mgmstudios.projectj.block.custom.botany.BotanyPotBlock;
 import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.item.ModItems;
+import com.mgmstudios.projectj.item.custom.AncientAltarBlockItem;
 import com.mgmstudios.projectj.worldgen.feature.ModTreeGrowers;
 
 import net.minecraft.core.Holder;
@@ -27,6 +29,7 @@ import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
@@ -187,7 +190,7 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> TELEPORTATION_PAD = register("teleportation_pad", TeleportationBlock::new, BlockBehaviour.Properties.of().noOcclusion().lightLevel(teleportationPadEmission(10)));
 
-    public static final DeferredBlock<Block> ANCIENT_ALTAR = register("ancient_altar", AncientAltarBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).noOcclusion().lightLevel(ancientAltarBlockEmission(12)), new Item.Properties().rarity(Rarity.RARE));
+    public static final DeferredBlock<Block> ANCIENT_ALTAR = registerWithCustomItem("ancient_altar", AncientAltarBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).noOcclusion().lightLevel(ancientAltarBlockEmission(12)), AncientAltarBlockItem::new, new Item.Properties().rarity(Rarity.RARE));
 
     public static final DeferredBlock<Block> LITTLE_MAN_STATUE_BLOCK = register("little_man_statue_block", LittleManStatueBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).noOcclusion(), new Item.Properties());
 
@@ -216,6 +219,15 @@ public class ModBlocks {
     private static DeferredBlock<Block> register(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
         DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> factory.apply(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
         ModItems.ITEMS.registerSimpleBlockItem(toBeRegistered, itemProperties);
+
+        return toBeRegistered;
+    }
+
+    private static DeferredBlock<Block> registerWithCustomItem(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, Function<Item.Properties, Item> itemFactory, Item.Properties itemProperties) {
+        DeferredBlock<Block> toBeRegistered =  BLOCKS.register(name, registryName -> factory.apply(properties.setId(ResourceKey.create(Registries.BLOCK, registryName))));
+        String id = (toBeRegistered.unwrapKey().orElseThrow()).location().getPath();
+        Objects.requireNonNull(toBeRegistered);
+        ModItems.register(id, itemFactory, itemProperties);
 
         return toBeRegistered;
     }

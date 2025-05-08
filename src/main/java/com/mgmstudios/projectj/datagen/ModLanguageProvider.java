@@ -144,6 +144,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.SERPENTINITE_BENCH_CORNER, "Serpentinite Bench Corner");
         addBlock(ModBlocks.OLMEC_ALTAR, "Olmec Altar");
         addBlock(ModBlocks.ANCIENT_ALTAR, "Ancient Altar");
+        add(ModBlocks.ANCIENT_ALTAR.asItem(), "Ancient Altar");
 
         addBlock(ModBlocks.RESISTANT_OLMEC_HEAD, "Resistant Olmec Head");
         add(ModBlocks.RESISTANT_OLMEC_HEAD.asItem(), "Resistant Olmec Head");
