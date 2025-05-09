@@ -167,6 +167,16 @@ public class ProjectJ
             event.registerBlockEntityRenderer(ModBlockEntities.JADE_CRYSTAL_BE.get(), JadeCrystalEntityRenderer::new);
         }
 
+
+
+        @SubscribeEvent
+        public static void registerParticleFactories(RegisterParticleProvidersEvent event){
+            event.registerSpriteSet(ModParticles.TELEPORTATION_PARTICLES.get(), TeleportationParticles.Provider::new);
+        }
+    }
+
+    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+    public static class ModEvents{
         @SubscribeEvent
         private static void registerCapabilities(RegisterCapabilitiesEvent event) {
             event.registerBlockEntity(Capabilities.FluidHandler.BLOCK,
@@ -177,11 +187,6 @@ public class ProjectJ
 
             event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.METATE_BE.get(), (entity, context) -> entity.getInventory());
             event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.JADE_CRYSTAL_BE.get(), (entity, context) -> entity.getInventory());
-        }
-
-        @SubscribeEvent
-        public static void registerParticleFactories(RegisterParticleProvidersEvent event){
-            event.registerSpriteSet(ModParticles.TELEPORTATION_PARTICLES.get(), TeleportationParticles.Provider::new);
         }
     }
 }
