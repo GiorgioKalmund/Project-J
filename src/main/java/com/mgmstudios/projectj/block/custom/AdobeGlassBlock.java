@@ -2,6 +2,7 @@ package com.mgmstudios.projectj.block.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.TransparentBlock;
@@ -22,7 +23,7 @@ public class AdobeGlassBlock extends TransparentBlock {
     public VoxelShape getCollisionShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         if (context instanceof EntityCollisionContext entityContext) {
             Entity collidingEntity = entityContext.getEntity();
-            if (collidingEntity instanceof Player player && !player.isCrouching()) {
+            if ((collidingEntity instanceof Player player && !player.isCrouching()) || collidingEntity instanceof ItemEntity) {
                 return empty();
             }
         }

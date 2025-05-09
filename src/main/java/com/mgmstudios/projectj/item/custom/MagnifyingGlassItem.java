@@ -82,15 +82,18 @@ public class MagnifyingGlassItem extends SpyglassItem {
     public ConversionResult isValidConversion(ServerLevel serverLevel, BlockPos clickedPos, boolean needsToBeDay){
         int lightLevel = serverLevel.getBrightness(LightLayer.SKY, clickedPos.relative(Direction.UP));
         boolean day = !needsToBeDay || serverLevel.isDay();
-        if (MAGNIFYING_CONVERTABLES == null || MAGNIFYING_TAG_CONVERTABLES == null){
+        if (MAGNIFYING_CONVERTABLES == null){
             setupRecipes();
         }
-        boolean contains = MAGNIFYING_CONVERTABLES.containsKey(serverLevel.getBlockState(clickedPos));
-        BlockState newState = serverLevel.getBlockState(clickedPos);
-        for (TagKey<Block> key : MAGNIFYING_TAG_CONVERTABLES.keySet()){
-            if (serverLevel.getBlockState(clickedPos).is(key)){
-                newState = MAGNIFYING_TAG_CONVERTABLES.get(key);
-                contains = true;
+        BlockState clickedBlockState = serverLevel.getBlockState(clickedPos);
+        boolean contains = MAGNIFYING_CONVERTABLES.containsKey(clickedBlockState);
+        BlockState newState = MAGNIFYING_CONVERTABLES.get(clickedBlockState);
+        if (!contains){
+            for (TagKey<Block> key : MAGNIFYING_TAG_CONVERTABLES.keySet()){
+                if (serverLevel.getBlockState(clickedPos).is(key)){
+                    newState = MAGNIFYING_TAG_CONVERTABLES.get(key);
+                    contains = true;
+                }
             }
         }
         return new ConversionResult(lightLevel >= minLight && lightLevel <= maxLight && day && (contains), newState);
@@ -110,6 +113,7 @@ public class MagnifyingGlassItem extends SpyglassItem {
             if (level instanceof ServerLevel serverLevel){
                 ConversionResult conversionResult = isValidConversion(serverLevel, selectedPos, true);
                 boolean validConversion = conversionResult.valid;
+                System.out.println("Conversion: " + conversionResult.valid + " & " + conversionResult.resultState);
                 if (validConversion){
                     float probability = 1F - (float) remainingUseDuration / CONVERSION_DURATION;
                     showBurningParticles(level, selectedPos, probability);

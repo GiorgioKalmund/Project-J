@@ -129,6 +129,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.PLANKS)
                 .add(ModBlocks.MESQUITE_PLANKS.asItem());
 
+        tag(ItemTags.WOODEN_SLABS)
+                .add(ModBlocks.MESQUITE_SLAB.asItem());
+
         tag(ItemTags.SLABS)
                 .add(ModBlocks.SERPENTINITE_BRICKS_SLAB.asItem())
                 .add(ModBlocks.SERPENTINITE_ROCK_SLAB.asItem())

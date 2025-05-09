@@ -5,7 +5,7 @@ import net.minecraft.world.food.FoodProperties;
 public class ModFoods {
     public static final FoodProperties MAIZE = new FoodProperties.Builder().nutrition(1).saturationModifier(0.6F).build();
     public static final FoodProperties MAIZE_MASH = stew(3).alwaysEdible().build();
-    public static final FoodProperties CHILI_CON_CARNE  = stew(8).alwaysEdible().build();
+    public static final FoodProperties CHILI_CON_CARNE  = stew(11).saturationModifier(0.8F).alwaysEdible().build();
     public static final FoodProperties CHILI = new FoodProperties.Builder().nutrition(2).saturationModifier(0.6F).alwaysEdible().build();
     public static final FoodProperties FLESH = new FoodProperties.Builder().nutrition(5).saturationModifier(0.6F).build();
 

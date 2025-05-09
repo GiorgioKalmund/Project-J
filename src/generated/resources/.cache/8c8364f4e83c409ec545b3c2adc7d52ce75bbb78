@@ -1,4 +1,4 @@
-// 1.21.4	2025-05-03T12:13:13.189251	Tags for minecraft:item mod id vanilla
+// 1.21.4	2025-05-09T20:23:40.2204072	Tags for minecraft:item mod id vanilla
 77e5fbee002b4876af3efe3718e21562914f7e4b data/minecraft/tags/item/arrows.json
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/axes.json
 eef8507b29bbe76da180374064eae34413716c15 data/minecraft/tags/item/chest_armor.json
@@ -23,6 +23,7 @@ c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/shovels.json
 30de720dbf32117f66a83013ea736cd046f64f3f data/minecraft/tags/item/wooden_buttons.json
 e8fbcca79baecae4d93218a4c7cb501a279b5cd9 data/minecraft/tags/item/wooden_fences.json
 45f6585e69209af237b10fbbdb5c92a9e86fd407 data/minecraft/tags/item/wooden_pressure_plates.json
+9f8f1fa151615661da835da0e638b4c1bbe40a33 data/minecraft/tags/item/wooden_slabs.json
 01e3397f45c1c2d80c2adde8d6054ec09a8c4130 data/projectj/tags/item/adobe_furnace_smeltable.json
 5fc3a63ccc39ecd04cc579d057139421acd08bb3 data/projectj/tags/item/altar_craftable.json
 adcd894c030f8dc0e3a5013de2581d1142959bdd data/projectj/tags/item/benches.json

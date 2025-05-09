@@ -85,14 +85,11 @@ public class AncientAltarBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
-        super.onRemove(state, level, pos, newState, movedByPiston);
-    }
-
-    @Override
     public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
-        if (level.getBlockEntity(pos) instanceof AncientAltarBlockEntity ancientAltarBlockEntity && player.isCrouching()){
-            ancientAltarBlockEntity.drops();
+        if (level.getBlockEntity(pos) instanceof AncientAltarBlockEntity ancientAltarBlockEntity){
+            if (player.isCrouching())
+                ancientAltarBlockEntity.drops();
+            
             level.updateNeighbourForOutputSignal(pos, this);
         }
         return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);

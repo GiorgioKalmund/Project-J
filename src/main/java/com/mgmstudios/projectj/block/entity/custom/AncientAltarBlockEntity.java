@@ -219,6 +219,9 @@ public class AncientAltarBlockEntity extends BlockEntity  implements
         for (int slot = 0; slot < inventory.getSlots(); slot++){
             inventory.setStackInSlot(slot, ItemStack.EMPTY);
         }
+        for (int slot = 0; slot < bowlInventory.getSlots(); slot++){
+            bowlInventory.setStackInSlot(slot, ItemStack.EMPTY);
+        }
         craftingResultItem = ItemStack.EMPTY;
         itemsInside = 0;
     }
