@@ -9,6 +9,7 @@ import net.neoforged.neoforge.common.ItemAbility;
 import org.jetbrains.annotations.Nullable;
 
 import static com.mgmstudios.projectj.block.ModBlockFamilies.STRIPPABLES;
+import static com.mgmstudios.projectj.block.ModBlockFamilies.createStrippables;
 
 public class StrippableModLogBlock extends RotatedPillarBlock {
 
@@ -19,6 +20,9 @@ public class StrippableModLogBlock extends RotatedPillarBlock {
     @Override
     public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ItemAbility itemAbility, boolean simulate) {
         if (itemAbility.equals(ItemAbilities.AXE_STRIP)){
+            if (STRIPPABLES == null)
+                createStrippables();
+
             var baseBlock = state.getBlock();
             Block strippedBlock = STRIPPABLES.get(baseBlock);
             if (strippedBlock != null){
