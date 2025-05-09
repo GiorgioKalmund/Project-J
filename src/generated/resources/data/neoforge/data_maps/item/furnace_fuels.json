@@ -1,0 +1,16 @@
+{
+  "values": {
+    "projectj:charcoal_block": {
+      "burn_time": 8000
+    },
+    "projectj:mesquite_bench": {
+      "burn_time": 200
+    },
+    "projectj:mesquite_bench_corner": {
+      "burn_time": 200
+    },
+    "projectj:mesquite_slab": {
+      "burn_time": 200
+    }
+  }
+}

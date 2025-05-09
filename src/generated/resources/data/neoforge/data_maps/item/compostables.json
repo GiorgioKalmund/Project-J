@@ -1,0 +1,10 @@
+{
+  "values": {
+    "projectj:maize": {
+      "chance": 0.4
+    },
+    "projectj:maize_seeds": {
+      "chance": 0.25
+    }
+  }
+}

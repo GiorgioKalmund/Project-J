@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "projectj:serpentinite_bench"
+  ],
+  "result": {
+    "count": 2,
+    "id": "projectj:serpentinite_bench_corner"
+  }
+}

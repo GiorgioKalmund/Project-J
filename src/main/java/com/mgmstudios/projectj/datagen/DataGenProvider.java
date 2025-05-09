@@ -41,6 +41,8 @@ public class DataGenProvider extends LootTableProvider {
             lookupProvider
         ));
 
+        event.createProvider(ModDataMapProvider::new);
+
         event.createProvider(ModDataPackProvider::new);
 
         event.createProvider((output, lookupProvider) -> new AdvancementProvider(

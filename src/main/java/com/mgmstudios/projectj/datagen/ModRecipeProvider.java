@@ -242,6 +242,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_serpentinite_rock_slab", this.has(ModBlocks.SERPENTINITE_ROCK_SLAB))
                 .save(this.output);
 
+        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.SERPENTINITE_BENCH_CORNER, 2)
+                .requires(ModBlocks.SERPENTINITE_BENCH)
+                .unlockedBy("has_serpentinite_bench", this.has(ModBlocks.SERPENTINITE_BENCH))
+                .save(this.output);
+
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.MESQUITE_BENCH, 2)
                 .pattern("PLP")
                 .pattern("s s")
@@ -251,6 +256,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_mesquite_logs", this.has(ModTags.Items.MESQUITE_LOGS))
                 .unlockedBy("has_mesquite_planks", this.has(ModBlocks.MESQUITE_PLANKS))
                 .unlockedBy("has_mesquite_slab", this.has(ModBlocks.MESQUITE_SLAB))
+                .save(this.output);
+
+        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.MESQUITE_BENCH_CORNER, 2)
+                .requires(ModBlocks.MESQUITE_BENCH)
+                .unlockedBy("has_mesquite_bench", this.has(ModBlocks.MESQUITE_BENCH))
                 .save(this.output);
 
         woodFromLogs(ModBlocks.MESQUITE_WOOD.get(), ModBlocks.MESQUITE_LOG);

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_serpentinite_bench": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projectj:serpentinite_bench"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "projectj:serpentinite_bench_corner"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_serpentinite_bench"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "projectj:serpentinite_bench_corner"
+    ]
+  }
+}

@@ -8,6 +8,7 @@ import com.mgmstudios.projectj.worldgen.*;
 
 import com.mgmstudios.projectj.worldgen.regions.AdobeDesertRegion;
 import com.mgmstudios.projectj.worldgen.regions.SerpentiniteHillsRegion;
+import net.minecraft.world.level.block.entity.FuelValues;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
