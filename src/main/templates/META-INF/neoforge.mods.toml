@@ -88,7 +88,8 @@ description='''${mod_description}'''
 
 [[dependencies.${mod_id}]]
     modId="terrablender"
-    type="required"
+    type = "required"
+    mandatory = true
     # This version range declares a minimum of the current minecraft version up to but not including the next major version
     versionRange="${terrablender_version_range}"
     ordering="NONE"
