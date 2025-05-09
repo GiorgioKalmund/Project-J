@@ -10,6 +10,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -30,6 +31,9 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
+
+import static com.mgmstudios.projectj.item.custom.MagnifyingGlassItem.MAGNIFYING_CONVERTABLES;
+import static com.mgmstudios.projectj.item.custom.MagnifyingGlassItem.MAGNIFYING_TAG_CONVERTABLES;
 
 public class MagnifyingGlassStandBlock extends HorizontalDirectionalBlock {
 
@@ -102,18 +106,27 @@ public class MagnifyingGlassStandBlock extends HorizontalDirectionalBlock {
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         BlockPos belowPos = pos.below();
         BlockState belowState = level.getBlockState(belowPos);
+        boolean contains = MAGNIFYING_CONVERTABLES.containsKey(belowState);
+        BlockState newState = MAGNIFYING_CONVERTABLES.get(belowState);
+        if (!contains){
+            for (TagKey<Block> key : MAGNIFYING_TAG_CONVERTABLES.keySet()){
+                if (belowState.is(key)){
+                    newState = MAGNIFYING_TAG_CONVERTABLES.get(key);
+                    contains = true;
+                }
+            }
+        }
         int skyLightLevel = level.getBrightness(LightLayer.SKY, pos);
         if (conversion <= conversionThreshold
-                && MagnifyingGlassItem.MAGNIFYING_CONVERTABLES.containsKey(belowState)
+                && contains
                 && level.isDay()
                 && skyLightLevel > 5
         ){
             conversion++;
-            System.out.println(conversion);
             showSeverBurningParticles(level, belowPos);
             if (conversion == conversionThreshold){
                 level.playSound(null, pos, SoundEvents.GENERIC_BURN, SoundSource.BLOCKS);
-                level.setBlockAndUpdate(belowPos, MagnifyingGlassItem.MAGNIFYING_CONVERTABLES.get(belowState));
+                level.setBlockAndUpdate(belowPos, newState);
                 conversion = 0;
             }
         }
