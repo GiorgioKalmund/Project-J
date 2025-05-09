@@ -6,6 +6,7 @@ import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 
 import java.util.concurrent.CompletableFuture;
@@ -35,7 +36,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.METATE.get())
                 .add(ModBlocks.ADOBE_GLASS.get())
                 .add(ModBlocks.JADE_CRYSTAL.get())
-                .add(ModBlocks.MESQUITE_BRAZIER.get());
+                .add(ModBlocks.MESQUITE_BRAZIER.get())
+                .add(ModBlocks.CHARCOAL_BLOCK.get());
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .addTag(ModTags.Blocks.ADOBE)

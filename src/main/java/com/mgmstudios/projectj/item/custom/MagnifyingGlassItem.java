@@ -14,6 +14,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Interaction;
@@ -45,6 +47,7 @@ public class MagnifyingGlassItem extends SpyglassItem {
 
 
     public static HashMap<BlockState, BlockState> MAGNIFYING_CONVERTABLES;
+    public static HashMap<TagKey<Block>, BlockState> MAGNIFYING_TAG_CONVERTABLES;
 
     public static final int CONVERSION_DURATION = 80;
     public final int minLight;
@@ -74,14 +77,23 @@ public class MagnifyingGlassItem extends SpyglassItem {
         return CONVERSION_DURATION;
     }
 
-    public boolean isValidConversion(ServerLevel serverLevel, BlockPos clickedPos, boolean needsToBeDay){
+    private record ConversionResult(boolean valid, BlockState resultState){}
+
+    public ConversionResult isValidConversion(ServerLevel serverLevel, BlockPos clickedPos, boolean needsToBeDay){
         int lightLevel = serverLevel.getBrightness(LightLayer.SKY, clickedPos.relative(Direction.UP));
         boolean day = !needsToBeDay || serverLevel.isDay();
-        if (MAGNIFYING_CONVERTABLES == null){
+        if (MAGNIFYING_CONVERTABLES == null || MAGNIFYING_TAG_CONVERTABLES == null){
             setupRecipes();
         }
         boolean contains = MAGNIFYING_CONVERTABLES.containsKey(serverLevel.getBlockState(clickedPos));
-        return lightLevel >= minLight && lightLevel <= maxLight && day && contains;
+        BlockState newState = serverLevel.getBlockState(clickedPos);
+        for (TagKey<Block> key : MAGNIFYING_TAG_CONVERTABLES.keySet()){
+            if (serverLevel.getBlockState(clickedPos).is(key)){
+                newState = MAGNIFYING_TAG_CONVERTABLES.get(key);
+                contains = true;
+            }
+        }
+        return new ConversionResult(lightLevel >= minLight && lightLevel <= maxLight && day && (contains), newState);
     }
 
     @Override
@@ -96,13 +108,13 @@ public class MagnifyingGlassItem extends SpyglassItem {
                 return;
 
             if (level instanceof ServerLevel serverLevel){
-                boolean validConversion = isValidConversion(serverLevel, selectedPos, true);
+                ConversionResult conversionResult = isValidConversion(serverLevel, selectedPos, true);
+                boolean validConversion = conversionResult.valid;
                 if (validConversion){
                     float probability = 1F - (float) remainingUseDuration / CONVERSION_DURATION;
                     showBurningParticles(level, selectedPos, probability);
                     if (remainingUseDuration <= 1){
-                        BlockState clickedBlockState = serverLevel.getBlockState(selectedPos);
-                        serverLevel.setBlockAndUpdate(selectedPos, MAGNIFYING_CONVERTABLES.get(clickedBlockState));
+                        serverLevel.setBlockAndUpdate(selectedPos, conversionResult.resultState);
                         level.playSound(null, selectedPos, SoundEvents.GENERIC_BURN, SoundSource.BLOCKS);
                     }
                 }
@@ -143,12 +155,17 @@ public class MagnifyingGlassItem extends SpyglassItem {
 
     private static void setupRecipes(){
         MAGNIFYING_CONVERTABLES = new HashMap<>();
+        MAGNIFYING_TAG_CONVERTABLES = new HashMap<>();
         ModRecipeProvider.buildMagnifyingGlassRecipes();
     }
 
     public static class MagnifyingRecipeBuilder {
         public static void magnify(Block blockToSmelt, Block resultBlock){
             MAGNIFYING_CONVERTABLES.put(blockToSmelt.defaultBlockState(), resultBlock.defaultBlockState());
+        }
+
+        public static void magnify(TagKey<Block> blockToSmelt, Block resultBlock){
+            MAGNIFYING_TAG_CONVERTABLES.put(blockToSmelt, resultBlock.defaultBlockState());
         }
     }
 

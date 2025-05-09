@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "projectj:charcoal_block"
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:charcoal"
+  }
+}

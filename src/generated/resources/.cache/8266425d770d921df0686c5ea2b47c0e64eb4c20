@@ -1,4 +1,4 @@
-// 1.21.4	2025-05-02T20:18:41.761337	Model Definitions - projectj
+// 1.21.4	2025-05-09T13:19:57.8418024	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -8,6 +8,7 @@ b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_brick
 16d574f88709fe34786bd8f4b8a12b221119ada0 assets/projectj/blockstates/adobe_sand.json
 56d477c1553bf8f402af01cea84809d8b0301378 assets/projectj/blockstates/ancient_altar.json
 5072d166ebdf5256c210db01705270a5de8eead1 assets/projectj/blockstates/botany_pot.json
+b2f7ba17ad17e5ad0a087857befb554da5f900bd assets/projectj/blockstates/charcoal_block.json
 f6e028755d11c8212a48cfb910846c0f22889b53 assets/projectj/blockstates/chili_bush.json
 309790fd770e0a99af56c7e38a82bd6f18f80fda assets/projectj/blockstates/chimney.json
 231593025ca503c9848576d43d124808adc10da9 assets/projectj/blockstates/cobbled_serpentinite.json
@@ -87,6 +88,7 @@ ff03205688467fc89fec5a53a8b1e5f0333b1986 assets/projectj/items/adobe_glass.json
 642eb67df375fea3e34f38152df1c5140c8e364b assets/projectj/items/awakened_sun_armor_helmet.json
 17c6175a36fe7eb16686e0572c608a43cf1e9b69 assets/projectj/items/awakened_sun_armor_leggings.json
 c236a7fe29cff9fefcb5a438001d0bb91e903bdd assets/projectj/items/botany_pot.json
+475e1b6f9eb186337dc8bec3098836fa5f213726 assets/projectj/items/charcoal_block.json
 ab51c3c90a6fae8c12fdf1055703a34a3cf2354c assets/projectj/items/chili.json
 1e7c11deed3ba7ccad3b8fe1548b21a95a51fa16 assets/projectj/items/chili_con_carne.json
 559f147574b51074d388fae48a967b6b14eedf3d assets/projectj/items/chili_seeds.json
@@ -210,6 +212,7 @@ f9b242d34949f79e409b68b64062a94ab39a13a9 assets/projectj/models/block/adobe_furn
 6be9ef5091aa15e0717da95cabb3a12cd5ec0c45 assets/projectj/models/block/adobe_furnace_on.json
 ca12394a73a988596c3330df657a8989551bdb99 assets/projectj/models/block/adobe_glass.json
 7d22f5a66c97069f0d358792000607169cb17500 assets/projectj/models/block/adobe_sand.json
+48608d69c1814df4aa1b96ab17470c10583bbeed assets/projectj/models/block/charcoal_block.json
 ec5ae966886e8457c52e1217d90916146252aef5 assets/projectj/models/block/chili_bush_stage0.json
 4aa2b90a3d50281fee79dc85d14c782e7e6abd97 assets/projectj/models/block/chili_bush_stage1.json
 479c7121e381f4f3238f64ad0da7d7a04736eda4 assets/projectj/models/block/chili_bush_stage2.json

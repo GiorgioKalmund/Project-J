@@ -75,6 +75,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.RAW_PYRITE_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.PYRITE_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.PYRITE_ORE.get());
+        blockModels.createTrivialCube(ModBlocks.CHARCOAL_BLOCK.get());
         createTrivialCutoutCube(blockModels, ModBlocks.MESQUITE_LEAVES.get());
         createTrivialTranslucentCube(blockModels, ModBlocks.ADOBE_GLASS.get());
         createTrivialTranslucentCube(blockModels, ModBlocks.TINTED_ADOBE_GLASS.get());

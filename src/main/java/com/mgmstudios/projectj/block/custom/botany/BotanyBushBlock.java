@@ -52,11 +52,10 @@ public class BotanyBushBlock extends SweetBerryBushBlock {
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-        int i = state.getValue(AGE);
-        boolean flag = i == 3;
-        if (i > 1) {
-            int j = 1 + level.random.nextInt(2);
-            popResource(level, pos, new ItemStack(getItem(), j + (flag ? 1 : 0)));
+        int age = state.getValue(AGE);
+        boolean fullyGrown = age == 3;
+        if (age > 1) {
+            popResource(level, pos, new ItemStack(getItem(), 1 + (fullyGrown ? 1 : 0)));
             level.playSound(
                     null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F
             );

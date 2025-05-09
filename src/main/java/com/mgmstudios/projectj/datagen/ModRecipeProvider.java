@@ -9,18 +9,25 @@ import com.mgmstudios.projectj.recipe.acientaltar.AncientAltarRecipeBuilder;
 import com.mgmstudios.projectj.recipe.metate.MetateRecipeBuilder;
 import com.mgmstudios.projectj.util.ModTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.internal.NeoForgeRecipeProvider;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -50,6 +57,16 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_wheat", this.has(Items.WHEAT))
                 .unlockedBy("has_clay", this.has(Items.CLAY_BALL))
                 .unlockedBy("has_adobe_sand", this.has(ModBlocks.ADOBE_SAND))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, Items.ARMOR_STAND)
+                .pattern("###")
+                .pattern(" # ")
+                .pattern("#S#")
+                .define('#', Items.STICK)
+                .define('S', ItemTags.SLABS)
+                .unlockedBy("has_stick", this.has(Items.STICK))
+                .unlockedBy("has_slab", this.has(ItemTags.SLABS))
                 .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.ADOBE_FURNACE.get())
@@ -246,6 +263,13 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('#', ItemTags.LOGS)
                 .unlockedBy("has_log", this.has(ItemTags.LOGS))
                 .save(this.output, "sticks_from_log");
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.STONE_MANO)
+                .pattern("#")
+                .pattern("#")
+                .define('#', ItemTags.STONE_CRAFTING_MATERIALS)
+                .unlockedBy("has_log", this.has(ItemTags.STONE_CRAFTING_MATERIALS))
+                .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModItems.MAGNIFYING_GLASS)
                 .pattern("#")
@@ -456,6 +480,18 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_stick", this.has(Items.STICK))
                 .save(this.output);
 
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.COMBAT, ModBlocks.CHARCOAL_BLOCK)
+                .pattern("##")
+                .pattern("##")
+                .define('#', Items.CHARCOAL)
+                .unlockedBy("has_charcoal", this.has(Items.CHARCOAL))
+                .save(this.output);
+
+        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.COMBAT, Items.CHARCOAL, 4)
+                .requires(ModBlocks.CHARCOAL_BLOCK)
+                .unlockedBy("has_charcoal_block", this.has(ModBlocks.CHARCOAL_BLOCK))
+                .save(this.output, "charcoal_from_projectj_charcoal_block");
+
         // ANCIENT ALTAR
 
         AncientAltarRecipeBuilder.regularWithPyrite(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.MACUAHUITL)
@@ -518,8 +554,6 @@ public class ModRecipeProvider extends RecipeProvider {
                 .requires(Items.SLIME_BALL, 2)
                 .unlockedBy("has_sun_armor_boots", this.has(ModItems.SUN_ARMOR_BOOTS))
                 .save(this.output);
-
-
 
         // METATE
 
@@ -624,6 +658,7 @@ public class ModRecipeProvider extends RecipeProvider {
         MagnifyingRecipeBuilder.magnify(Blocks.RAW_COPPER_BLOCK, Blocks.COPPER_BLOCK);
         MagnifyingRecipeBuilder.magnify(ModBlocks.RAW_PYRITE_BLOCK.get(), ModBlocks.PYRITE_BLOCK.get());
         MagnifyingRecipeBuilder.magnify(ModBlocks.PYRITE_BLOCK.get(), ModBlocks.LIQUID_PYRITE.get());
+        MagnifyingRecipeBuilder.magnify(BlockTags.LOGS_THAT_BURN, ModBlocks.CHARCOAL_BLOCK.get());
     }
 
     public void createHelmet(ItemLike craftingItem, ItemLike resultItem){
