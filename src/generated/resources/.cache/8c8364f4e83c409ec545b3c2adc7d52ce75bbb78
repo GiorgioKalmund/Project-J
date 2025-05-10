@@ -1,4 +1,4 @@
-// 1.21.4	2025-05-09T20:23:40.2204072	Tags for minecraft:item mod id vanilla
+// 1.21.4	2025-05-10T10:33:58.7106964	Tags for minecraft:item mod id vanilla
 77e5fbee002b4876af3efe3718e21562914f7e4b data/minecraft/tags/item/arrows.json
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/axes.json
 eef8507b29bbe76da180374064eae34413716c15 data/minecraft/tags/item/chest_armor.json
@@ -34,6 +34,6 @@ e4d763536c9eb4d422cd9bdf3a19a89dacf8fa9c data/projectj/tags/item/mesquite.json
 27fbee99bbbe82ab9b2ede00f5dd052821a3c5b8 data/projectj/tags/item/mesquite_logs.json
 8611995648b614e1b024cfa90d0344f8ad8658c9 data/projectj/tags/item/pyrite.json
 145d27d46668bb5435d2482085922079d7774d35 data/projectj/tags/item/pyrite_blocks.json
-49b88be6e8b52b8404912448b3e4e34c02152d4f data/projectj/tags/item/serpentinite.json
+74556017f3054ca04eeffbab642b5638f9243a62 data/projectj/tags/item/serpentinite.json
 ef009a87c52aaa14dfb5c66731fe936ec1686e03 data/projectj/tags/item/smelts_to_jade.json
 df51e2c662147884c4c696ad5315f249bdc3a49b data/projectj/tags/item/sun_armor.json

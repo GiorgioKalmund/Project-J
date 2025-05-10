@@ -18,9 +18,14 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.DyeItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -117,9 +122,14 @@ public class TeleportationBlock extends BaseEntityBlock {
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-        System.out.printf("Used");
         TeleportationBlockEntity blockEntity = (TeleportationBlockEntity) level.getBlockEntity(pos);
-        if (blockEntity != null && blockEntity.getConnectedPosition() != null) {
+        if (!player.getItemInHand(InteractionHand.MAIN_HAND).is(Items.AIR))
+            return super.useWithoutItem(state, level, pos, player, hitResult);
+
+        if (blockEntity != null && player.isCrouching()){
+            //TODO: Open name changer ui
+        }
+        else if (blockEntity != null && blockEntity.getConnectedPosition() != null) {
             BlockPos connectedPos = blockEntity.getConnectedPosition();
             player.displayClientMessage(Component.literal("Linked to: [" + connectedPos.getX() + "/" + connectedPos.getY() + "/" + connectedPos.getZ() + "]"), true);
             BlockPos distance = connectedPos.subtract(pos);
@@ -134,6 +144,19 @@ public class TeleportationBlock extends BaseEntityBlock {
             return InteractionResult.PASS;
         }
         return super.useWithoutItem(state, level, pos, player, hitResult);
+    }
+
+    @Override
+    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if (stack.getItem() instanceof DyeItem dyeItem){
+            TeleportationBlockEntity blockEntity = (TeleportationBlockEntity) level.getBlockEntity(pos);
+            if (blockEntity != null){
+                blockEntity.setTextColor(dyeItem.getDyeColor());
+                return InteractionResult.SUCCESS;
+            }
+        }
+
+        return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
     }
 
     @Override

@@ -4,20 +4,27 @@ import com.mgmstudios.projectj.block.entity.custom.AncientAltarBlockEntity;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.entity.StrayRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.joml.Quaternionf;
 
@@ -66,6 +73,22 @@ public class AncientAltarEntityRenderer implements BlockEntityRenderer<AncientAl
         poseStack.popPose();
     }
 
+    public static void drawBillboard(String  text, int color, boolean dropShadow, Vec3 translation, float scale, PoseStack poseStack, BlockEntityRenderDispatcher dispatcher, Font font, MultiBufferSource multiBufferSource, int pPackedLight){
+        drawBillboard(text, color, dropShadow, translation, new Vec3(scale, scale, scale), poseStack, dispatcher, font, multiBufferSource, pPackedLight);
+    }
+
+    public static void drawBillboard(String  text, int color, boolean dropShadow, Vec3 translation, Vec3 scale, PoseStack poseStack, BlockEntityRenderDispatcher dispatcher, Font font, MultiBufferSource multiBufferSource, int pPackedLight){
+        poseStack.pushPose();
+        poseStack.translate(translation.x, translation.y, translation.z);
+        float yaw   = dispatcher.camera.getYRot();
+        float pitch = dispatcher.camera.getXRot();
+        poseStack.mulPose(Axis.YP.rotationDegrees(-yaw));
+        poseStack.mulPose(Axis.XP.rotationDegrees( pitch));
+        poseStack.scale((float) -scale.x, (float) -scale.y,(float) scale.z);
+        float textWidth = font.width(text);
+        font.drawInBatch(text, -textWidth / 2f, 0, color, dropShadow, poseStack.last().pose(), multiBufferSource, Font.DisplayMode.NORMAL, 0, pPackedLight);
+        poseStack.popPose();
+    }
 
     private int getLightLevel(Level level, BlockPos pos){
         int block = level.getBrightness(LightLayer.BLOCK, pos);

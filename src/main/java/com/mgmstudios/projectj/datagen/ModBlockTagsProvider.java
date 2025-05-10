@@ -155,7 +155,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.COBBLED_SERPENTINITE.get())
                 .add(ModBlocks.COBBLED_SERPENTINITE_STAIRS.get())
                 .add(ModBlocks.COBBLED_SERPENTINITE_SLAB.get())
-                .add(ModBlocks.COBBLED_SERPENTINITE_WALL.get());
+                .add(ModBlocks.COBBLED_SERPENTINITE_WALL.get())
+                .add(ModBlocks.POLISHED_SERPENTINITE.get())
+                .add(ModBlocks.POLISHED_SERPENTINITE_STAIRS.get())
+                .add(ModBlocks.POLISHED_SERPENTINITE_SLAB.get())
+                .add(ModBlocks.POLISHED_SERPENTINITE_WALL.get());
 
         tag(BlockTags.DIRT)
                 .add(ModBlocks.PACKED_ADOBE.get());

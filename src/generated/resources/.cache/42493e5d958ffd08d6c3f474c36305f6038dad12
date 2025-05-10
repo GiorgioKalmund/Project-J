@@ -1,4 +1,4 @@
-// 1.21.4	2025-05-09T13:46:55.4208827	Tags for minecraft:block mod id projectj
+// 1.21.4	2025-05-10T10:33:58.7061559	Tags for minecraft:block mod id projectj
 6704f8a4248350a0107217e7e73ae1b90f13416a data/minecraft/tags/block/dirt.json
 177d72f6b3e93c23cbac2c6995c3e57d46b4e250 data/minecraft/tags/block/fence_gates.json
 a5e9f8e7f64233b035dbc5207bc470c671fd9cba data/minecraft/tags/block/leaves.json
@@ -27,5 +27,5 @@ adcd894c030f8dc0e3a5013de2581d1142959bdd data/projectj/tags/block/benches.json
 984a835f12c583514b244703d6bad1afa79b3402 data/projectj/tags/block/mineable/paxel.json
 145d27d46668bb5435d2482085922079d7774d35 data/projectj/tags/block/pyrite_blocks.json
 6c6458fb50bbb91e6c6a79b6b4759821986df3bd data/projectj/tags/block/pyrite_ore_replaceables.json
-49b88be6e8b52b8404912448b3e4e34c02152d4f data/projectj/tags/block/serpentinite.json
+74556017f3054ca04eeffbab642b5638f9243a62 data/projectj/tags/block/serpentinite.json
 160989c99fd6f411f43d6637353494833f2ad6d0 data/projectj/tags/block/serpentinite_replaceables.json
