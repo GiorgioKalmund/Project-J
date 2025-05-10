@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.world.phys.Vec3;
 
 import static com.mgmstudios.projectj.block.entity.renderer.AncientAltarEntityRenderer.drawBillboard;
+import static com.mgmstudios.projectj.block.entity.renderer.AncientAltarEntityRenderer.drawBillboardOutline;
 
 public class TeleportationBlockEntityRenderer implements BlockEntityRenderer<TeleportationBlockEntity> {
 
@@ -22,7 +23,13 @@ public class TeleportationBlockEntityRenderer implements BlockEntityRenderer<Tel
         float scale = 0.025F;
         String name = teleportationBlockEntity.getName();
         int color = teleportationBlockEntity.getTextColor().getTextColor();
-        drawBillboard(name, color, false, translation, scale, poseStack, dispatcher, font, multiBufferSource, pPackedLight);
+        boolean glowing = teleportationBlockEntity.getGlowing();
+        if (!name.isEmpty()){
+            if (glowing)
+                drawBillboardOutline(name, color, 0, true, translation, scale, poseStack, dispatcher,  font, multiBufferSource, pPackedLight);
+            else
+                drawBillboard(name, color, false, false, false, translation, scale, poseStack, dispatcher, font, multiBufferSource, pPackedLight);
+        }
     }
 
     public TeleportationBlockEntityRenderer(BlockEntityRendererProvider.Context context){

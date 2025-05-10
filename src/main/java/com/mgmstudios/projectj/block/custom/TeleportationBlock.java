@@ -22,10 +22,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.DyeItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -152,6 +149,30 @@ public class TeleportationBlock extends BaseEntityBlock {
             TeleportationBlockEntity blockEntity = (TeleportationBlockEntity) level.getBlockEntity(pos);
             if (blockEntity != null){
                 blockEntity.setTextColor(dyeItem.getDyeColor());
+                return InteractionResult.SUCCESS;
+            }
+        } else if (stack.getItem() instanceof NameTagItem){
+            TeleportationBlockEntity blockEntity = (TeleportationBlockEntity) level.getBlockEntity(pos);
+            if (blockEntity != null){
+                blockEntity.setName(stack.getHoverName().getString());
+                return InteractionResult.SUCCESS;
+            }
+        } else if (stack.getItem() instanceof CompassItem){
+            TeleportationBlockEntity blockEntity = (TeleportationBlockEntity) level.getBlockEntity(pos);
+            if (blockEntity != null){
+                blockEntity.setName(blockEntity.getConnectedPosition().toShortString());
+                return InteractionResult.SUCCESS;
+            }
+        } else if (stack.getItem() instanceof GlowInkSacItem){
+            TeleportationBlockEntity blockEntity = (TeleportationBlockEntity) level.getBlockEntity(pos);
+            if (blockEntity != null){
+                blockEntity.setGlowing(true);
+                return InteractionResult.SUCCESS;
+            }
+        }  else if (stack.is(Items.INK_SAC)){
+            TeleportationBlockEntity blockEntity = (TeleportationBlockEntity) level.getBlockEntity(pos);
+            if (blockEntity != null){
+                blockEntity.setGlowing(false);
                 return InteractionResult.SUCCESS;
             }
         }

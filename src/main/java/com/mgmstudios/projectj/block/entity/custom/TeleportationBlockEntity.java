@@ -1,8 +1,6 @@
 package com.mgmstudios.projectj.block.entity.custom;
 
 import com.mgmstudios.projectj.block.entity.ModBlockEntities;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import net.minecraft.client.color.item.Dye;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -14,18 +12,16 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
-
 public class TeleportationBlockEntity extends BlockEntity {
 
     private BlockPos connectedPosition;
     private DyeColor textColor;
+    private boolean glowing;
     private String name;
 
     public TeleportationBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.TELEPORTATION_PAD_BE.get(), pos, state);
-        setName("NaN");
+        setName("");
         setTextColor(DyeColor.WHITE);
     }
 
@@ -47,8 +43,6 @@ public class TeleportationBlockEntity extends BlockEntity {
 
     public void setConnectedPosition(BlockPos connectedPosition) {
         this.connectedPosition = connectedPosition;
-        if (connectedPosition != null)
-            setName(connectedPosition.toShortString());
         setChanged();
     }
 
@@ -62,6 +56,7 @@ public class TeleportationBlockEntity extends BlockEntity {
         }
         tag.putString("name", name);
         tag.putString("color", this.textColor.getName().toUpperCase());
+        tag.putBoolean("glowing", glowing);
     }
 
 
@@ -73,6 +68,8 @@ public class TeleportationBlockEntity extends BlockEntity {
         }
         if (tag.contains("name"))
             setName(tag.getString("name"));
+        if (tag.contains("glowing"))
+            setGlowing(tag.getBoolean("glowing"));
         if (tag.contains("color")){
             try {
                 DyeColor color = DyeColor.valueOf(tag.getString("color").toUpperCase());
@@ -96,6 +93,15 @@ public class TeleportationBlockEntity extends BlockEntity {
             this.textColor = textColor;
         }
         setChanged();
+    }
+
+    public void setGlowing(boolean glowing) {
+        this.glowing = glowing;
+        setChanged();
+    }
+
+    public boolean getGlowing(){
+        return glowing;
     }
 
     public void setName(String name) {
