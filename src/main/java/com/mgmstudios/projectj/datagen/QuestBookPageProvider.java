@@ -405,7 +405,7 @@ public class QuestBookPageProvider implements DataProvider {
                 .addSecondaryImage(new QuestBookImage(ModItems.AWAKENED_SUN_ARMOR_BOOTS,true))
                 .addSecondaryImage(new QuestBookImage(ModBlocks.ANCIENT_ALTAR))
                 .addImage(new QuestBookImage(ModItems.SUN_ARMOR_BOOTS))
-                .addImage(new QuestBookImage(ModItems.QUETZAL_FEATHER, 3))
+                .addImage(new QuestBookImage(ModItems.QUETZAL_FEATHER, 2))
                 .addImage(new QuestBookImage(Items.SLIME_BALL, 2))
                 .addImage(new QuestBookImage(ModItems.LIQUID_PYRITE_BUCKET))
                 .addImage(new QuestBookImage(ModItems.FILLED_CRUDE_SACRIFICE_BOWL))

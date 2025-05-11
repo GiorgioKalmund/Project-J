@@ -86,6 +86,7 @@ public class ModBiomeBuilder
     public static void adobeDesertSpawns(MobSpawnSettings.Builder builder) {
         builder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 4, 2, 3));
         caveSpawns(builder);
+        monsters(builder, 15, 1, 100, false);
         runnerSpawns(builder);
     }
 

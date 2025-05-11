@@ -182,8 +182,6 @@ public class ModLanguageProvider extends LanguageProvider {
         addTooltip("magnet_item.radius", "§7+ Radius: %d§r");
         addTooltip("magnet_item.strength", "§7+ Strength: %d§r");
         addTooltip("awakened_armor.charged", "§4§lCH§6§lAR§e§lGED§r");
-        addTooltip("awakened_armor.glider.active", "§7Wings: §rActive");
-        addTooltip("awakened_armor.glider", "§7Wings: Off§r");
         addTooltip("awakened_armor", "§8Charges when wearing full set§r");
 
         add("container.projectj.adobe_furnace", "Adobe Furnace");

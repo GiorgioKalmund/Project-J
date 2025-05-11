@@ -108,16 +108,8 @@ public final class AwakenedSunArmorItem extends ArmorItem implements GeoItem {
                     stack.remove(DataComponents.ENCHANTMENT_GLINT_OVERRIDE);
                 if (stack.has(DataComponents.RARITY))
                     stack.set(DataComponents.RARITY, Rarity.RARE);
-                if (stack.has(DataComponents.GLIDER) && armorType.equals(ArmorType.CHESTPLATE))
-                    stack.remove(DataComponents.GLIDER);
-                if (armorType.equals(ArmorType.HELMET) && charged)
-                    player.playNotifySound(SoundEvents.BEACON_DEACTIVATE, SoundSource.MASTER, 1F, 2F);
                 charged = false;
             } else if (!charged && isInArmorSlot(slotId)){
-                if (!stack.has(DataComponents.GLIDER) && armorType.equals(ArmorType.CHESTPLATE))
-                    stack.set(DataComponents.GLIDER, Unit.INSTANCE);
-                if (armorType.equals(ArmorType.HELMET))
-                    player.playNotifySound(SoundEvents.BEACON_ACTIVATE, SoundSource.MASTER, 1F, 2F);
                 stack.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
                 stack.set(DataComponents.RARITY, Rarity.EPIC);
                 charged = true;
@@ -142,14 +134,7 @@ public final class AwakenedSunArmorItem extends ArmorItem implements GeoItem {
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        if (armorType.equals(ArmorType.CHESTPLATE)){
-            if (stack.has(DataComponents.GLIDER) && stack.get(DataComponents.GLIDER).equals(Unit.INSTANCE))
-                tooltipComponents.add(Component.translatable("tooltip.projectj.awakened_armor.glider.active.tooltip"));
-            else
-                tooltipComponents.add(Component.translatable("tooltip.projectj.awakened_armor.glider.tooltip"));
-        }
-
-        if (stack.has(DataComponents.ENCHANTMENT_GLINT_OVERRIDE) && stack.get(DataComponents.ENCHANTMENT_GLINT_OVERRIDE))
+        if (stack.has(DataComponents.ENCHANTMENT_GLINT_OVERRIDE) && Boolean.TRUE.equals(stack.get(DataComponents.ENCHANTMENT_GLINT_OVERRIDE)))
             tooltipComponents.add(Component.translatable("tooltip.projectj.awakened_armor.charged.tooltip"));
         else
             tooltipComponents.add(Component.translatable("tooltip.projectj.awakened_armor.tooltip"));

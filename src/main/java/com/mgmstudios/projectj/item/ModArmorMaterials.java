@@ -41,12 +41,12 @@ public class ModArmorMaterials {
     );
 
     public static final ArmorMaterial AWAKENED_SUN_ARMOR_MATERIAL = new ArmorMaterial(
-            15,
+            42,
             Util.make(new EnumMap<>(ArmorType.class), map -> {
-                map.put(ArmorType.BOOTS, 4);
-                map.put(ArmorType.LEGGINGS, 7);
-                map.put(ArmorType.CHESTPLATE, 4);
-                map.put(ArmorType.HELMET, 10);
+                map.put(ArmorType.BOOTS, 3);
+                map.put(ArmorType.LEGGINGS, 6);
+                map.put(ArmorType.CHESTPLATE, 8);
+                map.put(ArmorType.HELMET, 3);
                 map.put(ArmorType.BODY, 11);
             }),
             40,

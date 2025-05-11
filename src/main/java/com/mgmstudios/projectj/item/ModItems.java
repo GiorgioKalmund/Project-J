@@ -22,9 +22,11 @@ import com.mgmstudios.projectj.item.custom.armor.SunArmorItem;
 import com.mgmstudios.projectj.sound.ModSounds;
 
 import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Unit;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
@@ -71,7 +73,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_HELMET = registerArmorItem("awakened_sun_armor_helmet", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.HELMET, AwakenedSunArmorItem::new, new Item.Properties().rarity(Rarity.RARE));
 
-    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_CHESTPLATE = registerArmorItem("awakened_sun_armor_chestplate", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.CHESTPLATE, AwakenedSunArmorItem::new, new Item.Properties().rarity(Rarity.RARE));
+    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_CHESTPLATE = registerArmorItem("awakened_sun_armor_chestplate", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.CHESTPLATE, AwakenedSunArmorItem::new, new Item.Properties().rarity(Rarity.RARE).component(DataComponents.GLIDER, Unit.INSTANCE));
 
     public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_LEGGINGS = registerArmorItem("awakened_sun_armor_leggings", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.LEGGINGS, AwakenedSunArmorItem::new, new Item.Properties().rarity(Rarity.RARE));
 

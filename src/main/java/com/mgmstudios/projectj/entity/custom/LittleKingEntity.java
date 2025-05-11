@@ -5,12 +5,17 @@ import com.mgmstudios.projectj.block.ModBlocks;
 import com.mgmstudios.projectj.entity.VoodooEntity;
 import com.mgmstudios.projectj.item.ModItems;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
-import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.StructureTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -25,6 +30,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.MapItem;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.providers.EnchantmentProvider;
 import net.minecraft.world.item.trading.ItemCost;
@@ -32,6 +38,10 @@ import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.levelgen.structure.Structure;
+import net.minecraft.world.level.saveddata.maps.MapDecorationType;
+import net.minecraft.world.level.saveddata.maps.MapDecorationTypes;
+import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
 import net.neoforged.neoforge.common.BasicItemListing;
 import org.jetbrains.annotations.Nullable;
 
@@ -199,6 +209,7 @@ public class LittleKingEntity extends AbstractVillager implements VoodooEntity {
                             jadeBasicListing(6, ModItems.TROWEL, 1, 3, 3, 1),
                             jadeBasicListing(2, ModBlocks.ADOBE_BRICKS, 32, 3, 3, 1),
                             basicListing(ModItems.RAW_PYRITE, 1, ModItems.PYRITE_INGOT, 1, 24, 3, 1),
+                            new TreasureMapForSecondCurrency(ModItems.JADE, 12, StructureTags.ON_TRIAL_CHAMBERS_MAPS, "filled_map.trial_chambers", MapDecorationTypes.TRIAL_CHAMBERS, 12, 10),
                             new TwoItemListing(ModItems.RAW_JADE.get(), 8, Items.COAL, new ItemStack(ModItems.JADE.get(), 16), 4, 3, 1)
                     },
                     2,
@@ -208,6 +219,7 @@ public class LittleKingEntity extends AbstractVillager implements VoodooEntity {
                             jadeBasicListing(27, ModItems.SUN_ARMOR_LEGGINGS,  1, 5, 1.3F),
                             jadeBasicListing(23, ModItems.SUN_ARMOR_BOOTS,  1, 5, 1.2F),
                             new JadeAndItemListing(16, ModItems.VOODOO_CATCHER.get(),  ModItems.LITTLE_MAN_VOODOO.toStack(), 1, 6, 1.4F),
+                            new JadeAndItemListing(8, Items.FILLED_MAP,  ModItems.LITTLE_MAN_VOODOO.toStack(), 1, 6, 1.4F),
                             new TwoItemListing(Items.BOWL, ModItems.LIQUID_PYRITE_BUCKET.get(), ModItems.CRUDE_SACRIFICE_BOWL.toStack(), 3, 3, 1)
                     }
             )
@@ -307,6 +319,45 @@ public class LittleKingEntity extends AbstractVillager implements VoodooEntity {
             Level level = p_219696_.level();
             this.enchantmentProvider.ifPresent((p_348335_) -> EnchantmentHelper.enchantItemFromProvider(itemstack, level.registryAccess(), p_348335_, level.getCurrentDifficultyAt(p_219696_.blockPosition()), p_219697_));
             return new MerchantOffer(new ItemCost(this.firstItem, this.firstItemCost), Optional.of(new ItemCost(this.secondItem, this.secondItemCost)), itemstack, 0, this.maxUses, this.villagerXp, this.priceMultiplier);
+        }
+    }
+
+    public static class TreasureMapForSecondCurrency implements VillagerTrades.ItemListing {
+        private final int emeraldCost;
+        private final TagKey<Structure> destination;
+        private final String displayName;
+        private final Holder<MapDecorationType> destinationType;
+        private final int maxUses;
+        private final int villagerXp;
+        private final ItemLike currency;
+
+        public TreasureMapForSecondCurrency(ItemLike currency, int emeraldCost, TagKey<Structure> destination, String displayName, Holder<MapDecorationType> destinationType, int maxUses, int villagerXp) {
+            this.emeraldCost = emeraldCost;
+            this.destination = destination;
+            this.displayName = displayName;
+            this.destinationType = destinationType;
+            this.maxUses = maxUses;
+            this.villagerXp = villagerXp;
+            this.currency = currency;
+        }
+
+        @javax.annotation.Nullable
+        public MerchantOffer getOffer(Entity p_219708_, RandomSource p_219709_) {
+            if (!(p_219708_.level() instanceof ServerLevel)) {
+                return null;
+            } else {
+                ServerLevel serverlevel = (ServerLevel)p_219708_.level();
+                BlockPos blockpos = serverlevel.findNearestMapStructure(this.destination, p_219708_.blockPosition(), 100, true);
+                if (blockpos != null) {
+                    ItemStack itemstack = MapItem.create(serverlevel, blockpos.getX(), blockpos.getZ(), (byte)2, true, true);
+                    MapItem.renderBiomePreviewMap(serverlevel, itemstack);
+                    MapItemSavedData.addTargetDecoration(itemstack, blockpos, "+", this.destinationType);
+                    itemstack.set(DataComponents.ITEM_NAME, Component.translatable(this.displayName));
+                    return new MerchantOffer(new ItemCost(currency, this.emeraldCost), Optional.of(new ItemCost(Items.COMPASS)), itemstack, this.maxUses, this.villagerXp, 0.2F);
+                } else {
+                    return null;
+                }
+            }
         }
     }
 }
