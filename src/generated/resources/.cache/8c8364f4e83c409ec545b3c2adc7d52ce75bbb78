@@ -1,14 +1,14 @@
-// 1.21.4	2025-05-10T10:33:58.7106964	Tags for minecraft:item mod id vanilla
+// 1.21.4	2025-05-11T23:05:37.2209748	Tags for minecraft:item mod id vanilla
 77e5fbee002b4876af3efe3718e21562914f7e4b data/minecraft/tags/item/arrows.json
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/axes.json
-eef8507b29bbe76da180374064eae34413716c15 data/minecraft/tags/item/chest_armor.json
+5e381763ea9b0024e726906bcd4cc4271b3b7300 data/minecraft/tags/item/chest_armor.json
 fc752cefa7d663d01795c156261e90eb1663779e data/minecraft/tags/item/enchantable/durability.json
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/enchantable/sword.json
 177d72f6b3e93c23cbac2c6995c3e57d46b4e250 data/minecraft/tags/item/fence_gates.json
-befd7167f6ae998c20621e0f7fdd9aac388d70b6 data/minecraft/tags/item/foot_armor.json
-3f15d8958f670171e26094ddc9f52954f4fe2a86 data/minecraft/tags/item/head_armor.json
+7288e5a204496a887a2537f2f05881c9eb14674c data/minecraft/tags/item/foot_armor.json
+b38ad296f44ebb5db9c1a500974ea0d94c565dbf data/minecraft/tags/item/head_armor.json
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/hoes.json
-41cc8110ba0dbcd2350bd7cb4ac23cb0b5f4125e data/minecraft/tags/item/leg_armor.json
+9c1f295203a5503ff23a32a2aa4432f6f5a9ee08 data/minecraft/tags/item/leg_armor.json
 8189a72a7e5064d8c3c6b32896484fa360664989 data/minecraft/tags/item/logs_that_burn.json
 c3d9e98973c3eaf0a12439bb828e65d7639fff24 data/minecraft/tags/item/pickaxes.json
 7356e7560bec3f85f86e264f83881226dfd87f93 data/minecraft/tags/item/planks.json
@@ -36,4 +36,4 @@ e4d763536c9eb4d422cd9bdf3a19a89dacf8fa9c data/projectj/tags/item/mesquite.json
 145d27d46668bb5435d2482085922079d7774d35 data/projectj/tags/item/pyrite_blocks.json
 74556017f3054ca04eeffbab642b5638f9243a62 data/projectj/tags/item/serpentinite.json
 ef009a87c52aaa14dfb5c66731fe936ec1686e03 data/projectj/tags/item/smelts_to_jade.json
-df51e2c662147884c4c696ad5315f249bdc3a49b data/projectj/tags/item/sun_armor.json
+ba08f40a98a079e710aea04b5ea2e9869122dc36 data/projectj/tags/item/sun_armor.json

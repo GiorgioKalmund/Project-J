@@ -1,5 +1,8 @@
 {
   "values": [
-    "projectj:sun_armor_helmet"
+    "projectj:sun_armor_helmet",
+    "projectj:sun_armor_chestplate",
+    "projectj:sun_armor_leggings",
+    "projectj:sun_armor_boots"
   ]
 }

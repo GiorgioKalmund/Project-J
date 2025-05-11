@@ -47,7 +47,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.LIQUID_PYRITE_BUCKET.get());
 
         tag(ModTags.Items.SUN_ARMOR)
-                .add(ModItems.SUN_ARMOR_HELMET.get());
+                .add(ModItems.SUN_ARMOR_HELMET.get())
+                .add(ModItems.SUN_ARMOR_CHESTPLATE.get())
+                .add(ModItems.SUN_ARMOR_LEGGINGS.get())
+                .add(ModItems.SUN_ARMOR_BOOTS.get());
 
         tag(ModTags.Items.JADE)
                 .add(ModItems.JADE.get());
@@ -70,17 +73,24 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.MACUAHUITL.get());
 
         tag(ItemTags.HEAD_ARMOR)
+                .add(ModItems.JADE_HELMET.get())
                 .add(ModItems.SUN_ARMOR_HELMET.get())
-                .add(ModItems.JADE_HELMET.get());
+                .add(ModItems.AWAKENED_SUN_ARMOR_HELMET.get());
 
         tag(ItemTags.CHEST_ARMOR)
-                .add(ModItems.JADE_CHESTPLATE.get());
+                .add(ModItems.JADE_CHESTPLATE.get())
+                .add(ModItems.SUN_ARMOR_CHESTPLATE.get())
+                .add(ModItems.AWAKENED_SUN_ARMOR_CHESTPLATE.get());
 
         tag(ItemTags.LEG_ARMOR)
-                .add(ModItems.JADE_LEGGINGS.get());
+                .add(ModItems.JADE_LEGGINGS.get())
+                .add(ModItems.SUN_ARMOR_LEGGINGS.get())
+                .add(ModItems.AWAKENED_SUN_ARMOR_LEGGINGS.get());
 
         tag(ItemTags.FOOT_ARMOR)
-                .add(ModItems.JADE_BOOTS.get());
+                .add(ModItems.JADE_BOOTS.get())
+                .add(ModItems.SUN_ARMOR_BOOTS.get())
+                .add(ModItems.AWAKENED_SUN_ARMOR_BOOTS.get());
 
         tag(ModTags.Items.ALTAR_CRAFTABLE)
                 .add(Items.NETHERITE_PICKAXE)
