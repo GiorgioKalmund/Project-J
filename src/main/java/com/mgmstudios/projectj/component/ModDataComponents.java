@@ -40,6 +40,12 @@ public class ModDataComponents {
                     .networkSynchronized(ByteBufCodecs.BOOL)
     );
 
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> AWAKENED_ARMOR_CHARGED = register("awakened_armor_charge", builder ->
+            builder
+                    .persistent(Codec.BOOL)
+                    .networkSynchronized(ByteBufCodecs.BOOL)
+    );
+
     private static <T> DeferredHolder<DataComponentType<?>, DataComponentType<T>> register(String name, UnaryOperator<DataComponentType.Builder<T>> builderOperator){
         return DATA_COMPONENT_TYPES.register(name, () -> builderOperator.apply(DataComponentType.builder()).build());
     }

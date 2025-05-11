@@ -1,5 +1,6 @@
 package com.mgmstudios.projectj.item.custom.armor;
 
+import com.mgmstudios.projectj.component.ModDataComponents;
 import com.mgmstudios.projectj.entity.client.armor.AwakenedSunArmorRenderer;
 import com.mgmstudios.projectj.item.ModItems;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
@@ -42,7 +43,6 @@ import static com.mgmstudios.projectj.item.custom.armor.JadeArmorItem.getEquippe
 
 public final class AwakenedSunArmorItem extends ArmorItem implements GeoItem {
     ArmorType armorType;
-    private boolean charged = false;
     public AwakenedSunArmorItem(ArmorMaterial material, ArmorType armorType, Properties properties) {
         super(material, armorType, properties);
         this.armorType = armorType;
@@ -102,17 +102,20 @@ public final class AwakenedSunArmorItem extends ArmorItem implements GeoItem {
 
             // Check each of the pieces match our set
             boolean isFullSet = hasFullSuitOfArmorOn(wornArmor);
+            boolean charged = stack.getOrDefault(ModDataComponents.AWAKENED_ARMOR_CHARGED, false);
 
-            if (!isFullSet){
-                if (stack.has(DataComponents.ENCHANTMENT_GLINT_OVERRIDE))
-                    stack.remove(DataComponents.ENCHANTMENT_GLINT_OVERRIDE);
-                if (stack.has(DataComponents.RARITY))
-                    stack.set(DataComponents.RARITY, Rarity.RARE);
-                charged = false;
-            } else if (!charged && isInArmorSlot(slotId)){
+            if (!isFullSet && charged){
+                stack.remove(DataComponents.ENCHANTMENT_GLINT_OVERRIDE);
+                stack.set(DataComponents.RARITY, Rarity.RARE);
+                stack.set(ModDataComponents.AWAKENED_ARMOR_CHARGED, false);
+                if (armorType.equals(ArmorType.CHESTPLATE))
+                    player.playNotifySound(SoundEvents.BEACON_DEACTIVATE, SoundSource.PLAYERS, 0.5f, 0.8f);
+        } else if (isFullSet && !charged && isInArmorSlot(slotId)){
                 stack.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
                 stack.set(DataComponents.RARITY, Rarity.EPIC);
-                charged = true;
+                stack.set(ModDataComponents.AWAKENED_ARMOR_CHARGED, true);
+                if (armorType.equals(ArmorType.CHESTPLATE))
+                    player.playNotifySound(SoundEvents.BEACON_POWER_SELECT, SoundSource.PLAYERS, 0.5f, 1.1f);
             }
 
             if (isFullSet){
