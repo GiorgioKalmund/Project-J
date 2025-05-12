@@ -23,13 +23,13 @@ public class SocketComponents {
 
     public static MutableComponent socketFor(Socket socket){
         if (socket.getCount() > 1){
-            return Component.literal(socket.getCount() + "x ").append(socketFor(socket.getDataComponentType()));
+            return bulletPoint().append(Component.literal("§f"+socket.getCount() + "x §r").append(socketFor(socket.getDataComponentType())));
         } else {
-            return socket.isEmpty() ? emptySocket() : socketFor(socket.getDataComponentType());
+            return socket.isEmpty() ? emptySocket() : bulletPoint().append(socketFor(socket.getDataComponentType()));
         }
     }
     public static MutableComponent socketFor(DataComponentType<?> componentType){
-        return bulletPoint().append(socketComponent(dataComponentName(componentType)));
+        return socketComponent(dataComponentName(componentType));
     }
     public static <T> MutableComponent socketFor(DeferredHolder<DataComponentType<?>, DataComponentType<T>> componentType){
         return socketFor(componentType.get());
@@ -48,15 +48,18 @@ public class SocketComponents {
     }
 
     public static MutableComponent bulletPoint(int color){
-        return Component.literal("• ").copy().withColor(color);
+        return Component.literal("• §r").copy().withColor(color);
     }
 
     public static MutableComponent bulletPoint(){
         return bulletPoint(0xAAAAAA);
     }
 
+    public static MutableComponent bulletPointEmpty(int color){
+        return Component.literal("• §l⛶§r ").copy().withColor(color);
+    }
     public static MutableComponent bulletPointEmpty(){
-        return Component.literal("• §l⛶§r ").copy();
+        return bulletPointEmpty(0xAAAAAA);
     }
 
     private static MutableComponent baseSocketComponent(){

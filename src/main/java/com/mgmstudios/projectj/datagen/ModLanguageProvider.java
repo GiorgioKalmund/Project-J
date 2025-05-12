@@ -240,6 +240,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addComponentSocket(EMPTY, "§oEmpty Socket§r");
         addComponentSocket(ZOMBIE_PACIFYING, "§o§aPacifying§r");
         addComponentSocket(GLIDER, "§o§aGlider§r");
+        addComponentSocket(TOUGHNESS, "§o§fToughness§r");
     }
 
     public void addTooltip(String name, String value){

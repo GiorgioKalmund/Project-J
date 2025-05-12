@@ -14,48 +14,20 @@ import net.neoforged.neoforge.common.ItemAbility;
 
 import java.util.List;
 
+import static com.mgmstudios.projectj.component.ModDataComponents.Sockets.SOCKETS;
+import static com.mgmstudios.projectj.item.custom.SocketItem.applySockets;
+import static com.mgmstudios.projectj.item.custom.SocketItem.socketHoverText;
 import static com.mgmstudios.projectj.util.SocketComponents.socketFor;
 
-public class SocketShieldItem extends SocketItem {
+public class SocketShieldItem extends ShieldItem {
 
     public SocketShieldItem(Properties properties, Socket... sockets) {
-        super(properties, sockets);
+        super(applySockets(properties, sockets));
     }
 
-    public Component getName(ItemStack p_371901_) {
-        DyeColor dyecolor = (DyeColor)p_371901_.get(DataComponents.BASE_COLOR);
-        Object var3;
-        if (dyecolor != null) {
-            String var10000 = this.descriptionId;
-            var3 = Component.translatable(var10000 + "." + dyecolor.getName());
-        } else {
-            var3 = super.getName(p_371901_);
-        }
-
-        return (Component)var3;
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext tooltipContext, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        super.appendHoverText(stack, tooltipContext, tooltipComponents, tooltipFlag);
+        socketHoverText(stack, tooltipComponents);
     }
-
-    public void appendHoverText(ItemStack itemStack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        BannerItem.appendHoverTextFromBannerBlockEntityTag(itemStack, tooltipComponents);
-        super.appendHoverText(itemStack, context, tooltipComponents, tooltipFlag);
-    }
-
-    public ItemUseAnimation getUseAnimation(ItemStack p_43105_) {
-        return ItemUseAnimation.BLOCK;
-    }
-
-    public int getUseDuration(ItemStack p_43107_, LivingEntity p_346168_) {
-        return 72000;
-    }
-
-    public InteractionResult use(Level level, Player player, InteractionHand interactionHand) {
-        player.startUsingItem(interactionHand);
-        super.use(level, player, interactionHand);
-        return InteractionResult.CONSUME;
-    }
-
-    public boolean canPerformAction(ItemStack stack, ItemAbility itemAbility) {
-        return ItemAbilities.DEFAULT_SHIELD_ACTIONS.contains(itemAbility);
-    }
-
 }

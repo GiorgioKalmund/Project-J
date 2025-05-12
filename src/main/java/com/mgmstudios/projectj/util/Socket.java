@@ -4,13 +4,18 @@ import com.mgmstudios.projectj.component.ModDataComponents;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static net.minecraft.core.component.DataComponents.MAX_DAMAGE;
 
 public class Socket {
    private final DataComponentType<?> dataComponentType;
@@ -43,6 +48,13 @@ public class Socket {
 
     public static Socket empty(){
        return new Socket(ModDataComponents.Sockets.EMPTY.get(), 1);
+    }
+
+    public Item.Properties apply(Item.Properties properties){
+       if (is(ModDataComponents.Sockets.TOUGHNESS)){
+           properties.durability(getCount() * 1000);
+       }
+       return properties;
     }
 
     public DataComponentType<?> getDataComponentType() {

@@ -29,7 +29,10 @@ public class SocketItem extends Item {
         super(applySockets(properties, sockets));
     }
 
-    private static Item.Properties applySockets(Item.Properties properties, Socket ... sockets){
+    static Item.Properties applySockets(Item.Properties properties, Socket... sockets){
+        for (Socket socket : sockets){
+            socket.apply(properties);
+        }
         return properties.component(SOCKETS, List.of(sockets));
     };
 
@@ -53,6 +56,10 @@ public class SocketItem extends Item {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
 
+        socketHoverText(stack, tooltipComponents);
+    }
+
+    public static void socketHoverText(ItemStack stack, List<Component> tooltipComponents){
         if (stack.has(SOCKETS)){
             List<Socket> sockets = stack.get(SOCKETS);
             for (Socket socket : sockets){
