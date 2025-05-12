@@ -3,6 +3,7 @@ package com.mgmstudios.projectj;
 import com.mgmstudios.projectj.block.entity.renderer.*;
 import com.mgmstudios.projectj.component.ModDataComponents;
 import com.mgmstudios.projectj.entity.client.runner.RunnerRenderer;
+import com.mgmstudios.projectj.item.custom.MagnetItem;
 import com.mgmstudios.projectj.particle.ModParticles;
 import com.mgmstudios.projectj.particle.TeleportationParticles;
 import com.mgmstudios.projectj.worldgen.*;
@@ -10,9 +11,14 @@ import com.mgmstudios.projectj.worldgen.*;
 import com.mgmstudios.projectj.worldgen.regions.AdobeDesertRegion;
 import com.mgmstudios.projectj.worldgen.regions.SerpentiniteHillsRegion;
 import net.minecraft.data.advancements.packs.VanillaAdventureAdvancements;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.FuelValues;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.event.entity.item.ItemTossEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
 import net.neoforged.neoforge.fluids.FluidType;
 import org.slf4j.Logger;
@@ -62,6 +68,10 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import terrablender.api.Regions;
 import terrablender.api.SurfaceRuleManager;
+
+import java.util.Set;
+
+import static com.mgmstudios.projectj.component.ModDataComponents.MAGNET_ACTIVE;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(ProjectJ.MOD_ID)
@@ -186,5 +196,25 @@ public class ProjectJ
             event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.METATE_BE.get(), (entity, context) -> entity.getInventory());
             event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.JADE_CRYSTAL_BE.get(), (entity, context) -> entity.getInventory());
         }
+
+    }
+
+    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+    public static class GameEvents{
+        @SubscribeEvent
+        private static void magnetDelayAfterItemToss(ItemTossEvent event) {
+            Player player = event.getPlayer();
+            Inventory inventory = player.getInventory();
+            for(int i = 0; i < inventory.getContainerSize(); ++i) {
+                ItemStack itemstack = inventory.getItem(i);
+                if (itemstack.getItem() instanceof MagnetItem){
+                    boolean magnetActive = itemstack.getOrDefault(MAGNET_ACTIVE, false);
+                    if (magnetActive){
+                       event.getEntity().setPickUpDelay(20);
+                    }
+                }
+            }
+        }
+
     }
 }

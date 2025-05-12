@@ -56,8 +56,10 @@ public class MagnetItem extends Item {
                 playerPos.x + radius, playerPos.y + radius, playerPos.z + radius);
 
         for (ItemEntity itemEntity : level.getEntitiesOfClass(ItemEntity.class, box)) {
-            Vec3 toPlayer = playerPos.subtract(itemEntity.position());
-            itemEntity.setDeltaMovement(toPlayer.normalize().scale(strength));
+            if (!itemEntity.hasPickUpDelay()){
+                Vec3 toPlayer = playerPos.subtract(itemEntity.position());
+                itemEntity.setDeltaMovement(toPlayer.normalize().scale(strength));
+            }
         }
 
         super.inventoryTick(stack, level, entity, slotId, isSelected);
