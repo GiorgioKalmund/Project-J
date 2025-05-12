@@ -41,13 +41,13 @@ public class AncientAltarBlockItem extends BlockItem {
         boolean result = super.updateCustomBlockEntityTag(pos, level, player, stack, state);
         if (!level.isClientSide()) {
             if (level.getBlockEntity(pos) instanceof AncientAltarBlockEntity be) {
-                System.out.println("Applying map 2");
                 be.applyComponentsFromItemStack(stack);
                 DataComponentMap map = stack.getComponents();
                 be.applyComponentsToFields(map);
             }
         }
-        return result;    }
+        return result;
+    }
 
     @Override
     public void appendHoverText(ItemStack itemStack, TooltipContext context, List<Component> components, TooltipFlag tooltipFlag) {

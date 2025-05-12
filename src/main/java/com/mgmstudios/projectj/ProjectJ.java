@@ -85,6 +85,7 @@ public class ProjectJ
         NeoForge.EVENT_BUS.register(this);
 
         ModMenuTypes.register(modEventBus);
+        ModDataComponents.register(modEventBus);
         ModFluids.register(modEventBus);
         ModFluidTypes.register(modEventBus);
         ModRecipeBookCategories.register(modEventBus);
@@ -100,7 +101,6 @@ public class ProjectJ
         ModStructures.register(modEventBus);
         ModStructurePlacements.register(modEventBus);
         ModParticles.register(modEventBus);
-        ModDataComponents.register(modEventBus);
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::registerScreens);

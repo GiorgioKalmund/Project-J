@@ -6,16 +6,20 @@ import com.mgmstudios.projectj.entity.ModEntities;
 import com.mgmstudios.projectj.item.ModItems;
 
 import com.mgmstudios.projectj.worldgen.ModBiomes;
-import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.biome.Biome;
 import net.neoforged.neoforge.common.data.LanguageProvider;
+import net.neoforged.neoforge.registries.DeferredHolder;
+
+import static com.mgmstudios.projectj.component.ModDataComponents.Sockets.*;
+import static net.minecraft.core.component.DataComponents.*;
+import static com.mgmstudios.projectj.util.SocketComponents.dataComponentName;
 
 public class ModLanguageProvider extends LanguageProvider {
 
@@ -233,7 +237,9 @@ public class ModLanguageProvider extends LanguageProvider {
         addBiome(ModBiomes.SERPENTINITE_HILLS, "Serpentinite Hills");
 
         // Components
-        addComponentSocket("empty", "§oEmpty Socket§r");
+        addComponentSocket(EMPTY, "§oEmpty Socket§r");
+        addComponentSocket(ZOMBIE_PACIFYING, "§o§aPacifying§r");
+        addComponentSocket(GLIDER, "§o§aGlider§r");
     }
 
     public void addTooltip(String name, String value){
@@ -277,6 +283,12 @@ public class ModLanguageProvider extends LanguageProvider {
 
     public void addBiome(ResourceKey<Biome> biome, String name){
         add("biome.projectj." + biome.location().getPath(), name);
+    }
+    public void addComponentSocket(DataComponentType<?> componentType, String name){
+       addComponentSocket(dataComponentName(componentType), name);
+    }
+    public <T> void addComponentSocket(DeferredHolder<DataComponentType<?>, DataComponentType<T>> componentType, String name){
+        addComponentSocket(dataComponentName(componentType), name);
     }
 
     public void addComponentSocket(String componentType, String name){

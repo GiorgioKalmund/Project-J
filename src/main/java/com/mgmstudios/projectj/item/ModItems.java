@@ -13,6 +13,7 @@ import com.mgmstudios.projectj.food.ModConsumables;
 import com.mgmstudios.projectj.food.ModFoods;
 import com.mgmstudios.projectj.item.custom.*;
 
+import static com.mgmstudios.projectj.component.ModDataComponents.Sockets.*;
 import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidProperties;
 import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidPropertiesWithCustomAsset;
 
@@ -21,6 +22,7 @@ import com.mgmstudios.projectj.item.custom.armor.JadeArmorItem;
 import com.mgmstudios.projectj.item.custom.armor.SunArmorItem;
 import com.mgmstudios.projectj.sound.ModSounds;
 
+import com.mgmstudios.projectj.util.Socket;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
@@ -101,7 +103,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> LITTLE_MAN_SPAWN_EGG = register("little_man_spawn_egg", (properties) -> new SpawnEggItem(ModEntities.LITTLE_MAN_ENTITY.get(), properties));
 
-    public static final DeferredItem<Item> LITTLE_MAN_VOODOO = register("little_man_voodoo", LittleManVoodoo::new);
+    public static final DeferredItem<Item> LITTLE_MAN_VOODOO = register("little_man_voodoo", (properties) -> new SocketItem(properties, new Socket(ZOMBIE_PACIFYING.get())), new Item.Properties().stacksTo(1));
 
     public static final DeferredItem<Item> VOODOO_CATCHER = register("voodoo_catcher", VoodooCatcherItem::new, new Item.Properties().stacksTo(1));
 
@@ -135,7 +137,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> QUEST_BOOK = register("quest_book", (properties) -> new QuestBook("Ancient Codex", "Project J Team", List.of(), properties.stacksTo(1).rarity(Rarity.UNCOMMON)));
 
-    public static final DeferredItem<Item> CHIMALLI_SHIELD = register("chimalli_shield", ChimalliShieldItem::new, new Item.Properties().durability(336));
+    public static final DeferredItem<Item> CHIMALLI_SHIELD = register("chimalli_shield", (properties) -> new SocketShieldItem(properties, Socket.empty()) , new Item.Properties().durability(336));
 
     public static final DeferredItem<Item> OBSIDIAN_ARROW = register("obsidian_arrow", ObsidianArrowItem::new);
 
