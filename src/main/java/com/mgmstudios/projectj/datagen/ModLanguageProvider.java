@@ -6,8 +6,10 @@ import com.mgmstudios.projectj.entity.ModEntities;
 import com.mgmstudios.projectj.item.ModItems;
 
 import com.mgmstudios.projectj.worldgen.ModBiomes;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -229,6 +231,9 @@ public class ModLanguageProvider extends LanguageProvider {
         // Biomes
         addBiome(ModBiomes.ADOBE_DESERT, "Adobe Desert");
         addBiome(ModBiomes.SERPENTINITE_HILLS, "Serpentinite Hills");
+
+        // Components
+        addComponentSocket("empty", "§oEmpty Socket§r");
     }
 
     public void addTooltip(String name, String value){
@@ -274,6 +279,12 @@ public class ModLanguageProvider extends LanguageProvider {
         add("biome.projectj." + biome.location().getPath(), name);
     }
 
+    public void addComponentSocket(String componentType, String name){
+        addComponent("sockets", componentType, name);
+    }
+    public void addComponent(String componentClass, String componentType, String name){
+        add("components.projectj." + componentClass + "."  + componentType, name);
+    }
 
     String getName(ItemLike itemLike){
         return BuiltInRegistries.ITEM.getKey(itemLike.asItem()).getPath();

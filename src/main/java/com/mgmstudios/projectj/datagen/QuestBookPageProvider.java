@@ -455,7 +455,7 @@ public class QuestBookPageProvider implements DataProvider {
         Builder.create()
                 .setTemplate(QuestBookTemplateType.ITEM_SHOWCASE)
                 .addImage(new QuestBookImage(ModItems.LITTLE_KING_VOODOO, true))
-                .setText("§nLittle King§r\n\nThe Little King Voodoo looks nice in your offhand. However, you might manage to find the him roaming around in the Adobe Desert!", true)
+                .setText("§nLittle King§r\n\nThe Little King Voodoo looks nice in your offhand. However, you might manage to find him roaming around in the Adobe Desert!", true)
                 .save(pages);
 
 

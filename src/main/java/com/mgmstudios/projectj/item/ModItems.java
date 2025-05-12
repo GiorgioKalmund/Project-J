@@ -135,7 +135,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> QUEST_BOOK = register("quest_book", (properties) -> new QuestBook("Ancient Codex", "Project J Team", List.of(), properties.stacksTo(1).rarity(Rarity.UNCOMMON)));
 
-    public static final DeferredItem<Item> CHIMALLI_SHIELD = register("chimalli_shield", ShieldItem::new, new Item.Properties().durability(336));
+    public static final DeferredItem<Item> CHIMALLI_SHIELD = register("chimalli_shield", ChimalliShieldItem::new, new Item.Properties().durability(336));
 
     public static final DeferredItem<Item> OBSIDIAN_ARROW = register("obsidian_arrow", ObsidianArrowItem::new);
 

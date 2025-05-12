@@ -104,6 +104,7 @@
   "block.projectj.stripped_mesquite_wood": "Stripped Mesquite Wood",
   "block.projectj.teleportation_pad": "Teleportation Pad",
   "block.projectj.tinted_adobe_glass": "Tinted Adobe Glass",
+  "components.projectj.sockets.empty": "§oEmpty Socket§r",
   "container.projectj.adobe_furnace": "Adobe Furnace",
   "entity.projectj.little_king": "Little King",
   "entity.projectj.little_man": "Little Man",
