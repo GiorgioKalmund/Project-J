@@ -25,7 +25,7 @@ public class SocketComponents {
         if (socket.getCount() > 1){
             return Component.literal(socket.getCount() + "x ").append(socketFor(socket.getDataComponentType()));
         } else {
-            return socket.isEmpty() ? emptySocket() : socketFor(socket);
+            return socket.isEmpty() ? emptySocket() : socketFor(socket.getDataComponentType());
         }
     }
     public static MutableComponent socketFor(DataComponentType<?> componentType){
