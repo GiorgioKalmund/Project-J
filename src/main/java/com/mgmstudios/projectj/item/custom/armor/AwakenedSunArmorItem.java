@@ -11,7 +11,6 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Unit;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -24,7 +23,6 @@ import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.animatable.client.GeoRenderProvider;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.AnimatableManager;
@@ -41,7 +39,7 @@ import java.util.function.Consumer;
 
 import static com.mgmstudios.projectj.item.custom.armor.JadeArmorItem.getEquippedArmor;
 
-public final class AwakenedSunArmorItem extends ArmorItem implements GeoItem {
+public final class AwakenedSunArmorItem extends SocketGeoArmorItem{
     ArmorType armorType;
     public AwakenedSunArmorItem(ArmorMaterial material, ArmorType armorType, Properties properties) {
         super(material, armorType, properties);
@@ -141,6 +139,8 @@ public final class AwakenedSunArmorItem extends ArmorItem implements GeoItem {
             tooltipComponents.add(Component.translatable("tooltip.projectj.awakened_armor.charged.tooltip"));
         else
             tooltipComponents.add(Component.translatable("tooltip.projectj.awakened_armor.tooltip"));
+
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 
     @Override

@@ -9,12 +9,14 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.mgmstudios.projectj.component.ModDataComponents.Sockets.SOCKETS;
 import static net.minecraft.core.component.DataComponents.MAX_DAMAGE;
 
 public class Socket {
@@ -50,11 +52,26 @@ public class Socket {
        return new Socket(ModDataComponents.Sockets.EMPTY.get(), 1);
     }
 
-    public Item.Properties apply(Item.Properties properties){
-       if (is(ModDataComponents.Sockets.TOUGHNESS)){
-           properties.durability(getCount() * 1000);
+    public static Socket[] emptySockets(int count){
+       List<Socket> emptySockets = new ArrayList<>();
+       for (int index = 0; index < count; index++){
+           emptySockets.add(empty());
        }
+       return emptySockets.toArray(new Socket[count]);
+    }
+
+    public Item.Properties apply(Item.Properties properties){
        return properties;
+    }
+
+    public static void addSocket(ItemStack itemStack, Socket socket){
+        List<Socket> sockets = itemStack.getOrDefault(SOCKETS, new ArrayList<>());
+        for (int index = 0; index < sockets.size(); index++){
+            Socket socket1 = sockets.get(index);
+            if (socket1.isEmpty())
+                sockets.set(index, socket);
+        }
+        itemStack.set(SOCKETS, sockets);
     }
 
     public DataComponentType<?> getDataComponentType() {

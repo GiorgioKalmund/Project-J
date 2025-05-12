@@ -31,7 +31,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 import java.util.Set;
 import java.util.function.Consumer;
 
-public final class JadeArmorItem extends ArmorItem implements GeoItem {
+public final class JadeArmorItem extends SocketGeoArmorItem {
     public JadeArmorItem(ArmorMaterial material, ArmorType armorType, Properties properties) {
         super(material, armorType, properties);
     }

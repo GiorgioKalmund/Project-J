@@ -34,7 +34,7 @@ import java.util.function.Consumer;
 
 import static com.mgmstudios.projectj.item.custom.armor.JadeArmorItem.getEquippedArmor;
 
-public final class SunArmorItem extends ArmorItem implements GeoItem {
+public final class SunArmorItem extends SocketGeoArmorItem {
     public SunArmorItem(ArmorMaterial material, ArmorType armorType, Properties properties) {
         super(material, armorType, properties);
     }

@@ -2,11 +2,9 @@ package com.mgmstudios.projectj.item.custom;
 
 import static com.mgmstudios.projectj.component.ModDataComponents.Sockets.*;
 
-import com.mgmstudios.projectj.component.ModDataComponents;
 import com.mgmstudios.projectj.util.Socket;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Zombie;
@@ -17,10 +15,8 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static com.mgmstudios.projectj.util.SocketComponents.emptySocket;
 import static com.mgmstudios.projectj.util.SocketComponents.socketFor;
 
 public class SocketItem extends Item {
@@ -29,7 +25,7 @@ public class SocketItem extends Item {
         super(applySockets(properties, sockets));
     }
 
-    static Item.Properties applySockets(Item.Properties properties, Socket... sockets){
+    public static Item.Properties applySockets(Item.Properties properties, Socket... sockets){
         for (Socket socket : sockets){
             socket.apply(properties);
         }
