@@ -188,7 +188,7 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> MAGNIFYING_GLASS_STAND = registerMagnifyingGlassStandBlock("magnifying_glass_stand", BlockBehaviour.Properties.of().sound(SoundType.WOOD).noOcclusion().randomTicks(), new Item.Properties(), 3);
 
-    public static final DeferredBlock<Block> TELEPORTATION_PAD = register("teleportation_pad", TeleportationBlock::new, BlockBehaviour.Properties.of().noOcclusion().lightLevel(teleportationPadEmission(10)));
+    public static final DeferredBlock<Block> TELEPORTATION_PAD = register("teleportation_pad", TeleportationBlock::new, BlockBehaviour.Properties.of().explosionResistance(1200F).noOcclusion().lightLevel(teleportationPadEmission(10)));
 
     public static final DeferredBlock<Block> ANCIENT_ALTAR = registerWithCustomItem("ancient_altar", AncientAltarBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).noOcclusion().lightLevel(ancientAltarBlockEmission(12)), AncientAltarBlockItem::new, new Item.Properties().rarity(Rarity.RARE));
 
