@@ -19,6 +19,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.AnvilMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -45,6 +46,7 @@ public final class SocketWorkbenchBlockEntity extends BlockEntity implements Men
             setChanged();
             if (!level.isClientSide()){
                 level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+                System.out.println("Contents changed in slot: " + slot + " " + inventory.getStackInSlot(slot));
             }
             super.onContentsChanged(slot);
         }
@@ -54,6 +56,12 @@ public final class SocketWorkbenchBlockEntity extends BlockEntity implements Men
             return 64;
         }
     };
+
+     public void clearAllContents(){
+        for (int slot = 0; slot < inventory.getSlots(); slot++){
+            inventory.setStackInSlot(slot, ItemStack.EMPTY);
+        }
+     }
 
     public ItemStackHandler getInventory() {
         return inventory;
@@ -66,6 +74,9 @@ public final class SocketWorkbenchBlockEntity extends BlockEntity implements Men
         return tag;
     }
 
+    public void drops(){
+        dropInventoryContents(level, worldPosition, inventory);
+    }
     @Override
     public @Nullable Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);

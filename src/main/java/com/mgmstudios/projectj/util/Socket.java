@@ -115,7 +115,6 @@ public final class Socket implements Comparable<Socket>{
         List<Socket> newSockets = new ArrayList<>(sockets);
         boolean slotUsed = false;
 
-        ItemStack resultStack = itemStack.copy();
 
         for (int i = 0; i < sockets.size(); i++) {
             Socket cur = sockets.get(i);
@@ -137,13 +136,14 @@ public final class Socket implements Comparable<Socket>{
             }
         }
 
+        ItemStack resultStack = itemStack.copy();
+
         if (!slotUsed) {
             return ItemStack.EMPTY;
         }
 
         resultStack.set(SOCKETS, newSockets);
         socketToApply.apply(resultStack);
-
         return resultStack;
     }
 

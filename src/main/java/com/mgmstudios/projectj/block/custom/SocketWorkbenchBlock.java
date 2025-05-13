@@ -1,7 +1,9 @@
 package com.mgmstudios.projectj.block.custom;
 
 import com.mgmstudios.projectj.block.entity.custom.AdobeFurnaceBlockEntity;
+import com.mgmstudios.projectj.block.entity.custom.MetateBlockEntity;
 import com.mgmstudios.projectj.block.entity.custom.SocketWorkbenchBlockEntity;
+import com.mgmstudios.projectj.block.entity.renderer.SocketWorkbenchEntityRenderer;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -21,6 +23,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
@@ -67,6 +70,14 @@ public final class SocketWorkbenchBlock extends BaseEntityBlock {
         if (blockentity instanceof SocketWorkbenchBlockEntity) {
             player.openMenu((MenuProvider)blockentity);
         }
+    }
+
+    @Override
+    public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
+        if ((level.getBlockEntity(pos) instanceof SocketWorkbenchBlockEntity workbench)) {
+            workbench.drops();
+        }
+        return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);
     }
 
 

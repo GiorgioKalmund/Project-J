@@ -177,6 +177,7 @@ public class ProjectJ
             event.registerBlockEntityRenderer(ModBlockEntities.TELEPORTATION_PAD_BE.get(), TeleportationBlockEntityRenderer::new);
             event.registerBlockEntityRenderer(ModBlockEntities.METATE_BE.get(), MetateEntityRenderer::new);
             event.registerBlockEntityRenderer(ModBlockEntities.JADE_CRYSTAL_BE.get(), JadeCrystalEntityRenderer::new);
+            event.registerBlockEntityRenderer(ModBlockEntities.SOCKET_WORKBENCH_BE.get(), SocketWorkbenchEntityRenderer::new);
         }
 
 
