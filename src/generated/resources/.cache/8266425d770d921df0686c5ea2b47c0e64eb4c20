@@ -1,4 +1,4 @@
-// 1.21.4	2025-05-13T16:11:52.868163	Model Definitions - projectj
+// 1.21.4	2025-05-13T23:00:39.9169227	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -105,9 +105,11 @@ c4f3775626f4c829574376d0a454e0940c3ca14a assets/projectj/items/cobbled_serpentin
 86ec87f4066da2a5a42ff7cee6e4348ce902f39c assets/projectj/items/death_whistle.json
 3cf17f2ffd36039a8af7d7d54f2b7dd5f05212a1 assets/projectj/items/deepslate_jade_ore.json
 48d99f43129145fad1afdeaa7fd3f9617f632021 assets/projectj/items/empty_little_man_statue_block.json
+ed3b656d980ed7d72a79483705a8f9f4b6e2cc59 assets/projectj/items/everything_socket.json
 158ef8b3692a5b675b2d8414808d3d285564c18b assets/projectj/items/filled_crude_sacrifice_bowl.json
 3b6458d2375f942b3fd027659dd3aa77eacc6baf assets/projectj/items/fire_starter.json
 2eb06aad7db124280fb3fc392ec9f24df4131c06 assets/projectj/items/flesh.json
+0ff263548a01b155291c31a5976115683e99317c assets/projectj/items/give_ai_socket.json
 64839b9397604057b8094e6a9073317e1dd03033 assets/projectj/items/glider_socket.json
 635f09337da422deff2ab66f0bf8d1cad618ba21 assets/projectj/items/hatchet.json
 e4cc4c77a3f1a8370ea5eb4690b9aa014b2e9182 assets/projectj/items/hollow_mesquite_log.json
@@ -169,6 +171,7 @@ d6de33ec78e5dadcec27d4788d16fe3137d1662b assets/projectj/items/quetzal_spawn_egg
 53aa4499048497ad5ead0a378754583ab04aa6cc assets/projectj/items/raw_pyrite.json
 d19ac3fb4aac4dd12829332ad30062bd41d7d044 assets/projectj/items/raw_pyrite_block.json
 b1ef94aa64918217023c7e7dd8747433a3cd1827 assets/projectj/items/regeneration_olmec_head.json
+3aac4cf33323647a34bf88e1fe2df241f48b9af4 assets/projectj/items/remove_ai_socket.json
 20e7e68da680c45787b4e50294ded1baf3b678ba assets/projectj/items/resistant_olmec_head.json
 e4d27829bfbf7c280195300b0cc615b02e2fe5fa assets/projectj/items/runner_spawn_egg.json
 c8bc8ca7b8d75aa6d72cbfa60aefcdf7613ba7ec assets/projectj/items/sacrificial_dagger.json
@@ -188,6 +191,7 @@ f0c212cdf6fba3eb39f2a5bec3f6bb3bc516a6df assets/projectj/items/serpentinite_bric
 35c499f4f3b4431335361713a460a3477ea52603 assets/projectj/items/serpentinite_rock_wall.json
 ad69156c496a24a50949baacd6de04ad6092b9a1 assets/projectj/items/serpentinite_rod.json
 79f78d865371b5671b74b76c43077cfb50febac2 assets/projectj/items/snake_statue.json
+1dfce77d3e368a2b1e942084b5e1ede5016ecf0e assets/projectj/items/socket_tester.json
 7d8136c66109acc078b3898d48a9020dd25fc9cd assets/projectj/items/socket_workbench.json
 dc71d3407bf373a2dec8bd1ca3cb34040c3e4152 assets/projectj/items/stone_mano.json
 86d3f4affc0795e800e8734aaf5b4ab53efa37ff assets/projectj/items/stripped_mesquite_log.json
@@ -316,9 +320,11 @@ cdcb03ebf3cc0a37809e8f77f5642c0f437220c0 assets/projectj/models/item/chili.json
 92e3abf5e2d588f218e7a18a1ff3a166a94059de assets/projectj/models/item/chili_seeds.json
 aac07639f9960cc7e0e85f1d298694c7b6d01e88 assets/projectj/models/item/crude_sacrifice_bowl.json
 da5311311d366194e64154b2f0e1cf5408ea8fd6 assets/projectj/models/item/death_whistle.json
+5fcdf807e4921fabc22e4935e2684214afa6f033 assets/projectj/models/item/everything_socket.json
 5997f340b1c359ea3e3d1d8275bb3a50128bc24f assets/projectj/models/item/filled_crude_sacrifice_bowl.json
 30b985172cbbef1e3f927bfadb025bd16adda0a0 assets/projectj/models/item/fire_starter.json
 8bffde40e70f5b0ae5577d697aa02414cf03484b assets/projectj/models/item/flesh.json
+79e97b27b1dbf4f2b2f2be1f71fa48f19f1623da assets/projectj/models/item/give_ai_socket.json
 e2f1a5f95c5cee7528ef401a4886c18b649ef630 assets/projectj/models/item/glider_socket.json
 6fab0152ce1b51acd697298952bf004091e17b84 assets/projectj/models/item/hatchet.json
 9cc0c435272b7a37105bfd68afa6dd08bf45ef1e assets/projectj/models/item/jade.json
@@ -394,9 +400,11 @@ f26183b0a5ddea46470c024f7ffccc269b5e0d0a assets/projectj/models/item/quetzal_egg
 00692d7e6ab7f4e30dec438ea1b87f94643578a1 assets/projectj/models/item/quetzal_spawn_egg.json
 ba637adad06995f9e8f952ca598514c60ce4cfbb assets/projectj/models/item/raw_jade.json
 dea83879f7224ce8e5006eb343d4d8bf63b2fd25 assets/projectj/models/item/raw_pyrite.json
+d9f2200a56d3a2268b40853958bc0c790f8a1467 assets/projectj/models/item/remove_ai_socket.json
 f8377a982ff47362dcb725ec7496dd9cde89cf44 assets/projectj/models/item/runner_spawn_egg.json
 caa4448fff1934cc38f77c2a2f2dd6853ae4515d assets/projectj/models/item/sacrificial_dagger.json
 5b67a9f9fadc07b35191c8a244b0bfc16303c30f assets/projectj/models/item/serpentinite_rod.json
+ec39dc896cbb2afa07568faf01e36cac466ec46d assets/projectj/models/item/socket_tester.json
 e3a7718100f03f474faebbe4da0624f70911b4f5 assets/projectj/models/item/stone_mano.json
 111fd668abca02b2ecd247f7afd7c8c0e34668d6 assets/projectj/models/item/sun_armor_boots.json
 6f72f1eb5f66a6a84c21721f8545641efd8e1432 assets/projectj/models/item/sun_armor_chestplate.json

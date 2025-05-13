@@ -4,6 +4,7 @@ import com.mgmstudios.projectj.component.ModDataComponents;
 import com.mgmstudios.projectj.entity.client.armor.AwakenedSunArmorRenderer;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.item.custom.socket.SocketGeoArmorItem;
+import com.mgmstudios.projectj.util.Socket;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
@@ -42,8 +43,8 @@ import static com.mgmstudios.projectj.item.custom.armor.JadeArmorItem.getEquippe
 
 public final class AwakenedSunArmorItem extends SocketGeoArmorItem {
     ArmorType armorType;
-    public AwakenedSunArmorItem(ArmorMaterial material, ArmorType armorType, Properties properties) {
-        super(material, armorType, properties);
+    public AwakenedSunArmorItem(ArmorMaterial material, ArmorType armorType, Properties properties, Socket... sockets) {
+        super(material, armorType, properties, sockets);
         this.armorType = armorType;
     }
 
@@ -94,6 +95,7 @@ public final class AwakenedSunArmorItem extends SocketGeoArmorItem {
 
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
+        super.inventoryTick(stack, level, entity, slotId, isSelected);
         if (entity instanceof Player player && !level.isClientSide()) {
             Set<Item> wornArmor = getEquippedArmor(player);
             if (wornArmor.isEmpty())

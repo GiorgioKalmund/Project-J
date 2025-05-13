@@ -6,10 +6,7 @@ import com.mgmstudios.projectj.item.custom.socket.SocketGemItem;
 import com.mgmstudios.projectj.item.custom.socket.SocketHolder;
 import com.mgmstudios.projectj.screen.ModMenuTypes;
 import com.mgmstudios.projectj.util.Socket;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.Container;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerLevelAccess;
@@ -17,7 +14,6 @@ import net.minecraft.world.inventory.ItemCombinerMenu;
 import net.minecraft.world.inventory.ItemCombinerMenuSlotDefinition;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.AnvilBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -49,19 +45,17 @@ public final class SocketWorkbenchMenu extends ItemCombinerMenu {
 
     @Override
     protected void onTake(Player player, ItemStack itemStack) {
-        this.inputSlots.setItem(0, ItemStack.EMPTY);
+        ItemStack inputItemStack = this.inputSlots.getItem(0);
         ItemStack gemItemStack = this.inputSlots.getItem(1);
-        if (!gemItemStack.isEmpty()) {
-            gemItemStack.shrink(1);
-            this.inputSlots.setItem(1, gemItemStack);
-        } else {
-            this.inputSlots.setItem(1, ItemStack.EMPTY);
-        }
-    }
+        int itemsAbleToConvert = itemsAbleToConvert();
+        gemItemStack.shrink(itemsAbleToConvert);
+        inputItemStack.shrink(itemsAbleToConvert);
+        System.out.println("Converted " + itemsAbleToConvert + " / " + inputItemStack + " / " + gemItemStack);
 
-    @Override
-    public ItemStack quickMoveStack(Player player, int index) {
-        return super.quickMoveStack(player, index);
+        // Anvil Sound
+        access.execute((level, blockPos) -> {
+            level.levelEvent(1030, blockPos, 0);
+        });
     }
 
     @Override
@@ -70,11 +64,16 @@ public final class SocketWorkbenchMenu extends ItemCombinerMenu {
         access.execute((level, pos) -> {
             BlockEntity be = level.getBlockEntity(pos);
             if (be instanceof SocketWorkbenchBlockEntity socketBE) {
-                socketBE.getInventory().setStackInSlot(0, inputSlots.getItem(0).copy());
-                socketBE.getInventory().setStackInSlot(1, inputSlots.getItem(1).copy());
-                socketBE.getInventory().setStackInSlot(2, resultSlots.getItem(0).copy());
+                socketBE.getInventory().setStackInSlot(0, inputSlots.getItem(0));
+                socketBE.getInventory().setStackInSlot(1, inputSlots.getItem(1));
+                socketBE.getInventory().setStackInSlot(2, resultSlots.getItem(0));
             }
         });
+    }
+
+    @Override
+    public void removed(Player player) {
+
     }
 
     @Override
@@ -88,8 +87,12 @@ public final class SocketWorkbenchMenu extends ItemCombinerMenu {
         ItemStack gemStack = this.inputSlots.getItem(1);
         Item item = itemstack.getItem();
         Item gem = gemStack.getItem();
-        if (item instanceof SocketHolder && gem instanceof SocketGemItem socketGemItem){
-            ItemStack resultStack = Socket.addSocket(itemstack, socketGemItem.getSocket());
+        ItemStack resultStack = itemstack.copy();
+        resultStack.setCount(itemsAbleToConvert());
+        if (item instanceof SocketHolder holder && gem instanceof SocketGemItem socketGemItem){
+            for (Socket s : socketGemItem.getSocketList()){
+                resultStack = Socket.addSocket(resultStack, s, holder.canAddExtraSlots());
+            }
             if (!resultStack.isEmpty()){
                 resultSlots.setItem(0, resultStack);
                 this.broadcastChanges();
@@ -99,5 +102,11 @@ public final class SocketWorkbenchMenu extends ItemCombinerMenu {
         } else {
             resultSlots.setItem(0, ItemStack.EMPTY);
         }
+    }
+
+    public int itemsAbleToConvert(){
+        ItemStack itemstack = this.inputSlots.getItem(0);
+        ItemStack gemStack = this.inputSlots.getItem(1);
+        return Math.min(itemstack.getCount(),gemStack.getCount());
     }
 }

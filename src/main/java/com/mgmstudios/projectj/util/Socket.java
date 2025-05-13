@@ -20,8 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.mgmstudios.projectj.component.ModDataComponents.Sockets.SOCKETS;
-import static com.mgmstudios.projectj.component.ModDataComponents.Sockets.ZOMBIE_PACIFYING;
+import static com.mgmstudios.projectj.component.ModDataComponents.Sockets.*;
 import static net.minecraft.core.component.DataComponents.EQUIPPABLE;
 import static net.minecraft.core.component.DataComponents.GLIDER;
 
@@ -30,9 +29,6 @@ public final class Socket implements Comparable<Socket>{
     private int count;
     private final int maxCount;
 
-
-    public static Socket GLIDER_SOCKET = new Socket(GLIDER, 1, 1);
-    public static Socket PACIFYING_SOCKET = new Socket(ZOMBIE_PACIFYING.get(), 1, 1);
 
     public Socket(DataComponentType<?> dataComponentType, int count, int maxCount){
         this.dataComponentType = dataComponentType;
@@ -68,6 +64,22 @@ public final class Socket implements Comparable<Socket>{
         return new Socket(ModDataComponents.Sockets.EMPTY.get(), 1);
     }
 
+    public static Socket zombiePacifying(){
+        return  new Socket(ZOMBIE_PACIFYING.get(), 1, 1);
+    }
+
+    public static Socket removeAi(){
+        return  new Socket(REMOVE_AI.get(), 1, 1);
+    }
+
+    public static Socket giveAi(){
+        return  new Socket(GIVE_AI.get(), 1, 1);
+    }
+
+    public static Socket glider(){
+        return new Socket(GLIDER, 1, 1);
+    }
+
     public static Socket[] emptySockets(int count){
         List<Socket> emptySockets = new ArrayList<>();
         for (int index = 0; index < count; index++){
@@ -98,7 +110,7 @@ public final class Socket implements Comparable<Socket>{
         properties.component(type, componentValue);
     }
 
-    public static ItemStack addSocket(ItemStack itemStack, Socket socketToApply) {
+    public static ItemStack addSocket(ItemStack itemStack, Socket socketToApply, boolean addNewSockets) {
         DataComponentType<?> typeToApply = socketToApply.getDataComponentType();
 
         if (!(itemStack.getItem() instanceof SocketHolder socketHolder)) {
@@ -114,6 +126,7 @@ public final class Socket implements Comparable<Socket>{
         List<Socket> sockets = itemStack.getOrDefault(SOCKETS, new ArrayList<>());
         List<Socket> newSockets = new ArrayList<>(sockets);
         boolean slotUsed = false;
+        boolean foundSameType = false;
 
 
         for (int i = 0; i < sockets.size(); i++) {
@@ -123,17 +136,24 @@ public final class Socket implements Comparable<Socket>{
                 if (cur.getCount() < cur.maxCount) {
                     newSockets.set(i, cur.copy().increaseCount());
                     slotUsed = true;
+                    foundSameType = true;
                 } else {
                     return ItemStack.EMPTY;
                 }
                 break;
             }
-
-            if (cur.isEmpty()) {
-                newSockets.set(i, Socket.PACIFYING_SOCKET);
-                slotUsed = true;
-                break;
+            else if (!addNewSockets){
+                if (cur.isEmpty()) {
+                    newSockets.set(i, socketToApply);
+                    slotUsed = true;
+                    break;
+                }
             }
+        }
+
+        if (addNewSockets && !foundSameType){
+            newSockets.add(socketToApply.copy());
+            slotUsed = true;
         }
 
         ItemStack resultStack = itemStack.copy();

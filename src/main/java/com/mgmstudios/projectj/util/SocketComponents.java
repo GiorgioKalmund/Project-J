@@ -30,7 +30,7 @@ public class SocketComponents {
         }
         if (!socket.isEmpty()){
             String maxCount = socket.getMaxCount() == Integer.MAX_VALUE ? "∞" : socket.getMaxCount() + "";
-            base.append("  §o["+ maxCount +"]").withColor(0x555555);
+            base.append(" §8§o["+ maxCount +"]§r");
         }
         return base;
     }

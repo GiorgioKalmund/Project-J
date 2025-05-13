@@ -8,6 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -35,15 +36,24 @@ public class SocketItem extends Item implements SocketHolder{
 
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
+        super.inventoryTick(stack, level, entity, slotId, isSelected);
+        applyInventoryTickEffects(stack, this, level, entity);
+    }
+
+    public static void applyInventoryTickEffects(ItemStack stack, Item item, Level level, Entity entity){
         if (stack.has(SOCKETS)) {
             List<Socket> sockets = stack.get(SOCKETS);
             if (sockets != null && !sockets.isEmpty()){
                 for (Socket socket : sockets){
-
                     if (socket.is(ZOMBIE_PACIFYING)){
                         littleManVoodooEffect(level, entity);
                     }
-
+                    else if (socket.is(REMOVE_AI)){
+                        removeAI(level, entity, item);
+                    }
+                    else if (socket.is(GIVE_AI)){
+                        addAI(level, entity, item);
+                    }
                 }
             }
         }
@@ -75,22 +85,40 @@ public class SocketItem extends Item implements SocketHolder{
         return List.of();
     }
 
-    private void littleManVoodooEffect(Level level, Entity entity){
+    @Override
+    public boolean canAddExtraSlots() {
+        return false;
+    }
+
+    private static void littleManVoodooEffect(Level level, Entity entity){
         if(level.isClientSide()) return;
 
         if(entity instanceof Player player){
-
-            if(!(player.getItemInHand(InteractionHand.MAIN_HAND).is(this) || player.getItemInHand(InteractionHand.OFF_HAND).is(this))){
-                return;
-            }
-
             List<Zombie> allEntities = level.getEntitiesOfClass(Zombie.class, new AABB(player.blockPosition()).inflate(35));
             for (Zombie zombie : allEntities) {
 
                 NearestAttackableTargetGoal<Player> goal = new NearestAttackableTargetGoal<>(zombie, Player.class, true);
+                goal.stop();
+            }
+        }
+    }
 
-                if(player.getItemInHand(InteractionHand.MAIN_HAND).is(this) || player.getItemInHand(InteractionHand.OFF_HAND).is(this)){
-                    goal.stop();
+    private static void removeAI(Level level, Entity entity, Item item){
+        setMonsterAiInRadius(level, entity, item, true, 15);
+    }
+
+    private static void addAI(Level level, Entity entity, Item item){
+        setMonsterAiInRadius(level, entity, item, false, 15);
+    }
+
+    private static void setMonsterAiInRadius(Level level, Entity entity, Item item, boolean setNoAi, int radius){
+        if(level.isClientSide()) return;
+
+        if(entity instanceof Player player){
+            if (player.getItemInHand(InteractionHand.MAIN_HAND).is(item) || player.getItemInHand(InteractionHand.OFF_HAND).is(item)){
+                List<Monster> allEntities = level.getEntitiesOfClass(Monster.class, new AABB(player.blockPosition()).inflate(radius));
+                for (Monster monster : allEntities) {
+                    monster.setNoAi(setNoAi);
                 }
             }
         }

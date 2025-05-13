@@ -80,13 +80,13 @@ public class ModItems {
 
     public static final DeferredItem<Item> SUN_ARMOR_BOOTS = registerArmorItem("sun_armor_boots", ModArmorMaterials.SUN_ARMOR_MATERIAL, ArmorType.BOOTS, SunArmorItem::new);
 
-    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_HELMET = registerArmorItem("awakened_sun_armor_helmet", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.HELMET, AwakenedSunArmorItem::new, new Item.Properties().rarity(Rarity.RARE));
+    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_HELMET = registerArmorItem("awakened_sun_armor_helmet", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.HELMET,(material, armorType, properties) -> new AwakenedSunArmorItem(material, armorType, properties, Socket.empty()) , new Item.Properties().rarity(Rarity.RARE));
 
-    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_CHESTPLATE = registerArmorItem("awakened_sun_armor_chestplate", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.CHESTPLATE, AwakenedSunArmorItem::new, new Item.Properties().rarity(Rarity.RARE).component(GLIDER, Unit.INSTANCE));
+    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_CHESTPLATE = registerArmorItem("awakened_sun_armor_chestplate", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.CHESTPLATE, (material, armorType, properties) -> new AwakenedSunArmorItem(material, armorType, properties, Socket.glider(), Socket.empty()) , new Item.Properties().rarity(Rarity.RARE));
 
-    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_LEGGINGS = registerArmorItem("awakened_sun_armor_leggings", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.LEGGINGS, AwakenedSunArmorItem::new, new Item.Properties().rarity(Rarity.RARE));
+    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_LEGGINGS = registerArmorItem("awakened_sun_armor_leggings", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.LEGGINGS, (material, armorType, properties) -> new AwakenedSunArmorItem(material, armorType, properties, Socket.empty()), new Item.Properties().rarity(Rarity.RARE));
 
-    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_BOOTS = registerArmorItem("awakened_sun_armor_boots", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.BOOTS, AwakenedSunArmorItem::new, new Item.Properties().rarity(Rarity.RARE));
+    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_BOOTS = registerArmorItem("awakened_sun_armor_boots", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.BOOTS,  (material, armorType, properties) -> new AwakenedSunArmorItem(material, armorType, properties, Socket.empty()), new Item.Properties().rarity(Rarity.RARE));
 
     public static final DeferredItem<Item> MAGNIFYING_GLASS = register("magnifying_glass", MagnifyingGlassItem::new, new Item.Properties().stacksTo(1));
 
@@ -163,9 +163,22 @@ public class ModItems {
 
     public static final DeferredItem<Item> FLESH = register("flesh", new Item.Properties().food(ModFoods.FLESH));
 
-    public static final DeferredItem<Item> GLIDER_SOCKET = register("glider_socket", (properties) -> new SocketGemItem(properties, Socket.GLIDER_SOCKET));
+    public static final DeferredItem<Item> GLIDER_SOCKET = register("glider_socket", (properties) -> new SocketGemItem(properties, Socket.glider()));
 
-    public static final DeferredItem<Item> PACIFYING_SOCKET = register("pacifying_socket", (properties) -> new SocketGemItem(properties, Socket.PACIFYING_SOCKET));
+    public static final DeferredItem<Item> PACIFYING_SOCKET = register("pacifying_socket", (properties) -> new SocketGemItem(properties, Socket.zombiePacifying()));
+
+    public static final DeferredItem<Item> REMOVE_AI_SOCKET = register("remove_ai_socket", (properties) -> new SocketGemItem(properties, Socket.removeAi()));
+
+    public static final DeferredItem<Item> GIVE_AI_SOCKET = register("give_ai_socket", (properties) -> new SocketGemItem(properties, Socket.giveAi()));
+
+    public static final DeferredItem<Item> EVERYTHING_SOCKET = register("everything_socket", (properties) -> new SocketGemItem(properties, Socket.giveAi(), Socket.glider(), new Socket(ZOMBIE_PACIFYING.get(), 1, 2), Socket.removeAi(), Socket.empty()));
+
+    public static final DeferredItem<Item> SOCKET_TESTER = register("socket_tester", (properties) -> new SocketItem(properties){
+        @Override
+        public boolean canAddExtraSlots() {
+            return true;
+        }
+    });
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

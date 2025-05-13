@@ -3,6 +3,7 @@ package com.mgmstudios.projectj.item.custom.armor;
 import com.mgmstudios.projectj.entity.client.armor.SunArmorRenderer;
 import com.mgmstudios.projectj.item.ModItems;
 import com.mgmstudios.projectj.item.custom.socket.SocketGeoArmorItem;
+import com.mgmstudios.projectj.util.Socket;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
@@ -32,8 +33,8 @@ import java.util.function.Consumer;
 import static com.mgmstudios.projectj.item.custom.armor.JadeArmorItem.getEquippedArmor;
 
 public final class SunArmorItem extends SocketGeoArmorItem {
-    public SunArmorItem(ArmorMaterial material, ArmorType armorType, Properties properties) {
-        super(material, armorType, properties);
+    public SunArmorItem(ArmorMaterial material, ArmorType armorType, Properties properties, Socket... sockets) {
+        super(material, armorType, properties, sockets);
     }
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);

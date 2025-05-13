@@ -87,8 +87,12 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.JADE_LEGGINGS, "Jade Leggings");
         addItem(ModItems.JADE_BOOTS, "Jade Boots");
 
-        addItem(ModItems.GLIDER_SOCKET, "Glider Socket");
-        addItem(ModItems.PACIFYING_SOCKET, "Pacifying Socket");
+        addItem(ModItems.GLIDER_SOCKET, "Glider Gem");
+        addItem(ModItems.PACIFYING_SOCKET, "Pacifying Gem");
+        addItem(ModItems.REMOVE_AI_SOCKET, "Remove AI Gem");
+        addItem(ModItems.GIVE_AI_SOCKET, "Give AI Gem");
+        addItem(ModItems.EVERYTHING_SOCKET, "Everything Gem");
+        addItem(ModItems.SOCKET_TESTER, "Socket Tester");
 
 
         // Blocks
@@ -116,7 +120,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.JADE_CRYSTAL, "Jade Crystal");
         addBlock(ModBlocks.HOLLOW_MESQUITE_LOG, "Hollow Mesquite Log");
         addBlock(ModBlocks.CHARCOAL_BLOCK, "Block of Charcoal");
-        addBlock(ModBlocks.SOCKET_WORKBENCH, "Socket Workbench");
+        addBlock(ModBlocks.SOCKET_WORKBENCH, "Gem Workbench");
 
         addBlock(ModBlocks.PYRITE_BLOCK, "Pyrite Block");
         addBlock(ModBlocks.RAW_PYRITE_BLOCK, "Raw Pyrite Block");
@@ -244,10 +248,12 @@ public class ModLanguageProvider extends LanguageProvider {
         addBiome(ModBiomes.SERPENTINITE_HILLS, "Serpentinite Hills");
 
         // Components
-        addComponentSocket("gem_applying", "§8§oApplies:§r");
+        addComponentSocket("gem_applying", "§8Applies:§r");
         addComponentSocket(EMPTY, "§oEmpty Socket§r");
         addComponentSocket(ZOMBIE_PACIFYING, "§o§aPacifying§r");
-        addComponentSocket(GLIDER, "§o§aGlider§r");
+        addComponentSocket(GLIDER, "§o§5Glider§r");
+        addComponentSocket(REMOVE_AI, "§o§cRemove Monster AI§r");
+        addComponentSocket(GIVE_AI, "§o§fAdd Monster AI§r");
     }
 
     public void addContainer(String containerId, String value){

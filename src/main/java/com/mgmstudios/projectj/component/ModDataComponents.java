@@ -63,6 +63,16 @@ public class ModDataComponents {
                         .persistent(Codec.BOOL)
                         .networkSynchronized(ByteBufCodecs.BOOL)
         );
+        public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> REMOVE_AI = registerSocket("remove_ai", builder ->
+                builder
+                        .persistent(Codec.BOOL)
+                        .networkSynchronized(ByteBufCodecs.BOOL)
+        );
+        public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> GIVE_AI = registerSocket("give_ai", builder ->
+                builder
+                        .persistent(Codec.BOOL)
+                        .networkSynchronized(ByteBufCodecs.BOOL)
+        );
         public static final DeferredHolder<DataComponentType<?>, DataComponentType<List<com.mgmstudios.projectj.util.Socket>>> SOCKETS = registerSocket("sockets", builder ->
                 builder
                         .persistent(com.mgmstudios.projectj.util.Socket.SOCKET_LIST_CODEC)

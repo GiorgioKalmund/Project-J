@@ -8,4 +8,5 @@ import java.util.List;
 public interface SocketHolder {
     public List<DataComponentType<?>> getAllowedTypes();
     public List<DataComponentType<?>> getExcludedTypes();
+    boolean canAddExtraSlots();
 }

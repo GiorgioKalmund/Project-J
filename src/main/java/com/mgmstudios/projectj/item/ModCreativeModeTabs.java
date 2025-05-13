@@ -38,6 +38,10 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.SOCKET_WORKBENCH.get());
                 output.accept(ModItems.GLIDER_SOCKET.get());
                 output.accept(ModItems.PACIFYING_SOCKET.get());
+                output.accept(ModItems.REMOVE_AI_SOCKET.get());
+                output.accept(ModItems.GIVE_AI_SOCKET.get());
+                output.accept(ModItems.EVERYTHING_SOCKET.get());
+                output.accept(ModItems.SOCKET_TESTER.get());
 
                 output.accept(ModBlocks.JADE_ORE.get());
                 output.accept(ModBlocks.DEEPSLATE_JADE_ORE.get());

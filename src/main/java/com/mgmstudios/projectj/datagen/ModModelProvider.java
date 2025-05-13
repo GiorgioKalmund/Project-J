@@ -123,6 +123,10 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.FLESH.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.GLIDER_SOCKET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.PACIFYING_SOCKET.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.REMOVE_AI_SOCKET.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.GIVE_AI_SOCKET.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.EVERYTHING_SOCKET.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.SOCKET_TESTER.get(), ModelTemplates.FLAT_ITEM);
 
         itemModels.generateFlatItem(ModItems.SUN_ARMOR_HELMET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.SUN_ARMOR_CHESTPLATE.get(), ModelTemplates.FLAT_ITEM);

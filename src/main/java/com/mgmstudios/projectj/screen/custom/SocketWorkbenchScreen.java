@@ -1,8 +1,10 @@
 package com.mgmstudios.projectj.screen.custom;
 
+import com.mgmstudios.projectj.ProjectJ;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.EditBox;
+import net.minecraft.client.gui.screens.inventory.CyclingSlotBackground;
 import net.minecraft.client.gui.screens.inventory.ItemCombinerScreen;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.component.DataComponents;
@@ -16,6 +18,8 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
+import java.util.List;
+
 @OnlyIn(Dist.CLIENT)
 public class SocketWorkbenchScreen extends ItemCombinerScreen<SocketWorkbenchMenu> {
     private static final ResourceLocation TEXT_FIELD_SPRITE = ResourceLocation.withDefaultNamespace("container/anvil/text_field");
@@ -23,7 +27,11 @@ public class SocketWorkbenchScreen extends ItemCombinerScreen<SocketWorkbenchMen
     private static final ResourceLocation ERROR_SPRITE = ResourceLocation.withDefaultNamespace("container/anvil/error");
     private static final ResourceLocation ANVIL_LOCATION = ResourceLocation.withDefaultNamespace("textures/gui/container/anvil.png");
     private static final Component TOO_EXPENSIVE_TEXT = Component.translatable("container.repair.expensive");
+    private final CyclingSlotBackground templateIcon = new CyclingSlotBackground(1);
     private final Player player;
+    private static final List<ResourceLocation> EMPTY_SLOT_SMITHING_TEMPLATES;
+    private static final ResourceLocation EMPTY_SLOT_REGULAR_GEM = ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "container/slot/gem");
+    private static final ResourceLocation EMPTY_SLOT_GLIDER_GEM = ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "container/slot/glider_gem");
 
     public SocketWorkbenchScreen(SocketWorkbenchMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title, ANVIL_LOCATION);
@@ -32,9 +40,9 @@ public class SocketWorkbenchScreen extends ItemCombinerScreen<SocketWorkbenchMen
     }
 
     @Override
-    protected void subInit() {
-        int i = (this.width - this.imageWidth) / 2;
-        int j = (this.height - this.imageHeight) / 2;
+    protected void containerTick() {
+        super.containerTick();
+        this.templateIcon.tick(EMPTY_SLOT_SMITHING_TEMPLATES);
     }
 
     @Override
@@ -81,9 +89,9 @@ public class SocketWorkbenchScreen extends ItemCombinerScreen<SocketWorkbenchMen
     }
 
     @Override
-    protected void renderBg(GuiGraphics p_283345_, float p_283412_, int p_282871_, int p_281306_) {
-        super.renderBg(p_283345_, p_283412_, p_282871_, p_281306_);
-        p_283345_.blitSprite(
+    protected void renderBg(GuiGraphics guiGraphics, float v, int mouseX, int mouseY) {
+        super.renderBg(guiGraphics, v, mouseX, mouseY);
+        guiGraphics.blitSprite(
                 RenderType::guiTextured,
                 this.menu.getSlot(0).hasItem() ? TEXT_FIELD_SPRITE : TEXT_FIELD_DISABLED_SPRITE,
                 this.leftPos + 59,
@@ -91,6 +99,8 @@ public class SocketWorkbenchScreen extends ItemCombinerScreen<SocketWorkbenchMen
                 110,
                 16
         );
+        System.out.println("leftPos: " + this.leftPos);
+        this.templateIcon.render(this.menu, guiGraphics, v, this.leftPos, this.topPos);
     }
 
     @Override
@@ -98,5 +108,10 @@ public class SocketWorkbenchScreen extends ItemCombinerScreen<SocketWorkbenchMen
         if ((this.menu.getSlot(0).hasItem() || this.menu.getSlot(1).hasItem()) && !this.menu.getSlot(this.menu.getResultSlot()).hasItem()) {
             p_282905_.blitSprite(RenderType::guiTextured, ERROR_SPRITE, p_283237_ + 99, p_282237_ + 45, 28, 21);
         }
+    }
+
+
+    static {
+        EMPTY_SLOT_SMITHING_TEMPLATES = List.of(EMPTY_SLOT_REGULAR_GEM, EMPTY_SLOT_GLIDER_GEM);
     }
 }
