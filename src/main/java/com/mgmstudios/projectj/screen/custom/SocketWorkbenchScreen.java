@@ -3,22 +3,18 @@ package com.mgmstudios.projectj.screen.custom;
 import com.mgmstudios.projectj.ProjectJ;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.inventory.CyclingSlotBackground;
 import net.minecraft.client.gui.screens.inventory.ItemCombinerScreen;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
 import java.util.List;
+import java.util.Optional;
 
 @OnlyIn(Dist.CLIENT)
 public class SocketWorkbenchScreen extends ItemCombinerScreen<SocketWorkbenchMenu> {
@@ -32,6 +28,7 @@ public class SocketWorkbenchScreen extends ItemCombinerScreen<SocketWorkbenchMen
     private static final List<ResourceLocation> EMPTY_SLOT_SMITHING_TEMPLATES;
     private static final ResourceLocation EMPTY_SLOT_REGULAR_GEM = ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "container/slot/gem");
     private static final ResourceLocation EMPTY_SLOT_GLIDER_GEM = ResourceLocation.fromNamespaceAndPath(ProjectJ.MOD_ID, "container/slot/glider_gem");
+    private static final Component GEM_TOOLTIP = Component.translatable("container.projectj.socket_workbench.gem_tooltip");
 
     public SocketWorkbenchScreen(SocketWorkbenchMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title, ANVIL_LOCATION);
@@ -86,6 +83,23 @@ public class SocketWorkbenchScreen extends ItemCombinerScreen<SocketWorkbenchMen
                 p_281442_.drawString(this.font, component, k, 69, j);
             }
         }
+    }
+
+    @Override
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float v) {
+        super.render(guiGraphics, mouseX, mouseY, v);
+        renderOnboardingTooltips(guiGraphics, mouseX, mouseY);
+    }
+
+    private void renderOnboardingTooltips(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+        Optional<Component> optional = Optional.empty();
+        if (this.hoveredSlot != null) {
+            if (this.hoveredSlot.index == 1) {
+                optional = Optional.of(GEM_TOOLTIP);
+            }
+        }
+
+        optional.ifPresent((component) -> guiGraphics.renderTooltip(this.font, this.font.split(component, 115), mouseX, mouseY));
     }
 
     @Override

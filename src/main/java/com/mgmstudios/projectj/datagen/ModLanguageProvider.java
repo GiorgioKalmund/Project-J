@@ -200,6 +200,7 @@ public class ModLanguageProvider extends LanguageProvider {
         // Containers
         addContainer("adobe_furnace", "Adobe Furnace");
         addContainer("socket_workbench", "Socket Workbench");
+        addContainer("socket_workbench.gem_tooltip", "Socket Gems");
 
         // Item Groups
         add("itemGroup.projectj.projectj_tab", "Project J");

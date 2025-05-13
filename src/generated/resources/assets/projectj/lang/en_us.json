@@ -113,6 +113,7 @@
   "components.projectj.sockets.zombie_pacifying": "§o§aPacifying§r",
   "container.projectj.adobe_furnace": "Adobe Furnace",
   "container.projectj.socket_workbench": "Socket Workbench",
+  "container.projectj.socket_workbench.gem_tooltip": "Socket Gems",
   "entity.projectj.little_king": "Little King",
   "entity.projectj.little_man": "Little Man",
   "entity.projectj.quetzal": "Quetzal",
