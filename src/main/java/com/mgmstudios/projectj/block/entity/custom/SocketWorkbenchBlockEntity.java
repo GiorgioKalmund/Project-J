@@ -46,7 +46,6 @@ public final class SocketWorkbenchBlockEntity extends BlockEntity implements Men
             setChanged();
             if (!level.isClientSide()){
                 level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
-                System.out.println("Contents changed in slot: " + slot + " " + inventory.getStackInSlot(slot));
             }
             super.onContentsChanged(slot);
         }

@@ -106,6 +106,7 @@
   "block.projectj.teleportation_pad": "Teleportation Pad",
   "block.projectj.tinted_adobe_glass": "Tinted Adobe Glass",
   "components.projectj.sockets.empty": "§oEmpty Socket§r",
+  "components.projectj.sockets.gem_applying": "§8§oApplies:§r",
   "components.projectj.sockets.glider": "§o§aGlider§r",
   "components.projectj.sockets.zombie_pacifying": "§o§aPacifying§r",
   "container.projectj.adobe_furnace": "Adobe Furnace",

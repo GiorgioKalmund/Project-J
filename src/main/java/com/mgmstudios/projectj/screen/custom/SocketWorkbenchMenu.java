@@ -6,7 +6,10 @@ import com.mgmstudios.projectj.item.custom.socket.SocketGemItem;
 import com.mgmstudios.projectj.item.custom.socket.SocketHolder;
 import com.mgmstudios.projectj.screen.ModMenuTypes;
 import com.mgmstudios.projectj.util.Socket;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.Container;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerLevelAccess;
@@ -14,6 +17,7 @@ import net.minecraft.world.inventory.ItemCombinerMenu;
 import net.minecraft.world.inventory.ItemCombinerMenuSlotDefinition;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.AnvilBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -56,7 +60,8 @@ public final class SocketWorkbenchMenu extends ItemCombinerMenu {
     }
 
     @Override
-    public void removed(Player player) {
+    public ItemStack quickMoveStack(Player player, int index) {
+        return super.quickMoveStack(player, index);
     }
 
     @Override
@@ -87,12 +92,12 @@ public final class SocketWorkbenchMenu extends ItemCombinerMenu {
             ItemStack resultStack = Socket.addSocket(itemstack, socketGemItem.getSocket());
             if (!resultStack.isEmpty()){
                 resultSlots.setItem(0, resultStack);
+                this.broadcastChanges();
             } else {
                 resultSlots.setItem(0, ItemStack.EMPTY);
             }
         } else {
             resultSlots.setItem(0, ItemStack.EMPTY);
         }
-        this.broadcastChanges();
     }
 }

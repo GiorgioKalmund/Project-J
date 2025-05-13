@@ -130,7 +130,7 @@ public final class Socket implements Comparable<Socket>{
             }
 
             if (cur.isEmpty()) {
-                newSockets.set(i, socketToApply);
+                newSockets.set(i, Socket.PACIFYING_SOCKET);
                 slotUsed = true;
                 break;
             }
@@ -176,7 +176,8 @@ public final class Socket implements Comparable<Socket>{
 
                     ByteBufCodecs.INT,
                     Socket::getCount,
-
+                    ByteBufCodecs.INT,
+                    Socket::getMaxCount,
                     Socket::new
             );
 
@@ -220,7 +221,7 @@ public final class Socket implements Comparable<Socket>{
     }
 
     public Socket copy(){
-        return new Socket(dataComponentType, count);
+        return new Socket(dataComponentType, count, maxCount);
     }
 
 

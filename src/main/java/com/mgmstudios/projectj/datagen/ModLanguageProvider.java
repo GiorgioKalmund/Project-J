@@ -244,6 +244,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBiome(ModBiomes.SERPENTINITE_HILLS, "Serpentinite Hills");
 
         // Components
+        addComponentSocket("gem_applying", "§8§oApplies:§r");
         addComponentSocket(EMPTY, "§oEmpty Socket§r");
         addComponentSocket(ZOMBIE_PACIFYING, "§o§aPacifying§r");
         addComponentSocket(GLIDER, "§o§aGlider§r");

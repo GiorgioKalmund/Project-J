@@ -22,11 +22,17 @@ public class SocketComponents {
     }
 
     public static MutableComponent socketFor(Socket socket){
+        MutableComponent base;
         if (socket.getCount() > 1){
-            return bulletPoint().append(Component.literal("§f"+socket.getCount() + "x §r").append(socketFor(socket.getDataComponentType())));
+            base = bulletPoint().append(Component.literal("§f"+socket.getCount() + "x §r").append(socketFor(socket.getDataComponentType())));
         } else {
-            return socket.isEmpty() ? emptySocket() : bulletPoint().append(socketFor(socket.getDataComponentType()));
+            base = socket.isEmpty() ? emptySocket() : bulletPoint().append(socketFor(socket.getDataComponentType()));
         }
+        if (!socket.isEmpty()){
+            String maxCount = socket.getMaxCount() == Integer.MAX_VALUE ? "∞" : socket.getMaxCount() + "";
+            base.append("  §o["+ maxCount +"]").withColor(0x555555);
+        }
+        return base;
     }
     public static MutableComponent socketFor(DataComponentType<?> componentType){
         return socketComponent(dataComponentName(componentType));
