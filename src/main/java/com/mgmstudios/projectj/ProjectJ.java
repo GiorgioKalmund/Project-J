@@ -6,6 +6,8 @@ import com.mgmstudios.projectj.entity.client.runner.RunnerRenderer;
 import com.mgmstudios.projectj.item.custom.MagnetItem;
 import com.mgmstudios.projectj.particle.ModParticles;
 import com.mgmstudios.projectj.particle.TeleportationParticles;
+import com.mgmstudios.projectj.screen.custom.SocketWorkbenchMenu;
+import com.mgmstudios.projectj.screen.custom.SocketWorkbenchScreen;
 import com.mgmstudios.projectj.worldgen.*;
 
 import com.mgmstudios.projectj.worldgen.regions.AdobeDesertRegion;
@@ -150,6 +152,7 @@ public class ProjectJ
 
     public void registerScreens(RegisterMenuScreensEvent event){
         event.register(ModMenuTypes.ADOBE_FURNACE_MENU.get(), AdobeFurnaceScreen::new);
+        event.register(ModMenuTypes.SOCKET_WORKBENCH_MENU.get(), SocketWorkbenchScreen::new);
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
@@ -196,6 +199,7 @@ public class ProjectJ
 
             event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.METATE_BE.get(), (entity, context) -> entity.getInventory());
             event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.JADE_CRYSTAL_BE.get(), (entity, context) -> entity.getInventory());
+            event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.SOCKET_WORKBENCH_BE.get(), (entity, context) -> entity.getInventory());
         }
 
     }

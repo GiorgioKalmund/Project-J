@@ -1,6 +1,7 @@
 package com.mgmstudios.projectj.component;
 
 import com.mgmstudios.projectj.ProjectJ;
+import com.mgmstudios.projectj.util.Socket;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
@@ -66,6 +67,12 @@ public class ModDataComponents {
                 builder
                         .persistent(com.mgmstudios.projectj.util.Socket.SOCKET_LIST_CODEC)
                         .networkSynchronized(com.mgmstudios.projectj.util.Socket.SOCKET_LIST_STREAM_CODEC)
+        );
+
+        public static final DeferredHolder<DataComponentType<?>, DataComponentType<com.mgmstudios.projectj.util.Socket>> SOCKET = registerSocket("socket", builder ->
+                builder
+                        .persistent(Socket.SOCKET_CODEC)
+                        .networkSynchronized(Socket.SOCKET_STREAM_CODEC)
         );
     }
 

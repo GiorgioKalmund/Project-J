@@ -1,4 +1,4 @@
-// 1.21.4	2025-05-13T09:50:21.712555	Model Definitions - projectj
+// 1.21.4	2025-05-13T16:11:52.868163	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -108,6 +108,7 @@ c4f3775626f4c829574376d0a454e0940c3ca14a assets/projectj/items/cobbled_serpentin
 158ef8b3692a5b675b2d8414808d3d285564c18b assets/projectj/items/filled_crude_sacrifice_bowl.json
 3b6458d2375f942b3fd027659dd3aa77eacc6baf assets/projectj/items/fire_starter.json
 2eb06aad7db124280fb3fc392ec9f24df4131c06 assets/projectj/items/flesh.json
+64839b9397604057b8094e6a9073317e1dd03033 assets/projectj/items/glider_socket.json
 635f09337da422deff2ab66f0bf8d1cad618ba21 assets/projectj/items/hatchet.json
 e4cc4c77a3f1a8370ea5eb4690b9aa014b2e9182 assets/projectj/items/hollow_mesquite_log.json
 20e974e68377b3d13568f54b52c8c52e9ccf5e66 assets/projectj/items/jade.json
@@ -149,6 +150,7 @@ da296558472311ae6a660687e56b93daec23f56b assets/projectj/items/metate.json
 98b689293cb75c02c874c04866a056a3c2680cc9 assets/projectj/items/obsidian_arrow.json
 bd8e1284e4e6223cc96888851ecab7d4d770dfaf assets/projectj/items/obsidian_tooth.json
 a6dcba9dc781c521a78cc57cc3363cc82e5e48d8 assets/projectj/items/olmec_altar.json
+adc83e7dfbd1a0ec52e55b965e525eb5eedaee8c assets/projectj/items/pacifying_socket.json
 1fd2dc1dd796f135a0cd1d26103b4f785f7a0ac7 assets/projectj/items/packed_adobe.json
 48fd0708f5c0582378282fb376e0cfdef6d61dc3 assets/projectj/items/polished_serpentinite.json
 b6f95c0669b237df848b0620006dfc45751b5d84 assets/projectj/items/polished_serpentinite_slab.json
@@ -317,6 +319,7 @@ da5311311d366194e64154b2f0e1cf5408ea8fd6 assets/projectj/models/item/death_whist
 5997f340b1c359ea3e3d1d8275bb3a50128bc24f assets/projectj/models/item/filled_crude_sacrifice_bowl.json
 30b985172cbbef1e3f927bfadb025bd16adda0a0 assets/projectj/models/item/fire_starter.json
 8bffde40e70f5b0ae5577d697aa02414cf03484b assets/projectj/models/item/flesh.json
+e2f1a5f95c5cee7528ef401a4886c18b649ef630 assets/projectj/models/item/glider_socket.json
 6fab0152ce1b51acd697298952bf004091e17b84 assets/projectj/models/item/hatchet.json
 9cc0c435272b7a37105bfd68afa6dd08bf45ef1e assets/projectj/models/item/jade.json
 82d5aa6725cf6efc0bd6817ccf445fec23e0d3f9 assets/projectj/models/item/jade_boots.json
@@ -382,6 +385,7 @@ f4599e1005d189a2ec7a00ff5c0fe9ac12947441 assets/projectj/models/item/maize_mash.
 0ed8110b95f96e3c9081e1ec3b05018acb71b9bd assets/projectj/models/item/mesquite_sapling.json
 be3dbf0b05738e4dff042801437c0830688d0370 assets/projectj/models/item/obsidian_arrow.json
 09cab150482989c21b2d2de107eb18eedfbac95b assets/projectj/models/item/obsidian_tooth.json
+87d4eb5f7aca9932b36e86ff4f387c51d3bc4b77 assets/projectj/models/item/pacifying_socket.json
 ffcc726298e3611b938887a80a1db9c4391d1035 assets/projectj/models/item/pyrite_ingot.json
 017d7efbff9698bd3727d1d340292a684d146368 assets/projectj/models/item/pyrite_magnet.json
 685262fa51c1cbde53140c2b72c5c608a095c243 assets/projectj/models/item/quest_book.json

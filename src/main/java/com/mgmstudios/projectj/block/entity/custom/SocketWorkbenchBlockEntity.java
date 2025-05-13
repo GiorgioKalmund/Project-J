@@ -1,27 +1,45 @@
 package com.mgmstudios.projectj.block.entity.custom;
 
 import com.mgmstudios.projectj.block.entity.ModBlockEntities;
+import com.mgmstudios.projectj.screen.custom.SocketWorkbenchMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.AnvilMenu;
+import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
+import org.checkerframework.checker.units.qual.N;
 import org.jetbrains.annotations.Nullable;
 
-import static com.mgmstudios.projectj.block.entity.custom.AncientAltarBlockEntity.dropInventoryContents;
+import java.util.ArrayList;
+import java.util.List;
 
-public class SocketWorkbenchBlockEntity extends BlockEntity {
+import static com.mgmstudios.projectj.block.entity.custom.AncientAltarBlockEntity.dropInventoryContents;
+import static net.minecraft.world.level.block.entity.BaseContainerBlockEntity.canUnlock;
+
+public final class SocketWorkbenchBlockEntity extends BlockEntity implements MenuProvider {
 
     public SocketWorkbenchBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntities.SOCKET_WORKBENCH_BE.get(), pos, blockState);
     }
 
-    public final ItemStackHandler inventory = new ItemStackHandler(1) {
+    public final ItemStackHandler inventory = new ItemStackHandler(3) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -33,42 +51,9 @@ public class SocketWorkbenchBlockEntity extends BlockEntity {
 
         @Override
         protected int getStackLimit(int slot, ItemStack stack) {
-            return 1;
+            return 64;
         }
     };
-
-    public boolean isEmpty(){
-        return inventory.getStackInSlot(0).isEmpty();
-    }
-
-    public void drops(){
-        dropInventoryContents(level, worldPosition, inventory);
-    }
-
-    public void swapItem(ItemStack newItem){
-        inventory.setStackInSlot(0, newItem);
-    }
-
-    public void clearAllContents(){
-        for (int slot = 0; slot < inventory.getSlots(); slot++){
-            inventory.setStackInSlot(slot, ItemStack.EMPTY);
-        }
-    }
-
-    public void insertNewItemStack(ItemStack stack){
-        ItemStack toInsert = inventory.insertItem(0, stack.copy(), false);
-    }
-
-    public ItemStack getStack(){
-        ItemStack toReturn = this.inventory.getStackInSlot(0);
-        return toReturn;
-    }
-
-    public ItemStack extractLatestItem(){
-        ItemStack extracted = inventory.extractItem( 0, 1, false);
-        inventory.setStackInSlot(0, ItemStack.EMPTY);
-        return extracted;
-    }
 
     public ItemStackHandler getInventory() {
         return inventory;
@@ -87,14 +72,24 @@ public class SocketWorkbenchBlockEntity extends BlockEntity {
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        super.saveAdditional(tag, registries);
-        tag.put("inventory", inventory.serializeNBT(registries));
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        inventory.deserializeNBT(registries, tag.getCompound("inventory"));
+        super.loadAdditional(tag, registries);
     }
 
     @Override
-    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        super.loadAdditional(tag, registries);
-        inventory.deserializeNBT(registries, tag.getCompound("inventory"));
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        tag.put("inventory", inventory.serializeNBT(registries));
+        super.saveAdditional(tag, registries);
+    }
+
+    @Override
+    public Component getDisplayName() {
+        return Component.translatable("container.projectj.socket_workbench");
+    }
+
+    @Override
+    public AbstractContainerMenu createMenu(int containerId, Inventory inventory, Player p_58643_) {
+        return new SocketWorkbenchMenu(containerId, inventory, ContainerLevelAccess.create(this.level, worldPosition));
     }
 }

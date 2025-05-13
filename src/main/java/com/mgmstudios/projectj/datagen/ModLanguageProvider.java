@@ -87,6 +87,9 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.JADE_LEGGINGS, "Jade Leggings");
         addItem(ModItems.JADE_BOOTS, "Jade Boots");
 
+        addItem(ModItems.GLIDER_SOCKET, "Glider Socket");
+        addItem(ModItems.PACIFYING_SOCKET, "Pacifying Socket");
+
 
         // Blocks
         addBlock(ModBlocks.PACKED_ADOBE, "Packed Adobe");
@@ -181,7 +184,6 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.MESQUITE_BENCH_CORNER, "Mesquite Bench Corner");
 
         // Tooltips
-
         addTooltip(ModItems.MAGNIFYING_GLASS, "Helps you melt things.");
         addTooltipShift(ModItems.MAGNIFYING_GLASS, "Helps you melt and magnify things.");
         addTooltip(ModBlocks.ADOBE_FURNACE, "A powerful new furnace!\n§9§l[LShift] to learn more§r");
@@ -191,7 +193,11 @@ public class ModLanguageProvider extends LanguageProvider {
         addTooltip("awakened_armor.charged", "§4§lCH§6§lAR§e§lGED§r");
         addTooltip("awakened_armor", "§8Charges when wearing full set§r");
 
-        add("container.projectj.adobe_furnace", "Adobe Furnace");
+        // Containers
+        addContainer("adobe_furnace", "Adobe Furnace");
+        addContainer("socket_workbench", "Socket Workbench");
+
+        // Item Groups
         add("itemGroup.projectj.projectj_tab", "Project J");
 
         // Entity
@@ -241,6 +247,10 @@ public class ModLanguageProvider extends LanguageProvider {
         addComponentSocket(EMPTY, "§oEmpty Socket§r");
         addComponentSocket(ZOMBIE_PACIFYING, "§o§aPacifying§r");
         addComponentSocket(GLIDER, "§o§aGlider§r");
+    }
+
+    public void addContainer(String containerId, String value){
+        add("container.projectj." + containerId, value);
     }
 
     public void addTooltip(String name, String value){

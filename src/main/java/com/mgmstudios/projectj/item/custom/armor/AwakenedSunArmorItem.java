@@ -3,6 +3,7 @@ package com.mgmstudios.projectj.item.custom.armor;
 import com.mgmstudios.projectj.component.ModDataComponents;
 import com.mgmstudios.projectj.entity.client.armor.AwakenedSunArmorRenderer;
 import com.mgmstudios.projectj.item.ModItems;
+import com.mgmstudios.projectj.item.custom.socket.SocketGeoArmorItem;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
@@ -39,7 +40,7 @@ import java.util.function.Consumer;
 
 import static com.mgmstudios.projectj.item.custom.armor.JadeArmorItem.getEquippedArmor;
 
-public final class AwakenedSunArmorItem extends SocketGeoArmorItem{
+public final class AwakenedSunArmorItem extends SocketGeoArmorItem {
     ArmorType armorType;
     public AwakenedSunArmorItem(ArmorMaterial material, ArmorType armorType, Properties properties) {
         super(material, armorType, properties);

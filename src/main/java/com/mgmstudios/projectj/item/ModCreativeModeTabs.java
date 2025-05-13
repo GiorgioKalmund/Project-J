@@ -34,7 +34,10 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.SNAKE_STATUE.get());
                 output.accept(ModBlocks.MAGNIFYING_GLASS_STAND.get());
                 output.accept(ModBlocks.TELEPORTATION_PAD.get());
+
                 output.accept(ModBlocks.SOCKET_WORKBENCH.get());
+                output.accept(ModItems.GLIDER_SOCKET.get());
+                output.accept(ModItems.PACIFYING_SOCKET.get());
 
                 output.accept(ModBlocks.JADE_ORE.get());
                 output.accept(ModBlocks.DEEPSLATE_JADE_ORE.get());

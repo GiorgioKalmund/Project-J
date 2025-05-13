@@ -121,6 +121,8 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.OBSIDIAN_ARROW.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.RUNNER_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.FLESH.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.GLIDER_SOCKET.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.PACIFYING_SOCKET.get(), ModelTemplates.FLAT_ITEM);
 
         itemModels.generateFlatItem(ModItems.SUN_ARMOR_HELMET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.SUN_ARMOR_CHESTPLATE.get(), ModelTemplates.FLAT_ITEM);

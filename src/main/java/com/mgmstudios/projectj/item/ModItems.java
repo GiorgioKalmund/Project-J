@@ -1,5 +1,6 @@
 package com.mgmstudios.projectj.item;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
@@ -7,6 +8,7 @@ import java.util.function.Supplier;
 
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlocks;
+import com.mgmstudios.projectj.component.ModDataComponents;
 import com.mgmstudios.projectj.entity.ModEntities;
 import com.mgmstudios.projectj.fluid.ModFluids;
 import com.mgmstudios.projectj.food.ModConsumables;
@@ -16,14 +18,19 @@ import com.mgmstudios.projectj.item.custom.*;
 import static com.mgmstudios.projectj.component.ModDataComponents.Sockets.*;
 import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidProperties;
 import static com.mgmstudios.projectj.item.custom.OlmecHeadItem.humanoidPropertiesWithCustomAsset;
+import static net.minecraft.core.component.DataComponents.GLIDER;
 
 import com.mgmstudios.projectj.item.custom.armor.AwakenedSunArmorItem;
 import com.mgmstudios.projectj.item.custom.armor.JadeArmorItem;
 import com.mgmstudios.projectj.item.custom.armor.SunArmorItem;
+import com.mgmstudios.projectj.item.custom.socket.SocketGemItem;
+import com.mgmstudios.projectj.item.custom.socket.SocketItem;
+import com.mgmstudios.projectj.item.custom.socket.SocketShieldItem;
 import com.mgmstudios.projectj.sound.ModSounds;
 
 import com.mgmstudios.projectj.util.Socket;
 import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -75,7 +82,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_HELMET = registerArmorItem("awakened_sun_armor_helmet", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.HELMET, AwakenedSunArmorItem::new, new Item.Properties().rarity(Rarity.RARE));
 
-    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_CHESTPLATE = registerArmorItem("awakened_sun_armor_chestplate", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.CHESTPLATE, AwakenedSunArmorItem::new, new Item.Properties().rarity(Rarity.RARE).component(DataComponents.GLIDER, Unit.INSTANCE));
+    public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_CHESTPLATE = registerArmorItem("awakened_sun_armor_chestplate", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.CHESTPLATE, AwakenedSunArmorItem::new, new Item.Properties().rarity(Rarity.RARE).component(GLIDER, Unit.INSTANCE));
 
     public static final DeferredItem<Item> AWAKENED_SUN_ARMOR_LEGGINGS = registerArmorItem("awakened_sun_armor_leggings", ModArmorMaterials.AWAKENED_SUN_ARMOR_MATERIAL, ArmorType.LEGGINGS, AwakenedSunArmorItem::new, new Item.Properties().rarity(Rarity.RARE));
 
@@ -103,7 +110,14 @@ public class ModItems {
 
     public static final DeferredItem<Item> LITTLE_MAN_SPAWN_EGG = register("little_man_spawn_egg", (properties) -> new SpawnEggItem(ModEntities.LITTLE_MAN_ENTITY.get(), properties));
 
-    public static final DeferredItem<Item> LITTLE_MAN_VOODOO = register("little_man_voodoo", (properties) -> new SocketItem(properties, new Socket(ZOMBIE_PACIFYING.get())), new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> LITTLE_MAN_VOODOO = register("little_man_voodoo", (properties) -> new SocketItem(properties, Socket.emptySockets(2)){
+        @Override
+        public List<DataComponentType<?>> getExcludedTypes() {
+            List<DataComponentType<?>> blackList = new ArrayList<>(super.getExcludedTypes());
+            blackList.add(GLIDER);
+            return blackList;
+        }
+    }, new Item.Properties().stacksTo(1));
 
     public static final DeferredItem<Item> VOODOO_CATCHER = register("voodoo_catcher", VoodooCatcherItem::new, new Item.Properties().stacksTo(1));
 
@@ -148,6 +162,10 @@ public class ModItems {
     public static final DeferredItem<Item> RUNNER_SPAWN_EGG = register("runner_spawn_egg", (properties) -> new SpawnEggItem(ModEntities.RUNNER_ENTITY.get(), properties));
 
     public static final DeferredItem<Item> FLESH = register("flesh", new Item.Properties().food(ModFoods.FLESH));
+
+    public static final DeferredItem<Item> GLIDER_SOCKET = register("glider_socket", (properties) -> new SocketGemItem(properties, Socket.GLIDER_SOCKET));
+
+    public static final DeferredItem<Item> PACIFYING_SOCKET = register("pacifying_socket", (properties) -> new SocketGemItem(properties, Socket.PACIFYING_SOCKET));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

@@ -1,8 +1,9 @@
-package com.mgmstudios.projectj.item.custom;
+package com.mgmstudios.projectj.item.custom.socket;
 
 import static com.mgmstudios.projectj.component.ModDataComponents.Sockets.*;
 
 import com.mgmstudios.projectj.util.Socket;
+import net.minecraft.core.component.DataComponentType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -19,7 +20,7 @@ import java.util.List;
 
 import static com.mgmstudios.projectj.util.SocketComponents.socketFor;
 
-public class SocketItem extends Item {
+public class SocketItem extends Item implements SocketHolder{
 
     public SocketItem(Properties properties, Socket ... sockets) {
         super(applySockets(properties, sockets));
@@ -62,6 +63,16 @@ public class SocketItem extends Item {
                 tooltipComponents.add(socketFor(socket));
             }
         }
+    }
+
+    @Override
+    public List<DataComponentType<?>> getAllowedTypes() {
+        return List.of();
+    }
+
+    @Override
+    public List<DataComponentType<?>> getExcludedTypes() {
+        return List.of();
     }
 
     private void littleManVoodooEffect(Level level, Entity entity){

@@ -1,12 +1,15 @@
 package com.mgmstudios.projectj.block.custom;
 
+import com.mgmstudios.projectj.block.entity.custom.AdobeFurnaceBlockEntity;
 import com.mgmstudios.projectj.block.entity.custom.SocketWorkbenchBlockEntity;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AnvilMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -18,6 +21,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
 public final class SocketWorkbenchBlock extends BaseEntityBlock {
@@ -48,4 +52,22 @@ public final class SocketWorkbenchBlock extends BaseEntityBlock {
     public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
         return new SocketWorkbenchBlockEntity(blockPos, blockState);
     }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
+        if (!level.isClientSide) {
+            this.openContainer(level, blockPos, player);
+        }
+
+        return InteractionResult.SUCCESS;
+    }
+
+    protected void openContainer(Level level, BlockPos pos, Player player) {
+        BlockEntity blockentity = level.getBlockEntity(pos);
+        if (blockentity instanceof SocketWorkbenchBlockEntity) {
+            player.openMenu((MenuProvider)blockentity);
+        }
+    }
+
+
 }
