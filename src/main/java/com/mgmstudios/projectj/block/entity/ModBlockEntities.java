@@ -4,11 +4,7 @@ import java.util.function.Supplier;
 
 import com.mgmstudios.projectj.ProjectJ;
 import com.mgmstudios.projectj.block.ModBlocks;
-import com.mgmstudios.projectj.block.entity.custom.AdobeFurnaceBlockEntity;
-import com.mgmstudios.projectj.block.entity.custom.AncientAltarBlockEntity;
-import com.mgmstudios.projectj.block.entity.custom.JadeCrystalBlockEntity;
-import com.mgmstudios.projectj.block.entity.custom.MetateBlockEntity;
-import com.mgmstudios.projectj.block.entity.custom.TeleportationBlockEntity;
+import com.mgmstudios.projectj.block.entity.custom.*;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -33,6 +29,9 @@ public class ModBlockEntities {
 
     public static final Supplier<BlockEntityType<JadeCrystalBlockEntity>> JADE_CRYSTAL_BE =
             BLOCK_ENTITIES.register("jade_crystal",() -> new BlockEntityType<>(JadeCrystalBlockEntity::new, ModBlocks.JADE_CRYSTAL.get()));
+
+    public static final Supplier<BlockEntityType<SocketWorkbenchBlockEntity>> SOCKET_WORKBENCH_BE =
+            BLOCK_ENTITIES.register("socket_workbench", () -> new BlockEntityType<>(SocketWorkbenchBlockEntity::new, ModBlocks.SOCKET_WORKBENCH.get()));
 
     public static void register(IEventBus eventBus){
         BLOCK_ENTITIES.register(eventBus);

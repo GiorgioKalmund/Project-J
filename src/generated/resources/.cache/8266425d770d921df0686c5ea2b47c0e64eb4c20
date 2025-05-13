@@ -1,4 +1,4 @@
-// 1.21.4	2025-05-09T13:19:57.8418024	Model Definitions - projectj
+// 1.21.4	2025-05-13T09:50:21.712555	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -71,6 +71,7 @@ a97b1cb9bea73d43d669cc5272c0db5ec705e4c3 assets/projectj/blockstates/serpentinit
 91429b5857b2dcedd116cdbf047940479a022e55 assets/projectj/blockstates/serpentinite_rock_stairs.json
 631db753e32e8b94147db15867c08d553590a402 assets/projectj/blockstates/serpentinite_rock_wall.json
 83afcf6c5e26b538c56f07cc5bed8c6a663deabd assets/projectj/blockstates/snake_statue.json
+8db0bd8203b17711d5c79ec7ed2dc99e8614d749 assets/projectj/blockstates/socket_workbench.json
 58024b9d4ffc78feca61ba6d5f5fa840abf82491 assets/projectj/blockstates/stripped_mesquite_log.json
 7ab3f2e72946259187182eebd05d0297f3541a99 assets/projectj/blockstates/stripped_mesquite_wood.json
 a1858353e5bedf2b49e99fe3c6b6a3049dd65424 assets/projectj/blockstates/teleportation_pad.json
@@ -185,6 +186,7 @@ f0c212cdf6fba3eb39f2a5bec3f6bb3bc516a6df assets/projectj/items/serpentinite_bric
 35c499f4f3b4431335361713a460a3477ea52603 assets/projectj/items/serpentinite_rock_wall.json
 ad69156c496a24a50949baacd6de04ad6092b9a1 assets/projectj/items/serpentinite_rod.json
 79f78d865371b5671b74b76c43077cfb50febac2 assets/projectj/items/snake_statue.json
+7d8136c66109acc078b3898d48a9020dd25fc9cd assets/projectj/items/socket_workbench.json
 dc71d3407bf373a2dec8bd1ca3cb34040c3e4152 assets/projectj/items/stone_mano.json
 86d3f4affc0795e800e8734aaf5b4ab53efa37ff assets/projectj/items/stripped_mesquite_log.json
 b3f78545baad0f40008b21e14c868927e22c6898 assets/projectj/items/stripped_mesquite_wood.json

@@ -1,4 +1,4 @@
-// 1.21.4	2025-05-09T13:46:55.4243914	Loot Tables
+// 1.21.4	2025-05-13T09:50:21.711715	Loot Tables
 645e23f8676b8f0e4d797aeab743aa1e3606c703 data/projectj/loot_table/blocks/adobe_bricks.json
 c52a58507f4c8bc3dcdd97ef286a063d396844cc data/projectj/loot_table/blocks/adobe_bricks_slab.json
 c80294a187a6c6c06ea794e6c6d418870c792578 data/projectj/loot_table/blocks/adobe_bricks_stairs.json
@@ -70,6 +70,7 @@ f3df38a191f5643e37f1bca0251610233153eac7 data/projectj/loot_table/blocks/serpent
 f4a311fb12a5014d812148a5fa327ffc20808787 data/projectj/loot_table/blocks/serpentinite_rock_stairs.json
 43aaad145676fa2049b83ab84c08d51a7db1b915 data/projectj/loot_table/blocks/serpentinite_rock_wall.json
 3b097de728a713a3f88f04e084ba48580f93c85f data/projectj/loot_table/blocks/snake_statue.json
+276972d29f1c314babbc78cfd1b4d5c996b1d99a data/projectj/loot_table/blocks/socket_workbench.json
 597c39f8eba781969bcd8ee3d2e0906373dc4d89 data/projectj/loot_table/blocks/stripped_mesquite_log.json
 d38f1b32da908385739a02a72da68c28528f60bf data/projectj/loot_table/blocks/stripped_mesquite_wood.json
 98c87bff22de880fa70573827b0d73b15c8183e6 data/projectj/loot_table/blocks/teleportation_pad.json

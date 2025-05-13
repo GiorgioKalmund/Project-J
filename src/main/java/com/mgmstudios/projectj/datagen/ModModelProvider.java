@@ -165,6 +165,7 @@ public class ModModelProvider extends ModelProvider {
         createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.MESQUITE_BENCH_CORNER.get());
         createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.EMPTY_LITTLE_MAN_STATUE_BLOCK.get());
         createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.METATE.get());
+        createHorizontalDirectionalBlockWithCustomModel(blockModels, ModBlocks.SOCKET_WORKBENCH.get());
 
         createLittleManStatue(blockModels, ModBlocks.LITTLE_MAN_STATUE_BLOCK.get());
 

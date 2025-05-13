@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "projectj:block/socket_workbench",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "projectj:block/socket_workbench"
+    },
+    "facing=south": {
+      "model": "projectj:block/socket_workbench",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "projectj:block/socket_workbench",
+      "y": 270
+    }
+  }
+}
