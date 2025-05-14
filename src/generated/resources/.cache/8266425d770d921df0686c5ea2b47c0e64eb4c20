@@ -1,4 +1,4 @@
-// 1.21.4	2025-05-13T23:00:39.9169227	Model Definitions - projectj
+// 1.21.4	2025-05-14T21:22:16.117999	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -105,6 +105,7 @@ c4f3775626f4c829574376d0a454e0940c3ca14a assets/projectj/items/cobbled_serpentin
 86ec87f4066da2a5a42ff7cee6e4348ce902f39c assets/projectj/items/death_whistle.json
 3cf17f2ffd36039a8af7d7d54f2b7dd5f05212a1 assets/projectj/items/deepslate_jade_ore.json
 48d99f43129145fad1afdeaa7fd3f9617f632021 assets/projectj/items/empty_little_man_statue_block.json
+eb6d922b052c4453753f480612fcc1adaf5e5da5 assets/projectj/items/empty_socket.json
 ed3b656d980ed7d72a79483705a8f9f4b6e2cc59 assets/projectj/items/everything_socket.json
 158ef8b3692a5b675b2d8414808d3d285564c18b assets/projectj/items/filled_crude_sacrifice_bowl.json
 3b6458d2375f942b3fd027659dd3aa77eacc6baf assets/projectj/items/fire_starter.json
@@ -320,6 +321,7 @@ cdcb03ebf3cc0a37809e8f77f5642c0f437220c0 assets/projectj/models/item/chili.json
 92e3abf5e2d588f218e7a18a1ff3a166a94059de assets/projectj/models/item/chili_seeds.json
 aac07639f9960cc7e0e85f1d298694c7b6d01e88 assets/projectj/models/item/crude_sacrifice_bowl.json
 da5311311d366194e64154b2f0e1cf5408ea8fd6 assets/projectj/models/item/death_whistle.json
+8215b5f85d0068792e162192aed126c495dc9f28 assets/projectj/models/item/empty_socket.json
 5fcdf807e4921fabc22e4935e2684214afa6f033 assets/projectj/models/item/everything_socket.json
 5997f340b1c359ea3e3d1d8275bb3a50128bc24f assets/projectj/models/item/filled_crude_sacrifice_bowl.json
 30b985172cbbef1e3f927bfadb025bd16adda0a0 assets/projectj/models/item/fire_starter.json

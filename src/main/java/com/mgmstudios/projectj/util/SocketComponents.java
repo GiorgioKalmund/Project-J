@@ -33,12 +33,14 @@ public class SocketComponents {
             String maxCount = socket.getMaxCount() == Integer.MAX_VALUE ? "∞" : socket.getMaxCount() + "";
             base.append(" §8§o["+ maxCount +"]§r");
         }
-        if (Screen.hasShiftDown()){
-            base.append("\n§r");
-            base.append(socketComponentDescription(dataComponentName(socket.getDataComponentType())).withColor(0x555555));
-        }
         return base;
     }
+
+    public static MutableComponent socketDescriptionFor(Socket socket){
+        return socketComponentDescription(dataComponentName(socket.getDataComponentType())).withColor(0x555555);
+    }
+
+
     public static MutableComponent socketFor(DataComponentType<?> componentType){
         return socketComponent(dataComponentName(componentType));
     }

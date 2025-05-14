@@ -132,7 +132,7 @@ public final class Socket implements Comparable<Socket>{
         for (int i = 0; i < sockets.size(); i++) {
             Socket cur = sockets.get(i);
 
-            if (cur.sameTypeAs(socketToApply)) {
+            if (cur.sameTypeAs(socketToApply) && !socketToApply.isEmpty()){
                 if (cur.getCount() < cur.maxCount) {
                     newSockets.set(i, cur.copy().increaseCount());
                     slotUsed = true;

@@ -92,6 +92,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.REMOVE_AI_SOCKET, "Numbness Gem");
         addItem(ModItems.GIVE_AI_SOCKET, "Clarity Gem");
         addItem(ModItems.EVERYTHING_SOCKET, "Everything Gem");
+        addItem(ModItems.EMPTY_SOCKET, "Empty Gem");
         addItem(ModItems.SOCKET_TESTER, "Socket Tester");
 
 

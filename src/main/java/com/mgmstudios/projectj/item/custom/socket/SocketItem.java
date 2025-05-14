@@ -4,6 +4,7 @@ import static com.mgmstudios.projectj.component.ModDataComponents.Sockets.*;
 
 import com.mgmstudios.projectj.util.Socket;
 import com.mgmstudios.projectj.util.SocketComponents;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -19,6 +20,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 
 import java.util.List;
+import java.util.Scanner;
 
 import static com.mgmstudios.projectj.util.SocketComponents.socketFor;
 
@@ -73,6 +75,8 @@ public class SocketItem extends Item implements SocketHolder{
             if (sockets != null){
                 for (Socket socket : sockets){
                     tooltipComponents.add(socketFor(socket));
+                    if (Screen.hasShiftDown())
+                        tooltipComponents.add(SocketComponents.socketDescriptionFor(socket));
                 }
             }
         }
