@@ -1,6 +1,7 @@
 package com.mgmstudios.projectj.util;
 
 import com.mgmstudios.projectj.component.ModDataComponents;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -31,6 +32,10 @@ public class SocketComponents {
         if (!socket.isEmpty()){
             String maxCount = socket.getMaxCount() == Integer.MAX_VALUE ? "∞" : socket.getMaxCount() + "";
             base.append(" §8§o["+ maxCount +"]§r");
+        }
+        if (Screen.hasShiftDown()){
+            base.append("\n");
+            base.append(socketComponentDescription(dataComponentName(socket.getDataComponentType())).withColor(0x555555));
         }
         return base;
     }
@@ -75,4 +80,9 @@ public class SocketComponents {
     private static MutableComponent socketComponent(String componentName){
         return Component.translatable(baseSocketComponent().append(componentName).getString());
     }
+
+    private static MutableComponent socketComponentDescription(String componentName){
+        return Component.translatable("components.projectj.sockets." + componentName + ".description").copy();
+    }
+
 }

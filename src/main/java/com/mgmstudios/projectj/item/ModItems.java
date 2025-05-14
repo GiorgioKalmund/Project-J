@@ -171,7 +171,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> GIVE_AI_SOCKET = register("give_ai_socket", (properties) -> new SocketGemItem(properties, Socket.giveAi()));
 
-    public static final DeferredItem<Item> EVERYTHING_SOCKET = register("everything_socket", (properties) -> new SocketGemItem(properties, Socket.giveAi(), Socket.glider(), new Socket(ZOMBIE_PACIFYING.get(), 1, 2), Socket.removeAi(), Socket.empty()));
+    public static final DeferredItem<Item> EVERYTHING_SOCKET = register("everything_socket", (properties) -> new SocketGemItem(properties, Socket.giveAi(), Socket.glider(), Socket.zombiePacifying(), Socket.removeAi(), Socket.empty()));
 
     public static final DeferredItem<Item> SOCKET_TESTER = register("socket_tester", (properties) -> new SocketItem(properties){
         @Override

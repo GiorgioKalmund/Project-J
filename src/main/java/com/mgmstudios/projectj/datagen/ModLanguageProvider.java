@@ -89,8 +89,8 @@ public class ModLanguageProvider extends LanguageProvider {
 
         addItem(ModItems.GLIDER_SOCKET, "Glider Gem");
         addItem(ModItems.PACIFYING_SOCKET, "Pacifying Gem");
-        addItem(ModItems.REMOVE_AI_SOCKET, "Remove AI Gem");
-        addItem(ModItems.GIVE_AI_SOCKET, "Give AI Gem");
+        addItem(ModItems.REMOVE_AI_SOCKET, "Numbness Gem");
+        addItem(ModItems.GIVE_AI_SOCKET, "Clarity Gem");
         addItem(ModItems.EVERYTHING_SOCKET, "Everything Gem");
         addItem(ModItems.SOCKET_TESTER, "Socket Tester");
 
@@ -251,10 +251,15 @@ public class ModLanguageProvider extends LanguageProvider {
         // Components
         addComponentSocket("gem_applying", "§8Applies:§r");
         addComponentSocket(EMPTY, "§oEmpty Socket§r");
+        addComponentSocketDescription(EMPTY, "§oEmpty§r");
         addComponentSocket(ZOMBIE_PACIFYING, "§o§aPacifying§r");
+        addComponentSocketDescription(ZOMBIE_PACIFYING, "§oNear zombies stop attacking§r");
         addComponentSocket(GLIDER, "§o§5Glider§r");
-        addComponentSocket(REMOVE_AI, "§o§cRemove Monster AI§r");
-        addComponentSocket(GIVE_AI, "§o§fAdd Monster AI§r");
+        addComponentSocketDescription(GLIDER, "§oGives you the power of an Elytra§r");
+        addComponentSocket(REMOVE_AI, "§o§cNumbness§r");
+        addComponentSocketDescription(REMOVE_AI, "§oPermanently remove all AI from nearby monsters§r");
+        addComponentSocket(GIVE_AI, "§o§fClarity§r");
+        addComponentSocketDescription(GIVE_AI, "§oRe-enable all AI from nearby monsters§r");
     }
 
     public void addContainer(String containerId, String value){
@@ -306,15 +311,28 @@ public class ModLanguageProvider extends LanguageProvider {
     public void addComponentSocket(DataComponentType<?> componentType, String name){
        addComponentSocket(dataComponentName(componentType), name);
     }
+    public void addComponentSocketDescription(DataComponentType<?> componentType, String name){
+        addComponentSocketDescription(dataComponentName(componentType), name);
+    }
     public <T> void addComponentSocket(DeferredHolder<DataComponentType<?>, DataComponentType<T>> componentType, String name){
         addComponentSocket(dataComponentName(componentType), name);
+    }
+    public <T> void addComponentSocketDescription(DeferredHolder<DataComponentType<?>, DataComponentType<T>> componentType, String name){
+        addComponentSocketDescription(dataComponentName(componentType), name);
     }
 
     public void addComponentSocket(String componentType, String name){
         addComponent("sockets", componentType, name);
     }
+
+    public void addComponentSocketDescription(String componentType, String name){
+        addComponentDescription("sockets", componentType, name);
+    }
     public void addComponent(String componentClass, String componentType, String name){
         add("components.projectj." + componentClass + "."  + componentType, name);
+    }
+    public void addComponentDescription(String componentClass, String componentType, String name){
+        add("components.projectj." + componentClass + "."  + componentType + ".description", name);
     }
 
     String getName(ItemLike itemLike){
