@@ -42,36 +42,80 @@ public class SocketWorkbenchEntityRenderer implements BlockEntityRenderer<Socket
         for (int index = 0; index < INVENTORY_SIZE; index ++){
             ItemStack stack = workbench.inventory.getStackInSlot(index);
             Direction direction = workbench.getBlockState().getValue(FACING);
-            float xOffset = 0.2F;
-            float zOffset = 0.2F;
-            boolean facingSouth = direction == Direction.SOUTH;
-            boolean facingWest = direction == Direction.WEST;
-            if (direction == Direction.NORTH || facingSouth){
-                xOffset += facingSouth ? 0.3F * index : 0.3F * (INVENTORY_SIZE - index);
-                if (!facingSouth)
-                    xOffset -= 0.3F;
-                zOffset = 0.5F;
+            float xOffset = 0.5F;
+            float zOffset = 0.5F;
+            float yPos = 0.83f;
+            if (index == 0){
+                yPos = 0.95F;
+            } else if (index == 2){
+                yPos = 0.89f;
             }
-            else{
-                zOffset += facingWest ?  0.3F * index : 0.3F * (INVENTORY_SIZE - index);
-                if (!facingWest)
-                    zOffset -= 0.3F;
-                xOffset = 0.5F;
+            float centerSidewaysOffset = 0.025F;
+            switch (direction){
+                case SOUTH -> {
+                    if (index == 0){
+                        xOffset += 0.3F;
+                    } else if (index == 2){
+                        xOffset -= 0.3F;
+                        zOffset += 0.1F;
+                    } else {
+                        xOffset -= centerSidewaysOffset;
+                        zOffset -= 0.1F;
+                    }
+                    zOffset += 0.1F;
+                }
+                case NORTH -> {
+                    if (index == 0){
+                        xOffset -= 0.3F;
+                    } else if (index == 2){
+                        xOffset += 0.3F;
+                        zOffset -= 0.1F;
+                    } else {
+                        xOffset += centerSidewaysOffset;
+                        zOffset += 0.1F;
+                    }
+                    zOffset -= 0.1F;
+                }
+                case WEST -> {
+                    if (index == 0){
+                        zOffset += 0.3F;
+                    } else if (index == 2){
+                        zOffset -= 0.3F;
+                        xOffset -= 0.1F;
+                    } else {
+                        zOffset -= centerSidewaysOffset;
+                        xOffset += 0.1F;
+                    }
+                    xOffset -= 0.1F;
+                }
+                case EAST -> {
+                    if (index == 0){
+                        zOffset -= 0.3F;
+                    } else if (index == 2){
+                        zOffset += 0.3F;
+                        xOffset += 0.1F;
+                    } else {
+                        zOffset += centerSidewaysOffset;
+                        xOffset -= 0.1F;
+                    }
+                    xOffset += 0.1F;
+                }
             }
 
             float rotation = direction == Direction.SOUTH ? 270 : 90;
 
             poseStack.pushPose();
-            poseStack.translate(xOffset, 0.91, zOffset);
+            poseStack.translate(xOffset, yPos, zOffset);
             float scale = 0.3F;
             poseStack.scale(scale, scale, scale);
-
             float yRot = 90;
 
             if (direction == Direction.EAST)
-                poseStack.mulPose(Axis.YP.rotationDegrees(yRot));
+                poseStack.mulPose(Axis.YP.rotationDegrees(-yRot));
             if (direction == Direction.WEST)
                 poseStack.mulPose(Axis.YP.rotationDegrees(-yRot));
+            else
+                poseStack.mulPose(Axis.YP.rotationDegrees(2 * yRot));
             poseStack.mulPose(Axis.XP.rotationDegrees(rotation));
 
             itemRenderer.renderStatic(stack, ItemDisplayContext.FIXED, getLightLevel(workbench.getLevel(),

@@ -34,7 +34,7 @@ public class SocketComponents {
             base.append(" §8§o["+ maxCount +"]§r");
         }
         if (Screen.hasShiftDown()){
-            base.append("\n");
+            base.append("\n§r");
             base.append(socketComponentDescription(dataComponentName(socket.getDataComponentType())).withColor(0x555555));
         }
         return base;

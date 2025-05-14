@@ -3,6 +3,7 @@ package com.mgmstudios.projectj.item.custom.socket;
 import static com.mgmstudios.projectj.component.ModDataComponents.Sockets.*;
 
 import com.mgmstudios.projectj.util.Socket;
+import com.mgmstudios.projectj.util.SocketComponents;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -69,8 +70,10 @@ public class SocketItem extends Item implements SocketHolder{
     public static void socketHoverText(ItemStack stack, List<Component> tooltipComponents){
         if (stack.has(SOCKETS)){
             List<Socket> sockets = stack.get(SOCKETS);
-            for (Socket socket : sockets){
-                tooltipComponents.add(socketFor(socket));
+            if (sockets != null){
+                for (Socket socket : sockets){
+                    tooltipComponents.add(socketFor(socket));
+                }
             }
         }
     }

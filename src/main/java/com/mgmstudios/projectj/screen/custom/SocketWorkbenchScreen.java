@@ -59,30 +59,6 @@ public class SocketWorkbenchScreen extends ItemCombinerScreen<SocketWorkbenchMen
     @Override
     protected void renderLabels(GuiGraphics p_281442_, int p_282417_, int p_283022_) {
         super.renderLabels(p_281442_, p_282417_, p_283022_);
-        //int i = this.menu.getCost();
-        int i = 0;
-        if (i > 0) {
-            int j = 8453920;
-            Component component;
-            if (i >= 40 && !this.minecraft.player.getAbilities().instabuild) {
-                component = TOO_EXPENSIVE_TEXT;
-                j = 16736352;
-            } else if (!this.menu.getSlot(2).hasItem()) {
-                component = null;
-            } else {
-                component = Component.translatable("container.repair.cost", i);
-                if (!this.menu.getSlot(2).mayPickup(this.player)) {
-                    j = 16736352;
-                }
-            }
-
-            if (component != null) {
-                int k = this.imageWidth - 8 - this.font.width(component) - 2;
-                int l = 69;
-                p_281442_.fill(k - 2, 67, this.imageWidth - 8, 79, 1325400064);
-                p_281442_.drawString(this.font, component, k, 69, j);
-            }
-        }
     }
 
     @Override
@@ -94,7 +70,7 @@ public class SocketWorkbenchScreen extends ItemCombinerScreen<SocketWorkbenchMen
     private void renderOnboardingTooltips(GuiGraphics guiGraphics, int mouseX, int mouseY) {
         Optional<Component> optional = Optional.empty();
         if (this.hoveredSlot != null) {
-            if (this.hoveredSlot.index == 1) {
+            if (this.hoveredSlot.index == 1 && hoveredSlot.getItem().isEmpty()) {
                 optional = Optional.of(GEM_TOOLTIP);
             }
         }
@@ -113,7 +89,6 @@ public class SocketWorkbenchScreen extends ItemCombinerScreen<SocketWorkbenchMen
                 110,
                 16
         );
-        System.out.println("leftPos: " + this.leftPos);
         this.templateIcon.render(this.menu, guiGraphics, v, this.leftPos, this.topPos);
     }
 

@@ -43,7 +43,7 @@ public final class SocketWorkbenchBlock extends BaseEntityBlock {
     }
     @Override
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
-        return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite());
+        return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection());
     }
 
     @Override

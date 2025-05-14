@@ -52,7 +52,6 @@ public class AdobeFurnaceBlock extends AbstractFurnaceBlock  {
         BlockEntity blockentity = level.getBlockEntity(pos);
         if (blockentity instanceof AdobeFurnaceBlockEntity) {
             player.openMenu((MenuProvider)blockentity);
-            //player.awardStat(Stats.INTERACT_WITH_SMOKER);
         }
     }
 
