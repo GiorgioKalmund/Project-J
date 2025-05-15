@@ -49,7 +49,7 @@ public class SocketItem extends Item implements SocketHolder{
             if (sockets != null && !sockets.isEmpty()){
                 for (Socket socket : sockets){
                     if (socket.is(ZOMBIE_PACIFYING)){
-                        littleManVoodooEffect(level, entity);
+                        littleManVoodooEffect(level, entity, 10 * socket.getCount());
                     }
                     else if (socket.is(REMOVE_AI)){
                         removeAI(level, entity, item);
@@ -97,11 +97,11 @@ public class SocketItem extends Item implements SocketHolder{
         return false;
     }
 
-    private static void littleManVoodooEffect(Level level, Entity entity){
+    private static void littleManVoodooEffect(Level level, Entity entity, int radius){
         if(level.isClientSide()) return;
 
         if(entity instanceof Player player){
-            List<Zombie> allEntities = level.getEntitiesOfClass(Zombie.class, new AABB(player.blockPosition()).inflate(35));
+            List<Zombie> allEntities = level.getEntitiesOfClass(Zombie.class, new AABB(player.blockPosition()).inflate(radius));
             for (Zombie zombie : allEntities) {
 
                 NearestAttackableTargetGoal<Player> goal = new NearestAttackableTargetGoal<>(zombie, Player.class, true);

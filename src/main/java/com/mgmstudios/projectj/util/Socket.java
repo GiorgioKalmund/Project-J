@@ -28,20 +28,32 @@ public final class Socket implements Comparable<Socket>{
     private final DataComponentType<?> dataComponentType;
     private int count;
     private final int maxCount;
+    private boolean additive;
 
 
-    public Socket(DataComponentType<?> dataComponentType, int count, int maxCount){
+    public Socket(DataComponentType<?> dataComponentType, int count, int maxCount, boolean additive){
         this.dataComponentType = dataComponentType;
         this.count = count;
         this.maxCount = maxCount;
+        this.additive = additive;
     }
 
-    public Socket(DataComponentType<?> dataComponentType, int count){
-        this(dataComponentType, count, Integer.MAX_VALUE);
+    public Socket(DataComponentType<?> dataComponentType, int count, int maxCount){
+       this(dataComponentType, count, maxCount, false);
     }
 
+    public Socket(DataComponentType<?> dataComponentType, int count, boolean additive){
+        this(dataComponentType, count, Integer.MAX_VALUE, additive);
+    }
+
+    public Socket(DataComponentType<?> dataComponentType, int maxCount){
+        this(dataComponentType, 1, maxCount);
+    }
+    public Socket(DataComponentType<?> dataComponentType, boolean additive){
+        this(dataComponentType, 1, additive);
+    }
     public Socket(DataComponentType<?> dataComponentType){
-        this(dataComponentType, 1);
+        this(dataComponentType, 1, false);
     }
 
     public int getCount() {
@@ -50,6 +62,21 @@ public final class Socket implements Comparable<Socket>{
 
     public boolean isEmpty(){
         return dataComponentType.equals(ModDataComponents.Sockets.EMPTY.get()) || count == 0;
+    }
+
+
+    public Socket setAdditive(boolean additive){
+        this.additive = additive;
+        return this;
+    }
+
+    public Socket setAdditive(){
+        return setAdditive(true);
+    }
+
+    public Socket setCount(int count){
+        this.count = count;
+        return this;
     }
 
     public boolean is(DataComponentType<?> dataComponentType){
@@ -65,7 +92,7 @@ public final class Socket implements Comparable<Socket>{
     }
 
     public static Socket zombiePacifying(){
-        return  new Socket(ZOMBIE_PACIFYING.get(), 1, 1);
+        return  new Socket(ZOMBIE_PACIFYING.get(), 1, 3);
     }
 
     public static Socket removeAi(){
@@ -110,7 +137,7 @@ public final class Socket implements Comparable<Socket>{
         properties.component(type, componentValue);
     }
 
-    public static ItemStack addSocket(ItemStack itemStack, Socket socketToApply, boolean addNewSockets) {
+    public static ItemStack addSocket(ItemStack itemStack, Socket socketToApply, boolean allowNewSockets) {
         DataComponentType<?> typeToApply = socketToApply.getDataComponentType();
 
         if (!(itemStack.getItem() instanceof SocketHolder socketHolder)) {
@@ -123,40 +150,48 @@ public final class Socket implements Comparable<Socket>{
             return ItemStack.EMPTY;
         }
 
+
         List<Socket> sockets = itemStack.getOrDefault(SOCKETS, new ArrayList<>());
         List<Socket> newSockets = new ArrayList<>(sockets);
-        boolean slotUsed = false;
-        boolean foundSameType = false;
+        ItemStack resultStack = itemStack.copy();
 
+        if (socketToApply.isEmpty() && socketToApply.isAdditive() && allowNewSockets) {
+            newSockets.add(socketToApply);
+            resultStack.set(SOCKETS, newSockets);
+            socketToApply.apply(resultStack);
+            return resultStack;
+        }
+
+        boolean slotUsed = false;
+        boolean specialStack = false;
 
         for (int i = 0; i < sockets.size(); i++) {
             Socket cur = sockets.get(i);
-
-            if (cur.sameTypeAs(socketToApply) && !socketToApply.isEmpty()){
-                if (cur.getCount() < cur.maxCount) {
-                    newSockets.set(i, cur.copy().increaseCount());
+            if (cur.sameTypeAs(socketToApply)){
+                if (cur.getCount() < cur.maxCount || socketToApply.isAdditive()) {
+                    if (socketToApply.isAdditive() && cur.getCount() >= cur.maxCount)
+                        specialStack = true;
+                    newSockets.set(i, cur.copy().increaseCount().setAdditive(specialStack));
                     slotUsed = true;
-                    foundSameType = true;
+                    System.out.println("Found same type: " + newSockets.get(i) + " / " + specialStack);
                 } else {
                     return ItemStack.EMPTY;
                 }
                 break;
             }
-            else if (!addNewSockets){
-                if (cur.isEmpty()) {
-                    newSockets.set(i, socketToApply);
-                    slotUsed = true;
-                    break;
-                }
+            else if (cur.isEmpty() && !socketToApply.isEmpty()){
+                System.out.println("Filling empty socket: " + socketToApply);
+                newSockets.set(i, socketToApply);
+                slotUsed = true;
+                break;
             }
         }
 
-        if (addNewSockets && !foundSameType){
+        if (allowNewSockets && !slotUsed && socketToApply.isAdditive()) {
+            System.out.println("Adding new socket " + socketToApply);
             newSockets.add(socketToApply.copy());
             slotUsed = true;
         }
-
-        ItemStack resultStack = itemStack.copy();
 
         if (!slotUsed) {
             return ItemStack.EMPTY;
@@ -175,6 +210,10 @@ public final class Socket implements Comparable<Socket>{
         return dataComponentType;
     }
 
+    public boolean isAdditive() {
+        return additive;
+    }
+
     public static final Codec<Socket> SOCKET_CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
                     DataComponentType.PERSISTENT_CODEC.fieldOf("type")
@@ -182,7 +221,9 @@ public final class Socket implements Comparable<Socket>{
                     Codec.INT.fieldOf("count")
                             .forGetter(Socket::getCount),
                     Codec.INT.fieldOf("max_value")
-                            .forGetter(Socket::getMaxCount)
+                            .forGetter(Socket::getMaxCount),
+                    Codec.BOOL.fieldOf("additive")
+                            .forGetter(Socket::isAdditive)
             ).apply(instance, Socket::new)
     );
 
@@ -198,6 +239,8 @@ public final class Socket implements Comparable<Socket>{
                     Socket::getCount,
                     ByteBufCodecs.INT,
                     Socket::getMaxCount,
+                    ByteBufCodecs.BOOL,
+                    Socket::isAdditive,
                     Socket::new
             );
 
@@ -241,9 +284,8 @@ public final class Socket implements Comparable<Socket>{
     }
 
     public Socket copy(){
-        return new Socket(dataComponentType, count, maxCount);
+        return new Socket(dataComponentType, count, maxCount, additive);
     }
-
 
     @Override
     public String toString() {
@@ -251,6 +293,7 @@ public final class Socket implements Comparable<Socket>{
                 "dataComponentType=" + dataComponentType +
                 ", count=" + count +
                 ", maxCount=" + maxCount +
+                ", additive=" + additive +
                 '}';
     }
 }

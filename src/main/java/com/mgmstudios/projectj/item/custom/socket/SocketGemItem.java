@@ -30,24 +30,12 @@ public class SocketGemItem extends Item {
         return socketList.getFirst().getDataComponentType();
     }
 
-    public int getSocketCount(){
-        return socketList.getFirst().getCount();
-    }
-
     public Socket getSocket(int index){
         return socketList.get(index);
     }
 
-    public Socket getSocket(){
-        return getSocket(0);
-    }
-
     public List<Socket> getSocketList(){
         return socketList;
-    }
-
-    public boolean additive(){
-        return false;
     }
 
     @Override

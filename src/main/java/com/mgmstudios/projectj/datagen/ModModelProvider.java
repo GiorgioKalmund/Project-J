@@ -123,6 +123,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.FLESH.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.GLIDER_SOCKET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.PACIFYING_SOCKET.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.LEGENDARY_PACIFYING_SOCKET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.REMOVE_AI_SOCKET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.GIVE_AI_SOCKET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.EVERYTHING_SOCKET.get(), ModelTemplates.FLAT_ITEM);

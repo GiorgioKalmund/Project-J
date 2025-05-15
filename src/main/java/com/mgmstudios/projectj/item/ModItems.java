@@ -48,6 +48,7 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.apache.commons.lang3.function.TriFunction;
+import oshi.jna.platform.windows.NtDll;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ProjectJ.MOD_ID);
@@ -167,18 +168,15 @@ public class ModItems {
 
     public static final DeferredItem<Item> PACIFYING_SOCKET = register("pacifying_socket", (properties) -> new SocketGemItem(properties, Socket.zombiePacifying()));
 
+    public static final DeferredItem<Item> LEGENDARY_PACIFYING_SOCKET = register("legendary_pacifying_socket", (properties) -> new SocketGemItem(properties.rarity(Rarity.UNCOMMON), Socket.zombiePacifying().setAdditive().setCount(2)));
+
     public static final DeferredItem<Item> REMOVE_AI_SOCKET = register("remove_ai_socket", (properties) -> new SocketGemItem(properties, Socket.removeAi()));
 
     public static final DeferredItem<Item> GIVE_AI_SOCKET = register("give_ai_socket", (properties) -> new SocketGemItem(properties, Socket.giveAi()));
 
-    public static final DeferredItem<Item> EVERYTHING_SOCKET = register("everything_socket", (properties) -> new SocketGemItem(properties, Socket.giveAi(), Socket.glider(), Socket.zombiePacifying(), Socket.removeAi(), Socket.empty()));
+    public static final DeferredItem<Item> EVERYTHING_SOCKET = register("everything_socket", (properties) -> new SocketGemItem(properties, Socket.giveAi().setAdditive(), Socket.glider().setAdditive(), Socket.zombiePacifying().setAdditive(), Socket.removeAi().setAdditive(), Socket.empty().setAdditive()));
 
-    public static final DeferredItem<Item> EMPTY_SOCKET = register("empty_socket", (properties) -> new SocketGemItem(properties, Socket.empty()){
-        @Override
-        public boolean additive() {
-            return true;
-        }
-    });
+    public static final DeferredItem<Item> EMPTY_SOCKET = register("empty_socket", (properties) -> new SocketGemItem(properties.rarity(Rarity.UNCOMMON),  Socket.empty().setAdditive()));
 
     public static final DeferredItem<Item> SOCKET_TESTER = register("socket_tester", (properties) -> new SocketItem(properties){
         @Override

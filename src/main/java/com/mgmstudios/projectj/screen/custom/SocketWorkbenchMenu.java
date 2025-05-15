@@ -91,7 +91,7 @@ public final class SocketWorkbenchMenu extends ItemCombinerMenu {
         resultStack.setCount(itemsAbleToConvert());
         if (item instanceof SocketHolder holder && gem instanceof SocketGemItem socketGemItem){
             for (Socket s : socketGemItem.getSocketList()){
-                resultStack = Socket.addSocket(resultStack, s, socketGemItem.additive() || holder.canAddExtraSlots());
+                resultStack = Socket.addSocket(resultStack, s, holder.canAddExtraSlots());
             }
             if (!resultStack.isEmpty()){
                 resultSlots.setItem(0, resultStack);

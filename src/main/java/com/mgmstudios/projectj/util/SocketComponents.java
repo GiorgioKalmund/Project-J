@@ -33,6 +33,9 @@ public class SocketComponents {
             String maxCount = socket.getMaxCount() == Integer.MAX_VALUE ? "∞" : socket.getMaxCount() + "";
             base.append(" §8§o["+ maxCount +"]§r");
         }
+        if (socket.isAdditive()){
+            base.append(" §e✦§r");
+        }
         return base;
     }
 
