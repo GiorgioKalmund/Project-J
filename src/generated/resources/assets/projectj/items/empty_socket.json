@@ -1,6 +1,15 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "projectj:item/empty_socket"
+    "type": "minecraft:condition",
+    "component": "projectj:legendary_status",
+    "on_false": {
+      "type": "minecraft:model",
+      "model": "projectj:item/empty_socket"
+    },
+    "on_true": {
+      "type": "minecraft:model",
+      "model": "projectj:item/empty_socket_legendary"
+    },
+    "property": "minecraft:has_component"
   }
 }

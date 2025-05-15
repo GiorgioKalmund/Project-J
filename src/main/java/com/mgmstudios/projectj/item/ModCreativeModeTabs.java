@@ -42,8 +42,8 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.GIVE_AI_SOCKET.get());
                 output.accept(ModItems.EVERYTHING_SOCKET.get());
                 output.accept(ModItems.EMPTY_SOCKET.get());
-                output.accept(ModItems.LEGENDARY_PACIFYING_SOCKET.get());
                 output.accept(ModItems.SOCKET_TESTER.get());
+                output.accept(ModItems.TOPAZ_GEM.get());
 
                 output.accept(ModBlocks.JADE_ORE.get());
                 output.accept(ModBlocks.DEEPSLATE_JADE_ORE.get());

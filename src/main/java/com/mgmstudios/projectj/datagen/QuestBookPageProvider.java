@@ -504,13 +504,15 @@ public class QuestBookPageProvider implements DataProvider {
                 .addImage(new QuestBookImage(ModItems.REMOVE_AI_SOCKET))
                 .addImage(new QuestBookImage(ModItems.GLIDER_SOCKET))
                 .addImage(new QuestBookImage(ModItems.EMPTY_SOCKET))
-                .setText("§nGems§r\nGems modify your gear with various effects and abilities! Legendary status (§6✦§r) allows you to add this Gem to any compatible Item, even if it doesn't have any free sockets left, as well as going over the stack limit §8§o[x]§r.", true)
+                .setText("§nGems§r\nGems modify your gear with various effects and abilities! Every effect has a maximum stack limit the stack limit §8§o[x]§r. However this limit can also be overridden and the gems themselves can also be improved! (turn)", true)
                 .save(pages);
 
         Builder.create()
-                .setTemplate(QuestBookTemplateType.ITEM_SHOWCASE)
-                .addImage(new QuestBookImage(ModItems.LEGENDARY_PACIFYING_SOCKET, true))
-                .setText("§nLegendary Gems§r\nLegendary Gems are much rarer than regular ones, however also way more powerful!", true)
+                .setTemplate(QuestBookTemplateType.DOUBLE_ITEM_SHOWCASE)
+                .setTemplateSpacing(30)
+                .addImage(new QuestBookImage(ModItems.EVERYTHING_SOCKET, false))
+                .addImage(new QuestBookImage(ModItems.TOPAZ_GEM, true))
+                .setText("§nTopaz Gem§r\nThis special gem turns your gem or socket §6§o✦Legendary✦§r, allowing it to be additively applied to any supported socket item.Like an Universal Gem for example!", true)
                 .save(pages);
     }
 

@@ -13,6 +13,8 @@ import static com.mgmstudios.projectj.block.custom.HollowTreeBlock.CONNECTED;
 import static com.mgmstudios.projectj.block.custom.LittleManStatueBlock.SUMMONING;
 import com.mgmstudios.projectj.block.custom.MagnifyingGlassStandBlock;
 import static com.mgmstudios.projectj.block.custom.TeleportationBlock.UNLOCKED;
+
+import com.mgmstudios.projectj.component.ModDataComponents;
 import com.mgmstudios.projectj.item.ModEquipmentAssets;
 import com.mgmstudios.projectj.item.ModItems;
 
@@ -38,6 +40,8 @@ import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TextureSlot;
 import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.client.renderer.item.ItemModel;
+import net.minecraft.client.renderer.item.RangeSelectItemModel;
+import net.minecraft.client.renderer.item.properties.numeric.UseDuration;
 import net.minecraft.client.renderer.item.properties.select.DisplayContext;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.BlockFamily;
@@ -122,13 +126,13 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.RUNNER_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.FLESH.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.GLIDER_SOCKET.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateFlatItem(ModItems.PACIFYING_SOCKET.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateFlatItem(ModItems.LEGENDARY_PACIFYING_SOCKET.get(), ModelTemplates.FLAT_ITEM);
+        generateGemWithLegendary(itemModels, ModItems.PACIFYING_SOCKET.get());
         itemModels.generateFlatItem(ModItems.REMOVE_AI_SOCKET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.GIVE_AI_SOCKET.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateFlatItem(ModItems.EVERYTHING_SOCKET.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateFlatItem(ModItems.EMPTY_SOCKET.get(), ModelTemplates.FLAT_ITEM);
+        generateGemWithLegendary(itemModels, ModItems.EVERYTHING_SOCKET.get());
+        generateGemWithLegendary(itemModels, ModItems.EMPTY_SOCKET.get());
         itemModels.generateFlatItem(ModItems.SOCKET_TESTER.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.TOPAZ_GEM.get(), ModelTemplates.FLAT_ITEM);
 
         itemModels.generateFlatItem(ModItems.SUN_ARMOR_HELMET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.SUN_ARMOR_CHESTPLATE.get(), ModelTemplates.FLAT_ITEM);
@@ -198,6 +202,13 @@ public class ModModelProvider extends ModelProvider {
         createPottedBushBlock(blockModels, ModBlocks.POTTED_MAIZE_CROP.get());
 
     }
+
+    public void generateGemWithLegendary(ItemModelGenerators itemModels, Item gemItem) {
+        ItemModel.Unbaked regularModel = ItemModelUtils.plainModel(itemModels.createFlatItemModel(gemItem, ModelTemplates.FLAT_ITEM));
+        ItemModel.Unbaked legendaryModel = ItemModelUtils.plainModel(itemModels.createFlatItemModel(gemItem, "_legendary", ModelTemplates.FLAT_ITEM));
+        itemModels.generateBooleanDispatch(gemItem, ItemModelUtils.hasComponent(ModDataComponents.Sockets.LEGENDARY_STATUS.get()), legendaryModel, regularModel);
+    }
+
 
     public void generateBasicArmourItem(ItemModelGenerators itemModels, Item item, boolean dyeable) {
         ResourceLocation resourcelocation = ModelLocationUtils.getModelLocation(item);

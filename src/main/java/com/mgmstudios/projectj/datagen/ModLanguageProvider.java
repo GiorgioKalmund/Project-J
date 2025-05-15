@@ -89,12 +89,12 @@ public class ModLanguageProvider extends LanguageProvider {
 
         addItem(ModItems.GLIDER_SOCKET, "Glider Gem");
         addItem(ModItems.PACIFYING_SOCKET, "Pacifying Gem");
-        addItem(ModItems.LEGENDARY_PACIFYING_SOCKET, "Pacifying Gem");
         addItem(ModItems.REMOVE_AI_SOCKET, "Numbness Gem");
         addItem(ModItems.GIVE_AI_SOCKET, "Clarity Gem");
-        addItem(ModItems.EVERYTHING_SOCKET, "Everything Gem");
+        addItem(ModItems.EVERYTHING_SOCKET, "Universal Gem");
         addItem(ModItems.EMPTY_SOCKET, "Empty Gem");
         addItem(ModItems.SOCKET_TESTER, "Socket Tester");
+        addItem(ModItems.TOPAZ_GEM, "Topaz Gem");
 
 
         // Blocks

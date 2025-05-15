@@ -18,6 +18,8 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import static com.mgmstudios.projectj.component.ModDataComponents.Sockets.*;
@@ -27,7 +29,7 @@ import static net.minecraft.core.component.DataComponents.GLIDER;
 public final class Socket implements Comparable<Socket>{
     private final DataComponentType<?> dataComponentType;
     private int count;
-    private final int maxCount;
+    private int maxCount;
     private boolean additive;
 
 
@@ -79,6 +81,15 @@ public final class Socket implements Comparable<Socket>{
         return this;
     }
 
+    public Socket setInfinite(){
+        return setMaxCount(Integer.MAX_VALUE);
+    }
+
+    public Socket setMaxCount(int maxCount){
+        this.maxCount = maxCount;
+        return this;
+    }
+
     public boolean is(DataComponentType<?> dataComponentType){
         return this.dataComponentType.equals(dataComponentType);
     }
@@ -88,7 +99,7 @@ public final class Socket implements Comparable<Socket>{
     }
 
     public static Socket empty(){
-        return new Socket(ModDataComponents.Sockets.EMPTY.get(), 1);
+        return new Socket(EMPTY.get(), 1);
     }
 
     public static Socket zombiePacifying(){
@@ -105,6 +116,16 @@ public final class Socket implements Comparable<Socket>{
 
     public static Socket glider(){
         return new Socket(GLIDER, 1, 1);
+    }
+
+    public static Socket[] universal(){
+        return new Socket[]{
+                glider().setInfinite().setAdditive(),
+                zombiePacifying().setInfinite().setAdditive(),
+                giveAi().setInfinite().setAdditive(),
+                removeAi().setInfinite().setAdditive(),
+                empty().setAdditive(),
+        };
     }
 
     public static Socket[] emptySockets(int count){
@@ -137,6 +158,10 @@ public final class Socket implements Comparable<Socket>{
         properties.component(type, componentValue);
     }
 
+    public static List<Socket> getSocketList(ItemStack itemStack){
+        return itemStack.getOrDefault(SOCKETS, new ArrayList<>());
+    }
+
     public static ItemStack addSocket(ItemStack itemStack, Socket socketToApply, boolean allowNewSockets) {
         DataComponentType<?> typeToApply = socketToApply.getDataComponentType();
 
@@ -153,7 +178,7 @@ public final class Socket implements Comparable<Socket>{
 
         List<Socket> sockets = itemStack.getOrDefault(SOCKETS, new ArrayList<>());
         List<Socket> newSockets = new ArrayList<>(sockets);
-        ItemStack resultStack = itemStack.copy();
+        ItemStack resultStack = itemStack;
 
         if (socketToApply.isEmpty() && socketToApply.isAdditive() && allowNewSockets) {
             newSockets.add(socketToApply);

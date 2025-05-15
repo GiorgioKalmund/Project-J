@@ -22,7 +22,7 @@
   },
   "text": {
     "align-center": false,
-    "content": "§nGems§r\nGems modify your gear with various effects and abilities! Legendary status (§6✦§r) allows you to add this Gem to any compatible Item, even if it doesn't have any free sockets left, as well as going over the stack limit §8§o[x]§r.",
+    "content": "§nGems§r\nGems modify your gear with various effects and abilities! Every effect has a maximum stack limit the stack limit §8§o[x]§r. However this limit can also be overridden and the gems themselves can also be improved! (turn)",
     "show-title": true
   }
 }

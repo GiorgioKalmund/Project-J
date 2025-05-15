@@ -1,4 +1,4 @@
-// 1.21.4	2025-05-15T16:01:52.276238	Model Definitions - projectj
+// 1.21.4	2025-05-15T22:56:57.087897	Model Definitions - projectj
 b3d75d5c9c58e5edd8ba7abe1b6ff81e567f8a85 assets/projectj/blockstates/adobe_bricks.json
 778b2fa1375583d6af1c1e760b1adb7e82d04726 assets/projectj/blockstates/adobe_bricks_slab.json
 66bbadfc13930c60f5e0b09a13a34b653fd1937a assets/projectj/blockstates/adobe_bricks_stairs.json
@@ -105,8 +105,8 @@ c4f3775626f4c829574376d0a454e0940c3ca14a assets/projectj/items/cobbled_serpentin
 86ec87f4066da2a5a42ff7cee6e4348ce902f39c assets/projectj/items/death_whistle.json
 3cf17f2ffd36039a8af7d7d54f2b7dd5f05212a1 assets/projectj/items/deepslate_jade_ore.json
 48d99f43129145fad1afdeaa7fd3f9617f632021 assets/projectj/items/empty_little_man_statue_block.json
-eb6d922b052c4453753f480612fcc1adaf5e5da5 assets/projectj/items/empty_socket.json
-ed3b656d980ed7d72a79483705a8f9f4b6e2cc59 assets/projectj/items/everything_socket.json
+770b667a2543918ab8b38a11beadac19e3a00a14 assets/projectj/items/empty_socket.json
+114c1c68d709641190ad0d800ac3f5007e1b770e assets/projectj/items/everything_socket.json
 158ef8b3692a5b675b2d8414808d3d285564c18b assets/projectj/items/filled_crude_sacrifice_bowl.json
 3b6458d2375f942b3fd027659dd3aa77eacc6baf assets/projectj/items/fire_starter.json
 2eb06aad7db124280fb3fc392ec9f24df4131c06 assets/projectj/items/flesh.json
@@ -123,7 +123,6 @@ f9fa2879d7e9b75372270ec7b2234e83aed0110d assets/projectj/items/jade_helmet.json
 253f8bfa3ccd68ee4ad883d7d35769434abadb14 assets/projectj/items/jade_leggings.json
 d638f9cf5a015557d595008d9cfdaf50011dbdb2 assets/projectj/items/jade_magnet.json
 6c67bf56da03612616be77ed4bd0cc89a742b31b assets/projectj/items/jade_ore.json
-de7ecc86a338f50484da1484e11109c352a3dee1 assets/projectj/items/legendary_pacifying_socket.json
 571d265eb581067a257ac763b27592fc39c4b7cb assets/projectj/items/liquid_pyrite_bucket.json
 9c5d368f085309c9cbf298641fd1a8cfc92c3d1b assets/projectj/items/little_king_spawn_egg.json
 adf7ffb495441d4400f30042ca8794c92f8dd939 assets/projectj/items/little_king_voodoo.json
@@ -154,7 +153,7 @@ da296558472311ae6a660687e56b93daec23f56b assets/projectj/items/metate.json
 98b689293cb75c02c874c04866a056a3c2680cc9 assets/projectj/items/obsidian_arrow.json
 bd8e1284e4e6223cc96888851ecab7d4d770dfaf assets/projectj/items/obsidian_tooth.json
 a6dcba9dc781c521a78cc57cc3363cc82e5e48d8 assets/projectj/items/olmec_altar.json
-adc83e7dfbd1a0ec52e55b965e525eb5eedaee8c assets/projectj/items/pacifying_socket.json
+c7ca7b4428a135caca5f1b299a4acd846ae52c02 assets/projectj/items/pacifying_socket.json
 1fd2dc1dd796f135a0cd1d26103b4f785f7a0ac7 assets/projectj/items/packed_adobe.json
 48fd0708f5c0582378282fb376e0cfdef6d61dc3 assets/projectj/items/polished_serpentinite.json
 b6f95c0669b237df848b0620006dfc45751b5d84 assets/projectj/items/polished_serpentinite_slab.json
@@ -206,6 +205,7 @@ c0b634600afb26a017362dd57a4b0acb5e9008c9 assets/projectj/items/sun_armor_legging
 959a6d9c67ad5c22a8e6b8a05b7dbeee0189b13d assets/projectj/items/teleportation_key.json
 4b981089a82540f2b5396454b4c8e7ee5bafb98b assets/projectj/items/teleportation_pad.json
 9bb6ab824bb641b6317f9e2c06b73b7fc97a4afc assets/projectj/items/tinted_adobe_glass.json
+6f0a8c979f18f5a249f63fa90d6d3266cdc96856 assets/projectj/items/topaz_gem.json
 0d07cd1207b3b870c10d6f978b1871f1354d7463 assets/projectj/items/trowel.json
 d9961ad2e0926a89990c8620709b43a18895d664 assets/projectj/items/voodoo_catcher.json
 43a4a30bf747df0266fb42396721117d33cf3e08 assets/projectj/models/block/adobe_bricks.json
@@ -323,7 +323,9 @@ cdcb03ebf3cc0a37809e8f77f5642c0f437220c0 assets/projectj/models/item/chili.json
 aac07639f9960cc7e0e85f1d298694c7b6d01e88 assets/projectj/models/item/crude_sacrifice_bowl.json
 da5311311d366194e64154b2f0e1cf5408ea8fd6 assets/projectj/models/item/death_whistle.json
 8215b5f85d0068792e162192aed126c495dc9f28 assets/projectj/models/item/empty_socket.json
+6fd156b57a49cc17360a7ad9a0034191071773d3 assets/projectj/models/item/empty_socket_legendary.json
 5fcdf807e4921fabc22e4935e2684214afa6f033 assets/projectj/models/item/everything_socket.json
+227f36e1216300ac5103aec61f2189a6da0ada99 assets/projectj/models/item/everything_socket_legendary.json
 5997f340b1c359ea3e3d1d8275bb3a50128bc24f assets/projectj/models/item/filled_crude_sacrifice_bowl.json
 30b985172cbbef1e3f927bfadb025bd16adda0a0 assets/projectj/models/item/fire_starter.json
 8bffde40e70f5b0ae5577d697aa02414cf03484b assets/projectj/models/item/flesh.json
@@ -380,7 +382,6 @@ d0a6756219279a8f67b71a89719cf3dfa2897626 assets/projectj/models/item/jade_leggin
 a8bcb979c7cc3b98f427fb99490bfbeedcc2b00f assets/projectj/models/item/jade_leggings_redstone_trim.json
 e6e451c790fc2a182fcd528a7f055286bddb9838 assets/projectj/models/item/jade_leggings_resin_trim.json
 52476e2f31e853967ccf8540e03910b350176e41 assets/projectj/models/item/jade_magnet.json
-14ed351bf268e40a2e44a82614770c4ef9254524 assets/projectj/models/item/legendary_pacifying_socket.json
 5ca45076d9cd376d1879706c9648b75858a44d38 assets/projectj/models/item/liquid_pyrite_bucket.json
 665d75f63f1adf52376b6ee97fbb3d04fe6ee9a5 assets/projectj/models/item/little_king_spawn_egg.json
 8d9503258c54c9fa5fee944131ae9fdf14f79510 assets/projectj/models/item/little_king_voodoo.json
@@ -396,6 +397,7 @@ f4599e1005d189a2ec7a00ff5c0fe9ac12947441 assets/projectj/models/item/maize_mash.
 be3dbf0b05738e4dff042801437c0830688d0370 assets/projectj/models/item/obsidian_arrow.json
 09cab150482989c21b2d2de107eb18eedfbac95b assets/projectj/models/item/obsidian_tooth.json
 87d4eb5f7aca9932b36e86ff4f387c51d3bc4b77 assets/projectj/models/item/pacifying_socket.json
+f393ba173161667cea776ab5a14f597ace9590c6 assets/projectj/models/item/pacifying_socket_legendary.json
 ffcc726298e3611b938887a80a1db9c4391d1035 assets/projectj/models/item/pyrite_ingot.json
 017d7efbff9698bd3727d1d340292a684d146368 assets/projectj/models/item/pyrite_magnet.json
 685262fa51c1cbde53140c2b72c5c608a095c243 assets/projectj/models/item/quest_book.json
@@ -416,5 +418,6 @@ e3a7718100f03f474faebbe4da0624f70911b4f5 assets/projectj/models/item/stone_mano.
 82e7580beee98a9654c18b8e5432056f233414dd assets/projectj/models/item/sun_armor_leggings.json
 a3012fb501df5f6da3f820c979ebd342df22bc51 assets/projectj/models/item/teleportation_core.json
 9ffe4d6b68a7fb44280cc4bb12ff9639e30abeb6 assets/projectj/models/item/teleportation_key.json
+6f95bf0dc9e1f25560321d4e1173c3131b7dedda assets/projectj/models/item/topaz_gem.json
 382fad977e9d13a5cf6d7ab400e1084e79d63200 assets/projectj/models/item/trowel.json
 a5f73dd0fcb15f6c6f2dd2501d973952aaed6bd0 assets/projectj/models/item/voodoo_catcher.json

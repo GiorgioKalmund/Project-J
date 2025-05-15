@@ -10,6 +10,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AnvilMenu;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
@@ -57,8 +58,27 @@ public class SocketWorkbenchScreen extends ItemCombinerScreen<SocketWorkbenchMen
     }
 
     @Override
-    protected void renderLabels(GuiGraphics p_281442_, int p_282417_, int p_283022_) {
-        super.renderLabels(p_281442_, p_282417_, p_283022_);
+    protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+        super.renderLabels(guiGraphics, mouseX, mouseY);
+        int errorCode = this.menu.getErrorCode();
+        int color = 0;
+        if (errorCode > 0) {
+            Component component;
+            if (errorCode == 1) {
+                component = Component.literal("One or more sockets cannot be applied");
+                color = 0xAA0000;
+            } else if (errorCode == 2) {
+                component = Component.literal("Topaz cannot be applied");
+                color = 0xFFAA00;
+            } else {
+                component = null;
+            }
+            if (component != null) {
+                int k = this.imageWidth - 8 - this.font.width(component) - 2;
+                guiGraphics.fill(k - 2, 67, this.imageWidth - 8, 79, 1325400064);
+                guiGraphics.drawString(this.font, component, k, 69, color);
+            }
+        }
     }
 
     @Override

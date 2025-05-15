@@ -1,16 +1,20 @@
 {
   "images": [
     {
-      "image": "projectj:legendary_pacifying_socket",
+      "image": "projectj:everything_socket"
+    },
+    {
+      "image": "projectj:topaz_gem",
       "show-border": true
     }
   ],
   "template": {
-    "name": "item-showcase"
+    "name": "double-item-showcase",
+    "spacing": 30
   },
   "text": {
     "align-center": false,
-    "content": "§nLegendary Gems§r\nLegendary Gems are much rarer than regular ones, however also way more powerful!",
+    "content": "§nTopaz Gem§r\nThis special gem turns your gem or socket §6§o✦Legendary✦§r, allowing it to be additively applied to any supported socket item.Like an Universal Gem for example!",
     "show-title": true
   }
 }
