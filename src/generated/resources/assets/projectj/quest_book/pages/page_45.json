@@ -1,0 +1,19 @@
+{
+  "images": [
+    {
+      "type": "regular",
+      "image": ":sockets_chapter"
+    }
+  ],
+  "page-shortcut": "sockets",
+  "show-page-msg": false,
+  "template": {
+    "chapter-title": "§f§o§lSockets & Gems§r",
+    "name": "chapter-cover"
+  },
+  "text": {
+    "align-center": true,
+    "content": "§f§oCustomization. FOREVER!§r",
+    "show-title": false
+  }
+}

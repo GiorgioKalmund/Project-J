@@ -122,7 +122,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.JADE_CRYSTAL, "Jade Crystal");
         addBlock(ModBlocks.HOLLOW_MESQUITE_LOG, "Hollow Mesquite Log");
         addBlock(ModBlocks.CHARCOAL_BLOCK, "Block of Charcoal");
-        addBlock(ModBlocks.SOCKET_WORKBENCH, "Gem Workbench");
+        addBlock(ModBlocks.SOCKET_WORKBENCH, "Socket Workbench");
 
         addBlock(ModBlocks.PYRITE_BLOCK, "Pyrite Block");
         addBlock(ModBlocks.RAW_PYRITE_BLOCK, "Raw Pyrite Block");
@@ -255,7 +255,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addComponentSocket(EMPTY, "§oEmpty Socket§r");
         addComponentSocketDescription(EMPTY, "§oEmpty§r");
         addComponentSocket(ZOMBIE_PACIFYING, "§o§aPacifying§r");
-        addComponentSocketDescription(ZOMBIE_PACIFYING, "§oNear zombies stop attacking§r");
+        addComponentSocketDescription(ZOMBIE_PACIFYING, "§oNear Zombies stop attacking§r");
         addComponentSocket(GLIDER, "§o§5Glider§r");
         addComponentSocketDescription(GLIDER, "§oGives you the power of an Elytra§r");
         addComponentSocket(REMOVE_AI, "§o§cNumbness§r");

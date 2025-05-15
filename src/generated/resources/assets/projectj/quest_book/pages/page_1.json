@@ -42,6 +42,11 @@
         "connected-page": "teleportation",
         "description": "§oSwoosh§r",
         "item": "projectj:teleportation_core"
+      },
+      {
+        "connected-page": "sockets",
+        "description": "Gems",
+        "item": "projectj:pacifying_socket"
       }
     ],
     "spacing": 40

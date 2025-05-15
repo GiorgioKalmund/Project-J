@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "#minecraft:logs",
+    "P": "minecraft:diamond_pickaxe",
+    "S": "#minecraft:stone_crafting_materials"
+  },
+  "pattern": [
+    " P ",
+    "SSS",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectj:socket_workbench"
+  }
+}

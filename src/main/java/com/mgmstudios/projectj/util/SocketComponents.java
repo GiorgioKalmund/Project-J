@@ -34,7 +34,7 @@ public class SocketComponents {
             base.append(" §8§o["+ maxCount +"]§r");
         }
         if (socket.isAdditive()){
-            base.append(" §e✦§r");
+            base.append(" §6✦§r");
         }
         return base;
     }

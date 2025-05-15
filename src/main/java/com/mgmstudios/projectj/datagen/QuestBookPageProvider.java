@@ -15,6 +15,7 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
+import org.objectweb.asm.tree.ModuleNode;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class QuestBookPageProvider implements DataProvider {
 
     protected static final String SHORTCUT_BASICS = "basics";
     protected static final String SHORTCUT_TELEPORTATION = "teleportation";
+    protected static final String SHORTCUT_SOCKETS = "sockets";
     protected static final String SHORTCUT_VOODOO = "voodoo";
     protected static final String SHORTCUT_ARMOR = "armor";
     protected static final String SHORTCUT_ANCIENT_ALTAR_RECIPES = "ancient-altar";
@@ -62,6 +64,7 @@ public class QuestBookPageProvider implements DataProvider {
                 .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.PYRITE_MAGNET, "Magnets", SHORTCUT_MAGNETS))
                 .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.VOODOO_CATCHER, "Voodoo", SHORTCUT_VOODOO))
                 .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.TELEPORTATION_CORE, "§oSwoosh§r", SHORTCUT_TELEPORTATION))
+                .addTemplateContentsPageEntry(new ContentsPageScreen.ContentsPageEntry(ModItems.PACIFYING_SOCKET, "Gems", SHORTCUT_SOCKETS))
                 .setText("§lTable of Contents§r", true)
                 .save(pages);
 
@@ -266,8 +269,7 @@ public class QuestBookPageProvider implements DataProvider {
                 .addImage(new QuestBookImage(ModItems.SUN_ARMOR_CHESTPLATE))
                 .addImage(new QuestBookImage(ModItems.SUN_ARMOR_BOOTS))
                 .addImage(new QuestBookImage(ModItems.SUN_ARMOR_HELMET))
-                .setText("§nSun Armor§r\n\nSun Armor is crafted using §6Pyrite§r and although very tough and resistant, similar to it's fancier counterpart, it is very brittle.", true)
-                .save(pages);
+                .setText("§nSun Armor§r\n\nSun Armor is crafted using §6Pyrite§r and although very tough and resistant, similar to it's fancier counterpart, it is very brittle.", true) .save(pages);
 
         Builder.create()
                 .setTemplate(QuestBookTemplateType.ITEM_LIST)
@@ -476,6 +478,39 @@ public class QuestBookPageProvider implements DataProvider {
                 .addImage(new QuestBookImage(ModItems.TELEPORTATION_CORE))
                 .addImage(new QuestBookImage(ModBlocks.TELEPORTATION_PAD))
                 .setText("Teleportation is a powerful force, harnessed only by the most elite mages and technicians. The Teleportation Core lays its foundation. Have a look at the Ancient Altar recipes to find out how to craft it!", false)
+                .save(pages);
+
+        // CHAPTER:Gems
+        Builder.create()
+                .setPageShortcut(SHORTCUT_SOCKETS)
+                .setTemplate(QuestBookTemplateType.CHAPTER_COVER)
+                .showPageMessage(false)
+                .addImage(QuestBookImage.SOCKETS_CHAPTER)
+                .setTemplateChapterTitle("§f§o§lSockets & Gems§r")
+                .setText("§f§oCustomization. FOREVER!§r", false, true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_SHOWCASE)
+                .addImage(new QuestBookImage(ModBlocks.SOCKET_WORKBENCH, true))
+                .setText("§nSocket Workbench§r\nThe Socket Workbench is the crafting station for all of you gem application activities!", true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_LIST)
+                .setTemplateSpacing(22)
+                .setImages(new QuestBookImage(ModItems.PACIFYING_SOCKET))
+                .addImage(new QuestBookImage(ModItems.GIVE_AI_SOCKET))
+                .addImage(new QuestBookImage(ModItems.REMOVE_AI_SOCKET))
+                .addImage(new QuestBookImage(ModItems.GLIDER_SOCKET))
+                .addImage(new QuestBookImage(ModItems.EMPTY_SOCKET))
+                .setText("§nGems§r\nGems modify your gear with various effects and abilities! Legendary status (§6✦§r) allows you to add this Gem to any compatible Item, even if it doesn't have any free sockets left, as well as going over the stack limit §8§o[x]§r.", true)
+                .save(pages);
+
+        Builder.create()
+                .setTemplate(QuestBookTemplateType.ITEM_SHOWCASE)
+                .addImage(new QuestBookImage(ModItems.LEGENDARY_PACIFYING_SOCKET, true))
+                .setText("§nLegendary Gems§r\nLegendary Gems are much rarer than regular ones, however also way more powerful!", true)
                 .save(pages);
     }
 

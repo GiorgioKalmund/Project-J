@@ -1,0 +1,16 @@
+{
+  "images": [
+    {
+      "image": "projectj:socket_workbench",
+      "show-border": true
+    }
+  ],
+  "template": {
+    "name": "item-showcase"
+  },
+  "text": {
+    "align-center": false,
+    "content": "§nSocket Workbench§r\nThe Socket Workbench is the crafting station for all of you gem application activities!",
+    "show-title": true
+  }
+}

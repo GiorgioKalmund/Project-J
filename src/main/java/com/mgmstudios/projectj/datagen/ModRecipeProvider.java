@@ -22,6 +22,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
@@ -242,7 +243,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_serpentinite_rock_slab", this.has(ModBlocks.SERPENTINITE_ROCK_SLAB))
                 .save(this.output);
 
-        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.SERPENTINITE_BENCH_CORNER, 2)
+        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.SERPENTINITE_BENCH_CORNER)
                 .requires(ModBlocks.SERPENTINITE_BENCH)
                 .unlockedBy("has_serpentinite_bench", this.has(ModBlocks.SERPENTINITE_BENCH))
                 .save(this.output);
@@ -258,7 +259,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_mesquite_slab", this.has(ModBlocks.MESQUITE_SLAB))
                 .save(this.output);
 
-        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.MESQUITE_BENCH_CORNER, 2)
+        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.MESQUITE_BENCH_CORNER )
                 .requires(ModBlocks.MESQUITE_BENCH)
                 .unlockedBy("has_mesquite_bench", this.has(ModBlocks.MESQUITE_BENCH))
                 .save(this.output);
@@ -501,6 +502,18 @@ public class ModRecipeProvider extends RecipeProvider {
                 .requires(ModBlocks.CHARCOAL_BLOCK)
                 .unlockedBy("has_charcoal_block", this.has(ModBlocks.CHARCOAL_BLOCK))
                 .save(this.output, "charcoal_from_projectj_charcoal_block");
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOCKET_WORKBENCH)
+                .pattern(" P ")
+                .pattern("SSS")
+                .pattern("###")
+                .define('S', ItemTags.STONE_CRAFTING_MATERIALS)
+                .define('P', Items.DIAMOND_PICKAXE)
+                .define('#', ItemTags.LOGS)
+                .unlockedBy("has_stone_crafting_materials", this.has(ItemTags.STONE_CRAFTING_MATERIALS))
+                .unlockedBy("has_diamond_pickaxe", this.has(Items.DIAMOND_PICKAXE))
+                .unlockedBy("has_logs", this.has(ItemTags.LOGS))
+                .save(this.output);
 
         // ANCIENT ALTAR
 

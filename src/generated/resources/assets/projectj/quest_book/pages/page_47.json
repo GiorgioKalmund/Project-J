@@ -1,0 +1,28 @@
+{
+  "images": [
+    {
+      "image": "projectj:pacifying_socket"
+    },
+    {
+      "image": "projectj:give_ai_socket"
+    },
+    {
+      "image": "projectj:remove_ai_socket"
+    },
+    {
+      "image": "projectj:glider_socket"
+    },
+    {
+      "image": "projectj:empty_socket"
+    }
+  ],
+  "template": {
+    "name": "item-list",
+    "spacing": 22
+  },
+  "text": {
+    "align-center": false,
+    "content": "§nGems§r\nGems modify your gear with various effects and abilities! Legendary status (§6✦§r) allows you to add this Gem to any compatible Item, even if it doesn't have any free sockets left, as well as going over the stack limit §8§o[x]§r.",
+    "show-title": true
+  }
+}

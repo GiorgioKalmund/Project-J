@@ -1,0 +1,16 @@
+{
+  "images": [
+    {
+      "image": "projectj:legendary_pacifying_socket",
+      "show-border": true
+    }
+  ],
+  "template": {
+    "name": "item-showcase"
+  },
+  "text": {
+    "align-center": false,
+    "content": "§nLegendary Gems§r\nLegendary Gems are much rarer than regular ones, however also way more powerful!",
+    "show-title": true
+  }
+}
